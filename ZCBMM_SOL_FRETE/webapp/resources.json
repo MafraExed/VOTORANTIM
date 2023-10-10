@@ -1,0 +1,163 @@
+{
+    "resources": [
+        {
+            "name": ".che/project.json"
+        },
+        {
+            "name": ".gitignore"
+        },
+        {
+            "name": ".project.json"
+        },
+        {
+            "name": ".user.project.json"
+        },
+        {
+            "name": "Component-preload.js",
+            "merged": true
+        },
+        {
+            "name": "Component.js"
+        },
+        {
+            "name": "Gruntfile.js"
+        },
+        {
+            "name": "controller/Add_Rota.controller.js"
+        },
+        {
+            "name": "controller/Add_Solicitacao.controller.js"
+        },
+        {
+            "name": "controller/App.controller.js"
+        },
+        {
+            "name": "controller/BaseController.js"
+        },
+        {
+            "name": "controller/Detail_Rota.controller.js"
+        },
+        {
+            "name": "controller/ErrorHandler.js"
+        },
+        {
+            "name": "controller/NotFound.controller.js"
+        },
+        {
+            "name": "controller/Object.controller.js"
+        },
+        {
+            "name": "controller/Worklist.controller.js"
+        },
+        {
+            "name": "controller/objectRota.controller.js"
+        },
+        {
+            "name": "dist"
+        },
+        {
+            "name": "i18n/i18n.properties",
+            "raw": "i18n/i18n.properties"
+        },
+        {
+            "name": "localService/metadata.xml"
+        },
+        {
+            "name": "localService/mockserver.js"
+        },
+        {
+            "name": "manifest.json"
+        },
+        {
+            "name": "model/formatter.js"
+        },
+        {
+            "name": "model/models.js"
+        },
+        {
+            "name": "neo-app.json"
+        },
+        {
+            "name": "node_modules"
+        },
+        {
+            "name": "package-lock.json"
+        },
+        {
+            "name": "package.json"
+        },
+        {
+            "name": "resources.json",
+            "merged": true
+        },
+        {
+            "name": "sap-ui-cachebuster-info.json"
+        },
+        {
+            "name": "view/Add_Rota.view.xml"
+        },
+        {
+            "name": "view/Add_Solicitacao.view.xml"
+        },
+        {
+            "name": "view/App.view.xml"
+        },
+        {
+            "name": "view/Carregamento.fragment.xml"
+        },
+        {
+            "name": "view/Carteira.fragment.xml"
+        },
+        {
+            "name": "view/Detail_Rota.view.xml"
+        },
+        {
+            "name": "view/Finalidade.fragment.xml"
+        },
+        {
+            "name": "view/GrupoDeCompras.fragment.xml"
+        },
+        {
+            "name": "view/Kostl.fragment.xml"
+        },
+        {
+            "name": "view/Material.fragment.xml"
+        },
+        {
+            "name": "view/Modalidade.fragment.xml"
+        },
+        {
+            "name": "view/NotFound.view.xml"
+        },
+        {
+            "name": "view/Object.view.xml"
+        },
+        {
+            "name": "view/ObjectNotFound.view.xml"
+        },
+        {
+            "name": "view/Perigoso.fragment.xml"
+        },
+        {
+            "name": "view/Prioridade.fragment.xml"
+        },
+        {
+            "name": "view/TpEmbalagem.fragment.xml"
+        },
+        {
+            "name": "view/TpVeiculo.fragment.xml"
+        },
+        {
+            "name": "view/Werks.fragment.xml"
+        },
+        {
+            "name": "view/Worklist.view.xml"
+        },
+        {
+            "name": "view/Zone1.fragment.xml"
+        },
+        {
+            "name": "view/objectRota.view.xml"
+        }
+    ]
+}

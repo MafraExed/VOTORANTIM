@@ -1,0 +1,134 @@
+{
+	"NfeHeader": [{
+		"idMudanca": "552234",
+		"descMudanca": "Regra de Firewll xxxx",
+		"ciclo": "CHARM_ECC1",
+		"dataImplmt": "17/07/2019",
+		"idSolicitante": "ERIC FREITAS",
+		"status": "Em Desenvolvimento"
+	},
+	{
+		"idMudanca": "553234",
+		"descMudanca": "Regra de Firewll xxxx",
+		"dataImplmt": "17/07/2019",
+		"ciclo": "CHARM_ECC1",
+		"idSolicitante": "ERIC FREITAS",
+		"status": "Em Desenvolvimento"
+	},
+		{
+		"idMudanca": "553234",
+		"descMudanca": "Regra de Firewll xxxx",
+		"dataImplmt": "17/07/2019",
+		"ciclo": "CHARM_ECC1",
+		"idSolicitante": "ERIC FREITAS",
+		"status": "Em Desenvolvimento"
+	},
+		{
+		"idMudanca": "553234",
+		"descMudanca": "Regra de Firewll xxxx",
+		"dataImplmt": "17/07/2019",
+		"ciclo": "CHARM_ECC1",
+		"idSolicitante": "ERIC FREITAS",
+		"status": "Em Desenvolvimento"
+	},
+		{
+		"idMudanca": "553234",
+		"descMudanca": "Regra de Firewll xxxx",
+		"dataImplmt": "17/07/2019",
+		"ciclo": "CHARM_ECC1",
+		"idSolicitante": "ERIC FREITAS",
+		"status": "Em Desenvolvimento"
+	},
+		{
+		"idMudanca": "553234",
+		"descMudanca": "Regra de Firewll xxxx",
+		"dataImplmt": "17/07/2019",
+		"ciclo": "CHARM_ECC1",
+		"idSolicitante": "ERIC FREITAS",
+		"status": "Em Desenvolvimento"
+	},
+	{
+		"idMudanca": "553234",
+		"descMudanca": "Regra de Firewll xxxx",
+		"dataImplmt": "17/07/2019",
+		"ciclo": "CHARM_ECC1",
+		"idSolicitante": "ERIC FREITAS",
+		"status": "Em Desenvolvimento"
+	},
+	{
+		"idMudanca": "553234",
+		"descMudanca": "Regra de Firewll xxxx",
+		"dataImplmt": "17/07/2019",
+		"ciclo": "CHARM_ECC1",
+		"idSolicitante": "ERIC FREITAS",
+		"status": "Em Desenvolvimento"
+	}],
+	"HTML":" <h3> 1 - Justificativa: </h3>",
+	"requests":[{
+		"id": "E03K900011",
+		"desc": "GL.FI: TESTE - Texto Request",
+		"tipo": "Workbench"
+	},{
+		"id": "E03K900011",
+		"desc": "GL.FI: TESTE - Texto Request",
+		"tipo": "Workbench"
+	},{
+		"id": "E03K900011",
+		"desc": "GL.FI: TESTE - Texto Request",
+		"tipo": "Workbench"
+	},{
+		"id": "E03K900011",
+		"desc": "GL.FI: TESTE - Texto Request",
+		"tipo": "Workbench"
+	}],
+	"objetosRequest": [{
+		"objeto": "ZTB_PARAMETRO",
+		"tipo": "TABL"
+	},{
+		"objeto": "ZTB_PARAMETRO",
+		"tipo": "TABL"
+	},{
+		"objeto": "ZTB_PARAMETRO",
+		"tipo": "TABL"
+	},{
+		"objeto": "ZTB_PARAMETRO",
+		"tipo": "TABL"
+	},{
+		"objeto": "ZTB_PARAMETRO",
+		"tipo": "TABL"
+	},{
+		"objeto": "ZTB_PARAMETRO",
+		"tipo": "TABL"
+	}],
+	"anexos":[{
+		"nomeAnexo": "anexo1.doc"
+	},{
+		"nomeAnexo": "anexo2.doc"
+	},{
+		"nomeAnexo": "anexo3.doc"
+	},{
+		"nomeAnexo": "anexo4.doc"
+	}],
+	"dadosGerais": [{
+		"campo": "tipo Emissão",	
+		"valor": "1"
+	}, {
+		"campo": "ambiente",
+		"valor": "Produção"
+	}, {
+		"campo": "Data",
+		"valor": "17.04.2018"
+	}, {
+		"campo": "Desc. Operacao",
+		"valor": "Transferencia producao estabelecimento"
+	}, {
+		"campo": "Contingência",
+		"valor": "X"
+	}, {
+		"campo": "Motivo Contingência",
+		"valor": "falha na conexão"
+	}, {
+		"campo": "direcao",
+		"valor": "Saída"
+	}]
+}

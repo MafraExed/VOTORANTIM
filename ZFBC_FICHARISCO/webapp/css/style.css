@@ -1,0 +1,111 @@
+@page {
+	size: A3 landscape;
+}
+
+.example-screen11 {
+   display: none !important;
+}
+
+.example-screen22 {
+   display: block !important;
+}
+
+@media print {
+   .example-screen1 {
+       display: none !important;
+    }
+    
+   .example-screen2 {
+       display: block !important;
+    }
+
+    .marginPrint {
+    	margin-Left: 120px !important;
+    }
+
+    .marginP1 {
+    	margin-top: -97px !important;
+    	margin-Left: 120px !important;
+    }
+    
+    .marginP2 {
+    	margin-top: -130px !important;
+    	margin-Left: 120px !important;
+    }
+    
+    .marginP3 {
+    	margin-top: -65px !important;
+    	margin-Left: 120px !important;
+    }
+    
+    .marginPrint2 {
+    	/*margin-top: -129px !important;*/
+    	/*margin-Left: 120px !important;*/
+    }
+ 
+    .marg-print-bottom {
+		margin-bottom: 118px !important;
+    }
+
+	html, body {
+		-webkit-print-color-adjust: exact !important;
+		color-adjust: exact !important;
+		printer-colors: exact !important;
+	}
+}
+
+.myCustomText {
+	font-weight: bold !important;
+}
+
+.myCustomAlign {
+	text-align: right !important;
+}
+
+.myJustifyAlign {
+  text-align: justify !important;
+}
+
+.myCustomSize {
+	font-size: 1rem !important;
+}
+
+.columnStyleGreen {
+	background-color: #00B050 !important;
+}
+
+.columnStyleGray {
+	background-color: #d5dadc !important;
+}
+
+.columnTextWhite {
+	color: #FFFFFF !important;
+}
+
+.imageNoMargin {
+	margin-bottom: -3.6px !important;
+}
+
+.noMarginTop {
+	margin-top: -5px !important;
+}
+
+.noMarginLeftRight {
+	margin-Left: -15px !important;
+	margin-Right: -15px !important;
+}
+
+.noMarginCellTop {
+	margin-top: -2.5px !important;
+}
+
+.marginTableIE {
+	margin-top: -1.5px !important;
+}
+
+.marginDefalt {
+	margin-top: 5px !important;
+	margin-bottom: 5px !important;
+	margin-Left: 5px !important;
+	margin-Right: 5px !important;
+}

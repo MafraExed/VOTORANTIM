@@ -1,0 +1,354 @@
+{
+    "resources": [
+        {
+            "name": "Component-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "Component-preload-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "Component-preload.js",
+            "merged": true
+        },
+        {
+            "name": "Component.js"
+        },
+        {
+            "name": "controller/App-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/App.controller.js"
+        },
+        {
+            "name": "controller/Detalhe-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/Detalhe.controller.js"
+        },
+        {
+            "name": "controller/Main-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/Main.controller.js"
+        },
+        {
+            "name": "controller/MainDesk-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/MainDesk.controller.js"
+        },
+        {
+            "name": "controller/Requests-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/Requests.controller.js"
+        },
+        {
+            "name": "controller/Resultado-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/Resultado.controller.js"
+        },
+        {
+            "name": "css/style-dbg.css",
+            "isDebug": true
+        },
+        {
+            "name": "css/style.css"
+        },
+        {
+            "name": "extended_runnable_file.html"
+        },
+        {
+            "name": "i18n/i18n.properties",
+            "raw": "i18n/i18n.properties"
+        },
+        {
+            "name": "images/icons/icon-128x128.png"
+        },
+        {
+            "name": "images/icons/icon-144x144.png"
+        },
+        {
+            "name": "images/icons/icon-152x152.png"
+        },
+        {
+            "name": "images/icons/icon-192x192.png"
+        },
+        {
+            "name": "images/icons/icon-384x384.png"
+        },
+        {
+            "name": "images/icons/icon-512x512.png"
+        },
+        {
+            "name": "images/icons/icon-72x72.png"
+        },
+        {
+            "name": "images/icons/icon-96x96.png"
+        },
+        {
+            "name": "images/logo_256x256.jpg"
+        },
+        {
+            "name": "images/logo_256x256.png"
+        },
+        {
+            "name": "images/separator.jpg"
+        },
+        {
+            "name": "images/voto_load.gif"
+        },
+        {
+            "name": "images/voto_load_white.gif"
+        },
+        {
+            "name": "images/votorantim_new_logo_white.png"
+        },
+        {
+            "name": "index.html"
+        },
+        {
+            "name": "localService/ZGWGLBC_CHARM_UTILS_SRV/metadata.xml"
+        },
+        {
+            "name": "localService/ZGWGLBC_GESTAO_MUD_MOBILE_SRV_01/metadata.xml"
+        },
+        {
+            "name": "localService/metadata.xml"
+        },
+        {
+            "name": "localService/mockdata/Entity1_Set.json"
+        },
+        {
+            "name": "localService/mockdata/Entity2_Set.json"
+        },
+        {
+            "name": "localService/mockdata/Entity3_Set.json"
+        },
+        {
+            "name": "manifest.json"
+        },
+        {
+            "name": "model/Header.json"
+        },
+        {
+            "name": "model/models-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "model/models.js"
+        },
+        {
+            "name": "neo-app.json"
+        },
+        {
+            "name": "serviceBinding-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "serviceBinding.js"
+        },
+        {
+            "name": "sw-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "sw.js"
+        },
+        {
+            "name": "tmp/Component-preload.js",
+            "merged": true
+        },
+        {
+            "name": "tmp/Component.js"
+        },
+        {
+            "name": "tmp/controller/App.controller.js"
+        },
+        {
+            "name": "tmp/controller/Detalhe.controller.js"
+        },
+        {
+            "name": "tmp/controller/Main.controller.js"
+        },
+        {
+            "name": "tmp/controller/MainDesk.controller.js"
+        },
+        {
+            "name": "tmp/controller/Requests.controller.js"
+        },
+        {
+            "name": "tmp/controller/Resultado.controller.js"
+        },
+        {
+            "name": "tmp/css/style.css"
+        },
+        {
+            "name": "tmp/extended_runnable_file.html"
+        },
+        {
+            "name": "tmp/i18n/i18n.properties",
+            "raw": "i18n/i18n.properties"
+        },
+        {
+            "name": "tmp/images/icons/icon-128x128.png"
+        },
+        {
+            "name": "tmp/images/icons/icon-144x144.png"
+        },
+        {
+            "name": "tmp/images/icons/icon-152x152.png"
+        },
+        {
+            "name": "tmp/images/icons/icon-192x192.png"
+        },
+        {
+            "name": "tmp/images/icons/icon-384x384.png"
+        },
+        {
+            "name": "tmp/images/icons/icon-512x512.png"
+        },
+        {
+            "name": "tmp/images/icons/icon-72x72.png"
+        },
+        {
+            "name": "tmp/images/icons/icon-96x96.png"
+        },
+        {
+            "name": "tmp/images/logo_256x256.jpg"
+        },
+        {
+            "name": "tmp/images/logo_256x256.png"
+        },
+        {
+            "name": "tmp/images/separator.jpg"
+        },
+        {
+            "name": "tmp/images/voto_load.gif"
+        },
+        {
+            "name": "tmp/images/voto_load_white.gif"
+        },
+        {
+            "name": "tmp/images/votorantim_new_logo_white.png"
+        },
+        {
+            "name": "tmp/index.html"
+        },
+        {
+            "name": "tmp/localService/ZGWGLBC_CHARM_UTILS_SRV/metadata.xml"
+        },
+        {
+            "name": "tmp/localService/ZGWGLBC_GESTAO_MUD_MOBILE_SRV_01/metadata.xml"
+        },
+        {
+            "name": "tmp/localService/metadata.xml"
+        },
+        {
+            "name": "tmp/localService/mockdata/Entity1_Set.json"
+        },
+        {
+            "name": "tmp/localService/mockdata/Entity2_Set.json"
+        },
+        {
+            "name": "tmp/localService/mockdata/Entity3_Set.json"
+        },
+        {
+            "name": "tmp/manifest.json"
+        },
+        {
+            "name": "tmp/model/Header.json"
+        },
+        {
+            "name": "tmp/model/models.js"
+        },
+        {
+            "name": "tmp/serviceBinding.js"
+        },
+        {
+            "name": "tmp/sw.js"
+        },
+        {
+            "name": "tmp/view/App.view.xml"
+        },
+        {
+            "name": "tmp/view/Detalhe.view.xml"
+        },
+        {
+            "name": "tmp/view/Main.view.xml"
+        },
+        {
+            "name": "tmp/view/MainDesk.view.xml"
+        },
+        {
+            "name": "tmp/view/Requests.view.xml"
+        },
+        {
+            "name": "tmp/view/Resultado.view.xml"
+        },
+        {
+            "name": "tmp-dbg/Component-preload.js",
+            "merged": true
+        },
+        {
+            "name": "tmp-dbg/Component.js"
+        },
+        {
+            "name": "tmp-dbg/controller/App.controller.js"
+        },
+        {
+            "name": "tmp-dbg/controller/Detalhe.controller.js"
+        },
+        {
+            "name": "tmp-dbg/controller/Main.controller.js"
+        },
+        {
+            "name": "tmp-dbg/controller/MainDesk.controller.js"
+        },
+        {
+            "name": "tmp-dbg/controller/Requests.controller.js"
+        },
+        {
+            "name": "tmp-dbg/controller/Resultado.controller.js"
+        },
+        {
+            "name": "tmp-dbg/css/style.css"
+        },
+        {
+            "name": "tmp-dbg/model/models.js"
+        },
+        {
+            "name": "tmp-dbg/serviceBinding.js"
+        },
+        {
+            "name": "tmp-dbg/sw.js"
+        },
+        {
+            "name": "view/App.view.xml"
+        },
+        {
+            "name": "view/Detalhe.view.xml"
+        },
+        {
+            "name": "view/Main.view.xml"
+        },
+        {
+            "name": "view/MainDesk.view.xml"
+        },
+        {
+            "name": "view/Requests.view.xml"
+        },
+        {
+            "name": "view/Resultado.view.xml"
+        }
+    ]
+}

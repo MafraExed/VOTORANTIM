@@ -1,0 +1,50 @@
+<mvc:View
+	controllerName="fibria.com.ZFBC_SUMARIO.controller.Object"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:semantic="sap.m.semantic"
+	xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:viz="sap.viz.ui5.controls" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" xmlns:viz.data="sap.viz.ui5.data">
+
+	<semantic:FullscreenPage
+		id="page"
+        semanticRuleSet="Optimized"
+		title="{i18n>objectTitle}"
+		busy="{objectView>/busy}"
+		busyIndicatorDelay="{objectView>/delay}">
+
+		<semantic:content>
+			<viz:VizFrame id="vzfMatrizImpacto" uiConfig="{applicationSet:'fiori'}" height="100%" width="100%" vizType="heatmap">
+				<viz:dataset>
+					<viz.data:FlattenedDataset data="{/matrizimpactoameaca}">
+						<viz.data:dimensions>
+							<viz.data:DimensionDefinition name="Probabilidade" value="{Probabilidade}"/>
+							<viz.data:DimensionDefinition name="Impacto" value="{Impacto}"/>
+						</viz.data:dimensions>
+						<viz.data:measures>
+							<viz.data:MeasureDefinition name="Cor" value="{Cor}"/>
+						</viz.data:measures>
+					</viz.data:FlattenedDataset>
+				</viz:dataset>
+				<viz:feeds>
+					<viz.feeds:FeedItem uid="color" type="Measure" values="Cor"/>
+					<viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="Impacto"/>
+					<viz.feeds:FeedItem uid="categoryAxis2" type="Dimension" values="Probabilidade"/>
+				</viz:feeds>
+			</viz:VizFrame>
+ 		</semantic:content>
+
+		<semantic:sendEmailAction>
+			<semantic:SendEmailAction id="shareEmail" press="onShareEmailPress"/>
+		</semantic:sendEmailAction>
+
+		<semantic:shareInJamAction>
+			<semantic:ShareInJamAction id="shareInJam" visible="{FLP>/isShareInJamActive}" press="onShareInJamPress"/>
+		</semantic:shareInJamAction>
+
+		<semantic:saveAsTileAction>
+			<footerbar:AddBookmarkButton id ="shareTile" title="{objectView>/saveAsTileTitle}" />
+		</semantic:saveAsTileAction>
+
+	</semantic:FullscreenPage>
+
+</mvc:View>

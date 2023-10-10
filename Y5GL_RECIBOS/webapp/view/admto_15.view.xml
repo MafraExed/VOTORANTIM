@@ -1,0 +1,42 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="Y5GL_RECIBOS.Y5GL_RECIBOS.controller.admto_15"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<App id="appid">
+		<pages>
+			<Page id="idPage">
+				<customHeader>
+					<Bar id="idBarMaster">
+						<contentMiddle>
+							<Title text="Adiantamento Quinzenal" titleStyle="H3" id="idTitleRecibos"/>
+						</contentMiddle>
+						<contentRight>
+							<Button icon="sap-icon://home" id="idteste" press="onBackMaster"/>
+						</contentRight>
+					</Bar>
+				</customHeader>
+				<content>
+					<UploadCollection id="UploadCollection" multiple="false" change="onChange" fileDeleted="onFileDeleted" uploadButtonInvisible="true"
+						beforeUploadStarts="onBeforeUploadStarts" uploadComplete="onuploadComplete" items="{ path: '/ZET_GLRH_UPLOADSet', templateShareable: true }"
+						modelContextChange="onmodelContextChange" mode="SingleSelectMaster"
+						uploadUrl="/sap/opu/odata/sap/ZGWGLRH_MEU_CADASTRO_SRV/ZET_GLHR_UPFILESet"
+						noDataDescription="Para adicionar/alterar Anexos selecione o botão ( )" noDataText="Aguardando novos Carregamentos"
+						numberOfAttachmentsText="Anexos">
+						<toolbar>
+							<OverflowToolbar id="myId" visible="true">
+								<Title id="attachmentTitle"/>
+								<ToolbarSpacer id="idToolbarSpacer"/>
+								<SearchField width="10rem" search="onSearch" enabled="false" visible="false" id="idSearchField"/>
+								<Button id="deleteSelectedButton" text="Delete" press="onDeleteSelectedItems" enabled="false" visible="false" type="Transparent"/>
+								<ToggleButton id="selectAllButton" text="Select all" press="onSelectAllPress" enabled="false" visible="false" type="Transparent"/>
+								<UploadCollectionToolbarPlaceholder id="IdUploadCollectionToolbar"/>
+							</OverflowToolbar>
+						</toolbar>
+						<items>
+							<UploadCollectionItem documentId="{DocId}" fileName="{Filename}" mimeType="{Mimetype}" enableEdit="false" visibleEdit="false"
+								enableDelete="false" visibleDelete="false" deletePress="onFileDelete" selected="true" id="idUploadCollectionItem"/>
+						</items>
+					</UploadCollection>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

@@ -1,0 +1,195 @@
+{
+    "_version": "1.9.0",
+    "sap.app": {
+        "id": "ZCBMM_ACEITE_RESERVA.ZCBMM_ACEITE_RESERVA",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/sap/ZGWCBMM_ACEITE_RESERVA_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/metadata.xml"
+                }
+            },
+            "ZGWCBMM_ACEITE_RESERVA_SRV": {
+                "uri": "/sap/opu/odata/sap/ZGWCBMM_ACEITE_RESERVA_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/metadata.xml"
+                }
+            }
+        },
+        "sourceTemplate": {
+            "id": "servicecatalog.connectivityComponent",
+            "version": "0.0.0",
+            "toolsId": "49ff294c-0793-43f8-a35e-b2f2f936ab9b"
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "fullWidth": true,
+        "icons": {
+            "icon": "sap-icon://task",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "rootView": {
+            "viewName": "ZCBMM_ACEITE_RESERVA.ZCBMM_ACEITE_RESERVA.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "app"
+        },
+        "dependencies": {
+            "minUI5Version": "1.42.0",
+            "libs": {
+                "sap.collaboration": {
+                    "lazy": true
+                },
+                "sap.f": {},
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.ushell": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "ZCBMM_ACEITE_RESERVA.ZCBMM_ACEITE_RESERVA.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {
+                    "useBatch": false
+                }
+            }
+        },
+        "services": {
+            "ShellUIService": {
+                "factoryName": "sap.ushell.ui5service.ShellUIService",
+                "lazy": false,
+                "settings": {
+                    "setTitle": "auto"
+                }
+            }
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "viewPath": "ZCBMM_ACEITE_RESERVA.ZCBMM_ACEITE_RESERVA.view",
+                "controlId": "app",
+                "controlAggregation": "pages",
+                "bypassed": {
+                    "target": [
+                        "notFound"
+                    ]
+                },
+                "async": true
+            },
+            "routes": [
+                {
+                    "pattern": "",
+                    "name": "worklist",
+                    "target": [
+                        "worklist"
+                    ]
+                },
+                {
+                    "pattern": "ZET_CBMM_CF_ACEITESet/{objectId}",
+                    "name": "object",
+                    "target": [
+                        "object"
+                    ]
+                },
+                {
+                    "name": "aceite",
+                    "pattern": "aceite/{Reserva}/{Item}/:Nome:/:StatusReserva:/:Eliminado:/:RegFinal:/:Material:/:Centro:/:QtdNecessaria:/:QtdRetReserva:/:QtdAceite:/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "aceite"
+                    ]
+                },
+                {
+                    "name": "Back",
+                    "pattern": "Back",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "worklist"
+                    ]
+                }
+            ],
+            "targets": {
+                "worklist": {
+                    "viewName": "Worklist",
+                    "viewId": "worklist",
+                    "viewLevel": 1,
+                    "title": "{i18n>worklistViewTitle}"
+                },
+                "object": {
+                    "viewName": "Object",
+                    "viewId": "object",
+                    "viewLevel": 2,
+                    "title": "{i18n>objectViewTitle}"
+                },
+                "objectNotFound": {
+                    "viewName": "ObjectNotFound",
+                    "viewId": "objectNotFound"
+                },
+                "notFound": {
+                    "viewName": "NotFound",
+                    "viewId": "notFound"
+                },
+                "aceite": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearAggregation": true,
+                    "viewName": "Aceite",
+                    "title": "aceite",
+                    "viewId": "aceite",
+                    "viewLevel": 2
+                },
+                "Back": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearAggregation": true,
+                    "viewName": "Worklist",
+                    "viewLevel": 1
+                }
+            }
+        },
+        "resourceRoots": {
+            "openui5.camera": "./thirdparty/openui5/camera/"
+        }
+    },
+    "sap.platform.abap": {
+        "uri": "/sap/bc/ui5_ui5/sap/zpui_bc_aceite",
+        "_version": "1.1.0"
+    }
+}

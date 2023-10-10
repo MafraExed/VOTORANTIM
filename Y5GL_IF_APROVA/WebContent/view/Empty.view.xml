@@ -1,0 +1,15 @@
+<mvc:View
+
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m">
+
+	<MessagePage
+		id="msgPage"
+		text="{i18n>selectAnOrderText}"
+		icon="{sap-icon://product}"
+		description=""
+		showNavButton="{device>/system/phone}"
+		navButtonPress="onNavBack">
+	</MessagePage>
+
+</mvc:View>

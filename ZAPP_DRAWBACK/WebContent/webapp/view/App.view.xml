@@ -1,0 +1,17 @@
+<mvc:View
+	controllerName="nasa.ui5.controleDrawback.controller.App"
+	xmlns:mvc="sap.ui.core.mvc"
+	displayBlock="true"
+	xmlns="sap.m">
+	
+	<!-- 
+	busy="{appView>/busy}"
+	busyIndicatorDelay="{appView>/delay}"
+	
+	 -->
+	
+	
+	<App id="idAppControl"
+		 busy="{appView>/busy}"
+		 busyIndicatorDelay="{appView>/delay}"/>
+</mvc:View>

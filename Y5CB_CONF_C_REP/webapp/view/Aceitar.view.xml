@@ -1,0 +1,77 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:table="sap.ui.table"
+	xmlns:smartTable="sap.ui.comp.smarttable" controllerName="Y5CB_CONF_C_REP.Y5CB_CONF_C_REP.controller.Aceitar"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page title="{i18n>hed_aceite}">
+		<content>
+			<Panel >
+				<content>
+					<ObjectHeader title="{i18n>avis_receb_header} {CodAviso}" introActive="true" titleActive="true"
+						intro="{/#ZET_CBMM_ACEITE_RESERVACB/Cliente/@sap:label}: {Cliente} ({Kunnr})">
+						<attributes>
+							<ObjectAttribute title="{/#ZET_CBMM_ACEITE_RESERVACB/Nfe/@sap:label}" text="{Nfe}"/>
+<!--							<ObjectAttribute title="{/#ZET_CBMM_ACEITE_RESERVACB/Ebeln/@sap:label}" text="{Ebeln}"/>
+							<ObjectAttribute title="{/#ZET_CBMM_ACEITE_RESERVACB/Ebelp/@sap:label}" text="{Ebelp}" visible = "false"/>-->
+						</attributes>
+					</ObjectHeader>
+				</content>
+			</Panel>
+			<Panel>
+				<content>
+					<table:Table id="aceiteItemsTable" enableColumnReordering="true" enableColumnFreeze="true" 
+					   selectionMode="MultiToggle" rows="{ path: 'ToIT', sorter : { path : 'Ebelp' }}">
+						<table:toolbar>
+							<OverflowToolbar>
+								<Title id="title" text="Itens selecionados"/>
+							</OverflowToolbar>
+						</table:toolbar>
+						<table:columns>
+							<table:Column autoResizable="true">
+								<Label text="{/#ZET_CBMM_ACEITE_RESERVAIT/Ebeln/@sap:label}"/>
+								<table:template>
+									<Text text="{Ebeln}" wrapping="false"/>
+								</table:template>
+							</table:Column>
+							<table:Column autoResizable="true">
+								<Label text="{/#ZET_CBMM_ACEITE_RESERVAIT/Ebelp/@sap:label}"/>
+								<table:template>
+									<Text text="{Ebelp}" wrapping="false"/>
+								</table:template>
+							</table:Column>
+							<table:Column autoResizable="true">
+								<Label text="{/#ZET_CBMM_ACEITE_RESERVAIT/Matnr/@sap:label}"/>
+								<table:template>
+									<Text text="{Matnr}" wrapping="false"/>
+								</table:template>
+							</table:Column>
+							<table:Column autoResizable="true">
+								<Label text="{/#ZET_CBMM_ACEITE_RESERVAIT/Maktx/@sap:label}"/>
+								<table:template>
+									<Text text="{Maktx}" wrapping="false"/>
+								</table:template>
+							</table:Column>
+							<table:Column autoResizable="true">
+								<Label text="{/#ZET_CBMM_ACEITE_RESERVAIT/Volume/@sap:label}"/>
+								<table:template>
+									<Text text="{Volume}" wrapping="false"/>
+								</table:template>
+							</table:Column>
+							<table:Column autoResizable="true">
+								<Label text="{/#ZET_CBMM_ACEITE_RESERVAIT/Quantidade/@sap:label}"/>
+								<table:template>
+									<Text text="{Quantidade}" wrapping="false"/>
+								</table:template>
+							</table:Column>
+						</table:columns>
+					</table:Table>
+				</content>
+			</Panel>
+		</content>
+		<footer>
+			<Toolbar>
+				<ToolbarSpacer/>
+				<Button text="Registrar Aceite" press=".onRegistrarAceitePress" tooltip="Registrar Aceite de Recebimento" type="Accept"
+					icon="sap-icon://accept"/>
+			</Toolbar>
+		</footer>
+	</Page>
+</mvc:View>

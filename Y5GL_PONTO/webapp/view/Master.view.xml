@@ -1,0 +1,42 @@
+<mvc:View controllerName="Y5GL_PONTO.Y5GL_PONTO.controller.Master" xmlns="sap.m" xmlns:semantic="sap.f.semantic"
+	xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:mvc="sap.ui.core.mvc" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<App id="idAppDetail">
+		<pages id="idPagesDetail">
+			<Page id="idPageMaster">
+				<customHeader>
+					<Bar id="idBarMaster">
+						<contentMiddle>
+							<core:Icon src="sap-icon://home" id="icon"/>
+							<Link text="Página Inicial" href="#Shell-home" id="Pagina"/>
+						</contentMiddle>
+					</Bar>
+				</customHeader>
+				<content>
+					<f:Form id="PGTO_MENSAL" visible="true" editable="true">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_PGTO_MENSAL" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+								emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer5">
+								<f:formElements>
+									<f:FormElement label="Período" id="FormContainer1_PGTO_MENSAL">
+										<ComboBox id="IdPeriodoPGTO_MENSAL" selectedKey="" required="true" placeholder="Selecione o Período"
+											items="{ path:'/ZET_COMBO_RECIBOSet', filters: { path: 'IForm', operator: 'EQ', value1:'PONTO'}}">
+											<core:Item key="{Periodo}" text="{Periodo}" id="idKeyMes_FormContainer1_PGTO_MENSAL"/>
+										</ComboBox>
+									</f:FormElement>
+									<f:FormElement id="FormContainer4_PGTO_MENSAL">
+										<f:fields>
+											<Button text="Exibir" width="100%" press="onSave" icon="sap-icon://detail-view" id="IdExibe_PGTO_MENSAL" tooltip="Exibe"/>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

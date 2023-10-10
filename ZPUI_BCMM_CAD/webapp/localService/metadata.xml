@@ -1,0 +1,117 @@
+<edmx:Edmx
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+    xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+    <edmx:DataServices
+        xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:DataServiceVersion="2.0">
+        <Schema
+            xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"
+            xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="hanaxs.services">
+            <EntityType Name="EventosType">
+                <Key>
+                    <PropertyRef Name="SerialID"/>
+                    <PropertyRef Name="Ordven"/>
+                </Key>
+                <Property Name="SerialID" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="Ordven" Type="Edm.String" Nullable="false" MaxLength="40"/>
+                <Property Name="Evento" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Status_Evento" Type="Edm.String" MaxLength="40"/>
+                <Property Name="RazEvento" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Planejado" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Realizado" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Criado_por" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Criado_em" Type="Edm.String" MaxLength="10"/>
+            </EntityType>
+            <EntityType Name="ZTBMM_PORTAL_CONTRAT_FRETEType">
+                <Key>
+                    <PropertyRef Name="BUKRS"/>
+                    <PropertyRef Name="ID_CONTRATO"/>
+                    <PropertyRef Name="TP_CONTRATO"/>
+                </Key>
+                <Property Name="BUKRS" Type="Edm.String" Nullable="false" MaxLength="40"/>
+                <Property Name="ID_CONTRATO" Type="Edm.String" Nullable="false" MaxLength="40"/>
+                <Property Name="TP_CONTRATO" Type="Edm.String" Nullable="false" MaxLength="40"/>
+                <Property Name="LZONEO" Type="Edm.String" MaxLength="40"/>
+                <Property Name="LZONED" Type="Edm.String" MaxLength="40"/>
+                <Property Name="ROUTE" Type="Edm.String" MaxLength="40"/>
+                <Property Name="FORK" Type="Edm.String" MaxLength="40"/>
+                <Property Name="HOEHE" Type="Edm.String" MaxLength="40"/>
+                <Property Name="BREIT" Type="Edm.String" MaxLength="40"/>
+                <Property Name="LAENG" Type="Edm.String" MaxLength="40"/>
+                <Property Name="GEWEIV" Type="Edm.String" MaxLength="40"/>
+                <Property Name="MUNCK" Type="Edm.String" MaxLength="40"/>
+                <Property Name="SOLIC" Type="Edm.String" MaxLength="40"/>
+                <Property Name="CARTEIRA" Type="Edm.String" MaxLength="40"/>
+                <Property Name="MODALIDADE" Type="Edm.String" MaxLength="40"/>
+                <Property Name="PRIORIDADE" Type="Edm.String" MaxLength="40"/>
+                <Property Name="KUNNR" Type="Edm.String" MaxLength="40"/>
+                <Property Name="KUNNR_DESCR" Type="Edm.String" MaxLength="40"/>
+                <Property Name="WERKSO" Type="Edm.String" MaxLength="40"/>
+                <Property Name="WERKSO_DESCR" Type="Edm.String" MaxLength="40"/>
+                <Property Name="ADRNR_O" Type="Edm.String" MaxLength="40"/>
+                <Property Name="J_1BCGCBRA_O" Type="Edm.String" MaxLength="40"/>
+                <Property Name="WERKS_CONT_O" Type="Edm.String" MaxLength="40"/>
+                <Property Name="AD_SMTPADR_O" Type="Edm.String" MaxLength="40"/>
+                <Property Name="TELF1_O" Type="Edm.String" MaxLength="40"/>
+                <Property Name="ESCOPO" Type="Edm.String" MaxLength="40"/>
+                <Property Name="WERKSD" Type="Edm.String" MaxLength="40"/>
+                <Property Name="NAME1" Type="Edm.String" MaxLength="40"/>
+                <Property Name="ADRNR_D" Type="Edm.String" MaxLength="40"/>
+                <Property Name="J_1BCGCBRA_D" Type="Edm.String" MaxLength="40"/>
+                <Property Name="WERKS_CONT_D" Type="Edm.String" MaxLength="40"/>
+                <Property Name="AD_SMTPADR_D" Type="Edm.String" MaxLength="40"/>
+                <Property Name="TELF1_D" Type="Edm.String" MaxLength="40"/>
+                <Property Name="MATNR" Type="Edm.String" MaxLength="40"/>
+                <Property Name="MAKTX" Type="Edm.String" MaxLength="40"/>
+                <Property Name="PERIGOSO" Type="Edm.String" MaxLength="40"/>
+                <Property Name="PESO_UNIT" Type="Edm.String" MaxLength="40"/>
+                <Property Name="MENGE" Type="Edm.String" MaxLength="40"/>
+                <Property Name="BRGEW" Type="Edm.String" MaxLength="40"/>
+                <Property Name="VOLUM" Type="Edm.String" MaxLength="40"/>
+                <Property Name="TP_EMBALAGEM" Type="Edm.String" MaxLength="40"/>
+                <Property Name="HOEHE_EMB" Type="Edm.String" MaxLength="40"/>
+                <Property Name="BREIT_EMB" Type="Edm.String" MaxLength="40"/>
+                <Property Name="LAENG_EMB" Type="Edm.String" MaxLength="40"/>
+                <Property Name="LADGR" Type="Edm.String" MaxLength="40"/>
+                <Property Name="KZPMF" Type="Edm.String" MaxLength="40"/>
+                <Property Name="DT_DISP_COLETA" Type="Edm.String" MaxLength="40"/>
+                <Property Name="DT_DES_COLETA" Type="Edm.String" MaxLength="40"/>
+                <Property Name="DT_INIC" Type="Edm.String" MaxLength="40"/>
+                <Property Name="STATUS" Type="Edm.String" MaxLength="40"/>
+                <Property Name="TP_FRETE" Type="Edm.String" MaxLength="40"/>
+            </EntityType>
+            <EntityType Name="ZTBMM_COTACAO_FRETEType">
+                <Key>
+                    <PropertyRef Name="BUKRS"/>
+                    <PropertyRef Name="ID_CONTRATO"/>
+                    <PropertyRef Name="TP_CONTRATO"/>
+                    <PropertyRef Name="ID_COTACAO"/>
+                </Key>
+                <Property Name="BUKRS" Type="Edm.String" Nullable="false" MaxLength="40"/>
+                <Property Name="ID_CONTRATO" Type="Edm.String" Nullable="false" MaxLength="40"/>
+                <Property Name="TP_CONTRATO" Type="Edm.String" Nullable="false" MaxLength="40"/>
+                <Property Name="ID_COTACAO" Type="Edm.String" Nullable="false" MaxLength="40"/>
+                <Property Name="TRANSPORTADORA" Type="Edm.String" MaxLength="40"/>
+                <Property Name="ITINERARIO" Type="Edm.String" MaxLength="40"/>
+                <Property Name="TIPO_VEICULO" Type="Edm.String" MaxLength="40"/>
+                <Property Name="TIPO_CONDICAO_FRETE" Type="Edm.String" MaxLength="40"/>
+                <Property Name="DESCR_CONDICAO" Type="Edm.String" MaxLength="10"/>
+            </EntityType>
+            <EntityType Name="ZTBMM_GRP_APROVType">
+                <Key>
+                    <PropertyRef Name="GRP_COMPRADOR"/>
+                    <PropertyRef Name="USUARIO"/>
+                </Key>
+                <Property Name="GRP_COMPRADOR" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Grupo Comprador" sap:quickinfo="Grupo Comprador"/>
+                <Property Name="USUARIO" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Usuário" sap:quickinfo="Usuário"  />
+                <Property Name="ATIVO" Type="Edm.String" MaxLength="1" sap:label="Ativo" sap:quickinfo="Ativo"  />
+            </EntityType>
+            <EntityContainer Name="services" m:IsDefaultEntityContainer="true">
+                <EntitySet Name="Eventos" EntityType="hanaxs.services.EventosType"/>
+                <EntitySet Name="ZTBMM_PORTAL_CONTRAT_FRETE" EntityType="hanaxs.services.ZTBMM_PORTAL_CONTRAT_FRETEType"/>
+                <EntitySet Name="ZTBMM_COTACAO_FRETE" EntityType="hanaxs.services.ZTBMM_COTACAO_FRETEType"/>
+                <EntitySet Name="ZTBMM_GRP_APROV" EntityType="hanaxs.services.ZTBMM_GRP_APROVType"/>
+            </EntityContainer>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

@@ -1,0 +1,138 @@
+<mvc:View controllerName="Y5VC_CCRM_RESER.controller.Reservas" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic"
+	xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:layout="sap.ui.layout" xmlns:fb="sap.ui.comp.filterbar" xmlns:core="sap.ui.core"
+	xmlns:viz="sap.viz.ui5.controls" xmlns:viz.data="sap.viz.ui5.data" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds">
+	<semantic:FullscreenPage id="page" semanticRuleSet="Optimized" title="{i18n>reservasViewTitle}">
+		<semantic:content>
+			<layout:FixFlex id="chartFixFlex" minFlexSize="250">
+				<layout:fixContent>
+					<fb:FilterBar id="filterBar" showGoOnFB="false" showRestoreButton="true" showFilterConfiguration="false">
+						<fb:filterItems>
+							<fb:FilterItem name="Regional" label="Regional">
+								<fb:control>
+									<MultiComboBox id="regionalId" selectionChange="onFilterChange" width="500px"
+										items="{ path: 'regioesSet>/regioes', sorter: { path: 'regiao' } }">
+										<core:Item key="{regioesSet>regiao}" text="{regioesSet>regiao}"/>
+									</MultiComboBox>
+								</fb:control>
+							</fb:FilterItem>
+							<fb:FilterItem name="Sigla" label="Sigla">
+								<fb:control>
+									<MultiComboBox id="siglaId" selectionChange="onFilterChange" width="500px" 
+										items="{ path: 'siglasSet>/siglas', sorter: { path: 'sigla' } }">
+										<core:Item key="{siglasSet>sigla}" text="{siglasSet>sigla}"/>
+									</MultiComboBox>
+								</fb:control>
+							</fb:FilterItem>
+							<fb:FilterItem name="Revisao" label="Revisão" labelTooltip="Revisão">
+								<fb:control>
+									<MultiComboBox id="revisaoId" selectionChange="onFilterChange" width="500px"
+										items="{path: 'revisoesSet>/revisoes', sorter: { path: 'revisao' }}">
+										<core:Item key="{revisoesSet>revisao}" text="{revisoesSet>revisao}"/>
+									</MultiComboBox>
+								</fb:control>
+							</fb:FilterItem>
+							<fb:FilterItem name="Tipo de Custo" label="Tipo de custo" labelTooltip="Tooltip Example">
+								<fb:control>
+									<MultiComboBox id="tipoCustoId" selectionChange="onFilterChange" width="500px"	
+										items="{ path: 'filter>/tipo_custo', sorter: { path: 'text' } }">
+										<core:Item key="{filter>value}" text="{filter>text}"/>
+									</MultiComboBox>
+								</fb:control>
+							</fb:FilterItem>
+						</fb:filterItems>
+					</fb:FilterBar>
+				</layout:fixContent>
+				<layout:flexContent>
+					<VBox height="100%" width="100%">
+						<core:Icon id="customIcon" src="sap-icon://check-availability" tooltip="MêsRef" press="handleSelectDialogPress" width="2em"></core:Icon>
+						<HBox id="Chart1" height="100%" width="100%">
+							<viz:Popover id="idPopOver1"/>
+							<viz:VizFrame id="idVizFrame1" uiConfig="{applicationSet:'fiori'}" height="100%" width="100%" vizType="column"
+								vizProperties="{title: {text: 'Numero de Reservas por mês', visible: true}}">
+								<viz:dataset>
+									<viz.data:FlattenedDataset data="{MesxRes>/reservas}">
+										<viz.data:dimensions>
+											<viz.data:DimensionDefinition name="MesRef" value="{MesxRes>MesRef}"/>
+										</viz.data:dimensions>
+										<viz.data:measures>
+											<viz.data:MeasureDefinition name="Contador" value="{MesxRes>Contador}"/>
+										</viz.data:measures>
+									</viz.data:FlattenedDataset>
+								</viz:dataset>
+								<viz:feeds>
+									<viz.feeds:FeedItem id="valueAxisFeed" uid="valueAxis" type="Measure" values="Contador"/>
+									<viz.feeds:FeedItem id="categoryAxisFeed" uid="categoryAxis" type="Dimension" values="MesRef"/>
+								</viz:feeds>
+							</viz:VizFrame>
+							<viz:Popover id="idPopOver2"/>
+							<viz:VizFrame id="idVizFrame2" uiConfig="{applicationSet:'fiori'}" height="100%" width="100%" vizType="column"
+								vizProperties="{title: {text: 'Valor Reserva', visible: true}}">
+								<viz:dataset>
+									<viz.data:FlattenedDataset data="{MesxVal>/reservas}">
+										<viz.data:dimensions>
+											<viz.data:DimensionDefinition name="MesRef" value="{MesxVal>MesRef}"/>
+										</viz.data:dimensions>
+										<viz.data:measures>
+											<viz.data:MeasureDefinition name="Valor" value="{MesxVal>Valor}"/>
+										</viz.data:measures>
+									</viz.data:FlattenedDataset>
+								</viz:dataset>
+								<viz:feeds>
+									<viz.feeds:FeedItem id="valueAxisFeed2" uid="valueAxis" type="Measure" values="Valor"/>
+									<viz.feeds:FeedItem id="categoryAxisFeed2" uid="categoryAxis" type="Dimension" values="MesRef"/>
+								</viz:feeds>
+							</viz:VizFrame>
+						</HBox>
+						<HBox height="100%" width="100%">
+							<viz:Popover id="idPopOver3"/>
+							<viz:VizFrame id="idVizFrame3" uiConfig="{applicationSet:'fiori'}" height="100%" width="100%" vizType="pie"
+								vizProperties="{title: {text: 'Status Atendimento', visible: true}}">
+								<viz:dataset>
+									<viz.data:FlattenedDataset data="{StAtendxRes>/reservas}">
+										<viz.data:dimensions>
+											<viz.data:DimensionDefinition name="StatAtend" value="{StAtendxRes>StatAtend}"/>
+										</viz.data:dimensions>
+										<viz.data:measures>
+											<viz.data:MeasureDefinition name="Contador" value="{StAtendxRes>Contador}"/>
+										</viz.data:measures>
+									</viz.data:FlattenedDataset>
+								</viz:dataset>
+								<viz:feeds>
+									<viz.feeds:FeedItem id="valueAxisFeed3" uid="size" type="Measure" values="Contador"/>
+									<viz.feeds:FeedItem id="categoryAxisFeed3" uid="color" type="Dimension" values="StatAtend"/>
+								</viz:feeds>
+							</viz:VizFrame>
+							<viz:Popover id="idPopOver4"/>
+							<viz:VizFrame id="idVizFrame4" uiConfig="{applicationSet:'fiori'}" height="100%" width="100%" vizType="info/pie"
+								vizProperties="{title: {text: 'Status Liberação', visible: true}}">
+								<viz:dataset>
+									<viz.data:FlattenedDataset data="{StResxRes>/reservas}">
+										<viz.data:dimensions>
+											<viz.data:DimensionDefinition name="StatRes" value="{StResxRes>StatRes}"/>
+										</viz.data:dimensions>
+										<viz.data:measures>
+											<viz.data:MeasureDefinition name="Contador" value="{StResxRes>Contador}"/>
+										</viz.data:measures>
+									</viz.data:FlattenedDataset>
+								</viz:dataset>
+								<viz:feeds>
+									<viz.feeds:FeedItem id="valueAxisFeed4" uid="size" type="Measure" values="Contador"/>
+									<viz.feeds:FeedItem id="categoryAxisFeed4" uid="color" type="Dimension" values="StatRes"/>
+								</viz:feeds>
+							</viz:VizFrame>
+						</HBox>
+					</VBox>
+				</layout:flexContent>
+			</layout:FixFlex>
+		</semantic:content>
+		<semantic:sendEmailAction>
+			<semantic:SendEmailAction id="shareEmail" press="onShareEmailPress"/>
+		</semantic:sendEmailAction>
+		<semantic:shareInJamAction>
+			<semantic:ShareInJamAction id="shareInJam" visible="{FLP>/isShareInJamActive}" press="onShareInJamPress"/>
+		</semantic:shareInJamAction>
+		<semantic:saveAsTileAction>
+			<footerbar:AddBookmarkButton id="shareTile" title="{reservasView>/saveAsTileTitle}"/>
+		</semantic:saveAsTileAction>
+	</semantic:FullscreenPage>
+</mvc:View>

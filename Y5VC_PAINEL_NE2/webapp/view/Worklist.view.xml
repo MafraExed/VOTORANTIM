@@ -1,0 +1,337 @@
+<mvc:View controllerName="Y5VC_PAINEL_NE2.Y5VC_PAINEL_NE2.controller.Worklist" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:ch="sap.ui.comp.smartmicrochart" xmlns:cht="sap.suite.ui.microchart" xmlns:semantic="sap.f.semantic" xmlns:table="sap.ui.table"
+	xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+	xmlns:m="sap.m" xmlns:smartField="sap.ui.comp.smartfield" xmlns:la="sap.ui.layout" xmlns:sv="sap.ui.comp.smartvariants"
+	xmlns:smartTable="sap.ui.comp.smarttable" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:l="controls" xmlns:bc="sap.ndc"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	<Page showHeader="false" showSubHeader="false">
+		<HBox width="100%" height="100%" id="idGif" class="Loading">
+			<Image src="imagens/voto_load.gif" width="100px" class="footer_img" id="idimg"/>
+		</HBox>
+		<smartFilterBar:SmartFilterBar id="ST_SmartFilterBar" useToolbar="true" entitySet="ZET_VCFI_TIT_COBRARSet" persistencyKey="SmartTablePKey"
+			visible="true" assignedFiltersChanged="onAssignedFiltersChanged" initialized="filterbarInitialized" >
+			<smartFilterBar:controlConfiguration>
+				<smartFilterBar:ControlConfiguration key="Kunnr" id="idKunnr" index="1" label="Código Cliente" groupId="_BASIC" width="auto"
+					visibleInAdvancedArea="true" filterType="single"></smartFilterBar:ControlConfiguration>
+				<smartFilterBar:ControlConfiguration key="Fikrs" id="idFikrs" index="4" label="Área de Administração Financeira" groupId="_BASIC"
+					width="auto" visibleInAdvancedArea="true" filterType="single"></smartFilterBar:ControlConfiguration>
+				<smartFilterBar:ControlConfiguration key="Bukrs" id="idBukrso" index="5" label="Empresa" groupId="_BASIC" width="auto"
+					visibleInAdvancedArea="true"/>
+				<smartFilterBar:ControlConfiguration key="NivelDet" id="idNivelDet" index="6" label="Nível detalhe" groupId="_BASIC"
+					visibleInAdvancedArea="true">
+					<smartFilterBar:customControl>
+						<Select id="idSel" selectedKey="1">
+							<core:Item key="X" text="Conta Crédito"/>
+							<core:Item key="Y" text="Conta Cliente"/>
+						</Select>
+					</smartFilterBar:customControl>
+				</smartFilterBar:ControlConfiguration>
+				<smartFilterBar:ControlConfiguration key="Land1" id="idLand" label="País" groupId="_BASIC" width="auto" visibleInAdvancedArea="true">
+					<smartFilterBar:defaultFilterValues>
+						<smartFilterBar:SelectOption low="BR"></smartFilterBar:SelectOption>
+					</smartFilterBar:defaultFilterValues>
+				</smartFilterBar:ControlConfiguration>
+				<smartFilterBar:ControlConfiguration key="Kkber" id="idKkber" label="Área de controle de crédito" groupId="_BASIC" width="auto"
+					visibleInAdvancedArea="true">
+					<smartFilterBar:defaultFilterValues>
+						<smartFilterBar:SelectOption low="4000"></smartFilterBar:SelectOption>
+					</smartFilterBar:defaultFilterValues>
+				</smartFilterBar:ControlConfiguration>
+			</smartFilterBar:controlConfiguration>
+		</smartFilterBar:SmartFilterBar>
+		<la:HorizontalLayout id="idHor" visible="false">
+			<la:VerticalLayout class="vertclass">
+				<la:HorizontalLayout>
+					<Panel id="idPanel1" headerText="Perfil Cliente" class="sapUiSmallMarginBottom">
+						<f:Form editable="true" class="classform1">
+							<f:layout>
+								<f:ResponsiveGridLayout labelSpanXL="5" labelSpanL="5" labelSpanM="5" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0"
+									emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="true"/>
+							</f:layout>
+							<f:formContainers>
+								<f:FormContainer>
+									<f:formElements>
+										<f:FormElement id="form1" visible="true">
+											<RatingIndicator id="RI_default" maxValue="5" iconSize="10px" class="sapUiSmallMarginBottom" value="{CodPerfil}" tooltip="Perfil do Cliente"
+												editable="false"/>
+										</f:FormElement>
+										<f:FormElement visible="true">
+											<Text id="IdTxtPerfil" text="{TxtPerfil}" class="size1"/>
+										</f:FormElement>
+									</f:formElements>
+								</f:FormContainer>
+							</f:formContainers>
+						</f:Form>
+						<f:Form editable="true" class="classform2">
+							<f:layout>
+								<f:ResponsiveGridLayout labelSpanXL="5" labelSpanL="5" labelSpanM="5" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0"
+									emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="true"/>
+							</f:layout>
+							<f:formContainers>
+								<f:FormContainer>
+									<f:formElements>
+										<f:FormElement visible="true">
+											<Text text=" " class="size6"/>
+										</f:FormElement>
+										<f:FormElement visible="true">
+											<Text text="R$ {SaldoEmAberto}" class="size6"/>
+										</f:FormElement>
+										<f:FormElement visible="true">
+											<Text text="Em aberto" class="size4"/>
+										</f:FormElement>
+									</f:formElements>
+								</f:FormContainer>
+							</f:formContainers>
+						</f:Form>
+					</Panel>
+					<Panel id="idPanel99" headerText="Classe de Risco" class="sapUiSmallMarginBottom">
+						<f:Form editable="true" class="classform1">
+							<f:layout>
+								<f:ResponsiveGridLayout labelSpanXL="5" labelSpanL="5" labelSpanM="5" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0"
+									emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="true"/>
+							</f:layout>
+							<f:formContainers>
+								<f:FormContainer>
+									<f:formElements>
+										<f:FormElement visible="true">
+											<Text text=" " class="size6"/>
+										</f:FormElement>
+										<f:FormElement visible="true">
+											<Text id="IdClasseRisco" text="{ClasseRisco}" class="size2"/>
+										</f:FormElement>
+									</f:formElements>
+								</f:FormContainer>
+							</f:formContainers>
+						</f:Form>
+						<f:Form editable="true" class="classform2">
+							<f:layout>
+								<f:ResponsiveGridLayout labelSpanXL="5" labelSpanL="5" labelSpanM="5" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0"
+									emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="true"/>
+							</f:layout>
+							<f:formContainers>
+								<f:FormContainer>
+									<f:formElements>
+										<f:FormElement visible="true">
+											<Text text=" " class="size6"/>
+										</f:FormElement>
+										<f:FormElement visible="true">
+											<Text text="R$ {SaldoAvencer}" class="size7"/>
+										</f:FormElement>
+										<f:FormElement visible="true">
+											<Text text="A Vencer" class="size77"/>
+										</f:FormElement>
+									</f:formElements>
+								</f:FormContainer>
+							</f:formContainers>
+						</f:Form>
+					</Panel>
+					<Panel id="idPanel97" headerText="Tendencia Atual" class="sapUiSmallMarginBottom">
+						<f:Form editable="true" class="classform1">
+							<f:layout>
+								<f:ResponsiveGridLayout labelSpanXL="5" labelSpanL="5" labelSpanM="5" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0"
+									emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="true"/>
+							</f:layout>
+							<f:formContainers>
+								<f:FormContainer>
+									<f:formElements>
+										<f:FormElement visible="true">
+											<Text id="IdCodDivida" text="{CodDivida}" class="size2" textAlign="Center"/>
+										</f:FormElement>
+										<f:FormElement visible="true">
+											<Text id="IdTxtDivida" text="{TxtDivida}" class="size1"/>
+										</f:FormElement>
+									</f:formElements>
+								</f:FormContainer>
+							</f:formContainers>
+						</f:Form>
+						<f:Form editable="true" class="classform2">
+							<f:layout>
+								<f:ResponsiveGridLayout labelSpanXL="5" labelSpanL="5" labelSpanM="5" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0"
+									emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="true"/>
+							</f:layout>
+							<f:formContainers>
+								<f:FormContainer>
+									<f:formElements>
+										<f:FormElement visible="true">
+											<Text text=" " class="size6"/>
+										</f:FormElement>
+										<f:FormElement visible="true">
+											<Text text="R$ {SaldoVencido} " class="size8"/>
+										</f:FormElement>
+										<f:FormElement visible="true">
+											<Text text="Vencido" class="size88"/>
+										</f:FormElement>
+									</f:formElements>
+								</f:FormContainer>
+							</f:formContainers>
+						</f:Form>
+					</Panel>
+					<Panel id="idPanel98" headerText="Saldo a Pagar VS Receber" class="sapUiSmallMarginBottom1">
+						<f:Form editable="true" class="classform2">
+							<f:layout>
+								<f:ResponsiveGridLayout labelSpanXL="5" labelSpanL="5" labelSpanM="5" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0"
+									emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="true"/>
+							</f:layout>
+							<f:formContainers>
+								<f:FormContainer>
+									<f:formElements>
+										<f:FormElement id="form8" visible="true">
+											<la:HorizontalLayout>
+												<Text id="IdSaldoPag" text="Cliente: R$ {SaldoCliente}" class="size1"/>
+											</la:HorizontalLayout>
+										</f:FormElement>
+										<f:FormElement id="form9" visible="true">
+											<la:HorizontalLayout>
+												<Text id="IdSaldoReceb" text="Fornec: R$ {SaldoForn}" class="size1"/>
+											</la:HorizontalLayout>
+										</f:FormElement>
+									</f:formElements>
+								</f:FormContainer>
+							</f:formContainers>
+						</f:Form>
+						<f:Form editable="true" class="classform2">
+							<f:layout>
+								<f:ResponsiveGridLayout labelSpanXL="5" labelSpanL="5" labelSpanM="5" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0"
+									emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="true"/>
+							</f:layout>
+							<f:formContainers>
+								<f:FormContainer>
+									<f:formElements>
+										<f:FormElement visible="true">
+											<Text text=" " class="size6"/>
+										</f:FormElement>
+										<f:FormElement visible="true">
+											<Text text="R$ {SaldoProm}" class="size9"/>
+										</f:FormElement>
+										<f:FormElement visible="true">
+											<Text text="Prometido" class="size99"/>
+										</f:FormElement>
+									</f:formElements>
+								</f:FormContainer>
+							</f:formContainers>
+						</f:Form>
+					</Panel>
+				</la:HorizontalLayout>
+				<la:HorizontalLayout></la:HorizontalLayout>
+			</la:VerticalLayout>
+			<core:Fragment fragmentName="Y5VC_PAINEL_NE2.Y5VC_PAINEL_NE2.view.Fornec" type="XML"/>
+		</la:HorizontalLayout >
+		<f:Form editable="true" id="form_item">
+			<f:layout>
+				<f:ResponsiveGridLayout labelSpanXL="5" labelSpanL="5" labelSpanM="5" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0"
+					emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="3" columnsM="3" singleContainerFullSize="true"/>
+			</f:layout>
+			<f:formContainers>
+				<f:FormContainer>
+					<f:formElements>
+						<f:FormElement id="form3" visible="true">
+							<smartTable:SmartTable demandPopin="true" id="it_items2" entitySet="ZET_VCFI_TIT_COBRARSet" useExportToExcel="true" ignoredFields="Syst"
+								enableCustomFilter="true" smartFilterId="ST_SmartFilterBar" useVariantManagement="true" useTablePersonalisation="true"
+								ignoreFromPersonalisation="Syst" header="Títulos por cobrar" showRowCount="true" showFullScreenButton="false" enableAutoBinding="false"
+								dataReceived="AfterUpdate1" requestAtLeastFields="Knkli,Fikrs,Bukrs,Buzei,Kunnr,Belnr,Gjahr,Status,Zlsch,Syst" placeToolbarInTable="true"
+								initiallyVisibleFields="Fikrs,Bukrs,Buzei,Kunnr,Belnr,Gjahr,Status" beforeRebindTable="TitCobraBeforeRebindTable"
+								persistencyKey="SmartTablePKey1">
+								<smartTable:customData>
+									<core:CustomData key="dateFormatSettings" value="\{&quot;UTC&quot;:true\}"/>
+								</smartTable:customData>
+								<smartTable:customToolbar id="CustBar" class="stickyToolbar">
+									<OverflowToolbar design="Transparent">
+										<ToolbarSpacer/>
+										<Button id="barcodeID" text="Todas as partidas" press="Partida" class="Classbtn1"/>
+										<ToolbarSpacer/>
+										<Button id="IdVencida" text="Vencidas" press="Vencidas" class="Classbtn1"/>
+										<ToolbarSpacer/>
+										<Button id="IdAvencer" text="A vencer" press="Avencer" class="Classbtn1"/>
+										<ToolbarSpacer/>
+										<Button id="idReneg" text="Prometido" press="Prometido" class="Classbtn1"/>
+										<ToolbarSpacer/>
+										<ToolbarSeparator/>
+										<Button id="idHist" text="Ações cob. realizadas" press="Hist" type="Ghost"/>
+										<ToolbarSeparator/>
+										<MenuButton text="Registro de contato">
+											<menu>
+												<Menu>
+													<MenuItem text="Criar novo registro" press="RegCont" icon="sap-icon://write-new"/>
+													<MenuItem text="Consultar histórico 18M" press="ConsultHist" icon="sap-icon://history"/>
+												</Menu>
+											</menu>
+										</MenuButton>
+										<!--<Button id="IdRegCont" text="Registro de contato" press="RegCont" icon="sap-icon://customer-history" type="Emphasized"/>-->
+										<ToolbarSeparator/>
+										<Button id="idList" text="Lista Contas de Cliente" press="Lista" type="Ghost" icon="sap-icon://group-2">
+											<layoutData>
+												<OverflowToolbarLayoutData priority="AlwaysOverflow"/>
+											</layoutData>
+										</Button>
+										<Button id="idCred" text="Crédito / hist. pagto" press="Cred" type="Ghost">
+											<layoutData>
+												<OverflowToolbarLayoutData priority="AlwaysOverflow"/>
+											</layoutData>
+										</Button>
+										<Button id="idProm" text="Gerenciar promessas" press="Prom" type="Ghost">
+											<layoutData>
+												<OverflowToolbarLayoutData priority="AlwaysOverflow"/>
+											</layoutData>
+										</Button>
+										<Button id="idSimReneg" text="Simulador para renegociação" press=".SimReneg" icon="None" type="Ghost">
+											<layoutData>
+												<OverflowToolbarLayoutData priority="AlwaysOverflow"/>
+											</layoutData>
+										</Button>
+										<Button id="idEmiBol" text="Emissão de boleto Bancario" press=".EmiBol" icon="None" type="Ghost">
+											<layoutData>
+												<OverflowToolbarLayoutData priority="AlwaysOverflow"/>
+											</layoutData>
+										</Button>
+									</OverflowToolbar>
+								</smartTable:customToolbar>
+								<table:Table selectionMode="MultiToggle" id="table" enableCellFilter="true" enableColumnFreeze="true" threshold="9999"
+									enableCustomFilter="true" visibleRowCount="16">
+									<table:Column width="100px">
+										<m:Label text="Status"/>
+										<table:template>
+											<m:ObjectStatus text="{Status}" state="{path:'Status', formatter:'.formatHighLight'}"/>
+										</table:template>
+										<table:customData>
+											<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;Status&quot;, &quot;leadingProperty&quot;: &quot;Status&quot;}"/>
+										</table:customData>
+									</table:Column>
+									<table:Column width="100px" sortProperty="Belnr">
+										<m:Label text="Documento"/>
+										<table:template>
+											<m:Link text="{Belnr}" target="_blank" press="LinkDocBelnr"/>
+										</table:template>
+										<table:customData>
+											<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;Belnr&quot;, &quot;leadingProperty&quot;: &quot;Belnr&quot;}"/>
+										</table:customData>
+									</table:Column>
+									<table:Column width="100px">
+										<m:Label text="Documento de faturamento"/>
+										<table:template>
+											<m:Link text="{Vbeln}" target="_blank" press="LinkDoc"/>
+										</table:template>
+										<table:customData>
+											<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;Vbeln&quot;, &quot;leadingProperty&quot;: &quot;Vbeln&quot;}"/>
+										</table:customData>
+									</table:Column>
+									<table:Column width="100px">
+										<m:Label text="Notas geral - doc"/>
+										<table:template>
+											<m:Link text="{QtdeNotas}" press="NotasVisu"/>
+										</table:template>
+										<table:customData>
+											<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;QtdeNotas&quot;, &quot;leadingProperty&quot;: &quot;QtdeNotas&quot;}"/>
+										</table:customData>
+									</table:Column>
+								</table:Table>
+								<smartTable:layoutData>
+									<FlexItemData growFactor="1" baseSize="0%"/>
+								</smartTable:layoutData>
+							</smartTable:SmartTable>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+			</f:formContainers>
+		</f:Form>
+	</Page>
+</mvc:View>

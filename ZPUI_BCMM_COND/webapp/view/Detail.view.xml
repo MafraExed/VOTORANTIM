@@ -1,0 +1,151 @@
+<mvc:View xmlns:html="http://www.w3.org/1999/xhtml" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic"
+	xmlns:smartFilterBar="sap.ui.comp.smartfilterbar" xmlns:m="sap.m" xmlns:footerbar="sap.ushell.ui.footerbar"
+	xmlns:sv="sap.ui.comp.smartvariants" xmlns:smartTable="sap.ui.comp.smarttable" xmlns:table="sap.ui.table" xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core" xmlns:l="controls" xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	controllerName="ZPUI_BCMM_COND.ZPUI_BCMM_COND.controller.Detail" width="100%" height="100%">
+	<Page id="page" navButtonPress="onNavBack" showNavButton="{device>/system/phone}" title="Informações da solicitação de frete"
+		busy="{detailView>/busy}" busyIndicatorDelay="{detailView>/delay}" floatingFooter="false">
+		<HBox width="100%" id="__hbox0">
+			<Input value="{Bukrs}" id="idBukrs" visible="false"/>
+			<Input value="{IdSolicitacao}" id="idIdSolicitacao" visible="false"/>
+			<Input value="{IdRota}" id="idIdRota" visible="false"/>
+		</HBox>
+		<f:Form class="editableForm" editable="true">
+			<f:layout>
+				<f:ResponsiveGridLayout labelSpanXL="6" labelSpanL="6" labelSpanM="6" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0"
+					emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="3" columnsM="3" singleContainerFullSize="true"/>
+			</f:layout>
+		</f:Form>
+		<f:Form class="editableForm" editable="true">
+			<f:layout>
+				<f:ResponsiveGridLayout labelSpanXL="6" labelSpanL="6" labelSpanM="6" labelSpanS="6" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0"
+					emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="3" columnsM="3" singleContainerFullSize="false"/>
+			</f:layout>
+			<f:formContainers>
+				<f:FormContainer>
+					<f:formElements>
+						<f:FormElement>
+							<f:fields>
+								<Input value="{Bukrs}" id="IdBBukrs" editable="false"/>
+							</f:fields>
+							<f:label>
+								<Label text="Empresa" design="Bold"/>
+							</f:label>
+						</f:FormElement>
+						<f:FormElement>
+							<f:fields>
+								<Input value="{WerksO}" id="IdWerksO" editable="false"/>
+							</f:fields>
+							<f:label>
+								<Label text="Centro" design="Bold"/>
+							</f:label>
+						</f:FormElement>
+						<f:FormElement>
+							<f:fields>
+								<Input value="{IdSolicitacao}" id="IdSolicitacao" editable="false"/>
+							</f:fields>
+							<f:label>
+								<Label text="ID Solicitação" design="Bold"/>
+							</f:label>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+				<f:FormContainer>
+					<f:formElements>
+						<f:FormElement>
+							<f:fields>
+								<Input value="{Prioridade}" id="IdPrioridade" editable="false"/>
+							</f:fields>
+							<f:label>
+								<Label text="Prioridade" design="Bold"/>
+							</f:label>
+						</f:FormElement>
+						<f:FormElement>
+							<f:fields>
+								<Input value="{Finalidade}" id="IdFinalidade" editable="false"/>
+							</f:fields>
+							<f:label>
+								<Label text="Finalidade" design="Bold"/>
+							</f:label>
+						</f:FormElement>
+						<f:FormElement>
+							<f:fields>
+								<Input value="{GrpCompras}" id="IdGrpCompras" editable="false"/>
+							</f:fields>
+							<f:label>
+								<Label text="Grupo de Compras" design="Bold"/>
+							</f:label>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+				<f:FormContainer>
+					<f:formElements>
+						<f:FormElement>
+							<f:fields>
+								<Input value="{Carteira}" id="idCarteira" width="100%" editable="false"/>
+							</f:fields>
+							<f:label>
+								<Label text="Carteira" design="Bold"/>
+							</f:label>
+						</f:FormElement>
+						<f:FormElement>
+							<f:fields>
+								<Input value="{Modalidade}" editable="false" id="idModalidade"/>
+							</f:fields>
+							<f:label>
+								<Label text="Modalidade" design="Bold"/>
+							</f:label>
+						</f:FormElement>
+						<f:FormElement>
+							<f:fields>
+								<Input value="{DtInic}" id="idDtInic" width="100%" editable="false"/>
+							</f:fields>
+							<f:label>
+								<Label text="Data de Inicio" design="Bold"/>
+							</f:label>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+			</f:formContainers>
+		</f:Form>
+		<f:Form>
+			<f:layout>
+				<f:ResponsiveGridLayout labelSpanXL="5" labelSpanL="5" labelSpanM="5" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0"
+					emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false"/>
+			</f:layout>
+			<f:formContainers>
+				<f:FormContainer>
+					<f:formElements>
+						<f:FormElement>
+							<smartTable:SmartTable id="smartTable" entitySet="ZET_CBMM_CF_ROTASet" smartFilterId="smartFilterBar" useOnlyOneSolidToolbar="true"
+								useExportToExcel="true" useVariantManagement="true" useTablePersonalisation="true" tableType="Table" header="Rotas Envolvidas"
+								showRowCount="true" showFullScreenButton="true" initiallyVisibleFields="IdRota,Zone1O,Zone1D,DescMaterial,VolumEmb,VlrTon" enableAutoBinding="true"
+								beforeRebindTable="atualizaTabela" class="sapUiResponsiveContentPadding" persistencyKey="SmartTablePKey" requestAtLeastFields="IdSolicitacao,WerksO">
+								<smartTable:customToolbar>
+									<Toolbar>
+										<Button text="Voltar Status" icon="sap-icon://nav-back" press="onVoltar"/>
+									</Toolbar>
+								</smartTable:customToolbar>
+								<Table id="table" mode="None" enableBusyIndicator="true" busyIndicatorDelay="100">
+									<m:columns/>
+									<m:items>
+										<m:ColumnListItem type="Navigation" press="onPress"/>
+									</m:items>
+								</Table>
+								<smartTable:layoutData>
+									<m:FlexItemData growFactor="1" baseSize="0%"/>
+								</smartTable:layoutData>
+							</smartTable:SmartTable>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+			</f:formContainers>
+		</f:Form>
+		<footer>
+			<Toolbar>
+				<Button id="BtnConfirm" text="Liberar para cotação" type="Transparent" icon="sap-icon://approvals" iconFirst="true" width="auto"
+					enabled="true" visible="true" iconDensityAware="false" press="onConfirm" tooltip="Liberar para cotação"/>
+			</Toolbar>
+		</footer>
+	</Page>
+</mvc:View>

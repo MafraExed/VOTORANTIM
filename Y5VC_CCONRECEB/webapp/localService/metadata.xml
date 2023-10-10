@@ -1,0 +1,89 @@
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema Namespace="0c3cff365d18d77b10c9abe2" xml:lang="en" sap:schema-version="0000" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+			<EntityContainer Name="0c3cff365d18d77b10c9abe2_Entities" m:IsDefaultEntityContainer="true">
+				<EntitySet Name="NFDocSet" EntityType="0c3cff365d18d77b10c9abe2.NFDoc" sap:creatable="true" sap:updatable="true" sap:deletable="true"/>
+				<AssociationSet Name="NFDocNFLinNFLin" Association="0c3cff365d18d77b10c9abe2.NFDocNFLinNFLin" sap:creatable="true" sap:updatable="true"
+					sap:deletable="true">
+					<End EntitySet="NFDocSet" Role="FromRole_NFDocNFLinNFLin"/>
+					<End EntitySet="NFLinSet" Role="ToRole_NFDocNFLinNFLin"/>
+				</AssociationSet>
+				<EntitySet Name="NFLinSet" EntityType="0c3cff365d18d77b10c9abe2.NFLin" sap:creatable="true" sap:updatable="true" sap:deletable="true"/>
+			</EntityContainer>
+			<EntityType Name="NFDoc">
+				<Key>
+					<PropertyRef Name="ID"/>
+				</Key>
+				<Property Name="ID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ID"/>
+				<Property Name="DOCNUM" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="DOCNUM"/>
+				<Property Name="NFENUM" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="NFENUM"/>
+				<Property Name="DTEMI" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="DTEMI"/>
+				<Property Name="SERIE" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="SERIE"/>
+				<Property Name="PARID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="PARID"/>
+				<Property Name="NAME1" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="NAME1"/>
+				<Property Name="STATUS" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="STATUS"/>
+				<Property Name="STATUS_ICON" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="STATUS_ICON"/>
+				<Property Name="STATUS_COLOR" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="STATUS_COLOR"/>
+				<Property Name="STATUS_INT" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="STATUS_425"/>
+				<Property Name="ACCKEY" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="CHVACC"/>
+				<Property Name="BO" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="BO"/>
+				<Property Name="PASSAPORTEID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="PASSAPORTEID"/>
+				<Property Name="CTE" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="CTE"/>
+				<Property Name="STATUS_PRE" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="STATUS_PRE"/>
+				<Property Name="NFENUM_SER" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true"
+					sap:calculated="{&quot;calculation&quot;:&quot;[{\&quot;label\&quot;:\&quot;+\&quot;,\&quot;name\&quot;:\&quot;plus\&quot;,\&quot;type\&quot;:\&quot;operator\&quot;,\&quot;left\&quot;:[{\&quot;label\&quot;:\&quot;+\&quot;,\&quot;name\&quot;:\&quot;plus\&quot;,\&quot;type\&quot;:\&quot;operator\&quot;,\&quot;left\&quot;:[{\&quot;label\&quot;:\&quot;PROPERTY\&quot;,\&quot;name\&quot;:\&quot;property\&quot;,\&quot;entityId\&quot;:\&quot;NFDoc\&quot;,\&quot;navPropId\&quot;:\&quot;\&quot;,\&quot;navPropOp\&quot;:null,\&quot;propertyId\&quot;:\&quot;NFENUM\&quot;,\&quot;type\&quot;:\&quot;property\&quot;,\&quot;propertyType\&quot;:\&quot;String\&quot;,\&quot;isNewLine\&quot;:false,\&quot;id\&quot;:3,\&quot;computedType\&quot;:\&quot;string\&quot;,\&quot;entityName\&quot;:\&quot;NFDoc\&quot;,\&quot;propertyName\&quot;:\&quot;NFENUM\&quot;}],\&quot;right\&quot;:[{\&quot;label\&quot;:\&quot;VALUE\&quot;,\&quot;name\&quot;:\&quot;value\&quot;,\&quot;type\&quot;:\&quot;value\&quot;,\&quot;value\&quot;:\&quot;-\&quot;,\&quot;isNewLine\&quot;:false,\&quot;id\&quot;:4,\&quot;computedType\&quot;:\&quot;string\&quot;}],\&quot;displayLabel\&quot;:\&quot;+\&quot;,\&quot;isNewLine\&quot;:false,\&quot;id\&quot;:2,\&quot;computedType\&quot;:\&quot;string\&quot;}],\&quot;right\&quot;:[{\&quot;label\&quot;:\&quot;PROPERTY\&quot;,\&quot;name\&quot;:\&quot;property\&quot;,\&quot;entityId\&quot;:\&quot;NFDoc\&quot;,\&quot;navPropId\&quot;:\&quot;\&quot;,\&quot;navPropOp\&quot;:null,\&quot;propertyId\&quot;:\&quot;SERIE\&quot;,\&quot;type\&quot;:\&quot;property\&quot;,\&quot;propertyType\&quot;:\&quot;String\&quot;,\&quot;isNewLine\&quot;:false,\&quot;id\&quot;:5,\&quot;computedType\&quot;:\&quot;string\&quot;,\&quot;entityName\&quot;:\&quot;NFDoc\&quot;,\&quot;propertyName\&quot;:\&quot;SERIE\&quot;}],\&quot;displayLabel\&quot;:\&quot;+\&quot;,\&quot;isNewLine\&quot;:false,\&quot;id\&quot;:1,\&quot;computedType\&quot;:\&quot;string\&quot;}]&quot;,&quot;inputProperties&quot;:[{&quot;_id&quot;:&quot;5c07ee52ddadaa070ae1f33e&quot;,&quot;navPropId&quot;:&quot;&quot;,&quot;entityId&quot;:&quot;NFDoc&quot;,&quot;propertyId&quot;:&quot;NFENUM&quot;},{&quot;_id&quot;:&quot;5c07ee52ddadaa070ae1f33d&quot;,&quot;navPropId&quot;:&quot;&quot;,&quot;entityId&quot;:&quot;NFDoc&quot;,&quot;propertyId&quot;:&quot;SERIE&quot;}]}"
+					sap:label="NFENUM_SER"/>
+				<Property Name="STATUS_HEADER_COLOR_ICON" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true"
+					sap:label="STATUS_HEADER_COLOR_ICON"/>
+				<Property Name="STATUS_INT_COLOR_ICON" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true"
+					sap:label="DefaultName"/>
+				<Property Name="STATUS_ACAO_COLOR_ICON" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true"
+					sap:label="STATUS_ACAO_HEADER_COLOR"/>
+				<Property Name="Volumes" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Volumes"/>
+				<Property Name="EM" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="EM"/>
+				<Property Name="Valor" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Valor"/>
+				<NavigationProperty Name="NFLin" Relationship="0c3cff365d18d77b10c9abe2.NFDocNFLinNFLin" FromRole="FromRole_NFDocNFLinNFLin"
+					ToRole="ToRole_NFDocNFLinNFLin"/>
+			</EntityType>
+			<Association Name="NFDocNFLinNFLin">
+				<End Type="0c3cff365d18d77b10c9abe2.NFDoc" Multiplicity="1" Role="FromRole_NFDocNFLinNFLin"/>
+				<End Type="0c3cff365d18d77b10c9abe2.NFLin" Multiplicity="*" Role="ToRole_NFDocNFLinNFLin"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_NFDocNFLinNFLin">
+						<PropertyRef Name="ID"/>
+					</Principal>
+					<Dependent Role="ToRole_NFDocNFLinNFLin">
+						<PropertyRef Name="___FK_f503cd829f5e041e10c9ac68_00028"/>
+					</Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<EntityType Name="NFLin">
+				<Key>
+					<PropertyRef Name="ID"/>
+				</Key>
+				<Property Name="ID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ID"/>
+				<Property Name="DOCNUM" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="DOCNUM"/>
+				<Property Name="ITMNUM" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ITMNUM"/>
+				<Property Name="MATNR" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="MATNR"/>
+				<Property Name="MAKTX" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="MAKTX"/>
+				<Property Name="EBELN" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="EBELN"/>
+				<Property Name="EBELP" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="EBELP"/>
+				<Property Name="STATUS" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="STATUS"/>
+				<Property Name="MENGE_NF" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="MENGE_NF"/>
+				<Property Name="MENGE_PC" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="MENGE_PC"/>
+				<Property Name="CENTRO" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="CENTRO"/>
+				<Property Name="QTD_ITEM_BO" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="QTD_ITEM_BO"/>
+				<Property Name="___FK_f503cd829f5e041e10c9ac68_00028" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true"
+					sap:label="___FK_f503cd829f5e041e10c9ac68_00028"/>
+				<Property Name="QTD_AVARIA" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="QTD_AVARIA"/>
+				<Property Name="QTD_DIVERGENTE" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="QTD_DIVERGENTE"/>
+				<Property Name="QTD_CONFIRMADA" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="QTD_CONFIRMADA"/>
+				<Property Name="QTD_ETIQ_IMPRESSA" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true"
+					sap:label="QTD_ETIQ_IMPRESSA"/>
+				<Property Name="UM_NF" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="UM_NF"/>
+				<Property Name="UM_PC" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="UM_PC"/>
+			</EntityType>
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

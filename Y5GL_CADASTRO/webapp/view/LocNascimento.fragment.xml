@@ -1,0 +1,23 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog 
+		title="Municipios"
+		class="sapUiPopupWithPadding"
+		items="{/ZET_GLHR_COMBO_MUNICIPIOSet}"
+		
+		search="onSearchMunicipio"
+		confirm="onConfirmMunicipio"
+		cancel="_handleValueHelpClose"
+		modelContextChange="_onModelContextChangeTpCarreg">
+		
+		<StandardListItem
+			
+			iconDensityAware="false"
+			iconInset="false"
+			title="{Zmunicipio}"
+			description="{Zcodmun}"
+			icon="sap-icon://map"/>
+			
+	</SelectDialog>
+</core:FragmentDefinition>

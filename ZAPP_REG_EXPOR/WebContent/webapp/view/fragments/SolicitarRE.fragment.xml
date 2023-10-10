@@ -1,0 +1,256 @@
+<core:FragmentDefinition
+				  xmlns="sap.m"
+				  xmlns:f="sap.ui.layout.form"
+				  xmlns:layout="sap.ui.layout"
+				  xmlns:core="sap.ui.core">
+  <Dialog
+  		title="{detailView>/mailIssue}"
+	    type="Message"
+	    draggable="true"
+	    stretchOnPhone="true"
+	    contentWidth="65%">
+    <content>  
+        <f:SimpleForm 
+			id="solicRESimpleForm"
+			layout="ResponsiveGridLayout"
+			editable="true"
+ 			labelSpanL="3"
+			labelSpanM="4"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			emptySpanXL="0"
+			emptySpanL="4"
+			emptySpanM="0"
+			emptySpanS="0"
+			columnsXL="2"
+			columnsL="1"
+			columnsM="1">
+			<f:content>	
+			
+				<FormattedText  htmlText="{detailView>/mailText}"/>
+        		
+        		<Label 
+		        		text="{i18n>detailViewMailREDcrnv}" 
+		        		labelFor="solicREFieldDcrnv"/> 
+				<Text 
+						id="solicREFieldDcrnv"
+						text="{detailView>/mailData/Dcrnv} {detailView>/mailData/Nvoyg}"/>     		
+        		
+		        <Label 
+		        		text="{i18n>detailViewMailREBukrsTxt}" 
+		        		labelFor="solicREFieldBukrs"/> 
+				<Input 
+						id="solicREFieldBukrs"
+						required="true"
+						width="20rem"
+						value="{detailView>/mailData/BukrsTxt}" 
+						maxLength="25"/>
+						
+				<Label 
+		        		text="{i18n>detailViewMailRECnpj}" 
+		        		labelFor="solicREFieldCnpj"/> 
+				<Input 
+						id="solicREFieldCnpj"
+						required="true"
+						width="20rem"
+						value="{detailView>/mailData/Cnpj}" 
+						maxLength="20"/>
+				
+				<Label 
+		        		text="{i18n>detailViewMailRENcm}" 
+		        		labelFor="solicREFieldNcm"/> 
+				<Input 
+						id="solicREFieldNcm"
+						required="true"
+						width="20rem"
+						value="{detailView>/mailData/Ncm}" 
+						maxLength="20"/>
+						
+				<Label 
+		        		text="{i18n>detailViewMailREPtdstDsc}" 
+		        		labelFor="solicREFieldPtdst"/> 
+				<Input 
+						id="solicREFieldPtdst"
+						required="true"
+						width="20rem"
+						value="{detailView>/mailData/PtdstDsc}" 
+						maxLength="30"/>
+				
+				
+				<Label 	text="{i18n>detailViewMailREPaisNome}" 
+		        		labelFor="solicREFieldPaisDestino"/> 	
+				
+				<Input  id="solicREFieldPaisDestino"
+						required="true"
+						width="20rem"
+						value="{detailView>/mailData/PaisNome}" 
+						showValueHelp="true"
+						valueHelpRequest="onHandleF4Pais"
+						submit="onHandleSubmitPais"
+						maxLength="15"/>
+					
+				
+				<Label 
+		        		text="{i18n>detailViewMailREWeight}" 
+		        		labelFor="solicREFieldWeight"/> 	
+				<Input 
+						id="solicREFieldWeight"
+						required="true"
+						value="{
+									path: 'detailView>/mailData/Weight',
+								    type: 'sap.ui.model.type.Float',                                                                     
+									formatOptions: {
+										        		 groupingEnabled: true, 
+										        		 groupingSeparator: '.', 
+										        		 decimalSeparator : ',', 
+										        		 minFractionDigits: 3
+										    		}
+								 }"
+						maxLength="10">
+						
+						<layoutData>
+	                         <layout:GridData 
+	                         			span="L3 M3 S8" />
+	                    </layoutData>
+	            </Input>
+	             <Text 
+						id="solicREFieldUnitQuant"  
+						text="{detailView>/mailData/Unit}"/>
+						
+				<Label 
+		        		text="{i18n>detailViewMailREVolumn}" 
+		        		labelFor="solicREFieldVolumn"/> 	
+				<Input 
+						id="solicREFieldVolumn"
+						required="true"
+						value="{
+									path: 'detailView>/mailData/Volumn',
+								    type: 'sap.ui.model.type.Float',                                                                     
+									formatOptions: {
+										        		 groupingEnabled: true, 
+										        		 groupingSeparator: '.', 
+										        		 decimalSeparator : ',', 
+										        		 minFractionDigits: 3
+										    		}
+								 }"
+						maxLength="10">
+						
+						<layoutData>
+	                         <layout:GridData 
+	                         			span="L3 M3 S8" />
+	                    </layoutData>
+	            </Input>
+	            <Text 
+						id="solicREFieldUnitVolumn"  
+						text="Units"/>
+						
+				<Label 
+		        		text="{i18n>detailViewMailREValorFob}" 
+		        		labelFor="solicREFieldValorFob"/> 	
+				<Input 
+						id="solicREFieldValorFob"
+						required="true"
+						value="{
+									parts: [
+										        {path: 'detailView>/mailData/ValorFob'}, 
+										        {path: 'detailView>/mailData/Waerk'}
+										    ],
+								    type: 'sap.ui.model.type.Currency',                                                                     
+									formatOptions: {
+										        		showMeasure: false
+										    		}
+								 }"
+						maxLength="20">
+				  
+					  	<layoutData>
+	                         <layout:GridData 
+	                         			span="L3 M3 S8" />
+	                    </layoutData>
+                    </Input>
+					<Text 
+						id="solicREFieldWaerkFob"  
+						text="{detailView>/mailData/Waerk}"/>
+				  
+						
+				  <Label 
+		        		text="{i18n>detailViewMailREValorCif}" 
+		        		labelFor="solicREFieldValorCif"/> 	
+				  <Input 
+						id="solicREFieldValorCif"
+						required="true"
+						value="{
+									parts: [
+										        {path: 'detailView>/mailData/ValorCif'}, 
+										        {path: 'detailView>/mailData/Waerk'}
+										    ],
+									type: 'sap.ui.model.type.Currency',                                                                     
+									formatOptions: {
+										        		showMeasure: false
+										    	   }
+								 }"
+						maxLength="20">
+						<layoutData>
+	                         <layout:GridData 
+	                         			span="L3 M3 S8" />
+	                    </layoutData>
+	                </Input>
+					<Text 
+						id="solicREFieldWaerkCif"  
+						text="{detailView>/mailData/Waerk}"/>
+				  
+				  <Label 
+		        		text="{i18n>detailViewMailREInco1}" 
+		        		labelFor="solicREFieldInco1"/> 	
+				  <Input 
+						id="solicREFieldInco1"
+						required="true"
+						width="20rem"
+						value="{detailView>/mailData/Inco1}" 
+						maxLength="10"/>
+						
+				  <Label 
+		        		text="{i18n>detailViewMailREZtermDsc}" 
+		        		labelFor="solicREFieldZtermDsc"/> 	
+				  <Input 
+						id="solicREFieldZtermDsc"
+						required="true"
+						width="20rem"
+						value="{detailView>/mailData/ZtermDsc}" 
+						maxLength="30"/>
+						
+				  <Label 
+		        		text="{i18n>detailViewMailREDterm}" 
+		        		labelFor="solicREFieldDterm"/> 	
+				  <Input 
+						id="solicREFieldDterm"
+						width="20rem"
+						value="{detailView>/mailData/Dterm}" 
+						maxLength="6"/>
+				  		
+						
+				  <Label 
+		        		text="{i18n>detailViewMailREAcnum}" 
+		        		labelFor="solicREFieldAcnum"/> 	
+				  <Input 
+						id="solicREFieldAcnum"
+						width="20rem"
+						value="{detailView>/mailData/Acnum}" 
+						maxLength="10"/>
+						
+        	</f:content>
+		</f:SimpleForm>
+        
+    </content>
+    <buttons>
+	    <Button 
+	    		tooltip="{i18n>detailTitleButtonSend}" 
+	    		icon="sap-icon://paper-plane" 
+	    		press="onHandleSaveRE" />
+	   
+		<Button 
+	    		tooltip="{i18n>buttonTextCancel}"  
+	    		icon="sap-icon://sys-cancel" 
+	    		press="onHandleCloseSolicRE" />
+    </buttons>
+  </Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,22 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog
+		
+		title="Tipos de Veiculo"
+		class="sapUiPopupWithPadding"
+		items="{/ZET_CBMM_CF_PARAMETSet}"
+		
+		search="_handleValueHelpTpVeiculo"
+		confirm="_Confirme_TpVeiculo"
+		cancel="_handleValueHelpClose"
+		modelContextChange="_onModelContextChangeTpVeiculo">
+		
+		<StandardListItem
+			icon="{ProductPicUrl}"
+			iconDensityAware="false"
+			iconInset="false"
+			title="{Valor}"/>
+			
+	</SelectDialog>
+</core:FragmentDefinition>

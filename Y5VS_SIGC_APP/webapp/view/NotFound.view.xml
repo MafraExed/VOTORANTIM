@@ -1,0 +1,1 @@
+<m:View xmlns:m="sap.ui.core.mvc" xmlns="sap.m"><MessagePage showHeader="false" text="{i18n>NotFound.title}" enableFormattedText="true" description="&lt;strong&gt;{i18n>NotFound.text}&lt;/strong&gt; {i18n>NotFound.description}" icon="sap-icon://cancel-maintenance"/></m:View>

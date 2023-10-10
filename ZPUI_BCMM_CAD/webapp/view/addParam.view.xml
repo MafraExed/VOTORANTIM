@@ -1,0 +1,53 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:uxap="sap.uxap" xmlns:smartForm="sap.ui.comp.smartform"
+	xmlns:smartField="sap.ui.comp.smartfield" xmlns:smartTable="sap.ui.comp.smarttable" xmlns:f="sap.ui.layout.form"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" xmlns:m="sap.m"
+	xmlns:table="sap.ui.table" http-equiv="cache-control" content="no-cache"
+	controllerName="CADASTROAPROVADORES.CADASTROAPROVADOR.controller.addParam" class="sapUiSizeCompact" height="100%"
+	beforeRendering="onBeforeRendering">
+	<Page floatingFooter="true" enableScrolling="true" showHeader="false">
+		<VBox>
+			<ObjectHeader title="Cadastro de parâmetros" id="idheader0" icon="sap-icon://request" iconActive="false" responsive="true"/>
+		</VBox>
+		<f:Form class="editableForm" editable="true">
+			<f:layout>
+				<f:ResponsiveGridLayout labelSpanXL="5" labelSpanL="5" labelSpanM="5" labelSpanS="5" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0"
+					emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="3" columnsM="3" columnsS="3" singleContainerFullSize="false"/>
+			</f:layout>
+			<f:formContainers>
+				<f:FormContainer>
+					<f:formElements>
+						<f:FormElement>
+							<f:fields>
+								<Input id="IdParametro" editable="true" showValueHelp="true" showSuggestion="true" valueHelpRequest="onHRParam" change="onValidParam"
+									required="true" suggestionItems="{/ZET_CBMM_CF_PARAMETSet}" startSuggestion="0" >
+									<suggestionItems>
+										<core:Item text="{Parametro}" />
+									</suggestionItems>
+								</Input>
+							</f:fields>
+							<f:label>
+								<Label text="Parâmetro" design="Bold" textDirection="RTL"/>
+							</f:label>
+						</f:FormElement>
+						<f:FormElement>
+							<f:fields>
+								<Input id="IdValor" editable="true" required="true"/>
+							</f:fields>
+							<f:label>
+								<Label text="Valor" design="Bold" textDirection="RTL"/>
+							</f:label>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+			</f:formContainers>
+		</f:Form>
+		<footer>
+			<Toolbar>
+				<Button text="Salvar" icon="sap-icon://save" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"
+					press="onSave" tooltip="Salvar inclusão"/>
+				<Button text="Voltar" icon="sap-icon://undo" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"
+					press="onBack" tooltip="Voltar"/>
+			</Toolbar>
+		</footer>
+	</Page>
+</core:View>

@@ -1,0 +1,137 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+
+	<Popover
+		title="{detailDocumentView>/headerPrice}"
+		modal="true" 
+		contentWidth="65%"
+		resizable="true"
+		placement="Right">	
+
+		<Table id="priceTable" 
+			   inset="false"
+			   fixedLayout="true"
+			   border-collapse="collapse"
+			   items="{detailDocumentView>/itemsPrice}" 
+			   mode="None">  
+			   
+			<columns>	
+				<Column width="auto" minScreenWidth="Tablet"
+            			demandPopin="true">
+					<Text text="{i18n>detailDocumentsTitleCondicao}" />
+					
+				</Column>
+				<Column width="auto" minScreenWidth="Tablet" demandPopin="true" >
+					<Text text="{i18n>detailDocumentsTitleValor}" />
+				</Column>
+				<Column width="auto" minScreenWidth="Tablet" demandPopin="true">
+					<Text text="{i18n>detailDocumentsTitleMoeda}" />
+				</Column>
+				<Column width="auto" minScreenWidth="Tablet" demandPopin="true">
+					<Text text="{i18n>detailDocumentsTitleQtdUm}" />
+				</Column>
+				<Column width="auto" minScreenWidth="Tablet" demandPopin="true">
+						
+					<Text text="{i18n>detailDocumentsTitleUm}" />
+				</Column>								
+				
+				<Column width="0rem" minScreenWidth="Tablet" demandPopin="true">
+					<Text text=" "/>
+				</Column>
+
+							
+			</columns>
+			<items>
+				<ColumnListItem>
+					<cells>
+						<ObjectNumber
+									number="{detailDocumentView>Condicao}"
+									unit="{detailDocumentView>Descricao}"
+									emphasized="false"/>
+					</cells>
+					<cells>
+			
+					<Input 
+						  id="PriceValor"
+						  value="{path: 'detailDocumentView>Valor',
+								    type: 'sap.ui.model.type.Float',                                                             
+									formatOptions: {
+									        		 groupingEnabled: true, 
+									        		 groupingSeparator: '.', 
+									        		 decimalSeparator : ',', 
+									        		 minFractionDigits: 4 } }"
+						   editable="{path:'detailDocumentView>Bloqueio', formatter: '.formatter.PriceValor'}"		  						        		
+						   maxLength="20"/>
+
+					</cells>
+					<cells>
+					   <Input 
+							value="{detailDocumentView>Moeda}" 
+						
+						   	editable="{path:'detailDocumentView>Bloqueio', formatter: '.formatter.PriceMoeda'}"		        		
+							maxLength="5"/>
+					
+					</cells>
+						 
+					<cells>
+					<Input	value="{path: 'detailDocumentView>QtdUm',
+								    type: 'sap.ui.model.type.Float',                                                                     
+									formatOptions: {
+									        		 groupingEnabled: true, 
+									        		 groupingSeparator: '.', 
+									        		 decimalSeparator : ',', 
+									        		 minFractionDigits: 4 } }"
+							editable="{path:'detailDocumentView>Bloqueio', formatter: '.formatter.PricePor'}"									        		 
+						
+							maxLength="15"/>
+				
+					</cells>
+					
+					<cells>
+					   <Input value="{detailDocumentView>UnidMed}"
+					   	
+							  editable="{path:'detailDocumentView>Bloqueio', formatter: '.formatter.PriceUm'}" 
+							  maxLength="3"/>
+					</cells>
+					
+					<cells>
+									
+						 <Text text=""/>
+						 <Text text="{detailDocumentView>ChaveCondicao}"/>
+						 <Text text="{detailDocumentView>Bloqueio}"/>
+						 <Text text="{detailDocumentView>Knumv}"/>
+						 <Text text="{detailDocumentView>Kposn}"/>
+						 <Text text="{detailDocumentView>Stunr}"/>
+						 <Text text="{detailDocumentView>Zaehk}"/>	
+						
+					</cells>
+	
+				</ColumnListItem>
+			</items>
+		</Table>
+		
+			<footer>
+			<Toolbar>
+				<ToolbarSpacer/>
+				<Button
+					id="PopOverPriceButtonSave"
+					tooltip="{i18n>detailDocumentsSavePrice}"
+					icon="sap-icon://save"
+					press="onHandleSavePrice" />
+				<Button
+					id="PopOverPriceButtonReplicate"
+					tooltip="{i18n>detailDocumentsReplicarPrice}"
+					icon="sap-icon://copy"
+					press="onHandleReplicatePrice" />
+				<Button
+					id="PopOverPriceButtonCancel"
+					tooltip="{i18n>detailDocumentsSaveCancel}"
+					icon="sap-icon://cancel"
+					press="onHandleCancelPrice" />
+			</Toolbar>
+		</footer>
+<!-- 		</Dialog> -->
+		
+	</Popover>
+</core:FragmentDefinition>

@@ -1,0 +1,314 @@
+<core:FragmentDefinition
+  xmlns="sap.m"
+  xmlns:f="sap.ui.layout.form"
+  xmlns:layout="sap.ui.layout"
+  xmlns:core="sap.ui.core">
+  <Dialog
+    
+    title='{i18n>addEmbarqueTitle}'
+    type='Message'
+    stretchOnPhone="true"
+    contentWidth="55%">
+    <content>
+      <VBox class="sapUiSmallMargin">
+        <f:Form id="FormToolbar"
+          editable="true"
+          ariaLabelledBy="Title1">
+          <f:layout>
+            <f:ResponsiveGridLayout 
+            	labelSpanXL="4"
+					labelSpanL="3"
+					labelSpanM="4"
+					labelSpanS="12"
+					adjustLabelSpan="false"
+					emptySpanXL="0"
+					emptySpanL="4"
+					emptySpanM="0"
+					emptySpanS="0"
+					columnsXL="2"
+					columnsL="1"
+					columnsM="1"
+					singleContainerFullSize="false"/>
+          </f:layout>
+          <f:formContainers>
+            <f:FormContainer>
+              <f:formElements>
+                
+                <f:FormElement label="{i18n>addEmbarqueTitleDcrnv}">
+                  <f:fields>
+                    <Input
+                      id="addEmbarqueFieldDcrnv"
+                      tooltip="{i18n>addEmbarqueTitleDcrnv}" 
+                      value="{AddEmbarque>/Dcrnv}"
+                      maxLength="20"
+                      width="16rem"
+                      required="true"
+                      class="sapUiSmallMarginBottom"/>
+                  </f:fields>
+                </f:FormElement>
+
+                <f:FormElement label="{i18n>addEmbarqueTitleNvoyg}">
+                  <f:fields>
+                    <Input
+                      id="addEmbarqueFieldNvoyg"
+                      tooltip="{i18n>addEmbarqueTitleNvoyg}"
+                      value="{AddEmbarque>/Nvoyg}"
+                      maxLength="10"
+                      width="8rem"
+                      required="true"
+                      class="sapUiSmallMarginBottom"/>
+                  </f:fields>
+                </f:FormElement>
+
+                <f:FormElement label="{i18n>addEmbarqueTitlePtorg}">
+                  <f:fields>
+                  <Input 
+                  	  id="addEmbarqueFieldPtorg" 
+                      tooltip="{i18n>addEmbarqueTitlePtorg}"
+                      value="{AddEmbarque>/Ptorg}"
+                      maxLength="4"
+                      width="6rem"
+                      required="true"
+                      class="sapUiSmallMarginBottom"
+                      showValueHelp="true" 
+                      valueHelpRequest="onHandleF4Ptorg"
+                      submit="onHandleSubmitPtorg">
+                      <layoutData>
+                            <layout:GridData span="L3 M3 S8" />
+                      </layoutData>
+                    </Input>
+                    <Text id="addEmbarqueFieldPtorgDsc" text="{AddEmbarque>/PtorgDsc}"></Text> 
+                  </f:fields>
+                </f:FormElement>
+                                
+<!--                 <f:FormElement label="{i18n>addEmbarqueTitleVstel}"> -->
+<!--                   <f:fields> -->
+<!--                   <Input  -->
+<!--                   	  id="addEmbarqueFieldVstel"  -->
+<!--                       tooltip="{i18n>addEmbarqueTitleVstel}"                       -->
+<!--                       value="{AddEmbarque>/Vstel}" -->
+<!--                       maxLength="4" -->
+<!--                       width="5rem" -->
+<!--                       required="true" -->
+<!--                       class="sapUiSmallMarginBottom" -->
+<!--                       showValueHelp="true"  -->
+<!--                       valueHelpRequest="onHandleF4Vstel" -->
+<!--                       submit="onHandleSubmitVstel"> -->
+<!--                       <layoutData> -->
+<!--                             <layout:GridData span="L3 M3 S8" /> -->
+<!--                       </layoutData> -->
+<!--                     </Input> -->
+<!--                     <Text id="addEmbarqueFieldVstelDsc" text="{AddEmbarque>/VstelDsc}"></Text>  -->
+<!--                   </f:fields> -->
+<!--                 </f:FormElement> -->
+
+<!--                <f:FormElement label="{i18n>addEmbarqueTitleDterm}"> -->
+<!--                   <f:fields> -->
+<!--                   <Input  -->
+<!--                   	  id="addEmbarqueFieldDterm"  -->
+<!--                       tooltip="{i18n>addEmbarqueTitleDterm}" -->
+<!--                       value="{AddEmbarque>/Dterm}" -->
+<!--                       maxLength="6" -->
+<!--                       width="5rem" -->
+<!--                       required="true" -->
+<!--                       class="sapUiSmallMarginBottom" -->
+<!--                       showValueHelp="true"  -->
+<!--                       valueHelpRequest="onHandleF4Dterm" -->
+<!--                       submit="onHandleSubmitDterm"> -->
+<!--                       <layoutData> -->
+<!--                             <layout:GridData span="L3 M3 S8" /> -->
+<!--                       </layoutData> -->
+<!--                     </Input> -->
+<!--                     <Text id="addEmbarqueFieldDtermDsc" text="{AddEmbarque>/DtermDsc}"></Text>  -->
+<!--                   </f:fields> -->
+<!--                 </f:FormElement> -->
+                
+                <f:FormElement label="{i18n>addEmbarqueTitleDteta}">
+                  <f:fields>
+                    <DatePicker
+						id="addEmbarqueFieldDteta"
+                        tooltip="{i18n>addEmbarqueTitleDteta}"
+						required="true"
+                      	width="8rem"
+						dateValue="{AddEmbarque>/Dteta}"
+						displayFormat="{i18n>formatDate}"
+						placeholder="{i18n>DatePlaceHolder}"
+						class="sapUiSmallMarginBottom"/>
+                  </f:fields>
+                </f:FormElement>
+                
+<!--                 <f:FormElement label="{i18n>addEmbarqueTitleTpembarque}"> -->
+<!--                   <f:fields -->
+<!--                       tooltip="{i18n>addEmbarqueTitleTpembarque}" -->
+<!--                       required="true"> -->
+<!--                   <Select   -->
+<!--                   	id="addEmbarqueFieldTpembarque" -->
+<!--                     width="12rem" -->
+<!--                     selectedKey="{AddEmbarque>/Tpembarque}" -->
+<!--                     items="{ path: 'masterView>/listTpEmb' }" -->
+<!--                     class="sapUiSmallMarginBottom"> -->
+<!--                           <core:Item  -->
+<!--                           	id="addEmbarqueItemSelectTpembarque"  -->
+<!--                           	key="{masterView>Value}"  -->
+<!--                           	text="{masterView>Name}" /> -->
+<!--                   </Select> -->
+<!--                   </f:fields> -->
+<!--                 </f:FormElement> -->
+                                
+                <f:FormElement label="{i18n>addEmbarqueTitleTpnav}">
+                  <f:fields
+                      tooltip="{i18n>addEmbarqueTitleTpnav}"
+                      required="true">
+                  <Select 
+                  	id="addEmbarqueFieldTpnav"
+                    width="8rem"
+                    selectedKey="{AddEmbarque>/Tpnav}"
+                    change="onHandleChangeTpnav"
+                    items="{ path: 'masterView>/listTpNav' }"
+                    class="sapUiSmallMarginBottom">
+                          <core:Item 
+                          	id="addEmbarqueItemSelectTpnav" 
+                          	key="{masterView>Value}" 
+                          	text="{masterView>Name}" />
+                  </Select>
+                  </f:fields>
+                </f:FormElement>
+                
+                <f:FormElement label="{i18n>addEmbarqueTitleAgent}">
+                  <f:fields>
+                  <Input 
+                      tooltip="{i18n>addEmbarqueTitleAgent}"	  
+                  	  id="addEmbarqueFieldAgent" 
+                  	  required="true"
+                  	  width="8rem"
+                      value="{AddEmbarque>/Agent}"
+                      class="sapUiSmallMarginBottom"
+                      showValueHelp="true" 
+                      valueHelpRequest="onHandleF4Agent"
+                      submit="onHandleSubmitAgent">
+                      <layoutData>
+                            <layout:GridData span="L3 M3 S8" />
+                      </layoutData>
+                    </Input>
+                    <Text id="addEmbarqueFieldAgentDsc" text="{AddEmbarque>/AgentDsc}"></Text>
+                  </f:fields>
+                </f:FormElement>
+
+                <f:FormElement label="{i18n>addEmbarqueTitleBookingnr}">
+                  <f:fields>
+                    <Input
+                      id="addEmbarqueFieldBookingnr"
+                      tooltip="{i18n>addEmbarqueTitleBookingnr}"
+                      value="{AddEmbarque>/Bookingnr}"
+                      maxLength="10"
+				      width="8rem"
+                      class="sapUiSmallMarginBottom"/>
+                  </f:fields>
+                </f:FormElement>
+
+                <f:FormElement label="{i18n>addEmbarqueTitleDtdraft}">
+                  <f:fields>
+                    <DatePicker
+						id="addEmbarqueFieldDtdraft"
+                      tooltip="{i18n>addEmbarqueTitleDtdraft}"
+                      	width="8rem"
+						dateValue="{AddEmbarque>/Dtdraft}"
+						displayFormat="{i18n>formatDate}"
+						placeholder="{i18n>DatePlaceHolder}"
+						class="sapUiSmallMarginBottom"/>
+                  </f:fields>
+                </f:FormElement>
+
+<!--                 <f:FormElement label="{i18n>addEmbarqueTitleBlnum}"> -->
+<!--                   <f:fields> -->
+<!--                     <Input -->
+<!--                       id="addEmbarqueFieldBlnum" -->
+<!--                       tooltip="{i18n>addEmbarqueTitleBlnum}" -->
+<!--                       value="{AddEmbarque>/Blnum}" -->
+<!--                       maxLength="30" -->
+<!--                       width="12rem" -->
+<!--                       class="sapUiSmallMarginBottom"/> -->
+<!--                   </f:fields> -->
+<!--                 </f:FormElement> -->
+
+                <f:FormElement label="{i18n>addEmbarqueTitleBldate}">
+                  <f:fields>
+                    <DatePicker
+						id="addEmbarqueFieldBldate"
+                      	tooltip="{i18n>addEmbarqueTitleBldate}"
+                      	width="8rem"
+						dateValue="{AddEmbarque>/Bldate}"
+						displayFormat="{i18n>formatDate}"
+						placeholder="{i18n>DatePlaceHolder}"
+						class="sapUiSmallMarginBottom"/>
+                  </f:fields>
+                </f:FormElement>
+
+<!--                 <f:FormElement label="{i18n>addEmbarqueTitleCeMercante}"> -->
+<!--                   <f:fields> -->
+<!--                     <Input -->
+<!--                       id="addEmbarqueFieldCeMercante" -->
+<!--                       tooltip="{i18n>addEmbarqueTitleCeMercante}" -->
+<!--                       value="{AddEmbarque>/CeMercante}" -->
+<!--                       maxLength="20" -->
+<!--                       width="16rem" -->
+<!--                       class="sapUiSmallMarginBottom"/> -->
+<!--                   </f:fields> -->
+<!--                 </f:FormElement> -->
+
+                <f:FormElement label="{i18n>addEmbarqueTitleDrawbacknr}">
+                  <f:fields>
+                    <Input
+                      id="addEmbarqueFieldDrawbacknr"
+                      tooltip="{i18n>addEmbarqueTitleDrawbacknr}"
+                      value="{AddEmbarque>/Drawbacknr}"
+                      maxLength="20"
+                      width="16rem"
+                      class="sapUiSmallMarginBottom"/>
+                  </f:fields>
+                </f:FormElement>
+
+				<f:FormElement label="{i18n>addEmbarqueTitleUser}">
+                  <f:fields>
+                  <Input 
+                  	  id="addEmbarqueFieldUserr" 
+                      tooltip="{i18n>addEmbarqueTitleUser}"
+                      value="{AddEmbarque>/Userr}"
+                      width="10rem"
+                      class="sapUiSmallMarginBottom"
+                      showValueHelp="true" 
+                      valueHelpRequest="onHandleF4User"
+                      submit="onHandleSubmitUser">
+                      <layoutData>
+                            <layout:GridData span="L3 M3 S8" />
+                      </layoutData>
+                    </Input>
+                    <Text id="addEmbarqueFieldUserrDsc" text="{AddEmbarque>/UserrDsc}"></Text> 
+                  </f:fields>
+                </f:FormElement>
+
+              </f:formElements>
+            </f:FormContainer>
+          </f:formContainers>
+        </f:Form>
+      </VBox>
+    </content>
+    <buttons>
+	    <Button 
+	    	id="addEmbarqueButtonMsg" 
+	    	tooltip="{i18n>messageLogProcessamento}"
+	    	text="{messagePopOver>/count}" 
+	    	type="Emphasized" 
+	    	icon="sap-icon://message-popup" 
+	    	press="onHandleMessagePopover"/>
+	    <Button 
+		   	tooltip="{i18n>addEmbarqueTooltipButtonSave}" 
+		    icon="sap-icon://save" 
+		    press="onHanleSaveAddEmbarque" />
+	    <Button 
+		   	tooltip="{i18n>addEmbarqueTooltipButtonCancel}" 
+		    icon="sap-icon://sys-cancel" 
+		    press="onHanleCloseAddEmbarque" />
+    </buttons>
+  </Dialog>
+</core:FragmentDefinition>

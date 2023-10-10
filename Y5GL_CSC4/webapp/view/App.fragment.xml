@@ -1,0 +1,6 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog title="Chamados" class="sapUiPopupWithPadding" items="{/ZET_GLHR_CHAMADOSSet}" search="onSearchChamado"
+		confirm="ConfirmaChamado" cancel="_handleValueHelpClose">
+		<StandardListItem iconDensityAware="false" iconInset="false" title="{Chamado}"/>
+	</SelectDialog>
+</core:FragmentDefinition>

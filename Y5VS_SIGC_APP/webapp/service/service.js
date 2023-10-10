@@ -1,0 +1,5 @@
+"use strict";
+/*!
+ *  SiGC - GestiÃ³n de Compras
+ * (c) Copyright 2022 Innova Internacional S.A.S.
+ */sap.ui.define(["./dao/ZFMM_SIGC_F_CONVERT_TO_CURRENCY","./dao/ZFMM_SIGC_F_IMPORT_USERS","./dao/ZFMM_SIGC_F_INITIALIZE","./dao/ZFMM_SIGC_F_PO_CREATE","./dao/ZFMM_SIGC_F_SHELP","./dao/ZFMM_SITRK_F_BUYERS","./dao/ZFMM_SITRK_F_CONF_DOCS","./dao/ZFMM_SITRK_F_CONF_COMP","./dao/ZFMM_SIGC_F_V_BY_H","./dao/ZFMM_SIGC_F_TEXT","./dao/ZFMM_SIGC_F_PO_DELETE"],function(_,F,M,S,e,n,r,C,I,i,t){return{ZFMM_SIGC_F_INITIALIZEService:function _(F,S){return M(S)},ZFMM_SIGC_F_IMPORT_USERSService:function _(M,S){return F(S)},ZFMM_SIGC_F_SHELPService:function _(F,M,S){return e(F,M,S)},ZFMM_SITRK_F_CONF_DOCSService:function _(F,M){return r(M)},ZFMM_SITRK_F_CONF_COMPService:function _(F,M){return C(M)},ZFMM_SITRK_F_BUYERSService:function _(F,M){return n(M)},ZFMM_SIGC_F_V_BY_HService:function _(F,M){return I(M)},ZFMM_SIGC_F_PO_CREATEService:function _(F,M){return S(M)},ZFMM_SIGC_F_PO_DELETEService:function _(F,M){return t(M)},ZFMM_SIGC_F_CONVERT_TO_CURRENCYService:function F(M,S){return _(S)},ZFMM_SIGC_F_TEXTService:function _(F,M){return i(M)}}});

@@ -1,0 +1,122 @@
+.sapMPanelContent {
+    padding: 1rem 1.00rem 1rem 1rem;
+    box-sizing: border-box;
+    overflow: initial;
+    white-space: normal;
+}
+
+.Classbtn1 {
+	background-color: #efefef;
+}
+
+.sapMPanelContent:not(.sapMPanelBGTransparent) {
+    border-bottom: 0px solid #ccc;
+}
+
+.classform1 {
+background-color: #FFEBCD;
+}
+
+
+.sapUiSmallMarginBottom{
+	color: red;
+}
+
+
+.size1 {
+	font-size : 15px;
+
+}
+
+.size4 {
+	font-size : 15px;
+	color: #4682B4
+}
+
+.size2 {
+	font-size : 20px;
+	
+}
+
+.size6 {
+	font-size : 20px;
+	color: #4682B4
+}
+
+.size7 {
+	font-size : 20px;
+	color:#808080;
+}
+
+.size77 {
+	font-size : 15px;
+	color: #808080
+}
+
+.size8 {
+	font-size : 20px;
+	color:#8B4513;
+}
+
+.size88 {
+	font-size : 15px;
+	color: #8B4513
+}
+
+.size9 {
+	font-size : 20px;
+	color: #556B2F;
+}
+
+.size99 {
+	font-size : 15px;
+	color: #556B2F
+}
+.stickyToolbar {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    z-index: 101;
+}
+
+.sapMListTblStickyColHdr, html[data-sap-ui-browser^='cr'] 
+.sapMListTblStickyColHdr>.sapMTableTH {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.LoadingFalse {
+    display: none;
+}
+.CLASSE_VSA {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    margin-left: 500%;
+}
+.Loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    height: 100%;
+    width: 1080px;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+
+.sapMPanelContent {
+    padding: 1rem 3.500rem 1rem 1rem;
+    box-sizing: border-box;
+    overflow: auto;
+    white-space: normal;
+}
+
+
+
+
+
+
+

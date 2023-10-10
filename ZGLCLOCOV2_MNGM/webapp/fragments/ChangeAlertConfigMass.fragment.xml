@@ -1,0 +1,312 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:table="sap.ui.table"
+    xmlns:l="sap.ui.layout" class="sapUiSizeCompact"
+    xmlns:f="sap.ui.layout.form">
+    <Dialog contentWidth="600px" showHeader="true" title="Alteração em Massa de Configuração de Alerta">
+        <VBox width="100%">
+
+	<f:Form editable="true">
+		<f:toolbar>
+			<Toolbar>
+				<Switch enabled="{changeAlertConfigMass>/updateLembrete}" state="{changeAlertConfigMass>/Lembrete}" customTextOn=" " customTextOff=" " tooltip="Objetivo: enviar e-mail de lembrete antes do início planejado da tarefa"/>
+				<Label text="Lembrete" design="{= ${changeAlertConfigMass>/updateLembrete} ? 'Bold' : 'Standard'}" />
+				<core:Icon class="sapUiSmallMarginEnd" tooltip="Será enviado lembrete aproximadamente 30 minutos antes do início planejado da tarefa, para prevenir atraso. " src="sap-icon://sys-help" size="18px" useIconTooltip="true" press="pressInfoAlert('lembrete')"/>
+                <ToolbarSpacer/>
+                <CheckBox selected="{changeAlertConfigMass>/updateLembrete}" />
+			</Toolbar>
+		</f:toolbar>
+        <f:layout>
+            <f:ResponsiveGridLayout labelSpanXL="5" labelSpanL="5" labelSpanM="5" labelSpanS="5" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="7" columnsL="7" columnsM="7" singleContainerFullSize="true" />
+        </f:layout>
+		<f:formContainers>
+			<f:FormContainer visible="{changeAlertConfigMass>/Lembrete}">
+				<f:formElements>
+					<f:FormElement label="E-mails dos usuários que receberão os alertas">
+						<f:fields>
+							<MultiInput enabled="{changeAlertConfigMass>/updateLembrete}" tokens="{path: 'changeAlertConfigMass>/lembreteEmails'}" showSuggestion="true" suggestionItemSelected="emailSugestionSelected" id="idChangeAlertEmailLembrete" showValueHelp="false" busyIndicatorDelay="0" >
+								<tokens>
+									<Token key="{changeAlertConfigMass>key}" text="{changeAlertConfigMass>text}" editable="{changeAlertConfigMass>editable}" />
+								</tokens>
+								<suggestionColumns>
+									<Column hAlign="Begin" popinDisplay="Inline" demandPopin="true">
+										<Label text="Name"/>
+									</Column>
+									<Column hAlign="Center" popinDisplay="Inline" demandPopin="true" minScreenWidth="Tablet">
+										<Label text="E-mail"/>
+									</Column>
+								</suggestionColumns>
+							</MultiInput>
+						</f:fields>
+					</f:FormElement>
+					<f:FormElement label="Meio de Comunicação">
+						<f:fields>
+							<Select enabled="{changeAlertConfigMass>/updateLembrete}" selectedKey="{changeAlertConfigMass>/LembreteTipoNotificacao}">
+								<items>
+									<core:Item text="E-Mail" key="M"/>
+									<core:Item text="Mensagem Teams" key="T"/>
+									<core:Item text="E-Mail + Mensagem Teams" key="MT"/>
+								</items>
+							</Select>
+						</f:fields>
+					</f:FormElement>
+				</f:formElements>
+			</f:FormContainer>
+		</f:formContainers>
+	</f:Form>
+
+	<f:Form editable="true">
+		<f:toolbar>
+			<Toolbar>
+				<Switch enabled="{changeAlertConfigMass>/updateNaoInic}" state="{changeAlertConfigMass>/AtividadeNaoIniciada}" customTextOn=" " customTextOff=" " tooltip="Objetivo: enviar e-mail de lembrete antes do início planejado da tarefa"/>
+				<Label text="Tarefa Não Iniciada" design="{= ${changeAlertConfigMass>/updateNaoInic} ? 'Bold' : 'Standard'}" />
+				<core:Icon class="sapUiSmallMarginEnd" tooltip="Caso já tenha passado o horário planejamento para início da execução da tarefa, e ela não tenha sido iniciada, será enviada notificação de atraso." src="sap-icon://sys-help" size="18px" useIconTooltip="true" press="pressInfoAlert('tarefaNaoInic')"/>
+                <ToolbarSpacer/>
+                <CheckBox selected="{changeAlertConfigMass>/updateNaoInic}" />
+			</Toolbar>
+		</f:toolbar>
+        <f:layout>
+            <f:ResponsiveGridLayout labelSpanXL="5" labelSpanL="5" labelSpanM="5" labelSpanS="5" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="7" columnsL="7" columnsM="7" singleContainerFullSize="true" />
+        </f:layout>
+		<f:formContainers>
+			<f:FormContainer visible="{changeAlertConfigMass>/AtividadeNaoIniciada}">
+				<f:formElements>
+					<f:FormElement label="E-mails dos usuários que receberão os alertas">
+						<f:fields>
+							<MultiInput enabled="{changeAlertConfigMass>/updateNaoInic}" tokens="{path: 'changeAlertConfigMass>/AtividadeNaoInicEmails'}" showSuggestion="true" suggestionItemSelected="emailSugestionSelected" id="idChangeAlertEmailatividadeNaoInic" showValueHelp="false" busyIndicatorDelay="0" >
+								<tokens>
+									<Token key="{changeAlertConfigMass>key}" text="{changeAlertConfigMass>text}" editable="{changeAlertConfigMass>editable}" />
+								</tokens>
+								<suggestionColumns>
+									<Column hAlign="Begin" popinDisplay="Inline" demandPopin="true">
+										<Label text="Name"/>
+									</Column>
+									<Column hAlign="Center" popinDisplay="Inline" demandPopin="true" minScreenWidth="Tablet">
+										<Label text="E-mail"/>
+									</Column>
+								</suggestionColumns>
+							</MultiInput>
+						</f:fields>
+					</f:FormElement>
+					<f:FormElement label="Meio de Comunicação">
+						<f:fields>
+							<Select enabled="{changeAlertConfigMass>/updateNaoInic}" selectedKey="{changeAlertConfigMass>/AtividadeNaoInicTipoNotificacao}">
+								<items>
+									<core:Item text="E-Mail" key="M"/>
+									<core:Item text="Mensagem Teams" key="T"/>
+									<core:Item text="E-Mail + Mensagem Teams" key="MT"/>
+								</items>
+							</Select>
+						</f:fields>
+					</f:FormElement>
+				</f:formElements>
+			</f:FormContainer>
+		</f:formContainers>
+	</f:Form>
+
+    <f:Form editable="true">
+		<f:toolbar>
+			<Toolbar>
+				<Switch enabled="{changeAlertConfigMass>/updateNaoEnc}" state="{changeAlertConfigMass>/AtividadeNaoEncerrada}" customTextOn=" " customTextOff=" " tooltip="Objetivo: enviar e-mail de lembrete antes do início planejado da tarefa"/>
+				<Label text="Tarefa Não Encerrada" design="{= ${changeAlertConfigMass>/updateNaoEnc} ? 'Bold' : 'Standard'}" />
+				<core:Icon class="sapUiSmallMarginEnd" tooltip="Caso já tenha passado o horário planejamento para término da execução da tarefa, e ela não tenha sido encerrada, será enviada notificação de atraso." src="sap-icon://sys-help" size="18px" useIconTooltip="true" press="pressInfoAlert('tarefaNaoEnc')"/>
+                <ToolbarSpacer/>
+                <CheckBox selected="{changeAlertConfigMass>/updateNaoEnc}" />
+			</Toolbar>
+		</f:toolbar>
+        <f:layout>
+            <f:ResponsiveGridLayout labelSpanXL="5" labelSpanL="5" labelSpanM="5" labelSpanS="5" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="7" columnsL="7" columnsM="7" singleContainerFullSize="true" />
+        </f:layout>
+		<f:formContainers>
+			<f:FormContainer visible="{changeAlertConfigMass>/AtividadeNaoEncerrada}">
+				<f:formElements>
+					<f:FormElement label="E-mails dos usuários que receberão os alertas">
+						<f:fields>
+							<MultiInput enabled="{changeAlertConfigMass>/updateNaoEnc}" tokens="{path: 'changeAlertConfigMass>/AtividadeNaoEncEmails'}" showSuggestion="true" suggestionItemSelected="emailSugestionSelected" id="idChangeAlertEmailAtividadeNaoEnc" showValueHelp="false" busyIndicatorDelay="0" >
+								<tokens>
+									<Token key="{changeAlertConfigMass>key}" text="{changeAlertConfigMass>text}" editable="{changeAlertConfigMass>editable}" />
+								</tokens>
+								<suggestionColumns>
+									<Column hAlign="Begin" popinDisplay="Inline" demandPopin="true">
+										<Label text="Name"/>
+									</Column>
+									<Column hAlign="Center" popinDisplay="Inline" demandPopin="true" minScreenWidth="Tablet">
+										<Label text="E-mail"/>
+									</Column>
+								</suggestionColumns>
+							</MultiInput>
+						</f:fields>
+					</f:FormElement>
+					<f:FormElement label="Meio de Comunicação">
+						<f:fields>
+							<Select enabled="{changeAlertConfigMass>/updateNaoEnc}" selectedKey="{changeAlertConfigMass>/AtividadeNaoEncTipoNotificacao}">
+								<items>
+									<core:Item text="E-Mail" key="M"/>
+									<core:Item text="Mensagem Teams" key="T"/>
+									<core:Item text="E-Mail + Mensagem Teams" key="MT"/>
+								</items>
+							</Select>
+						</f:fields>
+					</f:FormElement>
+				</f:formElements>
+			</f:FormContainer>
+		</f:formContainers>
+	</f:Form>
+
+    <f:Form editable="true">
+		<f:toolbar>
+			<Toolbar>
+				<Switch enabled="{changeAlertConfigMass>/updateDisp}" state="{changeAlertConfigMass>/AtividadeDisponivel}" customTextOn=" " customTextOff=" " tooltip="Objetivo: enviar e-mail de lembrete antes do início planejado da tarefa"/>
+				<Label text="Tarefa Disponível" design="{= ${changeAlertConfigMass>/updateDisp} ? 'Bold' : 'Standard'}" />
+				<core:Icon class="sapUiSmallMarginEnd" tooltip="Caso exista uma tarefa sucessora que dependa da conclusão desta tarefa para iniciar a execução, o responsável pela sucessora receberá um aviso de disponibilidade assim que a predecessora for concluída. Este tipo de alerta somente é relevante quando da existência de relação de dependência entre tarefas." src="sap-icon://sys-help" size="18px" useIconTooltip="true" press="pressInfoAlert('tarefaDisp')"/>
+                <ToolbarSpacer/>
+                <CheckBox selected="{changeAlertConfigMass>/updateDisp}" />
+			</Toolbar>
+		</f:toolbar>
+        <f:layout>
+            <f:ResponsiveGridLayout labelSpanXL="5" labelSpanL="5" labelSpanM="5" labelSpanS="5" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="7" columnsL="7" columnsM="7" singleContainerFullSize="true" />
+        </f:layout>
+		<f:formContainers>
+			<f:FormContainer visible="{changeAlertConfigMass>/AtividadeDisponivel}">
+				<f:formElements>
+					<f:FormElement label="E-mails dos usuários que receberão os alertas">
+						<f:fields>
+							<MultiInput enabled="{changeAlertConfigMass>/updateDisp}" tokens="{path: 'changeAlertConfigMass>/AtividadeDispEmails'}" showSuggestion="true" suggestionItemSelected="emailSugestionSelected" id="idChangeAlertEmailAtividadeDisp" showValueHelp="false" busyIndicatorDelay="0" >
+								<tokens>
+									<Token key="{changeAlertConfigMass>key}" text="{changeAlertConfigMass>text}" editable="{changeAlertConfigMass>editable}" />
+								</tokens>
+								<suggestionColumns>
+									<Column hAlign="Begin" popinDisplay="Inline" demandPopin="true">
+										<Label text="Name"/>
+									</Column>
+									<Column hAlign="Center" popinDisplay="Inline" demandPopin="true" minScreenWidth="Tablet">
+										<Label text="E-mail"/>
+									</Column>
+								</suggestionColumns>
+							</MultiInput>
+						</f:fields>
+					</f:FormElement>
+					<f:FormElement label="Meio de Comunicação">
+						<f:fields>
+							<Select enabled="{changeAlertConfigMass>/updateDisp}" selectedKey="{changeAlertConfigMass>/AtividadeDispTipoNotificacao}">
+								<items>
+									<core:Item text="E-Mail" key="M"/>
+									<core:Item text="Mensagem Teams" key="T"/>
+									<core:Item text="E-Mail + Mensagem Teams" key="MT"/>
+								</items>
+							</Select>
+						</f:fields>
+					</f:FormElement>
+				</f:formElements>
+			</f:FormContainer>
+		</f:formContainers>
+	</f:Form>
+
+    <f:Form editable="true">
+		<f:toolbar>
+			<Toolbar>
+				<Switch enabled="{changeAlertConfigMass>/updateRepro}" state="{changeAlertConfigMass>/AtividadeReprocessada}" customTextOn=" " customTextOff=" " tooltip="Objetivo: enviar e-mail de lembrete antes do início planejado da tarefa"/>
+				<Label text="Tarefa Reprocessada" design="{= ${changeAlertConfigMass>/updateRepro} ? 'Bold' : 'Standard'}" />
+				<core:Icon class="sapUiSmallMarginEnd" tooltip="Caso existam tarefas sucessoras que dependam da conclusão desta tarefa para iniciar a execução, os responsáveis pelas sucessoras receberão um aviso se houver o reprocessamento da predecessora. Este tipo de alerta somente é relevante quando da existência de relação de dependência entre tarefas." src="sap-icon://sys-help" size="18px" useIconTooltip="true" press="pressInfoAlert('tarefaRep')"/>
+                <ToolbarSpacer/>
+                <CheckBox selected="{changeAlertConfigMass>/updateRepro}" />
+			</Toolbar>
+		</f:toolbar>
+        <f:layout>
+            <f:ResponsiveGridLayout labelSpanXL="5" labelSpanL="5" labelSpanM="5" labelSpanS="5" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="7" columnsL="7" columnsM="7" singleContainerFullSize="true" />
+        </f:layout>
+		<f:formContainers>
+			<f:FormContainer visible="{changeAlertConfigMass>/AtividadeReprocessada}">
+				<f:formElements>
+					<f:FormElement label="E-mails dos usuários que receberão os alertas">
+						<f:fields>
+							<MultiInput enabled="{changeAlertConfigMass>/updateRepro}" tokens="{path: 'changeAlertConfigMass>/AtividadeRepEmails'}" showSuggestion="true" suggestionItemSelected="emailSugestionSelected" id="idChangeAlertEmailAtividadeReoroc" showValueHelp="false" busyIndicatorDelay="0" >
+								<tokens>
+									<Token key="{changeAlertConfigMass>key}" text="{changeAlertConfigMass>text}" editable="{changeAlertConfigMass>editable}" />
+								</tokens>
+								<suggestionColumns>
+									<Column hAlign="Begin" popinDisplay="Inline" demandPopin="true">
+										<Label text="Name"/>
+									</Column>
+									<Column hAlign="Center" popinDisplay="Inline" demandPopin="true" minScreenWidth="Tablet">
+										<Label text="E-mail"/>
+									</Column>
+								</suggestionColumns>
+							</MultiInput>
+						</f:fields>
+					</f:FormElement>
+					<f:FormElement label="Meio de Comunicação">
+						<f:fields>
+							<Select enabled="{changeAlertConfigMass>/updateRepro}" selectedKey="{changeAlertConfigMass>/AtividadeRepTipoNotificacao}">
+								<items>
+									<core:Item text="E-Mail" key="M"/>
+									<core:Item text="Mensagem Teams" key="T"/>
+									<core:Item text="E-Mail + Mensagem Teams" key="MT"/>
+								</items>
+							</Select>
+						</f:fields>
+					</f:FormElement>
+				</f:formElements>
+			</f:FormContainer>
+		</f:formContainers>
+	</f:Form>
+
+	<f:Form editable="true">
+		<f:toolbar>
+			<Toolbar>
+				<Switch enabled="{changeAlertConfigMass>/updateFin}" state="{changeAlertConfigMass>/AtividadeFinalizada}" customTextOn=" " customTextOff=" " tooltip="Os destinatários informados aqui serão notificados da conclusão desta tarefa assim que o status for alterado para “Concluído sem erros”."/>
+				<Label text="Tarefa Finalizada" design="{= ${changeAlertConfigMass>/updateFin} ? 'Bold' : 'Standard'}" />
+				<core:Icon class="sapUiSmallMarginEnd" tooltip="Os destinatários informados aqui serão notificados da conclusão desta tarefa assim que o status for alterado para “Concluído sem erros”." src="sap-icon://sys-help" size="18px" useIconTooltip="true" press="pressInfoAlert('tarefaFin')"/>
+                <ToolbarSpacer/>
+                <CheckBox selected="{changeAlertConfigMass>/updateFin}" />
+			</Toolbar>
+		</f:toolbar>
+        <f:layout>
+            <f:ResponsiveGridLayout labelSpanXL="5" labelSpanL="5" labelSpanM="5" labelSpanS="5" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="7" columnsL="7" columnsM="7" singleContainerFullSize="true" />
+        </f:layout>
+		<f:formContainers>
+			<f:FormContainer visible="{changeAlertConfigMass>/AtividadeFinalizada}">
+				<f:formElements>
+					<f:FormElement label="E-mails dos usuários que receberão os alertas">
+						<f:fields>
+							<MultiInput enabled="{changeAlertConfigMass>/updateFin}" tokens="{path: 'changeAlertConfigMass>/AtividadeFinEmails'}" showSuggestion="true" suggestionItemSelected="emailSugestionSelected" id="idChangeAlertEmailAtividadeFin" showValueHelp="false" busyIndicatorDelay="0" >
+								<tokens>
+									<Token key="{changeAlertConfigMass>key}" text="{changeAlertConfigMass>text}" editable="{changeAlertConfigMass>editable}" />
+								</tokens>
+								<suggestionColumns>
+									<Column hAlign="Begin" popinDisplay="Inline" demandPopin="true">
+										<Label text="Name"/>
+									</Column>
+									<Column hAlign="Center" popinDisplay="Inline" demandPopin="true" minScreenWidth="Tablet">
+										<Label text="E-mail"/>
+									</Column>
+								</suggestionColumns>
+							</MultiInput>
+						</f:fields>
+					</f:FormElement>
+					<f:FormElement label="Meio de Comunicação">
+						<f:fields>
+							<Select enabled="{changeAlertConfigMass>/updateFin}" selectedKey="{changeAlertConfigMass>/AtividadeFinTipoNotificacao}">
+								<items>
+									<core:Item text="E-Mail" key="M"/>
+									<core:Item text="Mensagem Teams" key="T"/>
+									<core:Item text="E-Mail + Mensagem Teams" key="MT"/>
+								</items>
+							</Select>
+						</f:fields>
+					</f:FormElement>
+				</f:formElements>
+			</f:FormContainer>
+		</f:formContainers>
+	</f:Form>
+
+        </VBox>
+        <beginButton>
+            <Button type="Emphasized" text="{i18n>appApply}" press="onChangeAlertConfigMass"/>
+        </beginButton>
+        <endButton>
+            <Button text="{i18n>appCancel}" press="onCloseChangeAlertConfigDialog"/>
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

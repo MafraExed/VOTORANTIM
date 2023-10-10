@@ -1,0 +1,98 @@
+<mvc:View
+		xmlns:mvc="sap.ui.core.mvc" 
+		controllerName="monitorPortocel.controller.TempoPermanencia" 
+		xmlns="sap.m" 
+		xmlns:core="sap.ui.core"
+		xmlns:layout="sap.ui.layout" 
+		xmlns:chart="sap.chart" 
+		xmlns:data="sap.chart.data" 
+		xmlns:fb="sap.ui.comp.filterbar"
+		xmlns:viz="sap.viz.ui5.controls" 
+		xmlns:vizFeeds="sap.viz.ui5.controls.common.feeds" 
+		xmlns:vizData="sap.viz.ui5.data">
+	<Page showHeader="true" title="Permanências" showFooter="false" showNavButton="true" navButtonPress="onPressGoMapa">
+		<content>
+			<fb:FilterBar id="filterbar" reset="onReset" search="onCarregaGrafico" class="tamDataRange" showRestoreButton="false" showClearButton="false">
+				<fb:filterItems>
+					<fb:FilterItem name="A" label="Centro Origem" labelTooltip="Centro Origem" mandatory="true">
+						<fb:control>
+							<ComboBox class="smallComboBox" id="cb_CentroOri" selectedKey="3070" items="{path:'centros>/'}" change="onChangeCentro">
+								<items>
+									<core:Item key="{centros>Centro}" text="{centros>Descricao}"/>
+								</items>
+							</ComboBox>
+						</fb:control>
+					</fb:FilterItem>
+					<fb:FilterItem name="B" label="Destino" labelTooltip="Destino" mandatory="true" visibleInFilterBar="true">
+						<fb:control>
+							<ComboBox class="largeComboBox" id="cb_Destino" selectedKey="3810/1373" placeholder="Escolha o Destino" items="{path:'destinos>/'}" change="onChangeDestino">
+								<items>
+									<core:Item key="{destinos>CentroDestino}/{destinos>Deposito}" text="{destinos>DescricaoDeposito}"/>
+								</items>
+							</ComboBox>
+						</fb:control>
+					</fb:FilterItem>
+					<fb:FilterItem name="D" label="Etapa" labelTooltip="Etapa" mandatory="true">
+						<fb:control>
+							<MultiComboBox class="largeComboBox" id="cb_Etapa" placeholder="Escolha a Etapa" items="{path:'etapa>/'}">
+								<core:Item key="{etapa>Etapa}" text="{etapa>DescricaoEtapa}" />
+							</MultiComboBox>
+						</fb:control>
+					</fb:FilterItem>
+					<fb:FilterItem name="E" label="Data" mandatory="true">
+						<fb:control>
+							<DateRangeSelection class="largeComboBox" id="cb_Data"  dateValue="{path:'dateRange>/dateValueDRS2'}" secondDateValue="{path:'dateRange>/secondDateValueDRS2'}"
+								minDate="{path:'dateRange>/dateMinDRS2'}" maxDate="{path:'dateRange>/dateMaxDRS2'}" change="onDateRangeChange" />
+						</fb:control>
+					</fb:FilterItem>
+				</fb:filterItems>
+			</fb:FilterBar>
+			<Button text="Exportar gráfico" type="Emphasized" class="sapUiMediumMarginBegin sapUiSmallMarginTop" press="onExport" />
+			<VBox id="vboxVizFrame" alignItems="Stretch" direction="Column" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div"
+				visible="true" displayInline="false">
+				<items>
+					<viz:VizFrame selectData="onSelectedPoint" xmlns="sap.viz" id="GraficoTempoFabrica" vizType="combination" width="100%" height="500px"
+						vizProperties="{plotArea: {},title:{ text:'Tempo Médio'}}">
+						<viz:dataset>
+							<vizData:FlattenedDataset data="{graficoTempoFabrica>/}">
+								<vizData:dimensions>
+									<vizData:DimensionDefinition name="Hora" value="{graficoTempoFabrica>TimeStamp}"/>
+								</vizData:dimensions>
+								<vizData:measures>
+									<vizData:MeasureDefinition name="Tempo" value="{graficoTempoFabrica>Tempo}"/>
+									<vizData:MeasureDefinition name="Meta" value="{graficoTempoFabrica>Meta}"/>
+								</vizData:measures>
+							</vizData:FlattenedDataset>
+						</viz:dataset>
+						<viz:feeds>
+							<vizFeeds:FeedItem uid="valueAxis" type="Measure" values='Tempo'/>
+							<vizFeeds:FeedItem uid="valueAxis" type="Measure" values='Meta'/>
+							<vizFeeds:FeedItem uid="categoryAxis" type="Dimension" values="Hora"/>
+						</viz:feeds>
+					</viz:VizFrame>
+				</items>
+				<layoutData/>
+			</VBox>
+		</content>
+		<footer>
+			<OverflowToolbar width="100%" height="auto" design="Auto" enabled="true" visible="true">
+				<content>
+					<ToolbarSpacer width=""/>
+					<Button text="Mapa" type="Default" icon="sap-icon://map-3" iconFirst="true" width="auto" enabled="true" visible="true"
+						iconDensityAware="false" press="_onButtonPress"/>
+					<OverflowToolbarButton text="Action" type="Default" icon="sap-icon://map-3" iconFirst="true" width="auto" enabled="true" visible="false"
+						iconDensityAware="false" press="_onOverflowToolbarButtonPress"/>
+					<ToolbarSpacer width=""/>
+					<Button text="Visão Geral" type="Default" icon="sap-icon://line-chart" iconFirst="true" width="auto" enabled="true" visible="true"
+						iconDensityAware="false" press="_onButtonPress1"/>
+					<OverflowToolbarButton text="Action" type="Default" icon="sap-icon://line-chart" iconFirst="true" width="auto" enabled="true"
+						visible="false" iconDensityAware="false"/>
+					<ToolbarSpacer width=""/>
+				</content>
+			</OverflowToolbar>
+		</footer>
+		<headerContent/>
+		<subHeader/>
+		<customHeader/>
+	</Page>
+</mvc:View>

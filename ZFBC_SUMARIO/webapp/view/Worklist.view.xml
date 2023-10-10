@@ -1,0 +1,302 @@
+<mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout" xmlns:semantic="sap.m.semantic"
+	xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:viz="sap.viz.ui5.controls" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+	xmlns:m="sap.m" xmlns:u="sap.ui.unified" xmlns:viz.data="sap.viz.ui5.data" controllerName="fibria.com.ZFBC_SUMARIO.controller.Worklist">
+	<semantic:FullscreenPage id="page" title="{i18n>worklistViewTitle}">
+		<semantic:content>
+			<l:Grid xmlns:sap.ui.layout="sap.ui.layout" class="sapUiResponsiveMargin" defaultSpan="L3 M6 S6">
+				<l:content>
+					<Label text="{i18n>lblDiretoriaUnidOrg}" id="lblDiretoriaUnidOrg" textDirection="LTR">
+						<layoutData>
+							<l:GridData xmlns:sap.ui.layout="sap.ui.layout" span="XL3 L3 M3 S3"/>
+						</layoutData>
+					</Label>
+					<Input name="Organizacao" id="iptDiretoriaUnidOrg" valueLiveUpdate="true" visible="true"
+						value="{filter>/Organizacao}" enabled="true"
+						valueHelpRequest="handleValueHelpOrganizacao" showValueHelp="true" valueHelpOnly="true">
+						<layoutData>
+							<l:GridData xmlns:sap.ui.layout="sap.ui.layout" span="XL3 L3 M3 S3"/>
+						</layoutData>
+					</Input>
+					<Label text="{i18n>lblCategoriaRisco}" id="lblCategoriaRisco" textDirection="LTR">
+						<layoutData>
+							<l:GridData xmlns:sap.ui.layout="sap.ui.layout" span="XL2 L2 M2 S2"/>
+						</layoutData>
+					</Label>
+					<Input name="Catrisco" id="iptCategoriaRisco" valueLiveUpdate="true" visible="true"
+						value="{filter>/Catrisco}" enabled="true"
+						valueHelpRequest="handleValueHelpCatrisco" showValueHelp="true" valueHelpOnly="true">
+						<layoutData>
+							<l:GridData xmlns:sap.ui.layout="sap.ui.layout" span="XL4 L4 M4 S4"/>
+						</layoutData>
+					</Input>
+					<Label text="{i18n>lblNivel}" id="lblNivel" textDirection="LTR">
+						<layoutData>
+							<l:GridData xmlns:sap.ui.layout="sap.ui.layout" span="XL3 L3 M3 S3"/>
+						</layoutData>
+					</Label>
+					<ComboBox xmlns:sap.ui.core="sap.ui.core" id="cbxNivelRisco" editable="true" enabled="true" visible="true" width="auto" valueState="None"
+						maxWidth="100%" items="{filter>/NivelRiscoSet}" selectedKey="{filter>/Nivrisco}">
+						<items>
+							<sap.ui.core:ListItem key="00" text="" enabled="true"/>
+							<sap.ui.core:ListItem key="{filter>Id}" text="{filter>RiskLabel}" enabled="true"/>
+						</items>
+					</ComboBox>
+					<Label text="{i18n>lblPotencialCrise}" id="lblPotencialCrise" textDirection="LTR">
+						<layoutData>
+							<l:GridData xmlns:sap.ui.layout="sap.ui.layout" span="XL2 L2 M2 S2"/>
+						</layoutData>
+					</Label>
+					<ComboBox xmlns:sap.ui.core="sap.ui.core" id="cbxPotencialCrise" editable="true" enabled="true" visible="true" width="auto"
+						valueState="None" maxWidth="100%" selectedKey="{filter>/Potcrise}">
+						<layoutData>
+							<sap.ui.layout:GridData xmlns:sap.ui.layout="sap.ui.layout" span="XL3 L3 M3 S3"/>
+						</layoutData>
+						<items>
+							<sap.ui.core:ListItem key="00" text="" enabled="true"/>
+							<sap.ui.core:ListItem key="01" text="Sim" enabled="true"/>
+							<sap.ui.core:ListItem key="02" text="Não" enabled="true"/>
+						</items>
+					</ComboBox>
+					<Label text="Tipo de Visão" id="lblTipoVisao"  textDirection="LTR">
+						<layoutData>
+							<sap.ui.layout:GridData xmlns:sap.ui.layout="sap.ui.layout" span="XL3 L3 M3 S3"/>
+						</layoutData>
+					</Label>
+					<ComboBox xmlns:sap.ui.core="sap.ui.core" id="cbxTipoVisao" editable="true" enabled="true" visible="true" width="auto" valueState="None" maxWidth="100%" selectedKey="{filter>/tipoVisao}">
+						<layoutData>
+							<sap.ui.layout:GridData xmlns:sap.ui.layout="sap.ui.layout" span="XL3 L3 M3 S3"/>
+						</layoutData>
+					    <items>
+					        <sap.ui.core:ListItem key="in" text="Inerente" enabled="true"/>
+					        <sap.ui.core:ListItem key="re" text="Residual" enabled="true"/>
+					        <sap.ui.core:ListItem key="rep" text="Residual Planejada" enabled="true"/>
+						</items>
+					</ComboBox>
+				</l:content>
+			</l:Grid>
+			<Panel width="100%">
+				<VBox  alignItems="Center" height="100%" width="100%">
+							<Button type="Default" text="Pesquisar" press="onPesquisar"></Button>
+				</VBox>
+				<l:HorizontalLayout>
+					<Panel width="400px" height="400px">
+						
+						<headerToolbar>
+							<Toolbar height="3rem">
+								<Title text="Matriz de Riscos"/>
+							</Toolbar>
+						</headerToolbar>
+						<content>
+							<VBox id="ChartMatrizRiscos" visible="{ path : '/MatrizRiscosSet', formatter : '.formatter.matrixVisibility' }" backgroundDesign="Solid" alignItems="Center" height="100%">
+								<l:HorizontalLayout>
+									<l:VerticalLayout class="styleProbabilidade">
+										<Image id="imgProbabilidade"/>
+									</l:VerticalLayout>
+									<l:VerticalLayout>
+										<l:HorizontalLayout class="myLayoutHeightY">
+											<Button text="Muito Provável" width="80px" class="columnButtonY"/>
+											<Button text="{/MatrizRiscosSet/12/Valor}" width="70px" class="myButtonHeight backgroundColorM"
+												press="onPopularTabelaMuitoProvavelMenor"/>
+											<Button text="{/MatrizRiscosSet/13/Valor}" width="70px" class="myButtonHeight backgroundColorH"
+												press="onPopularTabelaMuitoProvavelModerado"/>
+											<Button text="{/MatrizRiscosSet/14/Valor}" width="70px" class="myButtonHeight backgroundColorVH"
+												press="onPopularTabelaMuitoProvavelMaior"/>
+											<Button text="{/MatrizRiscosSet/15/Valor}" width="70px" class="myButtonHeight backgroundColorVH"
+												press="onPopularTabelaMuitoProvavelExtremo"/>
+										</l:HorizontalLayout>
+										<l:HorizontalLayout class="myLayoutHeightY">
+											<Button text="Provável" width="80px" class="columnButtonY"/>
+											<Button text="{/MatrizRiscosSet/8/Valor}" width="70px" class="myButtonHeight backgroundColorL"
+												press="onPopularTabelaProvavelMenor"/>
+											<Button text="{/MatrizRiscosSet/9/Valor}" width="70px" class="myButtonHeight backgroundColorM"
+												press="onPopularTabelaProvavelModerado"/>
+											<Button text="{/MatrizRiscosSet/10/Valor}" width="70px" class="myButtonHeight backgroundColorH"
+												press="onPopularTabelaProvavelMaior"/>
+											<Button text="{/MatrizRiscosSet/11/Valor}" width="70px" class="myButtonHeight backgroundColorVH"
+												press="onPopularTabelaProvavelExtremo"/>
+										</l:HorizontalLayout>
+										<l:HorizontalLayout class="myLayoutHeightY">
+											<Button text="Possível" width="80px" class="columnButtonY"/>
+											<Button text="{/MatrizRiscosSet/4/Valor}" width="70px" class="myButtonHeight backgroundColorVL"
+												press="onPopularTabelaPossivelMenor"/>
+											<Button text="{/MatrizRiscosSet/5/Valor}" width="70px" class="myButtonHeight backgroundColorL"
+												press="onPopularTabelaPossivelModerado"/>
+											<Button text="{/MatrizRiscosSet/6/Valor}" width="70px" class="myButtonHeight backgroundColorM"
+												press="onPopularTabelaPossivelMaior"/>
+											<Button text="{/MatrizRiscosSet/7/Valor}" width="70px" class="myButtonHeight backgroundColorH"
+												press="onPopularTabelaPossivelExtremo"/>
+										</l:HorizontalLayout>
+										<l:HorizontalLayout class="myLayoutHeightY">
+											<Button text="Remota" width="80px" class="columnButtonY"/>
+											<Button text="{/MatrizRiscosSet/0/Valor}" width="70px" class="myButtonHeight backgroundColorVL"
+												press="onPopularTabelaRemotaMenor"/>
+											<Button text="{/MatrizRiscosSet/1/Valor}" width="70px" class="myButtonHeight backgroundColorVL"
+												press="onPopularTabelaRemotaModerado"/>
+											<Button text="{/MatrizRiscosSet/2/Valor}" width="70px" class="myButtonHeight backgroundColorL"
+												press="onPopularTabelaRemotaMaior"/>
+											<Button text="{/MatrizRiscosSet/3/Valor}" width="70px" class="myButtonHeight backgroundColorM"
+												press="onPopularTabelaRemotaExtremo"/>
+										</l:HorizontalLayout>
+										<l:HorizontalLayout class="myLayoutHeightX">
+											<Button text="" width="80px" class="columnButtonX"/>
+											<Button text="Menor" width="70px" class="columnButtonX"/>
+											<Button text="Moderado" width="70px" class="columnButtonX"/>
+											<Button text="Maior" width="70px" class="columnButtonX"/>
+											<Button text="Extremo" width="70px" class="columnButtonX"/>
+										</l:HorizontalLayout>
+									</l:VerticalLayout>
+								</l:HorizontalLayout>
+								<Image id="imgLegenda"/>
+							</VBox>
+						</content>
+					</Panel>
+					<Panel width="400px" height="400px">
+						<headerToolbar>
+							<Toolbar height="3rem">
+								<Title text="Quantidade de Riscos"/>
+							</Toolbar>
+						</headerToolbar>
+						<content>
+							<viz:VizFrame id="ChartQuantidadeRiscos" uiConfig="{applicationSet:'fiori'}" height='100%' width="100%" vizType='stacked_column'>
+								<viz:dataset>
+									<viz.data:FlattenedDataset data="{/QuantidadeRiscosSet}">
+										<viz.data:dimensions>
+											<viz.data:DimensionDefinition name="UnidadeOrganizacional" value="{UnidadeOrganizacional}"/>
+											<viz.data:DimensionDefinition name="NivelRisco" value="{NivelRisco}"/>
+										</viz.data:dimensions>
+										<viz.data:measures>
+											<viz.data:MeasureDefinition name="Quantidade" value="{Quantidade}"/>
+										</viz.data:measures>
+									</viz.data:FlattenedDataset>
+								</viz:dataset>
+								<viz:feeds>
+									<viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Quantidade"/>
+									<viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="UnidadeOrganizacional"/>
+									<viz.feeds:FeedItem uid="color" type="Dimension" values="NivelRisco"/>
+								</viz:feeds>
+							</viz:VizFrame>
+						</content>
+					</Panel>
+					<Panel width="400px" height="400px">
+						<headerToolbar>
+							<Toolbar height="3rem">
+								<Title text="Distribuição de Riscos"/>
+							</Toolbar>
+						</headerToolbar>
+						<content>
+							<viz:VizFrame id="ChartDistribuicaoRiscos" uiConfig="{applicationSet:'fiori'}" height='100%' width="100%" vizType='100_stacked_bar'>
+								<viz:dataset>
+									<viz.data:FlattenedDataset data="{/DistribuicaoRiscosSet}">
+										<viz.data:dimensions>
+											<viz.data:DimensionDefinition name="UnidadeOrganizacional" value="{UnidadeOrganizacional}"/>
+											<viz.data:DimensionDefinition name="NivelRisco" value="{NivelRisco}"/>
+										</viz.data:dimensions>
+										<viz.data:measures>
+											<viz.data:MeasureDefinition name="Percentual" value="{Percentual}"/>
+										</viz.data:measures>
+									</viz.data:FlattenedDataset>
+								</viz:dataset>
+								<viz:feeds>
+									<viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Percentual"/>
+									<viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="UnidadeOrganizacional"/>
+									<viz.feeds:FeedItem uid="color" type="Dimension" values="NivelRisco"/>
+								</viz:feeds>
+							</viz:VizFrame>
+						</content>
+					</Panel>
+				</l:HorizontalLayout>
+				<l:HorizontalLayout>
+					<Panel width="400px" height="400px">
+						<headerToolbar>
+							<Toolbar height="3rem">
+								<Title text="Abertura dos Riscos Prioritários por Quadrante"/>
+							</Toolbar>
+						</headerToolbar>
+						<content>
+							<Table id="TableRiscosPrioritarios" inset="false" items="{/RiscoPorQuadranteSet}">
+								<columns>
+									<Column hAlign="Center">
+										<Text text="Área"/>
+									</Column>
+									<Column hAlign="Center">
+										<Text text="Risco"/>
+									</Column>
+									<Column hAlign="Center">
+										<Text text="Nome do Risco"/>
+									</Column>
+									<Column hAlign="Center">
+										<Text text="Dono do Risco"/>
+									</Column>
+								</columns>
+								<items>
+									<ColumnListItem>
+										<cells>
+											<Text text="{Rmarea}"/>
+											<Text text="{Risco}"/>
+											<Text text="{Descricao}"/>
+											<Text text="{Fdrisco}"/>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+						</content>
+					</Panel>
+					<Panel width="400px" height="400px">
+						<headerToolbar>
+							<Toolbar height="3rem">
+								<Title text="Total de Planos de Ação"/>
+							</Toolbar>
+						</headerToolbar>
+						<content>
+							<viz:Popover id="idPopOver"></viz:Popover>
+							<viz:VizFrame id="ChartPlanoAcao" uiConfig="{applicationSet:'fiori'}" height='100%' width="100%" vizType='donut'
+								vizProperties="{plotArea: { drawingEffect: 'glossy' },title:{ text:'Donut Chart Example'}}">
+								<viz:dataset>
+									<viz.data:FlattenedDataset data="{/PlanoAcaoSet}">
+										<viz.data:dimensions>
+											<viz.data:DimensionDefinition name="Status" value="{Status}"/>
+										</viz.data:dimensions>
+										<viz.data:measures>
+											<viz.data:MeasureDefinition name="Quantidade" value="{Quantidade}"/>
+										</viz.data:measures>
+									</viz.data:FlattenedDataset>
+								</viz:dataset>
+								<viz:feeds>
+									<viz.feeds:FeedItem uid="size" type="Measure" values="Quantidade"/>
+									<viz.feeds:FeedItem uid="color" type="Dimension" values="Status"/>
+								</viz:feeds>
+							</viz:VizFrame>
+						</content>
+					</Panel>
+					<Panel width="400px" height="400px">
+						<headerToolbar>
+							<Toolbar height="3rem">
+								<Title text="Planos de ação por diretoria"/>
+							</Toolbar>
+						</headerToolbar>
+						<content>
+							<viz:VizFrame id="ChartPlanoAcaoDiretoria" uiConfig="{applicationSet:'fiori'}" height='100%' width="100%" vizType='100_stacked_column'>
+								<viz:dataset>
+									<viz.data:FlattenedDataset data="{/PlanoAcaoDiretoriaSet}">
+										<viz.data:dimensions>
+											<viz.data:DimensionDefinition name="Diretoria" value="{Diretoria}"/>
+											<viz.data:DimensionDefinition name="Status" value="{Status}"/>
+										</viz.data:dimensions>
+										<viz.data:measures>
+											<viz.data:MeasureDefinition name="Percentual" value="{Percentual}"/>
+										</viz.data:measures>
+									</viz.data:FlattenedDataset>
+								</viz:dataset>
+								<viz:feeds>
+									<viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Percentual"/>
+									<viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="Diretoria"/>
+									<viz.feeds:FeedItem uid="color" type="Dimension" values="Status"/>
+								</viz:feeds>
+							</viz:VizFrame>
+						</content>
+					</Panel>
+				</l:HorizontalLayout>
+			</Panel>
+		</semantic:content>
+	</semantic:FullscreenPage>
+</mvc:View>

@@ -1,0 +1,18 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="FibriaStatusViagem.controller.DialogLastTrip"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Dialog horizontalScrolling="false" showHeader="false" verticalScrolling="false">
+		<content>
+			<VBox width="100%">
+				<Hbox justifyContent="Center">
+					<Text class="lastTripTitle sapUiMediumMarginTop" text="Você finalizou uma viagem, deseja iniciar uma nova?"/>
+				</Hbox>
+				<Hbox justifyContent="Center">
+					<Button text="Não" class="lastTripButton sapUiSmallMarginEnd" type="Transparent" iconFirst="true" enabled="true" visible="true" iconDensityAware="false"
+						press="_onButtonYesPress"/>
+					<Button text="Sim" class="lastTripButton" type="Transparent" iconFirst="true" enabled="true" visible="true" iconDensityAware="false"
+						press="_onButtonNoPress"/>
+				</Hbox>
+			</VBox>
+		</content>
+	</Dialog>
+</mvc:View>

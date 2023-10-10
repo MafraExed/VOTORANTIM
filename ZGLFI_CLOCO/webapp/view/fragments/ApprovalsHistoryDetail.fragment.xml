@@ -1,0 +1,27 @@
+<core:FragmentDefinition 
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:u="sap.ui.unified"
+	xmlns:core="sap.ui.core"
+	xmlns="sap.m"
+	busy="true"
+	busyIndicatorDelay="0">
+	<Dialog contentWidth="500px" title="Detalhe da Aprovação" showHeader="true" class="sapUiContentPadding" type="Standard">
+		<content >
+			<VBox>
+				<Label text="Aprovador" labelFor="idInputApprover"/>
+				<Input enabled="false" value="{workflowStatusHistory>ApproverName}" id="idInputApprover" />
+				<Label text="Data da Execução" labelFor="idInputDataExec"/>
+				<Input enabled="false" id="idInputDataExec" value="{ path: 'workflowStatusHistory>ApprovalDate', formatter: '.formatter.formatDate' }" />
+				<Label text="Hora da Execução" labelFor="idInputHoraExec"/>
+				<Input enabled="false" id="idInputHoraExec" value="{ path: 'workflowStatusHistory>ApprovalTime', formatter: '.formatter.formatTime' }"/>
+				<Label class="sapUiTinyMarginTop" text="Status" labelFor="idStatusObject"/>
+				<ObjectStatus class="sapUiTinyMarginBottom" id="idStatusObject" text="{= ${workflowStatusHistory>Status} === 'A' ? 'Aprovado' : 'Rejeitado' }" icon="{= ${workflowStatusHistory>Status} === 'A' ? 'sap-icon://accept' : 'sap-icon://employee-rejections' }" state="{= ${workflowStatusHistory>Status} === 'A' ? 'Success' : 'Error' }" />
+				<TextArea width="100%" enabled="false" value="{workflowStatusHistory>Reason}"/>
+			</VBox>
+		</content>
+		<endButton>
+			<Button text="Fechar" press="onApprovalsHistoryDetailDialogClose"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>
+

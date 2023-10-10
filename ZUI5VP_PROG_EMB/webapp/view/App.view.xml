@@ -1,0 +1,10 @@
+<mvc:View controllerName="fibriembarque.controller.App" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" busy="{appView>/busy}"
+	busyIndicatorDelay="{appView>/delay}" xmlns="sap.m">
+	<!--<App id="app">-->
+	<!--	<SplitContainer id="idAppControl"></SplitContainer>-->
+	<!--	<Page id="page"></Page>-->
+	<!--</App>-->
+	<SplitApp id="split" visible="true"></SplitApp>
+	<App id="app" visible="false"></App>
+	
+</mvc:View>

@@ -1,0 +1,227 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.ui.layout.form"
+	controllerName="Y5GL_CADASTRO.Y5GL_CADASTRO.controller.DOCUMENTOS" xmlns:html="http://www.w3.org/1999/xhtml">
+	<App id="IdAppDocumentos">
+		<pages>
+			<Page title="Title" id="idPageDocumentos">
+				<customHeader>
+					<Bar id="idBarMasterDadosPessoais">
+						<contentLeft>
+							<Button icon="sap-icon://nav-back" id="idB_navback" press="onVoltar"/>
+						</contentLeft>
+						<contentMiddle>
+							<Title text="Documentos" titleStyle="H3" id="idTitleDependentes"/>
+						</contentMiddle>
+						<contentRight>
+							<Button icon="sap-icon://home" id="idteste" press="onBackMaster"/>
+						</contentRight>
+					</Bar>
+				</customHeader>
+				<content>
+					<OverflowToolbar id="idBar1">
+						<Title text="" level="H1" id="idTitleDep"/>
+					</OverflowToolbar>
+					<IconTabBar id="idIconTabBarMulti" expanded="{device>/isNoPhone}" class="sapUiResponsiveContentPadding">
+						<items>
+							<IconTabFilter icon="sap-icon://hint" text="CPF" id="id1">
+								<f:Form class="editableForm" editable="true" id="FUNSEJEM" visible="true">
+									<f:layout>
+										<f:ResponsiveGridLayout id="idResp_FUNSEJEM" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+											emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false"/>
+									</f:layout>
+									<f:formContainers>
+										<f:FormContainer id="FormContainer">
+											<f:formElements>
+												<f:FormElement label="CPF" id="FormElementNomeCompleto">
+													<Input value="{CPF}" id="IdCPF" placeholder="CPF" required="true" maxLength="25"/>
+												</f:FormElement>
+												<f:FormElement label="*Para adicionar Anexos selecione o botÃ£o (+) " id="IdonAddDoc">
+													<f:fields>
+														<UploadCollection id="UploadCollection" multiple="false" change="onChange" fileDeleted="onFileDeleted"
+															beforeUploadStarts="onBeforeUploadStarts" uploadComplete="onuploadComplete" items="{ path: '/ZET_GLRH_UPLOADSet', templateShareable: true }"
+															modelContextChange="onmodelContextChange" mode="SingleSelectMaster"
+															uploadUrl="/sap/opu/odata/sap/ZGWGLRH_MEU_CADASTRO_SRV/ZET_GLHR_UPFILESet"
+															noDataDescription="Para adicionar/alterar Anexos selecione o botÃ£o ( + )" noDataText="Aguardando novos Carregamentos"
+															numberOfAttachmentsText="Anexos">
+															<toolbar>
+																<OverflowToolbar id="myId" visible="true">
+																	<Title id="attachmentTitle"/>
+																	<ToolbarSpacer id="idToolbarSpacer"/>
+																	<SearchField width="10rem" search="onSearch" enabled="false" visible="false" id="idSearchField"/>
+																	<Button id="deleteSelectedButton" text="Delete" press="onDeleteSelectedItems" enabled="false" visible="false" type="Transparent"/>
+																	<ToggleButton id="selectAllButton" text="Select all" press="onSelectAllPress" enabled="false" visible="false" type="Transparent"/>
+																	<UploadCollectionToolbarPlaceholder id="IdUploadCollectionToolbar"/>
+																</OverflowToolbar>
+															</toolbar>
+															<items>
+																<UploadCollectionItem documentId="{DocId}" fileName="{Filename}" mimeType="{Mimetype}"
+																	url="/sap/opu/odata/sap/ZGWGLRH_MEU_CADASTRO_SRV/ZET_GLHR_UPFILESet('{Pernr}${Subty}${Favor}')/$value" enableEdit="false"
+																	visibleEdit="false" deletePress="onFileDelete" selected="true" id="idUploadCollectionItem"/>
+															</items>
+														</UploadCollection>
+													</f:fields>
+												</f:FormElement>
+											</f:formElements>
+										</f:FormContainer>
+									</f:formContainers>
+								</f:Form>
+							</IconTabFilter>
+							<IconTabFilter icon="sap-icon://attachment" text="CTPS" id="id2">
+								<f:Form class="editableForm" editable="true" id="IdCtps" visible="true">
+									<f:layout>
+										<f:ResponsiveGridLayout id="idResp_CTPS" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+											emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false"/>
+									</f:layout>
+									<f:formContainers>
+										<f:FormContainer id="FormContainerCTPS">
+											<f:formElements>
+												<f:FormElement label="CTPS" id="FormElementCTPS">
+													<Input value="{CTPS}" id="IdCTPS" placeholder="CTPS" required="true" maxLength="25"/>
+												</f:FormElement>
+												<f:FormElement label="Serie" id="FormElementSerie">
+													<Input value="{Serie}" id="IdSerie" placeholder="Serie" required="true" maxLength="25"/>
+												</f:FormElement>
+												<f:FormElement label="Data de EmissÃ£o" id="FormElementDTEmissao">
+													<Input value="{Dtemissao}" id="IdDtEmissao" placeholder="DtEmissao" required="true" maxLength="25"/>
+												</f:FormElement>
+												<f:FormElement label="UF de ExpediÃ§Ã£o" id="FormElementUFExpedicao">
+													<Input value="{UfExpedicao}" id="IdUfExpedicao" placeholder="UF de ExpediÃ§Ã£o" required="true" maxLength="25"/>
+												</f:FormElement>
+												<f:FormElement label="*Para adicionar Anexos selecione o botÃ£o (+) " id="IdonAddDoc1">
+													<f:fields>
+														<UploadCollection id="UploadCollection1" multiple="false" change="onChange" fileDeleted="onFileDeleted"
+															beforeUploadStarts="onBeforeUploadStarts" uploadComplete="onuploadComplete" items="{ path: '/ZET_GLRH_UPLOADSet', templateShareable: true }"
+															modelContextChange="onmodelContextChange" mode="SingleSelectMaster"
+															uploadUrl="/sap/opu/odata/sap/ZGWGLRH_MEU_CADASTRO_SRV/ZET_GLHR_UPFILESet"
+															noDataDescription="Para adicionar/alterar Anexos selecione o botÃ£o ( + )" noDataText="Aguardando novos Carregamentos"
+															numberOfAttachmentsText="Anexos">
+															<toolbar>
+																<OverflowToolbar id="myId1" visible="true">
+																	<Title id="attachmentTitle1"/>
+																	<ToolbarSpacer id="idToolbarSpacer1"/>
+																	<SearchField width="10rem" search="onSearch" enabled="false" visible="false" id="idSearchField1"/>
+																	<Button id="deleteSelectedButton1" text="Delete" press="onDeleteSelectedItems" enabled="false" visible="false" type="Transparent"/>
+																	<ToggleButton id="selectAllButton1" text="Select all" press="onSelectAllPress" enabled="false" visible="false" type="Transparent"/>
+																	<UploadCollectionToolbarPlaceholder id="IdUploadCollectionToolbar1"/>
+																</OverflowToolbar>
+															</toolbar>
+															<items>
+																<UploadCollectionItem documentId="{DocId}" fileName="{Filename}" mimeType="{Mimetype}"
+																	url="/sap/opu/odata/sap/ZGWGLRH_MEU_CADASTRO_SRV/ZET_GLHR_UPFILESet('{Pernr}${Subty}${Favor}')/$value" enableEdit="false"
+																	visibleEdit="false" deletePress="onFileDelete" selected="true" id="idUploadCollectionItem1"/>
+															</items>
+														</UploadCollection>
+													</f:fields>
+												</f:FormElement>
+											</f:formElements>
+										</f:FormContainer>
+									</f:formContainers>
+								</f:Form>
+							</IconTabFilter>
+							<IconTabFilter icon="sap-icon://notes" text="Tit. Eleitor" id="id3">
+								<f:Form class="editableForm" editable="true" id="IdEleitor" visible="true">
+									<f:layout>
+										<f:ResponsiveGridLayout id="idResp_Eleitor" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+											emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false"/>
+									</f:layout>
+									<f:formContainers>
+										<f:FormContainer id="FormContainerEleitor">
+											<f:formElements>
+												<f:FormElement label="Titulo de Eleitor" id="FormElementTitEleitor">
+													<Input value="{TitEleitor}" id="IdTitEleitor" placeholder="Titulo de Eleitor" required="true" maxLength="25"/>
+												</f:FormElement>
+												<f:FormElement label="Zona" id="FormElementZona">
+													<Input value="{Serie}" id="IdZona" placeholder="Zona" required="true" maxLength="25"/>
+												</f:FormElement>
+												<f:FormElement label="SessÃ£o" id="FormElementSessao">
+													<Input value="{Sessao}" id="IdSessao" placeholder="SessÃ£o" required="true" maxLength="25"/>
+												</f:FormElement>
+												<f:FormElement label="Data ExpediÃ§Ã£o" id="FormElementDtExpedicao">
+													<Input value="{DtExpedTit}" id="IdDtExpedTit1" placeholder="Data de ExpediÃ§Ã£o" required="true" maxLength="25"/>
+												</f:FormElement>
+												<f:FormElement label="UF de ExpediÃ§Ã£o" id="FormElement12">
+													<Input value="{UfExpedicao}" id="IdUfExpedicao1" placeholder="UF de ExpediÃ§Ã£o" required="true" maxLength="25"/>
+												</f:FormElement>
+												<f:FormElement label="*Para adicionar Anexos selecione o botÃ£o (+) " id="IdonAddDoc2">
+													<f:fields>
+														<UploadCollection id="UploadCollection2" multiple="false" change="onChange" fileDeleted="onFileDeleted"
+															beforeUploadStarts="onBeforeUploadStarts" uploadComplete="onuploadComplete" items="{ path: '/ZET_GLRH_UPLOADSet', templateShareable: true }"
+															modelContextChange="onmodelContextChange" mode="SingleSelectMaster"
+															uploadUrl="/sap/opu/odata/sap/ZGWGLRH_MEU_CADASTRO_SRV/ZET_GLHR_UPFILESet"
+															noDataDescription="Para adicionar/alterar Anexos selecione o botÃ£o ( + )" noDataText="Aguardando novos Carregamentos"
+															numberOfAttachmentsText="Anexos">
+															<toolbar>
+																<OverflowToolbar id="myId2" visible="true">
+																	<Title id="attachmentTitle2"/>
+																	<ToolbarSpacer id="idToolbarSpacer2"/>
+																	<SearchField width="10rem" search="onSearch" enabled="false" visible="false" id="idSearchField2"/>
+																	<Button id="deleteSelectedButton2" text="Delete" press="onDeleteSelectedItems" enabled="false" visible="false" type="Transparent"/>
+																	<ToggleButton id="selectAllButton2" text="Select all" press="onSelectAllPress" enabled="false" visible="false" type="Transparent"/>
+																	<UploadCollectionToolbarPlaceholder id="IdUploadCollectionToolbar2"/>
+																</OverflowToolbar>
+															</toolbar>
+															<items>
+																<UploadCollectionItem documentId="{DocId}" fileName="{Filename}" mimeType="{Mimetype}"
+																	url="/sap/opu/odata/sap/ZGWGLRH_MEU_CADASTRO_SRV/ZET_GLHR_UPFILESet('{Pernr}${Subty}${Favor}')/$value" enableEdit="false"
+																	visibleEdit="false" deletePress="onFileDelete" selected="true" id="idUploadCollectionItem2"/>
+															</items>
+														</UploadCollection>
+													</f:fields>
+												</f:FormElement>
+											</f:formElements>
+										</f:FormContainer>
+									</f:formContainers>
+								</f:Form>
+							</IconTabFilter>
+							<IconTabFilter icon="sap-icon://group" text="PIS" id="id4">
+								<f:Form class="editableForm" editable="true" id="IDPIS" visible="true">
+									<f:layout>
+										<f:ResponsiveGridLayout id="idResp_PIS" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+											emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false"/>
+									</f:layout>
+									<f:formContainers>
+										<f:FormContainer id="FormContainerPIS">
+											<f:formElements>
+												<f:FormElement label="PIS" id="FormElementPIS">
+													<Input value="{PIS}" id="IdPIS" placeholder="PIS" required="true" maxLength="25"/>
+												</f:FormElement>
+												<f:FormElement label="Data de ExpediÃ§Ã£o" id="FormElementDtExped">
+													<Input value="{DtExped}" id="IdDtExpedPIS" placeholder="Data de ExpediÃ§Ã£o PIS" required="true" maxLength="25"/>
+												</f:FormElement>
+												<f:FormElement label="*Para adicionar Anexos selecione o botÃ£o (+) " id="IdonAddDoc4">
+													<f:fields>
+														<UploadCollection id="UploadCollection3" multiple="false" change="onChange" fileDeleted="onFileDeleted"
+															beforeUploadStarts="onBeforeUploadStarts" uploadComplete="onuploadComplete" items="{ path: '/ZET_GLRH_UPLOADSet', templateShareable: true }"
+															modelContextChange="onmodelContextChange" mode="SingleSelectMaster"
+															uploadUrl="/sap/opu/odata/sap/ZGWGLRH_MEU_CADASTRO_SRV/ZET_GLHR_UPFILESet"
+															noDataDescription="Para adicionar/alterar Anexos selecione o botÃ£o ( + )" noDataText="Aguardando novos Carregamentos"
+															numberOfAttachmentsText="Anexos">
+															<toolbar>
+																<OverflowToolbar id="myId3" visible="true">
+																	<Title id="attachmentTitle3"/>
+																	<ToolbarSpacer id="idToolbarSpacer3"/>
+																	<SearchField width="10rem" search="onSearch" enabled="false" visible="false" id="idSearchField3"/>
+																	<Button id="deleteSelectedButton3" text="Delete" press="onDeleteSelectedItems" enabled="false" visible="false" type="Transparent"/>
+																	<ToggleButton id="selectAllButton3" text="Select all" press="onSelectAllPress" enabled="false" visible="false" type="Transparent"/>
+																	<UploadCollectionToolbarPlaceholder id="IdUploadCollectionToolbar3"/>
+																</OverflowToolbar>
+															</toolbar>
+															<items>
+																<UploadCollectionItem documentId="{DocId}" fileName="{Filename}" mimeType="{Mimetype}"
+																	url="/sap/opu/odata/sap/ZGWGLRH_MEU_CADASTRO_SRV/ZET_GLHR_UPFILESet('{Pernr}${Subty}${Favor}')/$value" enableEdit="false"
+																	visibleEdit="false" deletePress="onFileDelete" selected="true" id="idUploadCollectionItem3"/>
+															</items>
+														</UploadCollection>
+													</f:fields>
+												</f:FormElement>
+											</f:formElements>
+										</f:FormContainer>
+									</f:formContainers>
+								</f:Form>
+							</IconTabFilter>
+						</items>
+					</IconTabBar>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

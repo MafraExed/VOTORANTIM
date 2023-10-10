@@ -1,0 +1,131 @@
+{
+    "_version": "1.7.0",
+    "sap.app": {
+        "id": "com.sap.votorantim.grupoZHCM_FERIAS_VTess",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "sourceTemplate": {
+            "id": "servicecatalog.connectivityComponent",
+            "version": "0.0.0",
+            "toolsId": "427cba82-ef85-4e5f-9488-98c8ab977593"
+        },
+        "crossNavigation": {
+            "inbounds": {}
+        },
+        "dataSources": {
+            "ZGWVCHR_FERIAS_ESS_SRV": {
+                "uri": "/sap/opu/odata/sap/ZGWVCHR_FERIAS_ESS_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/metadata.xml"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        },
+        "supportedThemes": [
+            "sap_hcb",
+            "sap_belize"
+        ]
+    },
+    "sap.ui5": {
+        "rootView": {
+            "viewName": "com.sap.votorantim.grupoZHCM_FERIAS_VT.view.View1",
+            "type": "XML"
+        },
+        "dependencies": {
+            "minUI5Version": "1.30.0",
+            "libs": {
+                "sap.ui.core": {},
+                "sap.m": {},
+                "sap.ui.layout": {},
+                "sap.ushell": {},
+                "sap.collaboration": {},
+                "sap.ui.comp": {},
+                "sap.uxap": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "com.sap.votorantim.grupoZHCM_FERIAS_VT.i18n.i18n"
+                }
+            },
+            "ferias_ess": {
+                "type": "sap.ui.model.odata.v2.ODataModel",
+                "settings": {
+                    "defaultOperationMode": "Server",
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Request"
+                },
+                "dataSource": "ZGWVCHR_FERIAS_ESS_SRV",
+                "preload": true
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "controlId": "app",
+                "viewPath": "com.sap.votorantim.grupoZHCM_FERIAS_VT.view",
+                "controlAggregation": "pages"
+            },
+            "targets": {
+                "View1": {
+                    "viewName": "View1"
+                },
+                "View2": {
+                    "viewName": "View2"
+                }
+            },
+            "routes": [
+                {
+                    "pattern": "",
+                    "name": "View1",
+                    "target": "View1"
+                },
+                {
+                    "pattern": "View2",
+                    "name": "View2",
+                    "target": "View2"
+                }
+            ]
+        }
+    },
+    "sap.platform.abap": {
+        "uri": "/sap/bc/ui5_ui5/sap/zvcrh_feriasess",
+        "_version": "1.1.0"
+    }
+}

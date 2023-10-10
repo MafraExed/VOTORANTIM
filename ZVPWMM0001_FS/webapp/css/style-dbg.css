@@ -1,0 +1,17 @@
+/* Enter your custom styles here */
+
+.cust {
+    border: none !important;
+}
+
+.sapMLIB {
+    border: none;
+}
+
+.sapMPanelContent:not(.sapMPanelBGTransparent {
+    border: none;
+}
+
+.blueIcon: before {
+   color: #130FB6 !important;
+}

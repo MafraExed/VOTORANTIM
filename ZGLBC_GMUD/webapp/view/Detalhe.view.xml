@@ -1,0 +1,155 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="Charm.controller.Detalhe"
+	xmlns:html="http://www.w3.org/1999/xhtml" id="Detalhe">
+	<App>
+		<pages>
+			<Page title="{dadosGerais>/TipoMudanca} {dadosGerais>/Mudanca}" showNavButton="true" backgroundDesign="Solid" navButtonPress="onBack">
+				<headerContent>
+					<!--<core:Icon id="idIconEditExib" src="sap-icon://edit" color="Black" class="sapUiSmallMarginEnd sapUiSmallMarginTop" size="35px" noTabStop="true" press="onExibEdit"/>-->
+					<!--<Button id="btnEditExib" text="Editar" type="Emphasized" press="onExibEdit" class="detalhe__btnEdit"/>-->
+					
+				</headerContent>
+				<subHeader>
+					<Toolbar>
+						<content>
+							<HBox width="100%" justifyContent="Center">
+								<Label text="{dadosGerais>/Status}" class="detalhe__header__desc__status sapUiTinyMarginEnd"/>
+							</HBox>	
+						</content>
+					</Toolbar>
+				</subHeader>
+				<content>
+					<HBox class="detalhe__header" justifyContent="Center">
+						<Label text="{dadosGerais>/Descricao}"   class="detalhe__header__desc"/>
+					</HBox>
+					<Panel id="idPanelDadosGerais" expandable="true" expanded="false" headerText="Dados Gerais" width="auto" class="sapUiResponsiveMargin">
+						<content>
+							<VBox>
+								<!--<HBox justifyContent="Center" width="100%" wrap="Wrap">-->
+			<!--						<HBox justifyContent="Center" class="detalhe__item__status__bck  sapUiSmallMarginBottom" alignContent="Center" alignItems="Center">
+										<Label text="{dadosGerais>/Status}" class="detalhe__item__status"/>
+									</HBox>-->
+									<HBox>
+										<Label text="Solicitante:" class="detalhe__item__titulo sapUiTinyMarginEnd sapUiTinyMarginBottom"/>
+										<Label text="{dadosGerais>/CriadoPor}" class="detalhe__item__valor"/>
+									</HBox>
+									<HBox>
+										<Label text="Ciclo:" class="detalhe__item__titulo sapUiTinyMarginEnd sapUiTinyMarginBottom"/>
+										<Label text="{dadosGerais>/Ciclo}" class="detalhe__item__valor"/>
+									</HBox>
+									<HBox>
+										<Label text="Tipo doc. Origem:" class="detalhe__item__titulo sapUiTinyMarginEnd sapUiTinyMarginBottom"/>
+										<Label text="{dadosGerais>/TipoDocOrigem}" class="detalhe__item__valor"/>
+									</HBox>
+									<HBox>
+										<Label text="Documento Origem:" class="detalhe__item__titulo sapUiTinyMarginEnd sapUiSmallMarginBottom"/>
+										<Label text="{dadosGerais>/DocumentoOrigem}" class="detalhe__item__valor"/>
+									</HBox>
+									<HBox>
+										<Label text="Categoria:" class="detalhe__item__titulo sapUiTinyMarginEnd sapUiSmallMarginBottom"/>
+										<Label text="{dadosGerais>/Categ1} > {dadosGerais>/Categ2} > {dadosGerais>/Categ3}" class="detalhe__item__valor"/>
+									</HBox>
+<!--								<HBox justifyContent="Center">
+										<VBox width="70%" class="detalhe__item__categoria" alignContent="Start" alignItems="Start">
+											<Label text="Categoria:" class="detalhe__item__categoria__label" />
+											<VBox width="100%" alignContent="Center" alignItems="Center">
+												<Label text="{dadosGerais>/Categ1}" class="detalhe__item__valor"/>
+												<Label text="{dadosGerais>/Categ2}" class="detalhe__item__valor"/>
+												<Label text="{dadosGerais>/Categ3}" class="detalhe__item__valor"/>
+											</VBox>
+										</VBox>
+									</HBox>-->
+								<!--</HBox>-->
+							</VBox>
+						</content>
+					</Panel>
+					<Panel id="idPanelTexto" expandable="true" expanded="false" headerText="Texto" width="auto" class="sapUiResponsiveMargin">
+						<content>
+						<FormattedText id="idText" htmlText="{/HTML}" />
+						</content>
+					</Panel>
+					<Panel id="idPanelTransportes" expandable="true" expanded="false" headerText="Gestão de Transportes" width="auto" class="sapUiResponsiveMargin">
+						<infoToolbar>
+							<Toolbar>
+								<content>
+									<Button text="Exibir todos os objetos" type="Emphasized" press="onExibeTodosObjetos"/>	
+								</content>
+							</Toolbar>
+						</infoToolbar>
+						<content>
+							<List items="{path: 'dadosGerais>/dadosGeraisToRequest/results/'}"  mode="None"  showSeparators="None" class="item__list">
+								<CustomListItem  type="Active" press="handleRequestSelected" >
+									<VBox width="100%" justifyContent="Center" alignContent="Center" alignItems="Center" class="detalhe__transportes sapUiSmallMargingBottom" >
+										<HBox width="100%">
+											<HBox width="30%" justifyContent="Start" alignContent="Center" alignItems="Center">
+												<core:Icon src="{= ${dadosGerais>Liberado} === '@DF@' ? 'sap-icon://arrow-down' : 'sap-icon://warning2' }" color="{= ${dadosGerais>Liberado} === '@DF@' ? 'green' : 'orange' }" alt="request" class="sapUiTinyMarginEnd"/>
+												<Label text="{dadosGerais>Request}" class="detalhe__request__titulo "/>
+											</HBox>
+											<HBox width="70%" justifyContent="End">
+												<Label text="{dadosGerais>Tipo}" class="detalhe__request__tipo"/>
+											</HBox>
+										</HBox>
+										<HBox width="100%" justifyContent="Start">
+											<Label text="{dadosGerais>Desc}" class="detalhe__item__valor"/>
+										</HBox >
+										<Label text="{dadosGerais>System}" visible="false"/>
+									</VBox>
+								</CustomListItem>
+							</List>
+						</content>
+					</Panel>
+					<Panel id="idPanelAnexos" expandable="true" expanded="false" headerText="Anexos" width="auto" class="sapUiResponsiveMargin">
+						<content>
+							<List items="{path: 'dadosGerais>/dadosGeraisToAnexos/results/'}"  mode="None" class="item__list">
+								<CustomListItem  type="Active">
+									<VBox width="100%" justifyContent="Center" alignContent="Center" alignItems="Center" >
+										<HBox width="100%" justifyContent="Start" class="sapUiTinyMarginTopBottom">
+											<core:Icon src="sap-icon://documents" size="25px" color="#265e96" class="sapUiSmallMarginEnd" alt="anexo"/>
+											<Label text="{dadosGerais>Desc}" class="detalhe__item__valor"/>
+										</HBox>
+									</VBox>
+								</CustomListItem>
+							</List>
+						</content>
+					</Panel>
+					
+				</content>
+			</Page>
+		</pages>
+	</App>
+	
+	<html:div id="idBotaoAcoes" class="botao__acoes" >
+		<HBox id="idHboxAcoes" width="100%" height="100%" justifyContent="Center" alignContent="Center" alignItems="Center" >
+			<Label id="idLabelAcao" text="Ações" class="botao__acoes__label"/>
+		</HBox>
+	</html:div>
+	
+	<html:div class="popover__black popup__disable"/>
+	
+	<html:div class="popover__status popup__disable">
+
+		<HBox class="sapUiMediumMarginTopBottom" justifyContent="Center">
+			<core:Icon src="sap-icon://sys-cancel" color="red" size="65px" press="closeStatusPopover" class="popover__status__items__canc" alt="icon"/>
+		</HBox>	
+
+		<List width="100%" items="{path: 'Acoes>/dadosGeraisToAcoes/results/'}"  mode="None"  showSeparators="None" backgroundDesign="Transparent" class="List__Acoes">
+			<CustomListItem  type="Inactive" >
+				<VBox width="100%" justifyContent="Center" alignContent="Center" alignItems="Center" >
+					<HBox width="90%" class="popover__status__items sapUiMediumMarginBottom" justifyContent="Center">
+					    <Label  text=""   wrapping="true"/>
+						<Button text="{Acoes>Acao}" press="onAcaoSelected" class="sapUiResponsiveMargin"/>
+						<Label  text="{Acoes>Type}" visible="false"/>
+					</HBox>
+				</VBox>
+			</CustomListItem>
+		</List>
+	</html:div>
+	
+	<VBox id="loadingBlack" class="loadingBlack popup__disable"/>
+	<VBox id="loading" class="loading popup__disable">
+		<HBox width="100%" height="100%" justifyContent="Center"  alignItems="Center" class="loading__icon">
+			<html:img src="./images/voto_load_white.gif" width="150px" />
+			<!--<Image src="./images/votorantim_new_logo_white.png"  width="50%"/>-->
+		</HBox>
+	</VBox>
+	
+</mvc:View>

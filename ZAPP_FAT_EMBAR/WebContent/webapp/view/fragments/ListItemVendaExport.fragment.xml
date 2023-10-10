@@ -1,0 +1,193 @@
+<core:FragmentDefinition 
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc" 
+	xmlns:semantic="sap.m.semantic" 
+	xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout" 
+	xmlns:footerbar="sap.ushell.ui.footerbar">
+
+	<Panel width="auto">
+		<headerToolbar>
+			<Toolbar>
+				<Title 
+						id="tableItemVendaExport" 
+						text="{i18n>detailTitleTableVbelnVl}: {VbelnVa}"/>
+				<ToolbarSpacer />
+<!-- 				{detailVendaExportView>/itemListTableVendaExportTitle}  -  -->
+				</Toolbar>
+			</headerToolbar>
+		<content>
+			<Table 
+					id="shipDetailItemVendaExportTable" 
+				  	items="{SalesExportToItems}" 
+				    mode="MultiSelect"
+				    FixedLayout="true"
+				    growing="true"
+				    growingThreshold="10"
+				    growingScrollToLoad="true">
+				
+				<columns>
+					<Column 	width="6rem"
+								minScreenWidth="Tablet"
+								demandPopin="true">
+						<Text text="{i18n>detailItemVendaExportTitleTableVbelnVa}" />
+					</Column>
+					
+					
+					<Column 
+								width="5rem"
+								minScreenWidth="Tablet"
+								demandPopin="true">
+						<Text 
+								text="{i18n>detailItemVendaExportTitleTablePosnrVa}" />
+					</Column>
+					<Column 
+								width="4.5rem" 
+								demandPopin="true">
+						<Text 	
+								text="{i18n>detailTitleTableMaterial}" />
+					</Column>
+					<Column 
+								hAlign="Center"
+								width="3rem" 
+								demandPopin="true">
+						<Text 	
+								text="{i18n>detailItemVendaExportTitleTableWerks}" />
+					</Column>
+					<Column 
+								hAlign="Center"
+								width="4rem" 
+								demandPopin="true">
+						<Text 	
+								text="{i18n>detailItemVendaExportTitleTableLgort}" />
+					</Column>
+					<Column 
+								width="5rem"
+								minScreenWidth="Tablet"
+								
+								demandPopin="true">
+						<Text 
+								text="{i18n>detailTitleTablePeso}" />
+					</Column>
+					<Column 
+								width="5rem"
+								minScreenWidth="Tablet"
+							
+								demandPopin="true">
+						<Text 
+								text="{i18n>detailTitleTableVolumn}" />
+					</Column>
+					<Column 
+								width="7rem"
+								minScreenWidth="Tablet"
+					
+								demandPopin="true">
+						<Text text="{i18n>detailTitleTableNetwr}" />
+					</Column>
+					<Column 
+								width="7rem"
+								minScreenWidth="Tablet"
+							
+								demandPopin="true">
+						<Text 
+								text="{i18n>detailTitleTableVlfrete}" />
+					</Column>	
+					<Column 
+								width="7rem"
+								minScreenWidth="Tablet"
+								
+								demandPopin="true">
+						<Text 
+								text="{i18n>detailTitleTableVlseguro}" />
+					</Column>	
+					<Column 
+								width="5rem"
+								hAlign="Center">
+						<Text 
+								text="{i18n>detailItemVendaExportTitleTablePartner}" />
+					</Column>	
+				</columns>
+				<items>
+					<ColumnListItem>
+					
+						<cells>
+							<Text text="{VbelnVa}" />
+						</cells>
+						
+						<cells>
+							<Text 
+								text="{PosnrVa}" />
+						</cells>
+						<cells>
+							<ObjectNumber
+								number="{Matnr}"
+								unit="{MatnrDsc}"
+								emphasized="false"/>
+						</cells>
+						<cells>
+							<Text 
+								text="{Werks}" />
+						</cells>
+						<cells>
+							<Text 
+								text="{Lgort}" />
+						</cells>
+						<cells>
+							<ObjectNumber		
+								number="{path: 'Weight', formatter:'.formatter.formatNumberBrazil'}"
+								unit="{Unit}" 
+								emphasized="false"/>
+						</cells>
+						<cells>
+							<ObjectNumber number="{path : 'Volum', formatter:'.formatter.formatNumberBrazil', type : 'sap.ui.model.odata.type.String', constraints: {isDigitSequence : true, maxLength : 10}}" 
+										  unit="UN"
+										  emphasized="false"	/>
+						</cells>
+						<cells>
+							<ObjectNumber
+								
+									number="{
+												parts:[{path:'Netwr'},{path:'Waerk'}],
+												type: 'sap.ui.model.type.Currency',
+												formatOptions: {showMeasure: false}
+											}"
+									unit="{Waerk}" 
+									emphasized="false"/>
+						</cells>
+						<cells>
+							<ObjectNumber
+									
+									number="{
+												parts:[{path:'Vlfrete'},{path:'Waerk'}],
+												type: 'sap.ui.model.type.Currency',
+												formatOptions: {showMeasure: false}
+											}"
+									unit="{Waerk}"
+									emphasized="false" />
+						</cells>
+						<cells>
+							<ObjectNumber
+									
+									number="{
+												parts:[{path:'Vlseguro'},{path:'Waerk'}],
+												type: 'sap.ui.model.type.Currency',
+												formatOptions: {showMeasure: false}
+											}"
+									unit="{Waerk}" 
+									emphasized="false"/>
+						</cells>
+						<cells>
+							<Button 
+								    icon="sap-icon://employee"
+									press="onHandlePopoverPartner" 
+									tooltip="{i18n>detailItemVendaExportTitleTablePartner}"/>
+							</cells>
+					</ColumnListItem>
+				</items>
+			
+			</Table>
+	
+		</content>
+	</Panel>
+
+</core:FragmentDefinition>

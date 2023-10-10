@@ -1,0 +1,186 @@
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+	<edmx:Reference Uri="http://docs.oasis-open.org/odata/odata-data-aggregation-ext/v4.0/cs02/vocabularies/Org.OData.Aggregation.V1.xml">
+		<edmx:Include Alias="Aggregation" Namespace="Org.OData.Aggregation.V1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/os/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+		<edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://wiki.scn.sap.com/wiki/download/attachments/448470974/Common.xml?api=v2">
+		<edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://wiki.scn.sap.com/wiki/download/attachments/448470971/Communication.xml?api=v2">
+		<edmx:Include Alias="vCard" Namespace="com.sap.vocabularies.Communication.v1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/os/complete/vocabularies/Org.OData.Core.V1.xml">
+		<edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/os/complete/vocabularies/Org.OData.Measures.V1.xml">
+		<edmx:Include Alias="CQP" Namespace="Org.OData.Measures.V1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://wiki.scn.sap.com/wiki/download/attachments/448470968/UI.xml?api=v2">
+		<edmx:Include Alias="UI" Namespace="com.sap.vocabularies.UI.v1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Authorization.V1.xml">
+		<edmx:Include Alias="Auth" Namespace="Org.OData.Authorization.V1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Validation.V1.xml">
+		<edmx:Include Alias="Validation" Namespace="Org.OData.Validation.V1"/>
+	</edmx:Reference>
+	<edmx:DataServices>
+		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm">
+			<Annotations Target="ZGWCBMM_CONF_CEG_REPARO_SRV.FornecimentoCB">
+				<Annotation Term="UI.SelectionFields">
+					<Collection>
+						<PropertyPath>AvisoEntrega</PropertyPath>
+					</Collection>
+					<Collection>
+						<PropertyPath>Kunnr</PropertyPath>
+					</Collection>
+					<Collection>
+						<PropertyPath>Nfnum</PropertyPath>
+					</Collection>
+					<Collection>
+						<PropertyPath>Series</PropertyPath>
+					</Collection>
+					<Collection>
+						<PropertyPath>QtVolume</PropertyPath>
+					</Collection>
+					<Collection>
+						<PropertyPath>Recdat</PropertyPath>
+					</Collection>
+					<Collection>
+						<PropertyPath>Ebeln</PropertyPath>
+					</Collection>
+				</Annotation>
+				<Annotation Term="UI.LineItem">
+					<Collection>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="AvisoEntrega"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="Kunnr"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="Nfnum"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="QtVolume"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="Recdat"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="ContagemRealizada"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="Multiplos"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="ErroQtdContagem"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="EntrMercRealizada"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="Ebeln"/>
+						</Record>
+					</Collection>
+					<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="ZGWCBMM_CONF_CEG_REPARO_SRV.ZET_CBMM_ACEITE_RESERVACB">
+				<Annotation Term="UI.SelectionFields">
+					<Collection>
+						<PropertyPath>CodAviso</PropertyPath>
+						<!--<PropertyPath>DtCriacao</PropertyPath>-->
+						<PropertyPath>Cliente</PropertyPath>
+						<PropertyPath>Ebelp</PropertyPath>
+						<!--<PropertyPath>Nfe</PropertyPath>-->
+					</Collection>
+				</Annotation>
+				<Annotation Term="UI.LineItem">
+					<Collection>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="CodAviso"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="Cliente"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="Nfe"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="Matnr"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="DtCriacao"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="DescForn"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="Data"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="Hora"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="Login"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="Volume"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="Quantidade"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="Matricula"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="EfetuaEm"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="Ebeln"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="Ebelp"/>
+						</Record>
+					</Collection>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="ZGWCBMM_CONF_CEG_REPARO_SRV.ZET_CBMM_HIST_CONF_CEGAIT">
+				<Annotation Term="UI.LineItem">
+					<Collection>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="CodAviso"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="Cliente"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="Nfe"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="Ebeln"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="Ebelp"/>
+						</Record>
+					</Collection>
+				</Annotation>
+				<!--<Annotation Term="UI.SelectionFields">-->
+				<!--	<Collection>-->
+				<!--		<PropertyPath>CodAviso</PropertyPath>-->
+				<!--		<PropertyPath>Aceite</PropertyPath>-->
+				<!--		<PropertyPath>DtCriacao</PropertyPath>-->
+				<!--		<PropertyPath>Ebeln</PropertyPath>-->
+				<!--	</Collection>-->
+				<!--</Annotation>-->
+			</Annotations>
+			<Annotations Target="ZGWCBMM_CONF_CEG_REPARO_SRV.ZET_CBMM_FORNECIMENTOCB/Recdat">
+				<Annotation Term="Common.IsCalendarDate"/>
+			</Annotations>
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

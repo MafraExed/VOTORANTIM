@@ -1,0 +1,90 @@
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+	<edmx:Reference Uri="/sap/opu/odata/sap/ZGWGLHR_REL_FERI_SRV/$metadata">
+		<edmx:Include Alias="Metadata" Namespace="ZGWGLHR_REL_FERI_SRV"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://wiki.scn.sap.com/wiki/download/attachments/448470974/Common.xml?api=v2">
+		<edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+	</edmx:Reference>
+	<edmx:DataServices>
+		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Y5GL_REL_FERI2.annotation0.ZGWGLHR_REL_FERI_SRV">
+			<Annotations Target="Metadata.ZET_GLHR_REL_FERI_PERU/Pernr">
+				<Annotation Term="Common.ValueList">
+					<Record Type="Common.ValueListType">
+						<PropertyValue Property="CollectionPath" String="ZmatriculaSet"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut">
+									<PropertyValue Property="LocalDataProperty" PropertyPath="Pernr"/>
+									<PropertyValue Property="ValueListProperty" String="Pernr"/>
+								</Record>
+								<Record Type="Common.ValueListParameterDisplayOnly">
+									<PropertyValue Property="ValueListProperty" String="Cname"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="SearchSupported" Bool="true"/>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="Metadata.ZET_GLHR_REL_FERI_PERU/StatusOcu">
+				<Annotation Term="Common.ValueList">
+					<Record Type="Common.ValueListType">
+						<PropertyValue Property="CollectionPath" String="HT529uSet"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut">
+									<PropertyValue Property="LocalDataProperty" PropertyPath="StatusOcu"/>
+									<PropertyValue Property="ValueListProperty" String="Statv"/>
+								</Record>
+								<Record Type="Common.ValueListParameterDisplayOnly">
+									<PropertyValue Property="ValueListProperty" String="Sprsl"/>
+								</Record>
+								<Record Type="Common.ValueListParameterDisplayOnly">
+									<PropertyValue Property="ValueListProperty" String="Statn"/>
+								</Record>
+								<Record Type="Common.ValueListParameterDisplayOnly">
+									<PropertyValue Property="ValueListProperty" String="Statv"/>
+								</Record>
+								<Record Type="Common.ValueListParameterDisplayOnly">
+									<PropertyValue Property="ValueListProperty" String="Text1"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="SearchSupported" Bool="true"/>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="Metadata.ZET_GLHR_REL_FERI_PERU/Bukrs">
+				<Annotation Term="Common.ValueList">
+					<Record Type="Common.ValueListType">
+						<PropertyValue Property="CollectionPath" String="HT001Set"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut">
+									<PropertyValue Property="LocalDataProperty" PropertyPath="Bukrs"/>
+									<PropertyValue Property="ValueListProperty" String="Bukrs"/>
+								</Record>
+								<Record Type="Common.ValueListParameterDisplayOnly">
+									<PropertyValue Property="ValueListProperty" String="Butxt"/>
+								</Record>
+								<Record Type="Common.ValueListParameterDisplayOnly">
+									<PropertyValue Property="ValueListProperty" String="Ort01"/>
+								</Record>
+								<Record Type="Common.ValueListParameterDisplayOnly">
+									<PropertyValue Property="ValueListProperty" String="Waers"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="SearchSupported" Bool="true"/>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="Metadata.HT529u/Sprsl">
+				<Annotation Term="Common.FilterDefaultValue" String="ES"/>
+			</Annotations>
+			<Annotations Target="Metadata.HT529u/Statn">
+				<Annotation Term="Common.FilterDefaultValue" String="2"/>
+			</Annotations>
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

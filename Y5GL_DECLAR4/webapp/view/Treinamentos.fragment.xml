@@ -1,0 +1,21 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog 
+		title="Selecione o treinamento"
+		class="sapUiPopupWithPadding"
+		items="{/ZET_GLHR_GET_TREINAMENTOSSet}"
+		search="onSearch"
+		confirm="onConfirmDocumento"
+		cancel="_handleValueHelpClose"
+		>
+		
+		<StandardListItem
+			
+			iconDensityAware="false"
+			iconInset="false"
+			title="{CodTreina}"
+			description="{DescTreina}"/>
+			
+	</SelectDialog>
+</core:FragmentDefinition>

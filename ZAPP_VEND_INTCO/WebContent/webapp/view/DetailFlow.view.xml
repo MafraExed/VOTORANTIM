@@ -1,0 +1,53 @@
+<mvc:View controllerName="nasa.ui5.vendaIntercompany.controller.DetailFlow" xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic"
+	xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout">
+
+	<semantic:DetailPage id="pageDetailFlow" 
+						 navButtonPress="onNavBack"
+						 class="sapUiContentPadding"
+						 showNavButton="true" 
+						 title="{i18n>detailFlowTitle}"
+						 busy="{detailFlowView>/busy}" 
+						 busyIndicatorDelay="{detailFlowView>/delay}">
+
+		<semantic:content>
+			<Panel width="auto" class="sapUiResponsiveMargin">
+				<core:Fragment fragmentName="nasa.ui5.vendaIntercompany.view.fragments.ProcessFlow" type="XML"/>
+			</Panel>
+		</semantic:content>
+		
+		<semantic:customFooterContent>
+			<Button id="detailFlowButtonMsg" 
+					type="Emphasized"
+					text="{messagePopOver>/count}"  
+					icon="sap-icon://message-popup" 
+					press="onHandleMessagePopover">
+			</Button>
+			<Button 
+					icon="sap-icon://documents"
+					tooltip="{i18n>detailFlowButtonNewDocuments}"
+					press="onHandleNewDocuments" >
+<!-- 					text="{i18n>detailFlowButtonNewDocuments}"> -->
+			</Button>
+			<Button 
+				icon="sap-icon://synchronize" 
+				tooltip="{i18n>detailFlowButtonRefreshDocuments}"
+				press="onHandleRefreshDocuments" 
+				visible="true"
+				>
+
+			</Button>
+			<Button id="detailFlowButtonCancel"
+					icon="sap-icon://inspect-down" 
+					tooltip="{i18n>detailFlowButtonCancelDocuments}" 
+					press="onHandleCancelDocuments"
+					visible="false">
+
+			</Button>
+
+		</semantic:customFooterContent>
+
+	</semantic:DetailPage>
+
+</mvc:View>

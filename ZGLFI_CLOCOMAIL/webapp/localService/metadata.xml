@@ -1,0 +1,432 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZGWGLFI_CLOCO_SRV" xml:lang="pt" sap:schema-version="1">
+			<EntityType Name="ETY_MONITOR_GERAL" sap:content-version="1">
+				<Key><PropertyRef Name="Modelo"/><PropertyRef Name="Instance"/><PropertyRef Name="Hierarquia"/></Key><Property Name="Modelo" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Instance" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Hierarquia" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="OrgId" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Periodo" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Descricao" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="PlanoSelecionado" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><NavigationProperty Name="MonitorToAVANCO" Relationship="ZGWGLFI_CLOCO_SRV.A_MONITOR_AVANCO" FromRole="FromRole_A_MONITOR_AVANCO"
+					ToRole="ToRole_A_MONITOR_AVANCO"/><NavigationProperty Name="MonitorToATIVDPREVISTAS" Relationship="ZGWGLFI_CLOCO_SRV.A_MONITOR_ATIVDPREVISTAS"
+					FromRole="FromRole_A_MONITOR_ATIVDPREVISTAS" ToRole="ToRole_A_MONITOR_ATIVDPREVISTAS"/><NavigationProperty Name="MonitorToFLUXOPROC" Relationship="ZGWGLFI_CLOCO_SRV.A_MONITOR_FLUXOPROC" FromRole="FromRole_A_MONITOR_FLUXOPROC"
+					ToRole="ToRole_A_MONITOR_FLUXOPROC"/><NavigationProperty Name="MonitorToTOP5" Relationship="ZGWGLFI_CLOCO_SRV.A_MONITOR_TOP5" FromRole="FromRole_A_MONITOR_TOP5"
+					ToRole="ToRole_A_MONITOR_TOP5"/><NavigationProperty Name="MonitorToEmpresas" Relationship="ZGWGLFI_CLOCO_SRV.A_MONITOR_EMPRESAS" FromRole="FromRole_A_MONITOR_EMPRESAS"
+					ToRole="ToRole_A_MONITOR_EMPRESAS"/><NavigationProperty Name="MonitorToHierarquia" Relationship="ZGWGLFI_CLOCO_SRV.A_MONITOR_HIERARQUIA"
+					FromRole="FromRole_A_MONITOR_HIERARQUIA" ToRole="ToRole_A_MONITOR_HIERARQUIA"/><NavigationProperty Name="MonitorToFile" Relationship="ZGWGLFI_CLOCO_SRV.A_MONITOR_FILE" FromRole="FromRole_A_MONITOR_FILE"
+					ToRole="ToRole_A_MONITOR_FILE"/><NavigationProperty Name="MonitorToFilenames" Relationship="ZGWGLFI_CLOCO_SRV.A_MONITOR_FILENAMES" FromRole="FromRole_A_MONITOR_FILENAMES"
+					ToRole="ToRole_A_MONITOR_FILENAMES"/><NavigationProperty Name="MonitorToDadosUsuario" Relationship="ZGWGLFI_CLOCO_SRV.A_MONITOR_DADOSUSUARIO"
+					FromRole="FromRole_A_MONITOR_DADOSUSUARIO" ToRole="ToRole_A_MONITOR_DADOSUSUARIO"/><NavigationProperty Name="MonitorToDependencias" Relationship="ZGWGLFI_CLOCO_SRV.A_MONITOR_DEPENDENCIAS"
+					FromRole="FromRole_A_MONITOR_DEPENDENCIAS" ToRole="ToRole_A_MONITOR_DEPENDENCIAS"/></EntityType>
+			<EntityType Name="ETY_AVANCO" sap:content-version="1">
+				<Key><PropertyRef Name="AvancoEnc"/></Key><Property Name="AvancoEnc" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="AvancoPlan" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><NavigationProperty Name="ETY_MONITOR_GERAL" Relationship="ZGWGLFI_CLOCO_SRV.A_MONITOR_AVANCO" FromRole="ToRole_A_MONITOR_AVANCO"
+					ToRole="FromRole_A_MONITOR_AVANCO"/></EntityType>
+			<EntityType Name="ETY_TOP5" sap:content-version="1">
+				<Key><PropertyRef Name="Atividade"/></Key><Property Name="Atividade" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Valor" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Critico" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><NavigationProperty Name="ETY_MONITOR_GERAL" Relationship="ZGWGLFI_CLOCO_SRV.A_MONITOR_TOP5" FromRole="ToRole_A_MONITOR_TOP5"
+					ToRole="FromRole_A_MONITOR_TOP5"/></EntityType>
+			<EntityType Name="ETY_ATIVD_PREVISTAS" sap:content-version="1">
+				<Key><PropertyRef Name="Previstas"/><PropertyRef Name="Atual"/></Key><Property Name="Previstas" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Atual" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><NavigationProperty Name="ETY_MONITOR_GERAL" Relationship="ZGWGLFI_CLOCO_SRV.A_MONITOR_ATIVDPREVISTAS"
+					FromRole="ToRole_A_MONITOR_ATIVDPREVISTAS" ToRole="FromRole_A_MONITOR_ATIVDPREVISTAS"/></EntityType>
+			<EntityType Name="ETY_FLUXO_PROC" sap:content-version="1">
+				<Key><PropertyRef Name="Hierarquia"/></Key><Property Name="Hierarquia" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Valor" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><NavigationProperty Name="ETY_MONITOR_GERAL" Relationship="ZGWGLFI_CLOCO_SRV.A_MONITOR_FLUXOPROC" FromRole="ToRole_A_MONITOR_FLUXOPROC"
+					ToRole="FromRole_A_MONITOR_FLUXOPROC"/></EntityType>
+			<EntityType Name="ETY_DADOS_ITEM" sap:content-version="1">
+				<Key><PropertyRef Name="Profile"/><PropertyRef Name="Instance"/><PropertyRef Name="Item"/></Key><Property Name="Profile" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Instance" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Item" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Parametro" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Status" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Justificativa" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="HierarquiaPasta" sap:content-version="1">
+				<Key><PropertyRef Name="NodeID"/></Key><Property Name="NodeID" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="HierarchyLevel" Type="Edm.Int16" Nullable="false" sap:unicode="false" sap:label="Signed INT2 / int16" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Description" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="ParentNodeID" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="DrillState" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="setupEmail" sap:content-version="1">
+				<Key><PropertyRef Name="Profile"/></Key><Property Name="Mandt" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Mandante" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Kokrs" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Área Cont.Csts."
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Bukrs" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Empresa" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Profile" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="PlanEncerr." sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Node" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="ID nós" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Item" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="ID nós" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Text" Type="Edm.String" Nullable="false" MaxLength="60" sap:unicode="false" sap:label="Texto pasta" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="TipoLb" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Lembrete" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Agend" Type="Edm.Time" Nullable="false" Precision="0" sap:unicode="false" sap:label="Agendamento em horas"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="EmailLb1" Type="Edm.String" Nullable="false" MaxLength="241" sap:unicode="false" sap:label="Endereço do E-mail"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="AssuntoLb" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="Assunto" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="LinhaLb1" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:label="Campo txto compr.255"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="LinhaLb2" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:label="Campo txto compr.255"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="TipoNi" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Atividade Não Iniciada" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="QtdEmailNi" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Qtd Máxima E-mails"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="IntEnvioNi" Type="Edm.Time" Nullable="false" Precision="0" sap:unicode="false" sap:label="Interv Envio (Hrs)"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="EmailNi1" Type="Edm.String" Nullable="false" MaxLength="241" sap:unicode="false" sap:label="Endereço do E-mail"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="AssuntoNi" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="Assunto" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="LinhaNi1" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:label="Campo txto compr.255"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="LinhaNi2" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:label="Campo txto compr.255"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="TipoNe" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Atividade Não Encerrada" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="QtdEmailNe" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Qtd Máxima E-mails"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="IntEnvioNe" Type="Edm.Time" Nullable="false" Precision="0" sap:unicode="false" sap:label="Interv Envio (Hrs)"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="EmailNe1" Type="Edm.String" Nullable="false" MaxLength="241" sap:unicode="false" sap:label="Endereço do E-mail"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="AssuntoNe" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="Assunto" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="LinhaNe1" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:label="Campo txto compr.255"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="LinhaNe2" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:label="Campo txto compr.255"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="TipoAd" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Atividade Disponível" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="EmailAd1" Type="Edm.String" Nullable="false" MaxLength="241" sap:unicode="false" sap:label="Endereço do E-mail"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Assunto" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="Assunto" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="LinhaAd1" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:label="Campo txto compr.255"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="LinhaAd2" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:label="Campo txto compr.255"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><NavigationProperty Name="setupMailToHierarquiaPasta" Relationship="ZGWGLFI_CLOCO_SRV.setupEmail_HierarquiaPasta"
+					FromRole="FromRole_setupEmail_HierarquiaPasta" ToRole="ToRole_setupEmail_HierarquiaPasta"/><NavigationProperty Name="setupMailToSetupEmails" Relationship="ZGWGLFI_CLOCO_SRV.setupEmail_setupEmails"
+					FromRole="FromRole_setupEmail_setupEmails" ToRole="ToRole_setupEmail_setupEmails"/></EntityType>
+			<EntityType Name="ETY_EMPRESAS" sap:content-version="1">
+				<Key><PropertyRef Name="Modelo"/><PropertyRef Name="Instance"/></Key><Property Name="Modelo" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Instance" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Empresa" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="OrgId" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="ETY_HIERARQUIA" sap:content-version="1">
+				<Key><PropertyRef Name="MODELO"/><PropertyRef Name="INSTANCE"/><PropertyRef Name="HIERARQUIA"/></Key><Property Name="MODELO" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="INSTANCE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="HIERARQUIA" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="NO" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="DESC_NO" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="NO_PAI" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="NO_ATIVIDADE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="STATUS" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="RESP_EXEC" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="RESP" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="DATA_INICIO_PLAN" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="HORA_INICIO_PLAN" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="DATA_FIM_PLAN" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="HORA_FIM_PLAN" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="DATA_INICIO" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="HORA_INICIO" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="DATA_FIM" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="HORA_FIM" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="TPTAREFA" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="DESC_TAREFA" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="DURACAO_PLAN" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="DURACAO" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="CRITICO" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="TAREFA_DEP" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="CONTEM_ANEXO" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="ICON_STATUS" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="COLOR_STATUS" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="ATIVIDADE_ATRASADA" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="USUARIO_ATUAL" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="PATH" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="ETY_FILE" m:HasStream="true" sap:content-version="1">
+				<Key><PropertyRef Name="Profile"/><PropertyRef Name="Instance"/><PropertyRef Name="Item"/><PropertyRef Name="FileId"/></Key><Property Name="Profile" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Instance" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Item" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="FileId" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Mimetype" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="ETY_FILENAMES" sap:content-version="1">
+				<Key><PropertyRef Name="Profile"/><PropertyRef Name="Instance"/><PropertyRef Name="Hierarquia"/></Key><Property Name="Profile" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Instance" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Hierarquia" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Filename" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Fileid" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="ETY_DADOS_USUARIO" sap:content-version="1">
+				<Key><PropertyRef Name="Profile"/><PropertyRef Name="Instance"/><PropertyRef Name="Node"/></Key><Property Name="Profile" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Instance" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Node" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Parametro" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Novidade" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="ETY_DEPENDENCIAS" sap:content-version="1">
+				<Key><PropertyRef Name="Profile"/><PropertyRef Name="Instance"/><PropertyRef Name="Item"/></Key><Property Name="Profile" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Instance" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Item" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="fromDataId" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="fromObjectPath" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="toDataId" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="toObjectPath" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="relation_type" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="fromShapeId" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="toShapeId" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="style" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="tooltip" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="guid" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="DadoInicial" sap:content-version="1">
+				<Key><PropertyRef Name="Profile"/><PropertyRef Name="Instance"/><PropertyRef Name="NoAtual"/></Key><Property Name="Profile" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Instance" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="NoAtual" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><NavigationProperty Name="ToPlanos" Relationship="ZGWGLFI_CLOCO_SRV.dadoInicial_Plano" FromRole="FromRole_dadoInicial_Plano"
+					ToRole="ToRole_dadoInicial_Plano"/><NavigationProperty Name="ToPeriodos" Relationship="ZGWGLFI_CLOCO_SRV.dadoInicial_Periodo" FromRole="FromRole_dadoInicial_Periodo"
+					ToRole="ToRole_dadoInicial_Periodo"/><NavigationProperty Name="ToPlanoSelecionado" Relationship="ZGWGLFI_CLOCO_SRV.dadoInicial_planoSelecionado"
+					FromRole="FromRole_dadoInicial_planoSelecionado" ToRole="ToRole_dadoInicial_planoSelecionado"/><NavigationProperty Name="ToHierarquiaPastas" Relationship="ZGWGLFI_CLOCO_SRV.dadoInicial_hierarquiaPasta"
+					FromRole="FromRole_dadoInicial_hierarquiaPasta" ToRole="ToRole_dadoInicial_hierarquiaPasta"/><NavigationProperty Name="ToHierarquiaGantt" Relationship="ZGWGLFI_CLOCO_SRV.dadoInicial_hierarquiaGantt"
+					FromRole="FromRole_dadoInicial_hierarquiaGantt" ToRole="ToRole_dadoInicial_hierarquiaGantt"/><NavigationProperty Name="ToTop5TarefasAtrasadas" Relationship="ZGWGLFI_CLOCO_SRV.dadoInicial_top5TarefaAtrasada"
+					FromRole="FromRole_dadoInicial_top5TarefaAtrasada" ToRole="ToRole_dadoInicial_top5TarefaAtrasada"/><NavigationProperty Name="ToFluxosGerais" Relationship="ZGWGLFI_CLOCO_SRV.dadoInicial_fluxoGeral" FromRole="FromRole_dadoInicial_fluxoGeral"
+					ToRole="ToRole_dadoInicial_fluxoGeral"/><NavigationProperty Name="ToTarefas" Relationship="ZGWGLFI_CLOCO_SRV.dadoInicial_tarefa" FromRole="FromRole_dadoInicial_tarefa"
+					ToRole="ToRole_dadoInicial_tarefa"/></EntityType>
+			<EntityType Name="Plano" sap:content-version="1">
+				<Key><PropertyRef Name="Profile"/><PropertyRef Name="Instance"/></Key><Property Name="Profile" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Instance" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="Periodo" sap:content-version="1">
+				<Key><PropertyRef Name="Instance"/></Key><Property Name="Instance" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="PeriodoDesc" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Data" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="PlanoSelecionado" sap:content-version="1">
+				<Key><PropertyRef Name="Profile"/><PropertyRef Name="Instance"/></Key><Property Name="Profile" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Instance" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Desc" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="GraficoAvanco" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="GraficoAvancoPlan" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="GraficoAtvdConcluida" Type="Edm.Int32" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="GraficoAtvdPrevista" Type="Edm.Int32" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Caminho" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Novidades" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Empresa" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="Top5TarefaAtrasada" sap:content-version="1">
+				<Key><PropertyRef Name="Atividade"/></Key><Property Name="Atividade" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Valor" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Critico" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="FluxoGeral" sap:content-version="1">
+				<Key><PropertyRef Name="NoAtual"/></Key><Property Name="NoAtual" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Valor" Type="Edm.Int32" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Texto" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Caminho" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="NoPai" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="Tarefa" sap:content-version="1">
+				<Key><PropertyRef Name="MODELO"/><PropertyRef Name="INSTANCE"/><PropertyRef Name="HIERARQUIA"/></Key><Property Name="MODELO" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="INSTANCE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="HIERARQUIA" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="NO" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="DESC_NO" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="NO_PAI" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="NO_ATIVIDADE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="STATUS" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="RESP_EXEC" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="RESP" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="DATA_INICIO_PLAN" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="HORA_INICIO_PLAN" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="DATA_FIM_PLAN" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="HORA_FIM_PLAN" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="DATA_INICIO" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="HORA_INICIO" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="DATA_FIM" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="HORA_FIM" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="TPTAREFA" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="DESC_TAREFA" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="DURACAO_PLAN" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="DURACAO" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="CRITICO" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="TAREFA_DEP" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="CONTEM_ANEXO" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="ICON_STATUS" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="COLOR_STATUS" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="ATIVIDADE_ATRASADA" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="USUARIO_ATUAL" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="PATH" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<Association Name="A_MONITOR_ATIVDPREVISTAS" sap:content-version="1"><End Type="ZGWGLFI_CLOCO_SRV.ETY_MONITOR_GERAL" Multiplicity="1" Role="FromRole_A_MONITOR_ATIVDPREVISTAS"/><End Type="ZGWGLFI_CLOCO_SRV.ETY_ATIVD_PREVISTAS" Multiplicity="1" Role="ToRole_A_MONITOR_ATIVDPREVISTAS"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_A_MONITOR_ATIVDPREVISTAS"><PropertyRef Name="Modelo"/><PropertyRef Name="Instance"/><PropertyRef Name="Hierarquia"/></Principal>
+					<Dependent Role="ToRole_A_MONITOR_ATIVDPREVISTAS"><PropertyRef Name="Previstas"/><PropertyRef Name="Previstas"/><PropertyRef Name="Previstas"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="A_MONITOR_FLUXOPROC" sap:content-version="1"><End Type="ZGWGLFI_CLOCO_SRV.ETY_MONITOR_GERAL" Multiplicity="1" Role="FromRole_A_MONITOR_FLUXOPROC"/><End Type="ZGWGLFI_CLOCO_SRV.ETY_FLUXO_PROC" Multiplicity="*" Role="ToRole_A_MONITOR_FLUXOPROC"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_A_MONITOR_FLUXOPROC"><PropertyRef Name="Instance"/><PropertyRef Name="Modelo"/><PropertyRef Name="Hierarquia"/></Principal>
+					<Dependent Role="ToRole_A_MONITOR_FLUXOPROC"><PropertyRef Name="Hierarquia"/><PropertyRef Name="Hierarquia"/><PropertyRef Name="Hierarquia"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="A_MONITOR_TOP5" sap:content-version="1"><End Type="ZGWGLFI_CLOCO_SRV.ETY_MONITOR_GERAL" Multiplicity="1" Role="FromRole_A_MONITOR_TOP5"/><End Type="ZGWGLFI_CLOCO_SRV.ETY_TOP5" Multiplicity="*" Role="ToRole_A_MONITOR_TOP5"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_A_MONITOR_TOP5"><PropertyRef Name="Hierarquia"/><PropertyRef Name="Instance"/><PropertyRef Name="Modelo"/></Principal>
+					<Dependent Role="ToRole_A_MONITOR_TOP5"><PropertyRef Name="Atividade"/><PropertyRef Name="Atividade"/><PropertyRef Name="Atividade"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="A_MONITOR_EMPRESAS" sap:content-version="1"><End Type="ZGWGLFI_CLOCO_SRV.ETY_MONITOR_GERAL" Multiplicity="1" Role="FromRole_A_MONITOR_EMPRESAS"/><End Type="ZGWGLFI_CLOCO_SRV.ETY_EMPRESAS" Multiplicity="*" Role="ToRole_A_MONITOR_EMPRESAS"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_A_MONITOR_EMPRESAS"><PropertyRef Name="Modelo"/><PropertyRef Name="Instance"/><PropertyRef Name="Hierarquia"/></Principal>
+					<Dependent Role="ToRole_A_MONITOR_EMPRESAS"><PropertyRef Name="Modelo"/><PropertyRef Name="Instance"/><PropertyRef Name="Empresa"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="A_MONITOR_HIERARQUIA" sap:content-version="1"><End Type="ZGWGLFI_CLOCO_SRV.ETY_MONITOR_GERAL" Multiplicity="1" Role="FromRole_A_MONITOR_HIERARQUIA"/><End Type="ZGWGLFI_CLOCO_SRV.ETY_HIERARQUIA" Multiplicity="*" Role="ToRole_A_MONITOR_HIERARQUIA"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_A_MONITOR_HIERARQUIA"><PropertyRef Name="Hierarquia"/><PropertyRef Name="Instance"/><PropertyRef Name="Modelo"/></Principal>
+					<Dependent Role="ToRole_A_MONITOR_HIERARQUIA"><PropertyRef Name="HIERARQUIA"/><PropertyRef Name="INSTANCE"/><PropertyRef Name="MODELO"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="A_MONITOR_FILE" sap:content-version="1"><End Type="ZGWGLFI_CLOCO_SRV.ETY_MONITOR_GERAL" Multiplicity="1" Role="FromRole_A_MONITOR_FILE"/><End Type="ZGWGLFI_CLOCO_SRV.ETY_FILE" Multiplicity="*" Role="ToRole_A_MONITOR_FILE"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_A_MONITOR_FILE"><PropertyRef Name="Hierarquia"/><PropertyRef Name="Instance"/><PropertyRef Name="Modelo"/></Principal>
+					<Dependent Role="ToRole_A_MONITOR_FILE"><PropertyRef Name="Item"/><PropertyRef Name="Instance"/><PropertyRef Name="Profile"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="A_MONITOR_FILENAMES" sap:content-version="1"><End Type="ZGWGLFI_CLOCO_SRV.ETY_MONITOR_GERAL" Multiplicity="1" Role="FromRole_A_MONITOR_FILENAMES"/><End Type="ZGWGLFI_CLOCO_SRV.ETY_FILENAMES" Multiplicity="*" Role="ToRole_A_MONITOR_FILENAMES"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_A_MONITOR_FILENAMES"><PropertyRef Name="Hierarquia"/><PropertyRef Name="Instance"/><PropertyRef Name="Modelo"/></Principal>
+					<Dependent Role="ToRole_A_MONITOR_FILENAMES"><PropertyRef Name="Hierarquia"/><PropertyRef Name="Instance"/><PropertyRef Name="Profile"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="A_MONITOR_DADOSUSUARIO" sap:content-version="1"><End Type="ZGWGLFI_CLOCO_SRV.ETY_MONITOR_GERAL" Multiplicity="1" Role="FromRole_A_MONITOR_DADOSUSUARIO"/><End Type="ZGWGLFI_CLOCO_SRV.ETY_DADOS_USUARIO" Multiplicity="1" Role="ToRole_A_MONITOR_DADOSUSUARIO"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_A_MONITOR_DADOSUSUARIO"><PropertyRef Name="Hierarquia"/><PropertyRef Name="Instance"/><PropertyRef Name="Modelo"/></Principal>
+					<Dependent Role="ToRole_A_MONITOR_DADOSUSUARIO"><PropertyRef Name="Node"/><PropertyRef Name="Instance"/><PropertyRef Name="Profile"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="A_MONITOR_DEPENDENCIAS" sap:content-version="1"><End Type="ZGWGLFI_CLOCO_SRV.ETY_MONITOR_GERAL" Multiplicity="1" Role="FromRole_A_MONITOR_DEPENDENCIAS"/><End Type="ZGWGLFI_CLOCO_SRV.ETY_DEPENDENCIAS" Multiplicity="*" Role="ToRole_A_MONITOR_DEPENDENCIAS"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_A_MONITOR_DEPENDENCIAS"><PropertyRef Name="Instance"/><PropertyRef Name="Modelo"/><PropertyRef Name="Hierarquia"/></Principal>
+					<Dependent Role="ToRole_A_MONITOR_DEPENDENCIAS"><PropertyRef Name="Instance"/><PropertyRef Name="Profile"/><PropertyRef Name="Item"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="A_MONITOR_AVANCO" sap:content-version="1"><End Type="ZGWGLFI_CLOCO_SRV.ETY_MONITOR_GERAL" Multiplicity="1" Role="FromRole_A_MONITOR_AVANCO"/><End Type="ZGWGLFI_CLOCO_SRV.ETY_AVANCO" Multiplicity="1" Role="ToRole_A_MONITOR_AVANCO"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_A_MONITOR_AVANCO"><PropertyRef Name="Modelo"/><PropertyRef Name="Hierarquia"/><PropertyRef Name="Instance"/></Principal>
+					<Dependent Role="ToRole_A_MONITOR_AVANCO"><PropertyRef Name="AvancoEnc"/><PropertyRef Name="AvancoEnc"/><PropertyRef Name="AvancoEnc"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="setupEmail_HierarquiaPasta" sap:content-version="1"><End Type="ZGWGLFI_CLOCO_SRV.setupEmail" Multiplicity="1" Role="FromRole_setupEmail_HierarquiaPasta"/><End Type="ZGWGLFI_CLOCO_SRV.HierarquiaPasta" Multiplicity="*" Role="ToRole_setupEmail_HierarquiaPasta"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_setupEmail_HierarquiaPasta"><PropertyRef Name="Profile"/></Principal>
+					<Dependent Role="ToRole_setupEmail_HierarquiaPasta"><PropertyRef Name="NodeID"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="setupEmail_setupEmails" sap:content-version="1"><End Type="ZGWGLFI_CLOCO_SRV.setupEmail" Multiplicity="1" Role="FromRole_setupEmail_setupEmails"/><End Type="ZGWGLFI_CLOCO_SRV.setupEmail" Multiplicity="*" Role="ToRole_setupEmail_setupEmails"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_setupEmail_setupEmails"><PropertyRef Name="Profile"/></Principal>
+					<Dependent Role="ToRole_setupEmail_setupEmails"><PropertyRef Name="Profile"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="dadoInicial_Plano" sap:content-version="1"><End Type="ZGWGLFI_CLOCO_SRV.DadoInicial" Multiplicity="1" Role="FromRole_dadoInicial_Plano"/><End Type="ZGWGLFI_CLOCO_SRV.Plano" Multiplicity="*" Role="ToRole_dadoInicial_Plano"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_dadoInicial_Plano"><PropertyRef Name="Profile"/><PropertyRef Name="Instance"/><PropertyRef Name="NoAtual"/></Principal>
+					<Dependent Role="ToRole_dadoInicial_Plano"><PropertyRef Name="Profile"/><PropertyRef Name="Instance"/><PropertyRef Name="Profile"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="dadoInicial_Periodo" sap:content-version="1"><End Type="ZGWGLFI_CLOCO_SRV.DadoInicial" Multiplicity="1" Role="FromRole_dadoInicial_Periodo"/><End Type="ZGWGLFI_CLOCO_SRV.Periodo" Multiplicity="*" Role="ToRole_dadoInicial_Periodo"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_dadoInicial_Periodo"><PropertyRef Name="Profile"/><PropertyRef Name="Instance"/><PropertyRef Name="NoAtual"/></Principal>
+					<Dependent Role="ToRole_dadoInicial_Periodo"><PropertyRef Name="Instance"/><PropertyRef Name="Instance"/><PropertyRef Name="Instance"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="dadoInicial_planoSelecionado" sap:content-version="1"><End Type="ZGWGLFI_CLOCO_SRV.DadoInicial" Multiplicity="1" Role="FromRole_dadoInicial_planoSelecionado"/><End Type="ZGWGLFI_CLOCO_SRV.PlanoSelecionado" Multiplicity="1" Role="ToRole_dadoInicial_planoSelecionado"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_dadoInicial_planoSelecionado"><PropertyRef Name="NoAtual"/><PropertyRef Name="Instance"/><PropertyRef Name="Profile"/></Principal>
+					<Dependent Role="ToRole_dadoInicial_planoSelecionado"><PropertyRef Name="Instance"/><PropertyRef Name="Instance"/><PropertyRef Name="Profile"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="dadoInicial_hierarquiaPasta" sap:content-version="1"><End Type="ZGWGLFI_CLOCO_SRV.DadoInicial" Multiplicity="1" Role="FromRole_dadoInicial_hierarquiaPasta"/><End Type="ZGWGLFI_CLOCO_SRV.HierarquiaPasta" Multiplicity="*" Role="ToRole_dadoInicial_hierarquiaPasta"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_dadoInicial_hierarquiaPasta"><PropertyRef Name="Instance"/><PropertyRef Name="NoAtual"/><PropertyRef Name="Profile"/></Principal>
+					<Dependent Role="ToRole_dadoInicial_hierarquiaPasta"><PropertyRef Name="NodeID"/><PropertyRef Name="NodeID"/><PropertyRef Name="NodeID"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="dadoInicial_hierarquiaGantt" sap:content-version="1"><End Type="ZGWGLFI_CLOCO_SRV.DadoInicial" Multiplicity="1" Role="FromRole_dadoInicial_hierarquiaGantt"/><End Type="ZGWGLFI_CLOCO_SRV.ETY_HIERARQUIA" Multiplicity="*" Role="ToRole_dadoInicial_hierarquiaGantt"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_dadoInicial_hierarquiaGantt"><PropertyRef Name="Profile"/><PropertyRef Name="NoAtual"/><PropertyRef Name="Instance"/></Principal>
+					<Dependent Role="ToRole_dadoInicial_hierarquiaGantt"><PropertyRef Name="MODELO"/><PropertyRef Name="NO"/><PropertyRef Name="INSTANCE"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="dadoInicial_top5TarefaAtrasada" sap:content-version="1"><End Type="ZGWGLFI_CLOCO_SRV.DadoInicial" Multiplicity="1" Role="FromRole_dadoInicial_top5TarefaAtrasada"/><End Type="ZGWGLFI_CLOCO_SRV.Top5TarefaAtrasada" Multiplicity="*" Role="ToRole_dadoInicial_top5TarefaAtrasada"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_dadoInicial_top5TarefaAtrasada"><PropertyRef Name="NoAtual"/><PropertyRef Name="Profile"/><PropertyRef Name="Instance"/></Principal>
+					<Dependent Role="ToRole_dadoInicial_top5TarefaAtrasada"><PropertyRef Name="Atividade"/><PropertyRef Name="Atividade"/><PropertyRef Name="Atividade"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="dadoInicial_fluxoGeral" sap:content-version="1"><End Type="ZGWGLFI_CLOCO_SRV.DadoInicial" Multiplicity="1" Role="FromRole_dadoInicial_fluxoGeral"/><End Type="ZGWGLFI_CLOCO_SRV.FluxoGeral" Multiplicity="*" Role="ToRole_dadoInicial_fluxoGeral"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_dadoInicial_fluxoGeral"><PropertyRef Name="NoAtual"/><PropertyRef Name="Instance"/><PropertyRef Name="Profile"/></Principal>
+					<Dependent Role="ToRole_dadoInicial_fluxoGeral"><PropertyRef Name="NoAtual"/><PropertyRef Name="NoAtual"/><PropertyRef Name="NoAtual"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="dadoInicial_tarefa" sap:content-version="1"><End Type="ZGWGLFI_CLOCO_SRV.DadoInicial" Multiplicity="1" Role="FromRole_dadoInicial_tarefa"/><End Type="ZGWGLFI_CLOCO_SRV.Tarefa" Multiplicity="*" Role="ToRole_dadoInicial_tarefa"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_dadoInicial_tarefa"><PropertyRef Name="Instance"/><PropertyRef Name="NoAtual"/><PropertyRef Name="Profile"/></Principal>
+					<Dependent Role="ToRole_dadoInicial_tarefa"><PropertyRef Name="INSTANCE"/><PropertyRef Name="NO"/><PropertyRef Name="MODELO"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<EntityContainer Name="ZGWGLFI_CLOCO_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx"><EntitySet Name="ETS_MONITOR_GERAL" EntityType="ZGWGLFI_CLOCO_SRV.ETY_MONITOR_GERAL" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="ETS_AVANCO" EntityType="ZGWGLFI_CLOCO_SRV.ETY_AVANCO" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="ETS_TOP5" EntityType="ZGWGLFI_CLOCO_SRV.ETY_TOP5" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="ETS_ATIVD_PREVISTAS" EntityType="ZGWGLFI_CLOCO_SRV.ETY_ATIVD_PREVISTAS" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="ETS_FLUXO_PROC" EntityType="ZGWGLFI_CLOCO_SRV.ETY_FLUXO_PROC" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="ETS_DADOS_ITEM" EntityType="ZGWGLFI_CLOCO_SRV.ETY_DADOS_ITEM" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="HierarquiaPastas" EntityType="ZGWGLFI_CLOCO_SRV.HierarquiaPasta" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="setupEmails" EntityType="ZGWGLFI_CLOCO_SRV.setupEmail" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="ETS_EMPRESAS" EntityType="ZGWGLFI_CLOCO_SRV.ETY_EMPRESAS" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="ETS_HIERARQUIA" EntityType="ZGWGLFI_CLOCO_SRV.ETY_HIERARQUIA" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="ETS_FILE" EntityType="ZGWGLFI_CLOCO_SRV.ETY_FILE" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="ETS_FILENAMES" EntityType="ZGWGLFI_CLOCO_SRV.ETY_FILENAMES" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="ETS_DADOS_USUARIO" EntityType="ZGWGLFI_CLOCO_SRV.ETY_DADOS_USUARIO" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="ETS_DEPENDENCIAS" EntityType="ZGWGLFI_CLOCO_SRV.ETY_DEPENDENCIAS" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="DadosIniciais" EntityType="ZGWGLFI_CLOCO_SRV.DadoInicial" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="Planos" EntityType="ZGWGLFI_CLOCO_SRV.Plano" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="Periodos" EntityType="ZGWGLFI_CLOCO_SRV.Periodo" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="PlanosSelecionados" EntityType="ZGWGLFI_CLOCO_SRV.PlanoSelecionado" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="Top5TarefasAtrasadas" EntityType="ZGWGLFI_CLOCO_SRV.Top5TarefaAtrasada" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="FluxosGerais" EntityType="ZGWGLFI_CLOCO_SRV.FluxoGeral" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="Tarefas" EntityType="ZGWGLFI_CLOCO_SRV.Tarefa" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+				<AssociationSet Name="dadosIniciais_Periodos" Association="ZGWGLFI_CLOCO_SRV.dadoInicial_Periodo" sap:creatable="false"
+					sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="DadosIniciais" Role="FromRole_dadoInicial_Periodo"/><End EntitySet="Periodos" Role="ToRole_dadoInicial_Periodo"/></AssociationSet>
+				<AssociationSet Name="ASET_MONITOR_FLUXOPROC" Association="ZGWGLFI_CLOCO_SRV.A_MONITOR_FLUXOPROC" sap:creatable="false"
+					sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="ETS_MONITOR_GERAL" Role="FromRole_A_MONITOR_FLUXOPROC"/><End EntitySet="ETS_FLUXO_PROC" Role="ToRole_A_MONITOR_FLUXOPROC"/></AssociationSet>
+				<AssociationSet Name="setupEmails_HierarquiaPastas" Association="ZGWGLFI_CLOCO_SRV.setupEmail_HierarquiaPasta" sap:creatable="false"
+					sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="setupEmails" Role="FromRole_setupEmail_HierarquiaPasta"/><End EntitySet="HierarquiaPastas" Role="ToRole_setupEmail_HierarquiaPasta"/></AssociationSet>
+				<AssociationSet Name="ToPlanoSelecionado" Association="ZGWGLFI_CLOCO_SRV.dadoInicial_planoSelecionado" sap:creatable="false"
+					sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="DadosIniciais" Role="FromRole_dadoInicial_planoSelecionado"/><End EntitySet="PlanosSelecionados" Role="ToRole_dadoInicial_planoSelecionado"/></AssociationSet>
+				<AssociationSet Name="dadosIniciais_hierarquiaGantt" Association="ZGWGLFI_CLOCO_SRV.dadoInicial_hierarquiaGantt" sap:creatable="false"
+					sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="DadosIniciais" Role="FromRole_dadoInicial_hierarquiaGantt"/><End EntitySet="ETS_HIERARQUIA" Role="ToRole_dadoInicial_hierarquiaGantt"/></AssociationSet>
+				<AssociationSet Name="AS_MONITOR_DADOSUSUARIO" Association="ZGWGLFI_CLOCO_SRV.A_MONITOR_DADOSUSUARIO" sap:creatable="false"
+					sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="ETS_MONITOR_GERAL" Role="FromRole_A_MONITOR_DADOSUSUARIO"/><End EntitySet="ETS_DADOS_USUARIO" Role="ToRole_A_MONITOR_DADOSUSUARIO"/></AssociationSet>
+				<AssociationSet Name="dadosIniciais_top5TarefasAtrasadas" Association="ZGWGLFI_CLOCO_SRV.dadoInicial_top5TarefaAtrasada"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="DadosIniciais" Role="FromRole_dadoInicial_top5TarefaAtrasada"/><End EntitySet="Top5TarefasAtrasadas" Role="ToRole_dadoInicial_top5TarefaAtrasada"/></AssociationSet>
+				<AssociationSet Name="dadosIniciais_tarefas" Association="ZGWGLFI_CLOCO_SRV.dadoInicial_tarefa" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="DadosIniciais" Role="FromRole_dadoInicial_tarefa"/><End EntitySet="Tarefas" Role="ToRole_dadoInicial_tarefa"/></AssociationSet>
+				<AssociationSet Name="dadosIniciais_Planos" Association="ZGWGLFI_CLOCO_SRV.dadoInicial_Plano" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="DadosIniciais" Role="FromRole_dadoInicial_Plano"/><End EntitySet="Planos" Role="ToRole_dadoInicial_Plano"/></AssociationSet>
+				<AssociationSet Name="AS_MONITOR_FILE" Association="ZGWGLFI_CLOCO_SRV.A_MONITOR_FILE" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="ETS_MONITOR_GERAL" Role="FromRole_A_MONITOR_FILE"/><End EntitySet="ETS_FILE" Role="ToRole_A_MONITOR_FILE"/></AssociationSet>
+				<AssociationSet Name="AS_MONITOR_HIERARQUIA" Association="ZGWGLFI_CLOCO_SRV.A_MONITOR_HIERARQUIA" sap:creatable="false"
+					sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="ETS_MONITOR_GERAL" Role="FromRole_A_MONITOR_HIERARQUIA"/><End EntitySet="ETS_HIERARQUIA" Role="ToRole_A_MONITOR_HIERARQUIA"/></AssociationSet>
+				<AssociationSet Name="ASET_MONITOR_AVANCO" Association="ZGWGLFI_CLOCO_SRV.A_MONITOR_AVANCO" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="ETS_MONITOR_GERAL" Role="FromRole_A_MONITOR_AVANCO"/><End EntitySet="ETS_AVANCO" Role="ToRole_A_MONITOR_AVANCO"/></AssociationSet>
+				<AssociationSet Name="AS_MONITOR_EMPRESAS" Association="ZGWGLFI_CLOCO_SRV.A_MONITOR_EMPRESAS" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="ETS_MONITOR_GERAL" Role="FromRole_A_MONITOR_EMPRESAS"/><End EntitySet="ETS_EMPRESAS" Role="ToRole_A_MONITOR_EMPRESAS"/></AssociationSet>
+				<AssociationSet Name="AS_MONITOR_DEPENDENCIAS" Association="ZGWGLFI_CLOCO_SRV.A_MONITOR_DEPENDENCIAS" sap:creatable="false"
+					sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="ETS_MONITOR_GERAL" Role="FromRole_A_MONITOR_DEPENDENCIAS"/><End EntitySet="ETS_DEPENDENCIAS" Role="ToRole_A_MONITOR_DEPENDENCIAS"/></AssociationSet>
+				<AssociationSet Name="ASET_MONITOR_ATIVDPREVISTAS" Association="ZGWGLFI_CLOCO_SRV.A_MONITOR_ATIVDPREVISTAS" sap:creatable="false"
+					sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="ETS_MONITOR_GERAL" Role="FromRole_A_MONITOR_ATIVDPREVISTAS"/><End EntitySet="ETS_ATIVD_PREVISTAS" Role="ToRole_A_MONITOR_ATIVDPREVISTAS"/></AssociationSet>
+				<AssociationSet Name="dadosIniciais_hierarquiaPastas" Association="ZGWGLFI_CLOCO_SRV.dadoInicial_hierarquiaPasta" sap:creatable="false"
+					sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="DadosIniciais" Role="FromRole_dadoInicial_hierarquiaPasta"/><End EntitySet="HierarquiaPastas" Role="ToRole_dadoInicial_hierarquiaPasta"/></AssociationSet>
+				<AssociationSet Name="dadosIniciais_fluxosGerais" Association="ZGWGLFI_CLOCO_SRV.dadoInicial_fluxoGeral" sap:creatable="false"
+					sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="DadosIniciais" Role="FromRole_dadoInicial_fluxoGeral"/><End EntitySet="FluxosGerais" Role="ToRole_dadoInicial_fluxoGeral"/></AssociationSet>
+				<AssociationSet Name="AS_MONITOR_FILENAMES" Association="ZGWGLFI_CLOCO_SRV.A_MONITOR_FILENAMES" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="ETS_MONITOR_GERAL" Role="FromRole_A_MONITOR_FILENAMES"/><End EntitySet="ETS_FILENAMES" Role="ToRole_A_MONITOR_FILENAMES"/></AssociationSet>
+				<AssociationSet Name="setupEmail_setupEmails" Association="ZGWGLFI_CLOCO_SRV.setupEmail_setupEmails" sap:creatable="false"
+					sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="setupEmails" Role="FromRole_setupEmail_setupEmails"/><End EntitySet="setupEmails" Role="ToRole_setupEmail_setupEmails"/></AssociationSet>
+				<AssociationSet Name="ASET_MONITOR_TOP5" Association="ZGWGLFI_CLOCO_SRV.A_MONITOR_TOP5" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="ETS_MONITOR_GERAL" Role="FromRole_A_MONITOR_TOP5"/><End EntitySet="ETS_TOP5" Role="ToRole_A_MONITOR_TOP5"/></AssociationSet>
+			</EntityContainer><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/ZGWGLFI_CLOCO_SRV/$metadata"/><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/ZGWGLFI_CLOCO_SRV/$metadata"/></Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

@@ -1,0 +1,19 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog
+	    noDataText="{i18n>NotFound}"
+		title="{i18n>title_Route_Fragment}"
+		class="sapUiPopupWithPadding"
+		items="{path : '/ZET_VCMM_ROTA_IHSet', sort:'Rota'}"
+		search="_handleRouteTypeValueHelpSearch"
+		confirm="_handleRouteTypeValueHelpClose"
+		cancel="_handleRouteTypeValueHelpClose">
+		<StandardListItem
+			iconDensityAware="false"
+			iconInset="false"
+			activeIcon="sap-icon://accept"
+			title="{Descricao}" 
+			description="{Rota}" />
+	</SelectDialog>
+</core:FragmentDefinition>

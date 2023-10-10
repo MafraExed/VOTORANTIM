@@ -1,0 +1,78 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core">
+		<f:SimpleForm 
+			id="HeadOvSimpleForm"
+			layout="ResponsiveGridLayout"
+			editable="true"
+ 			columnsXL="2"
+			columnsL="2"
+			columnsM="2">
+			
+			<f:toolbar>
+				<Toolbar id="HeadOvTitle1">
+					<Title text="{i18n>detailDocumentTitleTabFilterBar}" level="H4" titleStyle="H4"/>
+					<ToolbarSpacer />
+					<Button 
+						id="detailDocumentButtonEdit" 
+						icon="sap-icon://edit" 
+						tooltip="{i18n>detailDocumentsTooltipButtonEdit}" 
+						press="onChangeMode"/>
+				</Toolbar>
+			</f:toolbar>
+			
+			<f:content>	
+				<core:Title id="detailDocumentsTitle1"/>			
+				<Label text="{i18n>detailDocumentsTitleBukrs}" labelFor="detailDocumentBukrsField"/> 
+					<Text id="detailDocumentBukrsField"
+						  text="{dataDocument>/dataHead/Bukrs} {dataDocument>/dataHead/BukrsTxt}" />
+				
+				<Label text="{i18n>detailDocumentsTitleAuart}" labelFor="detailDocumentAuartField"/> 
+				<Text id="detailDocumentAuartField"
+				 	 text="{dataDocument>/dataHead/Auart}" />
+				
+				<Label text="{i18n>detailDocumentsTitleVkorg}" labelFor="detailDocumentVkorgField"/> 
+				<Text id="detailDocumentVkorgField"
+				 	 text="{dataDocument>/dataHead/Vkorg} / {dataDocument>/dataHead/Vtweg} / {dataDocument>/dataHead/Spart}" />
+				
+				<Label text="{i18n>detailDocumentsTitleKunnr}" labelFor="detailDocumentKunnrField"/> 
+				<Text id="detailDocumentKunnrField"
+				 	 text="{dataDocument>/dataHead/Kunnr}" />
+					
+				<Label text="{i18n>detailDocumentsTitleBstkd}" labelFor="detailDocumentBstkdField"/> 
+				<Input 
+					id="detailDocumentBstkdField"
+					editable="{detailDocumentView>/editFields}"
+					required="true"
+					value="{dataDocument>/dataHead/Bstkd}" 
+					maxLength="35" 
+					width="240px"/>
+
+				<core:Title id="detailDocumentsTitle2"/>
+				
+				<Label text="{i18n>detailDocumentsTitleDtBstkd}" labelFor="dadosDtdraft"/> 
+				<DatePicker 
+					id="detailDocumentDtBstkdField"
+					editable="{detailDocumentView>/editFields}"
+					required="true"
+					placeholder="{i18n>detailDocumentsFormatDate}" 
+					value="{path: 'dataDocument>/dataHead/Dtpedido',type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'dd.MM.yyyy', strictParsing: true , UTC: true}}"
+					maxLength="10" 
+					width="120px"/>
+					
+				<Label text="{i18n>detailDocumentsTitleDtFixPrc}" labelFor="detailDocumentDtFixPrcField"/> 
+				<DatePicker 
+					id="detailDocumentDtFixPrcField"
+					editable="{detailDocumentView>/editFields}"
+					required="true"
+					placeholder="{i18n>detailDocumentsFormatDate}" 
+					value="{path: 'dataDocument>/dataHead/Dtfixpreco',type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'dd.MM.yyyy', strictParsing: true , UTC: true}}"
+					maxLength="10" 
+					width="120px"/>
+
+					
+			</f:content>
+		</f:SimpleForm>
+</core:FragmentDefinition>

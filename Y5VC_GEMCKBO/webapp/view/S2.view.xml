@@ -1,0 +1,299 @@
+<mvc:View controllerName="workspace.zcockpit_bo_v3.controller.S2" xmlns:core="sap.ui.core" xmlns="sap.uxap" xmlns:m="sap.m" xmlns:f="sap.f"
+	xmlns:form="sap.ui.layout.form" xmlns:mvc="sap.ui.core.mvc" xmlns:html="http://www.w3.org/1999/xhtml">
+	<ObjectPageLayout id="ObjectPageLayoutIdS2" showTitleInHeaderContent="true" alwaysShowContentHeader="false"
+		preserveHeaderStateOnScroll="false" headerContentPinnable="false" toggleHeaderOnTitleClick="false" isChildPage="true"
+		upperCaseAnchorBar="false" showFooter="true">
+		<headerTitle>
+			<ObjectPageDynamicHeaderTitle id="ObjectHeaderTitleLayoutS2Id">
+				<!--Header Maximizado-->
+				<expandedHeading>
+					<m:Title text="{i18n>title_S1} - { path: 'GE>NumeroBo', formatter: '.myFormatter.shiftLeadingZeros'} / {i18n>title_S2} - { path: 'GE>ItemBo', formatter: '.myFormatter.shiftLeadingZeros'}"
+						wrapping="true" class="sapUiSmallMarginEnd" id="ObjectHeaderTitleS3Id"/>
+				</expandedHeading>
+				<!--Header Minimizado-->
+				<snappedHeading>
+					<m:FlexBox wrap="Wrap" fitContainer="true" alignItems="Center">
+						<m:Title text="{i18n>title_S1} - { path: 'GE>NumeroBo', formatter: '.myFormatter.shiftLeadingZeros'} / {i18n>title_S2} - { path: 'GE>ItemBo', formatter: '.myFormatter.shiftLeadingZeros'}"
+							wrapping="true" class="sapUiSmallMarginEnd"/>
+						<m:ObjectStatus text="{ path: 'GE>Status', formatter: '.myFormatter.statusConverterText'}"
+							icon="{ path: 'GE>Status', formatter: '.myFormatter.statusIconConverter'}"
+							state="{ path: 'GE>Status', formatter: '.myFormatter.statusConverter'}"/>
+					</m:FlexBox>
+				</snappedHeading>
+				<!--Botões de Navegação-->
+				<navigationActions>
+					<m:OverflowToolbarButton id="handleFullScreenS2Id" type="Transparent" icon="sap-icon://full-screen" press="handleFullScreen"
+						tooltip="{i18n>label_handleFullScreen}" visible="{= ${FlexibleColumn>/actionButtonsInfo/endColumn/fullScreen} !== null }"/>
+					<!-- <m:OverflowToolbarButton id="handleExitFullScreenS2Id" type="Transparent" icon="sap-icon://exit-full-screen" press="handleExitFullScreen"
+						tooltip="{i18n>label_handleExitFullScreen}" visible="{= ${FlexibleColumn>/actionButtonsInfo/endColumn/exitFullScreen} !== null }"/> -->
+					<m:OverflowToolbarButton id="handleCloseS2Id" type="Transparent" icon="sap-icon://decline" press="handleClose"
+						tooltip="{i18n>label_handleClose}" visible="{= ${FlexibleColumn>/actionButtonsInfo/endColumn/closeColumn} !== null }"/>
+				</navigationActions>
+				<!--Botões de Edição-->
+				<actions>
+					<m:ToggleButton id="EditButtonId" text="{i18n>label_button_edit}" type="Emphasized" press="onEditToggleButtonPress" visible="true"/>
+				</actions>
+			</ObjectPageDynamicHeaderTitle>
+		</headerTitle>
+		<headerContent>
+			<!--Dados do Header-->
+			<m:FlexBox id="FlexBoxIdS2" wrap="Wrap" fitContainer="true" alignItems="Stretch">
+				<m:VBox id="RequesterVBoxId" justifyContent="Center" class="sapUiSmallMarginEnd">
+					<m:Title id="RequesterTextVBoxId" text="{i18n>label_requester}"/>
+					<m:ObjectNumber id="RequesterObjNumberVBoxId" number="{GE>NomeCrenam}" state="Success"/>
+				</m:VBox>
+				<m:VBox id="StatusVBoxIdS2" justifyContent="Center" class="sapUiSmallMarginEnd sapUiTinyMarginBottom">
+					<m:ObjectStatus text="{ path: 'GE>Status', formatter: '.myFormatter.statusConverterText'}"
+						icon="{ path: 'GE>Status', formatter: '.myFormatter.statusIconConverter'}"
+						state="{ path: 'GE>Status', formatter: '.myFormatter.statusConverter'}"/>
+					<m:ObjectStatus text="{GE>TpItemTxt}" tooltip="{GE>TpItemTxt}" state="{ path: 'GE>TpItem', formatter: '.myFormatter.getTpItemState'}"
+						icon="{ path: 'GE>TpItem', formatter: '.myFormatter.getTpItemIcon'}"/>
+				</m:VBox>
+			</m:FlexBox>
+		</headerContent>
+		<sections>
+			<!--Seções do Menu-->
+			<ObjectPageSection id="ObjectPageSectionInformationId" title="{i18n>label_information}">
+				<subSections>
+					<ObjectPageSubSection id="ObjectPageSubSectionInformationId">
+						<blocks>
+							<form:SimpleForm id="SimpleFormGeneralDataId" maxContainerCols="2" editable="false" layout="ResponsiveGridLayout" emptySpanL="0"
+								emptySpanM="0" columnsL="1" columnsM="1">
+								<form:content>
+									<!--Dados Gerais-->
+									<m:Title id="TitleGeneralDataId" text="{i18n>label_general_data}"/>
+									<m:Label id="LabelIncidentTypeId" text="{i18n>label_incident_type}"/>
+									<m:Input id="InputIncidentTypeId" placeholder="{i18n>label_incident_type}" enabled="true" editable="false" textFormatMode="Key"
+										value="{GE>TipoBo}" description="{GE>Descricao}" valueHelpOnly="true" showSuggestion="false" showValueHelp="true"
+										valueHelpRequest="handleBoTypeValueHelp" fieldWidth="71px" required="true"></m:Input>
+									<m:Label id="LabelResponsibleId" text="{i18n>label_responsible}"/>
+									<m:Text text="{GE>NomeAdminPor}"/>
+									<m:Label id="LabelStatusId" text="{i18n>label_incident_status}"/>
+									<m:Label id="LabelGcatId" text="{i18n>label_gcat}"/>
+									<m:Input id="InputGcatId" placeholder="{i18n>label_gcat}" enabled="true" editable="false" textFormatMode="Key" value="{GE>GestorCategoria}"
+										description="{GE>DescrGcat}" valueHelpOnly="true" showSuggestion="false" showValueHelp="true" valueHelpRequest="handleGCatValueHelp"
+										fieldWidth="71px" required="true" fieldGroupIds="GrpStsAberto"></m:Input>
+									<m:Label id="LabelProcAtualId" text="{i18n>title_Column_Itens_current_processor}"/>
+									<m:Input id="InputProcAtualId" placeholder="{i18n>title_Column_Itens_current_processor}" enabled="true" editable="false"
+										textFormatMode="Key" value="{GE>RespBo}" description="{GE>NomeRespBo}" valueHelpOnly="true" showSuggestion="false" showValueHelp="true"
+										valueHelpRequest="handleProcAtualValueHelp" fieldWidth="71px" required="true" fieldGroupIds="GrpStsAberto"></m:Input>
+									<m:Input id="InputTypeProcAtualId" value="{GE>TpRespBo}" visible="false"/>
+								</form:content>
+							</form:SimpleForm>
+							<form:SimpleForm id="SimpleFormNfeNumberId" maxContainerCols="2" editable="false" layout="ResponsiveGridLayout" labelSpanL="4"
+								labelSpanM="4" emptySpanL="0" emptySpanM="0" columnsL="1" columnsM="1">
+								<form:content>
+									<!--Nota Fiscal-->
+									<m:Title id="TitleNfeNumberId" text="{i18n>label_nf}"/>
+									<m:Label id="LabelNfeNumberId" text="{i18n>label_nfe_number}"/>
+									<m:Text id="TextNfeNumberId" text="{GE>Nfnum} - {GE>Series} "/>
+									<m:Label id="LabelItemId" text="{i18n>label_item_nfe}"/>
+									<m:Text id="InputItemId" visible="true"
+										text="{ path: 'GE>Itmnum', type : 'sap.ui.model.odata.type.String', constraints: { isDigitSequence : true, maxLength : 6 }}"/>
+								</form:content>
+							</form:SimpleForm>
+							<form:SimpleForm id="SimpleFormBoDateId" maxContainerCols="2" editable="false" layout="ResponsiveGridLayout" labelSpanL="12" labelSpanM="12"
+								emptySpanL="0" emptySpanM="0" columnsL="1" columnsM="1">
+								<form:content>
+									<!--Datas-->
+									<m:Title id="TitleBoDateIdS2" text="{i18n>label_dates}"/>
+									<m:Label id="LabelBoCreateDateIdS2" text="{i18n>label_date_open}"/>
+									<m:Text id="TextBoCreateDateIdS2"
+										text="{path: 'GE>Credat', type:'sap.ui.model.type.Date', formatOptions: {style: 'short',strictParsing: true , UTC: true}}"/>
+									<m:Label id="LabelBoModDateIdS23" text="{i18n>label_date_last_modification}"/>
+									<m:Text id="TextBoModDateIdS2"
+										text="{path: 'GE>Chadat', type:'sap.ui.model.type.Date', formatOptions: {style: 'short',strictParsing: true , UTC: true}}"/>
+									<m:Label id="LabelNfeDateId" text="{i18n>label_nfe_date}"/>
+									<m:Text id="TextNfeDateId"
+										text="{path: 'GE>Docdat', type:'sap.ui.model.type.Date', formatOptions: {style: 'short',strictParsing: true , UTC: true}}"/>
+								</form:content>
+							</form:SimpleForm>
+							<form:SimpleForm id="SimpleFormPurchaseOrderId" maxContainerCols="2" editable="false" layout="ResponsiveGridLayout" labelSpanL="12"
+								labelSpanM="12" emptySpanL="0" emptySpanM="0" columnsL="1" columnsM="1">
+								<form:content>
+									<!--Pedido de Compra-->
+									<m:Title id="TitlePurchaseOrderId" text="{i18n>label_purchase_order}"/>
+									<m:Label id="LabelPurchaseOrderId" text="{i18n>label_purchase_order}"/>
+									<m:Input id="InputPurchaseOrderId" type="Number" fieldGroupIds="GrpAvulsoItmEdit" value="{GE>Ebeln}" change="onChangePedComp" editable="false" required="true"/>
+									<m:Label id="LabelPurchaseOrdeItemId" text="{i18n>label_purchase_order_item}"/>
+									<m:Input id="InputPurchaseOrdeItemId" type="Number" fieldGroupIds="GrpAvulsoItmEdit" value="{GE>Ebelp}" change="onChangePedComp" editable="false" required="true"/>
+									<m:Label fieldGroupIds="GrpPedProc" text="{i18n>label_purchase_order_proc}"/>
+									<m:Text fieldGroupIds="GrpPedProc"
+										text="{path: 'GE>EbelnProc', type : 'sap.ui.model.odata.type.String', constraints: { isDigitSequence : true, maxLength : 10 }}"
+										visible="false"/>
+									<m:Label fieldGroupIds="GrpPedProc" text="{i18n>label_purchase_order_item_proc}"/>
+									<m:Text fieldGroupIds="GrpPedProc"
+										text="{path: 'GE>EbelpProc', type : 'sap.ui.model.odata.type.String', constraints: { isDigitSequence : true, maxLength : 6 }}"
+										visible="false"/>
+								</form:content>
+							</form:SimpleForm>
+							<form:SimpleForm id="SimpleFormValuesId" maxContainerCols="2" editable="false" layout="ResponsiveGridLayout" labelSpanL="12" labelSpanM="12"
+								emptySpanL="0" emptySpanM="0" columnsL="1" columnsM="1">
+								<form:content>
+									<!--Valores-->
+									<m:Title id="TitleValuesId" text="{i18n>label_values}"/>
+									<m:Label id="LabelItemValueNfeId" text="{i18n>label_value_nf_item}"/>
+									<m:Text id="TextItemValueNfeId" text="{path: 'GE>VlrTotal', type: 'sap.ui.model.type.Float', formatOptions: {maxFractionDigits: 2}}"/>
+									<m:Label id="LabelItemValueIncidentId" text="{i18n>label_value_incident_item}"/>
+									<m:Text id="TextItemValueIncidentId" text="{path: 'GE>VlrTotalIbo', type: 'sap.ui.model.type.Float', formatOptions: {maxFractionDigits: 2}}"/>
+									<m:Label id="LabelNetPriceId" text="{i18n>label_net_price}"/>
+									<m:Input id="InputNetPriceId" fieldGroupIds="GrpAvulsoItmEdit,GrpAvulsoItmOnly" value="{GE>NetPrice}" type="Number" enabled="true"
+										editable="false" required="true"/>
+								</form:content>
+							</form:SimpleForm>
+							<form:SimpleForm id="SimpleFormDetachedItemId" maxContainerCols="2" editable="false" layout="ResponsiveGridLayout" labelSpanL="12"
+								labelSpanM="12" emptySpanL="0" emptySpanM="0" columnsL="1" columnsM="1">
+								<form:content>
+									<!--Item-->
+									<m:Title id="TitleDetachedItemId" text="{i18n>label_detached_item}"/>
+									<m:Label id="LabelMaterialId" text="{i18n>label_material}"/>
+									<m:Input id="InputMaterialId" fieldGroupIds="GrpAvulsoItmEdit" value="{GE>Matnr}" editable="false" required="true" change="onChangeMaterial"/>
+									<m:Label id="LabelItemDescriptionId" text="{i18n>label_item_description}"/>
+									<m:Text id="TextItemDescriptionId" text="{GE>Maktx}"/>
+									<m:Label id="LabelItemAmountIncidentId" text="{i18n>label_quantity_incident}"/>
+									<m:Input id="InputItemAmountIncidentId" type="Number" fieldGroupIds="GrpAvulsoItmEdit" value="{GE>QuantidadeBo}" description="{GE>Meins}"
+										fieldWidth="20%" editable="false" required="true"/>
+									<m:Label id="LabelTaxCodeId" text="{i18n>label_tax_code}"/>
+									<m:Input id="InputTaxCodeId" fieldGroupIds="GrpAvulsoItmEdit,GrpAvulsoItmOnly" value="{GE>TaxCode}" enabled="true" editable="false"
+										required="true"/>
+								</form:content>
+							</form:SimpleForm>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			<ObjectPageSection id="ObjectPageSectionPedAgrpId" title="{i18n>label_ped_agrp}">
+				<subSections>
+					<ObjectPageSubSection id="ObjectPageSubSectionPedAgrpId">
+						<blocks>
+							<!--Pedidos agrupados-->
+							<m:Table id="PedAgrpTableId" items="{path : 'GE>ZAT_VCMM_BOITEM_TO_BOPED_AGRP'}" mode="MultiSelect">
+								<m:headerToolbar>
+									<m:OverflowToolbar id="otbSubheader">
+										<m:ToolbarSpacer/>
+										<m:Button id="buttonRemovePedAgrp" fieldGroupIds="GrpPedAgrpEdit" icon="sap-icon://delete" tooltip="{i18n>buttom_del_ped_agrp}" press="onRemovePedAgrp"/>
+										<m:Button id="buttonAddPedAgrp" fieldGroupIds="GrpPedAgrpEdit" icon="sap-icon://add" tooltip="{i18n>buttom_add_ped_agrp}" press="onAddPedAgrp"/>
+									</m:OverflowToolbar>
+								</m:headerToolbar>
+								<m:columns>
+									<m:Column hAlign="Begin" demandPopin="true" popinDisplay="Inline">
+										<m:Text text="{i18n>label_purchase_order}"/>
+									</m:Column>
+									<m:Column hAlign="Begin" demandPopin="true" minScreenWidth="Tablet" popinDisplay="Inline">
+										<m:Text text="{i18n>label_purchase_order_item}"/>
+									</m:Column>
+									<m:Column hAlign="Begin" demandPopin="true" minScreenWidth="Tablet" popinDisplay="Inline">
+										<m:Text text="{i18n>label_material}"/>
+									</m:Column>
+									<m:Column hAlign="Begin" demandPopin="true" minScreenWidth="Tablet" popinDisplay="Inline">
+										<m:Text text="{i18n>label_item_description}"/>
+									</m:Column>
+									<m:Column hAlign="Begin" demandPopin="true" minScreenWidth="Tablet" popinDisplay="Inline">
+										<m:Text text="{i18n>label_quantity_incident}"/>
+									</m:Column>
+									<m:Column hAlign="Begin" demandPopin="true" minScreenWidth="Tablet" popinDisplay="Inline">
+										<m:Text text="{i18n>label_unit}"/>
+									</m:Column>
+									<m:Column hAlign="Begin" demandPopin="true" minScreenWidth="Tablet" popinDisplay="Inline">
+										<m:Text text="{i18n>label_vsbed}"/>
+									</m:Column>
+									<m:Column hAlign="Begin" demandPopin="true" minScreenWidth="Tablet" popinDisplay="Inline">
+										<m:Text text="{i18n>label_recebimento}"/>
+									</m:Column>
+								</m:columns>
+								<m:items>
+									<m:ColumnListItem>
+										<m:cells>
+											<m:Input name="InputEbelnAgrpPed" type="Number" fieldGroupIds="GrpPedAgrpEdit" change="onChangePedAgrpKeys" value="{GE>Ebeln}" editable="true" required="true"/>
+										</m:cells>
+										<m:cells>
+											<m:Input name="InputEbelpAgrpPed" type="Number" fieldGroupIds="GrpPedAgrpEdit" change="onChangePedAgrpKeys" value="{GE>Ebelp}" editable="true" required="true"/>
+										</m:cells>
+										<m:cells>
+											<m:Text fieldGroupIds="GrpPedAgrpEdit" text="{GE>Matnr}"/>
+										</m:cells>
+										<m:cells>
+											<m:Text fieldGroupIds="GrpPedAgrpEdit" text="{GE>Txz01}"/>
+										</m:cells>
+										<m:cells>
+											<m:Input type="Number" fieldGroupIds="GrpPedAgrpEdit" value="{GE>Qtde}" editable="true" required="true"/>
+										</m:cells>
+										<m:cells>
+											<m:Input fieldGroupIds="GrpPedAgrpEdit" value="{GE>Unit}" editable="true" required="true"/>
+										</m:cells>
+										<m:cells>
+											<m:Input fieldGroupIds="GrpPedAgrpEdit" value="{GE>Vsbed}" editable="true" required="false"/>
+										</m:cells>
+										<m:cells>
+											<m:Text fieldGroupIds="GrpPedAgrpEdit" text="{GE>Vbeln}"/>
+										</m:cells>
+									</m:ColumnListItem>
+								</m:items>
+							</m:Table>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			<ObjectPageSection id="ObjectPageSectionHistoricId" title="{i18n>label_historic}">
+				<subSections>
+					<ObjectPageSubSection id="ObjectPageSubSectionHistoricId">
+						<blocks>
+							<!--Histórico-->
+							<m:VBox id="OccurrencesVBoxIdS2" justifyContent="Center" class="sapUiSmallMarginEnd">
+								<m:FeedInput id="FeedInputItemHist" post="onPost" showIcon="false" class="sapUiSmallMarginTopBottom" enabled="true"/>
+								<m:List id="listItemHist" showSeparators="Inner" items="{path :'GE>ZAT_VCMM_BOITEM_TO_BOHIST'}">
+									<m:FeedListItem sender="{GE>NomeUsuario}" text="{GE>Comentario}" showIcon="false" senderActive="false" convertLinksToAnchorTags="All"
+										timestamp="{path: 'GE>Credat', type:'sap.ui.model.type.Date', formatOptions: {style: 'short',strictParsing: true , UTC: true}}"/>
+								</m:List>
+							</m:VBox>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			<ObjectPageSection id="ObjectPageSectionAttachmentsId" title="{i18n>label_attachments}">
+				<subSections>
+					<ObjectPageSubSection id="ObjectPageSubSectionAttachmentsId">
+						<blocks>
+							<!--Anexo-->
+							<m:UploadCollection id="UploadCollection" uploadEnabled="true" maximumFilenameLength="200" maximumFileSize="10" multiple="false"
+								change="onChange" fileSizeExceed="onFileSizeExceed" filenameLengthExceed="onFileLengthExceed" selectionChange="onSelectionChange" typeMissmatch="onTypeMissmatch"
+								uploadComplete="onUploadComplete" beforeUploadStarts="onBeforeUploadStarts" items="{path:'GE>ZAT_VCMM_BOITEM_TO_BOANEXO'}"
+								mode="MultiSelect">
+								<m:toolbar>
+									<m:OverflowToolbar id="myId">
+										<m:Title id="attachmentTitle"/>
+										<m:ToolbarSpacer/>
+										<m:Button id="downloadButton" text="Download" press="onDownloadItem" enabled="false" type="Transparent"/>
+										<m:Button id="delAnexButton" icon="sap-icon://delete" press="onDelAnex" enabled="false" type="Transparent"/>
+										<m:UploadCollectionToolbarPlaceholder/>
+									</m:OverflowToolbar>
+								</m:toolbar>
+								<m:items>
+									<m:UploadCollectionItem documentId="{GE>Guid}" fileName="{GE>FilePath}" mimeType="{GE>MimeType}" enableEdit="false" enableDelete="false"
+										visibleDelete="false" visibleEdit="false" selected="false"></m:UploadCollectionItem>
+								</m:items>
+							</m:UploadCollection>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+		</sections>
+		<footer>
+			<m:OverflowToolbar id="OverflowToolbarId">
+				<m:ToolbarSpacer id="ToolbarSpacerId"/>
+				<m:Button id="ButtonSaveId" icon="sap-icon://save" type="Accept" tooltip="{i18n>label_button_save_item}"
+					text="{i18n>label_button_save_item}" press="onPressSave" enabled="false"/>
+				<m:Button id="EditButtonFinish" icon="sap-icon://complete" tooltip="{i18n>label_button_finish_item}" text="{i18n>label_button_finish_item}"
+					press="onPressFinish" type="Transparent" visible="true" enabled="false"/>
+				<m:Button id="EditButtonLibOpen" icon="sap-icon://accept" tooltip="{i18n>label_button_lib_open}" text="{i18n>label_button_lib_open}"
+					press="onPressLibOpen" type="Transparent" visible="true" enabled="false"/>
+				<m:Button id="EditButtonPed" icon="sap-icon://sales-order" tooltip="{i18n>label_button_gerar_ped}" text="{i18n>label_button_gerar_ped}"
+					press="onGerarPedido" type="Transparent" visible="true" enabled="false"/>
+				<m:Button id="EditButtonLog" icon="sap-icon://discussion-2" tooltip="{i18n>label_button_log_item}" text="{i18n>label_button_log_item}"
+					press="onPressLog" type="Transparent" visible="true" enabled="true"/>
+				<m:Button id="ButtonCancelId" icon="sap-icon://decline" type="Reject" tooltip="{i18n>label_button_cancel_item}"
+					text="{i18n>label_button_cancel_item}" press="onPressCancel" enabled="true"/>
+			</m:OverflowToolbar>
+		</footer>
+	</ObjectPageLayout>
+</mvc:View>

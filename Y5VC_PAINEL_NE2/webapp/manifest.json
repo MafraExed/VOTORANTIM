@@ -1,0 +1,288 @@
+{
+    "_version": "1.12.0",
+    "sap.app": {
+        "id": "Y5VC_PAINEL_NE2.Y5VC_PAINEL_NE2",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "resources": "resources.json",
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/sap/ZGWVCFI_PAINEL_NEGOCIACAO_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/metadata.xml",
+                    "annotations": [
+                        "annotation0"
+                    ]
+                }
+            },
+            "annotation0": {
+                "type": "ODataAnnotation",
+                "uri": "annotation0.xml",
+                "settings": {
+                    "localUri": "annotation0.xml"
+                }
+            }
+        },
+        "sourceTemplate": {
+            "id": "sap.ui.ui5-template-plugin.1worklist",
+            "version": "1.74.1",
+            "toolsId": "a7d38d56-9244-449f-bb9d-8db36b9e0587"
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "sap-icon://task",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "rootView": {
+            "viewName": "Y5VC_PAINEL_NE2.Y5VC_PAINEL_NE2.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "app"
+        },
+        "dependencies": {
+            "minUI5Version": "1.71.4",
+            "libs": {
+                "sap.collaboration": {
+                    "lazy": true
+                },
+                "sap.f": {},
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.ushell": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "Y5VC_PAINEL_NE2.Y5VC_PAINEL_NE2.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay"
+                }
+            },
+            "@i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "uri": "i18n/i18n.properties"
+            }
+        },
+        "services": {
+            "ShellUIService": {
+                "factoryName": "sap.ushell.ui5service.ShellUIService",
+                "lazy": false,
+                "settings": {
+                    "setTitle": "auto"
+                }
+            }
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "viewPath": "Y5VC_PAINEL_NE2.Y5VC_PAINEL_NE2.view",
+                "controlId": "app",
+                "controlAggregation": "pages",
+                "bypassed": {
+                    "target": [
+                        "notFound"
+                    ]
+                },
+                "async": true
+            },
+            "routes": [
+                {
+                    "pattern": "",
+                    "name": "worklist",
+                    "target": [
+                        "worklist"
+                    ]
+                },
+                {
+                    "name": "Items",
+                    "pattern": "ZET_VCFI_HIST_NEGSet/{Fikrs}/{Belnr}/{Bukrs}/{Gjahr}/:Buzei:/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "Items"
+                    ]
+                },
+                {
+                    "name": "ListaClientes",
+                    "pattern": "ZET_VCFI_COD_CLISet/:Kunnr:/:stcd1:/:stcd2:/:kkber:/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "ListaClientes"
+                    ]
+                },
+                {
+                    "name": "EditarContatos",
+                    "pattern": "ZET_VCFI_CONTATO_CLISet/:Kunnr:/:Stcd1:/:Stcd2:/:Kkber:/:Fikrs:/:NivelDet:/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "EditarContatos"
+                    ]
+                },
+                {
+                    "name": "RegContato",
+                    "pattern": "ZET_VCFI_REG_CONTSet/:Kunnr:/:Knkli:/:Stcd1:/:Stcd2:/:Kkber:/:Bukrs:/:Belnr:/:Buzei:/:Gjahr:/:Fikrs:/:Geral:/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "RegContato"
+                    ]
+                },
+                {
+                    "name": "Anexos",
+                    "pattern": "ZET_VCFI_ANEXOSSet/:Fikrs:/:NotaId:/:GjahrNota:/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "Anexos"
+                    ]
+                },
+                {
+                    "name": "Notas",
+                    "pattern": "ZET_VCFI_NOTASSet/:Fikrs:/:Belnr:/:Bukrs:/:Gjahr:/:Buzei:/:Knkli:/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "Notas"
+                    ]
+                },
+                {
+                    "name": "Promessas",
+                    "pattern": "ZET_VCFI_PROMESSASet/{Fikrs}/:Kunnr:/:Knkli:/:NivelDet:/:",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "Promessas"
+                    ]
+                }
+            ],
+            "targets": {
+                "worklist": {
+                    "viewName": "Worklist",
+                    "viewId": "worklist",
+                    "viewLevel": 1,
+                    "title": "{i18n>worklistViewTitle}"
+                },
+                "object": {
+                    "viewName": "Object",
+                    "viewId": "object",
+                    "viewLevel": 2,
+                    "title": "{i18n>objectViewTitle}"
+                },
+                "objectNotFound": {
+                    "viewName": "ObjectNotFound",
+                    "viewId": "objectNotFound"
+                },
+                "notFound": {
+                    "viewName": "NotFound",
+                    "viewId": "notFound"
+                },
+                "Items": {
+                    "viewType": "XML",
+                    "viewName": "Items",
+                    "viewId": "items",
+                    "viewLevel": 2,
+                    "title": "{i18n>ItemsViewTitle}"
+                },
+                "ListaClientes": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewName": "ListaClientes",
+                    "viewLevel": 2,
+                    "viewId": "ListaClientes"
+                },
+                "EditarContatos": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewName": "EditarContatos",
+                    "viewId": "Editarcontatos",
+                    "viewLevel": 2
+                },
+                "RegContato": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewName": "RegContato",
+                    "viewLevel": 2,
+                    "title": "Registro de contato",
+                    "viewId": "RegContato"
+                },
+                "Anexos": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewName": "Anexos",
+                    "title": "Anexos",
+                    "viewId": "Anexos",
+                    "viewLevel": 3
+                },
+                "Notas": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewName": "Notas",
+                    "title": "Notas",
+                    "viewId": "Notas",
+                    "viewLevel": 2
+                },
+                "Promessas": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewName": "Promessas",
+                    "title": "Promessas",
+                    "viewId": "Promessas",
+                    "viewLevel": 2
+                }
+            }
+        },
+        "flexEnabled": true,
+        "resources": {
+            "css": [
+                {
+                    "uri": "./css/layout.css",
+                    "id": ""
+                }
+            ]
+        }
+    },
+    "sap.platform.abap": {
+        "uri": "/sap/bc/ui5_ui5/sap/y5vc_painel_ne2",
+        "_version": "1.1.0"
+    }
+}

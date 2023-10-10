@@ -1,0 +1,95 @@
+<mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.f.semantic" xmlns:tnt="sap.tnt" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" controllerName="ZVCRH_FERIAS_GESTOR.ZVCRH_FERIAS_GESTOR.controller.Detail2">
+	<App id="app">
+		<pages>
+			<Page title="Adicionar Dependetes / Benefícios" backgroundDesign="Solid">
+				<customHeader>
+					<Bar>
+						<contentMiddle>
+							<Button text="Voltar" press="onVoltar" type="Back"/>
+							<Button text="Aprovar" press="onAprov" type="Accept"/>
+							<Button text="Reprovar" press="onReprov" type="Reject"/>
+							<Button text="Alterar" press="onAlter" type="Up" visible="false"/>
+							<Button text="Programar" press="onProgram" type="Emphasized"/>
+						</contentMiddle>
+					</Bar>
+				</customHeader>
+				<content>
+					<f:Form id="FormChange480_12120" editable="true">
+						<f:layout>
+							<f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer>
+								<f:formElements>
+									<f:FormElement>
+										<f:fields>
+											<HBox>
+												<core:Icon src="sap-icon://employee" size="1rem" class="sapUiSmallMargin"/>
+												<Text xmlns="sap.m" text="{Labelferias}" textAlign="Left" textDirection="Inherit"/>
+											</HBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement>
+										<f:fields>
+											<VBox>
+												<Text xmlns="sap.m" text="Nome: {Nome}" textAlign="Left"/>
+												<Text xmlns="sap.m" text="{Labelperiodo}" textAlign="Left"/>
+												<Text xmlns="sap.m" text="Status: {Stfer}" textAlign="Left"/>
+												<items/>
+											</VBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement>
+										<Toolbar width="100%" id="__toolbar1" visible="false">
+											<Button xmlns="sap.m" text="Aprovar" press="onAprov" width="100%" id="IdAprov" type="Accept"/>
+											<Button xmlns="sap.m" text="Reprovar" press="onReprov" width="100%" id="IdReprov" type="Reject"/>
+										</Toolbar>
+									</f:FormElement>
+									<f:FormElement>
+										<f:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout" columnsL="1" backgroundDesign="Solid">
+											<!--Chave BNG-->
+											<Input value="{Begda}" type="Number" id="IdBegda" visible="false"/>
+											<Input value="{Endda}" type="Number" id="IdEndda" visible="false"/>
+											<Input value="{Pernr}" type="Number" id="IdPernr" visible="false"/>
+											<Input value="{Seqnr}" type="Number" id="IdSeqnr" visible="false"/>
+											<!--Chave END-->
+											<!--Campos para Update BNG-->
+											<Input value="{Msg}" type="Number" id="IdMsg" visible="false"/>
+											<Input value="{DiasAbono}" type="Number" id="IdDiasAb" visible="false"/>
+											<Input value="{CodStatus}" type="Number" id="IdCodStts" visible="false"/>
+											<!--Campos para Update END-->
+											<Label text="Início das Férias"/>
+											<Input value="{Begfe}" id="IdBegfe" placeholder="Data de Início de Férias" textAlign="Left" editable="true" type="Date" liveChange="somardatathird"/>
+											<Label text="Dias de Gozo"/>
+											<Input value="{DiasGozo}" maxLength="10" type="Number" id="IdDiasGo" change="somardatafirst" liveChange="somardatathird"/>
+											<Label text="Fim das Férias"/>
+											<Input value="{Endfe}" id="IdEndfe" placeholder="Data de Fim de Férias" width="100%" type="Date" editable="false"/>
+										</f:SimpleForm>
+									</f:FormElement>
+									<f:FormElement>
+											<CheckBox id="IdAbono" selected="{ path: 'Abono', formatter: '.FormatChecked' }" text="Abono" textAlign="Left" select="setabono"/>
+											<CheckBox id="IdPg131" text="Sol. 1ª Parc. 13º" textAlign="Left" selected="{ path: 'Pg131', formatter: '.FormatChecked2' }"/>
+										<!--<CheckBox id="IdAbono" text="Abono" textAlign="Center" select="setabono"/>-->
+										<!--<CheckBox id="IdPg131" text="1ª par. 13° salário" textAlign="Center"/>-->
+										<ObjectStatus text="{Stfer}" id="IdStatus" title="Status" textDirection="Inherit" state="Success"/>
+									</f:FormElement>
+									<f:FormElement>
+										<Toolbar width="100%" id="__toolbar2" visible="false">
+											<Button xmlns="sap.m" text="Alterar" press="onAlt" width="100%" id="IdAlt" type="Emphasized"/>
+											<Button xmlns="sap.m" text="Programar" press="onProg" width="100%" id="IdProg" type="Emphasized"/>
+										</Toolbar>
+									</f:FormElement>
+									<f:FormElement>
+										<Toolbar width="100%" id="__toolbar3" visible="false">
+											<Button xmlns="sap.m" text="Voltar" press="onVoltar" width="100%" id="IdVoltarbtn" type="Default"/>
+										</Toolbar>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

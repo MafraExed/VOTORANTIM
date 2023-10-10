@@ -1,0 +1,112 @@
+{
+    "resources": [
+        {
+            "name": "Component.js"
+        },
+        {
+            "name": "css/style.css"
+        },
+        {
+            "name": "neo-app.json"
+        },
+        {
+            "name": "view/App.view.xml"
+        },
+        {
+            "name": "view/ObjectNotFound.view.xml"
+        },
+        {
+            "name": "view/Worklist.view.xml"
+        },
+        {
+            "name": "view/Object.view.xml"
+        },
+        {
+            "name": "view/NotFound.view.xml"
+        },
+        {
+            "name": "view/FichaRisco.view.xml"
+        },
+        {
+            "name": "controller/FichaRisco.controller.js"
+        },
+        {
+            "name": "controller/App.controller.js"
+        },
+        {
+            "name": "controller/Worklist.controller.js"
+        },
+        {
+            "name": "controller/BaseController.js"
+        },
+        {
+            "name": "controller/ErrorHandler.js"
+        },
+        {
+            "name": "controller/Object.controller.js"
+        },
+        {
+            "name": "controller/NotFound.controller.js"
+        },
+        {
+            "name": "resources.json",
+            "merged": true
+        },
+        {
+            "name": "Component-preload.js",
+            "merged": true
+        },
+        {
+            "name": "manifest.json"
+        },
+        {
+            "name": "model/formatter.js"
+        },
+        {
+            "name": "model/models.js"
+        },
+        {
+            "name": ".user.project.json"
+        },
+        {
+            "name": "i18n/i18n.properties",
+            "raw": "i18n/i18n.properties"
+        },
+        {
+            "name": "fragment/SearchHelpTipoVisao.fragment.xml"
+        },
+        {
+            "name": "fragment/SearchHelpCatrisco.fragment.xml"
+        },
+        {
+            "name": "fragment/TableRiscos.fragment.xml"
+        },
+        {
+            "name": "fragment/SearchHelpFdrisco.fragment.xml"
+        },
+        {
+            "name": "fragment/SearchHelpOrganizacao.fragment.xml"
+        },
+        {
+            "name": ".project.json"
+        },
+        {
+            "name": "localService/metadata.xml"
+        },
+        {
+            "name": "localService/mockserver.js"
+        },
+        {
+            "name": "image/Impacto.png"
+        },
+        {
+            "name": "image/AnaliseRisco.png"
+        },
+        {
+            "name": "image/Probabilidade.png"
+        },
+        {
+            "name": "image/EsferaImpacto.png"
+        }
+    ]
+}

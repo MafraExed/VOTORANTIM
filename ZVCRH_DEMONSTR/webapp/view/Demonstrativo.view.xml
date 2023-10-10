@@ -1,0 +1,12 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml" controllerName="com.sap.votorantimZHCM_Demonstrativo.controller.Demonstrativo">
+	<App>
+		<pages>
+			<Page title="Demonstrativo de Pagamento" icon="sap-icon://accelerated">
+			<content>
+			    <Image width="140px" height="140px" id="__image0" src="246.png"/>
+			
+			</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

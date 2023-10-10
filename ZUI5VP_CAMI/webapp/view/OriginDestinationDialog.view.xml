@@ -1,0 +1,54 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="FibriaStatusViagem.controller.OriginDestinationDialog" xmlns="sap.m">
+	<Dialog horizontalScrolling="true" showHeader="true" state="None" stretch="false" title="" type="Standard" verticalScrolling="true"
+		contentWidth="60%" afterOpen="onAfterOpen">
+		<content>
+			<List items="{destinations>/}" id="destinationList" mode="SingleSelectMaster" width="100%" headerText="Priority" footerText=""
+				backgroundDesign="Solid" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" visible="true"
+				itemPress="_onDestinationItemPress">
+				<headerToolbar>
+					<Toolbar enabled="true" visible="true" width="" design="Transparent">
+						<content>
+							<SearchField placeholder="Search" showSearchButton="true" visible="true" width="100%" liveChange="_onSearchFieldLiveChange"/>
+						</content>
+					</Toolbar>
+				</headerToolbar>
+				<items>
+					<!--<ActionListItem id="actionItem" text="{composition>Composicao}" visible="true" press="_onActionListItemPress"/>-->
+					<ObjectListItem type="Active" intro="Deposito Destino" title="{destinations>Deposito} - {destinations>DescricaoDeposito}">
+						<tooltip></tooltip>
+						<!-- sap.ui.core.TooltipBase -->
+						<customData></customData>
+						<!-- sap.ui.core.CustomData -->
+						<layoutData></layoutData>
+						<!-- sap.ui.core.LayoutData -->
+						<dependents></dependents>
+						<!-- sap.ui.core.Control -->
+						<attributes>
+							<ObjectAttribute text="Centro Destino: {destinations>CentroDestino} - {destinations>DescricaoCentroDestino}"></ObjectAttribute>
+						</attributes>
+						<!-- sap.m.ObjectAttribute -->
+						<firstStatus>
+							<ObjectStatus text="Centro Origem: {destinations>CentroOrigem}"></ObjectStatus>
+						</firstStatus>
+						<!-- sap.m.ObjectStatus -->
+						<secondStatus></secondStatus>
+						<!-- sap.m.ObjectStatus -->
+					</ObjectListItem>
+				</items>
+			</List>
+		</content>
+		<beginButton/>
+		<buttons/>
+		<customHeader>
+			<Bar>
+				<contentLeft></contentLeft>
+				<contentMiddle>
+					<Text text="Selecione Origem e Destino"></Text>
+				</contentMiddle>
+				<contentRight></contentRight>
+			</Bar>
+		</customHeader>
+		<endButton/>
+		<subHeader/>
+	</Dialog>
+</mvc:View>

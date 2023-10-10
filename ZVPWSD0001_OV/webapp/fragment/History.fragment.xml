@@ -1,0 +1,55 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<ResponsivePopover title="{i18n>TitleHistory}" class="sapUiPopupWithPadding" contentWidth="75%" placement="Left" modal="true" initialFocus="action" verticalScrolling="true">
+		<endButton>
+			<Button id="HistoryClose" text="{i18n>TitleFechar}" press="handleCloseButton"/>
+		</endButton>
+		<content>
+			<Table id="HistoryTable" inset="false" items="{path: 'HistoryView>/History'}">
+				<columns>
+					<Column>
+						<header>
+							<Text text="Processo"/>
+						</header>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true">
+						<header>
+							<Text text="Data"/>
+						</header>
+					</Column>
+					<Column minScreenWidth="Desktop" demandPopin="true">
+						<header>
+							<Text text="Hora"/>
+						</header>
+					</Column>
+					<Column minScreenWidth="Desktop" demandPopin="true" hAlign="Center">
+						<header>
+							<Text text="Cod.Liberação"/>
+						</header>
+					</Column>
+					<Column hAlign="End">
+						<header>
+							<Text text="Titular"/>
+						</header>
+					</Column>
+					<Column hAlign="End">
+						<header>
+							<Text text="Suplente"/>
+						</header>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<Text text="{HistoryView>Processo}"/>
+							<Text text="{HistoryView>Date}"/>
+							<Text text="{HistoryView>Time}"/>
+							<Text text="{HistoryView>Relcode}"/>
+							<Text text="{HistoryView>Userlib}"/>
+							<Text text="{HistoryView>UserlibSubst}"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+	</ResponsivePopover>
+</core:FragmentDefinition>

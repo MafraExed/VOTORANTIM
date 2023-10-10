@@ -1,0 +1,5 @@
+<mvc:View controllerName="com.sap.dashboardappDashboardApp.controller.App" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc"
+	displayBlock="true" xmlns="sap.m">
+	<SplitApp id="rootControl" visible="true"></SplitApp>
+	<App id="App" visible="false"></App>
+</mvc:View>

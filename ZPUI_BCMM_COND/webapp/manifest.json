@@ -1,0 +1,312 @@
+{
+    "_version": "1.9.0",
+    "sap.app": {
+        "id": "ZPUI_BCMM_COND.ZPUI_BCMM_COND",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/sap/ZGWCBMM_CONTRATACAO_FRETE_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/metadata.xml"
+                }
+            }
+        },
+        "sourceTemplate": {
+            "id": "sap.ui.ui5-template-plugin.2masterdetail",
+            "version": "1.52.7",
+            "toolsId": "c0c2b0e1-bfc1-456c-9880-c68dbc7efa19"
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "sap-icon://detail-view",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "rootView": {
+            "viewName": "ZPUI_BCMM_COND.ZPUI_BCMM_COND.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "app"
+        },
+        "dependencies": {
+            "minUI5Version": "1.42.0",
+            "libs": {
+                "sap.ui.core": {},
+                "sap.m": {},
+                "sap.ushell": {},
+                "sap.collaboration": {
+                    "lazy": true
+                }
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "ZPUI_BCMM_COND.ZPUI_BCMM_COND.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true
+            }
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "viewPath": "ZPUI_BCMM_COND.ZPUI_BCMM_COND.view",
+                "controlId": "idAppControl",
+                "controlAggregation": "detailPages",
+                "bypassed": {
+                    "target": [
+                        "master",
+                        "notFound"
+                    ]
+                },
+                "async": true
+            },
+            "routes": [
+                {
+                    "pattern": "",
+                    "name": "master",
+                    "target": [
+                        "object",
+                        "master"
+                    ]
+                },
+                {
+                    "name": "object",
+                    "pattern": "object/{Bukrs}/{IdSolicitacao}/{WerksO}/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "master",
+                        "object"
+                    ]
+                },
+                {
+                    "name": "rota",
+                    "pattern": "rota/{Bukrs}/{WerksO}/{Werks}/{IdSolicitacao}/{IdRota}/{Carteira}/{Modalidade}/{Prioridade}/{Finalidade}/{GrpCompras}/{DtInic}/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "object",
+                        "rota"
+                    ]
+                },
+                {
+                    "name": "addtransp",
+                    "pattern": "addtransp/{Bukrs}/{WerksO}/{IdSolicitacao}/{IdRota}/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "object",
+                        "addtransp"
+                    ]
+                },
+                {
+                    "name": "Back",
+                    "pattern": "back/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "rota"
+                    ]
+                },
+                {
+                    "name": "transpo",
+                    "pattern": "transpo/{Bukrs}/{WerksO}/{IdSolicitacao}/{IdRota}/{NrTransp}/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "object",
+                        "transpo"
+                    ]
+                },
+                {
+                    "name": "addveic",
+                    "pattern": "addveic/{Bukrs}/{WerksO}/{IdSolicitacao}/{IdRota}/{NrTransp}/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "object",
+                        "addveic"
+                    ]
+                },
+                {
+                    "name": "backtranspo",
+                    "pattern": "backtranspo/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "transpo"
+                    ]
+                },
+                {
+                    "name": "backdetail",
+                    "pattern": "backdetail/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "object"
+                    ]
+                },
+                {
+                    "name": "cond",
+                    "pattern": "cond/{Bukrs}/{Werkso}/{Idsolicitacao}/{Idrota}/{Nrtransp}/{Tpveiculo}/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "object",
+                        "cond"
+                    ]
+                },
+                {
+                    "name": "masterRefresh",
+                    "pattern": "masterRefresh/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "object",
+                        "master"
+                    ]
+                }
+            ],
+            "targets": {
+                "master": {
+                    "viewName": "Master",
+                    "viewLevel": 1,
+                    "viewId": "master",
+                    "controlAggregation": "masterPages"
+                },
+                "object": {
+                    "viewName": "Detail",
+                    "viewId": "detail",
+                    "viewLevel": 2,
+                    "transition": "slide"
+                },
+                "detailObjectNotFound": {
+                    "viewName": "DetailObjectNotFound",
+                    "viewId": "detailObjectNotFound"
+                },
+                "detailNoObjectsAvailable": {
+                    "viewName": "DetailNoObjectsAvailable",
+                    "viewId": "detailNoObjectsAvailable"
+                },
+                "notFound": {
+                    "viewName": "NotFound",
+                    "viewId": "notFound"
+                },
+                "rota": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearAggregation": true,
+                    "viewName": "Rota",
+                    "title": "rota",
+                    "viewId": "rota",
+                    "viewLevel": 2
+                },
+                "addtransp": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearAggregation": true,
+                    "viewName": "AddTransp",
+                    "title": "addtransp",
+                    "viewId": "addtransp",
+                    "viewLevel": 2
+                },
+                "Back": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearAggregation": true,
+                    "viewName": "Rota",
+                    "title": "rota",
+                    "viewId": "rota",
+                    "viewLevel": 2
+                },
+                "transpo": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearAggregation": true,
+                    "viewName": "Transpo",
+                    "title": "transpo",
+                    "viewId": "transpo",
+                    "viewLevel": 2
+                },
+                "addveic": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearAggregation": true,
+                    "viewName": "Veiculo",
+                    "title": "veiculo",
+                    "viewId": "veiculo",
+                    "viewLevel": 2
+                },
+                "backtranspo": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearAggregation": true,
+                    "viewName": "Transpo",
+                    "title": "transpo",
+                    "viewId": "transpo",
+                    "viewLevel": 2
+                },
+                "backdetail": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearAggregation": true,
+                    "viewName": "Detail",
+                    "viewId": "detail",
+                    "viewLevel": 2
+                },
+                "cond": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearAggregation": true,
+                    "viewName": "Cond",
+                    "viewLevel": 3,
+                    "viewId": "cond"
+                },
+                "masterRefresh": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewName": "Master",
+                    "title": "Portal de solicitações de frete",
+                    "viewId": "masterRefresh",
+                    "viewLevel": 1,
+                    "controlAggregation": "masterPages"
+                }
+            }
+        }
+    },
+    "sap.platform.abap": {
+        "uri": "/sap/bc/ui5_ui5/sap/zpui_bcmm_cond",
+        "_version": "1.1.0"
+    }
+}

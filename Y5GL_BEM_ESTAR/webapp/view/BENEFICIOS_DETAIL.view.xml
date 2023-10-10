@@ -1,0 +1,535 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.ui.layout.form"
+	xmlns:smartTable="sap.ui.comp.smarttable" controllerName="Y5GL_BEM_ESTAR.Y5GL_BEM_ESTAR.controller.BENEFICIOS_DETAIL"
+	xmlns:table="sap.ui.table" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:u="sap.ui.unified"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	<App id="idAppBeneficios_Detail">
+		<pages id="idPagesBeneficiosDetail">
+			<Page id="idTitle">
+				<customHeader>
+					<Bar id="idBarMaster">
+						<contentLeft>
+							<Button icon="sap-icon://nav-back" id="idB_navback" press="onVoltar" text="Vuelve"/>
+						</contentLeft>
+						<contentMiddle>
+							<Title text="Beneficios" titleStyle="H3" id="idTitleDependentes"/>
+						</contentMiddle>
+						<contentRight>
+							<!--<Button icon="sap-icon://add-process" press="onEdit" text="Editar Plano" id="IdEditDetailDep" tooltip="Editar" type="Transparent"-->
+							<!--	visible="{path:'Status', formatter:'.formatVisibleEditOpcoes'}" iconFirst="false"/>-->
+						</contentRight>
+					</Bar>
+				</customHeader>
+				<content>
+					<HBox width="100%" height="100%" id="idGif" class="Loading" busyIndicatorSize="Auto" backgroundDesign="Solid">
+						<Image src="imagens/loading.gif" width="100%" class="footer_img" id="idimg" backgroundSize="100%"/>
+					</HBox>
+					<Input value="{Bplan}" id="idbPLAN" visible="false"/>
+					<MessageStrip text="Aguardando aprovação CSC" id="idText1" type="Warning" visible="{path:'Status', formatter:'.formatVisibleMsg'}"
+						showCloseButton="false"/>
+					<Input value="{Status}" id="idTipo" visible="false"/>
+					<f:Form class="editableForm" editable="true" id="EMP_CONSIGNADO" visible="{path:'Tipo', formatter:'.formatFalse'}">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_EMP_CONSIGNADO" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12"
+								adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1"
+								singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer_EMP_CONSIGNADO">
+								<f:formElements>
+									<f:FormElement id="FormContainer1_EMP_CONSIGNADO">
+										<f:fields>
+											<Input id="IdPlano_EMP_CONSIGNADO" value="PRESTAMO_PERSONAL"  editable="false"/>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form class="editableForm" editable="true" id="ADELANTO" visible="{path:'Tipo', formatter:'.formatFalse'}">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_ADELANTO" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12"
+								adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1"
+								singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer_ADELANTO">
+								<f:formElements>
+									<f:FormElement id="FormContainer1_ADELANTO">
+										<f:fields>
+											<Input id="IdPlano_ADELANTO" value="ADELANTO_GRATIFICACION_SOLICITUD" editable="false"/>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form class="editableForm" editable="true" id="ADELANTO_SUELDOS" visible="{path:'Tipo', formatter:'.formatFalse'}">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_ADELANTO_SUELDOS" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12"
+								adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1"
+								singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer_ADELANTO_SUELDOS">
+								<f:formElements>
+									<f:FormElement id="FormContainer1_ADELANTO_SUELDOS">
+										<f:fields>
+											<Input id="IdPlano_ADELANTO_SUELDOS" value="ADELANTO_SUELDOS"  editable="false"/>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form class="editableForm" editable="true" id="ASIGNACION" visible="{path:'Tipo', formatter:'.formatFalse'}">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_ASIGNACION" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12"
+								adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1"
+								singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer_ASIGNACION">
+								<f:formElements>
+									<f:FormElement id="FormContainer1_ASIGNACION">
+										<f:fields>
+											<Input id="IdPlano_ASIGNACION" value="ASIGNACION_FALLECIMIENTO" editable="false"/>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form class="editableForm" editable="true" id="ASIGNACION_ESCOLAR" visible="{path:'Tipo', formatter:'.formatFalse'}">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_ASIGNACION_ESCOLAR" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12"
+								adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1"
+								singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer_ASIGNACION_ESCOLAR">
+								<f:formElements>
+									<f:FormElement id="FormContainer1_ASIGNACION_ESCOLAR">
+										<f:fields>
+											<Input id="IdPlano_ASIGNACION_ESCOLAR" value="ASIGNACION_ESCOLAR"  editable="false"/>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form class="editableForm" editable="true" id="AGUINALDO_NAVIDENO" visible="{path:'Tipo', formatter:'.formatFalse'}">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_AGUINALDO_NAVIDENO" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12"
+								adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1"
+								singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer_AGUINALDO_NAVIDENO">
+								<f:formElements>
+									<f:FormElement id="FormContainer1_AGUINALDO_NAVIDENO">
+										<f:fields>
+											<Input id="IdPlano_AGUINALDO_NAVIDENO" value="AGUINALDO_NAVIDEÑO" editable="false"/>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form class="editableForm" editable="true" id="ESTAC_MOVBUS" visible="{path:'Tipo', formatter:'.formatFalse'}">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_ESTAC_MOVBUS" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12"
+								adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1"
+								singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer_ESTAC_MOVBUS">
+								<f:formElements>
+									<f:FormElement label=" Mes de referencia" id="FormContainer1_ESTAC_MOVBUS">
+										<f:fields>
+											<ComboBox id="IdPlano_ESTAC_MOVBUS" selectedKey="{Valor}" required="true" placeholder="Selecione o Mes de referencia"
+												items="{path: '/ZET_GLHR_MESSet'}" change="onchangeParentesco" editable="{path:'Pernr', formatter:'.formatFalse'}">
+												<core:Item key="{Mnr}" text="{Ltx}" id="idKeyParentesco_REEMBOLSO_ESTACIONAM"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label=" Año de referencia" id="FormContainer2_ESTAC_MOVBUS">
+										<f:fields>
+											<ComboBox id="IdAno_ESTAC_MOVBUS" selectedKey="{Valor}" required="true" placeholder="Selecione o Año de referencia"
+												items="{path: '/ZET_GLHR_ANOSet'}" editable="{path:'Pernr', formatter:'.formatFalse'}">
+												<core:Item key="{Gjahr}" text="{Gjahr}" id="idKeyAno_ESTAC_MOVBUS"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement id="TextESTAC_MOVBUS" label="Instruções" visible="{path:'Pernr', formatter:'.formatFalse'}">
+										<f:fields>
+											<Text
+												text="Solicitações realizadas até o dia 15 serão reembolsadas dentro do mês. \n \n Obrigatório anexar o comprovante de pagamento. \n \n Em caso de dúvidas procure seu DHO."
+												id="TextESTAC_MOVBUS_2" class="fundotext"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Ano de referência" id="FormContainer3_REEMBOLSO_ALUGUEL" visible="false">
+										<f:fields>
+											<Input value="{Valor}" id="alug1" editable="false" visible="false"/>
+										</f:fields>
+									</f:FormElement>
+									
+									<f:FormElement label="Ano de referência" id="FormContainer4_REEMBOLSO_ALUGUEL" visible="false">
+										<f:fields>
+											<Input value="" id="idChamado" editable="false" visible="false"/>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form class="editableForm" editable="true" id="LABORAL" visible="{path:'Tipo', formatter:'.formatFalse'}">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_Laboral" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+								emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer_LABORAL">
+								<f:formElements>
+									<f:FormElement label=" Mes de referencia" id="FormContainer1_LABORAL">
+										<f:fields>
+											<ComboBox id="IdPlano_LABORAL" selectedKey="{Valor}" required="true" placeholder="Selecione o Mes de referencia"
+												items="{path: '/ZET_GLHR_MESSet'}" change="onchangeParentesco" editable="{path:'Pernr', formatter:'.formatFalse'}">
+												<core:Item key="{Mnr}" text="{Ltx}" id="idKeyParentesco_LABORAL"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label=" Año de referencia" id="FormContainer2_LABORAL">
+										<f:fields>
+											<ComboBox id="IdAno_LABORAL" selectedKey="{Valor}" required="true" placeholder="Selecione o Año de referencia"
+												items="{path: '/ZET_GLHR_ANOSet'}" editable="{path:'Pernr', formatter:'.formatFalse'}">
+												<core:Item key="{Gjahr}" text="{Gjahr}" id="idKeyAno_LABORAL"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement id="TextLABORAL" label="Instruções" visible="{path:'Pernr', formatter:'.formatFalse'}">
+										<f:fields>
+											<Text
+												text="Solicitações realizadas até o dia 15 serão reembolsadas dentro do mês. \n \n Obrigatório anexar o comprovante de pagamento. \n \n Em caso de dúvidas procure seu DHO."
+												id="TextLABORAL2" class="fundotext"/>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form class="editableForm" editable="true" id="PASAJE" visible="{path:'Tipo', formatter:'.formatFalse'}">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_PASAJE" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+								emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer_PASAJE">
+								<f:formElements>
+									<f:FormElement label=" Mes de referencia" id="FormContainer1_PASAJE">
+										<f:fields>
+											<ComboBox id="IdPlano_PASAJE" selectedKey="{Valor}" required="true" placeholder="Selecione o Mes de referencia"
+												items="{path: '/ZET_GLHR_MESSet'}" change="onchangeParentesco" editable="false">
+												<core:Item key="{Mnr}" text="{Ltx}" id="idKeyParentesco_PASAJE"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label=" Año de referencia" id="FormContainer2_PASAJE">
+										<f:fields>
+											<ComboBox id="IdAno_PASAJE" selectedKey="{Valor}" required="true" placeholder="Selecione o Año de referencia"
+												items="{path: '/ZET_GLHR_ANOSet'}" editable="false">
+												<core:Item key="{Gjahr}" text="{Gjahr}" id="idKeyAno_PASAJE"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement id="TextTransporte" label="Instruções" visible="{path:'Pernr', formatter:'.formatFalse'}">
+										<f:fields>
+											<Text
+												text="PARA ESTA SOLICITAÇÃO IMPRIMA, PREENCHA E ENVIE O FORMULÁRIO EM ANEXO AO DHO CONSULTORIA INTERNA. \n COM O FORMULÁRIO ASSINADO E CARIMBADO PELO DHO CONSULTORIA INTERNA, DIGITALIZE E ANEXE À SOLICITAÇÃO NO PORTAL.\n SERÁ DESCONTADO 6% DO SALÁRIO BASE.\n POR GENTILEZA IMPRIMIR, PREENCHER E DIGITALIZAR SEU FORMULÁRIO E DOCUMENTO NECESSÁRIO, ANEXAR À SOLICITAÇÃO NO PORTAL. "
+												id="TextPlano_3" class="fundotext"/>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form class="editableForm" editable="true" id="REEMBOLSO_CURSOS" visible="{path:'Tipo', formatter:'.formatFalse'}">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_REEMBOLSO_CURSOS" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+								emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer_REEMBOLSO_CURSOS">
+								<f:formElements>
+									<f:FormElement label=" Mes de referencia" id="FormContainer1_REEMBOLSO_CURSOS">
+										<f:fields>
+											<ComboBox id="IdPlano_REEMBOLSO_CURSOS" selectedKey="{Valor}" required="true" placeholder="Selecione o Mes de referencia"
+												items="{path: '/ZET_GLHR_MESSet'}" change="onchangeParentesco" editable="{path:'Pernr', formatter:'.formatFalse'}">
+												<core:Item key="{Mnr}" text="{Ltx}" id="idKeyParentesco_REEMBOLSO_CURSOS"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label=" Año de referencia" id="FormContainer2_REEMBOLSO_CURSOS">
+										<f:fields>
+											<ComboBox id="IdAno_REEMBOLSO_CURSOS" selectedKey="{Valor}" required="true" placeholder="Selecione o Año de referencia"
+												items="{path: '/ZET_GLHR_ANOSet'}" editable="{path:'Pernr', formatter:'.formatFalse'}">
+												<core:Item key="{Gjahr}" text="{Gjahr}" id="idKeyAno_REEMBOLSO_CURSOS"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement id="TextREEMBOLSO_CURSOS" label="Instruções" visible="{path:'Pernr', formatter:'.formatFalse'}">
+										<f:fields>
+											<Text
+												text="Solicitações realizadas até o dia 15 serão reembolsadas dentro do mês. \n \n Obrigatório anexar o comprovante de pagamento. \n \n Em caso de dúvidas procure seu DHO."
+												id="TextREEMBOLSO_CURSOS2" class="fundotext"/>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form class="editableForm" editable="true" id="REEMBOLSO_EXPATRIADO" visible="{path:'Tipo', formatter:'.formatFalse'}">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_REEMBOLSO_EXPATRIADO" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12"
+								adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1"
+								singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer_REEMBOLSO_EXPATRIADO">
+								<f:formElements>
+									<f:FormElement label=" Mes de referencia" id="FormContainer1_REEMBOLSO_EXPATRIADO">
+										<f:fields>
+											<ComboBox id="IdPlano_REEMBOLSO_EXPATRIADO" selectedKey="{Valor}" required="true" placeholder="Selecione o Mes de referencia"
+												items="{path: '/ZET_GLHR_MESSet'}" change="onchangeParentesco" editable="{path:'Pernr', formatter:'.formatFalse'}">
+												<core:Item key="{Mnr}" text="{Ltx}" id="idKeyParentesco_REEMBOLSO_EXPATRIADO"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label=" Año de referencia" id="FormContainer2_REEMBOLSO_EXPATRIADO">
+										<f:fields>
+											<ComboBox id="IdAno_REEMBOLSO_EXPATRIADO" selectedKey="{Valor}" required="true" placeholder="Selecione o Año de referencia"
+												items="{path: '/ZET_GLHR_ANOSet'}" editable="{path:'Pernr', formatter:'.formatFalse'}">
+												<core:Item key="{Gjahr}" text="{Gjahr}" id="idKeyAno_REEMBOLSO_EXPATRIADO"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement id="TextREEMBOLSO_EXPATRIADO" label="Instruções" visible="{path:'Pernr', formatter:'.formatFalse'}">
+										<f:fields>
+											<Text
+												text="Solicitações realizadas até o dia 15 serão reembolsadas dentro do mês. \n \n Obrigatório anexar o comprovante de pagamento. \n \n Em caso de dúvidas procure seu DHO."
+												id="TextREEMBOLSO_EXPATRIADO2" class="fundotext"/>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form class="editableForm" editable="true" id="REEMBOLSO_IDIOMA" visible="{path:'Tipo', formatter:'.formatFalse'}">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_REEMBOLSO_IDIOMA" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+								emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer_REEMBOLSO_IDIOMA">
+								<f:formElements>
+									<f:FormElement label=" Mes de referencia" id="FormContainer1_REEMBOLSO_IDIOMA">
+										<f:fields>
+											<ComboBox id="IdPlano_REEMBOLSO_IDIOMA" selectedKey="{Valor}" required="true" placeholder="Selecione o Mes de referencia"
+												items="{path: '/ZET_GLHR_MESSet'}" change="onchangeParentesco" editable="{path:'Pernr', formatter:'.FormatEditable'}">
+												<core:Item key="{Mnr}" text="{Ltx}" id="idKeyParentesco_REEMBOLSO_IDIOMA"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label=" Año de referencia" id="FormContainer2_REEMBOLSO_IDIOMA">
+										<f:fields>
+											<ComboBox id="IdAno_REEMBOLSO_IDIOMA" selectedKey="{Valor}" required="true" placeholder="Selecione o Año de referencia"
+												items="{path: '/ZET_GLHR_ANOSet'}" editable="{path:'Pernr', formatter:'.FormatEditable'}">
+												<core:Item key="{Gjahr}" text="{Gjahr}" id="idKeyAno_REEMBOLSO_IDIOMA"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement id="TextREEMBOLSO_IDIOMA" label="Instruções" visible="{path:'Pernr', formatter:'.formatFalse'}">
+										<f:fields>
+											<Text
+												text="Solicitações realizadas até o dia 15 serão reembolsadas dentro do mês. \n \n Obrigatório anexar o comprovante de pagamento. \n \n Em caso de dúvidas procure seu DHO."
+												id="TextREEMBOLSO_IDIOMA2" class="fundotext"/>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form class="editableForm" editable="true" id="SEGURO_DE_VIDA" visible="{path:'Tipo', formatter:'.formatFalse'}">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_SEGURO_DE_VIDA" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+								emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer_SEGURO_DE_VIDA">
+								<f:formElements>
+									<f:FormElement label="Plan" id="FormContainer1_SEGURO_DE_VIDA">
+										<f:fields>
+											<ComboBox id="IdPlano_SEGURO_DE_VIDA" selectedKey="{Bplan}" required="true" 
+												items="{path: '/ZET_GLRH_COMBO_PLANOSet', filters: { path: 'Beneficio', operator: 'EQ', value1:'SEGURO_DE_VIDA'}}"
+												change="onchangeParentesco" editable="false">
+												<core:Item key="{Bplan}" text="{Ltext}" id="idKeyParentesco_SEGURO_DE_VIDA"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Opciones" id="FormContainer2_SEGURO_DE_VIDA">
+										<f:fields>
+											<ComboBox id="IdOpcoes_SEGURO_DE_VIDA" selectedKey="{Opcoes}" required="true" 
+												items="{path: '/ZET_GLHR_COMBO_OPCOESSet', filters: [{path:'IBeneficio', operator:'EQ', value1:'SEGURO_DE_VIDA'}]}"
+												change="onchangeOpcoesSeguroVida" editable="false">
+												<core:Item key="{Opcoes}" text="{Ltext}" id="idKeyopcoes_SEGURO_DE_VIDA"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Riesgo" id="FormContainer3_SEGURO_DE_VIDA">
+										<f:fields>
+											<ComboBox id="IdOpcoes_risco" required="true"  editable="true">
+												<core:Item key="01" text="Bajo" id="idKeyopcoes_SEGURO_DE_VIDA_01"/>
+												<core:Item key="02" text="Medio" id="idKeyopcoes_SEGURO_DE_VIDA_02"/>
+												<core:Item key="03" text="Alto" id="idKeyopcoes_SEGURO_DE_VIDA_03"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement id="TextPlano" label="Instruções" visible="{path:'Pernr', formatter:'.formatFalse'}">
+										<f:fields>
+											<Text
+												text="Benefício de seguro de vida em grupo, custo dividido com a empresa. Valores cobrados seguem o seguinte raciocínio: Salário x 24 x 0,01942% / 2 = desconto em folha"
+												id="TextPlano_2" class="fundotext"/>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form class="editableForm" editable="true" id="PLANO_MEDICO" visible="{path:'Tipo', formatter:'.formatFalse'}">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0"
+								emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer">
+								<f:formElements>
+									<f:FormElement id="FormContainer0_PLANO_MEDICO" visible="false">
+										<f:fields>
+											<Text text="{Via2medico}" id="idVia2medico"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Plan" id="FormContainer1_PLANO_MEDICO">
+										<f:fields>
+											<ComboBox id="IdPlano_PLANO_MEDICO" selectedKey="{Bplan}" required="true" 
+												editable="false"
+												items="{path: '/ZET_GLRH_COMBO_PLANOSet', filters: { path: 'Beneficio', operator: 'EQ', value1:'PLANO_MEDICO'}}" change="onchangePlano">
+												<core:Item key="{Bplan}" text="{Ltext}" id="idKeyParentesco_PLANO_MEDICO"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Opción de plan" id="FormContainer2_PLANO_MEDICO">
+										<f:fields>
+											<ComboBox id="IdOpcoes_PLANO_MEDICO" selectedKey="{Opcoes}" required="true" 
+												items="{path: '/ZET_GLHR_COMBO_OPCOESSet', filters: [{path:'IBeneficio', operator:'EQ', value1:'PLANO_MEDICO'}]}"
+												change="onchangeParentesco" editable="false">
+												<core:Item key="{Opcoes}" text="{Ltext}" id="idKeyopcoes_PLANO_MEDICO"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Titular Tarjeta Médica" id="FormContainer3_PLANO_MEDICO">
+										<f:fields>
+											<Input value="{CartMedica}"  editable="false"
+												id="idCartMedica"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement id="FormContainer5_PLANO_MEDICO" visible="false">
+										<smartTable:SmartTable id="smartTable" entitySet="ZET_GLHR_DEP_BENEFICIOSSet" tableType="ResponsiveTable" useExportToExcel="false"
+											useVariantManagement="false" useTablePersonalisation="false" showRowCount="true" persistencyKey="SmartTableRefApp_Explored"
+											enableAutoBinding="true" app:useSmartField="true" class="sapUiResponsiveContentPadding" showFullScreenButton="false"
+											requestAtLeastFields="Zcmedico,Subty,Objps,Fcnam,Zstatus" beforeRebindTable="onbeforeRebindTable" dataReceived="AfterUpdate">
+											<table:Table id="table1"  selectionMode="{path:'Zstatus', formatter:'.FormatSelectionMode'}"
+												visibleRowCount="7" ariaLabelledBy="title">
+												<table:columns>
+													<table:Column width="76%" id="idColumn1">
+														<Label text="Nombre completo" id="idLabel1"/>
+														<table:template>
+															<Text text="{Fcnam}" wrapping="false" id="idText1_"/>
+														</table:template>
+													</table:Column>
+													<table:Column width="20%" id="idColumn2">
+														<Label text="¿Activo?" id="idLabel2"/>
+														<table:template>
+															<Text text="{Zstatus}" wrapping="false" id="idText2_"/>
+														</table:template>
+													</table:Column>
+													<table:Column width="2%" id="idColumn3">
+														<Label text="Acción" id="idLabel3"/>
+														<table:template>
+															<ToggleButton press="onAcao" icon="{path:'Zstatus', formatter:'.FormatIcon'}" visible="false" 
+																type="Transparent" id="b1" pressed="false"/>
+														</table:template>
+													</table:Column>
+												</table:columns>
+											</table:Table>
+											<smartTable:layoutData>
+												<FlexItemData growFactor="1" baseSize="0%" id="idFlexItemData"/>
+											</smartTable:layoutData>
+										</smartTable:SmartTable>
+									</f:FormElement>
+									<f:FormElement id="TextInclusao" label="Instruções" visible="false">
+										<Text
+											text=" \n Documentos Obrigatórios para inclusão: \n \n Para Cônjuge: \n Certidão de casamento \n Escritura pública de união estável \n RG e CPF \n \n Para Filhos/Enteado: \n Certidão de Nascimento \n RG acima de 18 anos \n CPF todas as idades"
+											class="fundotext" id="TextInclusao_2"/>
+									</f:FormElement>
+									<f:FormElement id="TextExclusao" label="Instruções" visible="false">
+										<Text
+											text=" \n Documentos Obrigatorios para exclusão: \n \n Para Conjuge: \n Averbação Dissolução de união estável \n Certidão de óbito \n \n Para Filhos/Enteado: \n Certidão de óbito \n Ordem judicial"
+											class="fundotext" id="TextExclusao_2"/>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form class="editableForm" editable="true" id="UPLOAD" visible="{path:'Status', formatter:'.formatFalse'}">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_UPLOAD" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+								emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer_UPLOAD">
+								<f:formElements>
+									<f:FormElement id="IdonAddDoc" label="{path:'Beneficio', formatter:'.formatUploadCollectionLabel'}">
+										<f:fields>
+											<UploadCollection id="UploadCollection" multiple="false" change="onChange" fileDeleted="onDeleteSelectedItems"
+												beforeUploadStarts="onBeforeUploadStarts" uploadComplete="onuploadComplete" items="{ path: '/ZET_GLRH_UPLOADSet', templateShareable: true }"
+												modelContextChange="onmodelListContextChange" mode="SingleSelectMaster"
+												uploadButtonInvisible="{path:'Status', formatter:'.formatVisiblebButton'}"
+												uploadUrl="/sap/opu/odata/sap/ZGWGLRH_MEU_CADASTRO_SRV/ZET_GLHR_UPFILESet"
+												noDataDescription="Para agregar / cambiar archivos adjuntos, seleccione el botón (+)" noDataText="Esperando nuevas cargas"
+												numberOfAttachmentsText="Archivos adjuntos">
+												<items>
+													<UploadCollectionItem documentId="{DocId}" fileName="{Filename}" mimeType="{Mimetype}"
+														url="/sap/opu/odata/sap/ZGWGLRH_MEU_CADASTRO_SRV/ZET_GLHR_UPFILESet('{Pernr}${Infty}${Subty}$$${Tipo}${Favor}$${Icnum}${Dependentes}${Objps}${DocId}${Valor}${Area}')/$value"
+														enableEdit="false" visibleEdit="false" deletePress="onFileDelete" selected="true"
+														visibleDelete="false"/>
+												</items>
+											</UploadCollection>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+				</content>
+				<footer>
+					<Toolbar id="idOverTollbar" design="Transparent">
+						<ToolbarSpacer id="idToolbarSpacerD"/>
+						<Button press="onSave" text="Aprobar" icon="sap-icon://accept" id="idAprova" tooltip="Aprovar"
+							visible="true" iconFirst="true" type="Accept"/>
+						<Button press="Reprova" text="Desaprobar" icon="sap-icon://decline" id="idReprova" tooltip="Aprovar"
+							visible="true" iconFirst="true" type="Reject"/>
+					</Toolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

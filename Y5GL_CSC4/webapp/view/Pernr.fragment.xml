@@ -1,0 +1,6 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog title="Matriculas" class="sapUiPopupWithPadding" items="{/ZET_GLHR_MATRICULASSet}" search="onSearchMatricula"
+		confirm="ConfirmaMatricula" cancel="_handleValueHelpClose">
+		<StandardListItem iconDensityAware="false" iconInset="false" title="{Pernr}"/>
+	</SelectDialog>
+</core:FragmentDefinition>

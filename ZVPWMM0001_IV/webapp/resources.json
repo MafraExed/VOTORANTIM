@@ -1,0 +1,107 @@
+{
+    "resources": [
+        {
+            "name": "Component-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "Component-preload.js",
+            "merged": true
+        },
+        {
+            "name": "Component.js"
+        },
+        {
+            "name": "controller/App-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/App.controller.js"
+        },
+        {
+            "name": "controller/Default-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/Default.controller.js"
+        },
+        {
+            "name": "controller/Page-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/Page.controller.js"
+        },
+        {
+            "name": "css/style-dbg.css",
+            "isDebug": true
+        },
+        {
+            "name": "css/style.css"
+        },
+        {
+            "name": "di.code-validation.core_issues.json"
+        },
+        {
+            "name": "fragment/BusyDialog.fragment.xml"
+        },
+        {
+            "name": "fragment/BusyDialogRej.fragment.xml"
+        },
+        {
+            "name": "fragment/Grupo.fragment.xml"
+        },
+        {
+            "name": "fragment/History.fragment.xml"
+        },
+        {
+            "name": "i18n/i18n.properties",
+            "raw": "i18n/i18n.properties"
+        },
+        {
+            "name": "i18n/i18n_en.properties",
+            "raw": "i18n/i18n.properties",
+            "locale": "_en"
+        },
+        {
+            "name": "i18n/i18n_pt.properties",
+            "raw": "i18n/i18n.properties",
+            "locale": "_pt"
+        },
+        {
+            "name": "index.html"
+        },
+        {
+            "name": "localService/metadata.xml"
+        },
+        {
+            "name": "manifest.json"
+        },
+        {
+            "name": "model/formatter-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "model/formatter.js"
+        },
+        {
+            "name": "model/models-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "model/models.js"
+        },
+        {
+            "name": "neo-app.json"
+        },
+        {
+            "name": "view/App.view.xml"
+        },
+        {
+            "name": "view/Default.view.xml"
+        },
+        {
+            "name": "view/Page.view.xml"
+        }
+    ]
+}

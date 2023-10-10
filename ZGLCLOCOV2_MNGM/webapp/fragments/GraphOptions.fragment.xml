@@ -1,0 +1,29 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<ResponsivePopover 
+		showHeader="false"
+		id="myPopover"
+		class="sapUiResponsivePadding--content sapUiResponsivePadding--footer"
+		placement="Bottom"
+		initialFocus="myPopover">
+		
+		<VBox>
+		<Button type="Transparent" id="idBtnAddPredGraph" text="Adicionar Tarefa Predecessora"  press="openSearchHelpDependent"/>
+		<Button type="Transparent" id="idBtnAddSucGraph" text="Adicionar Tarefa Sucessora" press="openSearchHelpDependent"/>
+		<!-- <Button type="Transparent" id="idBtnDelSucGraph" text="Remover Tarefa" press="onPressRemoveDep"/> -->
+		</VBox>
+	
+		<!-- <List modeAnimationOn="false">
+			<ActionListItem id="idBtnAddPredGraph" type="Active" text="Adicionar Tarefa Predecessora"  press="openSearchHelpDependent"/>
+			<ActionListItem id="idBtnAddSucGraph" type="Active" text="Adicionar Tarefa Sucessora" press="openSearchHelpDependent"/>
+		</List> -->
+		<!-- <footer>
+			<OverflowToolbar>
+				<ToolbarSpacer/>
+				<Button type="Transparent" text="Excluir" press="handleEmailPress" />
+				<ToolbarSpacer/>
+			</OverflowToolbar>
+		</footer> -->
+	</ResponsivePopover>
+</core:FragmentDefinition>

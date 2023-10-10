@@ -1,0 +1,42 @@
+<edmx:Edmx
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+    xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+    xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZGWVPWM_DASHBOARD_SRV" xml:lang="pt" sap:schema-version="1">
+            <EntityType Name="ZET_VPWM_TERMINAL" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Codterm"/>
+                </Key>
+                <Property Name="Codterm" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Codigo do Terminal" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Descterm" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Desc. do Terminal" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Iconterm" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Icon MasterDetail" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZET_VPWM_DIAS" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Codterm"/>
+                </Key>
+                <Property Name="Codterm" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Codigo do Terminal" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Data" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Data DD/MM/AAAA" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DiaSemana" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Dia de semana (Seg. a Dom.)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="NomeNavio" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Nome Navio" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IconVenda" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Icone de Venda" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="QtdeVenda" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Quantidade de Venda" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CargaTotal" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Carga Recebida Total" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CargaTrem" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Carga de Trem Recebida" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CargaCaminhao" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Carga de Caminhão Recebida" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="EstoqueTotal" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Estoque Total" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FiltroDia" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Filtro do dia" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityContainer Name="ZGWVPWM_DASHBOARD_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="ZET_VPWM_TERMINALSet" EntityType="ZGWVPWM_DASHBOARD_SRV.ZET_VPWM_TERMINAL" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ZET_VPWM_DIASSet" EntityType="ZGWVPWM_DASHBOARD_SRV.ZET_VPWM_DIAS" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+            </EntityContainer>
+            <atom:link
+                xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/ZGWVPWM_DASHBOARD_SRV/$metadata"/>
+                <atom:link
+                    xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/ZGWVPWM_DASHBOARD_SRV/$metadata"/>
+                </Schema>
+            </edmx:DataServices>
+        </edmx:Edmx>

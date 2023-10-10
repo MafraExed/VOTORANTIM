@@ -1,0 +1,385 @@
+* {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+.unselectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.sapMSltHoverable:not(.sapMSltState):hover {
+	border-color: #262e35;
+    background: #656565;
+}
+
+.inputKeys {
+	border-radius:15px;
+	background-color:#4286f4;
+}
+
+.inputKeys label {
+	color:white !important;
+}
+
+.inputKeys span {
+	color:white !important;
+}
+
+.plano_descricao {
+	font-size:15px;
+}
+
+.plano_descricao_back {
+	background-color:#e5e6e8;
+}
+
+.card_charts {
+	border-radius:8px;
+	border:1px solid #e2e2e2;
+}
+
+/* .card_charts:hover { */
+	/* background-color: #f2f2f2; */
+	/* cursor:pointer; */
+/* } */
+
+.label__path {
+	color:#406b80;
+	font-size:14px;
+	border-radius:15px;
+	padding-left:6px;
+	padding-right:6px;
+	margin-left: 5px;
+	margin-right: 5px;
+	font-family: 'Open Sans', sans-serif;
+}
+
+.label__path__mobile {
+	color:white;
+	max-width:50px;
+	font-size:9px;
+	border-radius:15px;
+	padding-left:6px;
+	padding-right:6px;
+	margin-left: 2px;
+	margin-right: 2px;
+	background-color: #406b80;
+	font-family: 'Open Sans', sans-serif;
+}
+
+.label__path:hover {
+	cursor:pointer;
+}
+
+.label__path__sel {
+	color:#406b80;
+	font-size:14px;
+	font-weight: bold;
+	border-radius:15px;
+	padding-left:6px;
+	padding-right:6px;
+	margin-left: 5px;
+	margin-right: 5px;
+	font-family: 'Open Sans', sans-serif;
+}
+
+.label__path__sel__mobile {
+	color:white;
+	max-width:80px;
+	font-size:9px;
+	border-radius:15px;
+	padding-left:6px;
+	padding-right:6px;
+	margin-left: 2px;
+	margin-right: 2px;
+	background-color: #c47136;
+	font-family: 'Open Sans', sans-serif;
+}
+
+.label__path__sel:hover {
+	cursor:pointer;
+}
+
+.path__icon {
+	height:33px;
+	width:33px;
+	background-color:grey;
+	border-radius:50%;
+	overflow:hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	-webkit-box-shadow: 0px 0px 2px 0px rgba(0,0,0,1);
+	-moz-box-shadow: 0px 0px 2px 0px rgba(0,0,0,1);
+	box-shadow: 0px 0px 2px 0px rgba(0,0,0,1);
+}
+
+.path__icon__mobile {
+	height:20px;
+	width:20px;
+	background-color:grey;
+	border-radius:50%;
+	overflow:hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	-webkit-box-shadow: 0px 0px 2px 0px rgba(0,0,0,1);
+	-moz-box-shadow: 0px 0px 2px 0px rgba(0,0,0,1);
+	box-shadow: 0px 0px 2px 0px rgba(0,0,0,1);
+}
+
+.menu__hierarquia__inativo {
+	left:-45% !important;
+}
+
+.menu__hierarquia {
+	position:absolute;
+	top:63px;
+	left:0;
+	transition: left 0.5s;
+	background-color:white;
+	border: 1px solid blue;
+	box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+}
+
+.menu__hierarquia__mobile {
+	position:absolute;
+	top:63px;
+	left:0;
+	transition: left 0.5s;
+	background-color:white;
+	border: 1px solid blue;
+	box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+}
+
+.menu__hierarquia__inativo__mobile {
+	left:-95% !important;
+}
+
+.menu__hierarquia__label {
+	font-size:17px;
+	color:navy;
+}
+
+.top5__critico {
+	border-radius:50%;
+	background-color:red;
+	color:white;
+	font-size:15px;
+	margin-left:4px;
+	font-weight: bold;
+}
+
+.top5__items {
+	border-bottom:1px solid #A4D3EE;
+}
+
+.top5__label {
+	margin-top:3px;
+	cursor:pointer;
+}
+
+.top5__label__valor {
+	margin-top:3px;
+	color:red;
+	cursor:pointer;
+}
+
+.popup_options {
+	padding:8px;
+	position:absolute;
+	width:207px;
+	top:5%;
+	background-color:white;
+	left:15%;
+	border-radius: 3px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	z-index:2;
+}
+
+.popup_options_icon_ok span {
+	color: #46af4f;
+}
+
+.popup_options_icon_aviso span {
+	color: #d2e23f;
+}
+
+.popup_options_icon_nok span {
+	color: #e2753f;
+}
+
+.popup_options_icon_canc span {
+	color: red;
+}
+
+.popup_options_status {
+	position:absolute;
+	width:207px;
+	top:25%;
+	background-color:white;
+	left:15%;
+	border-radius: 3px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	z-index:2;
+	padding: 5px;
+}
+
+.popup_disable {
+	display:none;
+}
+
+.dialog__modal {
+	position:absolute;
+	top:0;
+	left:0;
+	width:100vw;
+	height:100vh;
+	background-color:black;
+	opacity:0.4;
+	z-index:1;
+}
+
+.button_selected span {
+	background-color:orange;
+	color:white;
+}
+
+.popup__anexo__inativo {
+	display:none;
+}
+
+.popup__anexo {
+	margin-right:10%;
+	position:absolute;
+	top:20%;
+	left:15%;
+	background-color:white;
+	border-radius:7px;
+	border: 1px solid black;
+}
+
+.sapMDateTimePopup button {
+	display:none;
+}
+
+.gantt__plan__hbox .sapMInputBaseInner {
+	background-color: #edf6fc;
+	color:black;
+}
+
+.gantt__inic__hbox .sapMInputBaseInner {
+	background-color: #effffa;
+	color:black;
+}
+
+.gantt__plan {
+	color:#005289 !important;
+	font-size:14px;
+}
+
+.gantt__real {
+	color:#00753e !important;
+	font-size:14px;
+}
+
+.gantt__plan__date input {
+	color:#005289 !important;
+	font-size:12px;
+}
+
+.gantt__real__date input {
+	color:#00753e !important;
+	font-size:12px;
+}
+
+.popup_novidades {
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:5;
+}
+
+.popup_dependentes {
+	position:absolute;
+	top:15%;
+	left:10%;
+	z-index:10;
+}
+
+.novidades_image {
+	margin-left:1%;
+}
+
+.label_atividades_mobile {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 15px;
+}
+
+.label_atividades_item_mobile {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 13px;
+}
+
+.label_atividades_size_mobile {
+	width:85vw;
+}
+.label_empresa {
+	font-weight:bold;
+	color:blue;
+}
+
+.atvd_obile_datetiem {
+	color:white;
+	background-color:#4e81ad;
+	border-radius:10px;
+	padding:3px;
+}
+
+.esconder {
+	display: none;
+}
+
+.imgAnexo{
+	float: left; 
+}
+.z_iphone{
+	padding-top: 1em;
+}
+
+.loading {
+  background: black url(../icon/loading.gif) center center no-repeat;
+}
+
+.buttonLinkRel .sapMBtnHoverable{
+  background: #ffff99 !important;
+}
+
+.ztableatv .sapMFlexItemAlignAuto.sapMFlexBoxBGTransparent  {
+  flex-grow: 1 !important;
+}
+
+#__xmlview1--idHboxPath .sapMFlexItemAlignAuto {
+	flex-grow: 0 !important;
+
+}
+
+/* begin - adjust the values of top 5 that were not displaying all values */
+.ztop5 .sapMFlexItem {
+	width: 90% !important;
+}
+
+.ztop5 .sapMSLIInfoError {
+	width: 50px !important;
+}
+
+.ztop5 .sapMSLIDescriptionText {
+	width: 90% !important;
+}
+/* end - adjust the values of top 5 that were not displaying all values */

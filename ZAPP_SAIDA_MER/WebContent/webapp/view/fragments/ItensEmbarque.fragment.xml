@@ -1,0 +1,124 @@
+<!-- <core:FragmentDefinition xmlns="sap.m" -->
+<!-- 	xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:core="sap.ui.core" -->
+<!-- 	xmlns:l="sap.ui.layout" xmlns:footerbar="sap.ushell.ui.footerbar"> -->
+		
+<!-- 	<Panel width="auto"> -->
+
+<!--  	 	<Toolbar> -->
+<!-- 			<Title text="{i18n>itensEmbarqueTitle}" level="H4" titleStyle="H4"/> -->
+<!-- 		</Toolbar> 	  -->
+		
+<!-- 		<content> -->
+<!-- 			<Table id="itensEmbarqueTable"  -->
+<!-- 				   mode="SingleSelectMaster" -->
+<!-- 				   items="{ShipmentDetailToItems}"  -->
+<!-- 				   fixedLayout="true" -->
+<!-- 				   updateFinished="onHandleTableLoad" -->
+<!-- 				   visibleRowCount="5"> -->
+				   						
+<!-- 				<columns> -->
+<!-- 					<Column width="4rem"> -->
+<!-- 						<Text text="{i18n>itensEmbarqueColumnTableItem}" /> -->
+<!-- 					</Column> -->
+<!-- 					<Column width="4.5rem">			 -->
+<!-- 						<Text text="{i18n>itensEmbarqueColumnTableMaterial}" /> -->
+<!-- 					</Column>					 -->
+<!-- 					<Column width="4rem"> -->
+<!-- 						<Text text="{i18n>itensEmbarqueColumnTablePeso}" /> -->
+<!-- 					</Column> -->
+<!-- 					<Column width="4rem"> -->
+<!-- 						<Text text="{i18n>itensEmbarqueColumnTableVolume}" /> -->
+<!-- 					</Column> -->
+<!-- 					<Column width="4rem"> -->
+<!-- 						<Text text="{i18n>itensEmbarqueColumnTableDestino}" /> -->
+<!-- 					</Column> -->
+<!-- 					<Column width="6rem"> -->
+<!-- 						<Text text="{i18n>itensEmbarqueColumnTableDocVenda}" /> -->
+<!-- 					</Column> -->
+<!-- 					<Column width="4rem"> -->
+<!-- 						<Text text="{i18n>itensEmbarqueColumnTableItemDocVenda}" /> -->
+<!-- 					</Column> -->
+<!-- 					<Column width="6rem"> -->
+<!-- 						<Text text="{i18n>itensEmbarqueColumnTableRemessa}" /> -->
+<!-- 					</Column> -->
+<!-- 					<Column width="6rem"> -->
+<!-- 						<Text text="{i18n>itensEmbarqueColumnTableCentro}" /> -->
+<!-- 					</Column> -->
+<!-- 					<Column width="6rem"> -->
+<!-- 						<Text text="{i18n>itensEmbarqueColumnTableDeposito}" /> -->
+<!-- 					</Column> -->
+<!-- 					<Column width="6rem"> -->
+<!-- 						<Text text="{i18n>itensEmbarqueColumnTableItinerario}" /> -->
+<!-- 					</Column> -->
+<!-- 					<Column width="6rem"> -->
+<!-- 						<Text text="{i18n>itensEmbarqueColumnTableDocRef}" /> -->
+<!-- 					</Column> -->
+<!-- 					<Column width="4rem"> -->
+<!-- 						<Text text="{i18n>itensEmbarqueColumnTableDocRefItem}" /> -->
+<!-- 					</Column> -->
+<!-- 					<Column width="4rem"> -->
+<!-- 						<Text text="{i18n>itensEmbarqueColumnTableRecusa}" /> -->
+<!-- 					</Column> -->
+<!-- 				</columns> -->
+<!-- 				<items> -->
+<!-- 					<ColumnListItem highlight="{path: 'Stprocess', formatter: '.formatter.setHighlight'}"> -->
+<!-- 						<cells> -->
+<!-- 							<Text text="{ShpmtIt}" /> -->
+<!-- 						</cells> -->
+<!-- 						<cells> -->
+<!-- 							<ObjectIdentifier title="{Matnr}" text="{MatnrDsc}"/> -->
+<!-- 						</cells> -->
+<!-- 						<cells> -->
+<!-- 							<ObjectNumber -->
+<!-- 									number="{ -->
+<!-- 												path: 'Weight',formatter:'.formatter.formatNumberBrazil' -->
+<!-- 											}" -->
+<!-- 									unit="{Unit}" /> -->
+<!-- 						</cells> -->
+<!-- 						<cells> -->
+<!-- 							<Text text="{ -->
+<!-- 											path : 'Volumn',  -->
+<!-- 											formatter:'.formatter.formatNumberBrazil', -->
+<!-- 										    type : 'sap.ui.model.odata.type.String',  -->
+<!-- 										    constraints: {  -->
+<!-- 										         isDigitSequence : true, -->
+<!-- 										         maxLength : 10 -->
+<!-- 										    } -->
+<!-- 										} UN" /> -->
+<!-- 						</cells> -->
+<!-- 						<cells> -->
+<!-- 							<Text text="{Ptdst}" /> -->
+<!-- 						</cells> -->
+<!-- 						<cells> -->
+<!-- 							<Text text="{VbelnVa}" /> -->
+<!-- 						</cells> -->
+<!-- 						<cells> -->
+<!-- 							<Text text="{PosnrVa}" /> -->
+<!-- 						</cells> -->
+<!-- 						<cells> -->
+<!-- 							<Text text="{VbelnVl}" /> -->
+<!-- 						</cells> -->
+<!-- 						<cells> -->
+<!-- 							<ObjectIdentifier title="{Werks}" text="{WerksDsc}"/> -->
+<!-- 						</cells> -->
+<!-- 						<cells> -->
+<!-- 							<Text text="{Lgort}" /> -->
+<!-- 						</cells> -->
+<!-- 						<cells> -->
+<!-- 							<Text text="{Route}" /> -->
+<!-- 						</cells> -->
+<!-- 						<cells> -->
+<!-- 							<Text text="{Docref}" /> -->
+<!-- 						</cells> -->
+<!-- 						<cells> -->
+<!-- 							<Text text="{DocrefItem}" /> -->
+<!-- 						</cells> -->
+<!-- 						<cells> -->
+<!-- 							<Text text="{DocrefMrecusa}" /> -->
+<!-- 						</cells>								 -->
+<!-- 					</ColumnListItem> -->
+<!-- 				</items>	 -->
+<!-- 			</Table> -->
+<!-- 		</content> -->
+<!-- 	</Panel> -->
+<!-- </core:FragmentDefinition> -->

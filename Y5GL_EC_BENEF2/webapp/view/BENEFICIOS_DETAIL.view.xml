@@ -1,0 +1,1348 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.ui.layout.form"
+	xmlns:smartTable="sap.ui.comp.smarttable" controllerName="Y5GL_EC_BENEF2.Y5GL_EC_BENEF2.controller.BENEFICIOS_DETAIL"
+	xmlns:table="sap.ui.table" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:u="sap.ui.unified"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	<App id="idAppBeneficios_Detail">
+		<pages id="idPagesBeneficiosDetail">
+			<Page id="idTitle">
+				<customHeader>
+					<Bar id="idBarMaster">
+						<contentLeft>
+							<Button icon="sap-icon://nav-back" id="idB_navback" press="onVoltar" text="Voltar"/>
+						</contentLeft>
+						<contentMiddle>
+							<Title text="Beneficios" titleStyle="H3" id="idTitleDependentes"/>
+						</contentMiddle>
+						<contentRight>
+							<Button press="onEdit" text="Editar Plano" id="IdEditDetailDep" tooltip="Editar" type="Transparent"
+								visible="{path:'Status', formatter:'.formatVisibleEditOpcoes'}" iconFirst="true"/>
+						</contentRight>
+					</Bar>
+				</customHeader>
+				<content>
+					<HBox width="100%" height="100%" id="idGif" class="Loading" busyIndicatorSize="Auto" backgroundDesign="Solid">
+						<Image src="imagens/loading.gif" width="100%" class="footer_img" id="idimg" backgroundSize="100%"/>
+					</HBox>
+					<Input value="{Bplan}" id="idbPLAN" visible="false"/>
+					<Input value="{Opcoes}" id="idbOPCOES" visible="false"/>
+					<MessageStrip text="Aguardando aprovação CSC" id="idText1" type="Warning" visible="{path:'Status', formatter:'.formatVisibleMsg'}"
+						showCloseButton="false"/>
+					<Input value="{Status}" id="idTipo" visible="false"/>
+					<f:Form class="editableForm" editable="true" id="FUNSEJEM" visible="{path:'Tipo', formatter:'.FormatForm'}">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_FUNSEJEM" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+								emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer_FUNSEJEM">
+								<f:formElements>
+									<f:FormElement label="Plano" id="FormContainer1_FUNSEJEM">
+										<f:fields>
+											<ComboBox id="IdPlano_FUNSEJEM" selectedKey="{Bplan}" required="true" placeholder="Selecione o Plano"
+												items="{path: '/ZET_GLRH_COMBO_PLANOSet', filters: [{ path: 'Beneficio', operator: 'EQ', value1:'FUNSEJEM'}]}"
+												editable="{path:'Bplan', formatter:'.FormatEditable'}">
+												<core:Item key="{Bplan}" text="{Bplan} - {Ltext}" id="idKeyParentesco_FormContainer1_FUNSEJEM"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Margem de Emprestimo" id="FormContainer2">
+										<f:fields>
+											<Input value="{MargemFunsejem}" id="IdMargemEmp" placeholder="0,00" required="true" maxLength="15" change="onchangeIdMargemEmp"
+												editable="{path:'Bplan', formatter:'.FormatEditable'}"/>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form class="editableForm" editable="true" id="PLANO_MEDICO" visible="{path:'Tipo', formatter:'.FormatForm'}">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0"
+								emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer">
+								<f:formElements>
+									<f:FormElement id="FormContainer0_PLANO_MEDICO" visible="false">
+										<f:fields>
+											<Text text="{Via2medico}" id="idVia2medico"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Plano" id="FormContainer1_PLANO_MEDICO">
+										<f:fields>
+											<ComboBox id="IdPlano_PLANO_MEDICO" selectedKey="{Bplan}" required="true" placeholder="Selecione o Plano"
+												editable="{path:'Bplan', formatter:'.FormatEditable'}"
+												items="{path: '/ZET_GLRH_COMBO_PLANOSet', filters: { path: 'Beneficio', operator: 'EQ', value1:'PLANO_MEDICO'}}" change="onchangePlano">
+												<core:Item key="{Bplan}" text="{Ltext}" id="idKeyParentesco_PLANO_MEDICO"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Opção do plano" id="FormContainer2_PLANO_MEDICO">
+										<f:fields>
+											<ComboBox id="IdOpcoes_PLANO_MEDICO" selectedKey="{Opcoes}" required="true" placeholder="Selecione entre as Opções"
+												items="{path: '/ZET_GLHR_COMBO_OPCOESSet', filters: [{path:'IBeneficio', operator:'EQ', value1:'PLANO_MEDICO'}]}"
+												change="onchangeParentesco" editable="{path:'Bplan', formatter:'.FormatEditable'}">
+												<core:Item key="{Opcoes}" text="{Ltext}" id="idKeyopcoes_PLANO_MEDICO"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Carteirinha Médica do Titular" id="FormContainer3_PLANO_MEDICO">
+										<f:fields>
+											<Input value="{CartMedica}" placeholder="Informe a carteirinha médica" editable="{path:'Bplan', formatter:'.FormatEditable'}"
+												id="idCartMedica"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement id="TextInclusao" label="Instruções" visible="{path:'Pernr', formatter:'.FormatFalse'}">
+										<f:fields>
+											<Text
+												text="{i18n>lineFeed}Preencha e digitalize o formulário de acordo o motivo da solicitação e anexe no campo selecionando o botão +. {i18n>lineFeed}Documentos necessários para inclusão de dependente no plano médico: {i18n>lineFeed}Para Cônjuge: {i18n>lineFeed}- Certidão de casamento ou Declaração de união estável {i18n>lineFeed}- RG e CPF do dependente {i18n>lineFeed}- Carta de orientação ao beneficiário, assinada pelo colaborador e com telefone de contato do titular {i18n>lineFeed}Para Filho e Enteado: {i18n>lineFeed}- Certidão de nascimento {i18n>lineFeed}- RG (obrigatório para maiores de 18 anos) e CPF do dependente {i18n>lineFeed}- Cartão Nacional de Saúde {i18n>lineFeed}- Carta de orientação ao beneficiário, assinada pelo colaborador e com telefone de contato do titular {i18n>lineFeed} {i18n>lineFeed}Documentos necessários para exclusão de dependentes no plano médico: {i18n>lineFeed}- Formulário de exclusão, assinado pela empresa e pelo colaborador"
+												class="fundotext" id="TextInclusao_2"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement id="TextInclusao_CNUN_BRAD" label="Instruções" visible="{path:'Pernr', formatter:'.FormatFalse'}">
+										<f:fields>
+											<Text
+												id="TextInclusao_CNUN_BRAD_2"
+												class="fundotext"
+												text="
+													Selecione o botão + para incluir um dependente e a lixeira para excluir o dependente.
+													{i18n>lineFeed}Documentos necessários para inclusão de dependente no plano médico: 
+													{i18n>lineFeed}Para Cônjuge: 
+													{i18n>lineFeed}- Certidão de casamento, Declaração de união estável ou Escritura Pública de união estável 
+													{i18n>lineFeed}- RG e CPF do dependente  
+													{i18n>lineFeed}Para Filho: 
+													{i18n>lineFeed}- Certidão de nascimento 
+													{i18n>lineFeed}- RG (obrigatório para maiores de 18 anos) e CPF do dependente  
+													{i18n>lineFeed}Para Enteado: 
+													{i18n>lineFeed}- Certidão de nascimento 
+													{i18n>lineFeed}- RG (obrigatório para maiores de 18 anos) e CPF do dependente 
+													{i18n>lineFeed}- Certidão de casamento que conste o vínculo entre o titular e o dependente  
+													{i18n>lineFeed}Para dependente Tutela: 
+													{i18n>lineFeed}- RG (obrigatório para maiores de 18 anos) e CPF do dependente 
+													{i18n>lineFeed}- Comprovante de guarda definitiva em nome do colaborador  
+													{i18n>lineFeed}Para Filho com necessidades especiais: 
+													{i18n>lineFeed}- Certidão de nascimento 
+													{i18n>lineFeed}- RG (obrigatório para maiores de 18 anos) e CPF do dependente 
+													{i18n>lineFeed}- Laudo médico atestando a incapacidade do dependente 
+													{i18n>lineFeed}- Exames complementares 
+													{i18n>lineFeed}- Declaração de Imposto de Renda do colaborador, que contenha o dependente a ser cadastrado, declarado como dependente  
+													{i18n>lineFeed}- OBS: A inclusão será aceita ou não mediante análise desta documentação 
+													{i18n>lineFeed}  
+													{i18n>lineFeed}Documentos necessários para exclusão de dependentes no plano médico: 
+													{i18n>lineFeed}Para Cônjuge: 
+													{i18n>lineFeed}- Averbação Dissolução de União estável 
+													{i18n>lineFeed}- Certidão de Óbito
+													{i18n>lineFeed}Para Filho, Enteado e Tutela: 
+													{i18n>lineFeed}- Certidão de Óbito 
+													{i18n>lineFeed}- Ordem Judicial"
+											/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement id="TextInclusao_SCMP" label="Instruções" visible="{path:'Pernr', formatter:'.FormatFalse'}">
+										<f:fields>
+											<Text
+												text="{i18n>lineFeed}Preencha e digitalize o formulário de acordo o motivo da solicitação e anexe no campo selecionando o botão +. {i18n>lineFeed}Documentos necessários para inclusão de dependente no plano médico: {i18n>lineFeed}Para Cônjuge: {i18n>lineFeed}- Certidão de casamento ou Declaração de união estável {i18n>lineFeed}- RG e CPF do dependente {i18n>lineFeed}- Cartão do SUS {i18n>lineFeed}- Comprovante de endereço {i18n>lineFeed}- Declaração de saúde {i18n>lineFeed}- Ficha de registro do titular {i18n>lineFeed}Para Filho e Enteado: {i18n>lineFeed}- Certidão de nascimento {i18n>lineFeed}- RG (obrigatório para maiores de 18 anos) e CPF do dependente {i18n>lineFeed}- Cartão do SUS {i18n>lineFeed}- Comprovante de endereço {i18n>lineFeed}- Declaração de saúde {i18n>lineFeed}- Ficha de registro do titular {i18n>lineFeed}{i18n>lineFeed} Documentos necessários para exclusão de dependentes no plano médico: {i18n>lineFeed}- Formulário de exclusão" 
+												class="fundotext" id="TextInclusao_SCMP_2"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement id="TextInclusao_UNCU" label="Instruções" visible="{path:'Pernr', formatter:'.FormatFalse'}">
+										<f:fields>
+											<Text
+												text="{i18n>lineFeed}Preencha e digitalize o formulário de acordo o motivo da solicitação e anexe no campo selecionando o botão +. {i18n>lineFeed}Documentos necessários para inclusão de dependente no plano médico: {i18n>lineFeed}Para Cônjuge: {i18n>lineFeed}- Certidão de casamento ou Declaração de união estável {i18n>lineFeed}- RG e CPF do dependente {i18n>lineFeed}- Carta de orientação ao beneficiário, assinada pelo colaborador e com telefone de contato do titular {i18n>lineFeed}Para Filho e Enteado: {i18n>lineFeed}- Certidão de nascimento {i18n>lineFeed}- RG (obrigatório para maiores de 18 anos) e CPF do dependente {i18n>lineFeed}- Cartão Nacional de Saúde {i18n>lineFeed}- Carta de orientação ao beneficiário, assinada pelo colaborador e com telefone de contato do titular {i18n>lineFeed} {i18n>lineFeed} Documentos necessários para exclusão de dependentes no plano médico: {i18n>lineFeed}- Formulário de exclusão, assinado pela empresa e pelo colaborador"
+												class="fundotext" id="TextInclusao_UNCU_2"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement id="TextInclusao_UNJZ" label="Instruções" visible="{path:'Pernr', formatter:'.FormatFalse'}">
+										<f:fields>
+											<Text
+												id="TextInclusao_UNJZ_2"
+												class="fundotext"
+												text="
+													Selecione o botão + para incluir um dependente e a lixeira para excluir o dependente.
+													{i18n>lineFeed}Documentos necessários para inclusão de dependente no plano médico: 
+													{i18n>lineFeed}Para Cônjuge: 
+													{i18n>lineFeed}- Certidão de casamento ou Declaração de união estável 
+													{i18n>lineFeed}- RG e CPF do dependente 
+													{i18n>lineFeed}- Carta de orientação ao beneficiário, assinada pelo colaborador e com telefone de contato do titular 
+													{i18n>lineFeed}Para Filho e Enteado: 
+													{i18n>lineFeed}- Certidão de nascimento 
+													{i18n>lineFeed}- RG (obrigatório para maiores de 18 anos) e CPF do dependente 
+													{i18n>lineFeed}- Cartão Nacional de Saúde 
+													{i18n>lineFeed}- Carta de orientação ao beneficiário, assinada pelo colaborador e com telefone de contato do titular"
+											/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement id="FormContainer4_PLANO_MEDICO">
+										<Bar id="barIncluir">
+											<contentRight>
+												<Button id="IdIncluir" text="Novo Dependente" type="Transparent" icon="sap-icon://add" iconFirst="true" width="auto" enabled="true"
+													visible="true" iconDensityAware="false" press="onAdd" tooltip="Incluir Dependentes"/>
+											</contentRight>
+										</Bar>
+									</f:FormElement>
+									<f:FormElement id="FormContainer5_PLANO_MEDICO">
+										<smartTable:SmartTable id="smartTable_PLANO_MEDICO" entitySet="ZET_GLHR_DEP_BENEFICIOSSet" tableType="ResponsiveTable" useExportToExcel="false"
+											useVariantManagement="false" useTablePersonalisation="false" showRowCount="true" persistencyKey="SmartTableRefApp_Explored"
+											enableAutoBinding="false" app:useSmartField="true" class="sapUiResponsiveContentPadding" showFullScreenButton="false"
+											requestAtLeastFields="Zcmedico,Subty,Objps,Fcnam,Zstatus" beforeRebindTable="onbeforeRebindTable" dataReceived="AfterUpdate">
+											<table:Table id="table1" rows="{/ZET_GLHR_DEP_BENEFICIOSSet}" selectionMode="{path:'Zstatus', formatter:'.FormatSelectionMode'}"
+												visibleRowCount="7" ariaLabelledBy="title">
+												<table:columns>
+													<table:Column width="76%" id="idColumn1">
+														<Label text="Nome Completo" id="idLabel1"/>
+														<table:template>
+															<Text text="{Fcnam}" wrapping="false" id="idText1_"/>
+														</table:template>
+													</table:Column>
+													<table:Column width="20%" id="idColumn2">
+														<Label text="Ativo?" id="idLabel2"/>
+														<table:template>
+															<Text text="{Zstatus}" wrapping="false" id="idText2_"/>
+														</table:template>
+													</table:Column>
+													<table:Column width="2%" id="idColumn3">
+														<Label text="Ação" id="idLabel3"/>
+														<table:template>
+															<ToggleButton press="onAcaoM" icon="{path:'Zstatus', formatter:'.FormatIcon'}" visible="{path:'Zstatus', formatter:'.FormatBVisible'}"
+																type="Transparent" id="b1" pressed="{path:'Pernr', formatter:'.FormatFalse'}"/>
+														</table:template>
+													</table:Column>
+												</table:columns>
+											</table:Table>
+											<smartTable:layoutData>
+												<FlexItemData growFactor="1" baseSize="0%" id="idFlexItemData"/>
+											</smartTable:layoutData>
+										</smartTable:SmartTable>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form class="editableForm" editable="true" id="PLANO_ODONTOLOGICO" visible="{path:'Tipo', formatter:'.FormatForm'}">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_PLANO_ODONTOLOGICO" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12"
+								adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1"
+								singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer_PLANO_ODONTOLOGICO">
+								<f:formElements>
+									<f:FormElement id="FormContainer0PLANO_ODONTOLOGIC" visible="false">
+										<f:fields>
+											<Text text="{Via2Dent}" id="idVia2Dent"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Plano" id="FormContainer1_PLANO_ODONTOLOGICO">
+										<f:fields>
+											<ComboBox id="IdPlano_PLANO_ODONTOLOGICO" selectedKey="{Bplan}" required="true" placeholder="Selecione o Plano"
+												editable="{path:'Bplan', formatter:'.FormatEditable'}"
+												items="{path: '/ZET_GLRH_COMBO_PLANOSet', filters: { path: 'Beneficio', operator: 'EQ', value1:'PLANO_ODONTOLOGICO'}}"
+												change="onchangePlano">
+												<core:Item key="{Bplan}" text="{Ltext}" id="idKeyParentesco_PLANO_ODONTOLOGICO"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Opção do plano" id="FormContainer2_PLANO_ODONTOLOGICO">
+										<f:fields>
+											<ComboBox id="IdOpcoes_PLANO_ODONTOLOGICO" selectedKey="{Opcoes}" required="true" placeholder="Selecione entre as Opções"
+												items="{path: '/ZET_GLHR_COMBO_OPCOESSet', filters: [{path:'IBeneficio', operator:'EQ', value1:'PLANO_ODONTOLOGICO'}], length:200}"
+												change="onchangeOpcoes" editable="{path:'Bplan', formatter:'.FormatEditable'}">
+												<core:Item key="{Opcoes}" text="{Ltext}" id="idKeyopcoes_PLANO_ODONTOLOGICO"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Carteirinha do Titular" id="FormContainer3_PLANO_ODONTOLOGICO">
+										<f:fields>
+											<Input value="{CartDentista}" placeholder="Informe a carteirinha médica" editable="{path:'Bplan', formatter:'.FormatEditable'}"
+												id="IdCartDentista"/>
+										</f:fields>
+									</f:FormElement>
+									<!--<f:FormElement id="Text_PLANO_ODONTOLOGICO" label="Instruções" visible="{path:'Pernr', formatter:'.FormatFalse'}">-->
+									<!--	<f:fields>-->
+									<!--		<Text-->
+									<!--			text="CAMPOS OBRIGATÓRIOS PARA PREENCHIMENTO ESTÃO GRIFADOS. NO FORMULÁRIO CONSTAM TODOS OS PLANOS E SUAS COBERTURAS NOS QUAIS A EMPRESA DISPONIBILIZA A VOCÊ."-->
+									<!--			id="TextPLANO_ODONTOLOGICO2" class="fundotext"/>-->
+									<!--	</f:fields>-->
+									<!--</f:FormElement>-->
+									<f:FormElement id="FormContainer4_PLANO_ODONTOLOGICO">
+										<f:fields>
+											<Text text="" id="textid_PLANO_ODONTOLOGICO"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement id="FormContainer5_PLANO_ODONTOLOGICO">
+										<smartTable:SmartTable id="smartTable_PLANO_ODONTOLOGICO" entitySet="ZET_GLHR_DEP_BENEFICIOSSet" tableType="Table" useExportToExcel="false"
+											useVariantManagement="false" useTablePersonalisation="false" showRowCount="true" persistencyKey="SmartTableRefApp_Explored"
+											enableAutoBinding="false" app:useSmartField="true" class="sapUiResponsiveContentPadding" showFullScreenButton="false"
+											requestAtLeastFields="Zcmedico,Subty,Objps,Fcnam,Zstatus" beforeRebindTable="onbeforeRebindTable_smartTable_PLANO_ODONTOLOGICO"
+											dataReceived="AfterUpdate_PLANO_ODONTOLOGICO">
+											<smartTable:customToolbar>
+												<Toolbar id="idToolbar_PLANO_ODONTOLOGICO">
+													<ToolbarSpacer id="idToolBarSpaces_PLANO_ODONTOLOGICO"/>
+												</Toolbar>
+											</smartTable:customToolbar>
+											<table:Table id="table1_PLANO_ODONTOLOGICO" rows="{/ZET_GLHR_DEP_BENEFICIOSSet}"
+												selectionMode="{path:'Zstatus', formatter:'.FormatSelectionMode'}" visibleRowCount="7" ariaLabelledBy="title">
+												<table:columns>
+													<table:Column width="76%" id="idColumn1_PLANO_ODONTOLOGICO">
+														<Label text="Nome Completo" id="idLabel1_PLANO_ODONTOLOGICO"/>
+														<table:template>
+															<Text text="{Fcnam}" wrapping="false" id="idText1_PLANO_ODONTOLOGICO"/>
+														</table:template>
+													</table:Column>
+													<table:Column width="20%" id="idColumn2_PLANO_ODONTOLOGICO">
+														<Label text="Ativo?" id="idLabel2_PLANO_ODONTOLOGICO"/>
+														<table:template>
+															<Text text="{Zstatus}" wrapping="false" id="idText2_PLANO_ODONTOLOGICO"/>
+														</table:template>
+													</table:Column>
+													<table:Column width="2%" id="idColumn3_PLANO_ODONTOLOGICO">
+														<Label text="Ação" id="idLabel3_PLANO_ODONTOLOGICO"/>
+														<table:template>
+															<ToggleButton press="onAcaoO" icon="{path:'Zstatus', formatter:'.FormatIcon'}" type="Transparent" id="b1_PLANO_ODONTOLOGICO" pressed="{path:'Pernr', formatter:'.FormatFalse'}"/>
+														</table:template>
+													</table:Column>
+												</table:columns>
+											</table:Table>
+											<smartTable:layoutData>
+												<FlexItemData growFactor="1" baseSize="0%" id="idFlexItemData_PLANO_ODONTOLOGICO"/>
+											</smartTable:layoutData>
+										</smartTable:SmartTable>
+									</f:FormElement>
+									<f:FormElement id="TextEditar_PLANO_ODONTOLOGICO" label="Instruções" visible="{path:'Pernr', formatter:'.FormatFalse'}">
+										<f:fields>
+											<Text
+												id="TextEditar_PLANO_ODONTOLOGICO2"
+												visible="true" 
+												class="fundotext" 
+												width="100%" 
+												text="
+													Selecione o botão + para incluir um dependente e a lixeira para excluir o dependente.
+													{i18n>lineFeed}Documentos necessários para inclusão de dependente no plano odontológico: 
+													{i18n>lineFeed}Para Cônjuge: 
+													{i18n>lineFeed}- Certidão de casamento ou Declaração de união estável 
+													{i18n>lineFeed}- RG e CPF do dependente  
+													{i18n>lineFeed}Para Filho e Enteado: 
+													{i18n>lineFeed}- Certidão de nascimento 
+													{i18n>lineFeed}- RG (obrigatório para maiores de 18 anos) e CPF do dependente 
+													{i18n>lineFeed}- Documento que comprove vínculo entre titular e dependente (para enteado) 
+													{i18n>lineFeed}Para Pai, Mãe e Irmão: 
+													{i18n>lineFeed}- RG e CPF do dependente 
+													{i18n>lineFeed}
+													{i18n>lineFeed}IMPORTANTE: 
+													{i18n>lineFeed}A exclusão do plano só é permitida quando decorridos 12 meses da última atualização ou nos meses de campanha."
+											/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement id="TextInclusao_PLANO_ODONTOLOGICO_BRAD_MET" label="Instruções" visible="{path:'Pernr', formatter:'.FormatFalse'}">
+										<f:fields>
+											<Text
+												id="TextInclusao_PLANO_ODONTOLOGICO2_BRAD_MET" 
+												visible="true" 
+												class="fundotext" 
+												width="100%" 
+												text="
+													Selecione o botão + para incluir um dependente e a lixeira para excluir o dependente.
+													{i18n>lineFeed}Documentos necessários para inclusão de dependente no plano odontológico: 
+													{i18n>lineFeed}Para Cônjuge: 
+													{i18n>lineFeed}- Certidão de casamento ou Declaração de união estável 
+													{i18n>lineFeed}- RG e CPF do dependente 
+													{i18n>lineFeed}Para Filho e Enteado: 
+													{i18n>lineFeed}- Certidão de nascimento 
+													{i18n>lineFeed}- RG (obrigatório para maiores de 18 anos) e CPF do dependente 
+													{i18n>lineFeed}- Documento que comprove vínculo entre titular e dependente (para enteado)  
+													{i18n>lineFeed}
+													{i18n>lineFeed}IMPORTANTE: 
+													{i18n>lineFeed}A exclusão do plano só é permitida quando decorridos 12 meses da última atualização ou nos meses de campanha."
+											/> 
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement id="TextInclusao_PLANO_ODONTOLOGICO_MET" label="Instruções" visible="{path:'Pernr', formatter:'.FormatFalse'}">
+										<f:fields>
+											<Text
+												id="TextInclusao_PLANO_ODONTOLOGICO2_MET" 
+												visible="true" 
+												class="fundotext" 
+												width="100%"
+												text="
+													Selecione o botão + para incluir um dependente e a lixeira para excluir o dependente.
+													{i18n>lineFeed}Documentos necessários para inclusão de dependente no plano odontológico: 
+													{i18n>lineFeed}Para Cônjuge: 
+													{i18n>lineFeed}- Certidão de casamento ou Declaração de união estável 
+													{i18n>lineFeed}- RG e CPF do dependente  
+													{i18n>lineFeed}Para Filho e Enteado: 
+													{i18n>lineFeed}- Certidão de nascimento 
+													{i18n>lineFeed}- RG (obrigatório para maiores de 18 anos) e CPF do dependente 
+													{i18n>lineFeed}- Documento que comprove vínculo entre titular e dependente (para enteado)
+													{i18n>lineFeed}Para Pai, Mãe e Irmão: 
+													{i18n>lineFeed}- RG e CPF do dependente  
+													{i18n>lineFeed}
+													{i18n>lineFeed}IMPORTANTE: 
+													{i18n>lineFeed}A exclusão do plano só é permitida quando decorridos 12 meses da última atualização ou nos meses de campanha."
+											/>  
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement id="TextInclusao_PLANO_ODONTOLOGICO_UNIMED" label="Instruções" visible="{path:'Pernr', formatter:'.FormatFalse'}">
+										<f:fields>
+											<Text
+												id="TextInclusao_PLANO_ODONTOLOGICO2_UNIMED" 
+												visible="true" 
+												class="fundotext" 
+												width="100%"
+												text="
+													Selecione o botão + para incluir um dependente e a lixeira para excluir o dependente. 
+													{i18n>lineFeed}Documentos necessários para inclusão de dependente no plano odontológico: 
+													{i18n>lineFeed}Para Cônjuge: 
+													{i18n>lineFeed}- Certidão de casamento ou Declaração de união estável 
+													{i18n>lineFeed}- RG e CPF do dependente  
+													{i18n>lineFeed}Para Filho e Enteado: 
+													{i18n>lineFeed}- Certidão de nascimento 
+													{i18n>lineFeed}- RG (obrigatório para maiores de 18 anos) e CPF do dependente 
+													{i18n>lineFeed}- Documento que comprove vínculo entre titular e dependente (para enteado) 
+													{i18n>lineFeed}
+													{i18n>lineFeed}IMPORTANTE: 
+													{i18n>lineFeed}A exclusão do plano só é permitida quando decorridos 12 meses da última atualização ou nos meses de campanha."
+											/>
+										</f:fields>
+									</f:FormElement>	
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form class="editableForm" editable="true" id="PLANO_DENT_2" visible="{path:'Tipo', formatter:'.FormatForm'}">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_PLANO_DENT_2" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+								emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer_PLANO_DENT_2">
+								<f:formElements>
+									<f:FormElement label="Plano" id="FormContainer1_PLANO_DENT_2">
+										<f:fields>
+											<ComboBox id="IdPlano_PLANO_DENT_2" selectedKey="{Bplan}" required="true" placeholder="Selecione o Plano"
+												items="{path: '/ZET_GLRH_COMBO_PLANOSet', filters: { path: 'Beneficio', operator: 'EQ', value1:'PLANO_DENT_2'}}" change="onchangeParentesco"
+												editable="{path:'Bplan', formatter:'.FormatEditable'}">
+												<core:Item key="{Bplan}" text="{Bplan} - {Ltext}" id="idKeyParentesco_PLANO_DENT_2"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Carteirinha Dentista" id="FormContainer2_PLANO_DENT_2">
+										<f:fields>
+											<MaskInput mask="9999.999999.9999999-99" placeholderSymbol="_" placeholder="Informe carteirinha dentista" value="{CartDentista}"
+												editable="{path:'Bplan', formatter:'.FormatEditable'}" id="IdCartPLANO_DENT_2"/>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<!--REEMBOLSO_ESTACIONAM-->
+					<f:Form class="editableForm" editable="true" id="REEMBOLSO_ESTACIONAM" visible="{path:'Tipo', formatter:'.FormatForm'}">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_REEMBOLSO_ESTACIONAM" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12"
+								adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1"
+								singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer_REEMBOLSO_ESTACIONAM">
+								<f:formElements>
+									<f:FormElement label="Mês de referência" id="FormContainer1_REEMBOLSO_ESTACIONAM">
+										<f:fields>
+											<ComboBox id="IdPlano_REEMBOLSO_ESTACIONAM" selectedKey="{Valor}" required="true" placeholder="Selecione o Mes de referencia"
+												items="{path: '/ZET_GLHR_MESSet'}" change="onchangeParentesco" editable="{path:'Pernr', formatter:'.FormatEditable'}">
+												<core:Item key="{Mnr}" text="{Ltx}" id="idKeyParentesco_REEMBOLSO_ESTACIONAM"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Ano de referência" id="FormContainer2_REEMBOLSO_ESTACIONAM">
+										<f:fields>
+											<ComboBox id="IdAno_REEMBOLSO_ESTACIONAM" selectedKey="{Valor}" required="true" placeholder="Selecione o Ano de referência"
+												items="{path: '/ZET_GLHR_ANOSet'}" editable="{path:'Pernr', formatter:'.FormatEditable'}">
+												<core:Item key="{Gjahr}" text="{Gjahr}" id="idKeyAno_REEMBOLSO_ESTACIONAM"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement id="TextREEMBOLSO_ESTACIONAM" label="Instruções" visible="{path:'Pernr', formatter:'.FormatFalse'}">
+										<f:fields>
+											<Text
+												text="Documento necessário para solicitação mensal de reembolso: {i18n>lineFeed}- Comprovante(s) dos valores utilizados de estacionamento ou transporte fretado no mês, com CNPJ do fornecedor. {i18n>lineFeed}Solicitações feitas até o dia 10 de cada mês, serão reembolsadas em 5 dias úteis."
+												id="TextREEMBOLSO_ESTACIONAM_2" class="fundotext"/>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form class="editableForm" editable="true" id="REEMBOLSO_ALUGUEL" visible="{path:'Tipo', formatter:'.FormatForm'}">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_REEMBOLSO_ALUGUEL" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+								emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer_REEMBOLSO_ALUGUEL">
+								<f:formElements>
+									<f:FormElement label="Mês de referência" id="FormContainer1_REEMBOLSO_ALUGUEL">
+										<f:fields>
+											<ComboBox id="IdPlano_REEMBOLSO_ALUGUEL" selectedKey="{Valor}" required="true" placeholder="Selecione o Mes de referencia"
+												items="{path: '/ZET_GLHR_MESSet'}" change="onchangePlano" editable="{path:'Pernr', formatter:'.FormatEditable'}">
+												<core:Item key="{Mnr}" text="{Ltx}" id="idKeyParentesco_REEMBOLSO_ALUGUEL"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Ano de referência" id="FormContainer2_REEMBOLSO_ALUGUEL">
+										<f:fields>
+											<ComboBox id="IdAno_REEMBOLSO_ALUGUEL" selectedKey="{Valor}" required="true" placeholder="Selecione o Ano de referência"
+												items="{path: '/ZET_GLHR_ANOSet'}" editable="{path:'Pernr', formatter:'.FormatEditable'}">
+												<core:Item key="{Gjahr}" text="{Gjahr}" id="idKeyAno_REEMBOLSO_ALUGUEL"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Ano de referência" id="FormContainer3_REEMBOLSO_ALUGUEL" visible="false">
+										<f:fields>
+											<Input value="{Valor}" id="alug1" editable="false" visible="false"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement id="TextREEMBOLSO_ALUGUEL" label="Instruções" visible="{path:'Pernr', formatter:'.FormatFalse'}">
+										<f:fields>
+											<Text
+												text="Documentos necessários para solicitação mensal de reembolso: {i18n>lineFeed}- Recibo de pagamento de aluguel {i18n>lineFeed}- E-mail com de acordo da gerência de DHO."
+												id="TextREEMBOLSO_ALUGUEL_2" class="fundotext"/>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form class="editableForm" editable="true" id="REEMBOLSO_EXT_UNIV" visible="{path:'Tipo', formatter:'.FormatForm'}">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_REEMBOLSO_EXT_UNIV" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12"
+								adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1"
+								singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer_REEMBOLSO_EXT_UNIV">
+								<f:formElements>
+									<f:FormElement label="Mês de referência" id="FormContainer1_REEMBOLSO_EXT_UNIV">
+										<f:fields>
+											<ComboBox id="IdPlano_REEMBOLSO_EXT_UNIV" selectedKey="{Valor}" required="true" placeholder="Selecione o Mes de referencia"
+												items="{path: '/ZET_GLHR_MESSet'}" change="onchangeParentesco" editable="{path:'Pernr', formatter:'.FormatEditable'}">
+												<core:Item key="{Mnr}" text="{Ltx}" id="idKeyParentesco_REEMBOLSO_EXT_UNIV"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Ano de referência" id="FormContainer2_REEMBOLSO_EXT_UNIV">
+										<f:fields>
+											<ComboBox id="IdAno_REEMBOLSO_EXT_UNIV" selectedKey="{Valor}" required="true" placeholder="Selecione o Ano de referência"
+												items="{path: '/ZET_GLHR_ANOSet'}" editable="{path:'Pernr', formatter:'.FormatEditable'}">
+												<core:Item key="{Gjahr}" text="{Gjahr}" id="idKeyAno_REEMBOLSO_EXT_UNIV"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement id="FormContainer3_REEMBOLSO_EXT_UNIV" visible="false">
+										<f:fields>
+											<Input value="{Valor}" id="UNIV1" editable="false" visible="false"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement id="TextREEMBOLSO_EXT_UNIV" label="Instruções" visible="{path:'Pernr', formatter:'.FormatFalse'}">
+										<f:fields>
+											<Text
+												text="Esta solicitação é utilizada para colaboradores elegíveis ao benefício, com subsídio aprovado, de acordo com a política, conforme PG publicada no GQI, código PG - GCP - CGT - 001 - PT. {i18n>lineFeed}O subsídio para extensão universitária é de até 50% do valor já aprovado com o gestor imediato, destinado exclusivamente a cursos nacionais. {i18n>lineFeed}Não é permitido o reembolso retroativo. {i18n>lineFeed}No caso de 3 meses sem solicitação de reembolso, a aprovação do subsídio será automaticamente cancelada. {i18n>lineFeed}Documentos necessários para solicitação mensal de reembolso: {i18n>lineFeed}- Boleto da instituição de ensino e comprovante de pagamento."
+												id="TextREEMBOLSO_EXT_UNIV_2" class="fundotext"/>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<!--REEMBOLSO_EDUCACAO-->
+					<f:Form class="editableForm" editable="true" id="REEMBOLSO_EDUCACAO" visible="{path:'Tipo', formatter:'.FormatForm'}">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_REEMBOLSO_EDUCACAO" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12"
+								adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1"
+								singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer_REEMBOLSO_EDUCACAO">
+								<f:formElements>
+									<f:FormElement label="Mês de referência " id="FormContainer1_REEMBOLSO_EDUCACAO">
+										<f:fields>
+											<ComboBox id="IdPlano_REEMBOLSO_EDUCACAO" selectedKey="{Valor}" required="true" placeholder="Selecione o Mes de referencia"
+												items="{path: '/ZET_GLHR_MESSet'}" change="onchangeParentesco" editable="{path:'Pernr', formatter:'.FormatEditable'}">
+												<core:Item key="{Mnr}" text="{Ltx}" id="idKeyParentesco_REEMBOLSO_EDUCACAO"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Instruções" id="TextREEMBOLSO_EDUCACAO" visible="{path:'Pernr', formatter:'.FormatFalse'}">
+										<f:fields>
+											<Text text="Seguir orientações do formulário" id="TextREEMBOLSO_EDUCACAO_2" class="fundotext"/>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form class="editableForm" editable="true" id="MATERIAL_ESCOLAR" visible="{path:'Tipo', formatter:'.FormatForm'}">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_MATERIAL_ESCOLAR" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+								emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer_MATERIAL_ESCOLAR">
+								<f:formElements>
+									<f:FormElement label="Mês de referência " id="FormContainer1_MATERIAL_ESCOLAR">
+										<f:fields>
+											<ComboBox id="IdPlano_MATERIAL_ESCOLAR" selectedKey="{Valor}" required="true" placeholder="Selecione o Mes de referencia"
+												items="{path: '/ZET_GLHR_MESSet'}" change="onchangeParentesco" editable="{path:'Pernr', formatter:'.FormatEditable'}">
+												<core:Item key="{Mnr}" text="{Ltx}" id="idKeyParentesco_MATERIAL_ESCOLAR"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Instruções" id="Text_MATERIAL_ESCOLAR" visible="{path:'Pernr', formatter:'.FormatFalse'}">
+										<f:fields>
+											<Text text="Seguir orientações do formulário" id="Text_MATERIAL_ESCOLAR_2" class="fundotext"/>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form class="editableForm" editable="true" id="REEMBOLSO_IDIOMA" visible="{path:'Tipo', formatter:'.FormatForm'}">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_REEMBOLSO_IDIOMA" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+								emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer_REEMBOLSO_IDIOMA">
+								<f:formElements>
+									<f:FormElement label="Mês de referência " id="FormContainer1_REEMBOLSO_IDIOMA">
+										<f:fields>
+											<ComboBox id="IdPlano_REEMBOLSO_IDIOMA" selectedKey="{Valor}" required="true" placeholder="Selecione o Mes de referencia"
+												items="{path: '/ZET_GLHR_MESSet'}" change="onchangeParentesco" editable="{path:'Pernr', formatter:'.FormatEditable'}">
+												<core:Item key="{Mnr}" text="{Ltx}" id="idKeyParentesco_REEMBOLSO_IDIOMA"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Ano de referência" id="FormContainer2_REEMBOLSO_IDIOMA">
+										<f:fields>
+											<ComboBox id="IdAno_REEMBOLSO_IDIOMA" selectedKey="{Valor}" required="true" placeholder="Selecione o Ano de referência"
+												items="{path: '/ZET_GLHR_ANOSet'}" editable="{path:'Pernr', formatter:'.FormatEditable'}">
+												<core:Item key="{Gjahr}" text="{Gjahr}" id="idKeyAno_REEMBOLSO_IDIOMA"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement id="FormContainer3_REEMBOLSO_IDIOMA" visible="false">
+										<f:fields>
+											<Input value="{Valor}" id="IDIOMA1" editable="false" visible="false"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Instruções" id="Text_REEMBOLSO_IDIOMA" visible="{path:'Pernr', formatter:'.FormatFalse'}">
+										<f:fields>
+											<Text
+												text="Esta solicitação é utilizada para colaboradores elegíveis ao benefício, com subsídio aprovado, de acordo com a política, conforme PG publicada no GQI, código PG - GCP - CGT - 001 - PT. {i18n>lineFeed}O subsídio para idiomas é de até 70% do valor já aprovado com o gestor imediato, limitado a R$ 5.000,00 no período de 12 meses, com duração máxima de 3 anos consecutivos ou não. {i18n>lineFeed}Não é permitido o reembolso retroativo. {i18n>lineFeed}No caso de 3 meses sem solicitação de reembolso, a aprovação do subsídio será automaticamente cancelada. {i18n>lineFeed}Documentos necessários para solicitação mensal de reembolso: {i18n>lineFeed}- Boleto da instituição de ensino e comprovante de pagamento."
+												id="Text_REEMBOLSO_IDIOMA_2" class="fundotext"/>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form class="editableForm" editable="true" id="SEGURO_VIDA" visible="{path:'Tipo', formatter:'.FormatForm'}">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_SEGURO_VIDA" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+								emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer_SEGURO_VIDA">
+								<f:formElements>
+									<f:FormElement label="Plano" id="FormContainer1_SEGURO_VIDA">
+										<f:fields>
+											<ComboBox id="IdPlano_SEGURO_VIDA" selectedKey="{Bplan}" required="true" placeholder="Selecione o Plano"
+												items="{path: '/ZET_GLRH_COMBO_PLANOSet', filters: { path: 'Beneficio', operator: 'EQ', value1:'SEGURO_VIDA'}}"
+												change="onchangeParentesco" editable="false">
+												<core:Item key="{Bplan}" text="{Ltext}" id="idKeyParentesco_SEGURO_VIDA"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Opções" id="FormContainer2_SEGURO_VIDA">
+										<f:fields>
+											<ComboBox id="IdOpcoes_SEGURO_VIDA" selectedKey="{Opcoes}" required="true" placeholder="Selecione entre as Opções"
+												items="{path: '/ZET_GLHR_COMBO_OPCOESSet', filters: [{path:'IBeneficio', operator:'EQ', value1:'SEGURO_VIDA'}]}"
+												change="onchangeOpcoesSeguroVida" editable="{path:'Tipo', formatter:'.FormatFalse'}">
+												<core:Item key="{Opcoes}" text="{Ltext}" id="idKeyopcoes_SEGURO_VIDA"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement id="TextPlano" label="Instruções" visible="{path:'Pernr', formatter:'.FormatFalse'}">
+										<f:fields>
+											<Text
+												text="Preencha e digitalize o formulário de acordo com o motivo da solicitação e anexe no campo selecionando o botão +. {i18n>lineFeed}A opção de seguro VG possui cobertura apenas ao colaborador. {i18n>lineFeed}A opção de seguro APC acrescenta a cobertura de acidentes pessoais ao seguro de vida do colaborador. {i18n>lineFeed}A opção de seguro APC Cônjuge inclui a cobertura de acidentes pessoais ao cônjuge. {i18n>lineFeed}Em caso apenas de alteração de beneficiários, preencha os campos necessários totalizando 100% na participação dos mesmos e envie o formulário por e-mail para o DHO da sua unidade."
+												id="TextPlano_2" class="fundotext"/>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form class="editableForm" editable="true" id="TRANSPORTE" visible="{path:'Tipo', formatter:'.FormatForm'}">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_TRANSPORTE" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+								emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer_TRANSPORTE">
+								<f:formElements>
+									<f:FormElement label="Plano" id="FormContainer1_TRANSPORTE">
+										<f:fields>
+											<ComboBox id="IdPlano_TRANSPORTE" selectedKey="TRAN" required="true" placeholder="Selecione o Plano"
+												items="{path: '/ZET_GLRH_COMBO_PLANOSet', filters: { path: 'Beneficio', operator: 'EQ', value1:'TRANSPORTE'}}" change="onchangeParentesco"
+												editable="false">
+												<core:Item key="TRAN" text="{Ltext}" id="idKeyParentesco_TRANSPORTE"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement id="TextTransporte" label="Instruções" visible="{path:'Pernr', formatter:'.FormatFalse'}">
+										<f:fields>
+											<Text text="Preencha e digitalize o formulário de acordo o motivo da solicitação e anexe no campo selecionando o botão +." id="TextPlano_3"
+												class="fundotext"/>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form class="editableForm" editable="true" id="VALE_REFEICAO" visible="{path:'Tipo', formatter:'.FormatForm'}">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_VALE_REFEICAO" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+								emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer_VALE_REFEICAO">
+								<f:formElements>
+									<f:FormElement label="Plano" id="FormContainer1_VALE_REFEICAO">
+										<f:fields>
+											<ComboBox id="IdPlano_VALE_REFEICAO" selectedKey="{Bplan}" required="true" placeholder="Selecione o Plano"
+												items="{path: '/ZET_GLRH_COMBO_PLANOSet', filters: { path: 'Beneficio', operator: 'EQ', value1:'VALE_REFEICAO'}}"
+												change="onchangeParentesco" editable="{path:'Bplan', formatter:'.FormatEditable'}">
+												<core:Item key="{Bplan}" text="{Bplan} - {Ltext}" id="idKeyParentesco_VALE_REFEICAO"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Opções" id="FormContainer2_VALE_REFEICAO">
+										<f:fields>
+											<ComboBox id="IdOpcoes_VALE_REFEICAO" selectedKey="{Opcoes}" required="true" placeholder="Selecione entre as Opções"
+												items="{path: '/ZET_GLHR_COMBO_OPCOESSet', filters: [{path:'IBeneficio', operator:'EQ', value1:'VALE_REFEICAO'}]}"
+												change="onchangeParentesco" editable="{path:'Bplan', formatter:'.FormatEditable'}">
+												<core:Item key="{Opcoes}" text="{Opcoes} - {Ltext}" id="idKeyopcoes_VALE_REFEICAO"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form class="editableForm" editable="true" id="AUXILIO_CRECHE" visible="{path:'Tipo', formatter:'.FormatForm'}">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_AUXILIO_CRECHE" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+								emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer_AUXILIO_CRECHE">
+								<f:formElements>
+									<f:FormElement label="Mês de referência " id="FormContainer1_AUXILIO_CRECHE">
+										<f:fields>
+											<ComboBox id="IdPlano_AUXILIO_CRECHE" selectedKey="{Valor}" required="true" placeholder="Selecione o Mes de referencia"
+												items="{path: '/ZET_GLHR_MESSet'}" change="onchangeParentesco" editable="{path:'Pernr', formatter:'.FormatEditable'}">
+												<core:Item key="{Mnr}" text="{Ltx}" id="idKeyParentesco_AUXILIO_CRECHE"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Instruções" id="TextAUXILIO_CRECHE" visible="{path:'Pernr', formatter:'.FormatFalse'}">
+										<f:fields>
+											<Text
+												text="Para adesão ao benefício, preencha e digitalize o formulário e anexe no campo selecionando o botão +, junto com a certidão de nascimento do filho. {i18n>lineFeed}Documento necessário para solicitação mensal de reembolso auxílio creche: {i18n>lineFeed}- Recibo ou nota fiscal da mensalidade paga, com o CNPJ da Instituição. {i18n>lineFeed}Documentos necessários para solicitação mensal de reembolso auxílio babá: {i18n>lineFeed}- Recibo do eSocial com o comprovante de pagamento e recibo assinado pela babá, comprovando o pagamento do salário mensal. {i18n>lineFeed}Solicitações feitas até o dia 15, o reembolso ocorrerá na folha do mês vigente. {i18n>lineFeed}Solicitações feitas após o dia 15, o reembolso ocorrerá na folha do mês seguinte."
+												id="TextAUXILIO_CRECHE2" class="fundotext"/>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form class="editableForm" editable="true" id="COOPERATIVA" visible="{path:'Tipo', formatter:'.FormatForm'}">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_COOPERATIVA" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+								emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer_COOPERATIVA">
+								<f:formElements>
+									<f:FormElement label="Cooperativa" id="FormContainer1_COOPERATIVA">
+										<Input value="Cooperativa" id="Cooperativa1" editable="false"/>
+									</f:FormElement>
+									<f:FormElement label="Instruções" id="TextCOOPERATIVA" visible="{path:'Pernr', formatter:'.FormatFalse'}">
+										<f:fields>
+											<Text
+												text="Preencha e digitalize o formulário de acordo com o motivo da solicitação e anexe no campo selecionando o botão +. {i18n>lineFeed} {i18n>lineFeed}Documentos necessários para inclusão na cooperativa: {i18n>lineFeed}- Formulário de inclusão assinado e carimbado pela cooperativa e assinado pelo colaborador. {i18n>lineFeed} {i18n>lineFeed}Documentos necessários para exclusão na cooperativa: {i18n>lineFeed}- Formulário de exclusão assinado e carimbado pela cooperativa e assinado pelo colaborador. {i18n>lineFeed} {i18n>lineFeed}IMPORTANTE {i18n>lineFeed} A solicitação de desligamento da cooperativa só será aceita se o associado não tiver empréstimo em aberto."
+												id="TextCOOPERATIVA2" class="fundotext"/>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form class="editableForm" editable="true" id="GREMIO_CLUBE" visible="{path:'Tipo', formatter:'.FormatForm'}">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_GREMIO_CLUBE" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+								emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer_GREMIO_CLUBE">
+								<f:formElements>
+									<!--		<f:FormElement label="Gremio" id="FormContainer1_GREMIO_CLUBE">-->
+									<!--			<f:fields>-->
+									<!--				<ComboBox id="IdPlano_GREMIO_CLUBE" selectedKey="{Bplan}" required="true" placeholder="Selecione o Plano"-->
+									<!--					items="{path: '/ZET_GLRH_COMBO_PLANOSet', filters: { path: 'Beneficio', operator: 'EQ', value1:'GREMIO_CLUBE'}}" change="onchangeParentesco"-->
+									<!--					editable="false">-->
+									<!--					<core:Item key="{Bplan}" text="{Bplan} - {Ltext}" id="idKeyParentesco_GREMIO_CLUBE"/>-->
+									<!--				</ComboBox>-->
+									<!--			</f:fields>-->
+									<!--		</f:FormElement>-->
+									<!--		<f:FormElement label="Adesão" id="FormContainer2_GREMIO_CLUBE">-->
+									<!--			<f:fields>-->
+									<!--				<Switch type="AcceptReject" state="{= ${Adesao} === 'X' ? true :false}" id="IdAdesao"/>-->
+									<!--			</f:fields>-->
+									<!--		</f:FormElement>-->
+									<!--		<f:FormElement label="Observação" id="FormContainer3_GREMIO_CLUBE">-->
+									<!--			<f:fields>-->
+									<!--				<TextArea id="IdObservacao_GREMIO_CLUBE" value="{Observacao}" maxLength="255" width="100%" placeholder="Observação" rows="5"-->
+									<!--					editable="{path:'Bplan', formatter:'.FormatEditable'}"/>-->
+									<!--			</f:fields>-->
+									<!--		</f:FormElement>-->
+									<!--	</f:formElements>-->
+									<!--</f:FormContainer>-->
+									<f:FormElement id="TextGREMIO_CLUBE4" label="Instruções" visible="true">
+										<f:fields>
+											<Text text="Acessar o botão Solicitar acima, e identificar o formulario para sua solicitação, ao preencher, anexar no aplicativo para completar sua solicitação"
+												id="TextGREMIO_CLUBE3" class="fundotext"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement id="TextGREMIO_CLUBE" label="Instruções" visible="{path:'Pernr', formatter:'.FormatFalse'}">
+										<f:fields>
+											<Text text="Preencha e digitalize o formulário de acordo o motivo da solicitação e anexe no campo selecionando o botão +."
+												id="TextGREMIO_CLUBE2" class="fundotext"/>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form class="editableForm" editable="true" id="EMP_CONSIGNADO" visible="{path:'Tipo', formatter:'.FormatForm'}">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_EMPRESTIMO_CONSIGINADO" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12"
+								adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1"
+								singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer_EMPRESTIMO_CONSIGINADO">
+								<f:formElements>
+									<!--<f:FormElement label="Banco" id="FormContainer1_EMPRESTIMO_CONSIGINADO">-->
+									<!--	<f:fields>-->
+									<!--		<ComboBox id="IdPlano_EMPRESTIMO_CONSIGINADO" selectedKey="{Rubrica}" required="true" placeholder="Selecione o Plano"-->
+									<!--			items="{/ZET_GLHR_COMBO_RUBRICASet}" change="onchangeParentesco" editable="{path:'Rubrica', formatter:'.FormatEditable'}">-->
+									<!--			<core:Item key="{Lgart}" text="{Lgart} - {Lgtxt}" id="idKeyParentesco_EMPRESTIMO_CONSIGINADO"/>-->
+									<!--		</ComboBox>-->
+									<!--	</f:fields>-->
+									<!--</f:FormElement>-->
+									<!--<f:FormElement label="Montante" id="FormContainer2_EMPRESTIMO_CONSIGINADO">-->
+									<!--	<f:fields>-->
+									<!--		<Input value="{path : 'Montante', type: 'sap.ui.model.type.Currency'}" id="IdMontante_EMPRESTIMO_CONSIGINADO" placeholder="0.00"-->
+									<!--			required="true" maxLength="15" change="onchangeIdMargemEmp" editable="false"/>-->
+									<!--	</f:fields>-->
+									<!--</f:FormElement>-->
+									<!--<f:FormElement label="Data" id="FormContaine3_EMPRESTIMO_CONSIGINADO">-->
+									<!--	<f:fields>-->
+									<!--		<Input value="{Validade}" id="IdValidade_EMPRESTIMO_CONSIGINADO" required="true" maxLength="10" type="Date"-->
+									<!--			editable="false"/>-->
+									<!--	</f:fields>-->
+									<!--</f:FormElement>-->
+									<!--<f:FormElement label="Observação" id="FormContainer3_EMPRESTIMO_CONSIGINADO">-->
+									<!--	<f:fields>-->
+									<!--		<TextArea id="IdObservacao_EMPRESTIMO_CONSIGINADO" value="{Observacao}" maxLength="255" width="100%" placeholder="Observação" rows="5"-->
+									<!--			editable="false"/>-->
+									<!--	</f:fields>-->
+									<!--</f:FormElement>-->
+									<f:FormElement id="TextEMPRESTIMO_CONSIGINADO" label="Instruções" visible="{path:'Pernr', formatter:'.FormatFalse'}">
+										<f:fields>
+											<Text
+												text="BV Financeira {i18n>lineFeed}Antes de efetuar esta solicitação, é necessário primeiramente ter feito a solicitação na BV Financeira pelo telefone (11) 3003 7888. {i18n>lineFeed}Caso sua solicitação seja aprovada, aguarde ser contatato pelo DHO Local para assinar o contrato. {i18n>lineFeed}Documentos necessários para assinatura do contrato: {i18n>lineFeed}- 3 últimos holerites {i18n>lineFeed}- RG e CPF {i18n>lineFeed}- Comprovante de residência {i18n>lineFeed} {i18n>lineFeed}Funsejem {i18n>lineFeed}A solicitação pode ser feita caso haja no mínimo 6 meses de contribuição à Funsejem. {i18n>lineFeed}O valor do empréstimo não pode ultrapassar 25% da renda líquida. {i18n>lineFeed}Documentos necessários para assinatura do contrato: {i18n>lineFeed}- Formulário de solicitação {i18n>lineFeed}- 3 últimos holerites {i18n>lineFeed}- RG e CPF {i18n>lineFeed}- Comprovante de residência {i18n>lineFeed}- Comprovante bancário {i18n>lineFeed} {i18n>lineFeed} {i18n>lineFeed}CECREMEC / SICOOB {i18n>lineFeed}Documento necessário para solicitação de empréstimo: {i18n>lineFeed}- Carta de solicitação de empréstimo da Cooperativa Crecemec/Sicoob {i18n>lineFeed} {i18n>lineFeed}Coopernitro {i18n>lineFeed}Documentos necessários para solicitação de empréstimo: {i18n>lineFeed}- Formulário de Solicitação de empréstimo {i18n>lineFeed}- Holerite"
+												id="TextEMPRESTIMO_CONSIGINADO2" class="fundotext"/>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form class="editableForm" editable="true" id="FARMACIA" visible="{path:'Tipo', formatter:'.FormatForm'}">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_FARMACIA" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+								emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer_FARMACIA">
+								<f:formElements>
+									<f:FormElement label="Plano" id="FormContainer1_FARMACIA">
+										<f:fields>
+											<ComboBox id="IdPlano_FARMACIA" selectedKey="{Bplan}" required="true" placeholder="Selecione o Plano"
+												items="{path: '/ZET_GLRH_COMBO_PLANOSet', filters: { path: 'Beneficio', operator: 'EQ', value1:'FARMACIA'}}" change="onchangePlano"
+												editable="{path:'Pernr', formatter:'.FormatEditable'}">
+												<core:Item key="{Bplan}" text="{Ltext}" id="idKeyParentesco_FARMACIA"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Motivo" id="FormContainer2_FARMACIA">
+										<f:fields>
+											<ComboBox id="IdMotivo_FARMACIA" selectedKey="{Opcoes}" required="true" placeholder="Selecione o motivo"
+												items="{path: '/ZET_GLHR_COMBO_MOTIVOSet', filters: { path: 'IBeneficio', operator: 'EQ', value1:'FARMACIA'}}" change="onchangeParentesco"
+												editable="{path:'Pernr', formatter:'.FormatEditable'}">
+												<core:Item key="{Opcoes}" text="{Ltext}" id="idKeyMotivo_FARMACIA"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement id="TextFARMACIA" label="Instruções" visible="{path:'Pernr', formatter:'.FormatFalse'}">
+										<f:fields>
+											<Text
+												text="Preencha e digitalize o formulário de acordo o motivo da solicitação e anexe no campo selecionando o botão +. {i18n>lineFeed}Documentos necessários para exclusão de dependentes na farmácia: {i18n>lineFeed}- Formulário de exclusão de dependente ."
+												id="TextFARMACIA2" class="fundotext"/>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form class="editableForm" editable="true" id="REEMBOLSO_SUBSIDIO" visible="{path:'Tipo', formatter:'.FormatForm'}">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_REEMBOLSO_SUBSIDIO" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12"
+								adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1"
+								singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer_REEMBOLSO_SUBSIDIO">
+								<f:formElements>
+									<f:FormElement label="Mês de referência" id="FormContainer1_REEMBOLSO_SUBSIDIO">
+										<f:fields>
+											<ComboBox id="IdPlano_REEMBOLSO_SUBSIDIO" value="{Valor}" selectedKey="{Valor}" required="true" placeholder="Selecione o Mes de referência"
+												items="{path: '/ZET_GLHR_MESSet'}" editable="false">
+												<core:Item key="{Ktx}" text="{Ltx}" id="idKeyParentesco_REEMBOLSO_SUBSIDIO"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Ano de referência" id="FormContainer2_REEMBOLSO_SUBSIDIO">
+										<f:fields>
+											<ComboBox id="IdAno_REEMBOLSO_SUBSIDIO" selectedKey="{Valor}" required="true" placeholder="Selecione o Ano de referência"
+												items="{path: '/ZET_GLHR_ANOSet'}" editable="false">
+												<core:Item key="{Gjahr}" text="{Gjahr}" id="idKeyAno_REEMBOLSO_SUBSIDIO"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement id="TextREEMBOLSO_SUBSIDIO" label="Instruções" visible="{path:'Pernr', formatter:'.FormatFalse'}">
+										<f:fields>
+											<Text
+												text="Solicitações realizadas até o dia 15 serão reembolsadas dentro do mês. \n \n Obrigatório anexar o comprovante de pagamento. \n \n Em caso de dúvidas procure seu DHO."
+												id="TextREEMBOLSO_SUBSIDIO2" class="fundotext"/>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form class="editableForm" editable="true" id="ALIMENTACAO" visible="{path:'Tipo', formatter:'.FormatForm'}">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_ALIMENTACAO" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+								emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer_ALIMENTACAO">
+								<f:formElements>
+									<f:FormElement label="Plano" id="FormContainer1_ALIMENTACAO">
+										<f:fields>
+											<ComboBox id="IdPlano_ALIMENTACAO" selectedKey="{Bplan}" required="true" placeholder="Selecione o Plano"
+												editable="{path:'Bplan', formatter:'.FormatEditable'}"
+												items="{path: '/ZET_GLRH_COMBO_PLANOSet', filters: { path: 'Beneficio', operator: 'EQ', value1:'ALIMENTACAO'}}" change="onchangeParentesco">
+												<core:Item key="{Bplan}" text="{Bplan} - {Ltext}" id="idKeyParentesco_ALIMENTACAO"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Opções" id="FormContainer2_ALIMENTACAO">
+										<f:fields>
+											<ComboBox id="IdOpcoes_ALIMENTACAO" selectedKey="{Opcoes}" required="true" placeholder="Selecione entre as Opções"
+												editable="{path:'Bplan', formatter:'.FormatEditable'}"
+												items="{path: '/ZET_GLHR_COMBO_OPCOESSet', filters: [{path:'IBeneficio', operator:'EQ', value1:'ALIMENTACAO'}]}" change="onchangeParentesco">
+												<core:Item key="{Opcoes}" text="{Opcoes} - {Ltext}" id="idKeyopcoes_ALIMENTACAO"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Observação" id="FormContainer3_ALIMENTACAO">
+										<f:fields>
+											<TextArea id="IdObservacao_ALIMENTACAO" value="{Observacao}" maxLength="255" width="100%" placeholder="Observação" rows="5"
+												editable="{path:'Bplan', formatter:'.FormatEditable'}"/>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form class="editableForm" editable="true" id="CESTA_BASICA" visible="{path:'Tipo', formatter:'.FormatForm'}">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_CESTA_BASICA" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+								emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer_CESTA_BASICA">
+								<f:formElements>
+									<f:FormElement label="Plano" id="FormContainer1_CESTA_BASICA">
+										<f:fields>
+											<ComboBox id="IdPlano_CESTA_BASICA" selectedKey="{Bplan}" required="true" placeholder="Selecione o Plano"
+												items="{path: '/ZET_GLRH_COMBO_PLANOSet', filters: { path: 'Beneficio', operator: 'EQ', value1:'CESTA_BASICA'}}" change="onchangeParentesco"
+												editable="{path:'Bplan', formatter:'.FormatEditable'}">
+												<core:Item key="{Bplan}" text="{Ltext}" id="idKeyParentesco_CESTA_BASICA"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Opções" id="FormContainer2_CESTA_BASICA">
+										<f:fields>
+											<ComboBox id="IdOpcoes_CESTA_BASICA" selectedKey="{Opcoes}" required="true" placeholder="Selecione entre as Opções"
+												items="{path: '/ZET_GLHR_COMBO_OPCOESSet', filters: [{path:'IBeneficio', operator:'EQ', value1:'CESTA_BASICA'}]}"
+												change="onchangeParentesco" editable="{path:'Bplan', formatter:'.FormatEditable'}">
+												<core:Item key="{Opcoes}" text="{Ltext}" id="idKeyopcoes_CESTA_BASICA"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Modalidade de Entrega" id="FormContainer3_CESTA_BASICA">
+										<f:fields>
+											<ComboBox id="IdMotivo_CESTA_BASICA" selectedKey="{Motivo}" required="true" placeholder="Selecione a modalidade de entrega"
+												items="{path: '/ZET_GLHR_COMBO_MOTIVOSet', filters: { path: 'IBeneficio', operator: 'EQ', value1:'CESTA_BASICA'}}" change="onchangeModCesta"
+												editable="{path:'Bplan', formatter:'.FormatEditable'}">
+												<core:Item key="{Opcoes}" text="{Ltext}" id="idKeyMotivo_CESTA_BASICA"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Telefone de contato" id="FormContainer4_CESTA_BASICA">
+										<f:fields>
+											<MaskInput mask="( 99 ) 99999-9999" placeholderSymbol=" " placeholder="Informe o telefone de contato" value="{Telefone}" id="idTelefone"
+												editable="false"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement id="FormContainer5_CESTA_BASICA" label="Instruções" visible="{path:'Pernr', formatter:'.FormatFalse'}">
+										<f:fields>
+											<Text
+												text="Alterações realizadas até o dia 20 serão processadas para o mês seguinte.\n\n Para unidades que possuem a modalidade de entrega, ao cadastrar ou alterar o endereço é obrigatório anexar o comprovante.\n\n Para saber mais sobre o benefício, entre no Site de DHO."
+												id="TextCesta" class="fundotext"/>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form class="editableForm" editable="true" id="OTICA" visible="{path:'Tipo', formatter:'.FormatForm'}">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_OTICA" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+								emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer_OTICA">
+								<f:formElements>
+									<f:FormElement label="Plano" id="FormContainer1_OTICA">
+										<f:fields>
+											<ComboBox id="IdPlano_OTICA" selectedKey="{Bplan}" required="true" placeholder="Selecione o Plano"
+												items="{path: '/ZET_GLRH_COMBO_PLANOSet', filters: { path: 'Beneficio', operator: 'EQ', value1:'OTICA'}}" change="onchangeParentesco"
+												editable="{path:'Bplan', formatter:'.FormatEditable'}">
+												<core:Item key="{Bplan}" text="{{Ltext}" id="idKeyParentesco_OTICA"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Opções" id="FormContainer2_OTICA">
+										<f:fields>
+											<ComboBox id="IdOpcoes_OTICA" selectedKey="{Opcoes}" required="true" placeholder="Selecione entre as Opções"
+												items="{path: '/ZET_GLHR_COMBO_OPCOESSet', filters: [{path:'IBeneficio', operator:'EQ', value1:'OTICA'}]}" change="onchangeParentesco"
+												editable="{path:'Bplan', formatter:'.FormatEditable'}">
+												<core:Item key="{Opcoes}" text="{Opcoes} - {Ltext}" id="idKeyopcoes_OTICA"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Observação" id="FormContainer3_OTICA">
+										<f:fields>
+											<TextArea id="IdObservacao_OTICA" value="{Observacao}" editable="{path:'Bplan', formatter:'.FormatEditable'}" maxLength="255" width="100%"
+												placeholder="Observação" rows="5"/>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form class="editableForm" editable="true" id="PREVIDENCIA_PRIVADA" visible="{path:'Tipo', formatter:'.FormatForm'}">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_PREVIDENCIA_PRIVADA" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12"
+								adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1"
+								singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer_PREVIDENCIA_PRIVADA">
+								<f:formElements>
+									<f:FormElement label="Plano" id="FormContainer1_PREVIDENCIA_PRIVADA">
+										<f:fields>
+											<ComboBox id="IdPlano_PREVIDENCIA_PRIVADA" selectedKey="NORM" required="true" placeholder="Selecione o Plano"
+												items="{path: '/ZET_GLRH_COMBO_PLANOSet', filters: { path: 'Beneficio', operator: 'EQ', value1:'PREVIDENCIA_PRIVADA'}}"
+												editable="{path:'Pernr', formatter:'.FormatFalse'}" change="onchangePlano">
+												<core:Item key="NORM" text="{Ltext}" id="idKeyParentesco_FormContainer1_PREVIDENCIA_PRIVADA"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Motivo" id="FormContainer3_PREVIDENCIA_PRIVADA">
+										<f:fields>
+											<ComboBox id="IdMotivo_PREVIDENCIA_PRIVADA" selectedKey="{Motivo}" required="true" placeholder="Seleciona o motivo"
+												items="{path: '/ZET_GLHR_COMBO_MOTIVOSet', filters: { path: 'IBeneficio', operator: 'EQ', value1:'PREVIDENCIA_PRIVADA'}}"
+												editable="{path:'Pernr', formatter:'.FormatFalse'}" change="onChangeMotivoPrev">
+												<core:Item key="{Opcoes}" text="{Ltext}" id="idKeyMotivo_PREVIDENCIA_PRIVADA"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Valor" id="FormContainer4_PREVIDENCIA_PRIVADA" visible="{path:'Tipo', formatter:'.FormatForm'}">
+										<f:fields>
+											<ComboBox id="IdValor_PREVIDENCIA_PRIVADA" selectedKey="{Valor}" required="true" placeholder="Seleciona o motivo"
+												items="{path: '/ZET_GLHR_COMBO_VALORSet', filters: { path: 'IBeneficio', operator: 'EQ', value1:'PREVIDENCIA_PRIVADA'}}"
+												editable="{path:'Pernr', formatter:'.FormatFalse'}" visible="false">
+												<core:Item key="{Ltext}" text="{Ltext}" id="idKeyValor_PREVIDENCIA_PRIVADA"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Valor" id="FormContainer5_PREVIDENCIA_PRIVADA" visible="{path:'Tipo', formatter:'.FormatForm'}">
+										<f:fields>
+											<Input value="{Valor}" placeholder="Modalidade de entrega" valueHelpRequest="handleValueHelp" showValueHelp="false" required="true"
+												id="IdValor1_PREVIDENCIA_PRIVADA" editable="true" visible="false" type="Number"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement id="TextPrevidencia" label="Instruções" visible="{path:'Pernr', formatter:'.FormatFalse'}">
+										<f:fields>
+											<Text
+												text="Preencha e digitalize o formulário de acordo o motivo da solicitação e anexe no campo selecionando o botão +. {i18n>lineFeed}Em caso apenas de alteração de beneficiários ou alteração de perfil de investimento, preencha os campos necessários e envie o formulário por e-mail para o DHO da sua unidade."
+												id="TextPrevidencia_2" class="fundotext"/>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form class="editableForm" editable="true" id="PREV_PRIV_BAS" visible="{path:'Tipo', formatter:'.FormatForm'}">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_PREV_PRIV_BAS" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+								emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer_PREV_PRIV_BAS">
+								<f:formElements>
+									<f:FormElement label="Plano" id="FormContainer1_PREV_PRIV_BAS">
+										<f:fields>
+											<ComboBox id="IdPlano_PREV_PRIV_BAS" selectedKey="{Bplan}" required="true" placeholder="Selecione o Plano"
+												items="{path: '/ZET_GLRH_COMBO_PLANOSet', filters: { path: 'Beneficio', operator: 'EQ', value1:'PREV_PRIV_BAS'}}"
+												editable="{path:'Bplan', formatter:'.FormatEditable'}">
+												<core:Item key="{Bplan}" text="{Bplan} - {Ltext}" id="idKeyParentesco_FormContainer1_PREV_PRIV_BAS"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form class="editableForm" editable="true" id="PREV_PRIV_ESP" visible="{path:'Tipo', formatter:'.FormatForm'}">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_PREV_PRIV_ESP" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+								emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer_PREV_PRIV_ESP">
+								<f:formElements>
+									<f:FormElement label="Plano" id="FormContainer1_PREV_PRIV_ESP">
+										<f:fields>
+											<ComboBox id="IdPlano_PREV_PRIV_ESP" selectedKey="{Bplan}" required="true" placeholder="Selecione o Plano"
+												items="{path: '/ZET_GLRH_COMBO_PLANOSet', filters: { path: 'Beneficio', operator: 'EQ', value1:'PREV_PRIV_ESP'}}"
+												editable="{path:'Bplan', formatter:'.FormatEditable'}">
+												<core:Item key="{Bplan}" text="{Bplan} - {Ltext}" id="idKeyParentesco_FormContainer1_PREV_PRIV_ESP"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form class="editableForm" editable="true" id="PREV_PRIV_NOR" visible="{path:'Tipo', formatter:'.FormatForm'}">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_PREV_PRIV_NOR" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+								emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer_PREV_PRIV_NOR">
+								<f:formElements>
+									<f:FormElement label="Plano" id="FormContainer1_PREV_PRIV_NOR">
+										<f:fields>
+											<ComboBox id="IdPlano_PREV_PRIV_NOR" selectedKey="{Bplan}" required="true" placeholder="Selecione o Plano"
+												items="{path: '/ZET_GLRH_COMBO_PLANOSet', filters: { path: 'Beneficio', operator: 'EQ', value1:'PREV_PRIV_NOR'}}"
+												editable="{path:'Bplan', formatter:'.FormatEditable'}">
+												<core:Item key="{Bplan}" text="{Bplan} - {Ltext}" id="idKeyParentesco_FormContainer1_PREV_PRIV_NOR"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form class="editableForm" editable="true" id="PREV_PRIV_SUP" visible="{path:'Tipo', formatter:'.FormatForm'}">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_PREV_PRIV_SUP" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+								emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer_PREV_PRIV_SUP">
+								<f:formElements>
+									<f:FormElement label="Plano" id="FormContainer1_PREV_PRIV_SUP">
+										<f:fields>
+											<ComboBox id="IdPlano_PREV_PRIV_SUP" selectedKey="{Bplan}" required="true" placeholder="Selecione o Plano"
+												items="{path: '/ZET_GLRH_COMBO_PLANOSet', filters: { path: 'Beneficio', operator: 'EQ', value1:'PREV_PRIV_SUP'}}"
+												editable="{path:'Bplan', formatter:'.FormatEditable'}">
+												<core:Item key="{Bplan}" text="{Bplan} - {Ltext}" id="idKeyParentesco_FormContainer1_PREV_PRIV_SUP"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form class="editableForm" editable="true" id="REEMBOLSO_MEDICAM" visible="{path:'Tipo', formatter:'.FormatForm'}">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_REEMBOLSO_MEDICAM" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+								emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer_REEMBOLSO_MEDICAM">
+								<f:formElements>
+									<f:FormElement label="Mês de referência" id="FormContainer1_REEMBOLSO_MEDICAM">
+										<f:fields>
+											<ComboBox id="IdPlano_REEMBOLSO_MEDICAM" selectedKey="{Valor}" required="true" placeholder="Selecione o Mes de referencia"
+												items="{path: '/ZET_GLHR_MESSet'}" change="onchangeParentesco" editable="{path:'Pernr', formatter:'.FormatEditable'}">
+												<core:Item key="{Mnr}" text="{Ltx}" id="idKeyParentesco_REEMBOLSO_MEDICAM"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Ano de referência" id="FormContainer2_REEMBOLSO_MEDICAM">
+										<f:fields>
+											<ComboBox id="IdAno_REEMBOLSO_MEDICAM" selectedKey="{Valor}" required="true" placeholder="Selecione o Ano de referência"
+												items="{path: '/ZET_GLHR_ANOSet'}" editable="{path:'Pernr', formatter:'.FormatEditable'}">
+												<core:Item key="{Gjahr}" text="{Gjahr}" id="idKeyAno_REEMBOLSO_MEDICAM"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement id="Text_REEMBOLSO_MEDICAM" label="Instruções" visible="{path:'Pernr', formatter:'.FormatFalse'}">
+										<f:fields>
+											<Text text="Seguir orientações do formulário" id="TextREEMBOLSO_REEMBOLSO_MEDICAM" class="fundotext"/>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form class="editableForm" editable="true" id="REFEITORIO" visible="{path:'Tipo', formatter:'.FormatForm'}">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_REFEITORIO" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+								emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer_REFEITORIO">
+								<f:formElements>
+									<f:FormElement label="Plano" id="FormContainer1_REFEITORIO">
+										<f:fields>
+											<ComboBox id="IdPlano_REFEITORIO" selectedKey="{Bplan}" required="true" placeholder="Selecione o Plano"
+												items="{path: '/ZET_GLRH_COMBO_PLANOSet', filters: { path: 'Beneficio', operator: 'EQ', value1:'FUNSEJEM'}}"
+												editable="{path:'Bplan', formatter:'.FormatEditable'}">
+												<core:Item key="{Bplan}" text="{Bplan} - {Ltext}" id="idKeyParentesco_FormContainer1_REFEITORIO"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Opções" id="FormContainer2_REFEITORIO">
+										<f:fields>
+											<ComboBox id="IdOpcoes_REFEITORIO" selectedKey="{Opcoes}" required="true" placeholder="Selecione entre as Opções"
+												items="{path: '/ZET_GLHR_COMBO_OPCOESSet', filters: [{path:'IBeneficio', operator:'EQ', value1:'REFEITORIO'}]}" change="onchangeParentesco"
+												editable="{path:'Bplan', formatter:'.FormatEditable'}">
+												<core:Item key="{Opcoes}" text="{Opcoes} - {Ltext}" id="idKeyopcoes_REFEITORIO"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form class="editableForm" editable="true" id="UPLOAD" visible="{path:'Status', formatter:'.formatEditableUpload'}">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_UPLOAD" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+								emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer_UPLOAD">
+								<f:formElements>
+									<f:FormElement id="IdonAddDoc" label="Para adicionar/alterar Anexos selecione o botão ( + )">
+										<f:fields>
+											<UploadCollection id="UploadCollection" multiple="false" change="onChange" fileDeleted="onDeleteSelectedItems"
+												beforeUploadStarts="onBeforeUploadStarts" uploadComplete="onuploadComplete" items="{ path: '/ZET_GLRH_UPLOADSet', templateShareable: true }"
+												modelContextChange="onmodelListContextChange" mode="SingleSelectMaster"
+												uploadButtonInvisible="{path:'Status', formatter:'.formatVisiblebButton'}"
+												uploadUrl="/sap/opu/odata/sap/ZGWGLRH_MEU_CADASTRO_SRV/ZET_GLHR_UPFILESet"
+												noDataDescription="Para adicionar/alterar Anexos selecione o botão ( + )" noDataText="Aguardando novos Carregamentos"
+												numberOfAttachmentsText="Anexos">
+												<items>
+													<UploadCollectionItem documentId="{DocId}" fileName="{Filename}" mimeType="{Mimetype}"
+														url="/sap/opu/odata/sap/ZGWGLRH_MEU_CADASTRO_SRV/ZET_GLHR_UPFILESet('{Pernr}${Infty}${Subty}$$${Tipo}${Favor}$${Icnum}${Dependentes}${Objps}${DocId}${Valor}${Area}')/$value"
+														enableEdit="false" visibleEdit="false" deletePress="onFileDelete" selected="true"
+														visibleDelete="{path:'Status', formatter:'.formatVisibleEdit'}"/>
+												</items>
+											</UploadCollection>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form class="editableForm" editable="true" id="CHECKBOX" visible="false">
+						<f:layout>
+							<f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+								emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer>
+								<f:formElements>
+									<f:FormElement>
+										<f:fields>
+                      						<CheckBox id="CheckBox" text="Autorizo a empresa Nexa Recursos Minerais a efetuar descontos em meus vencimentos, dos valores referente ao Plano de Assistência Odontológica." wrapping="true" visible="true"/>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+				</content>
+				<footer>
+					<Toolbar id="idOverTollbar" design="Transparent">
+						<ToolbarSpacer id="idToolbarSpacerD"/>
+						<Button id="IdSegundaVia" text="2° via de carteirinha" type="Transparent" icon="sap-icon://credit-card" iconFirst="true" width="auto"
+							enabled="true" visible="{path:'Status', formatter:'.FormatFalse'}" iconDensityAware="false" press="onSegunda" tooltip="Solicitar segunda via de carteirinha"/>
+						<Button press="onSaveCDep" text="Enviar" icon="sap-icon://save" id="IdSalvarDetailDep" tooltip="Enviar"
+							visible="{path:'Status', formatter:'.FormatFalse'}" iconFirst="true"/>
+						<Button press="onSave" text="Enviar" icon="sap-icon://save" id="IdSalvarDetail" tooltip="Enviar"
+							visible="{path:'Status', formatter:'.FormatFalse'}" iconFirst="true"/>
+						<Button press="onSave2via" text="Enviar" icon="sap-icon://save" id="IdSalvarDetail2via" tooltip="Enviar"
+							visible="{path:'Status', formatter:'.FormatFalse'}" iconFirst="true"/>
+						<Button press="onCancel" text="Cancelar" icon="sap-icon://cancel" id="IdCancelDetailDep" tooltip="Cancelar Alterações" visible="{path:'Pernr', formatter:'.FormatFalse'}"
+							iconFirst="true"/>
+						<Button press="onCancelBeneficio" text="Cancelar Benefício" icon="sap-icon://decline" id="IdCancelBeneficio" tooltip="Cancelar beneficio"
+							visible="{path:'Pernr', formatter:'.FormatFalse'}" iconFirst="true"/>
+					</Toolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

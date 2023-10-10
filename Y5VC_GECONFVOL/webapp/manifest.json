@@ -1,0 +1,127 @@
+{
+    "_version": "1.8.0",
+    "sap.app": {
+        "id": "workspace.conferenciavolumes.zconferencia_volumes",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "dataSources": {
+            "GE": {
+                "uri": "/sap/opu/odata/sap/ZGWVCMM_GESTAO_ESTOQUE_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/metadata.xml"
+                }
+            }
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "sourceTemplate": {
+            "id": "ui5template.basicSAPUI5ApplicationProject",
+            "version": "1.38.11",
+            "toolsId": "1c7f9408-f858-4cdd-885f-dbf1d6faf0a8"
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        },
+        "supportedThemes": [
+            "sap_hcb",
+            "sap_belize"
+        ]
+    },
+    "sap.ui5": {
+        "rootView": {
+            "viewName": "workspace.conferenciavolumes.zconferencia_volumes.view.View1",
+            "type": "XML"
+        },
+        "dependencies": {
+            "minUI5Version": "1.30.0",
+            "libs": {
+                "sap.ui.layout": {},
+                "sap.ui.core": {},
+                "sap.m": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "workspace.conferenciavolumes.zconferencia_volumes.i18n.i18n"
+                }
+            },
+            "GE": {
+                "dataSource": "GE",
+                "type": "sap.ui.model.odata.v2.ODataModel",
+                "settings": {
+                    "loadMetadataAsync": false,
+                    "json": true,
+                    "bJSON": true,
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "useBatch": true,
+                    "refreshAfterChange": false,
+                    "disableHeadRequestForToken": true
+                }
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "workspace.conferenciavolumes.zconferencia_volumes.view",
+                "controlAggregation": "pages",
+                "controlId": "idAppControl",
+                "clearControlAggregation": false
+            },
+            "routes": [
+                {
+                    "name": "RouteView1",
+                    "pattern": "RouteView1",
+                    "target": [
+                        "TargetView1"
+                    ]
+                }
+            ],
+            "targets": {
+                "TargetView1": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewName": "View1"
+                }
+            }
+        }
+    },
+    "sap.platform.abap": {
+        "uri": "/sap/bc/ui5_ui5/sap/y5vc_geconfvol/",
+        "_version": "1.1.0"
+    }
+}

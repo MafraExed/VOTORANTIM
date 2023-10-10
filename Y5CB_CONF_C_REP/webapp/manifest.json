@@ -1,0 +1,313 @@
+{
+    "_version": "1.9.0",
+    "sap.app": {
+        "id": "Y5CB_CONF_C_REP.Y5CB_CONF_C_REP",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/sap/ZGWCBMM_CONF_CEG_REPARO_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/metadata.xml",
+                    "annotations": [
+                        "local_annotations"
+                    ]
+                }
+            },
+            "local_annotations": {
+                "type": "ODataAnnotation",
+                "uri": "annotations/local_annotations.xml",
+                "settings": {
+                    "localUri": "annotations/local_annotations.xml"
+                }
+            },
+            "ZGWCBMM_CONF_CEG_REPARO_SRV": {
+                "uri": "/sap/opu/odata/sap/ZGWCBMM_CONF_CEG_REPARO_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/ZGWCBMM_CONF_CEG_REPARO_SRV/metadata.xml"
+                }
+            }
+        },
+        "sourceTemplate": {
+            "id": "servicecatalog.connectivityComponent",
+            "version": "0.0.0",
+            "toolsId": "c4d70c29-82cc-4d4a-8172-3c339f829980"
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "fullWidth": true,
+        "icons": {
+            "icon": "sap-icon://task",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "rootView": {
+            "viewName": "Y5CB_CONF_C_REP.Y5CB_CONF_C_REP.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "app"
+        },
+        "dependencies": {
+            "minUI5Version": "1.42.0",
+            "libs": {
+                "sap.m": {},
+                "sap.ndc": {
+                    "minVersion": ""
+                },
+                "sap.tnt": {
+                    "minVersion": ""
+                },
+                "sap.ui.commons": {
+                    "minVersion": ""
+                },
+                "sap.ui.comp": {
+                    "minVersion": ""
+                },
+                "sap.ui.table": {
+                    "minVersion": ""
+                },
+                "sap.ui.unified": {
+                    "minVersion": ""
+                },
+                "sap.ui.ux3": {
+                    "minVersion": ""
+                },
+                "sap.uxap": {
+                    "minVersion": ""
+                }
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "Y5CB_CONF_C_REP.Y5CB_CONF_C_REP.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultOperationMode": "Server",
+                    "defaultCountMode": "Both"
+                }
+            },
+            "@i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "uri": "i18n/i18n.properties"
+            },
+            "conf": {
+                "type": "sap.ui.model.odata.v2.ODataModel",
+                "settings": {
+                    "defaultOperationMode": "Server",
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Request"
+                },
+                "dataSource": "ZGWCBMM_CONF_CEG_REPARO_SRV",
+                "preload": true
+            }
+        },
+        "services": {
+            "ShellUIService": {
+                "factoryName": "sap.ushell.ui5service.ShellUIService",
+                "lazy": false,
+                "settings": {
+                    "setTitle": "auto"
+                }
+            }
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "viewPath": "Y5CB_CONF_C_REP.Y5CB_CONF_C_REP.view",
+                "controlId": "app",
+                "controlAggregation": "pages",
+                "bypassed": {
+                    "target": [
+                        "notFound"
+                    ]
+                },
+                "async": true
+            },
+            "routes": [
+                {
+                    "pattern": "",
+                    "name": "worklist",
+                    "target": [
+                        "worklist"
+                    ],
+                    "titleTarget": ""
+                },
+                {
+                    "pattern": "ZET_CBMM_CF_CEGA001Set/{objectId}",
+                    "name": "object",
+                    "target": [
+                        "object"
+                    ]
+                },
+                {
+                    "name": "Back",
+                    "pattern": "Back/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "Back"
+                    ]
+                },
+                {
+                    "name": "Aceitar",
+                    "pattern": "Aceitar({CodAviso},{Cliente})",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "Aceitar"
+                    ]
+                },
+                {
+                    "name": "Aceite",
+                    "pattern": "Aceite({CodAviso},{Cliente},{Ebelp},{Ebeln})",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "Aceite"
+                    ]
+                },
+                {
+                    "name": "fornecimento",
+                    "pattern": "fornecimento({Kunnr},{AvisoEntrega},{Ebeln})",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "fornecimento"
+                    ]
+                },
+                {
+                    "name": "entradaHistorico",
+                    "pattern": "Historico({CodAviso},{Cliente},{Nfe},{Ebeln})",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "entradaHistorico"
+                    ]
+                },
+                {
+                    "name": "impressaoPorAviso",
+                    "pattern": "Impressao({CodAviso},{Name})",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "impressaoPorAviso"
+                    ]
+                }
+            ],
+            "targets": {
+                "worklist": {
+                    "viewName": "Worklist",
+                    "viewId": "worklist",
+                    "viewLevel": 1,
+                    "title": "{i18n>worklistViewTitle}"
+                },
+                "object": {
+                    "viewName": "Object",
+                    "viewId": "object",
+                    "viewLevel": 2,
+                    "title": "{i18n>objectViewTitle}"
+                },
+                "objectNotFound": {
+                    "viewName": "ObjectNotFound",
+                    "viewId": "objectNotFound"
+                },
+                "notFound": {
+                    "viewName": "NotFound",
+                    "viewId": "notFound"
+                },
+                "Aceite": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearAggregation": true,
+                    "viewName": "Aceite",
+                    "viewLevel": 3,
+                    "title": "Aceite",
+                    "viewId": "Aceite"
+                },
+                "Back": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearAggregation": true,
+                    "viewName": "Worklist",
+                    "viewLevel": 1,
+                    "viewId": "Back",
+                    "title": "Conferência Cega Reparo",
+                    "controlAggregation": ""
+                },
+                "Aceitar": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearAggregation": true,
+                    "viewName": "Aceitar",
+                    "title": "",
+                    "viewId": "Aceitar",
+                    "viewLevel": 3
+                },
+                "fornecimento": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearAggregation": true,
+                    "viewName": "Fornecimento",
+                    "viewLevel": 2
+                },
+                "entradaHistorico": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearAggregation": true,
+                    "viewLevel": 2,
+                    "viewName": "EntradaHistorico"
+                },
+                "impressaoPorAviso": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearAggregation": true,
+                    "viewName": "ImpressaoPorAviso",
+                    "viewId": "impressaoPorAviso",
+                    "viewLevel": 3
+                }
+            }
+        },
+        "resourceRoots": {
+            "openui5.camera": "./thirdparty/openui5/camera/"
+        },
+        "resources": {
+            "js": []
+        }
+    },
+    "sap.platform.abap": {
+        "uri": "/sap/bc/ui5_ui5/sap/y5cb_conf_c_rep",
+        "_version": "1.1.0"
+    }
+}

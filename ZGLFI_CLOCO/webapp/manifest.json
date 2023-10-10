@@ -1,0 +1,270 @@
+{
+    "_version": "1.1.0",
+    "sap.app": {
+        "_version": "1.1.0",
+        "id": "FechamentoContabil",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "title": "",
+        "description": "",
+        "resources": "resources.json",
+        "ach": "ach",
+        "sourceTemplate": {
+            "id": "servicecatalog.connectivityComponentForManifest",
+            "version": "0.0.0",
+            "toolsId": "e17d0105-a1f0-464c-9841-72494787a76f"
+        },
+        "dataSources": {
+            "mainService": {
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/metadata.xml"
+                },
+                "uri": "localService/metadata.xml"
+            },
+            "ZGWGLFI_CLOCO_SRV": {
+                "uri": "/sap/opu/odata/sap/ZGWGLFI_CLOCO_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/ZGWGLFI_CLOCO_SRV/metadata.xml"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "_version": "1.1.0",
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        },
+        "supportedThemes": [
+            "sap_hcb",
+            "sap_bluecrystal"
+        ]
+    },
+    "sap.ui5": {
+        "_version": "1.1.0",
+        "rootView": {
+            "viewName": "FechamentoContabil.view.App",
+            "type": "XML"
+        },
+        "dependencies": {
+            "minUI5Version": "1.52.0",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.ui.layout": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "FechamentoContabil.i18n.i18n"
+                }
+            },
+            "": {
+                "uri": "/sap/opu/odata/sap/ZGWGLFI_CLOCO_SRV/",
+                "type": "sap.ui.model.odata.v2.ODataModel",
+                "settings": {
+                    "defaultOperationMode": "Server",
+                    "defaultBindingMode": "OneWay",
+                    "defaultCountMode": "None"
+                },
+                "dataSource": "ZGWGLFI_CLOCO_SRV",
+                "preload": true
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                },
+                {
+                    "uri": "css/circle.css"
+                }
+            ],
+            "js": [
+                {
+                    "uri": "libs/dom-to-image.js"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "viewPath": "FechamentoContabil.view",
+                "controlAggregation": "pages",
+                "routerClass": "sap.m.routing.Router",
+                "greedy": true,
+                "controlId": "app"
+            },
+            "targets": {
+                "monitor": {
+                    "viewType": "XML",
+                    "transition": "show",
+                    "clearAggregation": true,
+                    "viewName": "Monitor",
+                    "viewLevel": 1,
+                    "viewPath": "FechamentoContabil.view",
+                    "controlAggregation": "pages",
+                    "routerClass": "sap.m.routing.Router",
+                    "controlId": "app"
+                },
+                "config": {
+                    "viewType": "XML",
+                    "transition": "show",
+                    "clearAggregation": true,
+                    "viewName": "ConfiguracaoMonitor",
+                    "viewLevel": 1,
+                    "viewPath": "FechamentoContabil.view",
+                    "controlAggregation": "pages",
+                    "routerClass": "sap.m.routing.Router",
+                    "controlId": "app"
+                },
+                "MonitorMobile": {
+                    "viewType": "XML",
+                    "transition": "show",
+                    "viewName": "MonitorMobile",
+                    "viewPath": "FechamentoContabil.view",
+                    "controlAggregation": "pages",
+                    "routerClass": "sap.m.routing.Router",
+                    "controlId": "app"
+                },
+                "Gantt": {
+                    "viewType": "XML",
+                    "transition": "show",
+                    "viewName": "Gantt",
+                    "viewPath": "FechamentoContabil.view",
+                    "controlAggregation": "pages",
+                    "routerClass": "sap.m.routing.Router",
+                    "controlId": "app"
+                },
+                "atividades": {
+                    "viewType": "XML",
+                    "transition": "show",
+                    "viewName": "Atividades",
+                    "viewPath": "FechamentoContabil.view",
+                    "controlAggregation": "pages",
+                    "routerClass": "sap.m.routing.Router",
+                    "controlId": "app"
+                },
+                "AtividadesMobile": {
+                    "viewType": "XML",
+                    "transition": "show",
+                    "viewName": "AtividadesMobile",
+                    "viewPath": "FechamentoContabil.view",
+                    "controlAggregation": "pages",
+                    "routerClass": "sap.m.routing.Router",
+                    "controlId": "app"
+                }
+            },
+            "routes": [
+                {
+                    "name": "monitorInitialized",
+                    "pattern": "plano/:plano:/periodo/:periodo:/inst/:instance:",
+                    "target": [
+                        "monitor"
+                    ]
+                },
+                {
+                    "name": "monitor",
+                    "pattern": "",
+                    "target": [
+                        "monitor"
+                    ],
+                    "greedy": false
+                },
+                {
+                    "name": "MonitorMobile",
+                    "pattern": "m",
+                    "target": [
+                        "MonitorMobile"
+                    ],
+                    "greedy": false
+                },
+                {
+                    "name": "configMonitor",
+                    "pattern": "cfg",
+                    "target": [
+                        "config"
+                    ],
+                    "greedy": false
+                },
+                {
+                    "name": "ganttView",
+                    "pattern": "gtt",
+                    "target": [
+                        "Gantt"
+                    ],
+                    "greedy": false
+                },
+                {
+                    "name": "AtividadesMobile",
+                    "pattern": "atvmob",
+                    "target": [
+                        "AtividadesMobile"
+                    ],
+                    "greedy": false
+                },
+                {
+                    "name": "Atividades",
+                    "pattern": "atv",
+                    "target": [
+                        "atividades"
+                    ],
+                    "greedy": false
+                },
+                {
+                    "name": "AtividadesSelecionadas",
+                    "pattern": "tasks/:profile:/:instance:/:tasks:",
+                    "target": [
+                        "atividades"
+                    ],
+                    "greedy": false
+                },
+                {
+                    "name": "AtividadesAtrasadas",
+                    "pattern": "atv/atrasadas/:profile:/:instance:",
+                    "target": [
+                        "atividades"
+                    ],
+                    "greedy": false
+                },
+                {
+                    "name": "AtividadesInitialized",
+                    "pattern": "plano/:plano:/periodo/:periodo:/inst/:instance:",
+                    "target": [
+                        "atividades"
+                    ]
+                }
+            ]
+        }
+    },
+    "sap.platform.hcp": {
+        "uri": "webapp",
+        "_version": "1.1.0"
+    },
+    "sap.platform.abap": {
+        "uri": "/sap/bc/ui5_ui5/sap/zglfi_cloco",
+        "_version": "1.1.0"
+    }
+}

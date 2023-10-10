@@ -1,0 +1,17 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:m="sap.m" xmlns:u="sap.ui.unified"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Dialog id="AnexoDialogEmMassa" title="Anexo em Massa" type="Standard">
+		<content>
+			<m:VBox justifyContent="Start" wrap="Wrap" class="sapUiSmallMargin">
+				<m:HBox class="sapUiSmallMarginTop" justifyContent="Center">
+					<u:FileUploader id="fileUploaderAnexoEmMassa" icon="sap-icon://search" iconOnly="true" tooltip="Anexar arquivo"
+						uploadComplete="handleUploadCompleteAnexoEmMassa" useMultipart="false"/>
+					<m:Button text="Anexar" press="onAnexarArquivoEmMassa"/>
+				</m:HBox>
+			</m:VBox>
+		</content>
+		<beginButton>
+			<Button text="Fechar" press="onAnexoEmMassaDialogClose" enabled="true"/>
+		</beginButton>
+	</Dialog>
+</core:FragmentDefinition>

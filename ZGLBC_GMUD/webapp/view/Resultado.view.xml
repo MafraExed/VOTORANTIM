@@ -1,0 +1,15 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="Charm.controller.Resultado"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<VBox justifyContent="SpaceBetween" width="100%" height="100%" backgroundDesign="Solid">
+		
+		<VBox alignContent="Center" alignItems="Center" width="100%" class="sapUiMediumMarginTop">
+			<core:Icon src="sap-icon://accept" color="green" size="5.6em" alt="icon"/>
+			<Text text="Status alterado com sucesso" wrapping="true" class="resultado__label__sucesso"  textAlign="Center"/>
+		</VBox>
+		
+		<HBox alignContent="Center" alignItems="Center" justifyContent="Center" class="sapUiMediumMarginBottom" >
+			<core:Icon src="sap-icon://home" color="blue" size="3.2em" alt="icon" press="handleBack"/>
+		</HBox>
+		
+	</VBox>
+</mvc:View>

@@ -1,0 +1,154 @@
+{
+    "_version": "1.8.0",
+    "sap.app": {
+        "id": "workspace.zcockpit_bo_v3",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "sourceTemplate": {
+            "id": "servicecatalog.connectivityComponentForManifest",
+            "version": "0.0.0",
+            "toolsId": "a8aa564e-ca52-469f-84dc-35197d034e1d"
+        },
+        "dataSources": {
+            "ZGWVCMM_GESTAO_ESTOQUE_SRV": {
+                "uri": "/sap/opu/odata/sap/ZGWVCMM_GESTAO_ESTOQUE_SRV/",
+                "type": "OData",
+                "settings": {
+                    "localUri": "localService/metadata.xml"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": false,
+            "tablet": false,
+            "phone": false
+        },
+        "supportedThemes": [
+            "sap_hcb",
+            "sap_belize"
+        ]
+    },
+    "sap.ui5": {
+        "rootView": {
+            "viewName": "workspace.zcockpit_bo_v3.view.App",
+            "type": "XML",
+            "async": false,
+            "id": "fcl"
+        },
+        "dependencies": {
+            "minUI5Version": "1.30.0",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.ui.layout": {},
+                "sap.uxap": {}
+            }
+        },
+        "config": {
+            "fullWidth": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "workspace.zcockpit_bo_v3.i18n.i18n"
+                }
+            },
+            "GE": {
+                "type": "sap.ui.model.odata.v2.ODataModel",
+                "settings": {
+                    "defaultOperationMode": "Server",
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "defaultUpdateMethod": "PUT",
+                    "refreshAfterChange": false,
+                    "useBatch": true
+                },
+                "dataSource": "ZGWVCMM_GESTAO_ESTOQUE_SRV",
+                "preload": false
+            }
+        },
+        "contentDensities": {
+            "compact": false,
+            "cozy": false
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "workspace.zcockpit_bo_v3.view",
+                "controlId": "flexibleColumnLayout",
+                "transition": "slide"
+            },
+            "routes": [
+                {
+                    "pattern": ":layout:",
+                    "name": "master",
+                    "target": [
+                        "master",
+                        "detail"
+                    ]
+                },
+                {
+                    "pattern": "detail/{BOPath}/{layout}",
+                    "name": "detail",
+                    "target": [
+                        "master",
+                        "detail"
+                    ]
+                },
+                {
+                    "pattern": "detail/detailDetail/{BOPathParent}/{BOPath}/{layout}",
+                    "name": "detailDetail",
+                    "target": [
+                        "master",
+                        "detail",
+                        "detailDetail"
+                    ]
+                }
+            ],
+            "targets": {
+                "master": {
+                    "viewName": "S0",
+                    "controlAggregation": "beginColumnPages"
+                },
+                "detail": {
+                    "viewName": "S1",
+                    "controlAggregation": "midColumnPages"
+                },
+                "detailDetail": {
+                    "viewName": "S2",
+                    "controlAggregation": "endColumnPages"
+                }
+            }
+        }
+    },
+    "sap.platform.abap": {
+        "uri": "/sap/bc/ui5_ui5/sap/y5vc_gemckbo/webapp",
+        "_version": "1.1.0"
+    }
+}

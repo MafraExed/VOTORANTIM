@@ -1,0 +1,44 @@
+<mvc:View controllerName="nasa.ui5.controleDrawback.controller.Object"
+	xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic"
+	xmlns:core="sap.ui.core">
+
+	<semantic:FullscreenPage id="page" busy="{postView>/busy}"
+		busyIndicatorDelay="0" navButtonPress="onNavBack" showNavButton="true"
+		title="{i18n>objectTitle}">
+
+		<semantic:content>
+
+			 <core:Fragment	fragmentName="nasa.ui5.controleDrawback.view.fragments.ObjectHeader"
+							type="XML" />
+		
+		</semantic:content>
+
+		<semantic:customFooterContent>
+		
+			<Button id="objectBtnEdit" icon="sap-icon://edit" 
+					visible="false" tooltip="{i18n>DadosAcEdit}"
+					press="onActionButton" />
+				
+			<Button 
+					id="objectBtnSave" 
+					icon="sap-icon://save" 
+					tooltip="{i18n>dadosAcSave}" 
+					press="onActionButton"
+					visible="false"/> 
+			<Button 
+					id="objectBtnCancel" 
+					icon="sap-icon://sys-cancel" 
+					tooltip="{i18n>dadosAcCancel}" 
+					visible="false" 
+					press="onActionButton"/>	
+				
+			<Button id="objectBtnDelete" icon="sap-icon://delete"
+					 visible="false" tooltip="{i18n>dadosAcDelete}"
+					press="onActionButton" 
+				
+				/>
+
+		</semantic:customFooterContent>
+
+	</semantic:FullscreenPage>
+</mvc:View>		

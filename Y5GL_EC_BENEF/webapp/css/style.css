@@ -1,0 +1,116 @@
+/* Para Gif - Inicio */
+
+.sapUiTableSelModeMultiToggle .sapUiTableColRowHdrIco: {
+    display: block;
+    width: 0.7rem;
+    height: 0.7rem;
+}
+
+.sapUiTableSelModeMultiToggle .sapUiTableRowHdr: {
+    display: block;
+    width: 0.7rem;
+    height: 0.7rem;
+}
+
+.Loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    height: 100%;
+    width: 1080px;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.CLASSE_VSA{
+	position: relative;
+	top: 3%;
+	left: 50%;
+    margin-right: -5%;
+}
+
+.CLASSE_CBA {
+    position: relative;
+    top: 2.5%;
+    left: 0%;
+    margin-right: -5%;
+}
+
+
+
+.LoadingFalse {
+    display: none;
+}
+
+.pintalinha{
+    background-color: rgba(209, 226, 243, 0.23);
+}
+
+.Coluna1{
+	width: 5%;
+}
+
+.Coluna2{
+	width: 90%;
+}
+
+.Coluna3{
+	width: 5%;
+}
+
+/* Para Gif - Fim */
+#backBtn {
+    visibility: hidden;
+}
+
+.sapUshellHeadTitle{
+	visibility: hidden;
+}
+
+.sapUshellShellHeadItm>span {
+    visibility: hidden;
+}
+
+/* Tamanho do number da lista - Inicio */
+.sapMObjectNumberText{
+	font-size:1.00rem;
+	line-height: 37px;
+} 
+
+.sapMObjLNumberDiv .sapMObjectNumber .sapMObjectNumberText {
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 1.00rem;
+    font-weight: normal;
+}
+/* Tamanho do number da lista - Fim */ 
+
+.sapUiSizeCompact .sapUiTableCell .sapMLabel,
+.sapUiSizeCondensed .sapUiTableCell .sapMLabel,
+.sapUiSizeCompact .sapUiTableColCell>.sapMLabel,
+.sapUiSizeCondensed .sapUiTableColCell>.sapMLabel {
+    font-weight: normal;
+    font-size: 0.7rem;
+}
+
+.sapUiSizeCompact .sapUiFormEdit .sapMText {
+    min-height: 2rem;
+    padding-top: 0.3125rem;
+    padding-bottom: 0.3125rem;
+    font-size: 0.7rem;
+}
+
+.sapMTextMaxLine {
+    font-variant: small-caps;
+    font-size: small;
+    padding-top: 10px;
+    white-space: nowrap;
+}
+
+.sapMTextNoWrap {
+    word-wrap: normal;
+}
+
+.fundotext{
+	background: white;
+	font-style: italic;
+}

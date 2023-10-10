@@ -1,0 +1,5 @@
+"use strict";
+/*!
+ *  SiTrack - Seguimiento de compras
+ * (c) Copyright 2022 Innova Internacional S.A.S.
+ */sap.ui.define(["sap/base/Log","sap/m/MessageBox","sap/m/MessageToast"],function(e,t,s){var n={401:function e(t,s){return s.getOwnerComponent().refreshToken()},500:function e(s){var n=s.message,o=s.responseText,a=s.statusCode,i=s.statusText;t.show(n,{icon:t.Icon.ERROR,title:"".concat(a," | ").concat(i),actions:[t.Action.CLOSE],details:"".concat(o),styleClass:"sapUiResponsivePadding--header sapUiResponsivePadding--content sapUiResponsivePadding--footer",contentWidth:"100px"})},defaultError:function t(n){s.show(n.message||n.toString(),{duration:3e3,width:"auto",closeOnBrowserNavigation:false});e.error(n.toString(),n.stack)}};return function(e){var t=n["".concat(e.statusCode)]||n.defaultError;t(e)}});

@@ -1,0 +1,40 @@
+<mvc:View controllerName="vsa.y5gl_22_delega.view.Default" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:u="sap.ui.unified" xmlns:m="sap.m" xmlns:l="sap.ui.layout" xmlns:me="sap.me" xmlns="sap.uxap" xmlns:forms="sap.ui.layout.form"
+	class="sapUiSizeCompact" height="100%">
+	<m:Page id="IdPgOv" showHeader="false" class="sapUiSizeCompact">
+		<m:content>
+			<l:VerticalLayout id="containerLayout" width="100%">
+				<l:BlockLayout id="BlockLayout">
+					<l:BlockLayoutRow accentCells="Accent1">
+						<l:BlockLayoutCell id="Accent1" width="2" title="{i18n>title}">
+							<m:ComboBox id="IdSubstituto" placeholder="{i18n>placeholderC}" selectionChange="handleSelectionChange" showSecondaryValues="true"
+								filterSecondaryValues="true" width="300px" value="{Nome}" selectedKey="{Ident}" items="{/Substitutos}">
+								<core:ListItem key="{Ident}" text="{Nome}"/>
+							</m:ComboBox>
+						</l:BlockLayoutCell>
+					</l:BlockLayoutRow>
+					<l:BlockLayoutRow>
+						<l:BlockLayoutCell title="">
+							<forms:SimpleForm id="Fom" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="2" labelSpanM="4" labelSpanS="12"
+										adjustLabelSpan="false" emptySpanXL="0" emptySpanL="4" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="1" columnsM="1">
+									
+										<core:Title text="{i18n>Periodo}" level="H6"/>
+										<u:Calendar id="calendar" legend="legend20" select="handleCalendarSelect" minDate="{path: 'Substituto>/minDate'}" showWeekNumbers="false"
+											intervalSelection="false"/>
+										<u:CalendarLegend id="legend20"/>
+										<m:Label text="{i18n>Valido}" class="labelMarginLeft"/>
+										<m:Text id="selectedDateTo" text="{i18n>dateText}" class="labelMarginLeft"/>
+									</forms:SimpleForm>
+						</l:BlockLayoutCell>
+					</l:BlockLayoutRow>
+				</l:BlockLayout>
+			</l:VerticalLayout>
+		</m:content>
+		<m:footer>
+			<m:Toolbar>
+				<m:ToolbarSpacer/>
+				<m:Button text="{i18n>BtnSalvar}" type="Accept" press="onSalvar" tooltip="{i18n>BtnSalvar}"/>
+			</m:Toolbar>
+		</m:footer>
+	</m:Page>
+</mvc:View>

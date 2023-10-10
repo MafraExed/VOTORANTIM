@@ -1,0 +1,7 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core"
+	controllerName="ZCBLE_PR_REM_SAIDA.ZCBLE_PR_REM_SAIDA.controller.Worklist">
+	<SelectDialog title="Tipo de Transporte" class="sapUiPopupWithPadding" items="{/ZET_CBLE_PR_TPTRANS_HSet}" search="_handleValueHelpTptrans"
+		confirm="_handleValueHelpClose" cancel="_handleValueHelpClose" >
+		<StandardListItem iconDensityAware="false" iconInset="false" title="{SHTYP}" description="{BEZEI}"/>
+	</SelectDialog>
+</core:FragmentDefinition>

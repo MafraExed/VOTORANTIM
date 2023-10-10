@@ -1,0 +1,24 @@
+<core:FragmentDefinition 
+	xmlns="sap.m" 
+	xmlns:suite="sap.suite.ui.commons" 
+	xmlns:core="sap.ui.core">
+ 	<Toolbar>
+		<Title text="{i18n>processFlowTitle}" level="H4" titleStyle="H4"/>
+	</Toolbar> 
+     <suite:ProcessFlow 
+    	id="processflow" 
+	    foldedCorners="false"
+	    wheelZoomable="true"
+    	lanes="{ShipmentProcessFlow}">
+      <suite:lanes>
+        <suite:ProcessFlowLaneHeader   	 
+        	laneId="{Etapa}" 
+        	iconSrc="{Icon}" 
+        	text="{Labl}" 
+        	
+        	position="{Npos}"
+       		state="{path: 'Status', formatter: '.formatter.formatProcessFlowState'}"/>
+     </suite:lanes>
+    </suite:ProcessFlow>
+
+</core:FragmentDefinition>

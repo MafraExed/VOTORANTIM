@@ -1,0 +1,19 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<Dialog
+		title="Foto">
+		<content>
+			<FlexBox>
+				<items>
+					<Image
+						id="image"
+						/>
+				</items><!-- sap.ui.core.Control -->
+			</FlexBox>
+		</content>
+		<endButton>
+			<Button id="btnClose" text="{i18n>close}" press="closePhoto"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

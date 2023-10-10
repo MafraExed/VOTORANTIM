@@ -1,0 +1,99 @@
+
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+
+.tree_menu_modelo {
+	border-radius: 10px 10px 0px 0px;
+	background-color:#4ba3c7;
+	padding:7px;
+}
+
+.tree_menu_options {
+	border-radius: 0px 0px 10px 10px;
+	background-color:#81d4fa;
+	padding:7px;
+}
+
+
+li[data-treeType="tree_item"] .sapMLIBContent { 
+	background-color: #e0e0e0 !important; 
+	color:#38407d;
+	padding:5px;
+	font-family: 'Raleway', sans-serif;
+	border-radius:10px;
+}
+
+li[data-treeType="tree_folder"] .sapMLIBContent { 
+	color:black;
+	font-family: 'Raleway', sans-serif;
+	padding:5px;
+}
+
+.tree_menu_key_label {
+	color:white;
+}
+
+.tree_menu_key_label bdi {
+	color:white;
+	font-size:17px;
+}
+
+.tree_menu_key_label1 bdi {
+	color:white;
+}
+
+.inputSelect {
+	border-radius:7px;
+}
+
+#__popover0-scroll {
+	border-radius:7px;
+}
+
+.labelIdle {
+	font-size:2em;
+	font-family: 'Raleway', sans-serif;
+}
+
+.labelIdle_highlight {
+	font-size:2.5em;
+	font-family: 'Raleway', sans-serif;
+	color:blue;
+}
+
+li[data-treeType="tree_folder"] .sapMLIBSelectM {
+	display:none;
+}
+
+.button_regra {
+	width:180px;
+}
+
+.tooltip_container {
+	position:absolute;
+	display:none;
+	height:100px;
+	width:200px;
+	top:20%;
+	left:20%;
+	background-color:green;
+	z-index:15;
+}
+
+.tooltip_container:after {
+	content: '';
+	position: absolute;
+	right: 0;
+	top: 50%;
+	width: 0;
+	height: 0;
+	border: 20px solid transparent;
+	border-left-color: #00aabb;
+	border-right: 0;
+	border-bottom: 0;
+	margin-top: -10px;
+	margin-right: -20px;
+}
+
+
+
+

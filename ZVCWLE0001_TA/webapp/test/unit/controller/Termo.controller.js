@@ -1,0 +1,1 @@
+sap.ui.define(["y5les_termo/controller/Termo.controller"],function(o){"use strict";QUnit.module("Termo Controller");QUnit.test("I should test the Termo controller",function(e){var t=new o;t.onInit();e.ok(t)})});

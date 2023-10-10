@@ -1,0 +1,48 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	controllerName="Y5GL_APROVB.Y5GL_APROVB.controller.DEPENDENTES" xmlns:html="http://www.w3.org/1999/xhtml">
+	<App id="idAppDependentes">
+		<pages id="idPageDependentes">
+			<Page id="idPageDependentes" floatingFooter="true">
+				<customHeader>
+					<Bar id="idBarMaster">
+						<contentMiddle>
+							<Title text="Dependentes" titleStyle="H3" id="idTitleDependentes"/>
+						</contentMiddle>
+						<contentRight>
+							<Button icon="sap-icon://home" id="idteste" press="onBackMaster"/>
+						</contentRight>
+					</Bar>
+				</customHeader>
+				<content>
+					<Text text="{Pernr}" id="idTextPernr" visible="false"/>
+					<Text text="{Objps}" id="idTextObjps" visible="false"/>
+					<List id="list" width="auto" class="sapFDynamicPageAlignContent"
+						items="{ path: '/ZET_GLRH_DEPENDENTESSet', sorter: { path: 'Nomecompleto', descending: false }, groupHeaderFactory: '.createGroupHeader' }"
+						busyIndicatorDelay="{masterView>/delay}" noDataText="{masterView>/noDataText}"
+						mode="{= ${device>/system/phone} ? 'None' : 'SingleSelectMaster'}" growing="true" growingScrollToLoad="true"
+						updateFinished=".onUpdateFinished" selectionChange=".onSelectionChange" itemPress=".onSelectionChange">
+						<items>
+							<ObjectListItem type="Navigation" press=".onSelectionChange" title="{Nomecompleto}" icon="sap-icon://company-view" highlight="Information"
+								id="idObjectListItem">
+								<firstStatus>
+									<ObjectStatus text="{Status}" id="__status1" state="Warning"/>
+								</firstStatus>
+								<attributes>
+									<ObjectAttribute text="{Parentesco}" id="idParentesco"/>
+								</attributes>
+							</ObjectListItem>
+						</items>
+					</List>
+				</content>
+				<footer>
+					<Toolbar id="idOverTollbar" style="Clear" design="Transparent">
+						<ToolbarSpacer id="idToolbarSpacer"/>
+						<HBox id="hboxx">
+							<Button icon="sap-icon://add" press=".addDependentes" id="buttonadddep" tooltip="Adicionar Dependentes" busyIndicatorSize="Large"/>
+						</HBox>
+					</Toolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

@@ -1,0 +1,19 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog id="selectDialogGcat"
+	    noDataText="{i18n>NotFound}"
+		title="{i18n>title_Gcat_Fragment}"
+		class="sapUiPopupWithPadding"
+		items="{GE>/ZET_VCMM_GCAT_BOSet}"
+		search="_handleGCatValueHelpSearch"
+		confirm="_handleGCatValueHelpClose"
+		cancel="_handleGCatValueHelpClose">
+		<StandardListItem
+			iconDensityAware="false"
+			iconInset="false"
+			activeIcon="sap-icon://accept"
+			title="{GE>GestorCategoria}" 
+			description="{GE>DescrGcat}" />
+	</SelectDialog>
+</core:FragmentDefinition>

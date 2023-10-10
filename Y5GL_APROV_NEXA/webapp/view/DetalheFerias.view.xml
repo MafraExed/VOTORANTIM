@@ -1,0 +1,100 @@
+<mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.f.semantic" xmlns:footerbar="sap.ushell.ui.footerbar"
+	xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:smartTable="sap.ui.comp.smarttable"
+	controllerName="Y5GL_APROV_NEXA.Y5GL_APROV_NEXA.controller.DetalheFerias" xmlns:m="sap.m" xmlns:table="sap.ui.table">
+	<App id="app">
+		<pages>
+			<Page title="Férias Programação" backgroundDesign="Solid" id="idPage">
+				<customHeader>
+					<Bar id="idBarMaster">
+						<contentLeft>
+							<Button icon="sap-icon://nav-back" id="idB_navback" press="onVoltar" text="Vuelve"/>
+						</contentLeft>
+						<contentMiddle>
+							<Title text="{LabelTitulo}" titleStyle="H3" id="idTitleDependentes"/>
+						</contentMiddle>
+					</Bar>
+				</customHeader>
+				<ObjectHeader icon="{path:'LabelTitulo', formatter:'.formatterIcon'}" iconDensityAware="false" title="{Nome}">
+					<attributes>
+						<ObjectAttribute text="Período Generado: {Begda} al {Endda}"/>
+						<ObjectAttribute text="Período goce: {Desta} al {Deend}"/>
+						<ObjectAttribute text="Dias Correctos: {DiasDireito}"/>
+						<ObjectAttribute text="Saldo Dias: {SaldoDias}"/>
+					</attributes>
+				</ObjectHeader>
+				<content>
+					<smartTable:SmartTable id="LineItemsSmartTable" entitySet="ZET_GLHR_FERI_PERUSet" tableType="ResponsiveTable" useExportToExcel="false"
+						useVariantManagement="false" useTablePersonalisation="false" showRowCount="false" beforeRebindTable="onbeforeRebindTable"
+						persistencyKey="SmartTableAnalytical_Explored" requestAtLeastFields="Seqnr,Inicio,DiasGozo,Fim,Status,Parc13,Abono,Adiantamento"
+						enableAutoBinding="false" class="sapUiResponsiveContentPadding" dataReceived="AfterUpdate">
+						<smartTable:customToolbar>
+							<m:Toolbar>
+								<m:Button text="Aprobar" type="Transparent" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"
+									press="onAprova" tooltip="Aprova Periodo" icon="sap-icon://accept" id="idAprovar"/>
+								<m:Button text="Reprobar" type="Transparent" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"
+									press="onReprova" tooltip="Eliminar periodo" icon="sap-icon://decline" id="idReprovar"/>
+								<m:Button text="Editar" type="Transparent" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"
+									press="onEdita" tooltip="Editar" icon="sap-icon://edit" id="idEditar"/>
+								<m:Button text="Grabar" type="Transparent" iconFirst="true" width="auto" enabled="true" visible="false" iconDensityAware="false"
+									press="onGrava" tooltip="Grava Periodo" icon="sap-icon://save" id="idGravar"/>
+								<m:Button text="Cancelar" type="Transparent" iconFirst="true" width="auto" enabled="true" visible="false" iconDensityAware="false"
+									press="onCancelar" tooltip="Eliminar periodo" icon="sap-icon://cancel" id="idCancelar"/>
+							</m:Toolbar>
+						</smartTable:customToolbar>
+						<table:Table id="FERIAS" rows="{/ZET_GLHR_FERI_PERUSet}" visibleRowCount="1" ariaLabelledBy="title">
+							<table:columns>
+								<table:Column id="idSeqnr" autoResizable="false" width="5%" resizable="false">
+									<Label text="Sec." id="idseqnr"/>
+									<table:template>
+										<Text text="{Seqnr}" wrapping="false" id="idseqnr2"/>
+									</table:template>
+								</table:Column>
+								<table:Column id="idDtInicio" autoResizable="false" width="17%" resizable="false">
+									<Label text="Inicio" id="idInicio2"/>
+									<table:template>
+										<Input value="{Inicio}" id="idInicio3" type="Date" change="ChangeDataInicio" editable="{path: 'Inicio', formatter:'.FormatEditable'}"/>
+									</table:template>
+								</table:Column>
+								<table:Column id="idDiasGozo" autoResizable="false" width="10%" resizable="false">
+									<Label text="Dias disfrute" id="idDiasGozo2"/>
+									<table:template>
+										<Input value="{DiasGozo}" id="idDiasGozo3" change="onChangeDiasGozo" editable="{path: 'DiasGozo', formatter:'.FormatEditable'}"/>
+									</table:template>
+								</table:Column>
+								<table:Column id="idFim" autoResizable="false" width="17%" resizable="false">
+									<Label text="Final" id="idFim2"/>
+									<table:template>
+										<Input value="{Fim}" id="idFim3" editable="false" type="Date"/>
+									</table:template>
+								</table:Column>
+								<table:Column id="idStatus" autoResizable="false" width="15%" resizable="false">
+									<Label text="Estado" id="idStatus2"/>
+									<table:template>
+										<Text text="{Status}" wrapping="false" id="Status"/>
+									</table:template>
+								</table:Column>
+								<table:Column id="idParc13" autoResizable="false" width="7%" resizable="false">
+									<Label text="Adelanto" id="idParc132"/>
+									<table:template>
+										<CheckBox id="Check1" selected="{path: 'Adiantamento', formatter:'.FormatCheck'}" editable="true" select="onSelectedAdiant"/>
+									</table:template>
+								</table:Column>
+							</table:columns>
+						</table:Table>
+						<smartTable:layoutData>
+							<FlexItemData growFactor="1" baseSize="0%"/>
+						</smartTable:layoutData>
+					</smartTable:SmartTable>
+					<HBox width="100%" height="1000%" id="idGif" class="Loading" busyIndicatorSize="Auto" backgroundDesign="Solid">
+						<Image src="imagens/loading.gif" width="100%" class="footer_img" id="idimg" backgroundSize="100%"/>
+					</HBox>
+				</content>
+				<footer>
+					<Toolbar design="Transparent">
+						<ToolbarSpacer/>
+					</Toolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

@@ -1,0 +1,38 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml"
+	controllerName="Y5GL_EC_CAD3.Y5GL_EC_CAD3.controller.Master" displayBlock="true">
+	<App id="app">
+		<pages>
+			<Page id="idPageMaster">
+				<customHeader>
+					<Bar id="idBarMaster">
+						<contentMiddle>
+							<core:Icon src="sap-icon://home" id="icon"/>
+							<Link text="Página Inicial" href="#Shell-home" id="Pagina"/>
+						</contentMiddle>
+					</Bar>
+				</customHeader>
+				<content>
+					<List id="list" width="auto" class="sapFDynamicPageAlignContent"
+						items="{ path: '/ZET_GLHR_MEU_CADASTROSet', sorter: { path: 'Zdesc', descending: false }, groupHeaderFactory: '.createGroupHeader' }"
+						busyIndicatorDelay="{masterView>/delay}" noDataText="{masterView>/noDataText}"
+						mode="{= ${device>/system/phone} ? 'None' : 'SingleSelectMaster'}" growing="true" growingScrollToLoad="true"
+						updateFinished=".onUpdateFinished" selectionChange=".onSelectionChange" itemPress=".onSelectionChange">
+						<items>
+							<ObjectListItem type="Navigation" press=".onSelectionChange" title="{Zdesc}" icon="{path:'Zdesc', formatter:'.formatterIcon'}"
+								highlight="Information" id="idObjectListItem">
+								<firstStatus>
+									<ObjectStatus text="{path:'Status', formatter:'.formatterTestStatus'}" id="__status1"
+										state="{path:'Status', formatter:'.formatterStateStatus'}"/>
+								</firstStatus>
+								<attributes>
+									<ObjectAttribute text="Clique para mais informações" id="id"/>
+								</attributes>
+							</ObjectListItem>
+						</items>
+					</List>
+					<Button text="Voltar" width="100%" id="__button0" type="Back" press="voltarsuccesss" visible="false"/>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

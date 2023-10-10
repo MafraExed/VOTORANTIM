@@ -1,0 +1,12 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:lab="openui5.camera">
+	<Dialog title="Foto">
+		<content>
+			<lab:Camera width="{= ${device>/system/desktop} ? '600px' : '80%'}" height="{= ${device>/system/desktop} ? '350px' : '100%'}"
+				snapshot="onSnapshot" singleShotMode="false"/>
+		</content>
+		<endButton>
+			<Button id="btnClose" text="Fechar" press="closePhoto"/>
+			<Button id="btnSave" text="Salvar" enabled="true" press="onSave"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

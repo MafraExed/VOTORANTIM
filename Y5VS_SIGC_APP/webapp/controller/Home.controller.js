@@ -1,0 +1,1 @@
+"use strict";sap.ui.define(["./BaseController"],function(n){return n.extend("com.innova.sigc.controller.Home",{onInit:function n(){this._oRouter=this.getRouter()},onBiddingProcess:function n(){this._oRouter.navTo("biddingProcess")},onSettingsPress:function n(){this._oRouter.navTo("settings")}})});

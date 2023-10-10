@@ -1,0 +1,5 @@
+"use strict";function _defineProperty(e,t,a){if(t in e){Object.defineProperty(e,t,{value:a,enumerable:true,configurable:true,writable:true})}else{e[t]=a}return e}
+/*!
+ * SiGC - GestiÃ³n de Compras
+ * (c) Copyright 2022 Innova Internacional S.A.S.
+ */sap.ui.define(["com/innova/sigc/model/variant/ItemVariant"],function(e){return{getSwitchData:function t(a){var n=a.isVariant,r=a.field,i=a.functionName,f=a.group;var u=r.getName();var o=r.getState()?"X":null;if(n){return _defineProperty({},u,new e({fieldname:u,function:i,group:f,low:o,tabname:r.data("tabname")}))}return _defineProperty({},u,o)},setSwitchData:function e(t){var a=t.field,n=t.data;var r=a.getName();var i=n[r];var f=i==="X";a.setState(f);a.fireChange({state:f})},cleanSwitch:function e(t){var a=t.field;a.setState();a.fireChange({state:false})}}});

@@ -1,0 +1,325 @@
+<mvc:View controllerName="vsa.y5gl_lp_portal.view.Detail"
+  xmlns="sap.m" xmlns:m="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic"
+  xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+  <semantic:DetailPage id="page" navButtonPress="onNavBack"
+    showNavButton="{device>/system/phone}" title="{i18n>detailTitle}"
+    busy="{detailView>/busy}" busyIndicatorDelay="{detailView>/delay}">
+    <semantic:content>
+
+      <ObjectHeader id="objHeader" responsive="true"
+        fullScreenOptimized="false" intro="" title="{Descricao}"
+        number="{ path: 'Valor', formatter: '.formatter.currencyExternal' }"
+        numberUnit="{Waers}">
+        <firstStatus>
+
+          <ObjectStatus 
+                text="{path: 'Z4cpeZterm', formatter: '.formatter.ztermText' }"
+                icon="{path: 'Z4cpeZterm', formatter: '.formatter.ztermIcon' }" 
+                state="Warning"/>
+        </firstStatus>
+        <attributes>
+          <ObjectAttribute title="{Bukrs}" text="{DescrBukrs}" />
+          <ObjectAttribute title="{i18n>CREATEDAT}"
+            text="{path: 'Erdat', formatter: '.formatter.dateExternal'}" />
+          <ObjectAttribute title="{i18n>POTYPETXT}" text="{CondType}-{Vtext}" />
+        </attributes>
+      </ObjectHeader>
+
+      <IconTabBar id="iconTabBar" expanded="false" class="sapUiContentPadding" />
+      <!-- backgroundDesign="Transparent" headerBackgroundDesign="Transparent" 
+        /> -->
+
+      <f:SimpleForm id="frDetail" editable="false"
+        layout="ResponsiveGridLayout" adjustLabelSpan="false" labelSpanXL="4"
+        labelSpanL="4" labelSpanM="4" labelSpanS="4" emptySpanXL="0"
+        emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2"
+        columnsM="2" columnsS="2" />
+      <ScrollContainer width="100%" horizontal="true"
+        vertical="true" focusable="true">
+        <Table class="sapUiSmallMargin" xmlns="sap.ui.table" id="tbDetail"
+          title="Items" selectionMode="None" editable="false" threshold="10"
+          visibleRowCount="5">
+          <columns>
+            <Column>
+            </Column>
+          </columns>
+        </Table>
+      </ScrollContainer>
+
+      <ScrollContainer width="100%" horizontal="true"
+        vertical="true" focusable="true">
+        <Table class="sapUiSmallMargin" xmlns="sap.ui.table" id="tbPromo"
+          title="{i18n>HEADER}" selectionMode="None" editable="false" threshold="10"
+          visibleRowCount="1" rows="{/ToPromoCliSet}">
+          <columns>
+
+            <Column>
+              <m:Label text="{i18n>VALOR}" />
+              <template>
+                <m:Text text="{ path: 'Desconto', formatter: '.formatter.currencyExternal' }" wrapping="false" />
+              </template>
+            </Column>
+
+            <Column>
+              <m:Label text="{i18n>MOEDA}" />
+              <template>
+                <m:Text text="{Moeda}" wrapping="false" />
+              </template>
+            </Column>
+
+            <Column>
+              <m:Label text="{i18n>VAL_DESDE}" />
+              <template>
+                <m:Text text="{ValidoDesde}" wrapping="false" />
+              </template>
+            </Column>
+
+            <Column>
+              <m:Label text="{i18n>VAL_ATE}" />
+              <template>
+                <m:Text text="{ValidoAte}" wrapping="false" />
+              </template>
+            </Column>
+
+          </columns>
+        </Table>
+      </ScrollContainer>
+
+      <ScrollContainer width="100%" horizontal="true"
+        vertical="true" focusable="true">
+        <Table class="sapUiSmallMargin" xmlns="sap.ui.table" id="tbPromoMix"
+          title="{i18n>DISCOUNT}" selectionMode="None" editable="false" threshold="10"
+          visibleRowCount="5" rows="{/ToPromoMixSet}">
+          <columns>
+
+            <Column>
+              <m:Label text="{i18n>QTD}" />
+              <template>
+                <m:Text text="{QtdMix}" wrapping="false" />
+              </template>
+            </Column>
+
+            <Column>
+              <m:Label text="{ path: 'detailView>/PercEscala1', formatter: '.formatter.currencyExternal' }" />
+              <template>
+                <m:Text text="{ path: 'PercEscala1', formatter: '.formatter.currencyExternal' }" wrapping="false" />
+              </template>
+            </Column>
+
+            <Column>
+              <m:Label text="{ path: 'detailView>/PercEscala2', formatter: '.formatter.currencyExternal' }" />
+              <template>
+                <m:Text text="{ path: 'PercEscala2', formatter: '.formatter.currencyExternal' }" wrapping="false" />
+              </template>
+            </Column>
+
+            <Column>
+              <m:Label text="{ path: 'detailView>/PercEscala3', formatter: '.formatter.currencyExternal' }" />
+              <template>
+                <m:Text text="{ path: 'PercEscala3', formatter: '.formatter.currencyExternal' }" wrapping="false" />
+              </template>
+            </Column>
+
+            <Column>
+              <m:Label text="{ path: 'detailView>/PercEscala4', formatter: '.formatter.currencyExternal' }" />
+              <template>
+                <m:Text text="{ path: 'PercEscala4', formatter: '.formatter.currencyExternal' }" wrapping="false" />
+              </template>
+            </Column>
+
+            <Column>
+              <m:Label text="{ path: 'detailView>/PercEscala5', formatter: '.formatter.currencyExternal' }" />
+              <template>
+                <m:Text text="{ path: 'PercEscala5', formatter: '.formatter.currencyExternal' }" wrapping="false" />
+              </template>
+            </Column>
+
+            <Column>
+              <m:Label text="{ path: 'detailView>/PercEscala6', formatter: '.formatter.currencyExternal' }" />
+              <template>
+                <m:Text text="{ path: 'PercEscala6', formatter: '.formatter.currencyExternal' }" wrapping="false" />
+              </template>
+            </Column>
+
+            <Column>
+              <m:Label text="{ path: 'detailView>/PercEscala7', formatter: '.formatter.currencyExternal' }" />
+              <template>
+                <m:Text text="{ path: 'PercEscala7', formatter: '.formatter.currencyExternal' }" wrapping="false" />
+              </template>
+            </Column>
+
+            <Column>
+              <m:Label text="{ path: 'detailView>/PercEscala8', formatter: '.formatter.currencyExternal' }" />
+              <template>
+                <m:Text text="{ path: 'PercEscala8', formatter: '.formatter.currencyExternal' }" wrapping="false" />
+              </template>
+            </Column>
+
+            <Column>
+              <m:Label text="{ path: 'detailView>/PercEscala9', formatter: '.formatter.currencyExternal' }" />
+              <template>
+                <m:Text text="{ path: 'PercEscala9', formatter: '.formatter.currencyExternal' }" wrapping="false" />
+              </template>
+            </Column>
+
+            <Column>
+              <m:Label text="{ path: 'detailView>/PercEscala10', formatter: '.formatter.currencyExternal' }" />
+              <template>
+                <m:Text text="{ path: 'PercEscala10', formatter: '.formatter.currencyExternal' }" wrapping="false" />
+              </template>
+            </Column>
+
+
+          </columns>
+        </Table>
+      </ScrollContainer>
+
+      <ScrollContainer width="100%" horizontal="true"
+        vertical="true" focusable="true">
+        <Table class="sapUiSmallMargin" xmlns="sap.ui.table" id="tbPromoCli"
+          title="{i18n>CUSTOMER}" selectionMode="None" editable="false" threshold="10"
+          visibleRowCount="3" rows="{/ToPromoCliSet}">
+          <columns>
+            <Column>
+              <m:Label text="{i18n>UF}" />
+              <template>
+                <m:Text text="{Uf}" wrapping="false" />
+              </template>
+            </Column>
+
+            <Column>
+              <m:Label text="{i18n>MESO_REGIAO}" />
+              <template>
+                <m:Text text="{MesoRegiao}" wrapping="false" />
+              </template>
+            </Column>
+
+            <Column>
+              <m:Label text="{i18n>MICRO_REGIAO}" />
+              <template>
+                <m:Text text="{MicroRegiao}" wrapping="false" />
+              </template>
+            </Column>
+
+            <Column>
+              <m:Label text="{i18n>GRUPO_SEG}" />
+              <template>
+                <m:Text text="{GrupoSeg}" wrapping="false" />
+              </template>
+            </Column>
+
+            <Column>
+              <m:Label text="{i18n>SEGMENTO}" />
+              <template>
+                <m:Text text="{Segmento}" wrapping="false" />
+              </template>
+            </Column>
+
+            <Column>
+              <m:Label text="{i18n>CUSTOMER}" />
+              <template>
+                <m:Text text="{Cliente}" wrapping="false" />
+              </template>
+            </Column>
+
+          </columns>
+        </Table>
+      </ScrollContainer>
+
+      <ScrollContainer width="100%" horizontal="true"
+        vertical="true" focusable="true">
+        <Table class="sapUiSmallMargin" xmlns="sap.ui.table" id="tbPromoSku"
+          title="{i18n>PRODUCT}" selectionMode="None" editable="false" threshold="10"
+          visibleRowCount="5" rows="{/ToPromoSkuSet}">
+          <columns>
+
+           <Column>
+              <m:Label text="{i18n>GRUPO}" />
+              <template>
+                <m:Text text="{Grupo}" wrapping="false" />
+              </template>
+            </Column>
+
+            <Column>
+              <m:Label text="{i18n>VOLUME}" />
+              <template>
+                <m:Text text="{= parseFloat(${Volume}) }" wrapping="false" />
+              </template>
+            </Column>
+
+            <Column>
+              <m:Label text="{i18n>SKU1}" />
+              <template>
+                <m:Text text="{Sku1}" wrapping="false" />
+              </template>
+            </Column>
+
+            <Column>
+              <m:Label text="{i18n>SKU2}" />
+              <template>
+                <m:Text text="{Sku2}" wrapping="false" />
+              </template>
+            </Column>
+
+            <Column>
+              <m:Label text="{i18n>SKU3}" />
+              <template>
+                <m:Text text="{Sku3}" wrapping="false" />
+              </template>
+            </Column>
+
+            <Column>
+              <m:Label text="{i18n>SKU4}" />
+              <template>
+                <m:Text text="{Sku4}" wrapping="false" />
+              </template>
+            </Column>
+
+            <Column>
+              <m:Label text="{i18n>SKU5}" />
+              <template>
+                <m:Text text="{Sku5}" wrapping="false" />
+              </template>
+            </Column>
+
+          </columns>
+        </Table>
+      </ScrollContainer>
+
+    </semantic:content>
+
+    <semantic:customFooterContent>
+
+      <Toolbar>
+
+        <Button id="messagePopoverBtn" icon="sap-icon://message-popup"
+          type="Emphasized" visible="false" press="handleMessagePopoverPress" />
+
+        <ToolbarSpacer />
+
+        <ToolbarSeparator />
+
+        <Text text="{global>/submensagem}" visible="{= !${global>/aprovacao} }" />
+
+        <Button press="onApprove" icon="sap-icon://accept" tooltip="{i18n>APPROVE}"
+          visible="{global>/aprovacao}" type="Accept" text="{i18n>APPROVE}" />
+
+        <Button press="onApprove_W" icon="sap-icon://approvals"
+          tooltip="{i18n>APPROVEWQUESTION}" visible="{global>/aprovacao}"
+          type="Accept" />
+
+        <Button press="onReject" icon="sap-icon://decline" tooltip="{i18n>REJECT}"
+          visible="{global>/aprovacao}" type="Reject" text="{i18n>REJECT}" />
+
+        <Button press="onQuestion" icon="sap-icon://alert" tooltip="{i18n>QUESTION}"
+          type="Emphasized" visible="{= ${global>/aprovacao} &amp;&amp; !${global>/questDisbl} }" />
+
+        <Button press="onInterruption" icon="{global>/intIcon}"
+          tooltip="{i18n>INTERRUPT}" type="Emphasized" visible="{global>/intVisible}" />
+
+      </Toolbar>
+
+    </semantic:customFooterContent>
+
+  </semantic:DetailPage>
+</mvc:View>

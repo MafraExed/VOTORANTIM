@@ -1,0 +1,1 @@
+"use strict";sap.ui.define([],function(){return function(){var n=arguments.length>0&&arguments[0]!==undefined?arguments[0]:"5";var e=Number.isNaN(n);if(e){return 0}return parseInt(n,10)}});

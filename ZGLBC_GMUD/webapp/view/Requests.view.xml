@@ -1,0 +1,46 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="Charm.controller.Requests"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<App>
+		<pages>
+			<Page title="{objetosRequest>/Request}" showNavButton="true" navButtonPress="onBack">
+				<content>
+				<Table id="idProductsTable"
+						inset="false"
+						items="{
+							path: 'objetosRequest>/objetosRequest/results/',
+							sorter: {
+								path: 'Tipo',
+								group: true
+							}
+						}">
+						<columns>
+							<Column
+								width="80%">
+								<Text text="Objeto" class="request__coluna__label" />
+							</Column>
+							<Column width="20%">
+								<Text text="Tipo" class="request__coluna__label"/>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem>
+								<cells>
+									<Label text="{objetosRequest>Objeto}" class="request__cell__label"/>
+									<Label text="{objetosRequest>Tipo}" class="request__cell__label"/>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</content>
+			</Page>
+		</pages>
+	</App>
+	<html:loadingBlack class="popup__disable"/>
+	<VBox id="loadingBlack" class="loadingBlack popup__disable"/>
+	<VBox id="loading" class="loading popup__disable">
+		<HBox width="100%" height="100%" justifyContent="Center"  alignItems="Center" class="loading__icon">
+			<html:img src="./images/voto_load_white.gif" width="150px" />
+			<!--<Image src="./images/votorantim_new_logo_white.png"  width="50%"/>-->
+		</HBox>
+	</VBox>
+</mvc:View>

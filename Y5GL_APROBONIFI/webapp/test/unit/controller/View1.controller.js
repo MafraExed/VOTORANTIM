@@ -1,0 +1,1 @@
+sap.ui.define(["ZFI_VCDC_CARGO_BONIFIC/ZFI_VCDC_CARGO_BONIFIC/controller/View1.controller"],function(t){"use strict";QUnit.module("View1 Controller");QUnit.test("I should test the View1 controller",function(e){var n=new t;n.onInit();e.ok(n)})});

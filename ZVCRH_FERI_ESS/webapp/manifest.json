@@ -1,0 +1,154 @@
+{
+    "_version": "1.9.0",
+    "sap.app": {
+        "id": "ZVCRH_VISAO_FERIAS.ZVCRH_VISAO_FERIAS",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "dataSources": {
+            "ZGWVCHR_FERIAS_ESS_SRV": {
+                "uri": "/sap/opu/odata/sap/ZGWVCHR_FERIAS_ESS_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/metadata.xml"
+                }
+            }
+        },
+        "sourceTemplate": {
+            "id": "servicecatalog.connectivityComponent",
+            "version": "0.0.0",
+            "toolsId": "0f8efa7c-4541-4b4c-af11-dc075c7b4aa2"
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "sap-icon://detail-view",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "rootView": {
+            "viewName": "ZVCRH_VISAO_FERIAS.ZVCRH_VISAO_FERIAS.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "app"
+        },
+        "dependencies": {
+            "minUI5Version": "1.42.0",
+            "libs": {
+                "sap.ui.core": {},
+                "sap.m": {},
+                "sap.f": {},
+                "sap.ushell": {},
+                "sap.collaboration": {
+                    "lazy": true
+                }
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "ZVCRH_VISAO_FERIAS.ZVCRH_VISAO_FERIAS.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "ZGWVCHR_FERIAS_ESS_SRV",
+                "preload": true
+            }
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.f.routing.Router",
+                "viewType": "XML",
+                "viewPath": "ZVCRH_VISAO_FERIAS.ZVCRH_VISAO_FERIAS.view",
+                "controlId": "layout",
+                "controlAggregation": "beginColumnPages",
+                "bypassed": {
+                    "target": "notFound"
+                },
+                "async": true
+            },
+            "routes": [
+                {
+                    "pattern": "",
+                    "name": "master",
+                    "target": "master"
+                },
+                {
+                    "pattern": "PROGRAMAR/{Pernr}/{Index}/",
+                    "name": "object",
+                    "target": [
+                        "master",
+                        "object"
+                    ]
+                },
+                {
+                    "name": "Add",
+                    "pattern": "Add/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "master",
+                        "Add"
+                    ]
+                }
+            ],
+            "targets": {
+                "master": {
+                    "viewName": "Master",
+                    "viewLevel": 1,
+                    "viewId": "master",
+                    "title": "Dependentes / Benefícios"
+                },
+                "object": {
+                    "viewName": "Detail",
+                    "viewId": "detail",
+                    "viewLevel": 1,
+                    "controlAggregation": "midColumnPages"
+                },
+                "detailObjectNotFound": {
+                    "viewName": "DetailObjectNotFound",
+                    "viewId": "detailObjectNotFound",
+                    "controlAggregation": "midColumnPages"
+                },
+                "notFound": {
+                    "viewName": "NotFound",
+                    "viewId": "notFound"
+                },
+                "Add": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearAggregation": true,
+                    "viewName": "Add",
+                    "viewId": "Adicionar",
+                    "viewLevel": 1,
+                    "controlAggregation": "midColumnPages"
+                }
+            }
+        }
+    },
+    "sap.platform.abap": {
+        "uri": "/sap/bc/ui5_ui5/sap/zvcrh_feri_ess",
+        "_version": "1.1.0"
+    }
+}

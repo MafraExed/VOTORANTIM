@@ -1,0 +1,53 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:m="sap.m">
+	<Dialog title="Novidades" type="Standard" showHeader="false">
+		<content>
+			<m:Carousel id="carouselProximo" loop="false" width="100%" height="100%">
+				<m:pages >
+					<!-- <m:VBox width="100%" height="100%" justifyContent="Center" alignItems="Center">
+							<m:Image id="news1" width="82%" class="novidades_image"/>
+							<m:HBox width="80%" backgroundDesign="Solid" justifyContent="Center">
+								<m:Button text="Próximo" type="Accept" press="pressNovidadesProximo"/>
+							</m:HBox>
+						</m:VBox>
+						<m:VBox width="100%" height="100%" justifyContent="Start" alignItems="Center">
+							<m:Image id="news2" width="82%" class="novidades_image"/>
+							<m:HBox width="80%" backgroundDesign="Solid" justifyContent="Center">
+								<m:Button text="Próximo" type="Accept" class="sapUiLargeMarginBegin" press="pressNovidadesProximo"/>
+							</m:HBox>
+						</m:VBox>
+						<m:VBox width="100%" height="100%" justifyContent="Start" alignItems="Center">
+							<m:Image id="news3" width="82%" class="novidades_image"/>
+							<m:HBox width="80%" backgroundDesign="Solid" justifyContent="Center">
+								<m:Button text="Próximo" type="Accept" class="sapUiLargeMarginBegin" press="pressNovidadesProximo"/>
+							</m:HBox>
+						</m:VBox>
+						<m:VBox width="100%" height="100%" justifyContent="Start" alignItems="Center">
+							<m:Image id="news4" width="82%" class="novidades_image"/>
+							<m:HBox width="80%" backgroundDesign="Solid" justifyContent="Center">
+								<m:Button text="Próximo" type="Accept" class="sapUiLargeMarginBegin" press="pressNovidadesProximo"/>
+							</m:HBox>
+						</m:VBox>
+						<m:VBox width="100%" height="100%" justifyContent="Start" alignItems="Center">
+							<m:Image id="news5" width="82%" class="novidades_image"/>
+							<m:HBox width="80%" backgroundDesign="Solid" justifyContent="Center">
+								<m:Button text="Próximo" type="Accept" class="sapUiLargeMarginBegin" press="pressNovidadesProximo"/>
+							</m:HBox>
+						</m:VBox>
+						<m:VBox width="100%" height="100%" justifyContent="Start" alignItems="Center">
+							<m:Image id="news6" width="82%" class="novidades_image"/>
+							<m:HBox width="80%" backgroundDesign="Solid" justifyContent="Center">
+								<m:Button text="Próximo" type="Accept" class="sapUiLargeMarginBegin" press="pressNovidadesProximo"/>
+							</m:HBox>
+						</m:VBox> -->
+					<m:VBox width="100%" height="100%" justifyContent="Center" alignItems="Center">
+						<m:Image id="news7" load="novidadesLoaded" width="100%"/>
+						<m:HBox width="98%" backgroundDesign="Solid" justifyContent="End">
+							<m:CheckBox id="idCheckNovidade" text="Não exibir mais essa tela na próxima vez que eu acessar" class="sapUiSmallMarginEnd" selected="false"/>
+							<m:Button id="btnEntendi" text="Entendi" type="Accept" press="pressNovidades"/>
+						</m:HBox>
+					</m:VBox>
+				</m:pages>
+			</m:Carousel>
+		</content>
+	</Dialog>
+</core:FragmentDefinition>

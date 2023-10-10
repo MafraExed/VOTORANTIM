@@ -1,0 +1,51 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout"
+	xmlns:smartTable="sap.ui.comp.smarttable" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:table="sap.ui.table"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	controllerName="Y5GL_RECIBOS3.Y5GL_RECIBOS3.controller.Pagto_Mensal">
+	<App id="idApp">
+		<pages>
+			<Page id="pages" enableScrolling="true">
+				<customHeader>
+					<Bar id="idBarMaster">
+						<contentLeft>
+							<Button icon="sap-icon://nav-back" id="idB_navback" press="onVoltar" text="Voltar"/>
+						</contentLeft>
+						<contentMiddle>
+							<Title text="Pagamento Mensal" titleStyle="H3" id="idTitleRecibos"/>
+						</contentMiddle>
+					</Bar>
+				</customHeader>
+				<content>
+					<HBox width="100%" height="1000%" id="idGif" class="Loading" busyIndicatorSize="Auto" backgroundDesign="Solid">
+						<Image src="imagens/voto_load_white.gif" width="100%" class="footer_img" id="idimg" backgroundSize="100%"/>
+					</HBox>
+					<core:HTML id="html" preferDOM="false" content="{Exstrfile}"/>
+					<f:Form class="editableForm" editable="true" id="form1" visible="true">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_FUNSEJEM" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+								emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer">
+								<f:formElements>
+									<f:FormElement id="Elemento5">
+										<Text text="Base INSS: {SalContribuicaoInss} | Base Imposto de Renda: {BaseCalcIrrf} | Base FGTS: {BaseCalcFgts} | Valor FGTS: {FgtsMes}"
+											id="idTotalINSS"/>
+									</f:FormElement>
+									<f:FormElement id="Elemento6">
+										<Button text="Download versão em (PDF)" width="100%" press="onImprime" icon="sap-icon://print" id="id_imprime" tooltip="Imprimir"/>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+				</content>
+				<footer>
+					<Toolbar id="idOverTollbar" design="Transparent">
+						<ToolbarSpacer id="idToolbarSpacerD"/>
+					</Toolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

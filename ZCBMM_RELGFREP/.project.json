@@ -1,0 +1,22 @@
+{
+  "mockpreview": {
+    "mockUri": "",
+    "metadataFilePath": "",
+    "loadJSONFiles": false,
+    "loadCustomRequests": false,
+    "mockRequestsFilePath": ""
+  },
+  "deploy": {
+    "destination": "SAP_GW_HUB",
+    "name": "ZCBMM_RELGFREP"
+  },
+  "projectType": [
+    "sap.watt.uitools.ide.fiori",
+    "com.watt.common.builder.sapui5clientbuild"
+  ],
+  "build": {
+    "buildRequired": false,
+    "targetFolder": "dist",
+    "lastBuildDateTime": "Tue, 04 Dec 2018 17:43:22 GMT"
+  }
+}

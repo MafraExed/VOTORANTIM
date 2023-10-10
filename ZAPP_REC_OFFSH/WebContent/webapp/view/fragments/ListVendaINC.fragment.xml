@@ -1,0 +1,275 @@
+<core:FragmentDefinition 
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc" 
+	xmlns:semantic="sap.m.semantic" 
+	xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout" 
+	xmlns:footerbar="sap.ushell.ui.footerbar">
+
+	<Panel width="auto">
+		<headerToolbar>
+			<Toolbar>
+				<Title 
+						id="tableVendaINC" 
+						text="{i18n>detailTitleTabFilterBar4}"/>
+				<ToolbarSpacer />
+				<SearchField
+						id="detailFilterListVendaInc"
+						placeholder="{i18n>detailTitleFilterPlaceHolder}"
+						search="onSearch" 
+						width="15rem"/>
+				</Toolbar>
+			</headerToolbar>
+		<content>
+<!-- 				    mode="MultiSelect" -->
+			<Table 
+					id="shipDetailVendaINCTable" 
+				  	items="{ShipmentDetailToVendaINC}" 
+				    FixedLayout="true"
+				    growing="true"
+				    growingThreshold="3"
+				    growingScrollToLoad="true">
+				
+				<columns>
+					<Column 
+								width="1.5rem"
+								hAlign="Center"
+								minScreenWidth="Tablet"
+								demandPopin="true">
+						<Text text="St." tooltip="{i18n>detailTitleTableProblema}"  />
+					</Column>
+					<Column 	width="4rem"
+								hAlign="Center"
+								minScreenWidth="Tablet"
+								demandPopin="true">
+						<Text text="{i18n>detailTitleTableBukrs}" />
+					</Column>
+					<Column 
+								width="6rem"
+								minScreenWidth="Tablet"
+								demandPopin="true">
+						<Text 
+								text="{i18n>detailTitleTableVbelnVaFIT}" />
+					</Column>	
+					<Column 
+								width="3rem"
+								hAlign="Center"
+								minScreenWidth="Tablet"
+								demandPopin="true">
+						<Text 
+								text="{i18n>detailTitleTableAuart}" />
+					</Column>
+					<Column 
+								width="5rem"
+								minScreenWidth="Tablet"
+								demandPopin="true">
+						<Text 
+								text="{i18n>detailTitleTablePrsdt}" />
+					</Column>
+					<Column 
+								width="5rem"
+								minScreenWidth="Tablet"
+								demandPopin="true">
+						<Text 
+								text="{i18n>detailTitleTableZbd1t}" />
+					</Column>
+					<Column 
+								width="5rem"
+								minScreenWidth="Tablet"
+								demandPopin="true">
+						<Text 
+								text="{i18n>detailTitleTableInco}" />
+					</Column>
+					<Column 
+								width="3rem"
+								hAlign="Center"
+								minScreenWidth="Tablet"
+								demandPopin="true">
+						<Text 
+								text="{i18n>detailTitleTablePosnrVA}" />
+					</Column>
+					<Column 
+								width="4.5rem" 
+								demandPopin="true">
+						<Text 	
+								text="{i18n>detailTitleTableMaterial}" />
+					</Column> 
+					<Column 
+								width="7rem"
+								minScreenWidth="Tablet"
+							
+								demandPopin="true">
+						<Text 
+								text="{i18n>detailTitleTableMenge}" />
+					</Column>
+					<Column 
+								width="4rem" 
+								demandPopin="true">
+						<Text 	
+								text="{i18n>detailTitleTableWerkso}" />
+					</Column>
+					<Column 
+								width="4rem"
+								minScreenWidth="Tablet"
+								demandPopin="true">
+						<Text 
+								text="{i18n>detailTitleTableLgort}" />
+					</Column>
+					<Column 
+								width="7rem"
+								minScreenWidth="Tablet"
+							
+								demandPopin="true">
+						<Text 
+								text="{i18n>detailTitleTableNetwr}" />
+					</Column>
+					<Column 
+								width="7rem"
+								minScreenWidth="Tablet"
+							
+								demandPopin="true">
+						<Text 
+								text="{i18n>detailTitleTableVlfrete}" />
+					</Column>
+					<Column 
+								width="7rem"
+								minScreenWidth="Tablet"
+								
+								demandPopin="true">
+						<Text 
+								text="{i18n>detailTitleTableVlseguro}" />
+					</Column>
+					<Column 
+								width="6rem"
+								minScreenWidth="Tablet"
+								demandPopin="true">
+						<Text 	text="{i18n>detailTitleTableVbelnVlFIT}" tooltip="FIT > INC" />
+					</Column>
+					<Column 
+								width="6rem"
+								minScreenWidth="Tablet"
+								demandPopin="true">
+						<Text 
+								text="{i18n>detailTitleTableVbelnVfFIT}" tooltip="FIT > INC"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem 
+								highlight="{path: 'Stprocess', formatter: '.formatter.mudarStatusHighLigth'}">
+						<cells>
+							<ObjectStatus
+								state="{path: 'Stalert', formatter: '.formatter.mudarStateProblema'}"
+								icon="{path: 'Stalert', formatter: '.formatter.mudarIconProblema'}" 
+								tooltip="{StalertDsc}"/>
+						</cells>
+						<cells>
+							<Text 
+								text="{Bukrs}" />
+						</cells>
+						<cells>
+							<Text 
+								text="{VbelnVa}" />
+						</cells>
+						<cells>
+							<Text 
+								text="{Auart}" />
+						</cells>
+						<cells>
+							<Text 
+								text="{path: 'Prsdt',  
+									   type: 'sap.ui.model.type.Date', 
+									   formatOptions: {
+												 		pattern: 'dd.MM.yyyy', 
+												 		strictParsing: true , 
+												 		UTC: true
+											 		  }
+									   }" />
+						</cells>
+						<cells>
+							<ObjectNumber
+								number="{Zterm}"
+								unit="{ZtermTxt}"
+								tooltip="{ZtermTxt}"
+								emphasized="false"/>
+						</cells>
+						<cells>
+							<Text 
+								text="{Inco1} {Inco2}" />
+						</cells>
+						<cells>
+							<Text 
+								text="{PosnrVa}" />
+						</cells>
+						<cells>
+							<ObjectNumber
+								number="{Matnr}"
+								unit="{MatnrDsc}"
+								tooltip="{MatnrDsc}"
+								emphasized="false"/>
+						</cells>
+						<cells>
+							<ObjectNumber
+								number="{
+											path: 'Weight', 
+											formatter:'.formatter.formatNumberBrazil'
+										}"
+								unit="{Unit}"
+								emphasized="false" />
+						</cells>
+						<cells>
+							<Text 
+								text="{Werks}" />
+						</cells>
+						<cells>
+							<Text 
+								text="{Lgort}" />
+						</cells>
+						<cells>
+							<ObjectNumber
+									
+									number="{
+												parts:[{path:'Netwr'},{path:'Waerk'}],
+												type: 'sap.ui.model.type.Currency',
+												formatOptions: {showMeasure: false}
+											}"
+									unit="{Waerk}"
+									emphasized="false" />
+						</cells>
+						<cells>
+<!-- 									class="sapUiSmallMarginBottom" -->
+							<ObjectNumber
+									number="{
+												parts:[{path:'Vlfrete'},{path:'Waerk'}],
+												type: 'sap.ui.model.type.Currency',
+												formatOptions: {showMeasure: false}
+											}"
+									emphasized="false"
+									unit="{Waerk}" />
+						</cells>
+						<cells>
+							<ObjectNumber
+									number="{
+												parts:[{path:'Vlseguro'},{path:'Waerk'}],
+												type: 'sap.ui.model.type.Currency',
+												formatOptions: {showMeasure: false}
+											}"
+									emphasized="false"
+									unit="{Waerk}" />
+						</cells>
+						<cells>
+							<Text 
+								text="{VbelnVl}" />
+						</cells>
+						<cells>
+							<Text 
+								text="{VbelnVf}" />
+						</cells>
+					</ColumnListItem>
+				</items>
+			
+			</Table>
+	
+		</content>
+	</Panel>
+
+</core:FragmentDefinition>

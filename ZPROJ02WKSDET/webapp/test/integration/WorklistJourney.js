@@ -1,0 +1,1 @@
+sap.ui.define(["sap/ui/test/opaQunit","sap/ui/Device","./pages/Worklist"],function(i,s){"use strict";QUnit.module("Worklist")});

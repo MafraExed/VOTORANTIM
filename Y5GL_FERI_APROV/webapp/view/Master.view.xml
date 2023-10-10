@@ -1,0 +1,32 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml"
+	controllerName="Y5GL_FERI_APROV.Y5GL_FERI_APROV.controller.Master" displayBlock="true">
+	<App id="app">
+		<pages>
+			<Page title="Períodos" backgroundDesign="Solid">
+				<customHeader>
+					<Bar id="idBarMaster">
+						<contentMiddle>
+							<core:Icon src="sap-icon://home" id="icon"/>
+							<Link text="Página Inicial" href="#Shell-home" id="Pagina"/>
+						</contentMiddle>
+					</Bar>
+				</customHeader>
+				<content>
+					<List id="list" items="{path: '/ZET_GLHR_SUBORD_ECSet'}" noDataText="{masterView>/noDataText}" itemPress="onSelectionChange">
+						<items>
+							<ObjectListItem title="{Ename}" type="Navigation" icon="{path:'LabelTitulo', formatter:'.formatterIcon'}" highlight="Information" fieldGroupIds="">
+								<attributes>
+									<ObjectAttribute text="Matrícula: {Pernr}" id="idPernr"/>
+								</attributes>
+								<firstStatus>
+									<ObjectStatus text="{Plstx}" id="__status1" state="Warning" class="Classe4Plstx"/>
+								</firstStatus>
+							</ObjectListItem>
+						</items>
+					</List>
+					<Button text="Voltar" width="100%" id="__button0" type="Back" press="NA" visible="false"/>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

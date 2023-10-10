@@ -1,0 +1,117 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	controllerName="ZPUI_BCMM_COND.ZPUI_BCMM_COND.controller.Transpo" xmlns:m="sap.m" xmlns:footerbar="sap.ushell.ui.footerbar"
+	xmlns:smartTable="sap.ui.comp.smarttable" xmlns:table="sap.ui.table" xmlns:f="sap.ui.layout.form" xmlns:l="controls"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" width="100%" height="100%">
+	<App>
+		<pages>
+			<Page title="Informações da transportadora">
+				<content>
+					<f:Form class="editableForm" editable="true">
+						<f:layout>
+							<f:ResponsiveGridLayout labelSpanXL="6" labelSpanL="6" labelSpanM="6" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0"
+								emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="true"/>
+						</f:layout>
+					</f:Form>
+					<f:Form class="editableForm" editable="true">
+						<f:layout>
+							<f:ResponsiveGridLayout labelSpanXL="5" labelSpanL="5" labelSpanM="5" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0"
+								emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="3" columnsM="3" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer>
+								<f:formElements>
+									<f:FormElement>
+										<f:fields>
+											<Input value="{NrTransp}" id="IdNrTransp" editable="false"/>
+										</f:fields>
+										<f:label>
+											<Label text="{/#ZET_CBMM_CF_TRANSP/NrTransp/@sap:label}" design="Bold"/>
+										</f:label>
+									</f:FormElement>
+									<f:FormElement>
+										<f:fields>
+											<Input value="{IdRota}" id="IdRota" editable="false"/>
+										</f:fields>
+										<f:label>
+											<Label text="{/#ZET_CBMM_CF_TRANSP/IdRota/@sap:label}" design="Bold"/>
+										</f:label>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+							<f:FormContainer>
+								<f:formElements>
+									<f:FormElement>
+										<f:fields>
+											<Input value="{IdSolicitacao}" id="IdSolicitacao" editable="false"/>
+										</f:fields>
+										<f:label>
+											<Label text="{/#ZET_CBMM_CF_TRANSP/IdSolicitacao/@sap:label}" design="Bold"/>
+										</f:label>
+									</f:FormElement>
+									<f:FormElement>
+										<f:fields>
+											<Input value="{WerksO}" editable="false" id="IdWerksO"/>
+										</f:fields>
+										<f:label>
+											<Label text="{/#ZET_CBMM_CF_TRANSP/WerksO/@sap:label}" design="Bold"/>
+										</f:label>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+							<f:FormContainer>
+								<f:formElements>
+									<f:FormElement>
+										<f:fields>
+											<Input value="{Bukrs}" id="IdBukrs" editable="false"/>
+										</f:fields>
+										<f:label>
+											<Label text="{/#ZET_CBMM_CF_TRANSP/Bukrs/@sap:label}" design="Bold"/>
+										</f:label>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form>
+						<f:layout>
+							<f:ResponsiveGridLayout labelSpanXL="5" labelSpanL="5" labelSpanM="5" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0"
+								emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer>
+								<f:formElements>
+									<f:FormElement>
+										<smartTable:SmartTable id="smartTable" entitySet="ZET_CBMM_CF_VEICULOSet" useOnlyOneSolidToolbar="true" useExportToExcel="false"
+											useVariantManagement="false" useTablePersonalisation="false" tableType="Table" header="Veículos" showRowCount="true"
+											showFullScreenButton="true" initiallyVisibleFields="TpVeiculo,Maktx" 
+											requestAtLeastFields="WerksO,IdSolicitacao,IdRota,NrTransp,Bukrs"
+											enableAutoBinding="true" beforeRebindTable="atualizaTabela"
+											class="sapUiResponsiveContentPadding" persistencyKey="SmartTablePKey">
+											<smartTable:customToolbar>
+												<Toolbar>
+													<Button icon="sap-icon://add" text="Adicionar" press="addRow"/>
+													<Button icon="sap-icon://delete" text="Remover" press="DeleteRecords"/>
+												</Toolbar>
+											</smartTable:customToolbar>
+											<m:Table mode="MultiSelect" id="table" enableBusyIndicator="true" busyIndicatorDelay="100">
+											</m:Table>
+											<smartTable:layoutData>
+												<m:FlexItemData growFactor="1" baseSize="0%"/>
+											</smartTable:layoutData>
+										</smartTable:SmartTable>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+				</content>
+				<footer>
+					<Toolbar>
+						<Button id="BtnBack" text="Voltar" type="Transparent" icon="sap-icon://nav-back" iconFirst="true" width="auto" enabled="true" visible="true"
+							iconDensityAware="false" press="onBack" tooltip="Voltar"/>
+					</Toolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

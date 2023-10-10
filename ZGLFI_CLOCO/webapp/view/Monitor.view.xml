@@ -1,0 +1,229 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns:m="sap.m" xmlns:table="sap.ui.table" xmlns:mc="sap.suite.ui.microchart"
+	xmlns:comm="sap.suite.ui.commons" controllerName="FechamentoContabil.controller.Monitor" xmlns:html="http://www.w3.org/1999/xhtml"
+	busy="true" busyIndicatorSize="Medium" width="100%" height="100%">
+	<m:Page id="IdCorpoPagina" title="Monitor" showNavButton="false" navButtonPress="onNavButtonPressed" showHeader="false"
+		backgroundDesign="Solid">
+		<m:content> 
+		
+			<m:FlexBox backgroundDesign="Solid" width="100%" alignItems="Center">
+				<m:FlexBox class="sapUiTinyMarginBegin plano_descricao_back" alignItems="Center" height="50px">
+					<m:Select id="idInputModelo" change="onNovoModelo" class="sapUiTinyMarginBegin inputKeys" items="{ path: 'Planos>/' }">
+						<core:Item key="{Planos>Instance}" text="{Planos>Profile}"/>
+					</m:Select>
+					<m:Select id="idInputPeriodo" change="onNovoPeriodo" class="sapUiTinyMarginBegin inputKeys" items="{ path: 'Periodos>/' }">
+						<core:Item key="{Periodos>Instance}" text="{Periodos>Data}"/>
+					</m:Select>
+					<m:Label width="350px" id="idLabelDescricao" text="{PlanoSelecionado>/Desc}" textAlign="Begin"
+						class="plano_descricao sapUiSmallMarginBeginEnd"/>
+				</m:FlexBox>
+
+				<m:FlexBox alignItems="Center" justifyContent="End" width="100%" height="50px">
+					<m:FlexBox alignItems="Center" justifyContent="Start" width="100%" height="50px">
+						<core:Icon class="sapUiMediumMarginBegin" id="idSync" src="sap-icon://refresh" color="blue" size="24px" press="onPressSync" visible="true"/>
+					</m:FlexBox>
+					<m:FlexBox alignItems="Center" justifyContent="End" width="100%" height="50px">
+						<m:Button tooltip="Questionar status via email" icon="sap-icon://email" press="onQuestionarViaEmailPress" class="sapUiSmallMarginEnd"/>
+						<!-- <m:Button tooltip="Relatório de resultado" icon="sap-icon://vertical-waterfall-chart" press="getLinkRelatorio" class="sapUiSmallMarginEnd buttonLinkRel"/> -->
+					</m:FlexBox>
+				</m:FlexBox>
+
+			</m:FlexBox>
+			
+			<m:FlexBox class="sapUiTinyMarginTopBottom" width="100%" backgroundDesign="Solid">
+				<m:HBox id="idHboxPath" width="90%" justifyContent="Start" alignItems="Center">
+					<core:Icon class="sapUiMediumMarginBegin path__icon" size="20px" src="sap-icon://menu" color="white" press="onConfigHierarquia"/>
+				</m:HBox>
+			</m:FlexBox>
+
+			<m:FlexBox height="auto" width="100%" justifyContent="SpaceAround" backgroundDesign="Solid" direction="Row">
+
+				<m:FlexBox height="auto" width="40%" justifyContent="SpaceAround" backgroundDesign="Solid" direction="Column">
+
+					<m:FlexBox id="card_graficoAvanco" width="100%" class="card_charts">
+						<m:FlexBox class="sapUiTinyMarginTopBottom " direction="Column" alignContent="Center" alignItems="Center" justifyContent="Start" width="100%">
+							<m:Title tooltip="Representa percentualmente quanto das tarefas já deveriam ter sido concluídas, conforme o planejamento"
+								text="Avanço Planejado" class="sapUiTinyMarginTopBottom "/>
+							<m:FlexBox width="100%" justifyContent="Center" alignItems="Center" height="100%">
+								<m:FlexBox width="100%" justifyContent="Center" alignItems="Center" height="100%" tooltip="Representa percentualmente quanto das tarefas já deveriam ter sido concluídas, conforme o planejamento">
+									<html:div class="chart plan">
+										<html:div class="radio_chart p0 plan" id="IdGraficoPlan"></html:div>
+										<html:div class="cap"></html:div>
+										<html:div class="value" id="IdValuePlan">0%</html:div>
+									</html:div>
+								</m:FlexBox>
+							</m:FlexBox>
+						</m:FlexBox>
+						<m:FlexBox class="sapUiTinyMarginTopBottom " direction="Column" alignContent="Center" alignItems="Center" justifyContent="Start" width="100%" tooltip="Representa percentualmente quanto das tarefas já foram concluídas até o momento atual">
+							<m:Title tooltip="Representa percentualmente quanto das tarefas já foram concluídas até o momento atual" text="Avanço Real" class="sapUiTinyMarginTopBottom "/>
+							<html:div class="chart plan">
+								<html:div class="radio_chart p0 avanco" id="IdGraficoAvanco"></html:div>
+								<html:div class="cap"></html:div>
+								<html:div class="value" id="IdValueAvanco">0%</html:div>
+							</html:div>
+						</m:FlexBox>
+					</m:FlexBox>
+
+					<m:FlexBox width="100%" id="card_graficoConcPlan" class="card_charts">
+						<m:FlexBox class="sapUiSmallMarginTop" direction="Column" alignContent="Center" alignItems="Center" justifyContent="Start" width="90%">
+							<m:Title class="sapUiSmallMarginTop"
+								tooltip="Representa: 1) a quantidade total de tarefas concluídas; 2) o delta (tarefas que ainda precisam ser executadas); 3) quantidade total planejada para execução"
+								text="Atividades Previstas Vs Concluídas"/>
+							<mc:DeltaMicroChart class="unselectable sapUiMediumMarginBegin" width="370px" height="200px"
+								tooltip="Representa: 1) a quantidade total de tarefas concluídas; 2) o delta (tarefas que ainda precisam ser executadas); 3) quantidade total planejada para execução"
+								id="idAtividadePrevPlan" title1="Concluídas" title2="Planejadas" color="Critical" isResponsive="true"/>
+						</m:FlexBox>
+					</m:FlexBox>
+
+				</m:FlexBox>
+
+				<m:FlexBox width="60%" id="card_graficoTOP5" class="card_charts ztop5" alignItems="Start" justifyContent="Center" tooltip="Ranking de atividades com maior tempo (medido em horas) de atraso na conclusão. Atividades críticas para o fechamento, identificadas com sinal de exclamação, têm prioridade na exibição">
+					<m:List id="idTopAtvAtrasadas" headerText="TOP 5 Maiores Ofensores (h)" items="{path: 'topAtividadesAtrasadas>/'}">
+						<m:items>
+							<m:StandardListItem
+								infoState="Error"
+								title="{topAtividadesAtrasadas>Atividade}"
+								icon="{= ${topAtividadesAtrasadas>Critico} === '' ? 'sap-icon://past' : 'sap-icon://alert' }"
+								info="{topAtividadesAtrasadas>Valor}"
+								iconInset="true"
+								description="{topAtividadesAtrasadas>Empresa}" />
+						</m:items>
+					</m:List>
+				</m:FlexBox>
+
+			</m:FlexBox>
+
+			<m:VBox width="100%" alignContent="Center" alignItems="Center">
+				<m:FlexBox class="sapUiTinyMarginTopBottom sapUiSmallMarginTop" width="100%" backgroundDesign="Solid">
+					<m:HBox id="idHboxPathFluxoGeral" width="90%" justifyContent="Start" alignItems="Center">
+						<core:Icon class="sapUiMediumMarginBegin path__icon" size="20px" src="sap-icon://menu" color="white" press="onConfigHierarquiaFluxo"/>
+					</m:HBox>
+					<m:HBox justifyContent="End" alignItems="Center" width="100%">
+						<core:Icon noTabStop="true" id="idIconPlayFluxo" src="sap-icon://initiative" color="#406b80" size="30px"
+							class="sapUiMediumMarginEnd monitor__icon__settings__play" press="togglePlayFluxo"/>
+					</m:HBox>
+				</m:FlexBox>
+				<m:VBox width="100%" alignContent="Center" alignItems="Center" justifyContent="Center" backgroundDesign="Solid">
+					<m:Carousel loop="true" width="100%" id="idCarousel"></m:Carousel>
+				</m:VBox>
+			</m:VBox>
+			<m:VBox id="idMenuHierarquia" class="menu__hierarquia__inativo menu__hierarquia" width="30%" height="85%">
+				<table:TreeTable id="TreeTableBasic" enableSelectAll="false" ariaLabelledBy="title" selectionMode="None" cellClick="onTreeClick"
+					minAutoRowCount="13"
+					rows="{ path : 'HierarquiaPastas>/', parameters : { countMode: 'Inline', treeAnnotationProperties : { hierarchyLevelFor : 'HierarquiaPastas>HierarchyLevel', hierarchyNodeFor : 'HierarquiaPastas>NodeID', hierarchyParentNodeFor : 'HierarquiaPastas>ParentNodeID', hierarchyDrillStateFor : 'HierarquiaPastas>DrillState' } } }">
+					<table:columns>
+						<table:Column width="100%">
+							<m:HBox width="100%" alignContent="Center" alignItems="Center">
+								<m:Label text="Hierarquia" class="menu__hierarquia__label"/>
+								<m:HBox width="100%" justifyContent="End">
+									<core:Icon src="sap-icon://decline" color="red" class="sapUiSmallMarginEnd" press="onConfigHierarquia" size="25px"/>
+								</m:HBox>
+							</m:HBox>
+							<table:template>
+								<m:HBox>
+									<m:Text text="{HierarquiaPastas>Description}" wrapping="false"/>
+									<m:Text text="{HierarquiaPastas>NodeID}" visible="false"/>
+								</m:HBox>
+							</table:template>
+						</table:Column>
+					</table:columns>
+				</table:TreeTable>
+			</m:VBox>
+			<m:VBox id="idMenuHierarquiaFluxoGeral" class="menu__hierarquia__inativo menu__hierarquia" width="30%" height="85%">
+				<table:TreeTable id="TreeTableFluxoGeral" enableSelectAll="false" ariaLabelledBy="title" selectionMode="None"
+					cellClick="onTreeClickFluxoGeral"
+					rows="{ path : 'HierarquiaPastas>/', parameters : { countMode: 'Inline', treeAnnotationProperties : { hierarchyLevelFor : 'HierarquiaPastas>HierarchyLevel', hierarchyNodeFor : 'HierarquiaPastas>NodeID', hierarchyParentNodeFor : 'HierarquiaPastas>ParentNodeID', hierarchyDrillStateFor : 'HierarquiaPastas>DrillState' } } }">
+					<table:columns>
+						<table:Column width="100%">
+							<m:HBox width="100%" alignContent="Center" alignItems="Center">
+								<m:Label text="Hierarquia" class="menu__hierarquia__label"/>
+								<m:HBox width="100%" justifyContent="End">
+									<core:Icon src="sap-icon://decline" color="red" class="sapUiSmallMarginEnd" press="onConfigHierarquiaFluxo" size="25px"/>
+								</m:HBox>
+							</m:HBox>
+							<table:template>
+								<m:HBox>
+									<m:Text text="{HierarquiaPastas>Description}" wrapping="false"/>
+									<m:Text text="{HierarquiaPastas>NodeID}" visible="false"/>
+								</m:HBox>
+							</table:template>
+						</table:Column>
+					</table:columns>
+				</table:TreeTable>
+			</m:VBox>
+			<!--			<m:VBox id="idPopupVideo" class="popup__video popup__video__inativo" >
+				<m:HBox alignContent="Center" alignItems="Center">
+					<m:HBox width="90%" justifyContent="SpaceAround" class="sapUiTinyMarginTopBottom">
+						<m:Label text="Intro"   class="popup__video__label__selecionado"/>
+						<m:Label text="Video 2" class="popup__video__label"/>
+						<m:Label text="Video 3" class="popup__video__label"/>
+						<m:Label text="Video 4" class="popup__video__label"/>
+					</m:HBox>
+					<m:HBox justifyContent="End" width="10%" class="popup__hierarquia__header__icon" alignItems="Center" >
+						<core:Icon src="sap-icon://decline" color="red" class="sapUiSmallMarginEnd" press="onPressHelp" size="25px" />
+					</m:HBox>
+				</m:HBox>
+				<m:HBox id="hboxVideos"/> 
+			</m:VBox>-->
+			<!--			<html:div id="popup__novidades__splash" class="popup__novidades__splash popup__novidades__desabilitado"></html:div>
+			<m:VBox id="popup__novidades" class="popup__novidades popup__novidades__desabilitado" justifyContent="Center" alignItems="Center">
+				<m:VBox  backgroundDesign="Solid" justifyContent="Center" alignContent="Center" alignItems="Center">
+					<m:Image id="idImgNovidades" height="55%" width="100%" densityAware="false" />
+				</m:VBox>
+				<m:HBox width="100%" backgroundDesign="Solid" justifyContent="End">
+					<m:CheckBox id="idCheckNovidade" text="Não exibir mais essa tela na próxima vez que eu acessar" class="sapUiSmallMarginEnd" selected="true" />
+					<m:Button text="Entendi" type="Accept" class="sapUiSmallMarginEnd" press="pressNovidades"/> 
+				</m:HBox>
+			</m:VBox>-->
+			<!-- <m:VBox id="popupNovidades" class="popup_novidades popup_disable zpopup" height="100%" width="100%" backgroundDesign="Solid">
+				<m:Carousel id="carouselProximo" loop="false" width="100%" height="100%">
+					<m:pages >
+						<m:VBox width="100%" height="100%" justifyContent="Center" alignItems="Center">
+							<m:Image id="news1" width="82%" class="novidades_image"/>
+							<m:HBox width="80%" backgroundDesign="Solid" justifyContent="Center">
+								<m:Button text="Próximo" type="Accept" press="pressNovidadesProximo"/>
+							</m:HBox>
+						</m:VBox>
+						<m:VBox width="100%" height="100%" justifyContent="Start" alignItems="Center">
+							<m:Image id="news2" width="82%" class="novidades_image"/>
+							<m:HBox width="80%" backgroundDesign="Solid" justifyContent="Center">
+								<m:Button text="Próximo" type="Accept" class="sapUiLargeMarginBegin" press="pressNovidadesProximo"/>
+							</m:HBox>
+						</m:VBox>
+						<m:VBox width="100%" height="100%" justifyContent="Start" alignItems="Center">
+							<m:Image id="news3" width="82%" class="novidades_image"/>
+							<m:HBox width="80%" backgroundDesign="Solid" justifyContent="Center">
+								<m:Button text="Próximo" type="Accept" class="sapUiLargeMarginBegin" press="pressNovidadesProximo"/>
+							</m:HBox>
+						</m:VBox>
+						<m:VBox width="100%" height="100%" justifyContent="Start" alignItems="Center">
+							<m:Image id="news4" width="82%" class="novidades_image"/>
+							<m:HBox width="80%" backgroundDesign="Solid" justifyContent="Center">
+								<m:Button text="Próximo" type="Accept" class="sapUiLargeMarginBegin" press="pressNovidadesProximo"/>
+							</m:HBox>
+						</m:VBox>
+						<m:VBox width="100%" height="100%" justifyContent="Start" alignItems="Center">
+							<m:Image id="news5" width="82%" class="novidades_image"/>
+							<m:HBox width="80%" backgroundDesign="Solid" justifyContent="Center">
+								<m:Button text="Próximo" type="Accept" class="sapUiLargeMarginBegin" press="pressNovidadesProximo"/>
+							</m:HBox>
+						</m:VBox>
+						<m:VBox width="100%" height="100%" justifyContent="Start" alignItems="Center">
+							<m:Image id="news6" width="82%" class="novidades_image"/>
+							<m:HBox width="80%" backgroundDesign="Solid" justifyContent="Center">
+								<m:Button text="Próximo" type="Accept" class="sapUiLargeMarginBegin" press="pressNovidadesProximo"/>
+							</m:HBox>
+						</m:VBox>
+						<m:VBox width="100%" height="100%" justifyContent="Center" alignItems="Center">
+							<m:Image id="news7" load="novidadesLoaded" width="100%"/>
+							<m:HBox width="98%" backgroundDesign="Solid" justifyContent="End">
+								<m:CheckBox id="idCheckNovidade" text="Não exibir mais essa tela na próxima vez que eu acessar" class="sapUiSmallMarginEnd" selected="false"/>
+								<m:Button text="Entendi" type="Accept" press="pressNovidades"/>
+							</m:HBox>
+						</m:VBox>
+					</m:pages>
+				</m:Carousel>
+			</m:VBox>-->
+			<m:HBox id="idHboxModal" class="dialog__modal zpopup popup_disable"/>
+		</m:content>
+	</m:Page>
+</mvc:View>

@@ -1,0 +1,133 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="com.sap.build.standard.operadorLogistico.controller.Page3_1" xmlns:f="sap.f"
+	xmlns:variants="sap.ui.comp.variants" xmlns="sap.m" xmlns:filterbar="sap.ui.comp.filterbar" xmlns:core="sap.ui.core">
+	<f:DynamicPage headerExpanded="true" showFooter="false" class="sapUiSizeCompact">
+		<f:title>
+			<f:DynamicPageTitle>
+				<f:heading>
+					<variants:VariantManagement/>
+				</f:heading>
+				<f:actions>
+					<ToolbarSpacer/>
+					<Button icon="sap-icon://action" type="Transparent"/>
+				</f:actions>
+			</f:DynamicPageTitle>
+		</f:title>
+		<f:header>
+			<f:DynamicPageHeader pinnable="true">
+				<f:content>
+					<filterbar:FilterBar useToolbar="false" showGoOnFB="true" searchEnabled="false">
+						<filterbar:filterItems>
+							<filterbar:FilterItem label="Custom Filter"
+								name="Fiori_ListReport_ListReport_0-filterBars-Fiori_ListReport_FilterBar-1-wom5zch4bdygcv09mudcajlh2_S2-filters-sap_ui_comp_filterbar_FilterItem-1544028190158---0">
+								<filterbar:control>
+									<MultiInput maxTokens="5" enableMultiLineMode="false" showValueHelp="false" enabled="true" visible="true" width="auto" valueHelpOnly="false"
+										maxLength="0">
+										<tokens>
+											<Token text="Value 1" editable="false" selected="false"/>
+										</tokens>
+									</MultiInput>
+								</filterbar:control>
+							</filterbar:FilterItem>
+						</filterbar:filterItems>
+					</filterbar:FilterBar>
+				</f:content>
+			</f:DynamicPageHeader>
+		</f:header>
+		<f:content>
+			<VBox fitContainer="true">
+				<items>
+					<Table width="100%" growing="true" growingScrollToLoad="true" growingThreshold="25" mode="MultiSelect"
+						itemPress="_onFioriListReportTableItemPress" updateFinished="_onFioriListReportTableUpdateFinished"
+						items="{path:'/NFDocSet', templateShareable:true}">
+						<headerToolbar>
+							<OverflowToolbar design="Transparent">
+								<content>
+									<Title textAlign="Begin" text="Nota Fiscal"/>
+									<Title text="(1)"/>
+									<ToolbarSpacer/>
+									<Button text="Manifesto" icon="sap-icon://shipping-status" iconFirst="false" type="Transparent" enabled="true">
+										<layoutData>
+											<OverflowToolbarLayoutData moveToOverflow="true"/>
+										</layoutData>
+									</Button>
+									<Button icon="sap-icon://action-settings" type="Transparent">
+										<layoutData>
+											<OverflowToolbarLayoutData moveToOverflow="true"/>
+										</layoutData>
+									</Button>
+								</content>
+							</OverflowToolbar>
+						</headerToolbar>
+						<columns>
+							<Column width="80px" hAlign="Center" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true"
+								minScreenWidth="Tablet">
+								<header>
+									<Text text="Status"/>
+								</header>
+							</Column>
+							<Column width="auto" hAlign="Left" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
+								<header>
+									<Text text="Integrada"/>
+								</header>
+							</Column>
+							<Column width="120px" hAlign="Left" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
+								<header>
+									<Text text="Número NFe"/>
+								</header>
+							</Column>
+							<Column width="60px" hAlign="Left" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
+								<header>
+									<Text text="Serie"/>
+								</header>
+							</Column>
+							<Column width="180px" hAlign="Left" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
+								<header>
+									<Text text="Fornecedor"/>
+								</header>
+							</Column>
+							<Column width="350px" hAlign="Left" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
+								<header>
+									<Text text="Chave Acesso"/>
+								</header>
+							</Column>
+							<Column width="auto" hAlign="Left" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
+								<header>
+									<Text text="BO"/>
+								</header>
+							</Column>
+							<Column width="auto" hAlign="Left" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
+								<header>
+									<Text text="Passaporte"/>
+								</header>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem type="Navigation">
+								<cells>
+									<core:Icon src="{STATUS_ICON}" size="24px" color="{STATUS_COLOR}" height="32px" width="32px" visible="true"/>
+									<Text text="{STATUS_INT}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+									<Text text="{NFENUM}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+									<Text text="{SERIE}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+									<Text text="{NAME1}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+									<Text text="{ACCKEY}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+									<Text text="{BO}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+									<Text text="{PASSAPORTEID}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+					<Input type="Text" showValueHelp="false" enabled="true" visible="true" width="auto" valueHelpOnly="false" maxLength="0"/>
+				</items>
+			</VBox>
+		</f:content>
+		<f:footer>
+			<OverflowToolbar design="auto">
+				<content>
+					<ToolbarSpacer/>
+					<Button text="Save" type="Emphasized" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
+					<Button text="Cancel" type="Default" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
+				</content>
+			</OverflowToolbar>
+		</f:footer>
+	</f:DynamicPage>
+</mvc:View>

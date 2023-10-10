@@ -1,0 +1,1 @@
+sap.ui.define(["./BaseController"],function(e){"use strict";return e.extend("votorantim.corp.clocov2planmanagement.controller.DetailObjectNotFound",{})});

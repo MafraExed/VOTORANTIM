@@ -1,0 +1,5 @@
+"use strict";
+/*!
+ * SiGC - GestiÃ³n de Compras
+ * (c) Copyright 2022 Innova Internacional S.A.S.
+ */sap.ui.define(["com/innova/vendor/lodash.get","sap/ui/base/Object"],function(t,s){return s.extend("com.innova.sigc.model.process.Vendor",{constructor:function s(n){this.lifnr=t(n,"lifnr",null);this.name1=t(n,"name1",null);this.name2=t(n,"name2",null);this.name3=t(n,"name3",null);this.name4=t(n,"name4",null);this.city1=t(n,"city1",null);this.city2=t(n,"city2",null);this.street=t(n,"street",null);this.postCode1=t(n,"postCode1",null);this.houseNum1=t(n,"houseNum1",null);this.houseNum2=t(n,"houseNum2",null);this.country=t(n,"country",null);this.region=t(n,"region",null);this.sort1=t(n,"sort1",null);this.aCcc=t(n,"aCcc",null);this.aRut=t(n,"aRut",null);this.aCbanc=t(n,"aCbanc",null);this.stcd1=t(n,"stcd1",null);this.stcd2=t(n,"stcd2",null);this.spras=t(n,"spras",null);this.stcdt=t(n,"stcdt",null);this.emails=t(n,"emails",null);this.phones=t(n,"phones",null);this.category=t(n,"category",null)}})});

@@ -1,0 +1,47 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core">
+	<VBox class="sapUiSmallMargin">
+		<f:SimpleForm
+			editable="false"
+			layout="ResponsiveGridLayout"
+			title="Dados"
+			labelSpanXL="3"
+			labelSpanL="3"
+			labelSpanM="3"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			emptySpanXL="4"
+			emptySpanL="4"
+			emptySpanM="4"
+			emptySpanS="0"
+			columnsXL="1"
+			columnsL="1"
+			columnsM="1"
+			singleContainerFullSize="false" >
+			<f:content>
+				<Label text="Obra" design="Bold"/>
+				<Text text="{Obra}" />
+				<Label text="Endereço" design="Bold"/>
+				<Text text="{Endereco}" />
+				<Label text="Contrato" design="Bold"/>
+				<Text text="{Contrato}" />
+				<Label text="NFS-e" design="Bold"/>
+				<Text text="{NfsE}" />
+				<Label text="Data NFS-e" design="Bold"/>
+				<Text text="{DataNfsE}" />
+				<Label text="Data confirmação de recebimento Kit" design="Bold"/>
+				<Text text="{DataConfKit}" />
+				<Label text="Hora confirmação de recebimento Kit" design="Bold"/>
+				<Text text="{HoraConfKit}" />
+				<Label text="Endereço de e-mail confirmação Kit" design="Bold"/>
+				<Link text="{EmailConf}" target="_blank"  href="mailto:{EmailConf}"/>
+				<Label text="Status" design="Bold"/>
+				<ObjectStatus class="sapUiSmallMarginBottom" text="{Status}" state="{TipoStatus}" />
+
+			</f:content>
+		</f:SimpleForm>
+	</VBox>
+</core:FragmentDefinition>

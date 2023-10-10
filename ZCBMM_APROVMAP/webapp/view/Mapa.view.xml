@@ -1,0 +1,283 @@
+<mvc:View controllerName="ZCBMM_APROVMAP.ZCBMM_APROVMAP.controller.Mapa" xmlns:html="http://www.w3.org/1999/xhtml" xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:m="sap.m" xmlns:footerbar="sap.ushell.ui.footerbar"
+	xmlns:sv="sap.ui.comp.smartvariants" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:l="controls"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" width="100%" height="100%">
+	<semantic:DetailPage id="page" navButtonPress="onNavBack" showNavButton="{device>/system/phone}" title="Informações do Veículo"
+		busy="{mapaView>/busy}" busyIndicatorDelay="{mapaView>/delay}">
+		<semantic:content>
+			<f:Form class="editableForm" editable="false">
+				<f:layout>
+					<f:ResponsiveGridLayout labelSpanXL="6" labelSpanL="6" labelSpanM="6" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0"
+						emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="3" columnsM="3" singleContainerFullSize="true"/>
+				</f:layout>
+			</f:Form>
+			<f:Form class="editableForm" editable="false">
+				<f:layout>
+					<f:ResponsiveGridLayout labelSpanXL="5" labelSpanL="5" labelSpanM="5" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0"
+						emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="3" columnsM="3" singleContainerFullSize="true"/>
+				</f:layout>
+				<f:formContainers>
+					<f:FormContainer>
+						<f:formElements>
+							<f:FormElement>
+								<f:fields>
+									<Input value="{Bukrs}" id="IdBukrs2" editable="false" valueHelpRequest="onHelpWerks" showValueHelp="true" change="onChangeWerks"/>
+								</f:fields>
+								<f:label>
+									<Label text="Empresa" design="Bold"/>
+								</f:label>
+							</f:FormElement>
+							<f:FormElement>
+								<f:fields>
+									<Input value="{WerksO}" id="IdWerksO2" editable="false" valueHelpRequest="onHelpCarteira" showValueHelp="true" change="onChangeCarteira"/>
+								</f:fields>
+								<f:label>
+									<Label text="Centro" design="Bold"/>
+								</f:label>
+							</f:FormElement>
+							<f:FormElement>
+								<f:fields>
+									<Input value="{Objeto}" id="IdObjeto" editable="false"/>
+								</f:fields>
+								<f:label>
+									<Label text="Objeto" design="Bold"/>
+								</f:label>
+								<!--<MaskInput mask="9999999999999" placeholderSymbol="" placeholder="Insira objeto" editable="false" id="IdObjeto"/>-->
+							</f:FormElement>
+						</f:formElements>
+					</f:FormContainer>
+					<f:FormContainer>
+						<f:formElements>
+							<f:FormElement>
+								<f:fields>
+									<Input value="{IdSolicitacao}" id="IdSolicitacao" editable="false" valueHelpRequest="onHelpPrioridade" showValueHelp="true"
+										change="onChangePrioridade"/>
+								</f:fields>
+								<f:label>
+									<Label text="Id Orçamento" design="Bold"/>
+								</f:label>
+							</f:FormElement>
+							<f:FormElement>
+								<f:fields>
+									<Input value="{IdRota}" editable="false" id="IdRota"/>
+								</f:fields>
+								<f:label>
+									<Label text="Id da Rota" design="Bold"/>
+								</f:label>
+							</f:FormElement>
+						</f:formElements>
+					</f:FormContainer>
+					<f:FormContainer>
+						<f:formElements>
+							<f:FormElement>
+								<f:fields>
+									<Input value="{TpVeiculo}" id="IdTpVeiculo2" editable="false"/>
+								</f:fields>
+								<f:label>
+									<Label text="Tipo Veículo" design="Bold"/>
+								</f:label>
+							</f:FormElement>
+							<f:FormElement>
+								<f:fields>
+									<Input value="{NrTransp}" id="NrTransp" editable="false" visible="false"/>
+								</f:fields>
+								<f:label>
+									<Label text="N° Transporte" design="Bold" visible="false"/>
+								</f:label>
+							</f:FormElement>
+							<f:FormElement>
+								<f:fields>
+									<Input value="{NrTransp}" id="IdNrTransp" editable="false" placeholder="Ex.: JSL "/>
+								</f:fields>
+								<f:label>
+									<Label text="Transportadora" design="Bold"/>
+								</f:label>
+							</f:FormElement>
+						</f:formElements>
+					</f:FormContainer>
+				</f:formContainers>
+			</f:Form>
+			<f:Form class="editableForm" editable="false">
+				<f:layout>
+					<f:ResponsiveGridLayout labelSpanXL="6" labelSpanL="6" labelSpanM="6" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0"
+						emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="3" columnsM="3" singleContainerFullSize="true"/>
+				</f:layout>
+				<f:formContainers>
+					<f:FormContainer>
+						<f:formElements>
+							<f:FormElement>
+								<f:fields>
+									<Input value="{Vigencia}" id="IdVigencia" editable="false" />
+									<Text text="Meses"/>
+								</f:fields>
+								<f:label>
+									<Label text="Vigencia" design="Bold"/>
+								</f:label>
+							</f:FormElement>
+							<f:FormElement>
+								<f:fields>
+									<Input value="{Negociacao}" id="IdNegociacao" editable="false" placeholder="Ex.: Cabreúva-SP x Alumínio-SP " change="OnCalcule"/>
+								</f:fields>
+								<f:label>
+									<Label text="Negociação" design="Bold"/>
+								</f:label>
+							</f:FormElement>
+							<f:FormElement>
+								<f:fields>
+									<Input value="{OrcBaseline}" id="IdOrcBaseline" editable="false" placeholder="0.00" change="OnCalcule"/>
+									<Text text="R$"/>
+								</f:fields>
+								<f:label>
+									<Label text="Orç. Baseline" design="Bold"/>
+								</f:label>
+							</f:FormElement>
+							<f:FormElement>
+								<f:fields>
+									<Input value="{Volume}" id="IdVolume" editable="false"/>
+									<Text text="TON"/>
+								</f:fields>
+								<f:label>
+									<Label text="Volume" design="Bold"/>
+								</f:label>
+							</f:FormElement>
+							<f:FormElement>
+								<f:fields>
+									<Input value="{DataBase}" id="IDDataBase" editable="false" />
+								</f:fields>
+								<f:label>
+									<Label text="Data Base" design="Bold"/>
+								</f:label>
+							</f:FormElement>
+						</f:formElements>
+					</f:FormContainer>
+					<f:FormContainer>
+						<f:formElements>
+							<f:FormElement>
+								<f:fields>
+									<Input value="{AtPreco}" id="IdAtPreco" editable="false" placeholder="Ex.:Repactuação"/>
+								</f:fields>
+								<f:label>
+									<Label text="Preço Atual" design="Bold"/>
+								</f:label>
+							</f:FormElement>
+							<f:FormElement>
+								<f:fields>
+										<Input value="{PrazoPag}" valueHelpRequest="OnZterm" showValueHelp="true" showSuggestion="true" startSuggestion="0"
+										suggestionItems="{/ZET_CBMM_CF_CONDPAG_HSet}" id="IdPrazoPag" width="100%" editable="false" >
+										<suggestionItems>
+											<core:Item text="Zterm"/>
+										</suggestionItems>
+									</Input>
+								</f:fields>
+								<f:label>
+									<Label text="Prazo Pagamento" design="Bold"/>
+								</f:label>
+							</f:FormElement>
+							<f:FormElement>
+								<f:fields>
+									<Input value="{Incoterm}" id="IdIncoterm" editable="false" placeholder="Ex.:FOB"/>
+								</f:fields>
+								<f:label>
+									<Label text="Incoterm" design="Bold"/>
+								</f:label>
+							</f:FormElement>
+							<f:FormElement>
+								<f:fields>
+									<Input value="{Performance}" id="IdPerformance" editable="false" change="OnCalcule"/>
+									<Text text="%"/>
+								</f:fields>
+								<f:label>
+									<Label text="Performance" design="Bold"/>
+								</f:label>
+							</f:FormElement>
+							<f:FormElement>
+								<f:fields>
+									<Input value="{Saving}" id="IdSaving" editable="false" placeholder="0.00" change="OnCalcule"/>
+									<Text text="R$"/>
+								</f:fields>
+								<f:label>
+									<Label text="Saving" design="Bold"/>
+								</f:label>
+							</f:FormElement>
+						</f:formElements>
+					</f:FormContainer>
+					<f:FormContainer>
+						<f:formElements>
+							<f:FormElement>
+								<f:fields>
+									<Input value="{Tco}" id="IdTco" editable="false" placeholder="0.00" change="OnCalcule"/>
+									<Text text="R$"/>
+								</f:fields>
+								<f:label>
+									<Label text="Tco" design="Bold"/>
+								</f:label>
+							</f:FormElement>
+							<f:FormElement>
+								<!--<f:fields>-->
+								<!--	<Input value="" id="IdAproTec" editable="false" placeholder="Ex.: Sim/Não"/>-->
+								<!--</f:fields>-->
+								<f:fields>
+									<RadioButtonGroup id="IdAproTec" columns="2" valueState="None" class="sapUiMediumMarginBottom">
+										<buttons>
+											<RadioButton id="APRO" text="Sim"/>
+											<RadioButton id="NAPRO" text="Não"/>
+										</buttons>
+									</RadioButtonGroup>
+								</f:fields>
+								<f:label>
+									<Label text="Aprovado Tec." design="Bold"/>
+								</f:label>
+							</f:FormElement>
+							<!--<f:FormElement>-->
+							<!--<f:fields>-->
+							<!--	<Input value="" id="IdHabQuali" editable="false" placeholder="Ex.: Habilitado/Desabilitado"/>-->
+							<!--</f:fields>-->
+							<!--	<f:fields>-->
+							<!--		<RadioButtonGroup id="IdHabQuali" columns="2" valueState="None" class="sapUiMediumMarginBottom">-->
+							<!--			<buttons>-->
+							<!--				<RadioButton id="HAB" text="Sim"/>-->
+							<!--				<RadioButton id="NHAB" text="Não"/>-->
+							<!--			</buttons>-->
+							<!--		</RadioButtonGroup>-->
+							<!--	</f:fields>-->
+							<!--	<f:label>-->
+							<!--		<Label text="Habilitar Quali." design="Bold"/>-->
+							<!--	</f:label>-->
+							<!--</f:FormElement>-->
+							<f:FormElement>
+								<f:fields>
+									<Input value="{VlrNegoc}" id="IdVlrNegoc" editable="false" placeholder="0.00" change="OnCalcule"/>
+								</f:fields>
+								<f:label>
+									<Label text="Valor Negociado" design="Bold"/>
+								</f:label>
+							</f:FormElement>
+							<f:FormElement>
+								<f:fields>
+									<Input value="{VlrProp}" id="IdVlrProp" editable="false" placeholder="0.00" change="OnCalcule"/>
+									<Text text="R$"/>
+								</f:fields>
+								<f:label>
+									<Label text="Valor Proposto" design="Bold"/>
+								</f:label>
+							</f:FormElement>
+							<f:FormElement>
+								<f:fields>
+									<Input value="{Pedagio}" id="IdPedagio" editable="false" placeholder="0.00" change="OnCalcule"/>
+									<Text text="R$"/>
+								</f:fields>
+								<f:label>
+									<Label text="Pedágio" design="Bold"/>
+								</f:label>
+							</f:FormElement>
+						</f:formElements>
+					</f:FormContainer>
+				</f:formContainers>
+			</f:Form>
+		</semantic:content>
+		<semantic:customFooterContent>
+			<Button text="Voltar" icon="sap-icon://undo" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"
+				press="onBack" tooltip="Voltar"/>
+		</semantic:customFooterContent>
+	</semantic:DetailPage>
+</mvc:View>

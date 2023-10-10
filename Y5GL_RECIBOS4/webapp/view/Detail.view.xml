@@ -1,0 +1,213 @@
+<mvc:View controllerName="Y5GL_RECIBOS4.Y5GL_RECIBOS4.controller.Detail" xmlns="sap.m" xmlns:semantic="sap.f.semantic"
+	xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:mvc="sap.ui.core.mvc" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<App id="idAppDetail">
+		<pages id="idPagesDetail">
+			<Page id="idTitle">
+				<customHeader>
+					<Bar id="idBarMaster">
+						<contentLeft>
+							<Button icon="sap-icon://nav-back" press="onVoltar" text="Vuelve" id="idHome"/>
+						</contentLeft>
+						<contentMiddle>
+							<Title text="Recibos" titleStyle="H3" id="idTitleRecibos"/>
+						</contentMiddle>
+					</Bar>
+				</customHeader>
+				<content>
+					<f:Form id="RETENCIONES_AFP" visible="false" editable="true">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_SALARIO" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+								emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer1">
+								<f:formElements>
+									<!--<f:FormElement id="FormContainer1_RETENCIONES_AFP">-->
+									<!--	<f:fields>-->
+									<!--		<RadioButton groupName="GroupA" text="Adelanto" id="idAdiantamento_RETENCIONES_AFP" select="onSelect" selected="true"/>-->
+									<!--		<RadioButton groupName="GroupA" text="Pago" id="idPagamento_RETENCIONES_AFP" select="onSelect"/>-->
+									<!--	</f:fields>-->
+									<!--</f:FormElement>-->
+									<f:FormElement label="Período" id="FormContainer2_RETENCIONES_AFPO">
+										<f:fields>
+											<ComboBox id="IdPeriodo_RETENCIONES_AFP" selectedKey="" required="true" placeholder="Seleccione o Período"
+												items="{ path:'/ZET_COMBO_RECIBOSet', filters: { path: 'IForm', operator: 'EQ', value1:'RETENCIONES_AFP'}}">
+												<core:Item key="{Periodo}" text="{Periodo}" id="idKeyMes_FormContainer1_RETENCIONES_AFP"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement id="FormContainer4_SALARIO">
+										<f:fields>
+											<Button text="Ver" width="50%" press="onSave" icon="sap-icon://detail-view" id="IdExibe_SALARIO" tooltip="Exibe"/>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form id="RETENCIONES_ONP" visible="false" editable="true">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_RETENCIONES_ONP" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+								emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer2">
+								<f:formElements>
+									<f:FormElement label="Período" id="FormContainer1_RETENCIONES_ONP">
+										<f:fields>
+											<ComboBox id="IdPeriodo_RETENCIONES_ONP" selectedKey="" required="true" placeholder="Seleccione o Período"
+												items="{ path:'/ZET_COMBO_RECIBOSet', filters: { path: 'IForm', operator: 'EQ', value1:'RETENCIONES_ONP'}}">
+												<core:Item key="{Periodo}" text="{Periodo}" id="idKeyMes_FormContainer1_RETENCIONES_ONP"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement id="FormContainer4_RETENCIONES_ONP">
+										<f:fields>
+											<Button text="Ver" width="50%" press="onSave" icon="sap-icon://detail-view" id="IdExibe_ADMTO_15" tooltip="Exibe"/>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form id="CERT_PART_UTILIDADE" visible="false" editable="true">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_CERT_PART_UTILIDADE" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+								emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer3">
+								<f:formElements>
+									<f:FormElement label="Período" id="FormContainer1_CERT_PART_UTILIDADE">
+										<f:fields>
+											<ComboBox id="IdPeriodoCERT_PART_UTILIDADE" selectedKey="" required="true" placeholder="Seleccione o Período"
+												items="{ path:'/ZET_COMBO_RECIBOSet', filters: { path: 'IForm', operator: 'EQ', value1:'CERT_PART_UTILIDADE'}}">
+												<core:Item key="{Periodo}" text="{Periodo}" id="idKeyMes_FormContainer1_CERT_PART_UTILIDADE"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement id="FormContainer4_FERIAS">
+										<f:fields>
+											<Button text="Ver" width="50%" press="onSave" icon="sap-icon://detail-view" id="IdExibe_FERIAS" tooltip="Exibe"/>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form id="CONSTANCIA_CTS" visible="false" editable="true">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_CONSTANCIA_CTS" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12"
+								adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1"
+								singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer4">
+								<f:formElements>
+									<f:FormElement label="Período" id="FormContainer1_CONSTANCIA_CTS" visible="true">
+										<f:fields>
+											<ComboBox id="IdPeriodoCONSTANCIA_CTS" selectedKey="" required="true" placeholder="Seleccione o Período" 
+												items="{ path:'/ZET_COMBO_RECIBOSet', filters: { path: 'IForm', operator: 'EQ', value1:'CONSTANCIA_CTS'}}">
+												<core:Item key="{Periodo}" text="{Periodo}" id="idKeyMes_FormContainer1_CONSTANCIA_CTS"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement id="FormContainer4_CONSTANCIA_CTS">
+										<f:fields>
+											<Button text="Ver" width="50%" press="onSave" icon="sap-icon://detail-view" id="IdExibe_CONSTANCIA_CTS" tooltip="Exibe"/>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form id="BOLETA_GRATIFICA" visible="false" editable="true">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_BOLETA_GRATIFICA" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+								emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer5">
+								<f:formElements>
+									<f:FormElement label="Período" id="FormContainer1_BOLETA_GRATIFICA">
+										<ComboBox id="IdPeriodoBOLETA_GRATIFICA" selectedKey="" required="true" placeholder="Seleccione o Período"
+											items="{ path:'/ZET_COMBO_RECIBOSet', filters: { path: 'IForm', operator: 'EQ', value1:'BOLETA_GRATIFICA'}}">
+											<core:Item key="{Periodo}" text="{Periodo}" id="idKeyMes_FormContainer1_BOLETA_GRATIFICA"/>
+										</ComboBox>
+									</f:FormElement>
+									<f:FormElement id="FormContainer4_PGTO_MENSAL">
+										<f:fields>
+											<Button text="Ver" width="50%" press="onSave" icon="sap-icon://detail-view" id="IdExibe_PGTO_MENSAL" tooltip="Exibe"/>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form id="BOLETA_PAGTO" visible="false" editable="true">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_BOLETA_PAGTO" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+								emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer6">
+								<f:formElements>
+									<!--<f:FormElement id="FormContainer1_BOLETA_PAGTO">-->
+									<!--	<f:fields>-->
+									<!--		<RadioButton groupName="GroupB" text="Pago" id="idPagamento_BOLETA_PAGTO" select="onSelect" selected="true"/>-->
+									<!--		<RadioButton groupName="GroupB" text="Adelanto" id="idAdiantamento_BOLETA_PAGTO" select="onSelect"/>-->
+									<!--	</f:fields>-->
+									<!--</f:FormElement>-->
+									<f:FormElement label="Período" id="FormContainer2_BOLETA_PAGTO">
+										<f:fields>
+											<ComboBox id="IdPeriodo_BOLETA_PAGTO" selectedKey="" required="true" placeholder="Seleccione o Período"
+												items="{ path:'/ZET_COMBO_RECIBOSet', filters: [{path: 'IForm', operator: 'EQ', value1:'BOLETA_PAGTO'}]}">
+												<core:Item key="{Periodo}" text="{Periodo}" id="idKeyMes_FormContainer1_BOLETA_PAGTO"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement id="FormContainer4_BOLETA_PAGTO">
+										<f:fields>
+											<Button text="Ver" width="50%" press="onSave" icon="sap-icon://detail-view" id="IdExibe_BOLETA_PAGTO" tooltip="Exibe"/>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form id="CERT_RENTA_QUINTA" visible="false" editable="true">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_CERT_RENTA_QUINTA" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+								emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer7">
+								<f:formElements>
+									<!--<f:FormElement id="FormContainer1_CERT_RENTA_QUINTA">-->
+									<!--	<f:fields>-->
+									<!--		<RadioButton groupName="GroupC" text="Adelanto" id="idAdiantamento_CERT_RENTA_QUINTA" select="onSelect" selected="true"/>-->
+									<!--		<RadioButton groupName="GroupC" text="Pago" id="idPagamento_CERT_RENTA_QUINTA" select="onSelect"/>-->
+									<!--	</f:fields>-->
+									<!--</f:FormElement>-->
+									<f:FormElement label="Período" id="FormContainer2_CERT_RENTA_QUINTA">
+										<f:fields>
+											<ComboBox id="IdPeriodo_CERT_RENTA_QUINTA" selectedKey="" required="true" placeholder="Seleccione o Período"
+												items="{ path:'/ZET_COMBO_RECIBOSet', filters: { path: 'IForm', operator: 'EQ', value1:'CERT_RENTA_QUINTA'}}">
+												<core:Item key="{Periodo}" text="{Periodo}" id="idKeyMes_FormContainer1_CERT_RENTA_QUINTA"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement id="FormContainer4_CERT_RENTA_QUINTA">
+										<f:fields>
+											<Button text="Ver" width="50%" press="onSave" icon="sap-icon://detail-view" id="IdExibe_CERT_RENTA_QUINTA" tooltip="Exibe"/>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

@@ -1,0 +1,1 @@
+<c:FragmentDefinition xmlns="sap.m" xmlns:c="sap.ui.core" xmlns:f="sap.ui.layout.form"><f:FormContainer><f:formElements><f:FormElement label="{i18n>0034}"><f:fields><Input fieldGroupIds="groupAll" maxLength="50" name="solicitante" placeholder="{i18n>0034}" value=""/></f:fields></f:FormElement></f:formElements></f:FormContainer></c:FragmentDefinition>

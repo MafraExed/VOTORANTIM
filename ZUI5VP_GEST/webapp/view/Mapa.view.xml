@@ -1,0 +1,180 @@
+<mvc:View 
+		xmlns:core="sap.ui.core" 
+		xmlns:mvc="sap.ui.core.mvc" 
+		xmlns="sap.m"
+		controllerName="monitorPortocel.controller.Mapa" 
+		xmlns:layout="sap.ui.layout" 
+		xmlns:form="sap.ui.layout.form"
+		xmlns:vbm="sap.ui.vbm">
+    <Page showHeader="true" title="Gestão de Frotas" showFooter="true" showNavButton="false">
+        <content>
+            <layout:BlockLayout background="Default" visible="true" class="sapUiTinyMargin sapUiNoContentPadding">
+                <layout:content>
+                    <layout:BlockLayoutRow>
+                        <layout:content>
+                            <layout:BlockLayoutCell id="filtersBlockLayout" visible="true" width="25" titleAlignment="Begin" titleLevel="Auto">
+                                <layout:content>
+                                	<Panel width="100%" headerText="Filtros" expanded="{= !${device>/system/phone} }" expandable="true">
+                                		<content>
+                                			<form:Form width="100%" editable="true" visible="true">
+		                                        <form:title/>
+		                                        <form:formContainers>
+		                                        	<form:FormContainer visible="true">
+		                                                <form:formElements>
+		                                                    <form:FormElement visible="true">
+		                                                    	<Button text="Filtros" icon="sap-icon://filter" type="Default" press="onSelectFilters"/>
+		                                                    </form:FormElement>
+		                                                </form:formElements>
+		                                                <form:title/>
+		                                            </form:FormContainer>
+		                                            <form:FormContainer id="containerMaterial" visible="false">
+		                                                <form:formElements>
+		                                                    <form:FormElement visible="true">
+		                                                        <form:label>
+		                                                            <Label text="Material" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+		                                                        </form:label>
+		                                                        <form:fields>
+		                                                            <Input id="inptMaterial" placeholder="Todos" type="Text" showValueHelp="true" enabled="true" visible="true" width="auto" valueHelpOnly="true" maxLength="0" valueHelpRequest="onFilterByMaterial"/>
+		                                                        </form:fields>
+		                                                    </form:FormElement>
+		                                                </form:formElements>
+		                                                <form:title/>
+		                                            </form:FormContainer>
+		                                            <form:FormContainer id="containerMotorista" visible="true">
+		                                                <form:formElements>
+		                                                    <form:FormElement visible="true">
+		                                                        <form:label>
+		                                                            <Label text="Motorista" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+		                                                        </form:label>
+		                                                        <form:fields>
+		                                                            <Input id="inptMotorista" placeholder="Todos" type="Text" showValueHelp="true" enabled="true" visible="true" width="auto" valueHelpOnly="true" maxLength="0" valueHelpRequest="onFilterByMotorista"/>
+		                                                        </form:fields>
+		                                                    </form:FormElement>
+		                                                </form:formElements>
+		                                                <form:title/>
+		                                            </form:FormContainer>
+		                                            <form:FormContainer id="containerCaminhao" visible="true">
+		                                                <form:formElements>
+		                                                    <form:FormElement visible="true">
+		                                                        <form:label>
+		                                                            <Label text="Caminhão" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+		                                                        </form:label>
+		                                                        <form:fields>
+		                                                            <Input id="inptCaminhao" placeholder="Todos" type="Text" showValueHelp="true" enabled="true" visible="true" width="auto" valueHelpOnly="true" maxLength="0" valueHelpRequest="onFilterByCaminhao"/>
+		                                                        </form:fields>
+		                                                    </form:FormElement>
+		                                                </form:formElements>
+		                                                <form:title/>
+		                                            </form:FormContainer>
+		                                            <form:FormContainer id="containerEtapa" visible="true">
+		                                                <form:formElements>
+		                                                    <form:FormElement visible="true">
+		                                                        <form:label>
+		                                                            <Label text="Etapa" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+		                                                        </form:label>
+		                                                        <form:fields>
+		                                                            <Input id="inptEtapa" placeholder="Todos" type="Text" showValueHelp="true" enabled="true" visible="true" width="auto" valueHelpOnly="true" maxLength="0" valueHelpRequest="onFilterByEtapa"/>
+		                                                        </form:fields>
+		                                                    </form:FormElement>
+		                                                </form:formElements>
+		                                                <form:title/>
+		                                            </form:FormContainer>
+		                                            <form:FormContainer visible="true">
+		                                            	<form:formElements>
+		                                            		<form:FormElement visible="true">
+		                                    					<Button text="Limpar Filtros" type="Emphasized" press="onCleanAllFilters"/>
+		                                    				</form:FormElement>
+		                                    				<form:FormElement visible="true">
+		                                    					<Button text="Atualizar" icon="sap-icon://synchronize" type="Emphasized" press="onAtualizarMapa"/>
+		                                    				</form:FormElement>
+		                                    			</form:formElements>
+		                                            </form:FormContainer>
+		                                        </form:formContainers>
+		                                        <form:layout>
+		                                            <form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
+		                                        </form:layout>
+		                                    </form:Form>
+                                		</content>
+                                	</Panel>
+                                </layout:content>
+                            </layout:BlockLayoutCell>
+                            <layout:BlockLayoutCell width="75" title="" titleAlignment="Begin" titleLevel="Auto">
+                                <layout:content>
+                                	<Toolbar>
+	                                	<ToolbarSpacer />
+										<Button id="btnResize" icon="sap-icon://resize" press="onPressResize"
+											tooltip="Maximizar" />
+									</Toolbar>
+                                    <vbm:GeoMap 
+                                    		id="geoMap" 
+                                    		legendVisible="true" 
+                                    		scaleVisible="true" 
+                                    		width="100%" 
+                                    		height="600px" 
+                                    		initialPosition="0;0;0" 
+                                    		centerPosition="-40.069089;-19.837467;0" 
+                                    		initialZoom="8" 
+                                    		zoomlevel="15" 
+                                    		enableAnimation="false" 
+                                    		refMapLayerStack="Default" 
+                                    		disableZoom="false" 
+                                    		disablePan="false">
+                                        <vbm:resources/>
+                                        <vbm:legend>
+						                    <vbm:Legend id="legend" caption="Legenda">
+						                        <vbm:LegendItem text="Ciclo Normal" semanticSpotType="Default" />
+						                        <vbm:LegendItem text="Sem Comunicação" semanticSpotType="Inactive" />
+						                        <vbm:LegendItem text="Etapa Extra" semanticSpotType="Error" />
+						                        <vbm:LegendItem text="GPS Offline" semanticSpotType="Warning" />
+						                    </vbm:Legend>
+						                </vbm:legend>
+                                        <vbm:vos>
+                                            <vbm:Spots items="{path: 'spots>/'}">
+                                                <vbm:items>
+                                                    <vbm:Spot click="_onSpotClick" type="{spots>Status}" tooltip="{spots>Composicao}" position="{spots>Longitude};{spots>Latitude};0" icon="sap-icon://shipping-status"/>
+                                                </vbm:items>
+                                            </vbm:Spots>
+                                        </vbm:vos>
+                                    </vbm:GeoMap>
+                                    <OverflowToolbar width="auto" height="46px" design="Transparent" visible="true" enabled="true">
+                                        <content>
+                                        </content>
+                                    </OverflowToolbar>
+                                </layout:content>
+                            </layout:BlockLayoutCell>
+                            <layout:BlockLayoutCell width="1px">
+                            </layout:BlockLayoutCell>
+                        </layout:content>
+                    </layout:BlockLayoutRow>
+                </layout:content>
+            </layout:BlockLayout>
+        </content>
+        <footer>
+            <OverflowToolbar width="100%" height="auto" design="Auto" enabled="true" visible="true">
+                <content>
+                    <ToolbarSpacer width=""/>
+                    <Button text="Mapa" type="Default" icon="sap-icon://map-3" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
+                    <OverflowToolbarButton text="Action" type="Default" icon="sap-icon://map-3" iconFirst="true" width="auto" enabled="true" visible="false" tooltip="" iconDensityAware="false"/>
+                    <ToolbarSpacer width=""/>
+                    <Button
+                    	text="Indicadores"
+                    	type="Default"
+                    	icon="sap-icon://line-chart"
+                    	iconFirst="true"
+                    	width="auto"
+                    	enabled="true"
+                    	visible="true"
+                    	iconDensityAware="false"
+                    	press="openPopover"/>
+                    <OverflowToolbarButton text="Action" type="Default" icon="sap-icon://line-chart" iconFirst="true" width="auto" enabled="true" visible="false" iconDensityAware="false" press="_onOverflowToolbarButtonPress"/>
+                    <ToolbarSpacer width=""/>
+                </content>
+            </OverflowToolbar>
+        </footer>
+    <!--    <headerContent>
+            <core:Icon src="sap-icon://person-placeholder" size="24px" height="48px" width="48px" visible="true" press="_onIconPress"/>
+        </headerContent> -->
+        <subHeader/>
+        <customHeader/>
+    </Page>
+</mvc:View>

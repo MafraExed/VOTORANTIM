@@ -1,0 +1,63 @@
+<mvc:View controllerName="fibria.com.ZFBC_AMEACAS.controller.Object" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:semantic="sap.m.semantic" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:footerbar="sap.ushell.ui.footerbar"
+	xmlns:viz="sap.viz.ui5.controls" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" xmlns:viz.data="sap.viz.ui5.data">
+	<semantic:FullscreenPage id="page" titleLevel="H6" semanticRuleSet="Optimized" title="{i18n>objectTitle}" busy="{objectView>/busy}"
+		busyIndicatorDelay="{objectView>/delay}">
+		<semantic:content>
+			<VBox backgroundDesign="Solid" alignItems="Center" height="100%">
+				<l:HorizontalLayout class="sapUiSmallMarginTop">
+					<l:VerticalLayout class="styleProbabilidade">
+						<Image id="imgProbabilidade"/>
+					</l:VerticalLayout>
+					<l:VerticalLayout>
+						<l:HorizontalLayout class="myLayoutHeightY">
+							<Button text="Muito Provável" width="120px" class="columnButtonY"/>
+							<Button id="btn12" text="{heatmapModel>/matrizimpactoameaca/12/Valor}" width="200px" class="myButtonHeight backgroundColorM" press="openTableRisco"/>
+							<Button id="btn13" text="{heatmapModel>/matrizimpactoameaca/13/Valor}" width="200px" class="myButtonHeight backgroundColorH" press="openTableRisco"/>
+							<Button id="btn14" text="{heatmapModel>/matrizimpactoameaca/14/Valor}" width="200px" class="myButtonHeight backgroundColorVH" press="openTableRisco"/>
+							<Button id="btn15" text="{heatmapModel>/matrizimpactoameaca/15/Valor}" width="200px" class="myButtonHeight backgroundColorVH" press="openTableRisco"/>
+						</l:HorizontalLayout>
+						<l:HorizontalLayout class="myLayoutHeightY">
+							<Button text="Provável" width="120px" class="columnButtonY"/>
+							<Button id="btn8" text="{heatmapModel>/matrizimpactoameaca/8/Valor}" width="200px" class="myButtonHeight backgroundColorL" press="openTableRisco"/>
+							<Button id="btn9" text="{heatmapModel>/matrizimpactoameaca/9/Valor}" width="200px" class="myButtonHeight backgroundColorM" press="openTableRisco"/>
+							<Button id="btn10" text="{heatmapModel>/matrizimpactoameaca/10/Valor}" width="200px" class="myButtonHeight backgroundColorH" press="openTableRisco"/>
+							<Button id="btn11" text="{heatmapModel>/matrizimpactoameaca/11/Valor}" width="200px" class="myButtonHeight backgroundColorVH" press="openTableRisco"/>
+						</l:HorizontalLayout>
+						<l:HorizontalLayout class="myLayoutHeightY">
+							<Button text="Possível" width="120px" class="columnButtonY"/>
+							<Button id="btn4" text="{heatmapModel>/matrizimpactoameaca/4/Valor}" width="200px" class="myButtonHeight backgroundColorVL" press="openTableRisco"/>
+							<Button id="btn5" text="{heatmapModel>/matrizimpactoameaca/5/Valor}" width="200px" class="myButtonHeight backgroundColorL" press="openTableRisco"/>
+							<Button id="btn6" text="{heatmapModel>/matrizimpactoameaca/6/Valor}" width="200px" class="myButtonHeight backgroundColorM" press="openTableRisco"/>
+							<Button id="btn7" text="{heatmapModel>/matrizimpactoameaca/7/Valor}" width="200px" class="myButtonHeight backgroundColorH" press="openTableRisco"/>
+						</l:HorizontalLayout>
+						<l:HorizontalLayout class="myLayoutHeightY">
+							<Button text="Remota" width="120px" class="columnButtonY"/>
+							<Button id="btn0" text="{heatmapModel>/matrizimpactoameaca/0/Valor}" width="200px" class="myButtonHeight backgroundColorVL" press="openTableRisco"/>
+							<Button id="btn1" text="{heatmapModel>/matrizimpactoameaca/1/Valor}" width="200px" class="myButtonHeight backgroundColorVL" press="openTableRisco"/>
+							<Button id="btn2" text="{heatmapModel>/matrizimpactoameaca/2/Valor}" width="200px" class="myButtonHeight backgroundColorL" press="openTableRisco"/>
+							<Button id="btn3" text="{heatmapModel>/matrizimpactoameaca/3/Valor}" width="200px" class="myButtonHeight backgroundColorM" press="openTableRisco"/>
+						</l:HorizontalLayout>
+						<l:HorizontalLayout class="myLayoutHeightX">
+							<Button text="" width="120px" class="columnButtonX"/>
+							<Button text="Menor" width="200px" class="columnButtonX"/>
+							<Button text="Moderado" width="200px" class="columnButtonX"/>
+							<Button text="Maior" width="200px" class="columnButtonX"/>
+							<Button text="Extremo" width="200px" class="columnButtonX"/>
+						</l:HorizontalLayout>
+					</l:VerticalLayout>
+				</l:HorizontalLayout>
+				<Image id="imgImpacto"/>
+			</VBox>
+		</semantic:content>
+		<semantic:sendEmailAction>
+			<semantic:SendEmailAction id="shareEmail" press="onShareEmailPress"/>
+		</semantic:sendEmailAction>
+		<semantic:shareInJamAction>
+			<semantic:ShareInJamAction id="shareInJam" visible="{FLP>/isShareInJamActive}" press="onShareInJamPress"/>
+		</semantic:shareInJamAction>
+		<semantic:saveAsTileAction>
+			<footerbar:AddBookmarkButton id="shareTile" title="{objectView>/saveAsTileTitle}"/>
+		</semantic:saveAsTileAction>
+	</semantic:FullscreenPage>
+</mvc:View>

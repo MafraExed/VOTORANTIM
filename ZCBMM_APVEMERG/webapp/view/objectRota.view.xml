@@ -1,0 +1,636 @@
+<core:View xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:uxap="sap.uxap" xmlns:smartForm="sap.ui.comp.smartform"
+	xmlns:smartField="sap.ui.comp.smartfield" xmlns:smartTable="sap.ui.comp.smarttable" xmlns:f="sap.ui.layout.form"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	http-equiv="cache-control" content="no-cache" controllerName="ZCBMM_APVEMERG.ZCBMM_APVEMERG.controller.objectRota" class="sapUiSizeCompact"
+	height="100%" beforeRendering="onBeforeRendering" xmlns:m="sap.m" xmlns:table="sap.ui.table">
+	<Page floatingFooter="true" enableScrolling="true" showHeader="false">
+		<VBox>
+			<ObjectHeader title="Portal de solicitação de contratação de frete - APROVAÇÃO EMERGENCIAL" id="idheader0" icon="sap-icon://approvals"
+				iconActive="false" responsive="true"/>
+		</VBox>
+		<f:Form class="editableForm" editable="false">
+			<f:layout>
+				<f:ResponsiveGridLayout labelSpanXL="5" labelSpanL="5" labelSpanM="5" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0"
+					emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="3" columnsM="3" singleContainerFullSize="true"/>
+			</f:layout>
+			<f:formContainers>
+				<f:FormContainer>
+					<f:formElements>
+						<f:FormElement>
+							<f:fields>
+								<Input value="{WerksO}" id="IdWerks" editable="false" maxLength="4"/>
+							</f:fields>
+							<f:label>
+								<Label text="Pagador do serviço" design="Bold"/>
+							</f:label>
+						</f:FormElement>
+						<f:FormElement>
+							<f:fields>
+								<Input value="{IdSolicitacao}" id="IdIdSolicitacao" editable="false"/>
+							</f:fields>
+							<f:label>
+								<Label text="Id da Solicitação" design="Bold"/>
+							</f:label>
+						</f:FormElement>
+						<f:FormElement>
+							<f:fields>
+								<Input value="{IdRota}" id="IdIdRota" editable="false"/>
+							</f:fields>
+							<f:label>
+								<Label text="Id da Rota" design="Bold"/>
+							</f:label>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+				<f:FormContainer>
+					<f:formElements>
+						<f:FormElement>
+							<f:fields>
+								<Input value="" id="IdCarteira" editable="false"/>
+							</f:fields>
+							<f:label>
+								<Label text="Carteira" design="Bold"/>
+							</f:label>
+						</f:FormElement>
+						<f:FormElement>
+							<f:fields>
+								<Input value="" id="IdModalidade" editable="false"/>
+							</f:fields>
+							<f:label>
+								<Label text="Modalidade" design="Bold"/>
+							</f:label>
+						</f:FormElement>
+						<f:FormElement>
+							<f:fields>
+								<Input value="" id="IdPrioridade" editable="false"/>
+							</f:fields>
+							<f:label>
+								<Label text="Prioridade" design="Bold"/>
+							</f:label>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+				<f:FormContainer>
+					<f:formElements>
+						<f:FormElement>
+							<f:fields>
+								<Input value="" id="IdFinalidade" editable="false"/>
+							</f:fields>
+							<f:label>
+								<Label text="Finalidade" design="Bold"/>
+							</f:label>
+						</f:FormElement>
+						<f:FormElement>
+							<f:fields>
+								<Input value="" id="IdGrpCompras" editable="false"/>
+							</f:fields>
+							<f:label>
+								<Label text="Grupo de compras" design="Bold"/>
+							</f:label>
+						</f:FormElement>
+						<f:FormElement>
+							<f:fields>
+								<Input value="" id="IdDtInic" editable="false" type="Date"/>
+							</f:fields>
+							<f:label>
+								<Label text="Data Inicio Operação" design="Bold"/>
+							</f:label>
+						</f:FormElement>
+						<f:FormElement visible="false">
+							<f:fields>
+								<Input value="" id="IdStatus" editable="false"/>
+							</f:fields>
+							<f:label>
+								<Label text="Status" design="Bold"/>
+							</f:label>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+			</f:formContainers>
+		</f:Form>
+		<IconTabBar id="iconTabBar" class="sapUiResponsiveContentPadding" selectedKey="Tab" modelContextChange="onChangeContext"
+			select="onSelectFilter">
+			<items>
+				<IconTabFilter key="0" id="TabFilterZona" text="Rota" icon="sap-icon://map-3" visible="true">
+					<f:Form class="editableForm" editable="false">
+						<f:layout>
+							<f:ResponsiveGridLayout labelSpanXL="5" labelSpanL="5" labelSpanM="5" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0"
+								emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="true"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer>
+								<f:formElements>
+									<f:FormElement>
+										<f:fields>
+											<Input value="{Zone1O}" id="IdZone1O" editable="false" valueHelpRequest="onHelpZone1" showValueHelp="true"
+												placeholder="Zona de Transporte de Origem." change="onChangeZone1O" maxLength="20"/>
+										</f:fields>
+										<f:label>
+											<Label text="Zona de Transporte Origem" design="Bold"/>
+										</f:label>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+							<f:FormContainer>
+								<f:formElements>
+									<f:FormElement>
+										<f:fields>
+											<Input value="{Zone1D}" id="IdZone1D" editable="false" valueHelpRequest="onHelpZone1" showValueHelp="true"
+												placeholder="Zona de Transporte de Destino." change="onChangeZone1D" maxLength="20"/>
+										</f:fields>
+										<f:label>
+											<Label text="Zona de Transporte Destino" design="Bold"/>
+										</f:label>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+							<f:FormContainer>
+								<f:formElements>
+									<f:FormElement>
+										<f:fields>
+											<Input value="{Route}" id="IdRoute" editable="false" change="onZone1D"/>
+										</f:fields>
+										<f:label>
+											<Label text="Itinerario" design="Bold"/>
+										</f:label>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+							<f:FormContainer>
+								<f:formElements>
+									<f:FormElement>
+										<MessageStrip text="Não existe um itinerario cadastrado para a zona de transporte origem e destino informada." type="Warning"
+											showIcon="true" showCloseButton="true" class="sapUiMediumMarginBottom" visible="false" id="MessageIt"/>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+				</IconTabFilter>
+				<IconTabFilter key="1" id="TabFilterOrigem" text="Origem" icon="sap-icon://map" visible="true">
+					<f:Form class="editableForm" editable="false">
+						<f:layout>
+							<f:ResponsiveGridLayout labelSpanXL="5" labelSpanL="5" labelSpanM="5" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0"
+								emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="true"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer>
+								<f:formElements>
+									<f:FormElement>
+										<f:fields>
+											<Input value="{WerksO}" id="IdWerksO" editable="false" valueHelpRequest="onHelpWerks" showValueHelp="true" change="onChangeWerks"
+												maxLength="4" placeholder="Centro Origem."/>
+										</f:fields>
+										<f:label>
+											<Label text="Centro" design="Bold"/>
+										</f:label>
+									</f:FormElement>
+									<f:FormElement>
+										<f:fields>
+											<Input value="{WerksoDescr}" id="IdWerksoDescr" editable="false" placeholder="Descrição da Origem" maxLength="60"
+												change="onChangeWerksoDescr"/>
+										</f:fields>
+										<f:label>
+											<Label text="Descrição" design="Bold"/>
+										</f:label>
+									</f:FormElement>
+									<f:FormElement>
+										<f:fields>
+											<Input value="{AdrnrO}" id="IdAdrnrO" editable="false" placeholder="Endereço Origem." maxLength="30"/>
+										</f:fields>
+										<f:label>
+											<Label text="Endereço" design="Bold"/>
+										</f:label>
+									</f:FormElement>
+									<f:FormElement>
+										<f:fields>
+											<Input value="{CnpjO}" id="IdCnpjO" editable="false" placeholder="Cnpj Origem." maxLength="16"/>
+										</f:fields>
+										<f:label>
+											<Label text="CNPJ" design="Bold"/>
+										</f:label>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+							<f:FormContainer>
+								<f:formElements>
+									<f:FormElement>
+										<f:fields>
+											<Input value="{UfO}" id="IdUfO" maxLength="3" editable="false" placeholder="Estado do Centro Origem." change="onChangeIdUfO"/>
+										</f:fields>
+										<f:label>
+											<Label text="Estado Origem" design="Bold"/>
+										</f:label>
+									</f:FormElement>
+									<f:FormElement>
+										<f:fields>
+											<Input value="{MunicO}" id="IdMunicO" editable="false" placeholder="Municipio do Centro Origem." maxLength="25" change="onChangeIdMunicO"/>
+										</f:fields>
+										<f:label>
+											<Label text="Municipio Origem" design="Bold"/>
+										</f:label>
+									</f:FormElement>
+									<f:FormElement>
+										<f:fields>
+											<Input value="{ContatoO}" id="IdContatoO" editable="false" placeholder="Contato do Centro Origem." change="onChangeContatoO" maxLength="40"/>
+										</f:fields>
+										<f:label>
+											<Label text="Contato" design="Bold"/>
+										</f:label>
+									</f:FormElement>
+									<f:FormElement>
+										<f:fields>
+											<Input value="{EmailO}" id="IdEmailO" editable="false" type="Email" placeholder="Email do Centro Origem." change="onChangeEmailO"
+												maxLength="40"/>
+										</f:fields>
+										<f:label>
+											<Label text="E-mail" design="Bold"/>
+										</f:label>
+									</f:FormElement>
+									<f:FormElement>
+										<f:fields>
+											<Input value="{TelefoneO}" id="IdTelefoneO" editable="false" placeholder="Telefone do Centro Origem." type="Tel" change="onChangeTelefoneO"
+												maxLength="40"/>
+										</f:fields>
+										<f:label>
+											<Label text="Telefone" design="Bold"/>
+										</f:label>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+				</IconTabFilter>
+				<IconTabFilter key="2" id="TabFilterDestino" text="Destino" icon="sap-icon://map-2" visible="true">
+					<f:Form class="editableForm" editable="false">
+						<f:layout>
+							<f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0"
+								emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="true"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer>
+								<f:formElements>
+									<f:FormElement>
+										<f:fields>
+											<Input value="{WerksD}" id="IdWerksD" valueHelpRequest="onHelpWerks" showValueHelp="true" editable="false" change="onChangeWerksD"
+												placeholder="Centro de Destino." maxLength="4"/>
+										</f:fields>
+										<f:label>
+											<Label text="Centro Destino" design="Bold"/>
+										</f:label>
+									</f:FormElement>
+									<f:FormElement>
+										<f:fields>
+											<Input value="{WerksdDescr}" id="IdWerksdDescr" editable="false" placeholder="Descrição do Centro de Destino." change="onChangeWerksdDescr"
+												maxLength="60"/>
+										</f:fields>
+										<f:label>
+											<Label text="Razão Social" design="Bold"/>
+										</f:label>
+									</f:FormElement>
+									<f:FormElement>
+										<f:fields>
+											<Input value="{AdrnrD}" id="IdAdrnrD" editable="false" placeholder="Endereço do Centro de Destino." change="onChangeInput" maxLength="30"/>
+										</f:fields>
+										<f:label>
+											<Label text="Endereço" design="Bold"/>
+										</f:label>
+									</f:FormElement>
+									<f:FormElement>
+										<f:fields>
+											<Input value="{CnpjD}" id="IdCnpjD" editable="false" placeholder="CNPJ do Centro de Destino." change="onChangeInput" maxLength="16"/>
+										</f:fields>
+										<f:label>
+											<Label text="CNPJ" design="Bold"/>
+										</f:label>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+							<f:FormContainer>
+								<f:formElements>
+									<f:FormElement>
+										<f:fields>
+											<Input value="{UfD}" id="IdUfD" editable="false" maxLength="3" placeholder="Estado do Centro destino" change="onChangeInput"/>
+										</f:fields>
+										<f:label>
+											<Label text="Estado" design="Bold"/>
+										</f:label>
+									</f:FormElement>
+									<f:FormElement>
+										<f:fields>
+											<Input value="{MunicD}" id="IdMunicD" editable="false" placeholder="Municipio Destino" change="onChangeInput" maxLength="25"/>
+										</f:fields>
+										<f:label>
+											<Label text="Municipio" design="Bold"/>
+										</f:label>
+									</f:FormElement>
+									<f:FormElement>
+										<f:fields>
+											<Input value="{ContatoD}" id="IdContatoD" editable="false" placeholder="Contato do Centro destino" change="onChangeInput" maxLength="40"/>
+										</f:fields>
+										<f:label>
+											<Label text="Contato" design="Bold"/>
+										</f:label>
+									</f:FormElement>
+									<f:FormElement>
+										<f:fields>
+											<Input value="{EmailD}" id="IdEmailD" editable="false" placeholder="Email do Centro destino" type="Email" change="onChangeInput"
+												maxLength="40"/>
+										</f:fields>
+										<f:label>
+											<Label text="E-mail" design="Bold"/>
+										</f:label>
+									</f:FormElement>
+									<f:FormElement>
+										<f:fields>
+											<Input value="{TelefoneD}" id="IdTelefoneD" editable="false" placeholder="Telefone do centro destino." change="onChangeInput" type="Tel"
+												maxLength="40"/>
+										</f:fields>
+										<f:label>
+											<Label text="Telefone" design="Bold"/>
+										</f:label>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+				</IconTabFilter>
+				<IconTabFilter key="3" id="TabFilterMaterial" text="Material" icon="sap-icon://product">
+					<f:Form class="editableForm" editable="false">
+						<f:layout>
+							<f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0"
+								emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="true"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer>
+								<f:formElements>
+									<f:FormElement>
+										<f:fields>
+											<Input value="{DescMaterial}" id="IdDescMaterial" editable="false" placeholder="Descrição do material em transporte." maxLength="70"
+												valueHelpRequest="onHelpMaterial" showValueHelp="true" tooltip="Help: Informe a descrição do Material." change="onIdDescMaterial"/>
+										</f:fields>
+										<f:label>
+											<Label text="Descrição do Material" design="Bold"/>
+										</f:label>
+									</f:FormElement>
+									<f:FormElement>
+										<f:fields>
+											<Input value="{TpEmbalagem}" id="IdTpEmbalagem" editable="false" valueHelpRequest="onHelpTpEmbalagem" showValueHelp="true"
+												placeholder="Tipo de Embalagem." maxLength="70" tooltip="Help: Informe o tipo de embalagem." change="onChangeTpEmbalagem"/>
+										</f:fields>
+										<f:label>
+											<Label text="Tipo de Embalagem" design="Bold"/>
+										</f:label>
+									</f:FormElement>
+									<f:FormElement>
+										<f:fields>
+											<Input value="{path:'MengeUnit', type:'sap.ui.model.type.Float'}" id="IdMengeUnit" editable="false" tooltip="Help: Informe o quantidade a ser transportada." placeholder="0"
+												change="onChangeMengeUnit"/>
+											<Text text="Tons"/>
+										</f:fields>
+										<f:label>
+											<Label text="Quantidade transportada" design="Bold"/>
+										</f:label>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+							<f:FormContainer>
+								<f:formElements>
+									<f:FormElement>
+										<f:fields>
+											<Input value="{Perigoso}" id="IdPerigoso" change="onChangePerigoso" editable="false" valueHelpRequest="onHelpPerigoso" showValueHelp="true"
+												placeholder="Sim/Não" tooltip="Help: Informe se o Material é classificado como perigoso." maxLength="3"/>
+										</f:fields>
+										<f:label>
+											<Label text="Perigoso" design="Bold"/>
+										</f:label>
+									</f:FormElement>
+									<f:FormElement>
+										<f:fields>
+											<Input value="{CodOnu}" id="IdCodOnu" editable="false" placeholder="Codigo ONU." change="onChangeInput"/>
+										</f:fields>
+										<f:label>
+											<Label text="Código ONU" design="Bold"/>
+										</f:label>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+							<f:FormContainer>
+								<f:formElements>
+									<f:FormElement>
+										<f:fields>
+											<Input value="{TpCarreg}" id="IdTpCarreg" editable="false" placeholder="Tipo de Carregamento" valueHelpRequest="onHelpTpCarreg"
+												showValueHelp="true" change="onChangeTpCarregamento"/>
+										</f:fields>
+										<f:label>
+											<Label text="Tipo de Carregamento" design="Bold"/>
+										</f:label>
+									</f:FormElement>
+									<f:FormElement>
+										<f:fields>
+											<Input value="{TpVeiculo}" id="IdTpVeiculo" editable="false" valueHelpRequest="onHelpTpVeiculo" showValueHelp="true"
+												tooltip="Help: Informe o tipo de veiculo." placeholder="Tipo de Veiculo" change="onChangeTpVeiculo"/>
+										</f:fields>
+										<f:label>
+											<Label text="Tipo de Veículo" design="Bold"/>
+										</f:label>
+									</f:FormElement>
+									<f:FormElement id="FIdPesoUnit">
+										<f:fields>
+											<Input value="{path:'PesoUnit', type:'sap.ui.model.type.Float'}" id="IdPesoUnit" editable="false"
+												tooltip="Help: Informe o peso unitario do material." placeholder="0" change="onChangePesoUnit"/>
+											<Text text="Kg"/>
+										</f:fields>
+										<f:label>
+											<Label text="Peso Unitário / Densidade" design="Bold"/>
+										</f:label>
+									</f:FormElement>
+									<f:FormElement id="FIdPesoTons">
+										<f:fields>
+											<Input value="{path:'VlrTon', type:'sap.ui.model.type.Float'}" id="IdVlrTon" editable="false"
+												tooltip="Help: Informe o valor do produto por tonelada" placeholder="0,00" change="onChangeInput"/>
+											<Text text="R$"/>
+										</f:fields>
+										<f:label>
+											<Label text="Valor transportado" design="Bold"/>
+										</f:label>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+							<f:FormContainer>
+								<f:formElements>
+									<f:FormElement id="FIdAlturaEmb">
+										<f:fields>
+											<Input value="{AlturaEmb}" id="IdAlturaEmb" editable="false" change="onChangeInput" tooltip="Help: Informe a altura da embalagem."
+												type="Number" placeholder="0,00"/>
+											<Text text="Cm"/>
+										</f:fields>
+										<f:label>
+											<Label text="Altura da Embalagem" design="Bold"/>
+										</f:label>
+									</f:FormElement>
+									<f:FormElement id="FIdLarguraEmb">
+										<f:fields>
+											<Input value="{LarguraEmb}" id="IdLarguraEmb" editable="false" change="onChangeInput" tooltip="Help: Informe a largura da embalagem."
+												type="Number" placeholder="0,00"/>
+											<Text text="Cm"/>
+										</f:fields>
+										<f:label>
+											<Label text="Largura da Embalagem" design="Bold"/>
+										</f:label>
+									</f:FormElement>
+									<f:FormElement id="FIdComprEmb">
+										<f:fields>
+											<Input value="{ComprEmb}" id="IdComprEmb" editable="false" change="onChangeInput" tooltip="Help: Informe o comprimento da embalagem."
+												type="Number" placeholder="0,00"/>
+											<Text text="Cm"/>
+										</f:fields>
+										<f:label>
+											<Label text="Comprim. da Embalagem" design="Bold"/>
+										</f:label>
+									</f:FormElement>
+									<f:FormElement id="FIdVolumEmb">
+										<f:fields>
+											<Input value="{VolumEmb}" id="IdVolumEmb" editable="false" change="onChangeInput" tooltip="Help: Informe o volume da embalagem."
+												type="Number" placeholder="0,00"/>
+											<Text text="Un"/>
+										</f:fields>
+										<f:label>
+											<Label text="Volume da Embalagem" design="Bold"/>
+										</f:label>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+				</IconTabFilter>
+				<IconTabFilter key="4" id="TabFilterOutros" text="Transporte" icon="sap-icon://cargo-train">
+					<f:Form class="editableForm" editable="false">
+						<f:layout>
+							<f:ResponsiveGridLayout labelSpanXL="5" labelSpanL="5" labelSpanM="5" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0"
+								emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="true"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer>
+								<f:formElements>
+									<f:FormElement>
+										<f:fields>
+											<Input value="{HrCargaInic}" id="IdHrCargaInic" editable="false" tooltip="Help: Informe a hora de carga inicio."
+												placeholder="Horario de Carga Inicio" change="onChangeIdHrCargaInic" type="Time"/>
+										</f:fields>
+										<f:label>
+											<Label text="Horario de Carga Inicio" design="Bold"/>
+										</f:label>
+									</f:FormElement>
+									<f:FormElement>
+										<f:fields>
+											<Input value="{HrCargaFim}" id="IdHrCargaFim" change="onChangeIdHrCargaFim" editable="false" tooltip="Help: Informe a hora de carga Fim."
+												placeholder="Horario de Carga Fim" type="Time"/>
+										</f:fields>
+										<f:label>
+											<Label text="Horario de Carga Fim" design="Bold"/>
+										</f:label>
+									</f:FormElement>
+									<f:FormElement>
+										<f:fields>
+											<Input value="{HrDescInic}" id="IdHrDescInic" change="onChangeIdHrDescInic" editable="false" tooltip="Help: Informe a hora de descarga Inicio."
+												placeholder="Horario de Descarga Inicio" type="Time"/>
+										</f:fields>
+										<f:label>
+											<Label text="Horario de Descarga Inicio" design="Bold"/>
+										</f:label>
+									</f:FormElement>
+									<f:FormElement>
+										<f:fields>
+											<Input value="{HrDescFim}" id="IdHrDescFim" editable="false" change="onChangeIdHrDescFim" tooltip="Help: Informe a hora de descarga Fim."
+												placeholder="Horario de Descarga Fim" type="Time"/>
+										</f:fields>
+										<f:label>
+											<Label text="Horario de Descarga Fim" design="Bold"/>
+										</f:label>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+							<f:FormContainer>
+								<f:formElements>
+									<f:FormElement>
+										<f:fields>
+											<Input value="{DtInicTransp}" id="IdDtInicTransp" editable="false" tooltip="Help: Data de Inicio do Transporte"
+												placeholder="Data de Inicio de Transporte" type="Date" change="onChangeIdDtInicTransp"/>
+										</f:fields>
+										<f:label>
+											<Label text="Data de Inicio do Transporte" design="Bold"/>
+										</f:label>
+									</f:FormElement>
+									<f:FormElement>
+										<f:fields>
+											<Input value="{DtFimTransp}" id="IdDtFimTransp" editable="false" tooltip="Help: Data de Fim do Transporte"
+												placeholder="Data de Fim de Transporte" type="Date" change="onChangeIdDtFimTransp"/>
+										</f:fields>
+										<f:label>
+											<Label text="Data de Fim do Transporte" design="Bold"/>
+										</f:label>
+									</f:FormElement>
+									<f:FormElement>
+										<f:fields>
+											<Input value="{ComprReboq}" id="IdComprReboq" editable="false" type="Number"
+												tooltip="Help: Informe o comprimento minimo do Reboque." placeholder="Comprimento do reboque"/>
+											<Text text="Cm"/>
+										</f:fields>
+										<f:label>
+											<Label text="Comprimento Reboque" design="Bold"/>
+										</f:label>
+									</f:FormElement>
+									<f:FormElement>
+										<f:fields>
+											<Input value="{RotCarreg}" id="IdRotCarreg" editable="false" change="onChangeInput" tooltip="Help: Informe a rotina de carregamento."
+												placeholder="Rotina de carregamento"/>
+										</f:fields>
+										<f:label>
+											<Label text="Rotina de carregamento" design="Bold"/>
+										</f:label>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+				</IconTabFilter>
+				<IconTabFilter key="5" id="TabFilterEscopo" text="Escopo" icon="sap-icon://pdf-attachment">
+					<UploadCollection id="UploadCollection" multiple="true" change="onChange" fileDeleted="onFileDeleted"
+						beforeUploadStarts="onBeforeUploadStarts" uploadComplete="onuploadComplete"
+						items="{ path: '/ZET_CBMM_CF_UPLOADSet', templateShareable: true }" modelContextChange="onmodelContextChange" mode="SingleSelectMaster"
+						uploadUrl="/sap/opu/odata/sap/ZGWCBMM_CONTRATACAO_FRETE_SRV/ZET_CBMM_CF_UPFILESet">
+						<toolbar>
+							<OverflowToolbar id="myId">
+								<Title id="attachmentTitle"/>
+								<ToolbarSpacer/>
+								<Button id="deleteSelectedButton" text="Delete" press="onDeleteSelectedItems" enabled="false" visible="false" type="Transparent"/>
+								<ToggleButton id="selectAllButton" text="Select all" press="onSelectAllPress" enabled="false" visible="false" type="Transparent"/>
+								<UploadCollectionToolbarPlaceholder/>
+							</OverflowToolbar>
+						</toolbar>
+						<items>
+							<UploadCollectionItem documentId="{DocId}" fileName="{Filename}" mimeType="{Mimetype}"
+								url="/sap/opu/odata/sap/ZGWCBMM_CONTRATACAO_FRETE_SRV/ZET_CBMM_CF_UPFILESet('{IdSolicitacao}${DocId}${Filename}')/$value" enableEdit="false"
+								visibleEdit="false" deletePress="ondeletePress">
+								<attributes>
+									<ObjectAttribute text="Carregado por {Autor} em {DtCriacao}"/>
+								</attributes>
+							</UploadCollectionItem>
+						</items>
+					</UploadCollection>
+				</IconTabFilter>
+			</items>
+		</IconTabBar>
+		<footer>
+			<Toolbar>
+				<Button text="Voltar" icon="sap-icon://undo" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"
+					press="onBack" tooltip="Voltar" id="B_Voltar"/>
+				<Button text="Salvar" icon="sap-icon://save" iconFirst="true" width="auto" enabled="true" visible="false" iconDensityAware="false"
+					press="onSave" tooltip="Voltar" id="B_Salvar"/>
+				<Button text="Cancelar" icon="sap-icon://decline" iconFirst="true" width="auto" enabled="true" visible="false" iconDensityAware="false"
+					press="onCancelar" tooltip="Cancelar" id="B_Cancelar"/>
+			</Toolbar>
+		</footer>
+	</Page>
+</core:View>

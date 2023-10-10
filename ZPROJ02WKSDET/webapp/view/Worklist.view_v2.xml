@@ -1,0 +1,92 @@
+
+<mvc:View
+    controllerName="votorantim.project02wksdetail.controller.Worklist"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+	xmlns:m="sap.m" xmlns="sap.ui.table" xmlns:core="sap.ui.core">
+	<m:Shell id="shell">
+		<m:App id="app">
+			<m:pages>
+				<m:Page id="page" title="Log - Integrações RH SAP EC/ECC">
+					<m:content>
+                        <Table id="table" width="auto" rows="{path: '/logs',sorter: {path: 'Data',descending: false}}" busyIndicatorDelay="{worklistView>/tableBusyDelay}">
+    						<extension>
+								<m:HBox id="_IDGenHBox1" >
+									<m:HBox id="_IDGenHBox2" wrap="Wrap" width="60rem">
+										<m:ComboBox id="inputEmpresa" placeholder="Empresa">
+											<core:Item id="_IDGenItem1" key="VSA" text="VSA" />
+											<core:Item id="_IDGenItem2" key="CBA" text="CBA" />
+                                            <core:Item id="_IDGenItem3" key="JS" text="JS" />
+                                            <core:Item id="_IDGenItem4" key="VE" text="VE"/>
+										</m:ComboBox>
+										<m:ComboBox id="inputProcesso" placeholder="Processo">
+											<core:Item id="_IDGenItem5" key="ACESSORH_ENVIOCARGOS" text="AcessoRH - Envio de Cargos" />
+											<!--<core:Item key="ACESSORH_ENVIOPOSICOES" text="ACESSORH_ENVIOPOSICOES" />-->
+											<core:Item id="_IDGenItem6" key="ACESSORH_CADASTROSCONCLUIDOS" text="AcessoRH - Envio de Funcionário para o EC" />
+											<core:Item id="_IDGenItem7" key="ACESSORH_PH_CONCLUIDO" text="Candidato gravado na entidade PH do EC" />
+											<core:Item id="_IDGenItem8" key="FIM_CRIACAO_USUARIO" text="FIM - Atualização dos dados do Funcionário no EC" />
+											<core:Item id="_IDGenItem9" key="KENOBY_CRIA_USUARIOS" text="Kenoby - Criação de Usuário" />
+											<core:Item id="_IDGenItem10" key="KENOBY_ENVIA_CARGOS" text="Kenoby - Envio de Cargos" />
+											<core:Item id="_IDGenItem11" key="KENOBY_CANDIDATOSELECIONADO" text="Kenoby - Envio do Candidato para o MDF" />
+											<core:Item id="_IDGenItem12" key="WEBDESK" text="Webdesk - Abertura de Chamado de Contratação" />
+										</m:ComboBox>
+										<m:Input id="inputID" placeholder="ID"/>
+										<m:DatePicker id="inputDate" displayFormat="short" class="sapUiSmallMarginBottom" placeholder="Data da Execução" valueFormat="yyyy-MM-dd"/>
+										<m:Button id="_IDGenButton1" class="sapUiSmallMarginBegin" text="Buscar" press="buscaRegistros"/>							
+									</m:HBox>
+									<m:HBox id="_IDGenHBox3" width="19rem" justifyContent="End">
+										<m:Button id="_IDGenButton2" icon="sap-icon://synchronize" press="buscaRegistros"/>	
+									</m:HBox>
+								</m:HBox>
+							</extension>
+							<columns>
+								<Column id="_IDGenColumn1" width="4rem" hAlign="Center">
+									<m:Label id="_IDGenLabel1" text="Status" />
+									<template>
+										<core:Icon id="_IDGenIcon1" src="{ path: 'logs>MsgStatus'   , formatter: '.formatter.formatStatus' }"
+										           color="{ path: 'logs>MsgStatus' , formatter: '.formatter.formatStatusColor' }"/>
+									</template>
+								</Column>
+								<Column id="_IDGenColumn2" width="5rem" hAlign="Center">
+									<m:Label id="_IDGenLabel2" text="Empresa"/>
+									<template>
+										<m:Text id="_IDGenText1" text="{logs>CompanyCode}" wrapping="false"/>
+									</template>
+								</Column>
+								<Column id="_IDGenColumn3" width="11rem">
+									<m:Label id="_IDGenLabel3" text="Processo"/>
+									<template>
+										<m:Label id="_IDGenLabel4" text="{logs>Processo}" tooltip="{logs>Processo}"/>
+									</template>
+								</Column>
+								<Column id="_IDGenColumn4" width="10rem" hAlign="Begin">
+									<m:Label id="_IDGenLabel5" text="ID"/>
+									<template>
+										<m:Label id="_IDGenLabel6" text="{logs>IdProcesso}"/>
+									</template>
+								</Column>
+								<Column id="_IDGenColumn5" width="3rem" hAlign="Center">
+									<m:Label id="_IDGenLabel7" text="Seq"/>
+									<template>
+										<m:Label id="_IDGenLabel8" text="{logs>Seq}"/>
+									</template>
+								</Column>
+								<Column id="_IDGenColumn6" width="36rem">
+									<m:Label id="_IDGenLabel9" text="Mensagem"/>
+									<template>
+										<m:Label id="_IDGenLabel10" text="{logs>Msg}" tooltip="{logs>Msg}"/>
+									</template>
+								</Column>
+								<Column id="_IDGenColumn7">
+									<m:Label id="_IDGenLabel11" text="Data"/>
+									<template>
+										<m:Label id="_IDGenLabel12" text="{ path: 'logs>Data', formatter: '.formatter.formatDate'}" />
+									</template>
+								</Column>
+							</columns>
+						</Table>
+					</m:content>
+				</m:Page>
+			</m:pages>
+		</m:App>
+	</m:Shell>
+</mvc:View>

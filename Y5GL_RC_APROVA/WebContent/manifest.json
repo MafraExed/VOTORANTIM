@@ -1,0 +1,196 @@
+{
+	"_version": "1.9.0",
+	"sap.app": {
+		"id": "vsa.y5gl_rc_portal",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"dataSources": {
+			"mainService": {
+				"uri": "/sap/opu/odata/sap/ZGWGLRC_PORTAL_SRV/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "proxy/sap/opu/odata/sap/ZGWGLRC_PORTAL_SRV/"
+				}
+			},
+			"attachService": {
+				"uri": "/sap/opu/odata/sap/ZGWGLAN_PORTAL_SRV/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "proxy/sap/opu/odata/sap/ZGWGLAN_PORTAL_SRV/"
+				}
+			}
+		},
+		"sourceTemplate": {
+			"id": "sap.ui.ui5-template-plugin.2masterdetail",
+			"version": "1.52.7"
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "sap-icon://detail-view",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "vsa.y5gl_rc_portal.view.App",
+			"type": "XML",
+			"async": true,
+			"id": "app"
+		},
+		"dependencies": {
+			"minUI5Version": "1.42.0",
+			"libs": {
+				"sap.m": {},
+				"sap.ui.core": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "vsa.y5gl_rc_portal.i18n.i18n"
+				}
+			},
+			"attachments": {
+				"dataSource": "attachService",
+				"preload": true
+			},
+			"": {
+				"dataSource": "mainService",
+				"preload": true
+			},
+			"global": {
+				"type": "sap.ui.model.json.JSONModel",
+				"settings": {
+					"json": true
+				}
+			},
+			"hFields": {
+				"type": "sap.ui.model.json.JSONModel",
+				"settings": {
+					"json": true
+				}
+			},
+			"dFields": {
+				"type": "sap.ui.model.json.JSONModel",
+				"settings": {
+					"json": true
+				}
+			},
+			"multi": {
+				"type": "sap.ui.model.json.JSONModel",
+				"settings": {
+					"json": true
+				}
+			},
+			"advancedSearch": {
+				"type": "sap.ui.model.json.JSONModel"
+			}
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"viewPath": "vsa.y5gl_rc_portal.view",
+				"controlId": "idAppControl",
+				"controlAggregation": "detailPages",
+				"bypassed": {
+					"target": [
+						"master",
+						"empty"
+					]
+				},
+				"async": true
+			},
+			"routes": [
+				{
+					"pattern": "",
+					"name": "master",
+					"target": [
+						"master"
+					]
+				},
+				{
+					"pattern": "sRc({banfn},{bnfpo},{unidade})",
+					"name": "sRc",
+					"target": [
+						"master",
+						"sRc"
+					]
+				},
+				{
+					"pattern": "mRc({banfn},{bnfpo},{unidade})",
+					"name": "mRc",
+					"target": [
+						"master",
+						"mRc"
+					]
+				},
+				{
+					"pattern": "empty",
+					"name": "empty",
+					"target": [
+						"master",
+						"empty"
+					]
+				}
+			],
+			"targets": {
+				"master": {
+					"viewName": "Master",
+					"viewLevel": 1,
+					"viewId": "master",
+					"controlAggregation": "masterPages"
+				},
+				"sRc": {
+					"viewName": "Detail",
+					"viewId": "detail",
+					"viewLevel": 2
+				},
+				"mRc": {
+					"viewName": "Multi",
+					"viewId": "multi",
+					"viewLevel": 2
+				},
+				"detailObjectNotFound": {
+					"viewName": "DetailObjectNotFound",
+					"viewId": "detailObjectNotFound"
+				},
+				"detailNoObjectsAvailable": {
+					"viewName": "DetailNoObjectsAvailable",
+					"viewId": "detailNoObjectsAvailable"
+				},
+				"empty": {
+					"viewName": "Empty",
+					"viewId": "Empty"
+				}
+			}
+		}
+	},
+	"sap.platform.abap": {
+		"uri": "/sap/bc/ui5_ui5/sap/y5gl_rc_aprova/webcontent",
+		"_version": "1.1.0"
+	}
+}

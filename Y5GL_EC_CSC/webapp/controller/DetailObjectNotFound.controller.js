@@ -1,0 +1,1 @@
+sap.ui.define(["Y5GL_EC_CSC/Y5GL_EC_CSC/controller/BaseController"],function(C){"use strict";return C.extend("Y5GL_EC_CSC.Y5GL_EC_CSC.controller.DetailObjectNotFound",{})});

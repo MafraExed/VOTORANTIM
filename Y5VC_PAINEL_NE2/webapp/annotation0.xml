@@ -1,0 +1,99 @@
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+	<edmx:Reference Uri="/sap/opu/odata/sap/ZGWVCFI_PAINEL_NEGOCIACAO_SRV/$metadata">
+		<edmx:Include Alias="Metadata" Namespace="ZGWVCFI_PAINEL_NEGOCIACAO_SRV"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://wiki.scn.sap.com/wiki/download/attachments/448470968/UI.xml?api=v2">
+		<edmx:Include Alias="UI" Namespace="com.sap.vocabularies.UI.v1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://wiki.scn.sap.com/wiki/download/attachments/448470974/Common.xml?api=v2">
+		<edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+	</edmx:Reference>
+	<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="SmartStackedBarMicroChart.SerieType/Price">
+		<Annotation Term="MEASURES.ISOCurrency" Path="Currency"/>
+		<Annotation Term="COMMON.Text" Path="DisplayValue"/>
+	</Annotations>
+	<edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Measures.V1.xml">
+		<edmx:Include Alias="MEASURES" Namespace="Org.OData.Measures.V1"/>
+	</edmx:Reference>
+	<edmx:DataServices>
+		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Y5VC_PAINEL_NE2.annotation0.ZGWVCFI_PAINEL_NEGOCIACAO_SRV">
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="Metadata.ZET_VCFI_TEND_DIV">
+				<Annotation Term="UI.DataPoint" Qualifier="LinePriceTarget">
+					<Record>
+						<PropertyValue Property="Value" Path="PriceTarget"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.DataPoint" Qualifier="LinePrice">
+					<Record>
+						<PropertyValue Property="Value" Path="Price"/>
+						<PropertyValue Property="Criticality" Path="Criticality"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.Chart">
+					<Record>
+						<PropertyValue Property="ChartType" EnumMember="UI.ChartType/Line"/>
+						<PropertyValue Property="Title" Path="ChartTitle"/>
+						<PropertyValue Property="Dimensions">
+							<Collection>
+								<PropertyPath>Date</PropertyPath>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="Measures">
+							<Collection>
+								<PropertyPath>Price</PropertyPath>
+								<PropertyPath>PriceTarget</PropertyPath>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="MeasureAttributes">
+							<Collection>
+								<Record Type="UI.ChartMeasureAttributeType">
+									<PropertyValue Property="Measure" PropertyPath="Price"/>
+									<PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
+									<PropertyValue Property="DataPoint" AnnotationPath="@UI.DataPoint#LinePrice"/>
+								</Record>
+								<Record Type="UI.ChartMeasureAttributeType">
+									<PropertyValue Property="Measure" PropertyPath="PriceTarget"/>
+									<PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
+									<PropertyValue Property="DataPoint" AnnotationPath="@UI.DataPoint#LinePriceTarget"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="Description" String="Janeiro"/>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="Metadata.ZET_VCFI_TEND_DIV/Date">
+				<Annotation Term="Common.IsCalendarYear" Path="Date"/>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="Metadata.ZET_VCFI_TEND_DIV/Price">
+				<Annotation Term="MEASURES.ISOCurrency" Path="Currency"/>
+				<Annotation Term="COMMON.Text" Path="DisplayValue"/>
+			</Annotations>
+			<Annotations Target="Metadata.ZET_VCFI_TIT_COBRAR/Kunnr">
+				<Annotation Term="Common.ValueList">
+					<Record Type="Common.ValueListType">
+						<PropertyValue Property="CollectionPath" String="ZET_VCFI_KUNNRSet"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut">
+									<PropertyValue Property="LocalDataProperty" PropertyPath="Kunnr"/>
+									<PropertyValue Property="ValueListProperty" String="Kunnr"/>
+								</Record>
+								<Record Type="Common.ValueListParameterDisplayOnly">
+									<PropertyValue Property="ValueListProperty" String="Name1"/>
+								</Record>
+								<Record Type="Common.ValueListParameterDisplayOnly">
+									<PropertyValue Property="ValueListProperty" String="Stcd1"/>
+								</Record>
+								<Record Type="Common.ValueListParameterDisplayOnly">
+									<PropertyValue Property="ValueListProperty" String="Stcd2"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="SearchSupported" Bool="true"/>
+					</Record>
+				</Annotation>
+			</Annotations>
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

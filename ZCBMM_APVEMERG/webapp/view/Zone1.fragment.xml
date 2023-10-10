@@ -1,0 +1,22 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog
+		
+		title="Zona de Tranpsorte"
+		class="sapUiPopupWithPadding"
+		items="{/ZET_CBMM_CF_ZONE1Set}"
+		search="_handleValueHelpZone1"
+		confirm="_Confirme_Zone1"
+		cancel="_Confirme_Zone1"
+		>
+		
+		<StandardListItem
+			icon="{ProductPicUrl}"
+			iconDensityAware="false"
+			iconInset="false"
+			title="{Vtext}"
+			description="{Zone1}" />
+			
+	</SelectDialog>
+</core:FragmentDefinition>

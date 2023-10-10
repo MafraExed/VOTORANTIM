@@ -1,0 +1,76 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="Workspace.zimprimir_etiqueta.controller.S1"
+	xmlns:ndc="sap.ndc" xmlns:layout="sap.ui.layout" xmlns:form="sap.ui.layout.form">
+	<SplitApp id="root">
+		<!--mode="PopoverMode">-->
+		<masterPages>
+			<Page id="MasterItens" title="{i18n>titleS1_master} {NFHEADERLOC>/nfenum} - {NFHEADERLOC>/series}" class="sapUiStdPage"
+				showNavButton="{device>/system/phone}" navButtonPress="onPressMasterBack">
+				<content>
+					<List id="ShortItemList" headerText="{i18n>titleS1_master_list}" itemPress="onPressItemMaster" items="{ path: 'NFITEMLIST>/' }">
+						<items>
+							<StandardListItem title="{ path: 'NFITEMLIST>itmnum', formatter: '.formatter.shiftLeadingZeros'}" type="Navigation"
+								info="{ path: 'NFITEMLIST>status', formatter: '.formatter.statusConverter'}" description="{NFITEMLIST>descProd}"
+								infoState="{ path: 'NFITEMLIST>status', formatter: '.formatter.statusInfoStateConverter'}"/>
+						</items>
+					</List>
+				</content>
+				<footer items="{ path: 'NFITEMLIST>/' }">
+					<OverflowToolbar id="MasterFooter">
+						<ToolbarSpacer/>
+						<OverflowToolbarButton id="PrintButton" text="{i18n>print}" icon="sap-icon://print" press="onPressPrint"/>
+						<ToolbarSpacer/>
+					</OverflowToolbar>
+				</footer>
+			</Page>
+		</masterPages>
+		<detailPages id="teste_detail">
+			<Page id="iten_detail" title="{i18n>page_titleS1_detail_list}" showNavButton="{device>/system/phone}" navButtonPress="onNavBackDetail">
+				<content>
+					<List id="DetailList" headerText="{i18n>titleS1_detail_list} - { path: 'NFITEMLIST>itmnum', formatter: '.formatter.shiftLeadingZeros'}">
+						<DisplayListItem id="MatNF" label="{i18n>material_nf}" value="{NFITEMLIST>itmnum}"/>
+						<DisplayListItem id="MatNFDesc" label="{i18n>desc_nf}" value="{NFITEMLIST>descProd}"/>
+						<DisplayListItem id="MatSAP" label="{i18n>material_sap}" value="{NFITEMLIST>matnr}"/>
+						<DisplayListItem id="MatSAPDesc" label="{i18n>desc_sap}" value="{NFITEMLIST>maktx}" press="handleMatDescPress" type="Active"/>
+						<DisplayListItem label="{i18n>qtd_tot_etq}" value="{NFITEMLIST>mengeEtq}"/>
+					</List>
+					<List id="EtqList">
+						<InputListItem label="{i18n>balance}">
+							<Text id="idBalance" text="{NFITEMLIST>balance}"/>
+						</InputListItem>
+						<InputListItem label="{i18n>qtd_material}">
+							<Input id="qtd_material" placeholder="{i18n>qtd_material}" enabled="true" type="Number" value="{NFITEMLIST>mengeMat}"/>
+						</InputListItem>
+						<InputListItem label="{i18n>qtd_etq}">
+							<Input id="qtd_etq" placeholder="{i18n>qtd_etq}" enabled="true" type="Number" value="{NFITEMLIST>mengeEtqToPrint}"/>
+						</InputListItem>
+						<InputListItem label="{i18n>datVal_etq}">
+							<DatePicker id="datVal_etq" displayFormat="short" change="handleChange" placeholder="{i18n>datVal_etq}" value="{NFITEMLIST>dataValidade}"/>
+							<!--visible="{ path: 'NFITEMLIST>xchpf ', formatter: '.formatter.xchpfCheck'}"-->
+							<!--<Input id="datVal_etq" placeholder="{i18n>datVal_etq}" enabled="{ path: 'NFITEMLIST>ebeln', formatter: '.formatter.ebelnCheck'}" type="Date"-->
+							<!--	value="{NFITEMLIST>dataValidade}"/>-->
+						</InputListItem>
+					</List>
+				</content>
+				<footer items="{ path: 'NFITEMLIST>/' }">
+					<OverflowToolbar id="otbFooter">
+						<ToolbarSpacer/>
+						<OverflowToolbarButton id="CancelButton" text="{i18n>cancel}" icon="sap-icon://sys-cancel" press="onPressCancel" enabled="true"
+							type="Reject"/>
+						<ToolbarSpacer/>
+						<OverflowToolbarButton id="LeftButton" text="{i18n>left}" icon="sap-icon://arrow-left" press="onPressLeft" enabled="true" visible="false"/>
+						<ToolbarSpacer/>
+						<OverflowToolbarButton id="AcceptButton" text="{i18n>accept}" icon="sap-icon://accept" press="onPressAccept"/>
+						<ToolbarSpacer/>
+						<OverflowToolbarButton id="RightButton" text="{i18n>right}" icon="sap-icon://arrow-right" press="onPressRight" enabled="true"
+							visible="false"/>
+						<!--<ToolbarSpacer/>-->
+						<!--<OverflowToolbarButton id="PrintButton" text="{i18n>print}" icon="sap-icon://print" press="onPressPrint"/>-->
+						<ToolbarSpacer/>
+						<OverflowToolbarButton id="BOButton" text="{i18n>divergence}" icon="sap-icon://quality-issue" press="onPressBO"/>
+						<ToolbarSpacer/>
+					</OverflowToolbar>
+				</footer>
+			</Page>
+		</detailPages>
+	</SplitApp>
+</mvc:View>

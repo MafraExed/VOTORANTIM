@@ -1,0 +1,36 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	controllerName="ZCBMM_CF_CEGA.ZCBMM_CF_CEGA.controller.ImpressaoPorAviso" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page title="Impressão - Aviso nº {viewModel>/CodAviso} | Impressora {viewModel>/Name}" showNavButton="true" navButtonPress=".navBackPress">
+		<content>
+			<Table id="reimpressaoTable" items="{viewModel>/items}" headerText="Etiquetas">
+				<items>
+					<ColumnListItem>
+						<cells>
+							
+							<ObjectIdentifier title="{viewModel>Matnr}" text="{viewModel>Maktx}"/>
+							<Input value="{viewModel>Quantidade}" type="Number"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+				<columns>
+					<Column >
+						<header>
+							<Label text="{/#FornecimentoIT/Matnr/@sap:label}"/>
+						</header>
+					</Column>
+					<Column >
+						<header>
+							<Label text="Quantidade"/>
+						</header>
+					</Column>
+				</columns>
+			</Table>
+		</content>
+		<footer>
+			<Toolbar>
+				<ToolbarSpacer/>
+				<Button  text="Imprimir Etiquetas" type="Emphasized" press=".onPrintPress" icon="sap-icon://print"/>
+			</Toolbar>
+		</footer>
+	</Page>
+</mvc:View>

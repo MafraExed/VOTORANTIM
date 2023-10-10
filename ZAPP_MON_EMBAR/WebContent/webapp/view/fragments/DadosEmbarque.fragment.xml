@@ -1,0 +1,164 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core">
+					
+    <f:Form id="dadosForm"
+    	editable="true"
+        ariaLabelledBy="Title1">	
+        <f:toolbar>
+		 	<Toolbar>
+				<Title text="{i18n>dadosEmbarqueTitle}" level="H4" titleStyle="H4"/>
+				<ToolbarSpacer />
+				<Button 
+					id="dadosButtonEdit" 
+					icon="sap-icon://edit" 
+					tooltip="{i18n>dadosEmbarqueTooltipButtonEdit}" 
+					press="onDadoEmbarqueActionButton"/>
+				<Button 
+					id="dadosButtonSave" 
+					icon="sap-icon://save" 
+					tooltip="{i18n>dadosEmbarqueTooltipButtonSave}" 
+					press="onDadoEmbarqueActionButton"
+					visible="false"/> 
+				<Button 
+					id="dadosButtonCancel" 
+					icon="sap-icon://sys-cancel" 
+					tooltip="{i18n>dadosEmbarqueTooltipButtonCancel}" 
+					visible="false" 
+					press="onDadoEmbarqueActionButton"/>
+			</Toolbar> 
+		</f:toolbar>        
+        
+        <f:layout>
+        	<f:ResponsiveGridLayout 
+				layout="ResponsiveGridLayout"
+				editable="true"
+	 			columnsXL="2"
+				columnsL="2"
+				columnsM="2"
+				singleContainerFullSize="false" />	
+        </f:layout>
+        <f:formContainers>
+        	<f:FormContainer>
+            	<f:formElements>
+					<f:FormElement label="{i18n>dadosEmbarqueDteta}">
+                  		<f:fields>
+							<DatePicker 
+								id="dadosDteta"
+								editable="false"
+								placeholder="{i18n>DatePlaceHolder}"
+								value="{path: 'dadosEmbarque>/Dteta', type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'dd.MM.yyyy', strictParsing: true , UTC: true}}" 
+								displayFormat="{i18n>dadosEmbarqueFormatDate}"
+								maxLength="10" 
+								width="120px"/>
+                  		</f:fields>
+                	</f:FormElement>              
+
+                	<f:FormElement label="{i18n>dadosEmbarqueTpnav}">
+                  		<f:fields>
+                  			<ComboBox 
+                  				id="dadosTpnav"
+                  				width="180px"
+                  				editable="false"
+	                  			selectedKey="{dadosEmbarque>/Tpnav}"
+	                    		items="{ path: 'detailView>/listTpNav' }">
+	                    			<core:Item 
+	                    				id="addEmbarqueItemSelectTpnav" 
+	                        			key="{detailView>Value}" 
+	                        			text="{detailView>Name}" />
+							</ComboBox>
+                  		</f:fields>
+                	</f:FormElement>
+
+                	<f:FormElement label="{i18n>dadosEmbarqueAgent}">
+                  		<f:fields>
+							<Input 
+							id="dadosAgent"
+							editable="false"
+							value="{dadosEmbarque>/Agent}" 
+							maxLength="10" 
+							width="120px"/>
+	                	</f:fields>
+                	</f:FormElement>                
+                
+	                <f:FormElement label="{i18n>dadosEmbarqueBookingnr}">
+	                	<f:fields>
+							<Input 
+								id="dadosBookingnr"
+								editable="false"
+								value="{dadosEmbarque>/Bookingnr}" 
+								maxLength="10" 
+								width="120px"/>
+	                  	</f:fields>
+	                </f:FormElement>	
+					
+        		</f:formElements>
+        	</f:FormContainer>
+
+         	<f:FormContainer>
+        		<f:formElements>
+
+                	<f:FormElement label="{i18n>dadosEmbarqueDtdraft}">
+                  		<f:fields>
+							<DatePicker 
+								id="dadosDtdraft"
+								editable="false"
+								placeholder="{i18n>DatePlaceHolder}"
+								value="{path: 'dadosEmbarque>/Dtdraft', type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'dd.MM.yyyy', strictParsing: true , UTC: true}}" 
+								displayFormat="{i18n>dadosEmbarqueFormatDate}"
+								maxLength="10" 
+								width="120px"/>
+   		       	        </f:fields>
+               	 	</f:FormElement>
+               	 	
+                	<f:FormElement label="{i18n>dadosEmbarqueBldate}">
+	                	<f:fields>
+							<DatePicker 
+								id="dadosBldate"
+								editable="false"
+								placeholder="{i18n>DatePlaceHolder}"
+								value="{path: 'dadosEmbarque>/Bldate', type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'dd.MM.yyyy', strictParsing: true , UTC: true}}"
+								displayFormat="{i18n>dadosEmbarqueFormatDate}" 
+								maxLength="10" 
+								width="120px"/>
+	                	</f:fields>
+	                </f:FormElement>
+
+	                <f:FormElement label="{i18n>dadosEmbarqueDrawbacknr}">
+	                	<f:fields>
+							<Input 
+								id="dadosDrawbacknr"
+								editable="false"
+								value="{dadosEmbarque>/Drawbacknr}" 
+								maxLength="20" 
+								width="240px"/>
+	                  	</f:fields>
+	                </f:FormElement>
+	
+	                <f:FormElement label="{i18n>dadosEmbarqueUserr}">
+	                	<f:fields>
+							<Input 
+								id="dadosUserr"
+								editable="false"
+								value="{dadosEmbarque>/Userr}" 
+								maxLength="12" 
+								width="150px"/>
+	                  	</f:fields>
+	                </f:FormElement>
+
+	                <f:FormElement label="{i18n>dadosEmbarqueNrembarque}" visible="false">
+	                	<f:fields>
+							<Input 
+								id="dadosNrembarque"
+								value="{dadosEmbarque>/Nrembarque}"
+								visible="false"/>
+	                  	</f:fields>
+	                </f:FormElement>
+
+            	</f:formElements>
+        	</f:FormContainer>
+        </f:formContainers>
+    </f:Form>
+</core:FragmentDefinition>

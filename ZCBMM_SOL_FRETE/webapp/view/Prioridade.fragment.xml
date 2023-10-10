@@ -1,0 +1,22 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog
+		
+		title="Prioridades"
+		class="sapUiPopupWithPadding"
+		items="{/ZET_CBMM_CF_PARAMETSet}"
+		
+		search="_handleValueHelpPrioridade"
+		confirm="_handleValueHelpClose"
+		cancel="_handleValueHelpClose"
+		modelContextChange="_onModelContextChangePrioridade">
+		
+		<StandardListItem
+			icon="{ProductPicUrl}"
+			iconDensityAware="false"
+			iconInset="false"
+			title="{Valor}"/>
+			
+	</SelectDialog>
+</core:FragmentDefinition>

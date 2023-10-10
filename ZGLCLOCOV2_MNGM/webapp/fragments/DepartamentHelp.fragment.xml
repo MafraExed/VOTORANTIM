@@ -1,0 +1,40 @@
+<core:FragmentDefinition 
+	xmlns="sap.ui.table"
+	xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+	xmlns:u="sap.ui.unified"
+	xmlns:m="sap.m">
+    <m:Dialog showHeader="true" title="Selecionar Área/Departamento" class="sapUiResponsivePadding" contentWidth="500px">
+    	<Table
+				id="departamentTable"
+				selectionMode="Single"
+                selectionBehavior="RowOnly"
+				visibleRowCountMode="Auto">
+				<extension>
+					<m:OverflowToolbar style="Clear">
+						<m:SearchField
+							placeholder="Departamento"
+							search="filterDepartament"
+							width="15rem"/>
+                        <m:ToolbarSpacer/>
+                        <m:Button text="Criar Departamento" press="onPressCreateDepartament"/>    
+					</m:OverflowToolbar>
+				</extension>
+				<columns>
+					<Column	sortProperty="Departamento">
+						<m:Label text="Área/Departamento" />
+						<template>
+							<m:Text text="{Departamento}" wrapping="false" />
+						</template>
+					</Column>
+				</columns>
+			</Table>
+
+        <m:beginButton>
+            <m:Button type="Emphasized" text="Aplicar" press="onPressApplyDepartament"/>
+        </m:beginButton>
+        <m:endButton>
+            <m:Button text="{i18n>appCancel}" press="onCloseDepartamentDialog"/>
+        </m:endButton>
+    </m:Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,4 @@
+/*
+ * Copyright (C) 2009-2014 SAP SE or an SAP affiliate company. All rights reserved
+ */
+sap.ui.controller("hcm.mypaystubs.Main",{_tempVersion:null,onInit:function(){jQuery.sap.require("sap.ca.scfld.md.Startup");if(sap.ui.Device.os.android&&sap.ui.Device.os.version>4.0){this._tempVersion=sap.ui.Device.os.version;sap.ui.Device.os.version=4.0;}sap.ca.scfld.md.Startup.init('hcm.mypaystubs',this);jQuery.sap.require("sap.ca.ui.model.type.Date");},onExit:function(){if(this._tempVersion){sap.ui.Device.os.version=this._tempVersion;}try{jQuery.sap.require("hcm.mypaystubs.utils.ConcurrentEmployment");var c=hcm.mypaystubs.utils.ConcurrentEmployment.getControllerInstance();c.oCEDialog.Cancelled=true;c.oCEDialog.close();c.oApplication.pernr="";}catch(e){jQuery.sap.log.error("couldn't execute onExit",["onExit failed in main controller"],["hcm.mypaystubs.Main"]);}}});

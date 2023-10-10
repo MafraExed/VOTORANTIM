@@ -1,0 +1,214 @@
+{
+    "_version": "1.12.0",
+    "start_url": "index.html",
+    "sap.app": {
+        "id": "com.innova.sitrack",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "resources": "com.innova.sitrack",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "sourceTemplate": {
+            "id": "ui5template.basicSAPUI5ApplicationProject",
+            "version": "1.40.12",
+            "toolsId": "d3db8641-962a-4510-ad81-1a3d65f35173"
+        },
+        "dataSources": {
+            "sitrack-odata": {
+                "uri": "/sap/opu/odata/sap/zgwvsmm_sitrk_odata_srv/",
+                "type": "OData",
+                "settings": {
+                    "localUri": "/cross.fnd.fiori.inbox/localService/metadata.xml"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": false,
+        "rootView": {
+            "viewName": "com.innova.sitrack.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "App"
+        },
+        "dependencies": {
+            "minUI5Version": "1.65.6",
+            "libs": {
+                "sap.ui.layout": {},
+                "sap.ui.core": {},
+                "sap.m": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "com.innova.sitrack.i18n.i18n"
+                }
+            },
+            "odata": {
+                "type": "sap.ui.model.odata.v2.ODataModel",
+                "settings": {
+                    "defaultOperationMode": "Server",
+                    "defaultBindingMode": "OneWay",
+                    "defaultCountMode": "Request"
+                },
+                "dataSource": "sitrack-odata",
+                "preload": true
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                },
+                {
+                    "uri": "fonts/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "viewPath": "com.innova.sitrack.view",
+                "controlId": "app",
+                "controlAggregation": "pages",
+                "bypassed": {
+                    "target": "notFound"
+                },
+                "transition": "slide",
+                "async": true
+            },
+            "routes": [
+                {
+                    "pattern": "",
+                    "name": "home",
+                    "target": "home"
+                },
+                {
+                    "pattern": "settings",
+                    "name": "settings",
+                    "target": "settings"
+                },
+                {
+                    "pattern": "purchase-tracking",
+                    "name": "purchaseTracking",
+                    "target": [
+                        "purchaseTracking"
+                    ]
+                },
+                {
+                    "pattern": "purchase-tracking/process/:?query:",
+                    "name": "purchaseTrackingProcess",
+                    "target": "purchaseTrackingProcess"
+                },
+                {
+                    "pattern": "purchase-tracking/process/approvals",
+                    "name": "approvals",
+                    "target": "approvals"
+                },
+                {
+                    "pattern": "purchase-tracking/indicators",
+                    "name": "purchaseTrackingIndicators",
+                    "target": "purchaseTrackingIndicators"
+                },
+                {
+                    "pattern": "purchase-tracking/process/bidding/:query:",
+                    "name": "purchaseTrackingManage",
+                    "target": "purchaseTrackingManage"
+                },
+                {
+                    "pattern": "purchase-tracking/process/detail-sdp/:query:",
+                    "name": "purchaseTrackingPaymentDetail",
+                    "target": "purchaseTrackingPaymentDetail"
+                }
+            ],
+            "targets": {
+                "home": {
+                    "viewType": "XML",
+                    "transition": "show",
+                    "viewName": "Home",
+                    "viewId": "home",
+                    "viewLevel": 1
+                },
+                "purchaseTracking": {
+                    "viewType": "XML",
+                    "viewName": "purchaseTracking.Form",
+                    "transition": "show",
+                    "viewId": "purchaseTrackingForm",
+                    "viewLevel": 2
+                },
+                "purchaseTrackingProcess": {
+                    "viewType": "XML",
+                    "transition": "show",
+                    "viewName": "purchaseTracking.Process",
+                    "viewId": "purchaseTrackingProcess",
+                    "viewLevel": 3
+                },
+                "purchaseTrackingManage": {
+                    "viewType": "XML",
+                    "transition": "show",
+                    "viewName": "biddingProcess.Manage",
+                    "viewId": "purchaseTrackingManage",
+                    "viewLevel": 4
+                },
+                "purchaseTrackingPaymentDetail": {
+                    "viewType": "XML",
+                    "transition": "show",
+                    "viewName": "paymentProcess.DetailPayment",
+                    "viewId": "purchaseTrackingPaymentDetail",
+                    "viewLevel": 4
+                },
+                "approvals": {
+                    "viewType": "XML",
+                    "transition": "show",
+                    "viewName": "purchaseTracking.Approvals",
+                    "viewId": "approvals",
+                    "viewLevel": 4
+                },
+                "purchaseTrackingIndicators": {
+                    "viewType": "XML",
+                    "viewName": "purchaseTracking.Indicators",
+                    "transition": "show",
+                    "viewId": "purchaseTrackingIndicators",
+                    "viewLevel": 3
+                },
+                "settings": {
+                    "viewType": "XML",
+                    "transition": "show",
+                    "viewName": "settings.Settings",
+                    "viewId": "settings",
+                    "viewLevel": 2
+                },
+                "notFound": {
+                    "viewName": "NotFound",
+                    "viewId": "notFound"
+                }
+            }
+        }
+    }
+}

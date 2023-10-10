@@ -1,0 +1,26 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:m="sap.m" xmlns:u="sap.ui.unified"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Dialog id="AnexoDialog" title="Arquivos anexados à esta tarefa" type="Standard">
+		<content>
+			<m:VBox justifyContent="Start" wrap="Wrap" class="sapUiSmallMargin">
+				<m:HBox id="idUploaderAnexoFr" class="sapUiSmallMarginTop">
+					<u:FileUploader id="fileUploaderFr" icon="sap-icon://search" iconOnly="true" tooltip="Anexar um arquivo"
+						uploadComplete="handleUploadComplete" useMultipart="false"/>
+					<m:Button text="Anexar" press="onAnexarArquivo"/>
+				</m:HBox>
+				<m:HBox id="idLegendaAnexo" class="sapUiSmallMarginTop">
+					<List id="notificationList">
+						<NotificationListItem showCloseButton="false" title="Legenda" description="⭐ Procedimento" unread="true" priority="None"
+							authorName="🏳️ Evidência da tarefa"/>
+					</List>
+				</m:HBox>
+				<m:VBox id="idVBoxAnexosFr" visible="false">
+					<m:SelectList id="selectAnexoList" showSecondaryValues="true" selectionChange="onDownloadItem"/>
+				</m:VBox>
+			</m:VBox>
+		</content>
+		<beginButton>
+			<Button text="Fechar" press="onAnexoDialogClose" enabled="true"/>
+		</beginButton>
+	</Dialog>
+</core:FragmentDefinition>

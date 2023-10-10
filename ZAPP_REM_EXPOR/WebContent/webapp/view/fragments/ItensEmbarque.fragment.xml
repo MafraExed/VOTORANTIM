@@ -1,0 +1,171 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout" xmlns:footerbar="sap.ushell.ui.footerbar">
+
+	<Panel width="auto">
+		<headerToolbar>
+			<Toolbar>
+				<Title id="itensEmbarqueTitle" text="{i18n>itensEmbarqueTitle}"/>
+				<ToolbarSpacer />
+						<SearchField
+							placeholder="{i18n>detailTitleFilterPlaceHolder}"
+							search="onSearch" 
+							width="15rem"/>
+<!-- 							value="{ui>/globalFilter}" -->
+			</Toolbar>
+		</headerToolbar>   	
+		<content>		
+			<Table id="itensEmbarqueTable" 
+				  mode="MultiSelect"
+				  items="{ShipmentDetailToItems}" 
+				  fixedLayout="true"
+				  updateFinished="onHandleTableLoad"
+				  visibleRowCount="5"
+				  growing="true"
+				  growingThreshold="3"
+				  growingTriggerText=""
+				  growingScrollToLoad="true"
+				  growingDirection="Downwards">
+				  
+				  
+				  			
+				<columns>
+					<Column width="1.2rem">
+						<Text text="St." tooltip="{i18n>itensRemessaColumnTableValidacao}" />
+					</Column>
+					<Column width="3rem">
+						<Text text="{i18n>itensRemessaColumnTableItem}" />
+					</Column>
+					<Column width="6rem">
+						<Text text="{i18n>itensRemessaColumnTableDocVenda}" />
+					</Column>
+					<Column width="3rem">
+						<Text text="{i18n>itensRemessaColumnTableItemVenda}" />
+					</Column>	
+					<Column width="4.5rem">			
+						<Text text="{i18n>itensRemessaColumnTableMaterial}" />
+					</Column>
+					<Column width="4rem">
+						<Text text="{i18n>itensRemessaColumnTableQtde}" />
+					</Column>
+					<Column width="3rem">
+						<Text text="{i18n>itensRemessaColumnTableVolume}" />
+					</Column>
+					<Column width="4rem">
+						<Text text="{i18n>itensRemessaColumnTableDestino}" />
+					</Column>
+					<Column width="7rem">
+						<Text text="{i18n>itensRemessaColumnTableCondPag}" />
+					</Column>
+					<Column width="4rem">
+						<Text text="{i18n>itensRemessaColumnTableInco}" />
+					</Column>
+					<Column width="4rem">
+						<Text text="{i18n>itensRemessaColumnTablePreco}" />
+					</Column>
+					<Column width="5.5rem">
+						<Text text="{i18n>itensRemessaColumnTableValorLiq}" />
+					</Column>
+					<Column width="4rem">
+						<Text text="{i18n>itensRemessaColumnTableMoeda}" />
+					</Column>
+					<Column width="4rem">
+						<Text text="{i18n>itensRemessaColumnTableCentro}" />
+					</Column>
+					<Column width="4rem">
+						<Text text="{i18n>itensRemessaColumnTableDeposito}" />
+					</Column>
+					<Column width="4rem">
+						<Text text="{i18n>itensRemessaColumnTableItinerario}" />
+					</Column>			
+					<Column width="6rem">
+						<Text text="{i18n>itensRemessaColumnTableDocRemessa}" />
+					</Column>									
+				</columns>
+				<items>
+					<ColumnListItem highlight="{path: 'Stprocess', formatter: '.formatter.setHighlight'}">
+						<cells>
+							<ObjectStatus
+								state="{path: 'Stalert', formatter: '.formatter.mudarStateProblema'}"
+								icon="{path: 'Stalert', formatter: '.formatter.mudarIconProblema'}"
+								tooltip="{StalertDsc}" />
+						</cells>
+						
+						<cells>
+							<Text text="{ShpmtIt}" />
+						</cells>
+						
+						<cells>
+							<Text text="{VbelnVa}" />
+						</cells>
+						
+						<cells>
+							<Text text="{PosnrVa}" />
+						</cells>
+						
+						<cells>
+							<ObjectNumber number="{Matnr}" unit="{MatnrDsc}" emphasized="false"/>						
+						</cells>
+						
+						<cells>
+							<ObjectNumber
+									number="{
+												path: 'Weight',formatter:'.formatter.formatNumberBrazil'
+											}"
+									unit="{Unit}" emphasized="false"/>
+						</cells>
+						
+						<cells>
+							<ObjectNumber number="{path : 'Volumn', formatter:'.formatter.formatNumberBrazil', type : 'sap.ui.model.odata.type.String', 
+													constraints: { isDigitSequence : true, maxLength : 10 }}"
+										  unit="UN"
+										  emphasized="false"/> 
+	
+						</cells>
+						
+						<cells>
+							<Text text="{Ptdst}" />
+						</cells>
+						
+						<cells>
+							<ObjectNumber number="{Zterm}" unit="{ZtermDsc}" tooltip="{ZtermDsc}" emphasized="false"/>		
+						</cells>
+						
+						<cells>
+							<ObjectNumber number="{Inco1}" unit="{Inco2}" tooltip="{Inco2}" emphasized="false"/>	
+						</cells>
+						
+						<cells>
+							<Text text="{Netpr}" />
+						</cells>
+						
+						<cells>
+							<Text text="{Netwr}" />
+						</cells>
+						
+						<cells>
+							<Text text="{Waerk}" />
+						</cells>
+						
+						<cells>
+							<Text text="{Werks}" />
+						</cells>
+						
+						<cells>
+							<Text text="{Lgort}" />
+						</cells>
+						
+						<cells>
+							<Text text="{Route}" />
+						</cells>
+														
+						<cells>
+							<Text text="{VbelnVl}" />
+						</cells>									
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+	</Panel>
+
+</core:FragmentDefinition>

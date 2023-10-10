@@ -1,0 +1,249 @@
+<mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.f.semantic" xmlns:footerbar="sap.ushell.ui.footerbar"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:smartFilterBar="sap.ui.comp.smartfilterbar" xmlns:m="sap.m" xmlns:tb="sap.m.table"
+	xmlns:sv="sap.ui.comp.smartvariants" xmlns:smartTable="sap.ui.comp.smarttable" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core"
+	xmlns:l="controls" xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" xmlns:table="sap.ui.table"
+	content="no-cache" xmlns:variant="sap.ushell.services.Personalization.Variant"
+	controllerName="ZCBLE_PR_REM_SAIDA.ZCBLE_PR_REM_SAIDA.controller.Worklist">
+	<Page title="Page" class="sapUiContentPadding" showHeader="false" enableScrolling="true">
+		<IconTabBar id="iconTabBar" class="sapUiResponsiveContentPadding" selectedKey="Tab" modelContextChange="onChangeContext"
+			select="onSelectFilter">
+			<items>
+				<IconTabFilter key="1" id="Filter01" text="Agrupar Itens" icon="sap-icon://newspaper" visible="true" tooltip="Agrupar Itens">
+					<smartFilterBar:SmartFilterBar id="smartFilterBar" persistencyKey="SmartTablePKey4" useToolbar="false" entityType="ZET_CBLE_PR_REM_SAIDASet"
+						assignedFiltersChanged="onAssignedFiltersChanged" entitySet="ZET_CBLE_PR_REM_SAIDASet" visible="true">
+						<smartFilterBar:controlConfiguration>
+							<smartFilterBar:ControlConfiguration key="Vkorg" id="idVkorg" index="0" label="Organização Vendas" groupId="_BASIC" width="auto"
+								visibleInAdvancedArea="true"/>
+							<smartFilterBar:ControlConfiguration key="Vtweg" id="idVtweg" index="1" label="Canal de distribuição" groupId="_BASIC" width="auto"
+								visibleInAdvancedArea="true"/>
+							<smartFilterBar:ControlConfiguration key="Spart" id="idSpart" index="2" label="Setor de Atividade" groupId="_BASIC" width="auto"
+								visibleInAdvancedArea="true"/>
+							<smartFilterBar:ControlConfiguration key="Werks" id="idWerks" index="3" label="Centro" groupId="_BASIC" width="auto"
+								visibleInAdvancedArea="true"/>
+							<smartFilterBar:ControlConfiguration key="Audat" id="idAudat" index="4" label="Data do Documento" groupId="_BASIC" width="auto"
+								controlType="date" filterType="interval"/>
+							<smartFilterBar:ControlConfiguration key="Matkl" id="idMatkl" index="5" label="Grupo de Mercadoria" groupId="_BASIC" width="auto"
+								visibleInAdvancedArea="true"/>
+							<smartFilterBar:ControlConfiguration key="WerksSol" id="idWerksSol" index="6" label="Centro Solicitante" groupId="_BASIC" width="auto"
+								visibleInAdvancedArea="true"/>
+							<smartFilterBar:ControlConfiguration key="Wadat" id="idWadat" index="7" label="Data de Expedição" groupId="_BASIC" width="auto"
+								controlType="date" filterType="interval"/>
+							<smartFilterBar:ControlConfiguration key="Lddat" id="idLddat" index="8" label="Data saída mercadoria Fábrica" groupId="_BASIC" width="auto"
+								controlType="date" filterType="interval"/>
+						</smartFilterBar:controlConfiguration>
+						<smartFilterBar:layoutData>
+							<m:FlexItemData shrinkFactor="0"/>
+						</smartFilterBar:layoutData>
+					</smartFilterBar:SmartFilterBar>
+					<f:Form class="editableForm" editable="true">
+						<f:layout>
+							<f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0"
+								emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="3" columnsM="3" singleContainerFullSize="true"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer>
+								<f:formElements>
+									<f:FormElement>
+										<f:fields>
+											<Input value="{Matnr}" id="IdTpVeiculo" valueHelpRequest="onTpVeiculo" showValueHelp="true" showSuggestion="true" filterSuggests="true"
+												startSuggestion="0" placeholder="Tipo de Veículo" required="true" change="OnClear"/>
+										</f:fields>
+										<f:label>
+											<Label text="Veículo" design="Bold"/>
+										</f:label>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+							<f:FormContainer>
+								<f:formElements>
+									<f:FormElement>
+										<f:fields>
+											<Input id="IdCapa" editable="false"/>
+										</f:fields>
+										<f:label>
+											<Label text="Capacidade" design="Bold"/>
+										</f:label>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+							<f:FormContainer>
+								<f:formElements>
+									<f:FormElement>
+										<f:fields>
+											<Input id="IdUM" editable="false"/>
+										</f:fields>
+										<f:label>
+											<Label text="UM" design="Bold"/>
+										</f:label>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:SimpleForm editable="true" maxContainerCols="5">
+						<f:content>
+							<Button class="sapUiTinyMarginBottom" icon="sap-icon://course-program" tooltip="Criar Pedido de Transferência" press="CriarPedTrans"
+								text="Criar Pedido de Transferência"/>
+							<Button class="sapUiTinyMarginBottom" icon="sap-icon://navigation-down-arrow" tooltip="Agrupar itens" press="agruparRemessa"
+								text="Agrupar Itens"/>
+							<Button class="sapUiTinyMarginBottom" icon="sap-icon://multiselect-none" tooltip="Quebrar remessa" press="quebraItens" text="Quebrar itens"/>
+							<Text text="Total" textAlign="Right"/>
+							<Input id="Faturar" editable="false"/>
+						</f:content>
+					</f:SimpleForm>
+					<smartTable:SmartTable id="smartTable" entitySet="ZET_CBLE_PR_REM_SAIDASet" smartFilterId="smartFilterBar" useExportToExcel="true"
+						useTablePersonalisation="true" tableType="Table" showRowCount="true" showFullScreenButton="true" enableAutoBinding="false"
+						requestAtLeastFields="Vbeln,Posnr,Etenr,Werks,Banfn,Bnfpo,Ebeln,WerksSol,Name1,Matnr,Qtd,Meins,Matkl,QtdConfirmada,Emissor,Matkl,Uname,Vkorg,Vtweg,Spart,Cmgst,StatusRem,Auart,Bstkd,Receptor,NomeReceptor,DataSolCli,NomeObra,CentroFab,EstoqCentro,Klmeng,Estoque901,EstoqueRequisic,Mbdat,MbdatAtl,Ettyp,Lifsp,Estrategia,Bstdk,Erdat,Pstyv,Anexo,Arktx,Kdmat,Pkstk,Abgru,Faksk,Lifsk,Gbstk,Vrkme,Kwmeng,QtdFaturada,Faturar,Amaior,QtdRemessa,PendProd,Wemng,QtdStock,QtdPrd,QtdProg,DtAtpOrig,DtAtpAtu,DtFat,Werks,ComCont,GerSegm,Kdgrp,Kvgr1,Kvgr4,Kvgr5,Eikto,FamOrcamento,FamOrcamentoD,FamCapacidade,FamCapacidadeD,FamFerramenta,FamFerramentaD,FamExpedicao,FamExpedicaoD,Comprimento1,Acabamento,Cor,CamAnodica,Ernam,Auffx,UltModif,Antecip,Matpla,Vstel,Route,Distancia,Traztd,Bezei,Incoterms,Wadat,Lddat,Tempo,Audat,Tddat,Parce,Parvw"
+						initiallyVisibleFields="Vbeln,Posnr,Etenr,Werks,Banfn,Bnfpo,Ebeln,WerksSol,Name1,Matnr,Qtd,Meins,Matkl,QtdConfirmada,Emissor,Matkl,Uname,Vkorg,Vtweg,Spart,Cmgst,StatusRem,Auart,Bstkd,Receptor,NomeReceptor,DataSolCli,NomeObra,CentroFab,EstoqCentro,Klmeng,Estoque901,EstoqueRequisic,Mbdat,MbdatAtl,Ettyp,Lifsp,Estrategia,Bstdk,Erdat,Pstyv,Anexo,Arktx,Kdmat,Pkstk,Abgru,Faksk,Lifsk,Gbstk,Vrkme,Kwmeng,QtdFaturada,Faturar,Amaior,QtdRemessa,PendProd,Wemng,QtdStock,QtdPrd,QtdProg,DtAtpOrig,DtAtpAtu,DtFat,Werks,ComCont,GerSegm,Kdgrp,Kvgr1,Kvgr4,Kvgr5,Eikto,FamOrcamento,FamOrcamentoD,FamCapacidade,FamCapacidadeD,FamFerramenta,FamFerramentaD,FamExpedicao,FamExpedicaoD,Comprimento1,Acabamento,Cor,CamAnodica,Ernam,Auffx,UltModif,Antecip,Matpla,Vstel,Route,Distancia,Traztd,Bezei,Incoterms,Wadat,Lddat,Tempo,Audat,Tddat,Parce,Parvw"
+						class=" sapUiResponsiveContentPadding" persistencyKey="SmartTablePKey5" beforeRebindTable="atualizasmart">
+						<table:Table selectionMode="Multi" id="table1" enableBusyIndicator="true" busyIndicatorDelay="100" growing="false"
+							rememberSelections="false" enableCellFilter="false" showSeparators="All" rowSelectionChange="CountCheck" enableColumnFreeze="true"
+							enableColumnReordering="true" visibleRowCount="20">
+							<table:rowSettingsTemplate>
+								<table:RowSettings highlight="{= ${Cmgst} === 'B' || ${Cmgst} === 'C' ? 'Error' : 'Success' }"/>
+							</table:rowSettingsTemplate>
+						</table:Table>
+						<!--<smartTable:layoutData>-->
+						<!--	<m:FlexItemData growFactor="1" baseSize="0%"/>-->
+						<!--</smartTable:layoutData>-->
+					</smartTable:SmartTable>
+				</IconTabFilter>
+				<IconTabFilter key="2" id="Filter02" text="Remessa/Transporte" icon="sap-icon://newspaper" tooltip="Remessa/Transporte">
+					<smartFilterBar:SmartFilterBar id="smartFilterBar2" persistencyKey="SmartTablePKey9" useToolbar="false" entityType="ZET_CBLE_PR_REMSet"
+						assignedFiltersChanged="onAssignedFiltersChanged" entitySet="ZET_CBLE_PR_REMSet" visible="true">
+						<smartFilterBar:controlConfiguration>
+							<smartFilterBar:ControlConfiguration key="Contador" id="idContador" index="1" label="Contador" groupId="_BASIC" width="auto"
+								visibleInAdvancedArea="true"/>
+							<smartFilterBar:ControlConfiguration key="Werks" id="idWerks1" index="2" label="Centro" groupId="_BASIC" width="auto"
+								visibleInAdvancedArea="true"/>
+							<smartFilterBar:ControlConfiguration key="Vbeln" id="idVbeln" index="3" label="OV" groupId="_BASIC" width="auto"
+								visibleInAdvancedArea="true"/>
+							<smartFilterBar:ControlConfiguration key="Parceiro" id="idParce2" index="4" label="Parceiro" groupId="_BASIC" width="auto"
+								visibleInAdvancedArea="true"/>
+							<smartFilterBar:ControlConfiguration key="Ebeln" id="idEbeln" index="5" label="Pedido de Transporte" groupId="_BASIC" width="auto"
+								visibleInAdvancedArea="true"/>
+							<smartFilterBar:ControlConfiguration key="Audat" id="idAudat2" index="6" label="Data Expedição" groupId="_BASIC" width="auto"
+								visibleInAdvancedArea="true"/>
+							<smartFilterBar:ControlConfiguration key="Dtproc" id="idDtproc" index="7" label="Data Processamento" groupId="_BASIC" width="auto"
+								visibleInAdvancedArea="true"/>
+							<smartFilterBar:ControlConfiguration key="DataR" id="idDataR" index="8" label="Data criação Remessa" groupId="_BASIC" width="auto"
+								visibleInAdvancedArea="true"/>
+						</smartFilterBar:controlConfiguration>
+						<smartFilterBar:layoutData>
+							<m:FlexItemData shrinkFactor="0"/>
+						</smartFilterBar:layoutData>
+					</smartFilterBar:SmartFilterBar>
+					<f:SimpleForm editable="true" maxContainerCols="5">
+						<f:content>
+							<Button class="sapUiTinyMarginBottom" icon="sap-icon://add-coursebook" tooltip="Criar remessa agrupada" press="CriarRemessaAgrup"
+								text="Criar remessa agrupada"/>
+							<Button class="sapUiTinyMarginBottom" icon="sap-icon://add-document" tooltip="Criar remessa individual" press="CriarRemessaIndiv"
+								text="Criar remessa individual"/>
+							<Button class="sapUiTinyMarginBottom" icon="sap-icon://bus-public-transport" tooltip="Criar transporte" press="CriarTransp"
+								text="Criar transporte"/>
+							<Button class="sapUiTinyMarginBottom" icon="sap-icon://delete" tooltip="Desagrupar" press="Desagrupar" text="Desagrupar"/>
+							<!--<Button class="sapUiTinyMarginBottom" icon="sap-icon://database" tooltip="Anexar UC" press="AnexarUC" text="Anexar UC"/>-->
+						</f:content>
+					</f:SimpleForm>
+					<!--<VBox id="form1" visible="true">-->
+					<smartTable:SmartTable id="smartTable2" entitySet="ZET_CBLE_PR_REMSet" smartFilterId="smartFilterBar2" useExportToExcel="true"
+						useVariantManagement="true" useTablePersonalisation="true" tableType="ResponsiveTable" header="Remessas" showRowCount="true"
+						showFullScreenButton="true" showVariantManagement="true"
+						initiallyVisibleFields="Contador,Parceiro,Nome,Ano,Vbeln,Posnr,Etenr,Ebeln,Ebelp,VbelnR,PosnrR,DataR,HoraR,DocTransp,Obs,Transportadora,Tptrans,Cmgst,CmgstR,Tpveic,Matnr,Maktx,Qtde,Meins,FamMat,Matkl,Uname,Banfn,Bnfpo,Auart,Werks,Audat"
+						requestAtLeastFields="Contador,Parceiro,Nome,Ano,Vbeln,Posnr,Etenr,Ebeln,Ebelp,VbelnR,PosnrR,DataR,HoraR,DocTransp,Obs,Transportadora,Tptrans,Cmgst,CmgstR,Tpveic,Matnr,Maktx,Qtde,Meins,FamMat,Matkl,Uname,Banfn,Bnfpo,Auart,Werks,Audat"
+						enableAutoBinding="false" class="sapUiResponsiveContentPadding" persistencyKey="SmartTablePKey6" beforeRebindTable="atualizasmart2">
+						<table:Table mode="MultiSelect" id="table2" enableBusyIndicator="true" busyIndicatorDelay="100" rememberSelections="false"
+							visibleRowCount='100' showSeparators="All" enableCellFilter="false" enableColumnFreeze="true" fixedColumnCount="6">
+							<table:rowSettingsTemplate>
+								<table:RowSettings highlight="{= ${CmgstR} === 'B' || ${CmgstR} === 'C' ? 'Error' : 'Success' }"/>
+							</table:rowSettingsTemplate>
+							<table:columns>
+								<table:Column width="100px">
+									<m:Label text="Contador"/>
+									<table:template >
+										<m:Text text="{Contador}" editable="false"/>
+									</table:template>
+									<table:customData>
+										<core:CustomData key="p13nData" value='\{"columnKey": "Contador", "columnIndex":"0", "leadingProperty": "Contador"}'/>
+									</table:customData>
+								</table:Column>
+								<table:Column width="100px">
+									<m:Label text="Transportadora"/>
+									<table:template >
+										<m:Input value="{Transportadora}" id="idTranspo" valueHelpRequest="onTrans" showValueHelp="true" showSuggestion="true" filterSuggests="true"
+											startSuggestion="0" placeholder="Transportadora" change="SetTransp" editable="{= ${DocTransp} === '' ? true : false }" maxLength="10"/>
+									</table:template>
+									<table:customData>
+										<core:CustomData key="p13nData" value='\{"columnKey": "Transportadora", "columnIndex":"0", "leadingProperty": "Transportadora"}'/>
+									</table:customData>
+								</table:Column>
+								<table:Column width="100px">
+									<m:Label text="Tipo de Transporte"/>
+									<table:template >
+										<m:Input value="{Tptrans}" id="idTptrans" valueHelpRequest="onTptrans" showValueHelp="true" showSuggestion="true" filterSuggests="true"
+											startSuggestion="0" placeholder="Tipo de Transporte" change="SetTp" editable="{= ${DocTransp} === '' ? true : false }" maxLength="4"/>
+									</table:template>
+									<table:customData>
+										<core:CustomData key="p13nData" value='\{"columnKey": "Tptrans", "columnIndex":"0", "leadingProperty": "Tptrans"}'/>
+									</table:customData>
+								</table:Column>
+								<table:Column width="100px">
+									<m:Label text="Obs"/>
+									<table:template >
+										<m:Input value="{Obs}" change="gravaObs" editable="{= ${CmgstR} === 'B' || ${CmgstR} === 'C' ? true : false }"/>
+									</table:template>
+									<table:customData>
+										<core:CustomData key="p13nData" value='\{"columnKey": "Obs", "columnIndex":"0", "leadingProperty": "Obs"}'/>
+									</table:customData>
+								</table:Column>
+								<table:Column width="100px">
+									<m:Label text="Quantidade"/>
+									<table:template >
+										<m:Input value="{Qtde}" editable="{= ${VbelnR} === '' ? true : false }" change="SetQtde"/>
+									</table:template>
+									<table:customData>
+										<core:CustomData key="p13nData" value='\{"columnKey": "Qtde", "columnIndex":"0", "leadingProperty": "Qtde"}'/>
+									</table:customData>
+								</table:Column>
+								<table:Column width="100px">
+									<m:Label text="Data Expedição"/>
+									<table:template >
+										<m:Input value="{Audat}" editable="true" change="SetDate"/>
+									</table:template>
+									<table:customData>
+										<core:CustomData key="p13nData" value='\{"columnKey": "Audat", "columnIndex":"0", "leadingProperty": "Audat"}'/>
+									</table:customData>
+									<Text text="Data Expedição"/>
+								</table:Column>
+							</table:columns>
+						</table:Table>
+					</smartTable:SmartTable>
+				</IconTabFilter>
+				<IconTabFilter key="3" id="Filter03" text="Historico" icon="sap-icon://newspaper" tooltip="Historico">
+					<smartFilterBar:SmartFilterBar id="smartFilterBar3" useToolbar="false" assignedFiltersChanged="onAssignedFiltersChanged"
+						entitySet="ZET_CBLE_PR_REMSet" visible="true" persistencyKey="SmartTablePKey7">
+						<smartFilterBar:controlConfiguration>
+							<smartFilterBar:ControlConfiguration key="Auart" id="idAuart3" index="3" label="Tipo Doc" width="auto" visibleInAdvancedArea="true"/>
+							<smartFilterBar:ControlConfiguration key="Werks" id="idWerks3" index="4" label="Centro" width="auto" visibleInAdvancedArea="true"/>
+							<smartFilterBar:ControlConfiguration key="Audat" id="idAudat3" index="5" label="Data Expedição" width="auto" visibleInAdvancedArea="true"/>
+							<smartFilterBar:ControlConfiguration key="Vbeln" id="idVbeln3" index="6" label="Documento Vendas" width="auto" visibleInAdvancedArea="true"/>
+							<smartFilterBar:ControlConfiguration key="Banfn" id="idBanfn3" index="7" label="Documento Requisição" width="auto"
+								visibleInAdvancedArea="true"/>
+							<smartFilterBar:ControlConfiguration key="Parceiro" id="idParce3" index="8" label="Parceiro" width="auto" visibleInAdvancedArea="true"/>
+							<smartFilterBar:ControlConfiguration key="Uname" id="idUname3" index="9" label="Usuario" width="auto" visibleInAdvancedArea="true"/>
+						</smartFilterBar:controlConfiguration>
+						<smartFilterBar:layoutData>
+							<m:FlexItemData shrinkFactor="0"/>
+						</smartFilterBar:layoutData>
+					</smartFilterBar:SmartFilterBar>
+					<smartTable:SmartTable id="smartTable3" entitySet="ZET_CBLE_PR_REMSet" smartFilterId="smartFilterBar3" useExportToExcel="true"
+						useVariantManagement="true" useTablePersonalisation="true" tableType="Table" showRowCount="true" showFullScreenButton="true"
+						initiallyVisibleFields="Contador,Parceiro,Nome,Vbeln,Posnr,Ebeln,Ebelp,VbelnR,PosnrR,DocTransp,Obs,Cmgst,Tpveic,Matnr,Qtde,Meins,FamMat,Matkl,Uname,Banfn,Bnfpo,Auart,Werks,Audat,Dtproc"
+						enableAutoBinding="true" class="sapUiResponsiveContentPadding" persistencyKey="SmartTablePKey8" beforeRebindTable="atualizasmart3">
+						<table:Table selectionMode="None" id="table3" enableBusyIndicator="true" busyIndicatorDelay="100" growing="false" showSeparators="All"/>
+					</smartTable:SmartTable>
+				</IconTabFilter>
+			</items>
+		</IconTabBar>
+	</Page>
+</mvc:View>

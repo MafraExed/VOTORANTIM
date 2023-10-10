@@ -1,0 +1,1 @@
+sap.ui.define(["Y5GL_FERI_APRO2/Y5GL_FERI_APRO2/controller/BaseController"],function(t){"use strict";return t.extend("Y5GL_FERI_APRO2.Y5GL_FERI_APRO2.controller.NotFound",{onInit:function(){this.getRouter().getTarget("notFound").attachDisplay(this._onNotFoundDisplayed,this)},_onNotFoundDisplayed:function(){this.getModel("appView").setProperty("/layout","OneColumn")}})});

@@ -1,0 +1,58 @@
+<!--
+
+    Copyright (C) 2009-2014 SAP SE or an SAP affiliate company. All rights reserved
+
+-->
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+<edmx:DataServices m:DataServiceVersion="2.0">
+<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="HCM_MY_PAYSTUBS_SRV" xml:lang="en" sap:schema-version="0000">
+<EntityType Name="Paystub" sap:content-version="1">
+<Key>
+<PropertyRef Name="SEQUENCENUMBER"/>
+<PropertyRef Name="PersonnelAssignment"/>
+</Key>
+<Property Name="SEQUENCENUMBER" Type="Edm.Int32" Nullable="false" sap:label="Sequence Number" sap:creatable="false" sap:updatable="false"/>
+<Property Name="StartDate" Type="Edm.DateTime" Nullable="false" Precision="0" sap:label="Start Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="EndDate" Type="Edm.DateTime" Nullable="false" Precision="0" sap:label="End Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="PayrollType" Type="Edm.String" sap:label="Payroll Type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Reason" Type="Edm.String" sap:label="Reason" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Amount" Type="Edm.Decimal" Nullable="false" Precision="15" Scale="2" sap:label="Amount" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Currency" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Currency" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="BonusDate" Type="Edm.DateTime" Precision="0" sap:label="Bonus Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="PayDate" Type="Edm.DateTime" Precision="0" sap:label="Pay Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Period" Type="Edm.String" m:FC_TargetPath="SyndicationTitle" m:FC_KeepInContent="true" sap:label="Period" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="GroupName" Type="Edm.String" sap:label="Group Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="PersonnelAssignment" Type="Edm.String" Nullable="false" sap:label="Personnel Assignment" sap:creatable="false" sap:updatable="false"/>
+<Property Name="PersonnelAssignmentText" Type="Edm.String" Nullable="false" sap:label="Personnel Assignment Text" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="GrossPay" Type="Edm.Decimal" Nullable="false" Precision="15" Scale="2" sap:label="Gross Pay" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Deduction" Type="Edm.Decimal" Nullable="false" Precision="15" Scale="2" sap:label="Deduction" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Position" Type="Edm.String" Nullable="false" sap:label="Position" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+</EntityType>
+<EntityType Name="PDFPaystub" m:HasStream="true" sap:content-version="1">
+<Key>
+<PropertyRef Name="SEQUENCENUMBER"/>
+<PropertyRef Name="PersonnelAssignment"/>
+</Key>
+<Property Name="SEQUENCENUMBER" Type="Edm.Int32" Nullable="false" sap:label="Sequence Number" sap:creatable="false" sap:updatable="false"/>
+<Property Name="Title" Type="Edm.String" Nullable="false" m:FC_TargetPath="SyndicationTitle" m:FC_KeepInContent="true" sap:label="Title" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="ContentType" Type="Edm.String" Nullable="false" sap:label="Content Type" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+<Property Name="PersonnelAssignment" Type="Edm.String" Nullable="false" sap:label="Personnel Assignment" sap:creatable="false" sap:updatable="false"/>
+<NavigationProperty Name="Payslip" Relationship="HCM_MY_PAYSTUBS_SRV.PaystubPDFPaystub" FromRole="ToRole_PaystubPDFPaystub" ToRole="FromRole_PaystubPDFPaystub"/>
+</EntityType>
+<Association Name="PaystubPDFPaystub" sap:content-version="1">
+<End Type="HCM_MY_PAYSTUBS_SRV.Paystub" Multiplicity="1" Role="FromRole_PaystubPDFPaystub"/>
+<End Type="HCM_MY_PAYSTUBS_SRV.PDFPaystub" Multiplicity="1" Role="ToRole_PaystubPDFPaystub"/>
+</Association>
+<EntityContainer Name="HCM_MY_PAYSTUBS_SRV_Entities" m:IsDefaultEntityContainer="true">
+<EntitySet Name="Paystubs" EntityType="HCM_MY_PAYSTUBS_SRV.Paystub" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+<EntitySet Name="PDFPaystubs" EntityType="HCM_MY_PAYSTUBS_SRV.PDFPaystub" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:addressable="false" sap:content-version="1"/>
+<AssociationSet Name="PaystubPDFPaystub" Association="HCM_MY_PAYSTUBS_SRV.PaystubPDFPaystub" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+<End EntitySet="Paystubs" Role="FromRole_PaystubPDFPaystub"/>
+<End EntitySet="PDFPaystubs" Role="ToRole_PaystubPDFPaystub"/>
+</AssociationSet>
+</EntityContainer>
+<atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="https://rdetestingno0qxy-fiori.dispatcher.neo.ondemand.com/sap/opu/odata/sap/HCM_MY_PAYSTUBS_SRV/$metadata"/>
+<atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="https://rdetestingno0qxy-fiori.dispatcher.neo.ondemand.com/sap/opu/odata/sap/HCM_MY_PAYSTUBS_SRV/$metadata"/>
+</Schema>
+</edmx:DataServices>
+</edmx:Edmx>

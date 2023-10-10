@@ -1,0 +1,62 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:table="sap.ui.table">
+	<Dialog title="Tarefas Atrasadas" type="Message" state="Warning" >
+		<content>
+
+<table:Table id="idTableAtividadesAtrasadas" rows="{viewAtividades>/popupTarefasAtrasadas}" selectionMode="None"
+							enableCellFilter="true" visibleRowCountMode="Auto">
+				<table:columns>
+		
+					<table:Column width="20rem" sortProperty="DESC_TAREFA" filterProperty="DESC_TAREFA">
+						<Label text="Tarefa"/>
+						<table:template>
+							<Text text="{viewAtividades>DESC_TAREFA}" class="gantt__label" wrapping="false"/>
+						</table:template>
+					</table:Column>
+					<table:Column width="75px" sortProperty="EMPRESA" filterProperty="EMPRESA">
+						<HBox width="100%" justifyContent="Center">
+							<Label text="Empresa"/>
+						</HBox>
+						<table:template >
+							<HBox width="100%" justifyContent="Center">
+								<Text text="{viewAtividades>EMPRESA}" wrapping="false" class="gantt__label label_empresa" tooltip="{viewAtividades>EMPRESA}"/>
+							</HBox>
+						</table:template>
+					</table:Column>
+					
+					<table:Column id="idColRespExec" width="140px" sortProperty="RESP_EXEC" filterProperty="RESP_EXEC">
+						<Label text="Responsável Exec."/>
+						<table:template>
+							<HBox width="100%" justifyContent="Center">
+								<Text text="{viewAtividades>RESP_EXEC}" class="gantt__label" wrapping="false"/>
+							</HBox>
+						</table:template>
+					</table:Column>
+					
+					<table:Column id="idColFimPlanD" width="125px" showFilterMenuEntry="false" sortProperty="DATA_FIM_PLAN" filterProperty="DATA_FIM_PLAN">
+						<Label text="Fim Plan(D)"/>
+						<table:template>
+							<HBox width="100%" class="gantt__plan__hbox" justifyContent="Center" alignContent="Center" alignItems="Center">
+								<DatePicker class="gantt__plan__date" value="{viewAtividades>DATA_FIM_PLAN}" displayFormat="short" valueFormat="yyyyMMdd" change="onChangeDate"
+									tooltip="{viewAtividades>DATA_FIM_PLAN}"/>
+							</HBox>
+						</table:template>
+					</table:Column>
+					<table:Column id="idColFimPlanH" width="105px" showFilterMenuEntry="false" sortProperty="HORA_FIM_PLAN" filterProperty="HORA_FIM_PLAN">
+						<Label text="Fim Plan(H)"/>
+						<table:template>
+							<HBox width="100%" class="gantt__plan__hbox" justifyContent="Center" alignContent="Center" alignItems="Center">
+								<TimePicker class="gantt__plan__date" value="{viewAtividades>HORA_FIM_PLAN}" valueFormat="HHmm" displayFormat="HH:mm" editable="false"/>
+							</HBox>
+						</table:template>
+					</table:Column>
+					
+				</table:columns>
+			</table:Table>
+
+		</content>
+		<endButton>
+			<Button text="fechar" press="onCloseDialogLateTasks"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>
+

@@ -1,0 +1,172 @@
+{
+    "_version": "1.9.0",
+    "sap.app": {
+        "id": "Y5GL_SOLFER_DHO.Y5GL_SOLFER_DHO",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "dataSources": {
+            "ZGWGLHR_FERIAS_ESS_SRV": {
+                "uri": "/sap/opu/odata/sap/ZGWGLHR_FERIAS_ESS_SRV/",
+                "type": "OData",
+                "settings": {
+                    "localUri": "localService/ZGWGLHR_FERIAS_ESS_SRV/metadata.xml"
+                }
+            }
+        },
+        "sourceTemplate": {
+            "id": "servicecatalog.connectivityComponentForManifest",
+            "version": "0.0.0",
+            "toolsId": "5f428c89-4c25-4faa-b7f9-f68764f72e5f"
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "sap-icon://detail-view",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "rootView": {
+            "viewName": "Y5GL_SOLFER_DHO.Y5GL_SOLFER_DHO.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "app"
+        },
+        "dependencies": {
+            "minUI5Version": "1.42.0",
+            "libs": {
+                "sap.collaboration": {
+                    "lazy": true
+                },
+                "sap.f": {},
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.ushell": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "Y5GL_SOLFER_DHO.Y5GL_SOLFER_DHO.i18n.i18n"
+                }
+            },
+            "": {
+                "type": "sap.ui.model.odata.v2.ODataModel",
+                "settings": {
+                    "defaultOperationMode": "Server",
+                    "defaultBindingMode": "OneWay",
+                    "defaultCountMode": "Request",
+                    "useBatch": false
+                },
+                "dataSource": "ZGWGLHR_FERIAS_ESS_SRV",
+                "preload": true
+            }
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.f.routing.Router",
+                "viewType": "XML",
+                "viewPath": "Y5GL_SOLFER_DHO.Y5GL_SOLFER_DHO.view",
+                "controlId": "layout",
+                "controlAggregation": "beginColumnPages",
+                "bypassed": {
+                    "target": "notFound"
+                },
+                "async": true
+            },
+            "routes": [
+                {
+                    "pattern": "",
+                    "name": "master",
+                    "target": "master"
+                },
+                {
+                    "pattern": "ZET_GLHR_PROGRAMAR/{Pernr}/{Index}/{Endda}/{Begda}/",
+                    "name": "object",
+                    "target": [
+                        "master",
+                        "object"
+                    ]
+                },
+                {
+                    "name": "Add",
+                    "pattern": "Add/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "master",
+                        "Add"
+                    ]
+                }
+            ],
+            "targets": {
+                "master": {
+                    "viewName": "Master",
+                    "viewLevel": 1,
+                    "viewId": "master",
+                    "title": "Dependentes / Benefícios"
+                },
+                "object": {
+                    "viewName": "Detail",
+                    "viewId": "detail",
+                    "viewLevel": 1,
+                    "controlAggregation": "midColumnPages"
+                },
+                "detailObjectNotFound": {
+                    "viewName": "DetailObjectNotFound",
+                    "viewId": "detailObjectNotFound",
+                    "controlAggregation": "midColumnPages"
+                },
+                "notFound": {
+                    "viewName": "NotFound",
+                    "viewId": "notFound"
+                },
+                "Add": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearAggregation": true,
+                    "viewName": "Add",
+                    "viewId": "Adicionar",
+                    "viewLevel": 1,
+                    "controlAggregation": "midColumnPages"
+                },
+                "Employee": {
+                    "viewType": "XML",
+                    "viewName": "Employee"
+                }
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "./css/style.css",
+                    "id": ""
+                }
+            ]
+        }
+    },
+    "sap.platform.abap": {
+        "uri": "/sap/bc/ui5_ui5/sap/y5gl_solfer_dho",
+        "_version": "1.1.0"
+    }
+}

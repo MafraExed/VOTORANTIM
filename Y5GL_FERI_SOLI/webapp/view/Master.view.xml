@@ -1,0 +1,34 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml"
+	controllerName="Y5GL_FERI_SOLI.Y5GL_FERI_SOLI.controller.Master" displayBlock="true">
+	<App id="app" pages="{/ZET_GLHR_PERIODOS}">
+		<pages>
+			<Page title="Períodos" backgroundDesign="Solid">
+				<customHeader>
+					<Bar>
+						<contentLeft>
+							<Label/>
+							<!--items--><Label text="{Nome}" design="Bold" />
+							<!--<Button text="Voltar Página Inicial" type="Back" press="onVoltar"/>-->
+						</contentLeft>
+					</Bar>
+				</customHeader>
+				<content>
+					<List id="list" items="{ path: '/ZET_GLHR_PERIODOS'}" noDataText="{masterView>/noDataText}" itemPress="onSelectionChange" selectionChange="onSelectionChange">
+						<items>
+							<ObjectListItem title="{LabelTitulo}" type="Navigation" press="onSelectionChange" icon="sap-icon://general-leave-request" highlight="Information"
+								fieldGroupIds="">
+								<attributes>
+									<ObjectAttribute text="{LabelPeriodo}"/>
+								</attributes>
+								<firstStatus>
+									<ObjectStatus text="{Status}" id="__status1" state="{path: 'Status', formatter:'.FormatStatus'}"/>
+								</firstStatus>
+							</ObjectListItem>
+						</items>
+					</List>
+					<Button text="Voltar" width="100%" id="__button0" type="Back" press="NA" visible="false"/>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

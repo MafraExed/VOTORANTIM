@@ -1,0 +1,497 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:m="sap.m" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout"
+	controllerName="com.sap.dashboardappDashboardApp.controller.Detail">
+	<m:Page showHeader="true" title="{i18n>pageTitle}" showFooter="true" showNavButton="false">
+		<m:content>
+			<m:Bar design="Auto">
+				<m:contentLeft>
+					<m:HBox alignItems="Stretch" direction="Row" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div"
+						visible="true" displayInline="false">
+						<m:items>
+							<m:Text text="" width="10px" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+							<core:Icon src="sap-icon://calendar" size="36px" color="#000080" height="48px" width="48px"/>
+							<m:Text text="" width="10px" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+							<m:Title text="09/09/2017" titleStyle="H3" width="auto" textAlign="Begin" visible="true"/>
+						</m:items>
+						<m:layoutData/>
+					</m:HBox>
+				</m:contentLeft>
+				<m:contentMiddle/>
+				<m:contentRight/>
+			</m:Bar>
+			<m:IconTabBar expandable="true" expanded="true" applyContentPadding="false" backgroundDesign="Solid" upperCase="false" visible="true"
+				selectedKey="Ok">
+				<m:content/>
+				<m:items>
+					<m:IconTabFilter icon="sap-icon://add-product" iconColor="Default" text="{i18n>iconEntrada}" count="" design="Vertical" enabled="true"
+						showAll="false" textDirection="Inherit" visible="true">
+						<m:content>
+							<m:Panel height="auto" width="100%" headerText="" expandable="false" expanded="true" expandAnimation="true" backgroundDesign="Solid">
+								<m:content>
+									<m:HBox alignItems="Center" direction="Row" fitContainer="false" width="auto" height="auto" justifyContent="Center" renderType="Div"
+										visible="true" displayInline="false">
+										<m:items>
+											<core:Icon src="sap-icon://sys-enter-2" size="48px" color="Green" height="48px" width="48px" backgroundColor="" visible="true"/>
+											<m:Text text="" width="15px" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+											<m:VBox alignItems="End" direction="ColumnReverse" fitContainer="false" width="auto" height="auto" justifyContent="End" renderType="Div"
+												visible="true" displayInline="false">
+												<m:items>
+													<layout:HorizontalLayout>
+														<m:Title class="space" text="Total recebido:" titleStyle="H3" width="auto" textAlign="Center" visible="true"/>
+														<m:Title text="4.282 T" titleStyle="H3" width="auto" textAlign="Center" visible="true"/>
+													</layout:HorizontalLayout>
+												</m:items>
+												<m:layoutData/>
+											</m:VBox>
+										</m:items>
+										<m:layoutData/>
+									</m:HBox>
+									<layout:Grid defaultIndent="L1 M0 S0" defaultSpan="L4 M4 S12" position="Center" width="100%" containerQuery="false" hSpacing="1"
+										vSpacing="1">
+										<layout:content>
+											<m:VBox alignItems="Stretch" direction="Column" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div"
+												visible="true" displayInline="false">
+												<m:items>
+													<m:HBox alignItems="Center" direction="Row" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div"
+														visible="true" displayInline="false">
+														<m:items>
+															<core:Icon src="sap-icon://cargo-train" size="36px" height="48px" width="48px" backgroundColor="" visible="true"/>
+															<m:VBox alignItems="Center" direction="ColumnReverse" fitContainer="true" width="100%" renderType="Div" visible="true" height="auto">
+																<m:items>
+																	<m:VBox alignItems="End" direction="ColumnReverse" fitContainer="false" width="auto" height="auto" justifyContent="End" renderType="Div"
+																		visible="true" displayInline="false">
+																		<m:items>
+																			<m:Title text="Trem" titleStyle="H3" width="auto" textAlign="Center" visible="true"/>
+																		</m:items>
+																		<m:layoutData/>
+																	</m:VBox>
+																</m:items>
+																<m:layoutData/>
+															</m:VBox>
+														</m:items>
+														<m:layoutData/>
+													</m:HBox>
+													<m:Text
+														text="___________________________________________________________________________________________________________________________________________________________________________________________________"
+														width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+													<m:List mode="SingleSelectMaster" width="100%" headerText="" footerText="" backgroundDesign="Solid" showSeparators="Inner" growing="true"
+														growingThreshold="20" growingScrollToLoad="true">
+														<m:infoToolbar>
+															<m:Toolbar width="100%" height="auto" design="Auto" visible="false" enabled="true">
+																<m:content>
+																	<m:Label text="Label" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit"/>
+																</m:content>
+															</m:Toolbar>
+														</m:infoToolbar>
+														<m:headerToolbar/>
+														<m:items>
+															<m:StandardListItem icon="sap-icon://add-activity-2" title="J3F" description="1402 T" info="" infoState="Error" type="Active"
+																selected="false"/>
+															<m:StandardListItem icon="sap-icon://notes" title="J3W" description="412 T" info="" infoState="None" type="Active" selected="false"/>
+															<m:StandardListItem icon="sap-icon://crm-service-manager" title="JUF" description="298 T" info="" infoState="None" type="Active"
+																selected="false"/>
+															<m:StandardListItem icon="sap-icon://clinical-tast-tracker" title="JBF" description="284 T" info="" infoState="Error" type="Active"
+																selected="false"/>
+															<m:StandardListItem icon="sap-icon://task" title="JVF" description="271 T" info="" infoState="Error" type="Active" selected="false"/>
+															<m:StandardListItem icon="sap-icon://activity-2" title="T3S" description="402 T" info="" infoState="None" type="Active" selected="false"/>
+															<m:StandardListItem icon="sap-icon://activity-items" title="J3E" description="675 T" info="" infoState="None" type="Active" selected="false"/>
+														</m:items>
+													</m:List>
+													<m:Text text="_____________________________________________________________________________________________________________________"
+														width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+													<layout:HorizontalLayout>
+														<m:ObjectStatus title="" class="space" text="" state="Success" icon="sap-icon://sys-enter"/>
+														<m:ObjectStatus class="space" title="" text="Carga Recebida:" state="Success"/>
+														<m:ObjectStatus title="" text="3.744 T" state="Success"/>
+													</layout:HorizontalLayout>
+													<m:Text
+														text="________________________________________________________________________________________________________________________________________________________________"
+														width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+												</m:items>
+												<m:layoutData/>
+											</m:VBox>
+											<m:VBox alignItems="Stretch" direction="Column" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div"
+												visible="true" displayInline="false">
+												<m:items>
+													<m:HBox alignItems="Center" direction="Row" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div"
+														visible="true" displayInline="false">
+														<m:items>
+															<core:Icon src="sap-icon://shipping-status" size="36px" height="48px" width="48px" visible="true"/>
+															<m:VBox alignItems="Center" direction="ColumnReverse" fitContainer="true" width="100%" renderType="Div" visible="true" height="auto">
+																<m:items>
+																	<m:VBox alignItems="End" direction="ColumnReverse" fitContainer="false" width="auto" height="auto" justifyContent="End" renderType="Div"
+																		visible="true" displayInline="false">
+																		<m:items>
+																			<m:Title text="Caminão" titleStyle="H3" width="auto" textAlign="Center" visible="true"/>
+																		</m:items>
+																		<m:layoutData/>
+																	</m:VBox>
+																</m:items>
+																<m:layoutData/>
+															</m:VBox>
+														</m:items>
+														<m:layoutData/>
+													</m:HBox>
+													<m:Text
+														text="___________________________________________________________________________________________________________________________________________________________________________________________________"
+														width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+													<m:List mode="SingleSelectMaster" width="100%" headerText="" footerText="" backgroundDesign="Solid" showSeparators="Inner" growing="true"
+														growingThreshold="20" growingScrollToLoad="true">
+														<m:infoToolbar>
+															<m:Toolbar width="100%" height="auto" design="Auto" visible="false" enabled="true">
+																<m:content>
+																	<m:Label text="Label" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit"/>
+																</m:content>
+															</m:Toolbar>
+														</m:infoToolbar>
+														<m:headerToolbar/>
+														<m:items>
+															<m:StandardListItem icon="sap-icon://add-activity-2" title="J3F" description="99 T" info="" infoState="Error" type="Active" selected="false"/>
+															<m:StandardListItem icon="sap-icon://notes" title="J3W" description="81 T" info="" infoState="Error" type="Active" selected="false"/>
+															<m:StandardListItem icon="sap-icon://crm-service-manager" title="JUF" description="68 T" info="" infoState="None" type="Active"
+																selected="false"/>
+															<m:StandardListItem icon="sap-icon://clinical-tast-tracker" title="JBF" description="28 T" info="" infoState="None" type="Active"
+																selected="false"/>
+															<m:StandardListItem icon="sap-icon://task" title="JVF" description="49 T" info="" infoState="None" type="Active" selected="false"/>
+															<m:StandardListItem icon="sap-icon://activity-2" title="T3S" description="55 T" info="" infoState="Error" type="Active" selected="false"/>
+															<m:StandardListItem icon="sap-icon://activity-items" title="J3E" description="158 T" info="" infoState="None" type="Active" selected="false"/>
+														</m:items>
+													</m:List>
+													<m:Text
+														text="____________________________________________________________________________________________________________________________________________________________"
+														width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+													<layout:HorizontalLayout>
+														<m:ObjectStatus title="" class="space" text="" state="Success" icon="sap-icon://sys-enter"/>
+														<m:ObjectStatus title="" class="space" text="Carga Recebida:" state="Success"/>
+														<m:ObjectStatus title="" text="538 T" state="Success"/>
+													</layout:HorizontalLayout>
+													<m:Text
+														text="_______________________________________________________________________________________________________________________________________________________________________________________"
+														width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+												</m:items>
+												<m:layoutData/>
+											</m:VBox>
+										</layout:content>
+									</layout:Grid>
+								</m:content>
+							</m:Panel>
+						</m:content>
+					</m:IconTabFilter>
+					<m:IconTabSeparator icon="" iconDensityAware="false"/>
+					<m:IconTabFilter icon="sap-icon://journey-arrive" iconColor="Default" text="{i18n>iconSaida}" count="" design="Vertical" enabled="true"
+						showAll="false" textDirection="Inherit" visible="true">
+						<m:content>
+							<m:Panel height="auto" width="100%" headerText="" expandable="false" expanded="true" expandAnimation="true" backgroundDesign="Solid">
+								<m:content>
+									<m:Bar design="Footer">
+										<m:contentLeft/>
+										<m:contentMiddle>
+											<m:VBox alignItems="Center" direction="Column" fitContainer="true" width="auto" renderType="Div" visible="true" height="auto">
+												<m:items>
+													<m:HBox alignItems="Center" direction="Row" fitContainer="true" width="auto" height="auto" justifyContent="Start" renderType="Div"
+														visible="true" displayInline="false">
+														<m:items>
+															<m:Image src="/webapp/resources/cruise.png" height="auto" width="50px" densityAware="false"/>
+															<m:Text text="" width="10px" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+															<m:Title text="Navio:" titleStyle="H2" width="auto" textAlign="Begin" visible="true"/>
+															<m:Title xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns:m="sap.m" text="Kiwi Arrow" titleStyle="H2"
+																width="auto" textAlign="Begin" visible="true"/>
+														</m:items>
+														<m:layoutData/>
+													</m:HBox>
+												</m:items>
+												<m:layoutData/>
+											</m:VBox>
+										</m:contentMiddle>
+										<m:contentRight/>
+									</m:Bar>
+									<m:Text text="" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+									<layout:Grid defaultIndent="L1 M0 S0" defaultSpan="L4 M4 S12" position="Center" width="100%" containerQuery="false" hSpacing="1"
+										vSpacing="1">
+										<layout:content>
+											<m:VBox alignItems="Stretch" direction="Column" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div"
+												visible="true" displayInline="false">
+												<m:items>
+													<m:HBox alignItems="Center" direction="Row" fitContainer="false" width="auto" height="auto" justifyContent="Center" renderType="Div"
+														visible="true" displayInline="false">
+														<m:items>
+															<core:Icon src="sap-icon://sys-enter-2" size="48px" color="Green" height="48px" width="48px" backgroundColor="" visible="true"/>
+															<m:Text text="" width="15px" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+															<m:VBox alignItems="End" direction="ColumnReverse" fitContainer="false" width="auto" height="auto" justifyContent="End" renderType="Div"
+																visible="true" displayInline="false">
+																<m:items>
+																	<m:Title text="Volume total: 10.289 T" titleStyle="H3" width="auto" textAlign="Center" visible="true"/>
+																</m:items>
+																<m:layoutData/>
+															</m:VBox>
+														</m:items>
+														<m:layoutData/>
+													</m:HBox>
+												</m:items>
+												<m:layoutData/>
+											</m:VBox>
+											<m:VBox alignItems="Stretch" direction="Column" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div"
+												visible="true" displayInline="false">
+												<m:items>
+													<m:HBox alignItems="Center" direction="Row" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div"
+														visible="true" displayInline="false">
+														<m:items>
+															<core:Icon src="sap-icon://alert" size="48px" color="#b30000" height="48px" width="48px" backgroundColor="" visible="true"/>
+															<m:VBox alignItems="Center" direction="ColumnReverse" fitContainer="true" width="100%" renderType="Div" visible="true" height="auto">
+																<m:items>
+																	<m:VBox alignItems="End" direction="ColumnReverse" fitContainer="false" width="auto" height="auto" justifyContent="End" renderType="Div"
+																		visible="true" displayInline="false">
+																		<m:items>
+																			<m:Title text="Total avarias: 80 T" titleStyle="H3" width="auto" textAlign="Center" visible="true"/>
+																		</m:items>
+																		<m:layoutData/>
+																	</m:VBox>
+																</m:items>
+																<m:layoutData/>
+															</m:VBox>
+														</m:items>
+														<m:layoutData/>
+													</m:HBox>
+												</m:items>
+												<m:layoutData/>
+											</m:VBox>
+											<m:VBox alignItems="Stretch" direction="Column" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div"
+												visible="true" displayInline="false">
+												<m:items>
+													<m:HBox alignItems="Center" direction="Row" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div"
+														visible="true" displayInline="false">
+														<m:items>
+															<m:Image src="/webapp/resources/ship.png" height="38px" width="38px" densityAware="false"/>
+															<m:VBox alignItems="Center" direction="ColumnReverse" fitContainer="true" width="100%" renderType="Div" visible="true" height="auto">
+																<m:items>
+																	<m:VBox alignItems="End" direction="ColumnReverse" fitContainer="false" width="auto" height="auto" justifyContent="End" renderType="Div"
+																		visible="true" displayInline="false">
+																		<m:items>
+																			<m:Title text="Navio" titleStyle="H3" width="auto" textAlign="Center" visible="true"/>
+																		</m:items>
+																		<m:layoutData/>
+																	</m:VBox>
+																</m:items>
+																<m:layoutData/>
+															</m:VBox>
+														</m:items>
+														<m:layoutData/>
+													</m:HBox>
+													<m:Text
+														text="___________________________________________________________________________________________________________________________________________________________________________________________________"
+														width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+													<m:List mode="SingleSelectMaster" width="100%" headerText="" footerText="" backgroundDesign="Solid" showSeparators="Inner" growing="true"
+														growingThreshold="20" growingScrollToLoad="true">
+														<m:infoToolbar>
+															<m:Toolbar width="100%" height="auto" design="Auto" visible="false" enabled="true">
+																<m:content>
+																	<m:Label text="Label" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit"/>
+																</m:content>
+															</m:Toolbar>
+														</m:infoToolbar>
+														<m:headerToolbar/>
+														<m:items>
+															<m:StandardListItem icon="sap-icon://add-activity-2" title="J3F" description="4.223 T" info="Avaria: 33 T" infoState="Error" type="Active"
+																selected="false"/>
+															<m:StandardListItem icon="sap-icon://notes" title="J3W" description="1.523 T" info="" infoState="None" type="Active" selected="false"/>
+															<m:StandardListItem icon="sap-icon://crm-service-manager" title="JUF" description="1591 T" info="" infoState="Error" type="Active"
+																selected="false"/>
+															<m:StandardListItem icon="sap-icon://clinical-tast-tracker" title="JBF" description="981 T" info="" infoState="None" type="Active"
+																selected="false"/>
+															<m:StandardListItem icon="sap-icon://task" title="JVF" description="964 T" info="" infoState="Error" type="Active" selected="false"/>
+															<m:StandardListItem icon="sap-icon://activity-2" title="T3S" description="888 T" info="Avaria: 47 T" infoState="Error" type="Active"
+																selected="false"/>
+															<m:StandardListItem icon="sap-icon://activity-items" title="J3E" description="119 T" info="" infoState="None" type="Active" selected="false"/>
+														</m:items>
+													</m:List>
+													<m:Text
+														text="__________________________________________________________________________________________________________________________________________________________________________________________________________________________________________"
+														width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+														<m:ObjectStatus title="" class="space" text="" state="Success" icon="sap-icon://sys-enter"/>
+													<m:ObjectStatus title="" text="Carga Vendida: 10.289 T" state="Success" icon="sap-icon://sys-enter"/>
+													<m:ObjectStatus title="" text="Carga Avariada: 80 T" state="Error" icon="sap-icon://alert"/>
+													<m:Text
+														text="________________________________________________________________________________________________________________________________________________________________"
+														width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+												</m:items>
+												<m:layoutData/>
+											</m:VBox>
+											<m:VBox alignItems="Stretch" direction="Column" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div"
+												visible="true" displayInline="false">
+												<m:items>
+													<m:HBox alignItems="Center" direction="Row" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div"
+														visible="true" displayInline="false">
+														<m:items>
+															<core:Icon src="sap-icon://shipping-status" size="36px" height="48px" width="48px" visible="true"/>
+															<m:VBox alignItems="Center" direction="ColumnReverse" fitContainer="true" width="100%" renderType="Div" visible="true" height="auto">
+																<m:items>
+																	<m:VBox alignItems="End" direction="ColumnReverse" fitContainer="false" width="auto" height="auto" justifyContent="End" renderType="Div"
+																		visible="true" displayInline="false">
+																		<m:items>
+																			<m:Title text="Caminão" titleStyle="H3" width="auto" textAlign="Center" visible="true"/>
+																		</m:items>
+																		<m:layoutData/>
+																	</m:VBox>
+																</m:items>
+																<m:layoutData/>
+															</m:VBox>
+														</m:items>
+														<m:layoutData/>
+													</m:HBox>
+													<m:Text
+														text="___________________________________________________________________________________________________________________________________________________________________________________________________"
+														width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+													<m:List mode="SingleSelectMaster" width="100%" headerText="" footerText="" backgroundDesign="Solid" showSeparators="Inner" growing="true"
+														growingThreshold="20" growingScrollToLoad="true">
+														<m:infoToolbar>
+															<m:Toolbar width="100%" height="auto" design="Auto" visible="false" enabled="true">
+																<m:content>
+																	<m:Label text="Label" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit"/>
+																</m:content>
+															</m:Toolbar>
+														</m:infoToolbar>
+														<m:headerToolbar/>
+														<m:items>
+															<m:StandardListItem icon="sap-icon://add-activity-2" title="J3F" description="0 T" info="" infoState="Error" type="Active" selected="false"/>
+															<m:StandardListItem icon="sap-icon://notes" title="J3W" description="0 T" info="" infoState="Error" type="Active" selected="false"/>
+															<m:StandardListItem icon="sap-icon://crm-service-manager" title="JUF" description="0 T" info="" infoState="None" type="Active"
+																selected="false"/>
+															<m:StandardListItem icon="sap-icon://clinical-tast-tracker" title="JBF" description="0T" info="" infoState="None" type="Active"
+																selected="false"/>
+															<m:StandardListItem icon="sap-icon://task" title="JVF" description="0 T" info="" infoState="None" type="Active" selected="false"/>
+															<m:StandardListItem icon="sap-icon://activity-2" title="T3S" description="0 T" info="" infoState="Error" type="Active" selected="false"/>
+															<m:StandardListItem icon="sap-icon://activity-items" title="J3E" description="0 T" info="" infoState="None" type="Active" selected="false"/>
+														</m:items>
+													</m:List>
+													<m:Text
+														text="____________________________________________________________________________________________________________________________________________________________"
+														width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+													<m:ObjectStatus title="" text="Volume total: 0 T" state="Success" icon="sap-icon://sys-enter"/>
+													<m:Text
+														text="____________________________________________________________________________________________________________________________________________________________"
+														width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+												</m:items>
+												<m:layoutData/>
+											</m:VBox>
+										</layout:content>
+									</layout:Grid>
+								</m:content>
+							</m:Panel>
+						</m:content>
+					</m:IconTabFilter>
+					<m:IconTabSeparator icon="" iconDensityAware="false"/>
+					<m:IconTabFilter icon="sap-icon://factory" iconColor="Default" text="{i18n>iconEstoque}" count="" design="Vertical" showAll="false"
+						textDirection="Inherit" enabled="true" visible="true" iconDensityAware="false">
+						<m:content>
+							<m:Panel height="auto" width="100%" headerText="" expandable="false" expanded="true" expandAnimation="true" backgroundDesign="Solid">
+								<m:content>
+									<layout:Grid defaultIndent="L2 M1 S0" defaultSpan="L8 M8 S12" position="Left" width="100%" containerQuery="false" hSpacing="1" vSpacing="1">
+										<layout:content>
+											<m:VBox alignItems="Stretch" direction="Column" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div"
+												visible="true" displayInline="false">
+												<m:items>
+													<m:HBox alignItems="Center" direction="Row" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div"
+														visible="true" displayInline="false">
+														<m:items>
+															<core:Icon src="sap-icon://building" size="48px" color="#000080" height="48px" width="48px" backgroundColor="" visible="true"/>
+															<m:VBox alignItems="Center" direction="ColumnReverse" fitContainer="true" width="100%" renderType="Div" visible="true" height="auto">
+																<m:items>
+																	<m:VBox alignItems="End" direction="ColumnReverse" fitContainer="false" width="auto" height="auto" justifyContent="End" renderType="Div"
+																		visible="true" displayInline="false">
+																		<m:items>
+																			<m:Title text="Estoque total: 5.547 T" titleStyle="H2" width="auto" textAlign="Center" visible="true"/>
+																		</m:items>
+																		<m:layoutData/>
+																	</m:VBox>
+																</m:items>
+																<m:layoutData/>
+															</m:VBox>
+														</m:items>
+														<m:layoutData/>
+													</m:HBox>
+												</m:items>
+												<m:layoutData/>
+											</m:VBox>
+											<m:VBox alignItems="Stretch" direction="Column" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div"
+												visible="true" displayInline="false">
+												<m:items>
+													<m:Text
+														text="___________________________________________________________________________________________________________________________________________________________________________________________________"
+														width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+													<m:List mode="SingleSelectMaster" width="100%" headerText="" footerText="" backgroundDesign="Solid" showSeparators="Inner" growing="true"
+														growingThreshold="20" growingScrollToLoad="true">
+														<m:infoToolbar>
+															<m:Toolbar width="100%" height="auto" design="Auto" visible="false" enabled="true">
+																<m:content>
+																	<m:Label text="Label" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit"/>
+																</m:content>
+															</m:Toolbar>
+														</m:infoToolbar>
+														<m:headerToolbar/>
+														<m:items>
+															<m:StandardListItem icon="sap-icon://add-activity-2" title="J3F" description="529 T" info="" infoState="Error" type="Active"
+																selected="false"/>
+															<m:StandardListItem icon="sap-icon://notes" title="J3W" description="832 T" info="" infoState="None" type="Active" selected="false"/>
+															<m:StandardListItem icon="sap-icon://crm-service-manager" title="JUF" description="73 T" info="" infoState="Error" type="Active"
+																selected="false"/>
+															<m:StandardListItem icon="sap-icon://clinical-tast-tracker" title="JBF" description="1.055 T" info="" infoState="None" type="Active"
+																selected="false"/>
+															<m:StandardListItem icon="sap-icon://task" title="JVF" description="892 T" info="" infoState="Error" type="Active" selected="false"/>
+															<m:StandardListItem icon="sap-icon://activity-2" title="T3S" description="602 T" info="" infoState="None" type="Active" selected="false"/>
+															<m:StandardListItem icon="sap-icon://activity-items" title="J3E" description="1.564 T" info="" infoState="None" type="Active"
+																selected="false"/>
+														</m:items>
+													</m:List>
+													<m:Text
+														text="__________________________________________________________________________________________________________________________________________________________________________________________________________________________________________"
+														width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+												</m:items>
+												<m:layoutData/>
+											</m:VBox>
+										</layout:content>
+									</layout:Grid>
+								</m:content>
+							</m:Panel>
+						</m:content>
+					</m:IconTabFilter>
+					<m:IconTabSeparator icon="" iconDensityAware="false"/>
+					<m:IconTabFilter icon="sap-icon://sales-notification" iconColor="Default" text="Line-Up" count="" design="Vertical" showAll="false"
+						textDirection="Inherit" enabled="true" visible="false" iconDensityAware="false">
+						<m:content>
+							<m:Panel height="auto" width="100%" headerText="Navios do mês de Setembro" expandable="false" expanded="true" expandAnimation="true"
+								backgroundDesign="Solid">
+								<m:content>
+									<m:StandardTile title="Saga Fortune" number="9.420" numberUnit="Toneladas" info="04/09/2017" infoState="Warning" icon="sap-icon://product"/>
+									<m:StandardTile title="Kiwi Arrow" number="10.289" numberUnit="Toneladas" info="09/09/2017" infoState="Warning" icon="sap-icon://product"/>
+									<m:StandardTile title="Penguim Arrow" number="13.492" numberUnit="Toneladas" info="14/09/2017" infoState="Warning" icon="sap-icon://product"/>
+									<m:StandardTile title="Halophyla" number="13.991" numberUnit="Toneladas" info="18/09/2017" infoState="Warning" icon="sap-icon://product"/>
+									<m:StandardTile title="Ray Of Light" number="9.240" numberUnit="Toneladas" info="24/09/2017" infoState="Warning" icon="sap-icon://product"/>
+								</m:content>
+							</m:Panel>
+							<m:Bar design="Footer">
+								<m:contentLeft>
+									<m:ObjectStatus title="" text="Já carregado" state="Success"/>
+								</m:contentLeft>
+								<m:contentMiddle>
+									<m:ObjectStatus title="" text="Carragando" state="Error"/>
+								</m:contentMiddle>
+								<m:contentRight>
+									<m:ObjectStatus text="Planejado" state="Warning"/>
+								</m:contentRight>
+							</m:Bar>
+						</m:content>
+					</m:IconTabFilter>
+				</m:items>
+			</m:IconTabBar>
+		</m:content>
+		<m:footer>
+			<m:Bar design="Auto">
+				<m:contentLeft/>
+				<m:contentMiddle/>
+				<m:contentRight/>
+			</m:Bar>
+		</m:footer>
+		<m:headerContent/>
+		<m:subHeader/>
+		<m:customHeader/>
+	</m:Page>
+</mvc:View>

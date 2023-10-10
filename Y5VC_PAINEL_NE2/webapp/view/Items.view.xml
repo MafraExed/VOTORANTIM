@@ -1,0 +1,42 @@
+<mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:ch="sap.ui.comp.smartmicrochart" xmlns:cht="sap.suite.ui.microchart"
+	xmlns:semantic="sap.f.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:table="sap.ui.table"
+	xmlns:smartFilterBar="sap.ui.comp.smartfilterbar" xmlns:m="sap.m" xmlns:smartField="sap.ui.comp.smartfield" xmlns:la="sap.ui.layout"
+	xmlns:sv="sap.ui.comp.smartvariants" xmlns:smartTable="sap.ui.comp.smarttable" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core"
+	xmlns:l="controls" xmlns:bc="sap.ndc" xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	controllerName="Y5VC_PAINEL_NE2.Y5VC_PAINEL_NE2.controller.Items">
+	<Page id="id_pagitem" showHeader="false" showSubHeader="false">
+		<f:Form editable="true" id="form_item">
+			<f:layout>
+				<f:ResponsiveGridLayout labelSpanXL="5" labelSpanL="5" labelSpanM="5" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0"
+					emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="3" columnsM="3" singleContainerFullSize="true"/>
+			</f:layout>
+			<f:formContainers>
+				<f:FormContainer>
+					<f:formElements>
+						<f:FormElement id="form3" visible="true">
+							<smartTable:SmartTable demandPopin="true" id="IdHist" entitySet="ZET_VCFI_HIST_NEGSet" useExportToExcel="true" useVariantManagement="true"
+								useTablePersonalisation="true" header="Ações cob. realizadas" showRowCount="true" showFullScreenButton="false" enableAutoBinding="false"
+								requestAtLeastFields="Kunnr" initiallyVisibleFields="Kunnr,Belnr,Gjahr,Fikrs,Buzei" beforeRebindTable="BeforeTable"
+								persistencyKey="SmartTablePKey2">
+								<smartTable:customData>
+									<core:CustomData key="dateFormatSettings" value="\{&quot;UTC&quot;:true\}"/>
+								</smartTable:customData>
+								<smartTable:customToolbar></smartTable:customToolbar>
+								<table:Table selectionMode="none" id="table2" enableCellFilter="true" enableColumnFreeze="true" threshold="9999" enableCustomFilter="false"
+									visibleRowCount="15">
+								</table:Table>
+								<!--<Table growing="true" growingThreshold="100" mode="none" id="table2" enableBusyIndicator="true" busyIndicatorDelay="100">-->
+								<!--	<columns></columns>-->
+								<!--	<items></items>-->
+								<!--</Table>-->
+								<smartTable:layoutData>
+									<FlexItemData growFactor="1" baseSize="0%"/>
+								</smartTable:layoutData>
+							</smartTable:SmartTable>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+			</f:formContainers>
+		</f:Form>
+	</Page>
+</mvc:View>

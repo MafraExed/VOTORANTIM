@@ -1,0 +1,50 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="fibriembarque.controller.Master" xmlns:m="sap.m">
+	<m:Page title="Navios" showHeader="true" showFooter="true" showNavButton="false">
+		<m:content>
+			<!--items="{/}"-->
+			<m:List id="listNaviosCarga" mode="None" width="100%" headerText="Header" footerText="" backgroundDesign="Solid" showSeparators="All"
+				growing="true" growingThreshold="20" growingScrollToLoad="true" items="{/}">
+				<m:infoToolbar>
+					<m:Toolbar width="100%" height="auto" design="Auto" visible="false" enabled="true">
+						<m:content>
+							<m:Label text="Label" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit"/>
+						</m:content>
+					</m:Toolbar>
+				</m:infoToolbar>
+				<m:headerToolbar>
+					<m:Toolbar visible="true" enabled="true" width="" design="Solid">
+						<m:content>
+							<m:SearchField placeholder="{i18n>Search}" liveChange="searchListMaster" showSearchButton="true" visible="true" width="100%"/>
+						</m:content>
+					</m:Toolbar>
+				</m:headerToolbar>
+				<m:items>
+					<m:ObjectListItem intro="{Dtdocecc}" title="{Descricao_navio}" icon="/sap/opu/odata/sap/ZGWVPWM_PROGRAMACAO_EMBARQUE_SRV/ZET_VPWM_PICTURESSet('NAVIOICONE.png')/$value" number="{Carga_total}" numberUnit="Unit"
+						numberState="None" type="Active" selected="false" showMarkers="false" press="_onObjectListItemPress">
+						<m:attributes>
+							<m:ObjectAttribute text="{Descricao_term}" active="false"/>
+							<m:ObjectAttribute text="{i18n>NavioCarregado} {Porcentagem}%" active="false"/>
+						</m:attributes>
+						<m:firstStatus>
+							<m:ObjectStatus text="{Carregados}" state="Success" icon="sap-icon://shipping-status"/>
+						</m:firstStatus>
+						<m:secondStatus>
+							<m:ObjectStatus text="{StatusDescricao}" state="{StatusType}" icon="sap-icon://{SapIcon}"/>
+						</m:secondStatus>
+					</m:ObjectListItem>
+				</m:items>
+			</m:List>
+		</m:content>
+		<m:footer>
+			<m:Bar design="Auto">
+				<m:contentLeft/>
+				<m:contentMiddle/>
+				<m:contentRight>
+					<m:Button text="{i18n>searchUnit}" type="Emphasized" icon="sap-icon://search" iconFirst="true" width="auto" enabled="true" visible="true"
+						iconDensityAware="false" press="_onButtonPesquisaUnit"/>
+				</m:contentRight>
+			</m:Bar>
+		</m:footer>
+		<m:headerContent/>
+	</m:Page>
+</mvc:View>

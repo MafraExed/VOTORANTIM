@@ -1,0 +1,52 @@
+<View xmlns="sap.m" xmlns:layout="sap.ui.layout" xmlns:unified="sap.ui.unified"
+	controllerName="com.sap.dashboardappDashboardApp.controller.Master">
+	<Page id="nomeTerminal" title="" showNavButton="true" navButtonPress="onNavBack">
+		<content>
+			<Toolbar id="toolbalFilter" width="100%" height="auto" design="Auto" visible="false" enabled="true">
+				<content>
+					<Button width="100%" text="Remover Filtro" icon="sap-icon://clear-filter" press="onPressRemoveFilter"></Button>
+				</content>
+			</Toolbar>
+			<unified:CalendarDateInterval id="calendario" days="7" intervalSelection="true" visible="true" width="100%" singleSelection="true"
+				pickerPopup="true" select="onSelectDay">
+				<unified:selectedDates/>
+				<unified:specialDates/>
+			</unified:CalendarDateInterval>
+			<List id="MasterDias" mode="None" width="100%" headerText="" footerText="" backgroundDesign="Solid" showSeparators="All" growing="true"
+				growingThreshold="20" growingScrollToLoad="true" items="{ path : '/' }">
+				<infoToolbar>
+					<Toolbar width="100%" height="auto" design="Auto" visible="false" enabled="true">
+						<content>
+							<Label text="Label" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit"/>
+						</content>
+					</Toolbar>
+				</infoToolbar>
+				<headerToolbar/>
+				<items>
+					<ObjectListItem press="onSelectionChange" intro="{DiaSemana}" title="{Data}" icon="{IconVenda}" number="{NomeNavio}"
+						numberUnit="{QtdeVenda}" numberState="Success" type="Active">
+						<attributes>
+							<ObjectAttribute title="{i18n>entradas}" text="{CargaTotal}" active="false"/>
+							<ObjectAttribute title="{i18n>iconEstoque}" text="{EstoqueTotal}" active="false"/>
+						</attributes>
+						<firstStatus>
+							<ObjectStatus title="" text="{CargaTrem}" state="Error" icon="sap-icon://cargo-train"/>
+						</firstStatus>
+						<secondStatus>
+							<ObjectStatus text="{CargaCaminhao}" state="Error" icon="sap-icon://shipping-status"/>
+						</secondStatus>
+					</ObjectListItem>
+				</items>
+			</List>
+		</content>
+		<footer>
+			<Toolbar>
+				<ToolbarSpacer/>
+				<Button text="Mensal" type="Emphasized" icon="sap-icon://calendar" iconFirst="true" width="130px" enabled="true" visible="true"
+					iconDensityAware="false" press="onPressMensal"/>
+				<Button text="Simular" type="Emphasized" icon="sap-icon://simulate" iconFirst="true" width="130px" enabled="true" visible="true"
+					iconDensityAware="false" press="onPressSimular"/>
+			</Toolbar>
+		</footer>
+	</Page>
+</View>

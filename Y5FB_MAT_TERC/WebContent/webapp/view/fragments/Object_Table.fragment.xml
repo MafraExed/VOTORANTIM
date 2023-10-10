@@ -1,0 +1,72 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core"
+	xmlns:layout="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	xmlns:viz="sap.viz.ui5.controls"
+    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+	xmlns:viz.data="sap.viz.ui5.data">
+	
+	
+	<Panel width="auto">
+		<headerToolbar>
+			<Toolbar>
+				<Title 
+						id="TitleTableDashboard" 
+						text="{i18n>TitleTable1}: {Title}  {DateUpdate}"/>			
+				<ToolbarSpacer />
+				</Toolbar>
+			</headerToolbar>
+		<content>
+			<Table 
+					id="TableDashboard" 
+				  	items="{TilesToGrafico}" 
+				    FixedLayout="true"
+				    growing="true"
+				    growingThreshold="10"
+				    growingScrollToLoad="true">
+				
+				<columns>
+					<Column 	
+								hAlign="Begin"
+								width="4rem"
+								demandPopin="true">
+						<Text 
+								text="{i18n>TitleTable2}" />
+					</Column>
+					<Column 
+								hAlign="End"
+								width="6rem" 
+								demandPopin="true">
+						<Text 	
+								text="{i18n>TitleTable3}" />
+					</Column>
+					<Column 
+								hAlign="End"
+								width="6rem" 
+								demandPopin="true">
+						<Text 	
+								text="{i18n>TitleTable4}" />
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<ObjectNumber
+								number="{DcrSerieGraph}"
+								emphasized="true"/>
+						</cells>
+						<cells>
+							<ObjectNumber		
+								number="{path: 'QtdPend', formatter:'.formatter.formatNumberQuantity'}"
+								unit="{QtdPendUn'}" 
+								emphasized="false"/>
+						</cells>
+						<cells>
+							<ObjectNumber number="{path : 'VlrPend', formatter:'.formatter.formatNumberBrazil', type : 'sap.ui.model.odata.type.String', constraints: {isDigitSequence : true, maxLength : 10}}" 
+										  unit="{VlrPendUn}"
+										  emphasized="false"	/>
+						</cells>
+					</ColumnListItem>
+				</items>		
+			</Table>
+		</content>
+	</Panel>
+</core:FragmentDefinition>

@@ -1,0 +1,88 @@
+{
+    "resources": [
+        {
+            "name": ".che/project.json"
+        },
+        {
+            "name": ".gitignore"
+        },
+        {
+            "name": "Component-preload.js",
+            "merged": true
+        },
+        {
+            "name": "Component.js"
+        },
+        {
+            "name": "Gruntfile.js"
+        },
+        {
+            "name": "LogoEmpresas/CBA.png"
+        },
+        {
+            "name": "LogoEmpresas/votorantim-energia-logo.png"
+        },
+        {
+            "name": "controller/App.controller.js"
+        },
+        {
+            "name": "controller/BaseController.js"
+        },
+        {
+            "name": "controller/Main.controller.js"
+        },
+        {
+            "name": "css/animate.css"
+        },
+        {
+            "name": "css/style.css"
+        },
+        {
+            "name": "extended_runnable_file.html"
+        },
+        {
+            "name": "i18n/i18n.properties",
+            "raw": "i18n/i18n.properties"
+        },
+        {
+            "name": "index.html"
+        },
+        {
+            "name": "localService/metadata.xml"
+        },
+        {
+            "name": "manifest.json"
+        },
+        {
+            "name": "model/models.js"
+        },
+        {
+            "name": "model/tree.json"
+        },
+        {
+            "name": "neo-app.json"
+        },
+        {
+            "name": "node_modules"
+        },
+        {
+            "name": "package-lock.json"
+        },
+        {
+            "name": "package.json"
+        },
+        {
+            "name": "resources.json",
+            "merged": true
+        },
+        {
+            "name": "serviceBinding.js"
+        },
+        {
+            "name": "view/App.view.xml"
+        },
+        {
+            "name": "view/Main.view.xml"
+        }
+    ]
+}

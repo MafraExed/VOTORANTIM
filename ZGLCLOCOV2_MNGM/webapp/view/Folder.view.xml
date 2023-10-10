@@ -1,0 +1,44 @@
+<mvc:View controllerName="votorantim.corp.clocov2planmanagement.controller.Folder"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.uxap"
+	busyIndicatorDelay="0"
+	xmlns:layout="sap.ui.layout" class="sapUiSizeCompact"
+	xmlns:sections="votorantim.corp.clocov2planmanagement.objectPageSections"
+	xmlns:m="sap.m">
+
+	<ObjectPageLayout id="ObjectPageFolder" showFooter="{= ${folderView>/hasChanges}}" upperCaseAnchorBar="false">
+		<headerTitle>
+			<ObjectPageHeader objectTitle="{NomePasta}">
+				<actions>
+					<ObjectPageHeaderActionButton icon="sap-icon://full-screen" tooltip="Tela inteira" press=".toggleFullScreen"/>
+					<ObjectPageHeaderActionButton icon="sap-icon://decline" tooltip="Fechar tarefa" press=".onCloseDetailPress"/>
+				</actions>
+				<breadcrumbs>
+					<m:Breadcrumbs id="idBreadcumbFolder"/>
+				</breadcrumbs>
+			</ObjectPageHeader>
+		</headerTitle>
+
+		<sections>
+			<ObjectPageSection titleUppercase="false">
+				<subSections>
+					<ObjectPageSubSection title="{i18n>folderFolderDetail}" titleUppercase="false">
+						<blocks>
+							<sections:FolderDetail id="folderDetail"/>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+
+		</sections>
+
+		<footer>
+			<m:OverflowToolbar>
+				<m:ToolbarSpacer/>
+				<m:Button text="{i18n>appSave}" press="onPressSaveFolder" type="Emphasized"/>
+            	<m:Button text="Descartar" press="onPressRejectChanges" ></m:Button>
+			</m:OverflowToolbar>
+		</footer>
+
+	</ObjectPageLayout>
+</mvc:View>

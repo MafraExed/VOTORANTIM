@@ -1,0 +1,183 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.ui.layout.form"
+	controllerName="Y5GL_FINANCE.Y5GL_FINANCE.controller.DADOS_PESSOAIS" xmlns:html="http://www.w3.org/1999/xhtml">
+	<App id="idAppDadosPessoais">
+		<pages id="idPagesDadosPessoais">
+			<Page id="IdPageDadosPessoais">
+				<customHeader>
+					<Bar id="idBarMasterDadosPessoais">
+						<contentLeft>
+							<Button icon="sap-icon://nav-back" id="idB_navback" press="onBackMaster"  text="Voltar"/>
+						</contentLeft>
+						<contentMiddle>
+							<Title text="Dados Pessoais" titleStyle="H3" id="idTitleDependentes"/>
+						</contentMiddle>
+						<!--<contentRight>-->
+						<!--	<Button icon="sap-icon://home" id="idteste" press="onBackMaster"/>-->
+						<!--</contentRight>-->
+					</Bar>
+				</customHeader>
+				<content>
+					<HBox width="100%" height="100%" id="idGif" class="Loading" busyIndicatorSize="Auto" backgroundDesign="Solid">
+						<Image src="imagens/voto_load_white.gif" width="100%" class="footer_img" id="idimg" backgroundSize="100%"/>
+					</HBox>
+					<Input id="idTipo" value="{Status}" visible="false"/>
+					<Input value="{Chamado}" id="idChamado" visible="false"/>
+					<OverflowToolbar id="idBar1">
+						<Title text="" level="H1" id="idTitleDep"/>
+					</OverflowToolbar>
+					<f:Form class="editableForm" editable="true" id="Form2" visible="true">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0"
+								emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer2">
+								<f:formElements>
+									<f:FormElement label="Nome Completo" id="FormElementNomeCompleto_edit">
+										<f:fields>
+											<Input value="{Nome}" id="IdNomeCompletoEdit" placeholder="Nome Completo" required="true" maxLength="25" editable="true" valueState="{path:'AltNome', formatter:'.formatValueState'}"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Data de nascimento" id="FormElementDatadeNascimento_Edit">
+										<f:fields>
+											<Input value="{DtNasc}" id="IdDataNascimento_Edit" placeholder="Data de Nascimento" required="true" type="Date" editable="true"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Gênero" id="FormElementSexo_Edit">
+										<f:fields>
+											<ComboBox id="IdSexo_Edit" selectedKey="{Sexo}" required="true" placeholder="Gênero" items="{/ZET_GLRH_COMBO_SEXO_ECSet}" editable="true" valueState="{path:'AltSexo', formatter:'.formatValueState'}">
+												<core:Item key="{Id}" text="{Value}" id="idKeySexo_Edit"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Pais de Nascimento" id="FormPaisNascimento_Edit">
+										<f:fields>
+											<ComboBox id="IdPaisNasc_Edit" selectedKey="{Pais}" required="true" placeholder="Pais de nascimento"
+												items="{/ZET_GLHR_COMBO_PAISNASCIMENTOSet}" editable="true">
+												<core:Item key="{Land1}" text="{Landx}" id="idKeyPaisNasc_Edit"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Estado de Nascimento" id="FormEstNascimento_Edit">
+										<f:fields>
+											<ComboBox id="IdEstNasc_Edit" selectedKey="{Estado}" required="true" placeholder="Estado de nascimento" items="{/ZET_GLHR_COMBO_ESTADOSet}"
+												editable="true">
+												<core:Item key="{Bland}" text="{Bezei}" id="idKeyEstNasc_Edit"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Local de nascimento" id="FormElementLocaldeNascimento_Edit">
+										<f:fields>
+											<Input value="{Municipio}" showSuggestion="true" placeholder="Local de Nacimento" valueHelpRequest="handleValueHelp" showValueHelp="true"
+												id="IdLocNascimento_Edit" suggestionItems="{/ZET_GLHR_COMBO_MUNICIPIOSet}" suggest="handleSuggest" editable="true">
+												<suggestionItems>
+													<core:Item text="{Zmunicipio}" id="idsugestionlocal_Edit"/>
+												</suggestionItems>
+											</Input>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Cod. Naturalidade" id="FormElementCodNat_Edit">
+										<f:fields>
+											<Input value="{CodNaturalidade}" id="IdCodNat_Edit" placeholder="Código de naturalidade" required="true" editable="true"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Nacionalidade" id="FormElementNacionalidade_Edit">
+										<f:fields>
+											<ComboBox id="IdNacionaliade_Edit" selectedKey="{Nacionalidade}" required="true" placeholder="Nacionalidade"
+												items="{/ZET_GLHR_COMBO_PAISNASCIMENTOSet}" editable="true">
+												<core:Item key="{Land1}" text="{Natio}" id="idKeyNacionalidade_Edit"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Idioma" id="FormIdioma_Edit">
+										<f:fields>
+											<ComboBox id="IdIdioma_Edit" selectedKey="{Idioma}" required="true" placeholder="Idioma" items="{/ZET_GLHR_COMBO_IDIOMASet}"
+												editable="true">
+												<core:Item key="{Sprsl}" text="{Sptxt}" id="idKeyIdioma_Edit"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Estado Civil" id="FormEstCivil_edit">
+										<f:fields>
+											<ComboBox id="IdEstCivil_edit" selectedKey="{EstadoCivil}" required="true" placeholder="Estado Civil"
+												items="{/ZET_GLRH_COMBO_EST_CIVIL_ECSet}" editable="true" valueState="{path:'AltEstCivil', formatter:'.formatValueState'}">
+												<core:Item key="{Id}" text="{Value}" id="idKeyEstCivil_Edit"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Estado Civil Desde" id="FormCasDesde_Edit">
+										<f:fields>
+											<Input value="{DtCasamento}" id="IdCasadoDesde_Edit" placeholder="Estado Civil Desde" required="true" type="Date" editable="true" valueState="{path:'AltDtCasamento', formatter:'.formatValueState'}"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Raça/Cor" id="FormRacaCor_Edit">
+										<f:fields>
+											<ComboBox id="IdRaca_Edit" selectedKey="{Raca}" required="true" placeholder="Raça/Cor" items="{/ZET_COMBO_CORESSet}" editable="true">
+												<core:Item key="{Race}" text="{Descr}" id="idKeyRaca_Edit"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Aposentado" id="FormAposentado_Edit">
+										<f:fields>
+											<ComboBox id="IdAposentado_Edit" selectedKey="{Aposentado}" required="true" placeholder="Aposentado" items="{/ZET_GLHR_SIM_NAOSet}"
+												editable="true">
+												<core:Item key="{Id}" text="{DescId}" id="idAposentado_Edit"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form class="editableForm" editable="true" id="UPLOAD" visible="true">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_UPLOAD" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+								emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer_UPLOAD">
+								<f:formElements>
+									<f:FormElement id="IdonAddDoc">
+										<f:fields>
+											<UploadCollection id="UploadCollection" multiple="false" change="onChange" fileDeleted="onDeleteSelectedItems"
+												beforeUploadStarts="onBeforeUploadStarts" uploadComplete="onuploadComplete" items="{ path: '/ZET_GLRH_UPLOADSet', templateShareable: true }"
+												modelContextChange="onmodelListContextChange" mode="SingleSelectMaster" uploadButtonInvisible="true"
+												uploadUrl="/sap/opu/odata/sap/ZGWGLRH_MEU_CADASTRO_SRV/ZET_GLHR_UPFILESet"
+												noDataDescription="Para adicionar/alterar Anexos selecione o botão ( + )" noDataText="Aguardando novos Carregamentos"
+												numberOfAttachmentsText="Anexos">
+												<toolbar>
+													<OverflowToolbar id="myId" visible="true">
+														<Title id="attachmentTitle"/>
+														<ToolbarSpacer id="idToolbarSpacer"/>
+														<SearchField width="10rem" search="onSearch" enabled="false" visible="false" id="idSearchField"/>
+														<Button id="deleteSelectedButton" text="Delete" press="onDeleteSelectedItems" enabled="false" visible="false" type="Transparent"/>
+														<ToggleButton id="selectAllButton" text="Select all" press="onSelectAllPress" enabled="false" visible="false" type="Transparent"/>
+														<UploadCollectionToolbarPlaceholder id="IdUploadCollectionToolbar"/>
+													</OverflowToolbar>
+												</toolbar>
+												<items>
+													<UploadCollectionItem documentId="{DocId}" fileName="{Filename}" mimeType="{Mimetype}"
+														url="/sap/opu/odata/sap/ZGWGLRH_MEU_CADASTRO_SRV/ZET_GLHR_UPFILESet('{Pernr}${Infty}${Subty}$$${Tipo}${Favor}$${Icnum}${Dependentes}${Objps}${DocId}')/$value" enableEdit="false"
+														visibleEdit="false" deletePress="onFileDelete" selected="true"/>
+												</items>
+											</UploadCollection>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+				</content>
+				<footer>
+					<Toolbar id="idOverTollbar" design="Transparent">
+						<ToolbarSpacer id="idToolbarSpacerD"/>
+						<Button press="Aprova" text="Aprovar" icon="sap-icon://accept" id="idAprova" tooltip="Aprovar"
+							visible="true" iconFirst="true" type="Accept"/>
+						<Button press="Reprova" text="Reprova" icon="sap-icon://decline" id="idReprova" tooltip="Aprovar"
+							visible="true" iconFirst="true" type="Reject"/>
+					</Toolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

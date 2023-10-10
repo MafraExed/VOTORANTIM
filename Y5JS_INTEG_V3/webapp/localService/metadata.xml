@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZGWVSAHR_OPRH_SRV" xml:lang="pt" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="ZET_VSAHR_BuscaEmpresa" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Company"/>
+                </Key>
+                <Property Name="Company" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Empresa" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Description" Type="Edm.String" Nullable="false" MaxLength="25" sap:unicode="false" sap:label="Nome da firma" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZET_CBAHR_BuscaEmpresa" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Company"/>
+                </Key>
+                <Property Name="Company" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Empresa" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Description" Type="Edm.String" Nullable="false" MaxLength="25" sap:unicode="false" sap:label="Nome da firma" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZET_JSHR_BuscaEmpresa" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Company"/>
+                </Key>
+                <Property Name="Company" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Empresa" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Description" Type="Edm.String" Nullable="false" MaxLength="25" sap:unicode="false" sap:label="Nome da firma" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZET_VEHR_BuscaEmpresa" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Company"/>
+                </Key>
+                <Property Name="Company" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Empresa" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Description" Type="Edm.String" Nullable="false" MaxLength="25" sap:unicode="false" sap:label="Nome da firma" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZET_BUSCA_POSICAO" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Plans"/>
+                </Key>
+                <Property Name="Descp" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Denominação" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Stell" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Cargo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Descc" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Denominação" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Nº pessoal" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Cname" Type="Edm.String" Nullable="false" MaxLength="80" sap:unicode="false" sap:label="Nome completo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Orgeh" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Unid.organiz." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Orgtx" Type="Edm.String" Nullable="false" MaxLength="25" sap:unicode="false" sap:label="Denom.unid.organiz." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Bukrs" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Empresa" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Butxt" Type="Edm.String" Nullable="false" MaxLength="25" sap:unicode="false" sap:label="Nome da firma" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Persa" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Área RecsHums." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Name1" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Texto ARH" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Btrtl" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Sub.rec.humanos" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Btext" Type="Edm.String" Nullable="false" MaxLength="15" sap:unicode="false" sap:label="Txt.subárea HR" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Persg" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Grupo empreg" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Descgre" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Denom.grp.EE" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Persk" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="SubgrpEmprg." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Descsgre" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Den.subgrp.EE" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Gsber" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Divisão" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Gtext" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Divisão" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Abkrs" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="ÁrProcFolhPagto" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Atext" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="TxtÁreaProcFP" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Kostl" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Centro custo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ltext" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Descrição" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Cbo" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="CBO" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Cbode" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Descrição CBO" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PernrD" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Nº pessoal" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CnameD" Type="Edm.String" Nullable="false" MaxLength="25" sap:unicode="false" sap:label="Suplem.endereço" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Relemp" Type="Edm.String" Nullable="false" MaxLength="45" sap:unicode="false" sap:label="ID obj.ligado" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Descrel" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Denominação" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Sltyp" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Tipo salarial" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Tartx" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Txt.tp.acor.col" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Slreg" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Área salários" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Tgbtx" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="TxtRegAcordColt" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Slgrp" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Grupo salarial" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Sllvl" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Nível salarial" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Plans" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="ID objeto" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZET_COL_ESTR_ORG" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="EmailOrg"/>
+                </Key>
+                <Property Name="PernrOrg" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Nº pessoal" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BukrsOrg" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Empresa" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="WerksOrg" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Área RecsHums." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BtrtlOrg" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Sub.rec.humanos" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="EmailOrg" Type="Edm.String" Nullable="false" MaxLength="241" sap:unicode="false" sap:label="ID/nº descrit." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZET_CHECK_HIER" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SolBukrs"/>
+                    <PropertyRef Name="SolPersa"/>
+                    <PropertyRef Name="ReqBukrs"/>
+                    <PropertyRef Name="ReqPersa"/>
+                </Key>
+                <Property Name="SolBukrs" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Empresa Solic" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SolPersa" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Área RH Solic" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ReqBukrs" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Empresa Req" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ReqPersa" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Área RH Req" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZET_GRAVA_POSICAO" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ReqPlans"/>
+                </Key>
+                <Property Name="IntId" Type="Edm.Int32" Nullable="false" sap:unicode="false" sap:label="ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SolBukrs" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Empresa Solic" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SolPersa" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Área RH Solic" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SolBtrtl" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Subárea RH Solic" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SolName" Type="Edm.String" Nullable="false" MaxLength="80" sap:unicode="false" sap:label="Nome Solic" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SolEmail" Type="Edm.String" Nullable="false" MaxLength="80" sap:unicode="false" sap:label="Email Solic" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SolUser" Type="Edm.String" Nullable="false" MaxLength="25" sap:unicode="false" sap:label="User Solic" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ReqPlans" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Posição" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ReqStell" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Cargo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ReqBukrs" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Empresa Req" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ReqPersa" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Área RH Req" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ReqBtrtl" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Subárea RH Req" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ReqCttyp" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Tipo contrato" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ReqCtedt" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Campo de caracteres do comprimento 10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ReqPersg" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Grupo empreg" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ReqPersk" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="SubgrpEmprg." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ReqDtadmPrev" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Campo de caracteres do comprimento 10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ReqDtlimPreench" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Campo de caracteres do comprimento 10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ReqCandCpf" Type="Edm.String" Nullable="false" MaxLength="15" sap:unicode="false" sap:label="CPF Candidato" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ReqCandName" Type="Edm.String" Nullable="false" MaxLength="80" sap:unicode="false" sap:label="Nome Candidato" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ReqCandEmail" Type="Edm.String" Nullable="false" MaxLength="80" sap:unicode="false" sap:label="Email Candidato" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ReqCandPhone" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Celular Cand" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityContainer Name="ZGWVSAHR_OPRH_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="ZET_VSAHR_BuscaEmpresaSet" EntityType="ZGWVSAHR_OPRH_SRV.ZET_VSAHR_BuscaEmpresa" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ZET_CBAHR_BuscaEmpresaSet" EntityType="ZGWVSAHR_OPRH_SRV.ZET_CBAHR_BuscaEmpresa" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ZET_JSHR_BuscaEmpresaSet" EntityType="ZGWVSAHR_OPRH_SRV.ZET_JSHR_BuscaEmpresa" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ZET_VEHR_BuscaEmpresaSet" EntityType="ZGWVSAHR_OPRH_SRV.ZET_VEHR_BuscaEmpresa" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ZET_BUSCA_POSICAOSet" EntityType="ZGWVSAHR_OPRH_SRV.ZET_BUSCA_POSICAO" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ZET_COL_ESTR_ORGSet" EntityType="ZGWVSAHR_OPRH_SRV.ZET_COL_ESTR_ORG" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ZET_CHECK_HIERSet" EntityType="ZGWVSAHR_OPRH_SRV.ZET_CHECK_HIER" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ZET_GRAVA_POSICAOSet" EntityType="ZGWVSAHR_OPRH_SRV.ZET_GRAVA_POSICAO" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+            </EntityContainer>
+            <atom:link rel="self" href="http://fioridev.votorantim.com.br/sap/opu/odata/sap/ZGWVSAHR_OPRH_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://fioridev.votorantim.com.br/sap/opu/odata/sap/ZGWVSAHR_OPRH_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

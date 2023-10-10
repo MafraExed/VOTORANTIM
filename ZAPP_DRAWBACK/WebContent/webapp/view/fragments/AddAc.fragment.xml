@@ -1,0 +1,100 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:f="sap.ui.layout.form" xmlns:layout="sap.ui.layout" xmlns:core="sap.ui.core">
+
+	<Dialog title='{i18n>addAcTitle}' type='Message' stretchOnPhone="true"
+		contentWidth="30%" draggable="true">
+		<content>
+			<VBox class="sapUiSmallMargin">
+				<f:Form editable="true" ariaLabelledBy="Title1">
+					<f:layout>
+						<f:ResponsiveGridLayout 
+							labelSpanXL="4"
+							labelSpanL="3" 
+							labelSpanM="4" 
+							labelSpanS="12" 
+							adjustLabelSpan="false"
+							emptySpanXL="0" 
+							emptySpanL="4" 
+							emptySpanM="0" 
+							emptySpanS="0"
+							columnsXL="1"
+							columnsL="1" 
+							columnsM="2" 
+							singleContainerFullSize="false" />
+					</f:layout>
+					<f:formContainers>
+						<f:FormContainer>
+							<f:formElements>
+								<f:FormElement label="{i18n>addAcACNUM}">
+									<f:fields>
+										<Input id="addAcACNUM" value="{NewAC>/Acnum}" maxLength="20"
+											width="240px" required="true" change="onValidaNumerico" />
+
+										<!-- type="Number" -->
+										<!-- <Input value="{path:'/number', type:'sap.ui.model.type.Float'}"/> -->
+									</f:fields>
+								</f:FormElement>
+
+								<f:FormElement label="{i18n>addAcDTVENC}">
+									<f:fields>
+										<DatePicker id="addAcDtvenc" placeholder="{i18n>addAcPHolderDate}"
+											dateValue="{NewAC>/Dtvenc}" displayFormat="{i18n>addAcFormatDate}"
+											maxLength="10" width="200px" />
+									</f:fields>
+								</f:FormElement>
+								<f:FormElement label="{i18n>addAcTT_AC}">
+									<f:fields>
+										<Input id="addAcTT_AC" value="{NewAC>/TtAc}" maxLength="15"
+											width="200px" />
+
+
+
+									</f:fields>
+								</f:FormElement>
+								<f:FormElement label="{i18n>addAcTT_USADO}">
+									<f:fields>
+										<Input id="addAcTT_USADO" value="{NewAC>/TtUsado}"
+											maxLength="15" width="200px" />
+									</f:fields>
+								</f:FormElement>
+								<f:FormElement label="{i18n>addAcTT_RESERVADO}">
+									<f:fields>
+										<Input id="addAcTT_RESERVADO" value="{NewAC>/TtReservado}"
+											maxLength="15" width="240px" />
+									</f:fields>
+								</f:FormElement>
+								<f:FormElement label="{i18n>addAcSALDOI}">
+									<f:fields>
+										<Input id="addAcSALDOI" value="{NewAC>/SaldoInicial}"
+											maxLength="15" width="240px" />
+									</f:fields>
+								</f:FormElement>
+
+
+							</f:formElements>
+						</f:FormContainer>
+
+
+						<f:FormContainer>
+							<f:formElements>
+
+							</f:formElements>
+						</f:FormContainer>
+
+					</f:formContainers>
+				</f:Form>
+			</VBox>
+		</content>
+		<buttons>
+			<Button id="addAcButtonMsg" tooltip="{i18n>addAcLog}" text="{messagePopOver>/count}"
+				type="Emphasized" icon="sap-icon://message-popup" press="onHandleMessagePopover" />
+
+
+			<Button  tooltip="{i18n>addAcBtnSalvar}"
+				icon="sap-icon://save" press="onHandleSaveAddAc" />
+
+			<Button  tooltip="{i18n>addAcBtnCancel}"
+				icon="sap-icon://sys-cancel" press="onHandleCloseAddAc" />
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

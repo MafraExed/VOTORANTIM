@@ -1,0 +1,139 @@
+{
+    "_version": "1.12.0",
+    "sap.app": {
+        "id": "Y5GL_FERI_NEXA.Y5GL_FERI_NEXA",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "resources": "resources.json",
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/sap/ZGWGLHR_FERIAS_ESS_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/metadata.xml"
+                }
+            }
+        },
+        "sourceTemplate": {
+            "id": "sap.ui.ui5-template-plugin.2masterdetail",
+            "version": "1.85.3",
+            "toolsId": "b17ebc35-0a7d-4e17-9bc0-2150b492c733"
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "sap-icon://detail-view",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "rootView": {
+            "viewName": "Y5GL_FERI_NEXA.Y5GL_FERI_NEXA.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "app"
+        },
+        "dependencies": {
+            "minUI5Version": "1.66.0",
+            "libs": {
+                "sap.collaboration": {
+                    "lazy": true
+                },
+                "sap.f": {},
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.ushell": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "Y5GL_FERI_NEXA.Y5GL_FERI_NEXA.i18n.i18n"
+                }
+            },
+            "": {
+                "settings": {
+                    "useBatch": false
+                },
+                "dataSource": "mainService",
+                "preload": true
+            }
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.f.routing.Router",
+                "viewType": "XML",
+                "viewPath": "Y5GL_FERI_NEXA.Y5GL_FERI_NEXA.view",
+                "controlId": "layout",
+                "controlAggregation": "beginColumnPages",
+                "bypassed": {
+                    "target": "notFound"
+                },
+                "async": true
+            },
+            "routes": [
+                {
+                    "pattern": "",
+                    "name": "master",
+                    "target": "master"
+                },
+                {
+                    "pattern": "ZET_GLHR_PROGRAMAR/{Pernr}/{Index}/{Endda}/{Begda}/",
+                    "name": "object",
+                    "target": [
+                        "master",
+                        "object"
+                    ]
+                }
+            ],
+            "targets": {
+                "master": {
+                    "viewName": "Master",
+                    "viewLevel": 1,
+                    "viewId": "master"
+                },
+                "object": {
+                    "viewName": "Detail",
+                    "viewId": "detail",
+                    "viewLevel": 1,
+                    "controlAggregation": "midColumnPages"
+                },
+                "detailObjectNotFound": {
+                    "viewName": "DetailObjectNotFound",
+                    "viewId": "detailObjectNotFound",
+                    "controlAggregation": "midColumnPages"
+                },
+                "notFound": {
+                    "viewName": "NotFound",
+                    "viewId": "notFound"
+                }
+            }
+        },
+        "flexEnabled": true
+    },
+    "sap.platform.abap": {
+        "uri": "/sap/bc/ui5_ui5/sap/y5gl_feri_nexa/webapp",
+        "_version": "1.1.0"
+    }
+}

@@ -1,0 +1,16 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Popover contentHeight="7rem" placement="Top" contentWidth="15rem" horizontalScrolling="false" modal="false" offsetX="0" offsetY="0"
+		showHeader="true" title="Escolha o que deseja ver" verticalScrolling="false" visible="true">
+		<content>
+			<Button text="Ciclos" type="Transparent" iconFirst="true" width="100%" enabled="true" visible="true" iconDensityAware="false"
+				press="onPresGoCiclos"/>
+			<Button text="Permanências" type="Transparent" iconFirst="true" width="100%" enabled="true" visible="true" iconDensityAware="false"
+				press="onPresGoTempoPermanencia"/>
+		</content>
+		<beginButton/>
+		<customHeader/>
+		<endButton/>
+		<footer/>
+		<subHeader/>
+	</Popover>
+</core:FragmentDefinition>

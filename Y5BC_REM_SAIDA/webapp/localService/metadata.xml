@@ -1,0 +1,142 @@
+<edmx:Edmx
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+    xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+    xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZGWCBLE_REMESSA_SAIDA_SRV" xml:lang="pt" sap:schema-version="1">
+            <EntityType Name="Subscription" sap:semantics="subscriptions" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" Nullable="false" MaxLength="32" sap:label="Sub. ID" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+                <Property Name="user" Type="Edm.String" MaxLength="12" m:FC_TargetPath="SyndicationAuthorName" m:FC_KeepInContent="false" sap:label="Nome do usuário" sap:creatable="false" sap:filterable="false"/>
+                <Property Name="updated" Type="Edm.DateTime" Precision="0" m:FC_TargetPath="SyndicationUpdated" m:FC_KeepInContent="false" sap:label="Registro hora" sap:creatable="false" sap:filterable="false"/>
+                <Property Name="title" Type="Edm.String" MaxLength="255" m:FC_TargetPath="SyndicationTitle" m:FC_KeepInContent="false" sap:label="Title" sap:filterable="false"/>
+                <Property Name="deliveryAddress" Type="Edm.String" sap:label="Delivery Address" sap:filterable="false"/>
+                <Property Name="persistNotifications" Type="Edm.Boolean" sap:label="Persist Notification" sap:filterable="false"/>
+                <Property Name="collection" Type="Edm.String" MaxLength="40" sap:label="Collection" sap:filterable="false"/>
+                <Property Name="filter" Type="Edm.String" sap:label="Filter" sap:filterable="false"/>
+                <Property Name="select" Type="Edm.String" MaxLength="255" sap:label="Select" sap:filterable="false"/>
+                <Property Name="changeType" Type="Edm.String" MaxLength="30" sap:label="Change Type"/>
+            </EntityType>
+            <EntityType Name="Notification" sap:semantics="notifications" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" Nullable="false" MaxLength="32" sap:label="Notification ID"/>
+                <Property Name="collection" Type="Edm.String" MaxLength="40" sap:label="Collection"/>
+                <Property Name="title" Type="Edm.String" m:FC_TargetPath="SyndicationTitle" m:FC_KeepInContent="false" sap:label="Notif. Text"/>
+                <Property Name="updated" Type="Edm.DateTime" Precision="0" m:FC_TargetPath="SyndicationUpdated" m:FC_KeepInContent="false" sap:label="Registro hora"/>
+                <Property Name="changeType" Type="Edm.String" MaxLength="30" sap:label="Change Type"/>
+                <Property Name="entriesOfInterest" Type="Edm.Int32" sap:label="No. of Entries"/>
+                <Property Name="recipient" Type="Edm.String" MaxLength="112" sap:label="Recipient" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
+            <EntityType Name="ZET_CBLE_PR_REM_SAIDA" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Vbeln"/>
+                    <PropertyRef Name="Posnr"/>
+                </Key>
+                <Property Name="Vkorg" Type="Edm.String" MaxLength="4" sap:label="Org.vendas"/>
+                <Property Name="Vtweg" Type="Edm.String" MaxLength="2" sap:label="Canal distrib."/>
+                <Property Name="Spart" Type="Edm.String" MaxLength="2" sap:label="Setor atividade"/>
+                <Property Name="Vbeln" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Documento SD"/>
+                <Property Name="Posnr" Type="Edm.String" Nullable="false" MaxLength="6" sap:label="Item"/>
+                <Property Name="Auart" Type="Edm.String" MaxLength="4" sap:label="Tipo doc.vendas"/>
+                <Property Name="Etenr" Type="Edm.String" MaxLength="4" sap:label="DivRemessa"/>
+                <Property Name="Bstkd" Type="Edm.String" MaxLength="35" sap:label="Nº do pedido"/>
+                <Property Name="Emissor" Type="Edm.String" MaxLength="10" sap:label="Cliente"/>
+                <Property Name="Receptor" Type="Edm.String" MaxLength="10" sap:label="Cliente"/>
+                <Property Name="NomeReceptor" Type="Edm.String" MaxLength="35" sap:label="Nome"/>
+                <Property Name="DataSolCli" Type="Edm.String" MaxLength="10" sap:label="Data de remessa"/>
+                <Property Name="NomeObra" Type="Edm.String" MaxLength="35" sap:label="Nº do pedido"/>
+                <Property Name="CentroFab" Type="Edm.String" MaxLength="4" sap:label="Centro"/>
+                <Property Name="EstoqCentro" Type="Edm.Decimal" Precision="13" Scale="3" sap:label="Quantidade"/>
+                <Property Name="Klmeng" Type="Edm.Decimal" Precision="15" Scale="3" sap:label="Qtd.conf.acum."/>
+                <Property Name="Meins" Type="Edm.String" MaxLength="3" sap:label="UM básica" sap:semantics="unit-of-measure"/>
+                <Property Name="Estoque901" Type="Edm.Decimal" Precision="13" Scale="3" sap:label="Estoque dispon."/>
+                <Property Name="EstoqueRequisic" Type="Edm.Decimal" Precision="13" Scale="3" sap:label="Quantidade"/>
+                <Property Name="Mbdat" Type="Edm.String" MaxLength="10" sap:label="Data prep.mat."/>
+                <Property Name="MbdatAtl" Type="Edm.String" MaxLength="10" sap:label="Data prep.mat."/>
+                <Property Name="Ettyp" Type="Edm.String" MaxLength="2" sap:label="Ctg.divisão"/>
+                <Property Name="Lifsp" Type="Edm.String" MaxLength="2" sap:label="Bloq.remessa"/>
+                <Property Name="Estrategia" Type="Edm.String" MaxLength="3" sap:label="Estratégia"/>
+                <Property Name="Bstdk" Type="Edm.String" MaxLength="10" sap:label="Data pedido"/>
+                <Property Name="Erdat" Type="Edm.String" MaxLength="10" sap:label="Dt.criação"/>
+                <Property Name="Name1" Type="Edm.String" MaxLength="35" sap:label="Nome"/>
+                <Property Name="Matnr" Type="Edm.String" MaxLength="18" sap:label="Material"/>
+                <Property Name="Pstyv" Type="Edm.String" MaxLength="4" sap:label="Ctg.item"/>
+                <Property Name="Anexo" Type="Edm.String" MaxLength="3" sap:label="Anexo"/>
+                <Property Name="Arktx" Type="Edm.String" MaxLength="40" sap:label="Denominação"/>
+                <Property Name="Kdmat" Type="Edm.String" MaxLength="35" sap:label="Mat.cliente"/>
+                <Property Name="Pkstk" Type="Edm.String" MaxLength="1" sap:label="Status embalag."/>
+                <Property Name="Abgru" Type="Edm.String" MaxLength="2" sap:label="Motivo recusa"/>
+                <Property Name="Faksk" Type="Edm.String" MaxLength="2" sap:label="BloqDocFatmto."/>
+                <Property Name="Lifsk" Type="Edm.String" MaxLength="2" sap:label="Bloq.remessa"/>
+                <Property Name="Gbstk" Type="Edm.String" MaxLength="1" sap:label="Status global"/>
+                <Property Name="Cmgst" Type="Edm.String" MaxLength="1" sap:label="Stat.glob.créd."/>
+                <Property Name="Vrkme" Type="Edm.String" MaxLength="3" sap:label="Unidade venda" sap:semantics="unit-of-measure"/>
+                <Property Name="Kwmeng" Type="Edm.Decimal" Precision="15" Scale="3" sap:label="QtdOrdemAcum."/>
+                <Property Name="QtdFaturada" Type="Edm.Decimal" Precision="15" Scale="3" sap:label="Quantidade"/>
+                <Property Name="Faturar" Type="Edm.Decimal" Precision="15" Scale="3" sap:label="QtdOrdemAcum."/>
+                <Property Name="Amaior" Type="Edm.Decimal" Precision="15" Scale="3" sap:label="QtdOrdemAcum."/>
+                <Property Name="QtdRemessa" Type="Edm.Decimal" Precision="15" Scale="3" sap:label="Quantidade"/>
+                <Property Name="QtdConfirmada" Type="Edm.Decimal" Precision="13" Scale="3" sap:label="Qtd.confirmada"/>
+                <Property Name="PendProd" Type="Edm.Decimal" Precision="15" Scale="3" sap:label="QtdOrdemAcum."/>
+                <Property Name="Wemng" Type="Edm.Decimal" Precision="13" Scale="3" sap:label="Entrado"/>
+                <Property Name="QtdStock" Type="Edm.Decimal" Precision="13" Scale="3" sap:label="Utiliz.livre"/>
+                <Property Name="QtdPrd" Type="Edm.Decimal" Precision="13" Scale="3" sap:label="Ords.produção"/>
+                <Property Name="QtdProg" Type="Edm.Decimal" Precision="13" Scale="3" sap:label="Ords.planejadas"/>
+                <Property Name="DtAtpOrig" Type="Edm.String" MaxLength="10" sap:label="Data de remessa"/>
+                <Property Name="DtAtpAtu" Type="Edm.String" MaxLength="10" sap:label="Data de remessa"/>
+                <Property Name="DtFat" Type="Edm.String" MaxLength="10" sap:label="DtFaturamto."/>
+                <Property Name="Werks" Type="Edm.String" MaxLength="4" sap:label="Centro"/>
+                <Property Name="ComCont" Type="Edm.String" MaxLength="91" sap:label="Comercial de contas"/>
+                <Property Name="GerSegm" Type="Edm.String" MaxLength="91" sap:label="Gerente segmento"/>
+                <Property Name="Kdgrp" Type="Edm.String" MaxLength="2" sap:label="Grupo clientes"/>
+                <Property Name="Kvgr1" Type="Edm.String" MaxLength="3" sap:label="Grp.clientes 1"/>
+                <Property Name="Kvgr4" Type="Edm.String" MaxLength="3" sap:label="Grp.clientes 4"/>
+                <Property Name="Kvgr5" Type="Edm.String" MaxLength="3" sap:label="Grp.clientes 5"/>
+                <Property Name="Eikto" Type="Edm.String" MaxLength="12" sap:label="Cta.no cliente"/>
+                <Property Name="FamOrcamento" Type="Edm.String" MaxLength="30" sap:label="Val.caract."/>
+                <Property Name="FamOrcamentoD" Type="Edm.String" MaxLength="30" sap:label="Val.caract."/>
+                <Property Name="FamCapacidade" Type="Edm.String" MaxLength="30" sap:label="Val.caract."/>
+                <Property Name="FamCapacidadeD" Type="Edm.String" MaxLength="30" sap:label="Val.caract."/>
+                <Property Name="FamFerramenta" Type="Edm.String" MaxLength="30" sap:label="Val.caract."/>
+                <Property Name="FamFerramentaD" Type="Edm.String" MaxLength="30" sap:label="Val.caract."/>
+                <Property Name="FamExpedicao" Type="Edm.String" MaxLength="30" sap:label="Val.caract."/>
+                <Property Name="FamExpedicaoD" Type="Edm.String" MaxLength="30" sap:label="Val.caract."/>
+                <Property Name="Comprimento1" Type="Edm.String" MaxLength="30" sap:label="Val.caract."/>
+                <Property Name="Acabamento" Type="Edm.String" MaxLength="30" sap:label="Val.caract."/>
+                <Property Name="Cor" Type="Edm.String" MaxLength="30" sap:label="Val.caract."/>
+                <Property Name="CamAnodica" Type="Edm.String" MaxLength="30" sap:label="Val.caract."/>
+                <Property Name="Ernam" Type="Edm.String" MaxLength="12" sap:label="Criado por"/>
+                <Property Name="Auffx" Type="Edm.String" MaxLength="1" sap:label="Fixação"/>
+                <Property Name="UltModif" Type="Edm.String" MaxLength="12" sap:label="Usuário"/>
+                <Property Name="Antecip" Type="Edm.String" MaxLength="25" sap:label="Denominação"/>
+                <Property Name="Matpla" Type="Edm.String" MaxLength="18" sap:label="Grupo produtos"/>
+                <Property Name="Vstel" Type="Edm.String" MaxLength="4" sap:label="Local expedição"/>
+                <Property Name="Route" Type="Edm.String" MaxLength="6" sap:label="Itinerário"/>
+                <Property Name="Distancia" Type="Edm.String" MaxLength="20" sap:label="Distancia"/>
+                <Property Name="Traztd" Type="Edm.Decimal" Precision="11" Scale="0" sap:label="Dur.trânsito"/>
+                <Property Name="Bezei" Type="Edm.String" MaxLength="25" sap:label="Denominação"/>
+                <Property Name="Incoterms" Type="Edm.String" MaxLength="34" sap:label="Incoterms"/>
+                <Property Name="Wadat" Type="Edm.String" MaxLength="10" sap:label="Saída mercads."/>
+                <Property Name="Lddat" Type="Edm.String" MaxLength="10" sap:label="Dt.carreg."/>
+                <Property Name="Tempo" Type="Edm.String" MaxLength="11" sap:label="Tempo Apo"/>
+                <Property Name="Audat" Type="Edm.String" MaxLength="20" sap:label="Data do documento"/>
+                <Property Name="Tddat" Type="Edm.String" MaxLength="10" sap:label="Data saída mercadoria Fábrica"/>
+                <Property Name="Parce" Type="Edm.String" MaxLength="10" sap:label="Parceiro"/>
+            </EntityType>
+            <EntityContainer Name="ZGWCBLE_REMESSA_SAIDA_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="SubscriptionCollection" EntityType="ZGWCBLE_REMESSA_SAIDA_SRV.Subscription" sap:content-version="1"/>
+                <EntitySet Name="NotificationCollection" EntityType="ZGWCBLE_REMESSA_SAIDA_SRV.Notification" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ZET_CBLE_PR_REM_SAIDASet" EntityType="ZGWCBLE_REMESSA_SAIDA_SRV.ZET_CBLE_PR_REM_SAIDA" sap:searchable="true" sap:requires-filter="true" sap:content-version="1"/>
+            </EntityContainer>
+            <atom:link
+                xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/ZGWCBLE_REMESSA_SAIDA_SRV/$metadata"/>
+                <atom:link
+                    xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/ZGWCBLE_REMESSA_SAIDA_SRV/$metadata"/>
+                </Schema>
+            </edmx:DataServices>
+        </edmx:Edmx>

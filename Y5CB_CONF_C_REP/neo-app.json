@@ -1,0 +1,77 @@
+{
+	"routes": [{
+			"path": "/resources",
+			"target": {
+				"type": "service",
+				"name": "sapui5",
+				"entryPath": "/resources",
+				"version": "1.63.1"
+			},
+			"description": "SAPUI5 Resources"
+		}, {
+			"path": "/test-resources",
+			"target": {
+				"type": "service",
+				"name": "sapui5",
+				"entryPath": "/test-resources",
+				"version": "1.63.1"
+			},
+			"description": "SAPUI5 Test Resources"
+		}, {
+			"path": "/resources",
+			"target": {
+				"type": "service",
+				"name": "sapui5",
+				"entryPath": "/resources",
+				"version": "1.63.1"
+			},
+			"description": "SAPUI5 Resources"
+		}, {
+			"path": "/test-resources",
+			"target": {
+				"type": "service",
+				"name": "sapui5",
+				"entryPath": "/test-resources",
+				"version": "1.63.1"
+			},
+			"description": "SAPUI5 Test Resources"
+		}, {
+			"path": "/sap/opu/odata",
+			"target": {
+				"type": "destination",
+				"name": "SAP_GW_HUB",
+				"entryPath": "/sap/opu/odata"
+			},
+			"description": "GW HUB"
+		}, {
+			"path": "/sap/bc/ui5_ui5",
+			"target": {
+				"type": "destination",
+				"name": "SAP_GW_HUB",
+				"entryPath": "/sap/bc/ui5_ui5"
+			},
+			"description": "GW HUB"
+		}, {
+
+			"path": "/resources/sap/i2d/pp/mrpcockpit/reuse/",
+
+			"target":
+
+			{
+
+				"type": "destination",
+
+				"name": "<ABAP_backend_destination>",
+
+				"entryPath": "/sap/bc/ui5_ui5/sap/pp_mrp_reuse/i2d/pp/mrpcockpit/reuse/"
+
+			},
+
+			"description": "MRP Lib Reuse"
+
+		}
+
+	],
+	"welcomeFile": "/test/flpSandbox.html",
+	"sendWelcomeFileRedirect": true
+}

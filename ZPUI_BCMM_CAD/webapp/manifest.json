@@ -1,0 +1,221 @@
+{
+    "_version": "1.9.0",
+    "sap.app": {
+        "id": "CADASTROAPROVADORES.CADASTROAPROVADOR",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "dataSources": {
+            "ZGWCBMM_CONTRATACAO_FRETE_SRV": {
+                "uri": "/sap/opu/odata/sap/ZGWCBMM_CONTRATACAO_FRETE_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/ZGWCBMM_CONTRATACAO_FRETE_SRV/metadata.xml"
+                }
+            }
+        },
+        "sourceTemplate": {
+            "id": "servicecatalog.connectivityComponent",
+            "version": "0.0.0",
+            "toolsId": "44144a41-0518-428e-bfc0-64635381e2d4"
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "sap-icon://task",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "rootView": {
+            "viewName": "CADASTROAPROVADORES.CADASTROAPROVADOR.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "app"
+        },
+        "dependencies": {
+            "minUI5Version": "1.42.0",
+            "libs": {
+                "sap.ui.core": {},
+                "sap.m": {},
+                "sap.f": {},
+                "sap.ushell": {},
+                "sap.collaboration": {
+                    "lazy": true
+                }
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "CADASTROAPROVADORES.CADASTROAPROVADOR.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "ZGWCBMM_CONTRATACAO_FRETE_SRV",
+                "preload": true
+            }
+        },
+        "services": {
+            "ShellUIService": {
+                "factoryName": "sap.ushell.ui5service.ShellUIService",
+                "lazy": false,
+                "settings": {
+                    "setTitle": "auto"
+                }
+            }
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "viewPath": "CADASTROAPROVADORES.CADASTROAPROVADOR.view",
+                "controlId": "app",
+                "controlAggregation": "pages",
+                "bypassed": {
+                    "target": [
+                        "notFound"
+                    ]
+                },
+                "async": true
+            },
+            "routes": [
+                {
+                    "pattern": "",
+                    "name": "worklist",
+                    "target": [
+                        "worklist"
+                    ]
+                },
+                {
+                    "pattern": "ZTBMM_GRP_APROV/{objectId}",
+                    "name": "object",
+                    "target": [
+                        "object"
+                    ]
+                },
+                {
+                    "name": "add",
+                    "pattern": "add/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "add"
+                    ]
+                },
+                {
+                    "name": "Back",
+                    "pattern": "Back/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "worklist"
+                    ]
+                },
+                {
+                    "name": "addParam",
+                    "pattern": "addParam/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "addParam"
+                    ]
+                },
+                {
+                    "name": "AddEkgrp",
+                    "pattern": "AddEkgrp/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "AddEkgrp"
+                    ]
+                }
+            ],
+            "targets": {
+                "worklist": {
+                    "viewName": "Worklist",
+                    "viewId": "worklist",
+                    "viewLevel": 1,
+                    "title": "{i18n>worklistViewTitle}"
+                },
+                "object": {
+                    "viewName": "Object",
+                    "viewId": "object",
+                    "viewLevel": 2,
+                    "title": "{i18n>objectViewTitle}"
+                },
+                "objectNotFound": {
+                    "viewName": "ObjectNotFound",
+                    "viewId": "objectNotFound"
+                },
+                "notFound": {
+                    "viewName": "NotFound",
+                    "viewId": "notFound"
+                },
+                "add": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearAggregation": true,
+                    "viewName": "add",
+                    "title": "Cadastro de Aprovadores",
+                    "viewId": "add",
+                    "viewLevel": 2
+                },
+                "Back": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearAggregation": true,
+                    "viewName": "Worklist",
+                    "title": "{i18n>worklistViewTitle}",
+                    "viewId": "Back",
+                    "viewLevel": 1
+                },
+                "addParam": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearAggregation": true,
+                    "viewName": "addParam",
+                    "title": "Cadastros de parâmetros",
+                    "viewId": "addParam",
+                    "viewLevel": 2
+                },
+                "AddEkgrp": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearAggregation": true,
+                    "viewName": "AddEkgrp",
+                    "viewId": "AddEkgrp",
+                    "viewLevel": 2
+                }
+            }
+        }
+    },
+    "sap.platform.abap": {
+        "uri": "/sap/bc/ui5_ui5/sap/zpui_bcmm_cad",
+        "_version": "1.1.0"
+    },
+    "sap.platform.hcp": {
+        "uri": "",
+        "_version": "1.1.0"
+    }
+}

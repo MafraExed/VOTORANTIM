@@ -1,0 +1,1 @@
+"use strict";sap.ui.define([],function(){return function(n){var r="";if(n){r=n.map(function(n){return n.smtpAddr}).join(", ")}return r}});

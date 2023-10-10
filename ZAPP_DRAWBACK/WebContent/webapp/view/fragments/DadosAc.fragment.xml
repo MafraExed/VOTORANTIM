@@ -1,0 +1,136 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+
+	<f:Form id="dadosAcForm" editable="true" ariaLabelledBy="Title1">
+		<f:toolbar>
+			<Toolbar>
+				<Title text="{i18n>dadosAcTitle}" level="H4" titleStyle="H4" />
+				<ToolbarSpacer />
+
+			</Toolbar>
+		</f:toolbar>
+
+		<f:layout>
+			<f:ResponsiveGridLayout layout="ResponsiveGridLayout"
+				editable="true" columnsXL="2" columnsL="2" columnsM="2"
+				singleContainerFullSize="false" />
+		</f:layout>
+
+		<f:formContainers>
+			<f:FormContainer>
+				<f:formElements>
+					<f:FormElement label="" />
+
+
+					<f:FormElement label="{i18n>dadosAcDtvenc}">
+						<f:fields>
+							<DatePicker id="dadosAcDtvenc" editable="false"
+								placeholder="{i18n>dadosAcPHolderDate}"
+								value="{path: 'dadosAc>/Dtvenc', type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'dd.MM.yyyy', strictParsing: true , UTC: true}}"
+								maxLength="10" width="120px" required="true" />
+						</f:fields>
+					</f:FormElement>
+
+					<f:FormElement label="{i18n>dadosAcTtReservado}">
+						<f:fields>
+							<Input id="dadosAcTtReservado" editable="false" placeholder="0.00" change="onValidaNumericoMoeda"
+								value="{dadosAc>/TtReservado}" maxLength="15" width="240px"
+								required="true" />
+						</f:fields>
+					</f:FormElement>
+
+					<f:FormElement label="{i18n>dadosAcTtUsado}">
+						<f:fields>
+							<Input id="dadosAcTtUsado" editable="false" change="onValidaNumericoMoeda" placeholder="0.00"
+								required="true" value="{dadosAc>/TtUsado}" maxLength="15" width="240px" />
+						</f:fields>
+					</f:FormElement>
+
+
+					<!-- <f:FormElement label="{i18n>dadosAcSaldo}"> -->
+					<!-- <f:fields> -->
+					<!-- <Input id="dadosAcSaldo" editable="false" -->
+					<!-- value="{dadosAc>/Saldo}" maxLength="15" width="240px" /> -->
+					<!-- </f:fields> -->
+					<!-- </f:FormElement> -->
+
+					<f:FormElement label="{i18n>dadosAcTtAc}">								
+						<f:fields>
+							<Input id="dadosAcTtAc" editable="false" value="{dadosAc>/TtAc}" placeholder="0.00" 
+								maxLength="15" width="215px" required="true"  change="onValidaNumericoMoeda"/>
+						</f:fields>
+					</f:FormElement>
+
+					<f:FormElement label="{i18n>dadosAcUsnameinc}">
+						<f:fields>
+							<Input id="dadosAcUsnameinc" editable="false" 
+								value="{dadosAc>/Usnameinc}" maxLength="50" width="300px" />
+						</f:fields>
+					</f:FormElement>
+
+
+					<f:FormElement label="" />
+
+
+
+				</f:formElements>
+			</f:FormContainer>
+
+			<f:FormContainer>
+				<f:formElements>
+
+					<f:FormElement label="" />
+
+					<f:FormElement label="{i18n>dadosAcDtinc}">
+						<f:fields>
+							<DatePicker id="dadosAcDtinc" editable="false"
+								placeholder="{i18n>dadosAcPHolderDate}"
+								value="{path: 'dadosAc>/Dtinc', type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'dd.MM.yyyy', strictParsing: true , UTC: true}}"
+								maxLength="10" width="120px" />
+						</f:fields>
+					</f:FormElement>
+
+
+					<f:FormElement label="{i18n>dadosAcTminc}">
+						<f:fields>
+							<Input id="dadosAcTminc" editable="false"
+								value="{path: 'dadosAc>/Tminc', formatter:'.formatter.formatDateTime'}"
+								maxLength="15" width="240px" />
+						</f:fields>
+					</f:FormElement>
+
+
+					<f:FormElement label="{i18n>dadosAcDtmod}">
+						<f:fields>
+							<DatePicker id="dadosAcDtmod" editable="false"
+								placeholder="{i18n>dadosAcPHolderDate}"
+								value="{path: 'dadosAc>/Dtmod', type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'dd.MM.yyyy', strictParsing: true , UTC: true}}"
+								maxLength="10" width="120px" />
+						</f:fields>
+					</f:FormElement>
+
+
+					<f:FormElement label="{i18n>dadosAcTmmod}">
+						<f:fields>
+							<Input id="dadosAcTmmod" editable="false"
+								value="{path: 'dadosAc>/Tmmod', formatter:'.formatter.formatDateTime'}"
+								maxLength="15" width="240px" />
+						</f:fields>
+					</f:FormElement>
+
+
+					<f:FormElement label="{i18n>dadosAcUsnamemod}">
+						<f:fields>
+							<Input id="dadosAcUsnamemod" editable="false"
+								value="{dadosAc>/Usnamemod}" maxLength="50" width="300px" />
+						</f:fields>
+					</f:FormElement>
+
+				</f:formElements>
+			</f:FormContainer>
+
+		</f:formContainers>
+
+	</f:Form>
+</core:FragmentDefinition>
+                	

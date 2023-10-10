@@ -1,0 +1,12 @@
+<mvc:View height="100%" controllerName="y5fb.ui5.Dashboard.controller.Main"
+	xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core">
+
+	<Page
+		showHeader="false"
+		enableScrolling="false" >
+
+		<core:Fragment fragmentName="y5fb.ui5.Dashboard.view.fragments.MainTiles" type="XML" />
+
+	</Page>
+	</mvc:View>

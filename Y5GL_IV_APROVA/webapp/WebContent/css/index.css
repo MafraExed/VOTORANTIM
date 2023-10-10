@@ -1,0 +1,21 @@
+
+button.rmisFooterIcon .sapMBtnInner {
+  color: #ffffff !important;
+}
+
+button.rmisFooterIcon .sapMBtnIcon  {
+  color: #ffffff !important;
+  text-shadow: 0 1px 0 rgba(0,0,0,0.5) !important;
+}
+
+.buttonWarning:hover {
+   background-color: yellow !important;
+}
+
+.myWidth .sapMITBHorizontalWrapper {
+    max-width: 20rem !important;
+}
+
+.myWidth .sapMITBHorizontal.sapMITBFilter>.sapMITBHorizontalWrapper>.sapMITBText {
+    max-width: 20rem !important;
+}

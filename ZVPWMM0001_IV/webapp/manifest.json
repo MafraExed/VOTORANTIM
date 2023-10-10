@@ -1,0 +1,152 @@
+{
+    "_version": "1.8.0",
+    "sap.app": {
+        "id": "portal.zvpwmm0001_iv",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "sourceTemplate": {
+            "id": "servicecatalog.connectivityComponentForManifest",
+            "version": "0.0.0",
+            "toolsId": "f6179f0b-2cea-48b5-b3f2-404ee47ab3d2"
+        },
+        "dataSources": {
+            "ZGWFBIV_PORTAL_SRV": {
+                "uri": "/sap/opu/odata/sap/ZGWFBIV_PORTAL_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/metadata.xml"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        },
+        "supportedThemes": [
+            "sap_hcb",
+            "sap_bluecrystal"
+        ]
+    },
+    "sap.ui5": {
+        "rootView": {
+            "viewName": "portal.zvpwmm0001_iv.view.App",
+            "type": "XML"
+        },
+        "dependencies": {
+            "minUI5Version": "1.30.0",
+            "libs": {
+                "sap.collaboration": {
+                    "minVersion": ""
+                },
+                "sap.f": {
+                    "minVersion": ""
+                },
+                "sap.m": {},
+                "sap.ui.comp": {
+                    "minVersion": ""
+                },
+                "sap.ui.core": {},
+                "sap.ui.layout": {
+                    "minVersion": ""
+                },
+                "sap.ui.table": {
+                    "minVersion": ""
+                },
+                "sap.ushell": {
+                    "minVersion": ""
+                },
+                "sap.uxap": {
+                    "minVersion": ""
+                }
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "portal.zvpwmm0001_iv.i18n.i18n"
+                }
+            },
+            "": {
+                "uri": "/sap/opu/odata/sap/ZGWFBIV_PORTAL_SRV/",
+                "type": "sap.ui.model.odata.v2.ODataModel",
+                "settings": {
+                    "defaultOperationMode": "Server",
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline"
+                },
+                "dataSource": "ZGWFBIV_PORTAL_SRV",
+                "preload": true
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "portal.zvpwmm0001_iv.view",
+                "controlAggregation": "pages",
+                "controlId": "app",
+                "transition": "slide",
+                "bypassed": {
+                    "target": "notFound"
+                }
+            },
+            "routes": [
+                {
+                    "name": "default",
+                    "pattern": "",
+                    "target": "default"
+                },
+                {
+                    "name": "page",
+                    "pattern": "page/{Ivkey}",
+                    "target": "page"
+                }
+            ],
+            "targets": {
+                "default": {
+                    "viewName": "Default",
+                    "viewLevel": 1
+                },
+                "page": {
+                    "viewName": "Page",
+                    "viewLevel": 2
+                }
+            }
+        }
+    },
+    "sap.platform.abap": {
+        "uri": "/sap/bc/ui5_ui5/sap/zvpwmm0001_iv/webapp",
+        "_version": "1.1.0"
+    }
+}

@@ -1,0 +1,117 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:table="sap.ui.table"
+    xmlns:l="sap.ui.layout" class="sapUiSizeCompact"
+    xmlns:f="sap.ui.layout.form">
+    <Dialog showHeader="true" title="Liberar Plano de Tarefas">
+        <f:Form editable="true">
+            <f:layout>
+                <f:ResponsiveGridLayout labelSpanXL="6" labelSpanL="6" labelSpanM="6" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="4" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false" />
+            </f:layout>
+            <f:formContainers>
+                <f:FormContainer>
+                    <f:formElements >
+                        <f:FormElement label="{i18n>detailDescription}">
+                            <f:fields>
+                                <Input value="{
+                                                path: 'newTaskPlan>/Descricao',
+                                                type : 'sap.ui.model.type.String',
+                                            constraints : {
+                                                minLength: 1
+                                            }
+                                            }" required="true" id="idCreateTaskDesc" />
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement label="Data Base">
+                            <f:fields>
+                                <DatePicker required="true" value="{
+                                                path: 'newTaskPlan>/Data_fixada',
+                                                type : 'sap.ui.model.type.String',
+                                            constraints : {
+                                                minLength: 1
+                                            }
+                                            }" displayFormat="short" id="idCreateTaskDataBase" valueFormat="yyyyMMdd"/>
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement label="Exercício">
+                            <f:fields>
+                                <Input value="{
+                                                path: 'newTaskPlan>/Exercicio',
+                                                type : 'sap.ui.model.type.String',
+                                            constraints : {
+                                                minLength: 1
+                                            }
+                                            }" required="true" id="idCreateTaskExerc" type="Number"/>
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement label="Período Contábil">
+                            <f:fields>
+                                <Input value="{
+                                                path: 'newTaskPlan>/Periodo',
+                                                type : 'sap.ui.model.type.String',
+                                            constraints : {
+                                                minLength: 1
+                                            }
+                                            }" id="idCreateTaskPeriodo" required="true" type="Number"/>
+                            </f:fields>
+                        </f:FormElement>
+                    </f:formElements >
+                </f:FormContainer>
+
+                <f:FormContainer>
+                    <f:formElements >
+                        <!-- <f:FormElement label="Status">
+                            <f:fields>
+                                <Select selectedKey="{newTaskPlan>/Status}">
+                                    <items>
+                                        <core:Item text="Não Liberado" key=""/>
+                                        <core:Item text="Ativo" key="A"/>
+                                        <core:Item text="Concluído" key="F"/>
+                                        <core:Item text="Liberado" key="X"/>
+                                    </items>
+                                </Select>
+                            </f:fields>
+                        </f:FormElement> -->
+                        <f:FormElement label="Tipo de Encerramento">
+                            <f:fields>
+                                <Select selectedKey="{
+                                                path: 'newTaskPlan>/TipoEncerramento',
+                                                type : 'sap.ui.model.type.String',
+                                            constraints : {
+                                                minLength: 1
+                                            }
+                                            }" id="idCreateTaskTpEnc" required="true" >
+                                    <items>
+                                        <core:Item text="" key=""/>
+                                        <core:Item text="Encerramento do mês" key="M"/>
+                                        <core:Item text="Encerramento trimestral" key="Q"/>
+                                        <core:Item text="Encerramento especial" key="S"/>
+                                        <core:Item text="Encerramento de exercício" key="Y"/>
+                                    </items>
+                                </Select>
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement label="Responsável PE">
+                            <f:fields>
+                                <Input id="idCreatePlanResp" value="{newTaskPlan>/RespPE}" showValueHelp="true" valueHelpRequest="showUserSearchHelp"/>
+                            </f:fields>
+                        </f:FormElement>
+                        <!-- <f:FormElement label="Grupo Autorizações">
+                            <f:fields>
+                                <Input value="{newTaskPlan>/GrpAutorizacao}" />
+                            </f:fields>
+                        </f:FormElement> -->
+                    </f:formElements>
+                </f:FormContainer>
+            </f:formContainers>
+        </f:Form>
+
+        <beginButton>
+            <Button type="Emphasized" text="{i18n>appApply}" press="CreateTaskPlan"/>
+        </beginButton>
+        <endButton>
+            <Button text="{i18n>appCancel}" press="onCloseCreateTaskPlanDialog"/>
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

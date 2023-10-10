@@ -1,0 +1,113 @@
+<mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.f.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" controllerName="ZVCRH_VISAO_EMPREGADO.ZVCRH_VISAO_EMPREGADO.controller.Add">
+	<App id="app">
+		<pages>
+			<Page title="Adicionar Dependentes / Benefícios" backgroundDesign="Solid">
+				<customHeader>
+					<Bar>
+						<contentMiddle>
+							<!--items-->
+							<Button press="onVoltar" text="Voltar" type="Back" width="45%"/>
+							<Button press="onEnviar" text="Enviar" type="Accept" width="45%"/>
+						</contentMiddle>
+					</Bar>
+				</customHeader>
+				<content>
+					<Input value="{Pernr}" id="IdPernr" visible="false"/>
+					<Input value="{Subty}" id="IdSubty" visible="false"/>
+					<Input value="{Objps}" id="IdObjps" visible="false"/>
+					<f:Form id="FormChange480_12120" editable="true">
+						<f:layout>
+							<f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer>
+								<f:formElements>
+									<f:FormElement visible="false">
+										<f:fields>
+											<Input value="{Status}" id="IdStatus"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Grau de Parentesco">
+										<f:fields>
+											<ComboBox id="IdParentesco" selectedKey="{Famsa}" required="true" placeholder="Selecione o grau de parentesco" items="{/ZET_VCRH_COMBO_PARENTESCOSet}">
+												<core:Item key="{Id}" text="{Value}"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Nome">
+										<f:fields>
+											<Input value="{Favor}" id="IdFavor" placeholder="Preencha com o 1° Nome" required="true"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Sobrenome">
+										<f:fields>
+											<Input value="{Fanam}" id="IdFanam" placeholder="Preencha com o Sobrenome" required="true"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Data de Nascimento">
+										<f:fields>
+											<Input value="{Fgbdt}" id="IdFgbdt" placeholder="Preencha com data de nascimento" required="true" type="Date"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Sexo">
+										<f:fields>
+											<ComboBox value="{Sexo}" id="IdSexo" selectedKey=" " required="true" placeholder="Selecione o Sexo" items="{/ZET_VCRH_COMBO_SEXOSet}">
+												<core:Item key="{Id}" text="{Value}"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Estado Civil">
+										<f:fields>
+											<ComboBox value="{Zzestciv}" id="IdZzestciv" selectedKey=" " required="true" placeholder="Selecione o estado civil" items="{/ZET_VCRH_COMBO_EST_CIVILSet}">
+												<core:Item key="{Id}" text="{Value}"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Anexos" id="IdonDoc">
+										<f:fields>
+											<Button press="getanexo" text="Download do Anexo" type="Accept" icon="sap-icon://vds-file"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement id="IdMsg">
+										<f:fields>
+											<MessageStrip text="Aguardando aprovação CSC! {motivo}" type="Warning" showIcon="true" visible="false"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement id="IdonEnviar">
+										<f:fields>
+											<Button press="onEnviar" text="Enviar" type="Accept" width="100%" visible="false"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement id="IdonVoltar">
+										<f:fields>
+											<Button press="onVoltar" text="Voltar" type="Back" width="100%" visible="false"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="*Para adicionar Anexos selecione o botão (+) " id="IdonAddDoc">
+										<f:fields>
+											<UploadCollection id="UploadCollection" multiple="false" change="onChange" required="true" fileDeleted="onFileDeleted" beforeUploadStarts="onBeforeUploadStarts" uploadComplete="onuploadComplete" items="{ path: '/ZET_VCRH_ARQU_UI5Set', templateShareable: true }" mode="SingleSelectMaster" uploadUrl="/sap/opu/odata/sap/ZGWVCHR_LIST_DEPENDENTES_SRV/ZET_VCRH_ARQU_UI5Set" noDataDescription="Para adicionar/alterar Anexos selecione o botão ( + )" noDataText="Aguardando novos Carregamentos" numberOfAttachmentsText="Anexos">
+												<toolbar>
+													<OverflowToolbar id="myId" visible="true">
+														<Title id="attachmentTitle"/>
+														<ToolbarSpacer/>
+														<SearchField width="10rem" search="onSearch" enabled="false" visible="false"/>
+														<Button id="deleteSelectedButton" text="Delete" press="onDeleteSelectedItems" enabled="false" visible="false" type="Transparent"/>
+														<ToggleButton id="selectAllButton" text="Select all" press="onSelectAllPress" enabled="false" visible="false" type="Transparent"/>
+														<UploadCollectionToolbarPlaceholder/>
+													</OverflowToolbar>
+												</toolbar>
+												<items>
+													<UploadCollectionItem documentId="{DocId}" fileName="{Filename}" mimeType="{Mimetype}" url="/sap/opu/odata/sap/ZGWVCHR_LIST_DEPENDENTES_SRV/ZET_VCRH_ARQU_UI5Set(Pernr='{Pernr}',Subty='{Subty}',Favor='{Favor}')/$value" enableEdit="false" visibleEdit="false" deletePress="onFileDelete" visible="false" selected="true"/>
+												</items>
+											</UploadCollection>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

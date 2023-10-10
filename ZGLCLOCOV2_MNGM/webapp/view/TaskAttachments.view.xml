@@ -1,0 +1,32 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core" class="sapUiSizeCompact" controllerName="votorantim.corp.clocov2planmanagement.controller.TaskAttachments"
+	xmlns="sap.m">
+
+	<Table id="idAttachmentTable" selectionChange="onSelectChange" inset="false" items="{path: 'to_anexos'}" mode="MultiSelect">
+		<headerToolbar>
+			<OverflowToolbar>
+				<content>
+					<Button text="Incluir Anexo" icon="sap-icon://add" tooltip="{i18n>taskAddAttachment}" press="onPressAddAttachment"/>
+					<Button text="Excluir Anexo" icon="sap-icon://delete" tooltip="{i18n>taskRemoveAttachment}" enabled="{attachmentView>/hasSelectedItems}" press="onDeleteAttachments"/>
+				</content>
+			</OverflowToolbar>
+		</headerToolbar>
+		<columns>
+			<Column width="50%">
+				<Text text="Título" />
+			</Column>
+			<Column width="50%">
+				<Text text="Comentário" />
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem vAlign="Middle">
+				<cells>
+					<Label text="{fileName}"/>
+					<Text text="{comentario}"/>
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+
+</mvc:View>

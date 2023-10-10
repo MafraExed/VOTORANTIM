@@ -1,0 +1,92 @@
+<mvc:View controllerName="ec.log.integrations.ECLogIntegrations.controller.Main" xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+	xmlns:m="sap.m" xmlns="sap.ui.table" xmlns:core="sap.ui.core">
+	<m:Shell id="shell">
+		<m:App id="app">
+			<m:pages>
+				<m:Page id="page" title="Log - Integrações RH SAP EC/ECC vs 1.1">
+					<m:content>
+						<Table id="tableLogs" rows="{path: 'logs>/results'}" selectionMode="None" visibleRowCount="7" visibleRowCountMode="Auto" alternateRowColors="true">
+							<extension>
+								<m:HBox >
+									<m:HBox wrap="Wrap" width="60rem">
+										<m:ComboBox id="inputEmpresa" placeholder="Empresa">
+											<core:Item key="VSA" text="VSA" />
+											<core:Item key="CBA" text="CBA" />
+											<core:Item key="JS" text="JS" />
+											<core:Item key="VE" text="VE" />                                            
+										</m:ComboBox>
+										<m:ComboBox id="inputProcesso" placeholder="Processo">
+											<core:Item key="ACESSORH_ENVIOCARGOS" text="AcessoRH - Envio de Cargos" />
+											<core:Item key="ACESSORH_ENVIOPOSICOES" text="ACESSORH_ENVIOPOSICOES" />
+											<core:Item key="ACESSORH_CADASTROSCONCLUIDOS" text="AcessoRH - Envio de Funcionário para o EC" />
+											<core:Item key="ACESSORH_PH_CONCLUIDO" text="Candidato gravado na entidade PH do EC" />
+											<core:Item key="FIM_CRIACAO_USUARIO" text="FIM - Atualização dos dados do Funcionário no EC" />
+											<core:Item key="KENOBY_CRIA_USUARIOS" text="Kenoby - Criação de Usuário" />
+											<core:Item key="KENOBY_ENVIA_CARGOS" text="Kenoby - Envio de Cargos" />
+											<core:Item key="KENOBY_CANDIDATOSELECIONADO" text="Kenoby - Envio do Candidato para o MDF" />
+											<!-- <core:Item key="WEBDESK" text="Webdesk - Abertura de Chamado de Contratação" /> -->
+										</m:ComboBox>
+										<m:Input id="inputID" placeholder="ID"/>
+										<m:DatePicker id="inputDate" displayFormat="short" class="sapUiSmallMarginBottom" placeholder="Data da Execução" valueFormat="yyyy-MM-dd"/>
+										<m:Button class="sapUiSmallMarginBegin" text="Buscar" press="buscaRegistros"/>							
+									</m:HBox>
+									<m:HBox width="19rem" justifyContent="End">
+										<m:Button icon="sap-icon://synchronize" press="buscaRegistros"/>	
+									</m:HBox>
+								</m:HBox>
+							</extension>
+							<columns>
+
+                                
+
+								<Column width="4rem" hAlign="Center">
+									<m:Label text="Status" />
+									<template>
+										<core:Icon src="{ path: 'logs>MsgStatus'   , formatter: '.formatter.formatStatus' }"
+										           color="{ path: 'logs>MsgStatus' , formatter: '.formatter.formatStatusColor' }"/>
+									</template>
+								</Column>
+								<Column width="5rem" hAlign="Center">
+									<m:Label text="Empresa"/>
+									<template>
+										<m:Text text="{logs>CompanyCode}" wrapping="false"/>
+									</template>
+								</Column>
+								<Column width="11rem">
+									<m:Label text="Processo"/>
+									<template>
+										<m:Label text="{logs>Processo}" tooltip="{logs>Processo}"/>
+									</template>
+								</Column>
+								<Column width="10rem" hAlign="Begin">
+									<m:Label text="Cargo/Nome/ID"/>
+									<template>
+										<m:Label text="{logs>IdProcesso}"/>
+									</template>
+								</Column>
+								<!-- <Column width="3rem" hAlign="Center">
+									<m:Label text="Seq"/>
+									<template>
+										<m:Label text="{logs>Seq}"/>
+									</template>
+								</Column> -->
+								<Column width="36rem">
+									<m:Label text="Mensagem"/>
+									<template>
+										<m:Label text="{logs>Msg}" tooltip="{logs>Msg}"/>
+									</template>
+								</Column>
+								<Column>
+									<m:Label text="Data"/>
+									<template>
+										<m:Label text="{ path: 'logs>Data', formatter: '.formatter.formatDate'}" />
+									</template>
+								</Column>
+							</columns>
+						</Table>
+					</m:content>
+				</m:Page>
+			</m:pages>
+		</m:App>
+	</m:Shell>
+</mvc:View>

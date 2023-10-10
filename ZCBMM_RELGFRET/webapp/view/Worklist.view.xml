@@ -1,0 +1,113 @@
+<mvc:View controllerName="ZCBMM_RELGFRET.ZCBMM_RELGFRET.controller.Worklist" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:mvc="sap.ui.core.mvc" xmlns:viz="sap.viz.ui5.controls" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form"
+	xmlns:smartTable="sap.ui.comp.smarttable" xmlns:mc="sap.suite.ui.microchart">
+	<Page showHeader="false">
+		<ObjectHeader title="Relatório Gestão de fretes e contratos" intro="Gestão fretes/contratos" id="idheader0" icon="sap-icon://area-chart"
+			iconActive="false" responsive="true"/>
+		<f:Form>
+			<f:layout>
+				<f:ResponsiveGridLayout labelSpanXL="1" labelSpanL="1" labelSpanM="1" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0"
+					emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="3" columnsM="3" singleContainerFullSize="true"/>
+			</f:layout>
+			<f:formContainers>
+				<f:FormContainer></f:FormContainer>
+				<f:FormContainer>
+					<f:FormElement>
+						<Input value="" id="IdTpConditDe" editable="true" type="Text" maxLength="4" valueHelpRequest="_onModelContextChangeCond"
+							showValueHelp="true" width="100%" placeholder="Digite a condição a ser pesquisada" textAlign="Left" change="onPress"/>
+					</f:FormElement>
+				</f:FormContainer>
+				<f:FormContainer>
+					<f:FormElement>
+						<Button text="Pesquisar" icon="sap-icon://search" press="onPress" width="25%"/>
+					</f:FormElement>
+				</f:FormContainer>
+				<f:FormContainer>
+					<f:FormElement>
+						<ProgressIndicator class="sapUiSmallMarginBottom" id="IdSucess" width="100%" height="30px" percentValue="" displayValue="" showValue="true"
+							state="Success" visible="false"/>
+					</f:FormElement>
+				</f:FormContainer>
+				<f:FormContainer>
+					<f:FormElement>
+						<ProgressIndicator class="sapUiSmallMarginBottom" id="IdError" width="100%" height="30px" percentValue="" displayValue="" showValue="true"
+							state="Error" visible="false"/>
+					</f:FormElement>
+				</f:FormContainer>
+				<f:FormContainer>
+					<f:FormElement>
+						<ProgressIndicator class="sapUiSmallMarginBottom" id="IdWarning" width="100%" height="30px" percentValue="" displayValue="" showValue="true"
+							state="Warning" visible="false"/>
+					</f:FormElement>
+				</f:FormContainer>
+			</f:formContainers>
+		</f:Form>
+		<IconTabBar id="idIconTabBarMulti" expanded="{device>/isNoPhone}" class="sapUiResponsiveContentPadding" visible="false" select="handleIconTabBarSelect">
+			<items>
+				<IconTabFilter></IconTabFilter>
+				<IconTabFilter text="Em vigencia" icon="sap-icon://customer-order-entry" key="0" iconColor="Positive" id="I_POSITIVE">
+					<smartTable:SmartTable id="smartTableSuccess" entitySet="ZET_CBMM_CF_RELGFRETSet" smartFilterId="smartFilterBar"
+						useOnlyOneSolidToolbar="true" useExportToExcel="true" useVariantManagement="true" useTablePersonalisation="true" tableType="ResponsiveTable"
+						header="Detalhes contrato e frete" showRowCount="true" showFullScreenButton="true"
+						initiallyVisibleFields="Kozgf,Knumh,Vhilm,Tdlnr,Route,Kosrt,Datab,Datbi,Kbetr" enableAutoBinding="false"
+						beforeRebindTable="onbeforeRebindTableSuccess" class	="sapUiResponsiveContentPadding" persistencyKey="SmartTablePKey" visible="true">
+						<Table id="table1" enableBusyIndicator="true" busyIndicatorDelay="100" growing="true">
+							<ColumnListItem highlight="{= ${Status} === 'G' ? 'Success' : 'Success' }"/>
+						</Table>
+						<smartTable:layoutData>
+							<FlexItemData growFactor="1" baseSize="0%"/>
+						</smartTable:layoutData>
+					</smartTable:SmartTable>
+				</IconTabFilter>
+				<IconTabFilter></IconTabFilter>
+				<IconTabFilter></IconTabFilter>
+				<IconTabFilter></IconTabFilter>
+				<IconTabFilter></IconTabFilter>
+				<IconTabFilter text="Inexistentes" icon="sap-icon://customer-order-entry" key="1" iconColor="Negative" id="I_NEGATIVE">
+					<smartTable:SmartTable id="smartTableError" entitySet="ZET_CBMM_CF_RELGFRETSet" smartFilterId="smartFilterBar" useOnlyOneSolidToolbar="true"
+						useExportToExcel="true" useVariantManagement="false" useTablePersonalisation="true" tableType="ResponsiveTable"
+						header="Detalhes contrato e frete" showRowCount="true" showFullScreenButton="true"
+						initiallyVisibleFields="Kozgf,Knumh,Vhilm,Tdlnr,Route,Kosrt,Datab,Datbi,Kbetr" enableAutoBinding="false"
+						beforeRebindTable="onbeforeRebindTableError" class="sapUiResponsiveContentPadding" persistencyKey="SmartTablePKey" visible="true">
+						<Table id="table2" enableBusyIndicator="true" busyIndicatorDelay="100" growing="true">
+							<ColumnListItem highlight="{= ${Status} === 'R' ? 'Error' : 'Error' }"/>
+						</Table>
+						<smartTable:layoutData>
+							<FlexItemData growFactor="1" baseSize="0%"/>
+						</smartTable:layoutData>
+					</smartTable:SmartTable>
+				</IconTabFilter>
+				<IconTabFilter></IconTabFilter>
+				<IconTabFilter></IconTabFilter>
+				<IconTabFilter></IconTabFilter>
+				<IconTabFilter></IconTabFilter>
+				<IconTabFilter text="A Vencer" icon="sap-icon://customer-order-entry" key="2" iconColor="Critical" id="I_CRITICAL">
+					<smartTable:SmartTable 
+					id="smartTableWarning"
+					entitySet="ZET_CBMM_CF_RELGFRETSet" 
+					smartFilterId="smartFilterBar"
+					useOnlyOneSolidToolbar="true" 
+					useExportToExcel="true" 
+					useVariantManagement="false" 
+					useTablePersonalisation="true"
+					tableType="ResponsiveTable" 
+					header="Detalhes contrato e frete" 
+					showRowCount="true" 
+					showFullScreenButton="true"
+					initiallyVisibleFields="Kozgf,Knumh,Vhilm,Tdlnr,Route,Kosrt,Datab,Datbi,Kbetr" 
+					enableAutoBinding="false"
+					beforeRebindTable="onbeforeRebindTableWarning" 
+					class="sapUiResponsiveContentPadding" 
+					persistencyKey="SmartTablePKey">
+						<Table id="table3" enableBusyIndicator="true" busyIndicatorDelay="100" growing="true">
+							<ColumnListItem highlight="{= ${Status} === 'Y' ? 'Warning' : 'Warning' }"/>
+						</Table>
+						<smartTable:layoutData>
+							<FlexItemData growFactor="1" baseSize="0%"/>
+						</smartTable:layoutData>
+					</smartTable:SmartTable>
+				</IconTabFilter>
+			</items>
+		</IconTabBar>
+	</Page>
+</mvc:View>

@@ -1,0 +1,38 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:table="sap.ui.table" xmlns:l="sap.ui.layout" class="sapUiSizeCompact" xmlns:f="sap.ui.layout.form">
+    <Dialog showHeader="true" title="{= ${detailView>/isTemplate} ? 'Configurações do Modelo' : 'Configurações do Plano' }">
+        <f:Form editable="true">
+            <f:layout>
+                <f:ResponsiveGridLayout labelSpanXL="12" labelSpanL="12" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false" />
+            </f:layout>
+            <f:formContainers>
+                <f:FormContainer>
+                    <f:formElements>
+                        <f:FormElement label="Alterar Status de tarefas sucessoras ao reprocessar tarefa">
+                            <f:fields>
+                                <Switch state="{ path: 'settings>/ChangeStatusReproc' }" customTextOn=" " customTextOff=" " />
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement label="Ativar obrigatoriedade de inclusão de motivo por atraso na conclusão de tarefa">
+                            <f:fields>
+                                <Switch state="{ path: 'settings>/LateTasksPopup' }" customTextOn=" " customTextOff=" " />
+                                <Button type="Emphasized" text="Cadastrar Motivos" tooltip="" visible="{settings>/LateTasksPopup}" press="onPressAddMotives" width="200px"/>
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement >
+                            <f:fields >
+                                <Label visible="{= ${settings>/LastChangeBy} === '' ? false : true }" class="sapUiLargeMarginTop" text="Atualizado por {settings>/LastChangeBy} - {path: 'settings>/ChangedOn', formatter: '.formatter.getShortDate' }" />
+                            </f:fields>
+                        </f:FormElement>
+                    </f:formElements>
+                </f:FormContainer>
+            </f:formContainers>
+        </f:Form>
+
+        <beginButton>
+            <Button type="Emphasized" text="{i18n>appApply}" press="onChangeSettings" />
+        </beginButton>
+        <endButton>
+            <Button text="{i18n>appCancel}" press="onCloseSettingsDialog" />
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,26 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:lab="openui5.camera" xmlns:f="sap.ui.layout.form" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns:u="sap.ui.unified">
+	<Dialog title="Confirmação Aceite" beforeClose="beforeClose">
+		<content>
+			<VBox alignItems="Center" height="{= ${device>/system/desktop} ? '350px' : '700px'}">
+				<items>
+					<Label text="Nome"></Label>
+					<Input width="100%" id="input1" maxLength="30"></Input>
+					<Label text="Matricula"></Label>
+					<Input width="100%" id="input2" maxLength="30" ></Input>
+					<!--<lab:Camera width="{= ${device>/system/desktop} ? '600px' : '80%'}" height="{= ${device>/system/desktop} ? '350px' : '100%'}"-->
+					<!--	snapshot=".onSnapshot" singleShotMode="false"/>-->
+				
+				</items>
+				<!-- sap.ui.core.Control -->
+			</VBox>
+		</content>
+		<beginButton>
+			<Button id="btnCanc" text="{i18n>close}" press="close"/>
+			
+		</beginButton>
+		<endButton>
+			<Button id="btnClose" text="{i18n>save}" enabled="true" press="closeDialog"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

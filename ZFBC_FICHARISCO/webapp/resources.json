@@ -1,0 +1,97 @@
+{
+    "resources": [
+        {
+            "name": "controller/Object.controller.js"
+        },
+        {
+            "name": "controller/NotFound.controller.js"
+        },
+        {
+            "name": "controller/Worklist.controller.js"
+        },
+        {
+            "name": "controller/App.controller.js"
+        },
+        {
+            "name": "controller/ErrorHandler.js"
+        },
+        {
+            "name": "controller/BaseController.js"
+        },
+        {
+            "name": "i18n/i18n.properties",
+            "raw": "i18n/i18n.properties"
+        },
+        {
+            "name": "css/style.css"
+        },
+        {
+            "name": "printThis.js"
+        },
+        {
+            "name": "jQuery.print.js"
+        },
+        {
+            "name": "fragment/ObjPrint.fragment.xml"
+        },
+        {
+            "name": "fragment/SortingDialog.fragment.xml"
+        },
+        {
+            "name": "image/EsferaImpacto.png"
+        },
+        {
+            "name": "image/AnaliseRisco.png"
+        },
+        {
+            "name": ".user.project.json"
+        },
+        {
+            "name": "model/formatter.js"
+        },
+        {
+            "name": "model/models.js"
+        },
+        {
+            "name": ".project.json"
+        },
+        {
+            "name": "localService/metadata.xml"
+        },
+        {
+            "name": "localService/mockserver.js"
+        },
+        {
+            "name": "view/NotFound.view.xml"
+        },
+        {
+            "name": "view/App.view.xml"
+        },
+        {
+            "name": "view/Object.view.xml"
+        },
+        {
+            "name": "view/ObjectNotFound.view.xml"
+        },
+        {
+            "name": "view/Worklist.view.xml"
+        },
+        {
+            "name": "neo-app.json"
+        },
+        {
+            "name": "manifest.json"
+        },
+        {
+            "name": "Component.js"
+        },
+        {
+            "name": "Component-preload.js",
+            "merged": true
+        },
+        {
+            "name": "resources.json",
+            "merged": true
+        }
+    ]
+}

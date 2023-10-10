@@ -1,0 +1,1 @@
+<m:View controllerName="com.innova.sitrack.controller.App" xmlns:m="sap.ui.core.mvc" xmlns="sap.m" displayBlock="true" height="100%"><App id="app" busy="{appView>/busy}" busyIndicatorDelay="{appView>/delay}"/></m:View>

@@ -1,0 +1,27 @@
+specVersion: "3.1"
+metadata:
+  name: y5gl_financeir2.y5gl_financeir2
+type: application
+server:
+  customMiddleware:
+    - name: fiori-tools-proxy
+      afterMiddleware: compression
+      configuration:
+        ignoreCertError: false
+        ui5:
+          path:
+            - /resources
+            - /test-resources
+          url: https://ui5.sap.com
+          version: 1.71.4
+    - name: fiori-tools-appreload
+      afterMiddleware: compression
+      configuration:
+        port: 35729
+        path: webapp
+        delay: 300
+    - name: fiori-tools-preview
+      afterMiddleware: fiori-tools-appreload
+      configuration:
+        component: Y5GL_FINANCEIR2.Y5GL_FINANCEIR2
+        ui5Theme: sap_fiori_3

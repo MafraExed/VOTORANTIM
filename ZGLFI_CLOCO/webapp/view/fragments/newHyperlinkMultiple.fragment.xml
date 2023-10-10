@@ -1,0 +1,22 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+	<Dialog title="Adicionar novo Hyperlink" type="Message" state="Information">
+		<content>
+			<f:SimpleForm>
+				<f:content>
+					<Label text="Nome do Hyperlink" labelFor="inputNomeHyperlinkMultiple"/>
+					<Input id="inputNomeHyperlinkMultiple" showValueHelp="false" required="true"/>
+					<Label text="Descrição do Hyperlink" labelFor="inputDescHyperlinkMultiple" required="true"/>
+					<Input id="inputDescHyperlinkMultiple" showValueHelp="false"/>
+					<Label text="URL (Endereço da internet)" labelFor="inputUrlHyperlinkMultiple" required="true"/>
+					<Input id="inputUrlHyperlinkMultiple" showValueHelp="false"/>
+				</f:content>
+			</f:SimpleForm>
+		</content>
+		<beginButton>
+			<Button text="Criar" press="onLinkCreateMultiple" enabled="true"/>
+		</beginButton>
+		<endButton>
+			<Button text="Cancelar" press="onLinkEmMassaDialogClose"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

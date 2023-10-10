@@ -1,0 +1,91 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<Dialog title="{i18n>PopupHeader}" contentWidth="1300px">
+		<content>	
+			<Table inset="false"
+			items="{ path: 'PopupView>/Data' }">							
+				<columns>
+					<Column demandPopin="true">
+						<Text text="{i18n>columnLifnrKunnr}"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true">
+						<Text text="{i18n>columnXblnr}"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true">
+						<Text text="{i18n>columnBlart}"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true">
+						<Text text="{i18n>columnBudat}"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true">
+						<Text text="{i18n>columnDmbtr}"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true">
+						<Text text="{i18n>columnVencLiq}"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true">
+						<Text text="{i18n>columnDiasAtraso}"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true">
+						<Text text="{i18n>columnBelnr}"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true">
+						<Text text="{i18n>columnErdat}"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true">
+						<Text text="{i18n>columnRefFat}"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true">
+						<Text text="{i18n>columnUsnam}"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+						<Text text="{i18n>columnTexto}"/>
+					</Column>																								
+				</columns>		
+				<items>
+					<ColumnListItem vAlign="Middle">
+						<cells>
+							<Text text="{PopupView>LifnrKunnr}"/>
+							<Text text="{PopupView>Xblnr}"/>
+							<Text text="{PopupView>Blart}"/>
+							<Text text="{ path: 'PopupView>Budat',
+										  type: 'sap.ui.model.type.Date',
+         								  formatOptions: {
+           								   pattern: 'dd/MM/yyyy', UTC: true
+         								} }"/>							
+							<Text text="{
+											parts: [ {path: 'PopupView>Dmbtr' },
+													 {path: 'PopupView>Waers' } ],
+											type: 'sap.ui.model.type.Currency',
+											formatOptions: {
+        										   showMeasure: false
+    										} }"/>
+							<Text text="{ path: 'PopupView>VencLiq',
+										  type: 'sap.ui.model.type.Date',
+         								  formatOptions: {
+           								   pattern: 'dd/MM/yyyy', UTC: true
+         								} }"/>	
+							<Text text="{PopupView>DiasAtraso}"/>
+							<Text text="{PopupView>Belnr}"/>
+							<Text text="{ path: 'PopupView>Erdat',
+										  type: 'sap.ui.model.type.Date',
+         								  formatOptions: {
+           								   pattern: 'dd/MM/yyyy', UTC: true
+         								} }"/>	
+							<Text text="{PopupView>RefFat}"/>
+							<Text text="{PopupView>Usnam}"/>
+							<Button icon="sap-icon://document-text" press="onTextClick"/>						
+						</cells>
+					</ColumnListItem>
+				</items>										
+			</Table>
+		</content>
+		<beginButton>
+			<Button text="{i18n>CONFIRM}" press="onConfirmPopup" />
+		</beginButton>
+		<endButton>
+			<Button text="{i18n>CANCEL}" press="onCloseDialog" />
+		</endButton>		
+	</Dialog>
+</core:FragmentDefinition>

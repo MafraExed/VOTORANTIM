@@ -1,0 +1,17 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Dialog busyIndicatorDelay="1" horizontalScrolling="false" state="None" stretch="false" title="Escolha a Placa da Carreta 2" type="Standard" verticalScrolling="true">
+		<content>
+			<HBox class="sapUiTinyMargin parent">
+				<SearchField search="onSearchPlacaCarreta2"/>
+			</HBox>
+			<List class="sapUiSmallMarginBegin" items="{path: 'placaCarreta2>/'}" itemPress="onSelecionarPlacaCarreta2">
+				<items>
+					<StandardListItem class="sapUiSmallMarginEnd" type="Active" title="{placaCarreta2>PlcCarro2}" visible="{placaCarreta2>visible}"/>
+				</items>
+			</List>
+		</content>
+		<beginButton>
+			<Button text="Cancelar" type="Reject" press="onClosePlacaCarreta2" />
+		</beginButton>
+	</Dialog>
+</core:FragmentDefinition>

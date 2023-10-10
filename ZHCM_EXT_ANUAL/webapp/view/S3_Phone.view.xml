@@ -1,0 +1,54 @@
+<!--
+
+    Copyright (C) 2009-2014 SAP SE or an SAP affiliate company. All rights reserved
+
+-->
+<core:View 	 
+	xmlns="sap.m" 
+	controllerName="hcm.mypaystubs.view.S3_Phone"
+	xmlns:me="sap.me" 
+	xmlns:core="sap.ui.core"
+	xmlns:ctrl="hcm.mypaystubs.controls"
+	xmlns:form="sap.ui.layout.form"
+	xmlns:l="sap.ui.layout">
+		<Page class="sapUiFioriObjectPage" title="{i18n>DISPLAY_NAME_DETAILS}" enableScrolling="false" id="PAGE_DETAILS_PHONE">
+		<content>
+			<ObjectHeader 
+				responsive="true"
+				title="{parts: [{path: 'PayrollType'},{path: 'Period'},{path: 'BonusDate'},{path: 'Reason'}], formatter:'hcm.mypaystubs.utils.Formatter.monthFormatterDetailPhone'}"
+				number="{path:'Amount', formatter:'hcm.mypaystubs.utils.Formatter.amountFormatter'}" 
+				numberUnit="{Currency}">
+				<attributes>
+					<ObjectAttribute id="PAY_DATE"          
+						text="{path:'i18n>PAY_DATE'}: {path:'PayDate', type:'sap.ui.model.type.Date', formatOptions: { style:'long', UTC: true}}" />	
+					<ObjectAttribute id="OFFCYCLE_REASON"
+						text="{parts: [{path: 'i18n>OFFCYCLE_REASON'},{path: 'GroupName'}], formatter:'hcm.mypaystubs.utils.Formatter.positionFormatter'}"
+						visible="{= ${PayrollType}  === 'A' || ${PayrollType}  === 'C' ? true : false }" />	
+				</attributes>
+				<statuses>
+			   		<ObjectStatus id="MPS_DEDUCTIONS" 
+			   			text="{parts: [{path: 'i18n>PAYSLIP_DEDUCTIONS'},{path: 'Deduction'},{path: 'Currency'}], formatter:'hcm.mypaystubs.utils.Formatter.numberFormatter'}" state="Error" />
+			   		<ObjectStatus id="MPS_GROSSPAY" 
+			   			text="{parts: [{path: 'i18n>PAYSLIP_GROSSPAY'},{path: 'GrossPay'},{path: 'Currency'}], formatter:'hcm.mypaystubs.utils.Formatter.numberFormatter'}" state="Success" />	   			   		
+        		</statuses>
+        		 <!-- extension point for additional fields in header -->
+                <core:ExtensionPoint name="extS3PhoneHeader"></core:ExtensionPoint>
+		   	</ObjectHeader>
+			<VBox id="PAYSLIP_BUSY_CURSOR_CONTAINER" visible="false" width="100%" alignItems="Center">
+			 	<BusyIndicator id="PAYSLIP_BUSY_CURSOR" size="40px" class="payslipBusyCursor"></BusyIndicator>
+			</VBox>
+			<ctrl:ZoomableScrollContainer id="PAYSLIP_PDF_VIEWER_CONTAINER" 
+			   height = "95%" width = "95%" vertical = "true" class="payslipPdf"
+			   initialScale= "{NewModel>/initialScale}" minScale="{NewModel>/minScale}" maxScale="{NewModel>/maxScale}">	
+			   
+			   <ctrl:PDFViewer id="PDF_VIEWER_CTRL"  errorMessage="{i18n>PDF_SERVICE_ERR_MESSAGE}"
+					begin="showBusyCursor"  complete="hideBusyCursor" src="{NewModel>/PDFPayslipUrl}">
+				</ctrl:PDFViewer>	   			   
+			</ctrl:ZoomableScrollContainer>
+		</content>		
+		<footer id="MPS_DETAIL_FOOTER">
+			<Bar id="MPS_DETAIL_FOOTER_BAR" translucent="true"/>
+		</footer>
+	</Page>
+	
+	</core:View>

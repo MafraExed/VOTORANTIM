@@ -1,0 +1,42 @@
+<mvc:View controllerName="ZCBMM_MPCONC.ZCBMM_MPCONC.controller.Master" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	xmlns:semantic="sap.f.semantic">
+	<semantic:SemanticPage id="masterPage" preserveHeaderStateOnScroll="true" toggleHeaderOnTitleClick="false">
+		<semantic:content>
+			<!-- For client side filtering add this to the items attribute: parameters: {operationMode: 'Client'}}" -->
+			<List id="list" width="auto" class="sapFDynamicPageAlignContent"
+				items="{ path: '/ZET_CBMM_CF_FRETESet', filters: { path: 'Status', operator: 'EQ', value1:'MAPA'}, sorter: { path: 'IdSolicitacao', descending: false}, groupHeaderFactory: '.createGroupHeader'}"
+				busyIndicatorDelay="{masterView>/delay}" noDataText="{masterView>/noDataText}"
+				mode="{= ${device>/system/phone} ? 'None' : 'SingleSelectMaster'}" growing="true" growingScrollToLoad="true"
+				updateFinished="onUpdateFinished" selectionChange="onSelectionChange">
+				<infoToolbar>
+					<Toolbar active="true" id="filterBar" visible="{masterView>/isFilterBarVisible}" press="onOpenViewSettings">
+						<Title id="filterBarLabel" text="{masterView>/filterBarLabel}"/>
+					</Toolbar>
+				</infoToolbar>
+				<headerToolbar>
+					<OverflowToolbar>
+						<SearchField id="searchField" showRefreshButton="true" tooltip="{i18n>masterSearchTooltip}" search="onSearch" width="auto">
+							<layoutData>
+								<OverflowToolbarLayoutData minWidth="150px" maxWidth="240px" shrinkable="true"/>
+							</layoutData>
+						</SearchField>
+						<ToolbarSpacer/>
+					</OverflowToolbar>
+				</headerToolbar>
+				<items>
+					<ObjectListItem type="Navigation" press="onSelectionChange" title="Solicitação: {IdSolicitacao}">
+						<attributes>
+							<ObjectAttribute text="Empresa: {Bukrs}" id="Bukrs" visible="true"/>
+						</attributes>
+					 	<attributes>
+							<ObjectAttribute text="Centro: {WerksO}" id="WerksO" visible="true"/>
+						</attributes>
+						<attributes>
+							<ObjectAttribute text="Observação: {Observacao}" id="Observacao" visible="true"/>
+						</attributes>
+					</ObjectListItem>
+				</items>
+			</List>
+		</semantic:content>
+	</semantic:SemanticPage>
+</mvc:View>

@@ -1,0 +1,66 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:m="sap.m"
+	xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:smartTable="sap.ui.comp.smarttable" xmlns:table="sap.ui.table" xmlns:f="sap.ui.layout.form"
+	xmlns:l="controls" xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	controllerName="ZPUI_BCMM_COND.ZPUI_BCMM_COND.controller.AddTransp" width="100%" height="100%">
+	<App>
+		<pages>
+			<Page title="Adicionar nova Transportadora">
+				<content>
+					<f:Form class="editableForm" editable="true">
+						<f:layout>
+							<f:ResponsiveGridLayout labelSpanXL="2" labelSpanL="2" labelSpanM="2" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0"
+								emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="true"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer>
+								<f:formElements>
+									<f:FormElement>
+										<f:fields>
+											<Input id="IdNrTransp" editable="true" required="true" valueHelpRequest="onNrTransp" showValueHelp="true" showSuggestion="true"
+												suggestionItems="{/ZET_CBMM_CF_TRANSP_HSet}" startSuggestion="0" width="40%">
+												<suggestionItems>
+													<core:Item text="{Lifnr}"/>
+												</suggestionItems>
+											</Input>
+										</f:fields>
+										<f:label>
+											<Label text="{/#ZET_CBMM_CF_TRANSP/NrTransp/@sap:label}" design="Bold"/>
+										</f:label>
+									</f:FormElement>
+									<f:FormElement>
+										<f:fields>
+											<Input id="Bukrs" visible="false"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement>
+										<f:fields>
+											<Input id="WerksO" visible="false"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement>
+										<f:fields>
+											<Input id="IdSolicitacao" visible="false"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement>
+										<f:fields>
+											<Input id="IdRota" visible="false"/>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+				</content>
+				<footer>
+					<Toolbar>
+						<Button id="BtnSave" text="Salvar" type="Default" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"
+							press="OnSave" tooltip="Salvar alterações" icon="sap-icon://save"/>
+						<Button id="BtnCanc" text="Voltar" type="Transparent" icon="sap-icon://nav-back" iconFirst="true" width="auto" enabled="true" visible="true"
+							iconDensityAware="false" press="onCanc" tooltip="Cancelar modificações"/>
+					</Toolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

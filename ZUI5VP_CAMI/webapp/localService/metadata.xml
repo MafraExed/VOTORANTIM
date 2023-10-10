@@ -1,0 +1,87 @@
+<edmx:Edmx
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+    xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+    xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZGWVPWM_GESTAO_CAMINHOES_SRV" xml:lang="en" sap:schema-version="1">
+            <EntityType Name="ZET_VPWM_VIAGENS" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Usuario"/>
+                    <PropertyRef Name="Composicao"/>
+                    <PropertyRef Name="Data"/>
+                    <PropertyRef Name="Hora"/>
+                </Key>
+                <Property Name="Usuario" Type="Edm.String" Nullable="false" MaxLength="10" sap:sortable="false"/>
+                <Property Name="Composicao" Type="Edm.String" Nullable="false" MaxLength="10" sap:sortable="false"/>
+                <Property Name="Data" Type="Edm.String" Nullable="false" MaxLength="8" sap:sortable="false"/>
+                <Property Name="Hora" Type="Edm.String" Nullable="false" MaxLength="8" sap:sortable="false"/>
+                <Property Name="Latitude" Type="Edm.String" Nullable="false" MaxLength="16" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Longitude" Type="Edm.String" Nullable="false" MaxLength="16" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZET_VPWM_REGI_ETAPA" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CentroOrigem"/>
+                    <PropertyRef Name="CentroDestino"/>
+                    <PropertyRef Name="DepositoDestino"/>
+                    <PropertyRef Name="Etapa"/>
+                    <PropertyRef Name="Composicao"/>
+                    <PropertyRef Name="DataInicio"/>
+                    <PropertyRef Name="HoraInicio"/>
+                </Key>
+                <Property Name="CentroOrigem" Type="Edm.String" Nullable="false" MaxLength="4" sap:sortable="false"/>
+                <Property Name="CentroDestino" Type="Edm.String" Nullable="false" MaxLength="4" sap:sortable="false"/>
+                <Property Name="DepositoDestino" Type="Edm.String" Nullable="false" MaxLength="4" sap:sortable="false"/>
+                <Property Name="Etapa" Type="Edm.String" Nullable="false" MaxLength="10" sap:sortable="false"/>
+                <Property Name="Composicao" Type="Edm.String" Nullable="false" MaxLength="10" sap:sortable="false"/>
+                <Property Name="DataInicio" Type="Edm.String" Nullable="false" MaxLength="8" sap:sortable="false"/>
+                <Property Name="HoraInicio" Type="Edm.String" Nullable="false" MaxLength="6" sap:sortable="false"/>
+                <Property Name="DataFim" Type="Edm.String" Nullable="false" MaxLength="8" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="HoraFim" Type="Edm.String" Nullable="false" MaxLength="6" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Viagem" Type="Edm.String" Nullable="false" MaxLength="14" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Oc" Type="Edm.String" Nullable="false" MaxLength="16" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Usuario" Type="Edm.String" Nullable="false" MaxLength="12" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="ZET_VPWM_ETAPAS_TRP" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CentroOrigem"/>
+                    <PropertyRef Name="CentroDestino"/>
+                    <PropertyRef Name="DepositoDestino"/>
+                    <PropertyRef Name="Etapa"/>
+                </Key>
+                <Property Name="CentroOrigem" Type="Edm.String" Nullable="false" MaxLength="4" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="CentroDestino" Type="Edm.String" Nullable="false" MaxLength="4" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="DepositoDestino" Type="Edm.String" Nullable="false" MaxLength="4" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Etapa" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="DescricaoEtapa" Type="Edm.String" Nullable="false" MaxLength="100" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DescAcao1" Type="Edm.String" Nullable="false" MaxLength="100" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DescAcao2" Type="Edm.String" Nullable="false" MaxLength="100" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ProximaEtapa" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Metas" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Tipo" Type="Edm.String" Nullable="false" MaxLength="2" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZET_VPWM_COMPOSICAO" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Composicao"/>
+                </Key>
+                <Property Name="Composicao" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="PlcCavalo" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="PlcCarro1" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="PlcCarro2" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Centro" Type="Edm.String" Nullable="false" MaxLength="4" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="TagComp" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CodTransp" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityContainer Name="ZGWVPWM_GESTAO_CAMINHOES_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="ZET_VPWM_VIAGENSSET" EntityType="ZGWVPWM_GESTAO_CAMINHOES_SRV.ZET_VPWM_VIAGENS" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ZET_VPWM_REGI_ETAPASET" EntityType="ZGWVPWM_GESTAO_CAMINHOES_SRV.ZET_VPWM_REGI_ETAPA" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ZET_VPWM_ETAPAS_TRPSET" EntityType="ZGWVPWM_GESTAO_CAMINHOES_SRV.ZET_VPWM_ETAPAS_TRP" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ZET_VPWM_COMPOSICAOSET" EntityType="ZGWVPWM_GESTAO_CAMINHOES_SRV.ZET_VPWM_COMPOSICAO" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+            </EntityContainer>
+            <atom:link
+                xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/ZGWVPWM_GESTAO_CAMINHOES_SRV/$metadata"/>
+                <atom:link
+                    xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/ZGWVPWM_GESTAO_CAMINHOES_SRV/$metadata"/>
+                </Schema>
+            </edmx:DataServices>
+        </edmx:Edmx>

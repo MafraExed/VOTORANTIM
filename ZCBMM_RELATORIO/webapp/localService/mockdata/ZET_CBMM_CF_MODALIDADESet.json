@@ -1,0 +1,101 @@
+[{
+	"DtInic": "/Date(1504734293000)/",
+	"DtFim": "/Date(1080164693000)/",
+	"IdSolicitacao": 1555,
+	"Modalidade": "Spot",
+	"Valor": 1,
+	"__metadata": {
+		"uri": "ZET_CBMM_CF_MODALIDADESet(DtInic=datetime'2017-09-06T21%3A44%3A53',IdSolicitacao=1555)",
+		"type": "ZGWCBMM_RELATORIO_SRV.ZET_CBMM_CF_MODALIDADE"
+	}
+}, {
+	"DtInic": "/Date(1522273493000)/",
+	"DtFim": "/Date(1087163093000)/",
+	"IdSolicitacao": 8460,
+	"Modalidade": "Spot",
+	"Valor": 1,
+	"__metadata": {
+		"uri": "ZET_CBMM_CF_MODALIDADESet(DtInic=datetime'2018-03-28T21%3A44%3A53',IdSolicitacao=8460)",
+		"type": "ZGWCBMM_RELATORIO_SRV.ZET_CBMM_CF_MODALIDADE"
+	}
+}, {
+	"DtInic": "/Date(1210455893000)/",
+	"DtFim": "/Date(1422564293000)/",
+	"IdSolicitacao": 8190,
+	"Modalidade": "Spot",
+	"Valor": 1,
+	"__metadata": {
+		"uri": "ZET_CBMM_CF_MODALIDADESet(DtInic=datetime'2008-05-10T21%3A44%3A53',IdSolicitacao=8190)",
+		"type": "ZGWCBMM_RELATORIO_SRV.ZET_CBMM_CF_MODALIDADE"
+	}
+}, {
+	"DtInic": "/Date(1065563093000)/",
+	"DtFim": "/Date(1327265093000)/",
+	"IdSolicitacao": 1214,
+	"Modalidade": "Spot",
+	"Valor": 1,
+	"__metadata": {
+		"uri": "ZET_CBMM_CF_MODALIDADESet(DtInic=datetime'2003-10-07T21%3A44%3A53',IdSolicitacao=1214)",
+		"type": "ZGWCBMM_RELATORIO_SRV.ZET_CBMM_CF_MODALIDADE"
+	}
+}, {
+	"DtInic": "/Date(1214257493000)/",
+	"DtFim": "/Date(1242683093000)/",
+	"IdSolicitacao": 4418,
+	"Modalidade": "Perene",
+	"Valor": 1,
+	"__metadata": {
+		"uri": "ZET_CBMM_CF_MODALIDADESet(DtInic=datetime'2008-06-23T21%3A44%3A53',IdSolicitacao=4418)",
+		"type": "ZGWCBMM_RELATORIO_SRV.ZET_CBMM_CF_MODALIDADE"
+	}
+}, {
+	"DtInic": "/Date(1016747093000)/",
+	"DtFim": "/Date(1154036693000)/",
+	"IdSolicitacao": 8066,
+	"Modalidade": "Perene",
+	"Valor": 1,
+	"__metadata": {
+		"uri": "ZET_CBMM_CF_MODALIDADESet(DtInic=datetime'2002-03-21T21%3A44%3A53',IdSolicitacao=8066)",
+		"type": "ZGWCBMM_RELATORIO_SRV.ZET_CBMM_CF_MODALIDADE"
+	}
+}, {
+	"DtInic": "/Date(1296852293000)/",
+	"DtFim": "/Date(1428356693000)/",
+	"IdSolicitacao": 126,
+	"Modalidade": "Serviço",
+	"Valor": 1,
+	"__metadata": {
+		"uri": "ZET_CBMM_CF_MODALIDADESet(DtInic=datetime'2011-02-04T20%3A44%3A53',IdSolicitacao=126)",
+		"type": "ZGWCBMM_RELATORIO_SRV.ZET_CBMM_CF_MODALIDADE"
+	}
+}, {
+	"DtInic": "/Date(1162932293000)/",
+	"DtFim": "/Date(986075093000)/",
+	"IdSolicitacao": 5637,
+	"Modalidade": "Serviço",
+	"Valor": 1,
+	"__metadata": {
+		"uri": "ZET_CBMM_CF_MODALIDADESet(DtInic=datetime'2006-11-07T20%3A44%3A53',IdSolicitacao=5637)",
+		"type": "ZGWCBMM_RELATORIO_SRV.ZET_CBMM_CF_MODALIDADE"
+	}
+}, {
+	"DtInic": "/Date(1092519893000)/",
+	"DtFim": "/Date(1303508693000)/",
+	"IdSolicitacao": 3151,
+	"Modalidade": "Serviço",
+	"Valor": 1,
+	"__metadata": {
+		"uri": "ZET_CBMM_CF_MODALIDADESet(DtInic=datetime'2004-08-14T21%3A44%3A53',IdSolicitacao=3151)",
+		"type": "ZGWCBMM_RELATORIO_SRV.ZET_CBMM_CF_MODALIDADE"
+	}
+}, {
+	"DtInic": "/Date(1464039893000)/",
+	"DtFim": "/Date(1128635093000)/",
+	"IdSolicitacao": 6223,
+	"Modalidade": "Serviço",
+	"Valor": 1,
+	"__metadata": {
+		"uri": "ZET_CBMM_CF_MODALIDADESet(DtInic=datetime'2016-05-23T21%3A44%3A53',IdSolicitacao=6223)",
+		"type": "ZGWCBMM_RELATORIO_SRV.ZET_CBMM_CF_MODALIDADE"
+	}
+}]

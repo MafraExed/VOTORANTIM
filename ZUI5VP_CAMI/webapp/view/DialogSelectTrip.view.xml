@@ -1,0 +1,13 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="FibriaStatusViagem.controller.DialogSelectTrip" xmlns="sap.m">
+    <!--<Dialog horizontalScrolling="true" showHeader="true" state="None" stretch="false" title="O que deseja fazer?" type="Standard" verticalScrolling="true">-->
+    <!--    <content>-->
+    <!--        <Button text="Nova Viagem" id="newTripButton" class="selectTripButton" type="Default" iconFirst="true" enabled="true" visible="true" iconDensityAware="false" press="_onStartNewTripButtonPress"/>-->
+    <!--        <Button text="Continuar" class="selectTripButton" type="Default" iconFirst="true"  enabled="false" visible="true" iconDensityAware="false" press="_onContinueTripButtonPress"/>-->
+    <!--    </content>-->
+    <!--    <beginButton/>-->
+    <!--    <buttons/>-->
+    <!--    <customHeader/>-->
+    <!--    <endButton/>-->
+    <!--    <subHeader/>-->
+    <!--</Dialog>-->
+</mvc:View>

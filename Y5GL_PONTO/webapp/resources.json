@@ -1,0 +1,186 @@
+{
+    "resources": [
+        {
+            "name": "controller/ListSelector.js"
+        },
+        {
+            "name": "manifest.json"
+        },
+        {
+            "name": "model/models.js"
+        },
+        {
+            "name": "model/formatter.js"
+        },
+        {
+            "name": "localService/mockserver.js"
+        },
+        {
+            "name": "controller/Pagto_Mensal.controller.js"
+        },
+        {
+            "name": "controller/NotFound.controller.js"
+        },
+        {
+            "name": "controller/Master.controller.js"
+        },
+        {
+            "name": "controller/ErrorHandler.js"
+        },
+        {
+            "name": "controller/DetailObjectNotFound.js"
+        },
+        {
+            "name": "controller/DetailObjectNotFound.controller.js"
+        },
+        {
+            "name": "controller/Detail.controller.js"
+        },
+        {
+            "name": "controller/BaseController.js"
+        },
+        {
+            "name": "controller/App.controller.js"
+        },
+        {
+            "name": "controller/admto_15.controller.js"
+        },
+        {
+            "name": "Component.js"
+        },
+        {
+            "name": "manifest-bundle.zip"
+        },
+        {
+            "name": "Component-preload.js",
+            "merged": true
+        },
+        {
+            "name": "model/models-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "model/formatter-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "localService/mockserver-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/Pagto_Mensal-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/NotFound-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/Master-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/ListSelector-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/ErrorHandler-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/DetailObjectNotFound-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/DetailObjectNotFound-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/Detail-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/BaseController-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/App-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/admto_15-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "Component-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "../../sap-ui-version.json"
+        },
+        {
+            "name": "neo-app.json"
+        },
+        {
+            "name": "di.code-validation.core_issues.json"
+        },
+        {
+            "name": "view/ViewSettingsDialog.fragment.xml"
+        },
+        {
+            "name": "view/Pagto_Mensal.view.xml"
+        },
+        {
+            "name": "view/NotFound.view.xml"
+        },
+        {
+            "name": "view/Master.view.xml"
+        },
+        {
+            "name": "view/DetailObjectNotFound.view.xml"
+        },
+        {
+            "name": "view/Detail.view.xml"
+        },
+        {
+            "name": "view/App.view.xml"
+        },
+        {
+            "name": "view/admto_15.view.xml"
+        },
+        {
+            "name": "localService/metadata.xml"
+        },
+        {
+            "name": "image/Transparente_CBA.gif"
+        },
+        {
+            "name": "image/prv.png"
+        },
+        {
+            "name": "image/pprv.png"
+        },
+        {
+            "name": "image/ferias.png"
+        },
+        {
+            "name": "image/demonstrativopagamento.png"
+        },
+        {
+            "name": "image/Cba_aluminio_logo.png"
+        },
+        {
+            "name": "image/adiantamentoquinzenal.png"
+        },
+        {
+            "name": "image/13salario.png"
+        },
+        {
+            "name": "i18n/i18n.properties",
+            "raw": "i18n/i18n.properties"
+        },
+        {
+            "name": "css/style.css"
+        }
+    ]
+}

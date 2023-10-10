@@ -1,0 +1,59 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:m="sap.m"
+	xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:smartTable="sap.ui.comp.smarttable" xmlns:table="sap.ui.table" xmlns:f="sap.ui.layout.form"
+	xmlns:l="controls" xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	controllerName="CADASTROAPROVADORES.CADASTROAPROVADOR.controller.AddEkgrp" class="sapUiSizeCompact" width="100%" eight="100%">
+	<Page floatingFooter="true" enableScrolling="true">
+		<VBox>
+			<ObjectHeader title="Grupo Comprador x Aprovador" id="idheader0" icon="sap-icon://request" iconActive="false" responsive="true"/>
+		</VBox>
+		<f:Form class="editableForm" editable="true">
+			<f:layout>
+				<f:ResponsiveGridLayout labelSpanXL="5" labelSpanL="5" labelSpanM="5" labelSpanS="5" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0"
+					emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="3" columnsM="3" singleContainerFullSize="false"/>
+			</f:layout>
+			<f:formContainers>
+				<f:FormContainer>
+					<f:formElements>
+						<f:FormElement>
+							<f:fields>
+								<Input id="IdEkgrp" editable="true" showValueHelp="true" showSuggestion="true" valueHelpRequest="onHREkgrp" required="true" valueHelpOnly="true"/>
+							</f:fields>
+							<f:label>
+								<Label text="Grupo Comprador" design="Bold" textAlign="Initial" textDirection="RTL"/>
+							</f:label>
+						</f:FormElement>
+						<f:FormElement>
+							<f:fields>
+								<Input id="IdAprov" editable="true" showValueHelp="true" showSuggestion="true" valueHelpRequest="onHRAprov" change="onValidAprov"
+									required="true" suggestionItems="{/ZET_CBMM_CF_APROVADORSet}" startSuggestion="0">
+									<suggestionItems>
+										<core:Item text="{User}"/>
+									</suggestionItems>
+								</Input>
+							</f:fields>
+							<f:label>
+								<Label text="Aprovador" design="Bold" textDirection="RTL"/>
+							</f:label>
+						</f:FormElement>
+						<f:FormElement>
+							<f:fields>
+								<CheckBox id="idEmail" selected="true" />
+							</f:fields>
+							<f:label>
+								<Label text="Enviar email" design="Bold" textDirection="RTL"/>
+							</f:label>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+			</f:formContainers>
+		</f:Form>
+		<footer>
+			<Toolbar>
+				<Button text="Salvar" icon="sap-icon://save" iconFirst="true" width="auto" enabled="true"
+					visible="true" iconDensityAware="false" press="onSave" tooltip="Salvar inclusão"/>
+				<Button text="Voltar" icon="sap-icon://undo" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"
+					press="onBack" tooltip="Voltar"/>
+			</Toolbar>
+		</footer>
+	</Page>
+</core:View>

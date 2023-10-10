@@ -1,0 +1,14 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<ViewSettingsDialog confirm="_handleSortDialogConfirm">
+		<sortItems>
+			<ViewSettingsItem text="{i18n>lbl_idpkg}" key="Idpkg" selected="true"/>
+			<ViewSettingsItem text="{i18n>lbl_docpkg}" key="Docpkg"/>
+			<ViewSettingsItem text="{i18n>lbl_status}" key="Status"/>
+			<ViewSettingsItem text="{i18n>lbl_werks}" key="Werks"/>
+			<ViewSettingsItem text="{i18n>lbl_forced_picking}" key="AtdForcado"/>
+			<ViewSettingsItem text="{i18n>lbl_scheduled_delivery}" key="EntregaProg"/>
+			<ViewSettingsItem text="{i18n>lbl_Lgpbe}" key="Lgpbe"/>
+			<ViewSettingsItem text="{i18n>lbl_credat}" key="Credat"/>
+		</sortItems>
+	</ViewSettingsDialog>
+</core:FragmentDefinition>

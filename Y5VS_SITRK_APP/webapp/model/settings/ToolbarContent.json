@@ -1,0 +1,24 @@
+{
+  "selectedKey": "page1",
+  "navigation": [
+    {
+      "title": "Asignar compradores",
+      "icon": "sap-icon://employee",
+      "key": "root2",
+      "items": [
+        {
+          "title": "Clases de documento",
+          "key": "sBuyersId"
+        },
+        {
+          "title": "Prioridad",
+          "key": "sPrioritiesId"
+        },
+        {
+          "title": "Parametros",
+          "key": "sParametersId"
+        }
+      ]
+    }
+  ]
+}

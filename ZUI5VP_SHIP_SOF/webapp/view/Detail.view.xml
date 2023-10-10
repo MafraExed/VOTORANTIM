@@ -1,0 +1,745 @@
+<m:View 
+		displayBlock="true"
+		controllerName="br.com.suzano.ZUI5VP_SHIP_SOF.controller.Detail"
+		height="100%"
+		xmlns="sap.f"
+		xmlns:viz="sap.viz.ui5.controls"
+		xmlns:viz.data="sap.viz.ui5.data"
+		xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+		xmlns:m="sap.m"
+		xmlns:semantic="sap.m.semantic"
+		xmlns:footerbar="sap.ushell.ui.footerbar"
+		xmlns:layout="sap.ui.layout"
+		xmlns:form="sap.ui.layout.form"
+		xmlns:mc="sap.suite.ui.microchart"
+		xmlns:cc="sap.suite.ui.commons">
+	<semantic:DetailPage 
+			busy="{detailView>/busy}">
+		<DynamicPage
+				id="pageBoardingDetails"
+				preserveHeaderStateOnScroll="false"
+				stickySubheaderProvider="iconTabBar"
+				fitContent="true">
+			<title id="titlePageBoardingDetails">
+				<DynamicPageTitle id="pageTitlePageBoardingDetails">
+					<expandedHeading>
+						<m:Title text="{/NomeNavio} {/ViagemArm}" wrapping="true" class="sapUiSmallMarginEnd"/>
+					</expandedHeading>
+					<expandedContent>
+						<m:Text text="" visible="false"/>
+						<m:ProgressIndicator
+							percentValue="{/PercConcluido}"
+							displayValue="{/PercConcluido}%"
+							showValue="true"
+							state="{/Status}"/>
+					</expandedContent>
+					<snappedHeading>
+						<m:FlexBox wrap="Wrap" fitContainer="true" alignItems="Center">
+							<m:FlexBox wrap="NoWrap" fitContainer="true" alignItems="Center" class="sapUiTinyMarginEnd">
+								<Avatar 
+										initials="{/IniciaisNavio}"
+										displaySize="S"
+										displayShape="Circle"
+										class="sapUiTinyMarginEnd"/>
+								<m:Title text="{/NomeNavio} {/ViagemArm}" wrapping="true" class="sapUiTinyMarginEnd"/>
+							</m:FlexBox>
+						</m:FlexBox>
+					</snappedHeading>
+					<navigationActions>
+						<m:OverflowToolbarButton id="showFullScreen" type="Transparent" icon="sap-icon://full-screen" press="handleFullScreen" tooltip="Enter Full Screen Mode" visible="{= ${device>/system/phone} ? false : true}"/>
+						<m:OverflowToolbarButton id="exitFullScreen" type="Transparent" icon="sap-icon://exit-full-screen" press="handleExitFullScreen" tooltip="Exit Full Screen Mode" visible="false"/>
+						<m:OverflowToolbarButton type="Transparent" icon="sap-icon://decline" press="handleClose"  tooltip="Close column" visible="true"/>
+					</navigationActions>
+				</DynamicPageTitle>
+			</title>
+			<header>
+				<DynamicPageHeader 
+						id="headerPageBoardingdDetails"
+						pinnable="true">
+					<content>
+						<layout:VerticalLayout
+							class="sapUiContentPadding"
+							width="100%">
+							<layout:content>
+								<m:MessageStrip
+									id="MessageStrip"
+									text="{detailView>/MessageStrip}"
+									type="{detailView>/TypeMsgStrip}"
+									enableFormattedText="true"
+									showIcon="true"
+									showCloseButton="true"
+									class="sapUiMediumMarginBottom">
+								</m:MessageStrip>
+							</layout:content>
+						</layout:VerticalLayout>
+						<m:FlexBox 
+								wrap="Wrap" 
+								justifyContent="SpaceBetween" 
+								fitContainer="true"
+								displayInline="true"
+								direction="Row"
+								alignItems="Start">
+							<m:HBox>
+								<Avatar
+										displaySize="L"
+										displayShape="Circle"
+										initials="{/IniciaisNavio}"
+										class="sapUiTinyMarginEnd"
+										width="1%"/>
+								<m:VBox>
+									<m:Label text="{i18n>StartEndLbl}" design="Bold" wrapping="true"/>
+									<m:Text text="{/DataInicioFormatted}"/>
+									<m:Text text="{/DataFimFormatted}"/>
+								</m:VBox>
+							</m:HBox>
+							<m:VBox>
+								<m:Label text="{i18n>LoadedUnitsLbl}" design="Bold" wrapping="true"/>
+								<m:Text text="{/VolEmbarcado} TO" />
+								<m:Text text="{/UniEmbarcada} UN" />
+							</m:VBox>
+							<m:VBox>
+								<m:Label text="{i18n>WorkingHoursLbl}" design="Bold" wrapping="true"/>
+								<m:Text text="Net: {/HrTrabLiquida}" />
+								<m:Text text="Gross: {/HrTrabBruto}" />
+							</m:VBox>
+							<m:VBox 
+									alignContent="Start" 
+									justifyContent="Start" 
+									alignItems="Start"
+									fitContainer="true"
+									renderType="Bare"
+									wrap="Wrap"
+									direction="Row">
+								<mc:HarveyBallMicroChart
+										size="M"
+										total="100"
+										totalScale="%"
+										showTotal="false"
+										press="press">
+									<mc:items>
+										<mc:HarveyBallMicroChartItem 
+												fraction="{/PercOpFormatted}" 
+												color="Good" 
+												fractionScale="%"/>
+									</mc:items>
+								</mc:HarveyBallMicroChart>
+								<mc:ComparisonMicroChart id="ComparisonMicroChart" 
+										size="S"
+										scale=" Min"
+										press="press"
+										width="16rem"
+										shrinkable="true"
+										view="Responsive">
+									<mc:data/>
+								</mc:ComparisonMicroChart>
+							</m:VBox>
+						</m:FlexBox>
+					</content>
+				</DynamicPageHeader>
+			</header>
+			<content>
+				<m:IconTabBar
+						id="iconTabBar"
+						class="sapUiResponsiveContentPadding"
+						headerBackgroundDesign="Transparent"
+						enableTabReordering="true"
+						expandable="false">
+					<m:items>
+						<m:IconTabFilter id="iconEmbInformations" 
+								icon="sap-icon://hint" 
+								tooltip="{i18n>detailIconTabBarInfo}"
+								iconColor="{detailView>/colorInfo}"> <!-- detailView>/colorMsg: variar entre NEUTRAL se nenhuma mensagem e Default se houver mensagem -->
+							<m:content>
+								<m:OverflowToolbar id="oInfoSubheader">
+									<m:ToolbarSpacer />
+									<m:Button id="infoEditButton" text="{i18n>Prancha}" icon="sap-icon://edit" tooltip="Edit" type="Emphasized"
+										press="onEditInfo"/>
+									<m:Button id="infoSaveButton" icon="sap-icon://accept" tooltip="Save" type="Accept"
+										press="onSaveInfo" visible="false" enabled="false" />
+									<m:Button id="infoCancelButton" icon="sap-icon://decline" tooltip="Cancel" type="Reject"
+										press="onSaveInfo" visible="false" />
+								</m:OverflowToolbar>
+								<form:Form id="GeneralDataForm"
+									editable="true">
+									<form:layout>
+										<form:ResponsiveGridLayout
+											labelSpanXL="3"
+											labelSpanL="3"
+											labelSpanM="3"
+											labelSpanS="12"
+											adjustLabelSpan="false"
+											emptySpanXL="4"
+											emptySpanL="4"
+											emptySpanM="4"
+											emptySpanS="0"
+											columnsXL="1"
+											columnsL="1"
+											columnsM="1"
+											singleContainerFullSize="false" />
+									</form:layout>
+									<form:formContainers>
+										<form:FormContainer>
+											<form:formElements>
+												<form:FormElement label="{i18n>Prancha}">
+													<form:fields>
+														<m:Text id="PranchaValueView"
+																visible="true"
+																text="{/Prancha} TO/Hora" />
+														<m:Input id="PranchaValueChange"
+																visible="false"
+																showValueStateMessage="true"
+																valueState="Error"
+																valueStateText="{i18n>OnlyIntegers}"
+																placeholder="7500"
+																description="TO/Hora"
+																type="Number"
+																valueLiveUpdate="true"
+																liveChange="handleLiveChange"
+																required="true"
+																value="{/Prancha}"/>
+													</form:fields>
+												</form:FormElement>
+												<form:FormElement label="{i18n>Armador}">
+													<form:fields>
+														<m:Text text="{
+																	path: '/CodArmador',
+																	formatter: '.formatter.updateIntegerValue'
+																} {/DescrArmador}" />
+													</form:fields>
+												</form:FormElement>
+												<form:FormElement label="{i18n>InternalVesselID}">
+													<form:fields>
+														<m:Text	text="{
+																	path: '/CodigoNavio',
+																	formatter: '.formatter.updateIntegerValue'
+																}"/>
+													</form:fields>
+												</form:FormElement>
+												<form:FormElement label="{i18n>DocTransporte}">
+													<form:fields>
+														<m:Text	text="{
+																	path: '/DocTransporte',
+																	formatter: '.formatter.updateIntegerValue'
+																}"/>
+													</form:fields>
+												</form:FormElement>
+											</form:formElements>
+										</form:FormContainer>
+									</form:formContainers>
+								</form:Form>
+							</m:content>
+						</m:IconTabFilter>
+						<m:IconTabFilter id="iconSOFDetails" 
+								icon="sap-icon://time-entry-request"
+								tooltip="{i18n>detailIconTabBarSOF}">
+							<m:content>
+								<m:Table 
+										id="idSOFTable" 
+										items="{sofList>/}">
+									<m:headerToolbar>
+										<m:OverflowToolbar id="otbSubheader">
+											<m:ToolbarSpacer visible="false" />
+											<m:Button id="editButton" icon="sap-icon://edit" tooltip="Edit" type="Emphasized"
+												press="onEdit" visible="false"/>
+											<m:Button id="saveButton" icon="sap-icon://accept" tooltip="Save" type="Accept"
+												press="onSave" visible="false" />
+											<m:Button id="cancelButton" icon="sap-icon://decline" tooltip="Cancel" type="Reject"
+												press="onCancel" visible="false" />
+											<m:ToolbarSpacer />
+											<m:Button 
+													id="exportSOFSpreadheet"
+													icon="sap-icon://excel-attachment"
+													tooltip="{i18n>ExportSpreadsheet}"
+													type="Transparent"
+													visible="{!detailView>isPhone}"
+													press="onExportExcel" />
+										</m:OverflowToolbar>
+									</m:headerToolbar>
+									<m:columns>
+										<m:Column id="columnFact" width="25%">
+											<m:Text text="Fact" />
+										</m:Column>
+										<m:Column width="10%" minScreenWidth="Desktop" demandPopin="true" popinDisplay="WithoutHeader" hAlign="Center">
+											<m:Text text="Date" />
+										</m:Column>
+										<m:Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" hAlign="Center">
+											<m:Text text="From" />
+										</m:Column>
+										<m:Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" hAlign="Center">
+											<m:Text text="To" />
+										</m:Column>
+										<m:Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" hAlign="Center">
+											<m:Text text="TTL" />
+										</m:Column>
+										<m:Column minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline" hAlign="Center">
+											<m:Text text="Gang" />
+										</m:Column>
+										<m:Column minScreenWidth="Desktop" hAlign="Center">
+											<m:Text text="Hold" />
+										</m:Column>
+										<m:Column minScreenWidth="Desktop" hAlign="Center">
+											<m:Text text="COMM" />
+										</m:Column>
+										<m:Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" hAlign="Center">
+											<m:Text text="MT" />
+										</m:Column>
+										<m:Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" hAlign="Center">
+											<m:Text text="Units" />
+										</m:Column>
+										<m:Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" hAlign="Center">
+											<m:Text text="Port Dest." />
+										</m:Column>
+										<m:Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" hAlign="End">
+											<m:Text text="Num. Time" />
+										</m:Column>
+									</m:columns>
+									<m:items>
+										<m:ColumnListItem>
+											<m:cells>
+												<m:ObjectIdentifier 
+													title="{sofList>DescrEn}" 
+													text="{sofList>CodigoParada}" />
+												<m:Text text="{sofList>DatefactFormatted}" />
+												<m:Text text="{sofList>FromTimeFormatted}" />
+												<m:Text text="{sofList>ToTimeFormatted}" />
+												<m:Text text="{sofList>Time}" />
+												<m:Text text="{
+													path: 'sofList>ItemOc',
+													formatter: '.formatter.updateIntegerValue'
+												}" />
+												<m:Text text="{sofList>Hold}" />
+												<m:Text text="{sofList>Comm}" />
+												<m:ObjectNumber number="{sofList>VolEmbarcado}" />
+												<m:ObjectNumber number="{sofList>UniEmbarcada}" />
+												<m:Text text="{sofList>Trigrama}" tooltip="{sofList>DescPortDest}" />
+												<m:Text text="{sofList>NumTime}" />
+											</m:cells>
+										</m:ColumnListItem>
+									</m:items>
+								</m:Table>
+							</m:content>
+						</m:IconTabFilter>
+						<m:IconTabFilter id="iconSOFComments" 
+								icon="sap-icon://group" 
+								tooltip="{i18n>detailIconTabBarComments}"
+								count="{detailView>/numeroMsgs}"
+								iconColor="{detailView>/colorMsg}"> <!-- detailView>/colorMsg: variar entre NEUTRAL se nenhuma mensagem e Default se houver mensagem -->
+							<m:content>
+								<m:Panel
+									backgroundDesign="Transparent">
+									<m:content>
+										<m:FeedInput post=".onPost"/>
+										<m:List
+											id="idCommentsList"
+											noDataText="{i18n>ObjectCommentNoData}"
+											showSeparators="Inner"
+											items="{boardingFeedback>/}">
+											<m:FeedListItem
+												info="{boardingFeedback>NomeCompleto} ({boardingFeedback>UsuarioPost})"
+												text="{boardingFeedback>Msg}"
+												timestamp="{boardingFeedback>DataPostFormatted} {boardingFeedback>HoraPostFormatted}"/>
+										</m:List>
+									</m:content>
+								</m:Panel>
+							</m:content>
+						</m:IconTabFilter>
+						<m:IconTabFilter visible="false" id="iconSOFAttachments" icon="sap-icon://attachment" tooltip="{i18n>detailIconTabBarAttachments}">
+							<m:content>
+								<m:UploadCollection
+									id="UploadCollection"
+									maximumFilenameLength="55"
+									maximumFileSize="5000"
+									multiple="true"
+									change="onChangeUploadCollection"
+									fileDeleted="onFileDeleted"
+									filenameLengthExceed="onFilenameLengthExceed"
+									fileSizeExceed="onFileSizeExceed"
+									fileType="jpg,txt,ppt,pptx,doc,docx,xls,xlsx,pdf,png"
+									typeMissmatch="onTypeMissmatch"
+									uploadComplete="onUploadComplete"
+									beforeUploadStarts="onBeforeUploadStarts"
+									uploadTerminated="onUploadTerminated"
+									items="{
+										path: '/FilesUploaded',
+										templateShareable: false
+									}"
+									numberOfAttachmentsText="Uploaded (8)"
+									uploadEnabled="{detailView>/uploadEnabled}">
+									<m:toolbar>
+										<m:OverflowToolbar id="idUploaderOverflowToolbar">
+											<m:Title id="attachmentTitle" />
+											<m:ToolbarSpacer />
+											<m:SearchField width="10rem" search="onSearch" />
+											<m:UploadCollectionToolbarPlaceholder />
+										</m:OverflowToolbar>
+									</m:toolbar>
+									<m:items>
+										<m:UploadCollectionItem
+											documentId="{documentId}"
+											fileName="{fileName}"
+											mimeType="{mimeType}"
+											url="{url}"
+											enableDelete="{enableDelete}"
+											visibleDelete="true"
+											visibleEdit="false"
+											attributes="{path : 'attributes', templateShareable : false}"
+											selected="{selected}">
+											<m:attributes>
+												<m:ObjectAttribute 
+													title="{title}"
+													text="{
+														path : 'text', 
+														formatter: '.formatter.getDateTimeOutputWay'
+													}"
+													active="{active}"
+													press="onAttributePress" />
+											</m:attributes>
+										</m:UploadCollectionItem>
+									</m:items>
+								</m:UploadCollection>
+							</m:content>
+						</m:IconTabFilter>
+						<m:IconTabFilter id="iconSOFTraceability"
+								icon="sap-icon://heatmap-chart"
+								tooltip="{i18n>detailIconTabBarTraceability}"
+								count="{detailView>/QtdNoTraceability}"
+								iconColor="{detailView>/ColorTraceability}"> <!-- detailView>/colorTraceability: variar entre Critical se não houver sequenciamento, Negative se houver sequênciamento mas tb units sem estar dentro de alguma lingada, e Default se houver sequênciamento mas tudo ok  -->
+							<m:content>
+							    <layout:FixFlex
+							    		id = 'chartFixFlex'
+							    		minFlexSize = "250"
+							    		visible="true">
+							        <!--Below is the setting panel -->
+							        <layout:fixContent>
+							            <m:Panel 
+							            		id='settingsPanel'
+							            		class="panelStyle" 
+							            		expandable="true"
+							            		expanded="false"
+							            		headerText="{i18n>Settings}"
+							            		width="auto">
+							                <m:content>
+							                    <m:HBox class='settingsHBox'>
+													<m:VBox class='settingsBox'>
+														<m:Label 
+																text="{i18n>ValueLabel}"
+																design="Bold"
+																class="settingsLabel"/>
+														<m:Switch 
+																class="settingsSwitch"
+																state="false"
+																change="onDataLabelPoroesCamadaHeatmapChanged">
+															<m:layoutData>
+																<m:FlexItemData growFactor = "1" />
+															</m:layoutData>
+														</m:Switch>
+													</m:VBox>
+												</m:HBox>
+											</m:content>
+										</m:Panel>
+									</layout:fixContent>
+									<layout:flexContent>
+										<viz:Popover id="idPoroesCamadaPopOver"/>
+										<cc:ChartContainer
+												id="oChartContainer"
+												showFullScreen="true"
+												autoAdjustHeight="true"
+												showZoom="false"
+												showSelectionDetails="true"
+												contentChange="onChartContainerContentChanged">
+											<cc:content>
+												<cc:ChartContainerContent
+														id="oChartContainerContent"
+														icon="sap-icon://BusinessSuiteInAppSymbols/icon-vessel"
+														title="Heatmap Chart">
+													<cc:content>
+														<viz:VizFrame 
+																id="idPoroesCamadaHeatmap"
+																uiConfig="{applicationSet:'fiori'}"
+																height="100%"
+																width="100%"
+																vizType="heatmap">
+															<viz:dataset>
+																<viz.data:FlattenedDataset data="{ConfigNavio>/}">
+																	<viz.data:dimensions>
+																		<viz.data:DimensionDefinition
+																				name = "Camadas"
+																				value = "{ConfigNavio>Camada}" />
+																		<viz.data:DimensionDefinition
+																				name = "Porões"
+																				value = "{ConfigNavio>Porao}" />
+																	</viz.data:dimensions>
+																	<viz.data:measures>
+																		<viz.data:MeasureDefinition 
+																				name="Qtd"
+																				value="{
+																					path: 'ConfigNavio>Qtd',
+																					formatter: '.formatter.updateIntegerValue'
+																				}"/>
+																		<viz.data:MeasureDefinition 
+																				name="Materiais"
+																				value="{
+																					path: 'ConfigNavio>QtdMateriais',
+																					formatter: '.formatter.updateIntegerValue'
+																				}"/>
+																	</viz.data:measures>
+																</viz.data:FlattenedDataset>
+															</viz:dataset>
+															<viz:feeds>
+																<viz.feeds:FeedItem 
+																		type="Measure"
+																		uid="color"
+																		values="Materiais" />
+																<viz.feeds:FeedItem
+																		type = "Dimension"
+																		uid = "categoryAxis"
+																		values = "Porões" />
+																<viz.feeds:FeedItem
+																		uid = "categoryAxis2"
+																		type = "Dimension"
+																		values = "Camadas"/>
+															</viz:feeds>
+														</viz:VizFrame>
+													</cc:content>
+												</cc:ChartContainerContent>
+												<cc:ChartContainerContent
+														id="oTableContainerContent"
+														icon="sap-icon://table-view"
+														title="Table">
+													<cc:content>
+														<m:Table
+																id="unitsEmbarcadasTable"
+																items="{UnitsEmbarcadas>/}">
+															<m:columns>
+																<m:Column
+																		mergeDuplicates="true"
+																		width="10%">
+																	<m:header>
+																		<m:Text text="{i18n>Porao}" />
+																	</m:header>
+																</m:Column>
+
+																<m:Column 
+																		mergeDuplicates="true" 
+																		width="10%">
+																	<m:header>
+																		<m:Text text="{i18n>Camada}" />
+																	</m:header>
+																</m:Column>
+
+																<m:Column 
+																		minScreenWidth="Tablet"
+																		demandPopin="true"
+																		popinDisplay="WithoutHeader">
+																	<m:header>
+																		<m:Text text="{i18n>DescrTermEmb}" />
+																	</m:header>
+																</m:Column>
+
+																<m:Column
+																		mergeDuplicates="true"
+																		minScreenWidth="Tablet"
+																		demandPopin="true"
+																		popinDisplay="WithoutHeader">
+																	<m:header>
+																		<m:Text text="OC" />
+																	</m:header>
+																</m:Column>
+
+																<m:Column
+																		id="columnGangHeader"
+																		width="5%"
+																		visible="{detailView>/TracePerUnit}">
+																	<m:header>
+																		<m:Text text="{i18n>Gang}" />
+																	</m:header>
+																</m:Column>
+
+																<m:Column
+																		id="columnLingadaHeader"
+																		minScreenWidth="Tablet"
+																		demandPopin="true"
+																		popinDisplay="WithoutHeader"
+																		visible="{detailView>/TracePerUnit}">
+																	<m:header>
+																		<m:Text text="Lingada" />
+																	</m:header>
+																</m:Column>
+
+																<m:Column
+																		id="columnProductHeader"
+																		minScreenWidth="Tablet"
+																		demandPopin="true"
+																		popinDisplay="WithoutHeader"
+																		visible="{detailView>/TracePerMaterial}">
+																	<m:header>
+																		<m:Text text="{i18n>Product}" />
+																	</m:header>
+																</m:Column>
+
+																<m:Column
+																		id="columnQtyHeader"
+																		width="10%"
+																		visible="{detailView>/TracePerMaterial}">
+																	<m:header>
+																		<m:Text text="{i18n>Quantity}" />
+																	</m:header>
+																</m:Column>
+
+																<m:Column
+																		id="columnUnitHeader"
+																		minScreenWidth="Tablet"
+																		demandPopin="true"
+																		popinDisplay="WithoutHeader"
+																		visible="{detailView>/TracePerUnit}">
+																	<m:header>
+																		<m:Text text="Unit" />
+																	</m:header>
+																</m:Column>
+
+																<m:Column
+																		id="columnDateTimeHeader"
+																		minScreenWidth="Tablet"
+																		demandPopin="true"
+																		popinDisplay="WithoutHeader"
+																		visible="{detailView>/TracePerUnit}">
+																	<m:header>
+																		<m:Text text="{i18n>DateTime}" />
+																	</m:header>
+																</m:Column>
+																<m:Column
+																		id="columnNomeOperadorHeader"
+																		minScreenWidth="Tablet"
+																		demandPopin="true"
+																		popinDisplay="WithoutHeader"
+																		visible="{detailView>/TracePerUnit}">
+																	<m:header>
+																		<m:Text text="{i18n>NomeOperador}" />
+																	</m:header>
+																</m:Column>
+															</m:columns>
+															<m:ColumnListItem>
+																<m:Text text="{UnitsEmbarcadas>Porao}" />
+																<m:Text text="{UnitsEmbarcadas>Camada}" />
+																<m:ObjectIdentifier 
+																		title="{UnitsEmbarcadas>DescrTermEmb}"
+																		text="{
+																			path: 'UnitsEmbarcadas>DocTransporte',
+																			formatter: '.formatter.updateIntegerValue'
+																		}" />
+																<m:Text
+																		text="{
+																			path: 'UnitsEmbarcadas>Oc',
+																			formatter: '.formatter.updateIntegerValue'
+																		}"/>
+																<m:Text 
+																		id="columnGangValue"
+																		text="{
+																			path: 'UnitsEmbarcadas>ItemOc',
+																			formatter: '.formatter.updateIntegerValue'
+																		}"
+																		visible="{detailView>/TracePerUnit}"/>
+																<m:ObjectIdentifier 
+																		id="columnLingadaValue"
+																		title="{UnitsEmbarcadas>Tipo}" 
+																		text="{i18n>Sequencia} {UnitsEmbarcadas>OrdViagem}"
+																		visible="{detailView>/TracePerUnit}"/>
+																<m:ObjectIdentifier 
+																		id="columnProductValue"
+																		title="{UnitsEmbarcadas>Produto}"
+																		text="{
+																			path: 'UnitsEmbarcadas>Material',
+																			formatter: '.formatter.updateIntegerValue'
+																		}"
+																		visible="{detailView>/TracePerMaterial}"/>
+																<m:ObjectNumber
+																		id="columnQtyValue"
+																		number="{UnitsEmbarcadas>QtdLingada}"
+																		state="Success"
+																		unit="TO/MT"
+																		visible="{detailView>/TracePerMaterial}"/>
+																<m:ObjectIdentifier 
+																		id="columnUnitValue"
+																		title="{UnitsEmbarcadas>Unit}"
+																		text="{UnitsEmbarcadas>Produto}"
+																		titleActive="true"
+																		titlePress="onUnitTitlePress"
+																		visible="{detailView>/TracePerUnit}"/>
+																<m:Text 
+																		id="columnDateTimeValue"
+																		text="{
+																			path: 'UnitsEmbarcadas>DtHrCarr',
+																			formatter: '.formatter.getDateTimeOutputWay'
+																		}"
+																		visible="{detailView>/TracePerUnit}"/>
+																<m:ObjectIdentifier
+																		id="columnNomeOperadorValue"
+																		title="{UnitsEmbarcadas>NomeOperador}" 
+																		text="{UnitsEmbarcadas>IdUsuario}"
+																		visible="{detailView>/TracePerUnit}"/>
+															</m:ColumnListItem>
+														</m:Table>
+													</cc:content>
+												</cc:ChartContainerContent>
+											</cc:content>
+											<cc:toolbar>
+												<m:OverflowToolbar id="otbUnitsSubheader">
+													<m:SearchField 
+															id="otbUnitsSearchField"
+															width="30%"
+															search="onTbUnitsSearch"
+															class="sapUiSmallMargin"
+															visible="{detailView>/TracePerUnit}"/>
+													<m:ToolbarSpacer />
+													<m:ToggleButton
+															id="otbTraceGroupChanged"
+															icon="sap-icon://group-2"
+															press="onTraceTableGroupChanged" />
+													<m:Button
+															id="exportUnitsSpreadheet" 
+															icon="sap-icon://excel-attachment" 
+															tooltip="{i18n>ExportSpreadsheet}"
+															type="Transparent"
+															visible="{!detailView>isPhone}"
+															press="onExportExcel" />
+													<cc:ChartContainerToolbarPlaceholder/>
+												</m:OverflowToolbar>
+											</cc:toolbar>
+										</cc:ChartContainer>
+							        </layout:flexContent>
+							    </layout:FixFlex>
+							</m:content>
+						</m:IconTabFilter>
+					</m:items>
+				</m:IconTabBar>
+			</content>
+		</DynamicPage>
+		
+		<semantic:sendEmailAction>
+			<semantic:SendEmailAction
+				id="shareEmail"
+				press="onShareEmailPress"/>
+		</semantic:sendEmailAction>
+
+<!--		<semantic:sendMessageAction>
+			<semantic:SendMessageAction
+				press="onSendMessagePress"
+				id="sendMessage"/>
+		</semantic:sendMessageAction>
+
+		<semantic:shareInJamAction>
+			<semantic:ShareInJamAction
+				id="shareInJam"
+				visible="{FLP>/isShareInJamActive}"
+				press="onShareInJamPress"/>
+		</semantic:shareInJamAction> -->
+
+		<semantic:saveAsTileAction>
+			<footerbar:AddBookmarkButton
+				id="shareTile"
+				title="{detailView>/saveAsTileTitle}"
+				subtitle="{detailView>/saveAsTileSubTitle}"
+				info="Suzano S/A"/>
+		</semantic:saveAsTileAction>
+	</semantic:DetailPage>
+</m:View>

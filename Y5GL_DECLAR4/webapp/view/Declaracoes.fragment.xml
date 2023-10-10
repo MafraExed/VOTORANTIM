@@ -1,0 +1,21 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog 
+		title="Selecione o banco"
+		class="sapUiPopupWithPadding"
+		items="{path: '/ZET_GLHR_GET_BANCOSSet', filters: { path: 'IDeclaracao', operator: 'EQ', value1:'001'}}"
+		search="onSearch"
+		confirm="onConfirmDeclaracoes"
+		cancel="_handleValueHelpClose"
+		>
+		
+		<StandardListItem
+			
+			iconDensityAware="false"
+			iconInset="false"
+			title="{DescrBanco}"
+			description="{TpDeclarac}"/>
+			
+	</SelectDialog>
+</core:FragmentDefinition>

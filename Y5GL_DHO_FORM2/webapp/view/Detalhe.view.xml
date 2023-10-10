@@ -1,0 +1,82 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.ui.layout.form"
+	controllerName="Y5GL_DHO_FORM2.Y5GL_DHO_FORM2.controller.Detalhe" xmlns:html="http://www.w3.org/1999/xhtml">
+	<App id="app">
+		<pages>
+			<Page id="IdPageDetailDep" floatingFooter="true">
+				<customHeader>
+					<Bar id="idBarMaster">
+						<contentMiddle>
+							<Title text="DHO Formulários" titleStyle="H3" id="idTitleDependentes"/>
+						</contentMiddle>
+					</Bar>
+				</customHeader>
+				<content>
+					<f:Form id="FormChange480_12120" editable="true">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0"
+								emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="Container">
+								<f:formElements>
+									<f:FormElement id="idEmpresa" label="Empresa">
+										<f:fields>
+											<ComboBox id="ComboBukrs" selectedKey="{Bukrs}" required="true" placeholder="Informe a empresa antes de anexar o formulário"
+												items="{path: '/ZET_GLHR_BUKRSSet'}" editable="true" change="onChangeBukrs">
+												<core:Item key="{Bukrs}" text="{Bukrs} - {Butxt}" id="idItemComboBukrs"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement id="idArea" label="Área de RH">
+										<f:fields>
+											<ComboBox id="ComboArea" selectedKey="{Persa}" required="true" placeholder="Informe a área de RH antes de anexar o formulário"
+												items="{path: '/ZET_GLHR_AREASet'}" editable="{path:'Bukrs', formatter:'.FormatFalse'}" change="onchangeArea">
+												<core:Item key="{Persa}" text="{Persa} - {Name1}" id="idItemComboArea"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement id="idElemento" label="Infotipo" visible="false">
+										<f:fields>
+											<Input value="{Infty}" id="Infotipo" editable="true"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Subtipo" id="idGrau" visible="false">
+										<f:fields>
+											<Input value="{Subty}" id="Subtipo" editable="false"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement id="IdonAddDoc" label="Para adicionar/alterar Anexos selecione o botão ( + )">
+										<f:fields>
+											<UploadCollection id="UploadCollection" multiple="false" change="onChange" fileDeleted="onDeleteSelectedItems"
+												beforeUploadStarts="onBeforeUploadStarts" uploadComplete="onuploadComplete"
+												items="{ path: '/ZET_GLHR_DHO_UPLOADSet', templateShareable: true }" modelContextChange="onmodelListContextChange" mode="SingleSelectMaster"
+												uploadButtonInvisible="false" uploadUrl="/sap/opu/odata/sap/ZGWGLRH_DHO_FORMULARIOS_SRV/ZET_GLHR_DHO_UPFILESet"
+												noDataDescription="Para adicionar/alterar Anexos selecione o botão ( + )" noDataText="Aguardando novos Carregamentos"
+												numberOfAttachmentsText="Anexos">
+												<toolbar>
+													<OverflowToolbar id="myId" visible="true">
+														<Title id="attachmentTitle"/>
+														<ToolbarSpacer id="idToolbarSpacer"/>
+														<SearchField width="10rem" search="onSearch" enabled="false" visible="false" id="idSearchField"/>
+														<Button id="deleteSelectedButton" text="Delete" press="onDeleteSelectedItems" enabled="false" visible="false" type="Transparent"/>
+														<ToggleButton id="selectAllButton" text="Select all" press="onSelectAllPress" enabled="false" visible="false" type="Transparent"/>
+														<UploadCollectionToolbarPlaceholder id="IdUploadCollectionToolbar"/>
+													</OverflowToolbar>
+												</toolbar>
+												<items>
+													<UploadCollectionItem documentId="{DocId}" fileName="{Filename}" mimeType="{Mimetype}"
+														url="/sap/opu/odata/sap/ZGWGLRH_DHO_FORMULARIOS_SRV/ZET_GLHR_DHO_UPFILESet('{Infty}${Subty}${DocId}${Bukrs}${Area}')/$value"
+														enableEdit="false" visibleEdit="false" deletePress="onFileDelete" selected="true"/>
+												</items>
+											</UploadCollection>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

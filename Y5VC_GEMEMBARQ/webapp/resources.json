@@ -1,0 +1,90 @@
+{
+    "resources": [
+        {
+            "name": "Component-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "Component-preload.js",
+            "merged": true
+        },
+        {
+            "name": "Component.js"
+        },
+        {
+            "name": "annotations/annotationGE.xml"
+        },
+        {
+            "name": "controller/ListaEmbarque-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/ListaEmbarque.controller.js"
+        },
+        {
+            "name": "css/style-dbg.css",
+            "isDebug": true
+        },
+        {
+            "name": "css/style.css"
+        },
+        {
+            "name": "di.code-validation.core_issues.json"
+        },
+        {
+            "name": "extended_runnable_file.html"
+        },
+        {
+            "name": "i18n/i18n.properties",
+            "raw": "i18n/i18n.properties"
+        },
+        {
+            "name": "i18n/i18n_pt.properties",
+            "raw": "i18n/i18n.properties",
+            "locale": "_pt"
+        },
+        {
+            "name": "i18n/i18n_pt_BR.properties",
+            "raw": "i18n/i18n.properties",
+            "locale": "_pt_BR"
+        },
+        {
+            "name": "index.html"
+        },
+        {
+            "name": "manifest-bundle.zip"
+        },
+        {
+            "name": "manifest.json"
+        },
+        {
+            "name": "model/models-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "model/models.js"
+        },
+        {
+            "name": "neo-app.json"
+        },
+        {
+            "name": "sap-ui-cachebuster-info.json"
+        },
+        {
+            "name": "util/formatter-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "util/formatter.js"
+        },
+        {
+            "name": "view/ListaEmbarque.view.xml"
+        },
+        {
+            "name": "view/LogGC.fragment.xml"
+        },
+        {
+            "name": "view/LogSimul.fragment.xml"
+        }
+    ]
+}

@@ -1,0 +1,61 @@
+<mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.f.semantic" xmlns:footerbar="sap.ushell.ui.footerbar"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:m="sap.m" xmlns:la="sap.ui.layout" xmlns:sv="sap.ui.comp.smartvariants"
+	xmlns:smartTable="sap.ui.comp.smarttable" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:l="controls"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	controllerName="Y5VC_PAINEL_NE2.Y5VC_PAINEL_NE2.controller.ListaClientes">
+	<Page id="id_pagList" showHeader="false" showSubHeader="false">
+		<f:Form editable="true" id="form_item">
+			<f:layout>
+				<f:ResponsiveGridLayout labelSpanXL="5" labelSpanL="5" labelSpanM="5" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0"
+					emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="3" columnsM="3" singleContainerFullSize="true"/>
+			</f:layout>
+			<f:formContainers>
+				<f:FormContainer>
+					<f:formElements>
+						<f:FormElement id="form3" visible="true">
+							<smartTable:SmartTable demandPopin="true" id="IdList" entitySet="ZET_VCFI_COD_CLISet" useExportToExcel="true" useVariantManagement="true"
+								useTablePersonalisation="true" header="Lista Contas de Cliente" showRowCount="true" showFullScreenButton="false" enableAutoBinding="false"
+								requestAtLeastFields="Kunnr" initiallyVisibleFields="Kunnr" beforeRebindTable="BeforeTable"
+								persistencyKey="SmartTablePKey10">
+								<smartTable:customToolbar></smartTable:customToolbar>
+								<Table growing="true" growingThreshold="100" mode="None" id="table3" enableBusyIndicator="true" busyIndicatorDelay="100">
+									<columns>
+										<!--<Column>-->
+										<!--	<customData>-->
+										<!--		<core:CustomData key="p13nData" value='\{"columnKey": "Bukrs","leadingProperty": "Bukrs", "columnIndex": 2}'/>-->
+										<!--	</customData>-->
+										<!--	<Text text="{/#ZET_CBEWM_FORNECIMENTOCB/Lifnr/@sap:label}"/>-->
+										<!--</Column>-->
+										<!--<Column >-->
+										<!--	<customData>-->
+										<!--		<core:CustomData key="p13nData" value='\{ "columnIndex": 4}'/>-->
+										<!--	</customData>-->
+										<!--	<Text text=""/>-->
+										<!--</Column>-->
+									</columns>
+									<items>
+										<!--<m:ColumnListItem type="Navigation" press=".onFornecimentoListItemPress">-->
+										<!--<m:ColumnListItem type="Navigation">-->
+										<!--<m:cells>-->
+										<!--	<ObjectIdentifier title="{Lifnr}" text="{Fornecedor}"/>-->
+										<!--	<Text text="{ path: 'Recdat', type: 'sap.ui.model.odata.type.DateTime', formatOptions: { pattern: 'dd/MM/yyyy' } }"/>-->
+										<!--</m:cells>-->
+										<!--<m:cells>-->
+										<!--	<m:Button text="Aging" press="handleDetailsPress"/>-->
+										<!--<ObjectIdentifier title="{Lifnr}" text="{Fornecedor}"/>-->
+										<!--<Text text="{ path: 'Recdat', type: 'sap.ui.model.odata.type.DateTime', formatOptions: { pattern: 'dd/MM/yyyy' } }"/>-->
+										<!--</m:cells>-->
+										<!--</m:ColumnListItem>-->
+									</items>
+								</Table>
+								<smartTable:layoutData>
+									<FlexItemData growFactor="1" baseSize="0%"/>
+								</smartTable:layoutData>
+							</smartTable:SmartTable>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+			</f:formContainers>
+		</f:Form>
+	</Page>
+</mvc:View>

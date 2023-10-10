@@ -1,0 +1,126 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:m="sap.m" xmlns:fb="sap.ui.comp.filterbar"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:vm="sap.ui.comp.variants" xmlns:f="sap.f">
+	<Dialog id="FilterAtividades" title="Selecionar Tarefas" type="Standard">
+		<content>
+	<f:DynamicPage id="dynamicPageId" toggleHeaderOnTitleClick="false">
+			<!-- DynamicPage Title -->
+			<f:title>
+				<f:DynamicPageTitle>
+					<f:heading>
+						<vm:VariantManagement standardItemText="Padrão" save="onSaveVariantFilter" select="onSelectVariantFilter">
+						</vm:VariantManagement>
+					</f:heading>
+				</f:DynamicPageTitle>
+			</f:title>
+				<f:header>
+				<f:DynamicPageHeader pinnable="true">
+					<f:content>
+			<fb:FilterBar id="filterbar_atividades" persistencyKey="cloco" reset="onReset" search="onFilterAtividades" useToolbar="false" showGoOnFB="false">
+				<fb:filterItems>
+					<fb:FilterItem name="A" label="Plano" mandatory="true">
+						<fb:control>
+							<ComboBox id="fProfile" selectionChange="onFilterSelectProfile" items="{path: '/v2_planos', events : { dataReceived : '.checkSelectedPlan' }, parameters: {select: 'Profile'}}">
+								<core:Item key="{Profile}" text="{Profile}" />
+							</ComboBox>		
+						</fb:control>				
+					</fb:FilterItem>
+					<fb:FilterItem name="B" label="Período" mandatory="true">
+						<fb:control>
+							<ComboBox id="fInstance" enabled="false" selectionChange="onFilterSelectPeriodo">
+								<core:Item key="{Instance}" text="{Descricao}" />
+							</ComboBox>
+						</fb:control>				
+					</fb:FilterItem>
+					<fb:FilterItem name="C" label="Empresa">
+						<fb:control>
+							<MultiInput width="70%"
+								id="fCompany"
+								showValueHelp="true"
+								showSuggestion="true"
+								enabled="false"
+								valueHelpRequest="onCompanyHelp">
+							</MultiInput>
+						</fb:control>				
+					</fb:FilterItem>
+					<fb:FilterItem name="D" label="Responsável">
+						<fb:control>
+							<Input id="fResp" showValueHelp="true" valueHelpRequest="showUserSearchHelp"/>
+						</fb:control>				
+					</fb:FilterItem>
+					<fb:FilterItem name="E" label="Resp. Execução">
+						<fb:control>
+							<Input id="fRespExec" showValueHelp="true" valueHelpRequest="showUserSearchHelp"/>
+						</fb:control>				
+					</fb:FilterItem>
+					<fb:FilterItem name="F" label="Departamento">
+						<fb:control>
+							<Input id="fDepartamento" required="false" showValueHelp="true" valueHelpRequest="showDepartamentSearchHelp"/> 
+						</fb:control>				
+					</fb:FilterItem>
+					<fb:FilterItem name="G" label="Coe">
+						<fb:control>
+							<Select id="fCoe">
+								<items>
+									<core:Item text="" key=""/>
+									<core:Item text="Sim" key="YES"/>
+									<core:Item text="Não" key="NO"/>
+								</items>
+							</Select>
+						</fb:control>				
+					</fb:FilterItem>
+					<fb:FilterItem name="H" label="Início Planejado - De:">
+						<fb:control>
+							<DatePicker id="fDataPlanDe"  placeholder="De:" displayFormat="short" valueFormat="yyyyMMdd"/>
+						</fb:control>			
+					</fb:FilterItem>
+					<fb:FilterItem name="I" label="Início Planejado - Até:">
+						<fb:control>
+							<DatePicker id="fDataPlanAte" placeholder="Até:" displayFormat="short" valueFormat="yyyyMMdd"/>
+						</fb:control>			
+					</fb:FilterItem>
+
+					
+
+											
+					<!-- <fb:FilterItem name="B" label="Category">
+						<fb:control>
+							<Select
+							id="slCategory"
+							change="onSelectChange"
+							forceSelection="true"
+							items="{
+										path: '/ProductCategories'
+									}">
+							<core:Item key="{key}" text="{name}"/>
+							</Select>
+						</fb:control>				
+					</fb:FilterItem>				
+					<fb:FilterItem name="C" label="SupplierName">
+						<fb:control>
+							<Select
+							id="slSupplierName"
+							change="onSelectChange"
+							forceSelection="true"
+							items="{
+										path: '/ProductSuppliers'
+									}">
+							<core:Item key="{key}" text="{name}"/>
+							</Select>
+						</fb:control>				
+					</fb:FilterItem> -->
+				</fb:filterItems>
+			</fb:FilterBar>
+				</f:content>
+				</f:DynamicPageHeader>
+			</f:header>
+
+			</f:DynamicPage>
+		</content>
+		<beginButton>
+			<Button text="Cancelar" press="closeFilterAtividades" />
+		</beginButton>
+		<endButton>
+			<Button text="Buscar" type="Emphasized" press="onFilterAtividades" enabled="true"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

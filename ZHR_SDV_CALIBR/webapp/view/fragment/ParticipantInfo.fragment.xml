@@ -1,0 +1,45 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Dialog type="Message">
+		<content>
+			<Panel width="800px">
+				<VBox class="sapMOHR sapContrastPlus sapMOHRBgTranslucent">
+					<HBox>
+						<Image class="sapUiSmallMarginEnd" id="participantInfoHeaderImage"/>
+						<VBox>
+							<Title level="H1" id="participantInfoHeaderNome" class="veryBigLabel sapUiSmallMarginTop"/>
+							<Text text="{i18n>ParticipantInfoLoading}" class="sapUiTinyMarginTop" id="participantInfoHeaderCargo"/>
+							<HBox>
+								<Text text="{i18n>ParticipantInfoTextAge} " class="sapUiTinyMarginTop sapUiTinyMarginEnd"/>
+								<Text text="{i18n>ParticipantInfoLoading}" class="sapUiTinyMarginTop" id="participantInfoHeaderIdade"/>
+							</HBox>
+							<HBox>
+								<Text text="{i18n>ParticipantInfoTextJobAge}" class="sapUiTinyMarginTop sapUiTinyMarginEnd"/>
+								<Text text="{i18n>ParticipantInfoLoading}" class="sapUiTinyMarginTop" id="participantInfoHeaderTempoServico"/>
+							</HBox>
+						</VBox>
+					</HBox>
+				</VBox>
+				<VBox class="sapMOHR sapContrastPlus sapMOHRBgTranslucent">
+					<Title level="H1" text="{i18n>ParticipantInfoExpectativa}" class="bigLabel"/>
+					<Text text="{i18n>ParticipantInfoLoading}" class="sapUiTinyMarginTop" id="participantInfoExpectativa"/>
+				</VBox>
+				<VBox class="sapMOHR sapContrastPlus sapMOHRBgTranslucent">
+					<Title level="H1" text="{i18n>ParticipantInfoComentarios}" class="bigLabel"/>
+					<Text text="{i18n>ParticipantInfoLoading}" class="sapUiTinyMarginTop" id="participantInfoComentario"/>
+				</VBox>
+				<VBox class="sapMOHR sapContrastPlus sapMOHRBgTranslucent">
+					<Title level="H1" text="{i18n>ParticipantInfoHistorico}" class="bigLabel"/>
+					<Text text="{i18n>ParticipantInfoLoading}" class="sapUiTinyMarginTop" id="participantInfoMetas"/>
+				</VBox>
+				<VBox class="sapMOHR sapContrastPlus sapMOHRBgTranslucent">
+					<Title level="H1" text="{i18n>ParticipantInfoComment}" class="bigLabel"/>
+					<TextArea class="sapUiTinyMarginTop" id="participantInfoTextComment" width="100%"/>
+					<Button type="Emphasized" text="{i18n>ParticipantInfoSaveComment}" press="onSalvarComentarioPress"/>
+				</VBox>
+			</Panel>
+		</content>
+		<endButton>
+			<Button text="Fechar" press="onCloseParticipantInfo"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

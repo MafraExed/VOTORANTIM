@@ -1,0 +1,154 @@
+{
+    "_version": "1.8.0",
+    "sap.app": {
+        "id": "y5fb.ui5.Dashboard",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/sap/ZGWFB_PM_DASHBOARD_MAT_TERC_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/metadata.xml"
+                }
+            }
+        },
+        "resources": "resources.json",
+        "ach": "ach",
+        "sourceTemplate": {
+            "id": "@sap/ux-app-migrator:freestyle",
+            "version": "1.11.1",
+            "toolsId": "26175a3e-4096-4742-86c7-9be908e49e7f"
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "sap-icon://code1",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        },
+        "supportedThemes": [
+            "sap_hcb",
+            "sap_bluecrystal",
+            "sap_belize"
+        ]
+    },
+    "sap.ui5": {
+        "rootView": {
+            "viewName": "y5fb.ui5.Dashboard.view.App",
+            "type": "XML",
+            "id": "app"
+        },
+        "dependencies": {
+            "minUI5Version": "1.42.0",
+            "libs": {
+                "sap.ui.core": {
+                    "minVersion": "1.42.0"
+                },
+                "sap.m": {
+                    "minVersion": "1.42.0"
+                },
+                "sap.ushell": {
+                    "minVersion": "1.42.0"
+                },
+                "sap.collaboration": {
+                    "minVersion": "1.42",
+                    "lazy": true
+                }
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "y5fb.ui5.Dashboard.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true
+            }
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "viewPath": "y5fb.ui5.Dashboard.view",
+                "controlId": "idAppControl",
+                "controlAggregation": "pages",
+                "transition": "slide",
+                "bypassed": {
+                    "target": "notFound"
+                },
+                "async": true
+            },
+            "routes": [
+                {
+                    "pattern": "",
+                    "name": "main",
+                    "target": [
+                        "object",
+                        "main"
+                    ]
+                },
+                {
+                    "pattern": "ZET_FBPM_DADOS_TILESSet('{UnidadeDash}')",
+                    "name": "object",
+                    "target": [
+                        "main",
+                        "object"
+                    ]
+                },
+                {
+                    "pattern": "ZET_FBPM_DADOS_TILESSet('{UnidadeDash}')2",
+                    "name": "object_bar",
+                    "target": [
+                        "main",
+                        "object_bar"
+                    ]
+                }
+            ],
+            "targets": {
+                "main": {
+                    "viewId": "main",
+                    "viewName": "Main",
+                    "viewLevel": 1
+                },
+                "notFound": {
+                    "viewId": "notFound",
+                    "viewName": "NotFound",
+                    "transition": "show"
+                },
+                "object_bar": {
+                    "viewId": "object_bar",
+                    "viewName": "Object_bar",
+                    "viewLevel": 2
+                },
+                "object": {
+                    "viewId": "object",
+                    "viewName": "Object",
+                    "viewLevel": 2
+                }
+            }
+        }
+    }
+}

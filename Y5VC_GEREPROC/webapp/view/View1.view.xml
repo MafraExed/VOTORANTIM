@@ -1,0 +1,145 @@
+<mvc:View controllerName="workspace.zreimpressao_etiqueta2.controller.View1" xmlns:html="http://www.w3.org/1999/xhtml" displayBlock="true"
+	xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m" xmlns:f="sap.f"
+	xmlns:fb="sap.ui.comp.filterbar" xmlns:vm="sap.ui.comp.variants">
+	<App id="idAppControl">
+		<pages>
+			<f:DynamicPage id="dynamicPageId" headerExpanded="true" class="sapUiSizeCompact" showFooter="sap.ui.Device.system.phone">
+				<!-- DynamicPage Title -->
+				<f:title>
+					<f:DynamicPageTitle>
+						<f:heading>
+							<Title text="{i18n>title_reprocess_label}"/>
+						</f:heading>
+					</f:DynamicPageTitle>
+				</f:title>
+				<!-- DynamicPage Header -->
+				<f:header>
+					<f:DynamicPageHeader pinnable="true">
+						<f:content>
+							<fb:FilterBar id="filterbar" reset="onReset" search="_onSearch" useToolbar="false" showGoOnFB="true" filterContainerWidth="20rem">
+								<fb:filterGroupItems >
+									<fb:FilterGroupItem label="{i18n>lbl_label_number}" name="filabelnumber" groupName="gpFilter01" visibleInFilterBar="true">
+										<fb:control>
+											<MultiInput submit="_submitMultInput" id="idMultiInputLabelNumber" showValueHelp="false"></MultiInput>
+										</fb:control>
+									</fb:FilterGroupItem>
+									<fb:FilterGroupItem label="Número NF-e" name="ipNfenum" groupName="gpFilter01" visibleInFilterBar="true">
+										<fb:control>
+											<MultiInput id="idMultiInputNfe" showSuggestion="false" suggestionItemSelected="_onSuggestionItemSelected" showValueHelp="false"
+												suggestionRows="{GE>/ZET_VCMM_NFH_IHSet}" maxSuggestionWidth="500px" type="Number">
+												<core:Item key="{GE>nfenum}" text="{GE>nfenum}"/>
+												<suggestionColumns >
+													<Column hAlign="Begin" popinDisplay="Inline" demandPopin="true" width="35px">
+														<Label text="Número NF-e"/>
+													</Column>
+													<Column hAlign="Center" popinDisplay="Inline" demandPopin="true" minScreenWidth="Tablet" width="10px">
+														<Label text="Série"/>
+													</Column>
+													<Column hAlign="Center" popinDisplay="Inline" demandPopin="false" minScreenWidth="Tablet" width="100px">
+														<Label text="Fornecedor"/>
+													</Column>
+												</suggestionColumns>
+												<suggestionRows>
+													<ColumnListItem>
+														<cells>
+															<Label text="{GE>nfenum}"/>
+															<Label text="{GE>series}"/>
+															<Label text="{GE>fornecedorNome}"/>
+														</cells>
+													</ColumnListItem>
+												</suggestionRows>
+											</MultiInput>
+										</fb:control>
+									</fb:FilterGroupItem>
+									<fb:FilterGroupItem name="A" label="{i18n>lbl_category_selection}" groupName="gpFilter01" visibleInFilterBar="true">
+										<fb:control>
+											<Select id="idLabelCategorySelect" change="onSelectChange" forceSelection="true" items="{ path: 'Category>/Options' }">
+												<core:Item key="{Category>key}" text="{Category>value}"/>
+											</Select>
+										</fb:control>
+									</fb:FilterGroupItem>
+									<fb:FilterGroupItem label="{i18n>lbl_chvnfe}" name="fiChvNfe" groupName="gpFilter01" visibleInFilterBar="true">
+										<fb:control>
+											<MultiInput submit="_submitMultInput" id="idMultiInputChvnfe" showValueHelp="false"></MultiInput>
+										</fb:control>
+									</fb:FilterGroupItem>
+								</fb:filterGroupItems>
+							</fb:FilterBar>
+						</f:content>
+					</f:DynamicPageHeader>
+				</f:header>
+				<!-- DynamicPage Content -->
+				<f:content>
+					<Table id="idLabelTable" inset="false" items="{ path: 'GE>/ZET_VCMM_LABELSet', filters : [
+        				   { path : 'CategoriaEtq', operator : 'EQ', value1 : 'MAT'},
+        				   { path : 'Status', operator : 'EQ', value1 : 'AT'}] }" noDataText="{i18n>error_data_not_found}" mode="MultiSelect"
+						showSeparators="All" growing="true" growingThreshold="999999999" growingScrollToLoad="true" fixedLayout="false" alternateRowColors="true"
+						updateFinished="onUpdateFinished">
+						<headerToolbar>
+							<OverflowToolbar width="auto" height="auto" design="Transparent" visible="true" enabled="true">
+								<content>
+									<Title text="{i18n>title_total_etq}" level="H2" id="title_total_etq"/>
+									<ToolbarSpacer width=""/>
+									<Button id="idBtnCancelLabel" text="{i18n>lbl_BtnCancelLabel}" tooltip="{i18n>tooltip_BtnCancelLabel}" icon="sap-icon://cancel"
+										iconFirst="true" press="_onPressCancelLabel"/>
+									<Button id="idBtnRePrintLabel" text="{i18n>lbl_BtnRePrintEtq}" tooltip="{i18n>tooltip_BtnRePrintEtq}" icon="sap-icon://print"
+										iconFirst="true" press="_onPressRePrintLabel"/>
+									<Button id="idBtnSplitLabel" text="{i18n>lbl_BtnSplitLabel}" tooltip="{i18n>tooltip_BtnSplitLabel}" icon="sap-icon://copy" iconFirst="true"
+										press="_onPressReSplitLabel"/>
+								</content>
+							</OverflowToolbar>
+						</headerToolbar>
+						<columns>
+							<Column minScreenWidth="Tablet" demandPopin="true">
+								<Text text="{i18n>lbl_nreqt}"/>
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true">
+								<Text text="{i18n>lbl_chvnfe}" id="idLabelColumnNF"/>
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true">
+								<Text text="{i18n>lbl_itmnum}" id="idLabelColumnNFItem"/>
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true">
+								<Text text="{i18n>lbl_categoryetq}"/>
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true">
+								<Text text="{i18n>lbl_quantity}"/>
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true">
+								<Text text="{i18n>lbl_material}" id="idLabelColumnMat"/>
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true" >
+								<Text text="{i18n>lbl_desc_mat}" id="idLabelColumnDescMat" />
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true">
+								<Text text="{i18n>lbl_validade}" id="idLabelColumnValidade"/>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem vAlign="Middle">
+								<cells>
+									<Text text="{GE>nretq}"/>
+									<Text text="{GE>chvnfe}" id="idLabelColumnNFValue"/>
+									<Text text="{GE>itmnum}" id="idLabelColumnNFItemValue"/>
+									<Text text="{GE>categoriaEtq}"/>
+									<ObjectNumber number="{ path: 'GE>menge'}" unit="{path: 'GE>meins'}"/>
+									<Text text="{path: 'GE>matnr', formatter: '.myFormatter.shiftLeadingZeros'}" />
+									<Text text="{GE>maktx}"/>
+									<Text text="{GE>dataValidade}"/>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</f:content>
+				<!-- DynamicPage Footer -->
+				<f:footer>
+					<OverflowToolbar>
+						<ToolbarSpacer/>
+						<Button icon="sap-icon://bar-code" press="onPressScan" type="Default"/>
+						<ToolbarSpacer/>
+					</OverflowToolbar>
+				</f:footer>
+			</f:DynamicPage>
+		</pages>
+	</App>
+</mvc:View>

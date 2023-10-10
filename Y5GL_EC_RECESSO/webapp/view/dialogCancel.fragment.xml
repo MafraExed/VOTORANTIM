@@ -1,0 +1,17 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" xmlns:l="sap.ui.layout">
+	<Dialog title ="Selecione o periodo a cancelar" class="sapUiContentPadding">
+		<content>
+			<CheckBox text="Marcar / Desmarcar todos" select="onParentClickedCancel"/>
+			<core:HTML content="&lt;hr&gt;"/>
+			<CheckBox text="1° Periodo" select="onSelectedCheckCancel" visible="{path: 'StatusTxt1',formatter:'.FormatVisibleCheck1'}"/>
+			<CheckBox text="2° Periodo" select="onSelectedCheckCancel" visible="{path: 'StatusTxt2',formatter:'.FormatVisibleCheck2'}"/>
+			<CheckBox text="3° Periodo" select="onSelectedCheckCancel" visible="{path: 'StatusTxt3',formatter:'.FormatVisibleCheck3'}"/>
+		</content>
+		<beginButton>
+			<Button text="Ok" app:dialogType="Std" press="onConfirmaDialogCancel"/>
+		</beginButton>
+		<endButton>
+			<Button text="Cancel" app:dialogType="Std" press="onCancelaDialogCancel"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

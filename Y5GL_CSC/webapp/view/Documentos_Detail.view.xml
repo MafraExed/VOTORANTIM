@@ -1,0 +1,584 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.ui.layout.form"
+	controllerName="Y5GL_CSC.Y5GL_CSC.controller.Documentos_Detail" xmlns:html="http://www.w3.org/1999/xhtml">
+	<App id="idApp">
+		<pages>
+			<Page title="Title" id="idPage">
+				<customHeader>
+					<Bar id="idBarMaster">
+						<contentLeft>
+							<Button icon="sap-icon://nav-back" id="idB_navback" press="onVoltar" text="Voltar"/>
+						</contentLeft>
+						<contentMiddle>
+							<Title text="Documentos - (Matrícula - {IPernr}) - Chamado - {Chamado}" titleStyle="H3" id="idTitleDependentes"/>
+						</contentMiddle>
+						<!--<contentRight>-->
+						<!--	<Button icon="sap-icon://home" id="idteste" press="onBackMaster"/>-->
+						<!--</contentRight>-->
+					</Bar>
+				</customHeader>
+				<content>
+					<HBox width="100%" height="1000%" id="idGif" class="Loading" busyIndicatorSize="Auto" backgroundDesign="Solid">
+						<Image src="imagens/voto_load_white.gif" width="100%" class="footer_img" id="idimg" backgroundSize="100%"/>
+					</HBox>
+					<Input id="idTipo" value="{Status}" visible="false"/>
+					<Input value="{Chamado}" id="idChamado" visible="false"/>
+					<f:Form class="editableForm" editable="true" id="_0001" visible="{path: 'Tpdoc', formatter:'.FormatVisibleForm'}">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_0001" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+								emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer_0001">
+								<f:formElements>
+									<f:FormElement label="Cpf" id="FormElement_0001">
+										<f:fields>
+											<Input id="idCpf" value="{CpfNr}" editable="{path:'CpfNr', formatter:'.FormatEditable'}" valueState="{path:'AltCpfNr', formatter:'.formatValueState'}"/>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form class="editableForm" editable="true" id="_0002" visible="{path: 'Tpdoc', formatter:'.FormatVisibleForm'}">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_0002" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+								emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer_0002">
+								<f:formElements>
+									<f:FormElement label="Documento Identidade" id="FormElement_0002_1">
+										<f:fields>
+											<Input id="idIdentNr" value="{IdentNr}" editable="{path:'IdentNr', formatter:'.FormatEditable'}" valueState="{path:'AltIdentNr', formatter:'.formatValueState'}"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Órgão emissor RG" id="FormElement_0002_2">
+										<f:fields>
+											<Input id="idRgorg" value="{Rgorg}" editable="{path:'IdentNr', formatter:'.FormatEditable'}" maxLength="20" valueState="{path:'AltRgorg', formatter:'.formatValueState'}"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Data Emissão" id="FormElement_0002_3">
+										<f:fields>
+											<Input id="idDtEmis" value="{DtEmis}" editable="{path:'IdentNr', formatter:'.FormatEditable'}" type="Date" valueState="{path:'AltDtEmis', formatter:'.formatValueState'}"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="UF de Expedição" id="FormElement_0002_4">
+										<f:fields>
+											<ComboBox id="idEsEmis" selectedKey="{EsEmis}" items="{/ZET_GLHR_COMBO_ESTADOSet}" valueState="{path:'AltEsEmis', formatter:'.formatValueState'}"
+												editable="{path:'IdentNr', formatter:'.FormatEditable'}">
+												<core:Item key="{Bland}" text="{Bland}" id="idKeyEstNasc"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form class="editableForm" editable="true" id="_0003" visible="{path: 'Tpdoc', formatter:'.FormatVisibleForm'}">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_0003" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+								emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer_0003">
+								<f:formElements>
+									<f:FormElement label="Número da CTPS" id="FormElement_0003_1">
+										<f:fields>
+											<Input id="idCtpsNr" value="{CtpsNr}" editable="{path:'CtpsNr', formatter:'.FormatEditable'}" valueState="{path:'AltCtpsNr', formatter:'.formatValueState'}"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Série da CTPS" id="FormElement_0003_2">
+										<f:fields>
+											<Input id="idCtpsSerie" value="{CtpsSerie}" editable="{path:'CtpsNr', formatter:'.FormatEditable'}" valueState="{path:'AltCtpsSerie', formatter:'.formatValueState'}"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Data Emissão" id="FormElement_0003_3">
+										<f:fields>
+											<Input id="idDtEmis_3" value="{DtEmis}" editable="{path:'CtpsNr', formatter:'.FormatEditable'}" type="Date" valueState="{path:'AltDtEmis', formatter:'.formatValueState'}"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="UF de Expedição" id="FormElement_0003_4">
+										<f:fields>
+											<ComboBox id="idEsEmis_3" selectedKey="{EsEmis}" items="{/ZET_GLHR_COMBO_ESTADOSet}" valueState="{path:'AltEsEmis', formatter:'.formatValueState'}"
+												editable="{path:'CtpsNr', formatter:'.FormatEditable'}">
+												<core:Item key="{Bland}" text="{Bland}" id="idKeyEstNasc_3"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form class="editableForm" editable="true" id="_0004" visible="{path: 'Tpdoc', formatter:'.FormatVisibleForm'}">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_0004" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+								emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer_0004">
+								<f:formElements>
+									<f:FormElement label="Nr. Cons. Regiona" id="FormElement_0004_1">
+										<f:fields>
+											<Input id="idCregNr" value="{CregNr}" editable="{path:'CregNr', formatter:'.FormatEditable'}" valueState="{path:'AltCregNr', formatter:'.formatValueState'}"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Nome Cons. Reg." id="FormElement_0004_2">
+										<f:fields>
+											<Input id="idCregName" value="{CregName}" editable="{path:'CregNr', formatter:'.FormatEditable'}" valueState="{path:'AltCregName', formatter:'.formatValueState'}"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Sigla Cons. Reg." id="FormElement_0004_3">
+										<f:fields>
+											<Input id="idCregInit" value="{CregInit}" editable="{path:'CregNr', formatter:'.FormatEditable'}" valueState="{path:'AltCregInit', formatter:'.formatValueState'}"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Data Emissão" id="FormElement_0004_4">
+										<f:fields>
+											<Input id="idDtEmis_0004" value="{DtEmis}" editable="{path:'CregNr', formatter:'.FormatEditable'}" type="Date" valueState="{path:'AltDtEmis', formatter:'.formatValueState'}"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="UF de Expedição" id="FormElement_0004_5">
+										<f:fields>
+											<ComboBox id="idEsEmis_4" selectedKey="{EsEmis}" items="{/ZET_GLHR_COMBO_ESTADOSet}" valueState="{path:'AltEsEmis', formatter:'.formatValueState'}"
+												editable="{path:'CregNr', formatter:'.FormatEditable'}">
+												<core:Item key="{Bland}" text="{Bland}" id="idKeyEstNasc_4"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Orgão Expedidor OC" id="FormElement_0004_6">
+										<f:fields>
+											<Input id="idOcorg" value="{Ocorg}" editable="{path:'CregNr', formatter:'.FormatEditable'}" valueState="{path:'AltOcorg', formatter:'.formatValueState'}"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Data de Validade" id="FormElement_0004_7">
+										<f:fields>
+											<Input id="idZvalidade" value="{Zvalidade}" editable="{path:'CregNr', formatter:'.FormatEditable'}" type="Date" valueState="{path:'AltZvalidade', formatter:'.formatValueState'}"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Órgão emissor" id="FormElement_0004_8">
+										<f:fields>
+											<Input id="idZorgEmis" value="{ZorgEmis}" editable="{path:'CregNr', formatter:'.FormatEditable'}" valueState="{path:'AltZorgEmis', formatter:'.formatValueState'}"/>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form class="editableForm" editable="true" id="_0005" visible="{path: 'Tpdoc', formatter:'.FormatVisibleForm'}">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_0005" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+								emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer_0005">
+								<f:formElements>
+									<f:FormElement label="Nr. Título Eleitor" id="FormElement_0005_1">
+										<f:fields>
+											<Input id="idElecNr" value="{ElecNr}" editable="{path:'ElecNr', formatter:'.FormatEditable'}" valueState="{path:'AltElecNr', formatter:'.formatValueState'}"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Zona Tít. Eleitor" id="FormElement_0005_2">
+										<f:fields>
+											<Input id="idElecZone" value="{ElecZone}" editable="{path:'ElecNr', formatter:'.FormatEditable'}" valueState="{path:'AltElecZone', formatter:'.formatValueState'}"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Zona Tít. Eleitor" id="FormElement_0005_3">
+										<f:fields>
+											<Input id="idElecSect" value="{ElecSect}" editable="{path:'ElecNr', formatter:'.FormatEditable'}" valueState="{path:'AltElecSect', formatter:'.formatValueState'}"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Data Emissão" id="FormElement_0005_4">
+										<f:fields>
+											<Input id="idDtEmis_5" value="{DtEmis}" editable="{path:'ElecNr', formatter:'.FormatEditable'}" type="Date" valueState="{path:'AltDtEmis', formatter:'.formatValueState'}"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="UF de Expedição" id="FormElement_0005_5">
+										<f:fields>
+											<ComboBox id="idEsEmis_5" selectedKey="{EsEmis}" items="{/ZET_GLHR_COMBO_ESTADOSet}" valueState="{path:'AltEsEmis', formatter:'.formatValueState'}"
+												editable="{path:'ElecNr', formatter:'.FormatEditable'}">
+												<core:Item key="{Bland}" text="{Bland}" id="idKeyEstNasc_5"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form class="editableForm" editable="true" id="_0006" visible="{path: 'Tpdoc', formatter:'.FormatVisibleForm'}">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_0006" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+								emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer_0006">
+								<f:formElements>
+									<f:FormElement label="PIS/PASEP" id="FormElement_0006">
+										<f:fields>
+											<Input id="idPisNr" value="{PisNr}" editable="{path:'PisNr', formatter:'.FormatEditable'}" valueState="{path:'AltPisNr', formatter:'.formatValueState'}"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Data Emissão" id="FormElement_0006_1">
+										<f:fields>
+											<Input id="idDtEmis_6" value="{DtEmis}" editable="{path:'PisNr', formatter:'.FormatEditable'}" type="Date" valueState="{path:'AltDtEmis', formatter:'.formatValueState'}"/>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form class="editableForm" editable="true" id="_0007" visible="{path: 'Tpdoc', formatter:'.FormatVisibleForm'}">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_0007" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+								emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer_0007">
+								<f:formElements>
+									<f:FormElement label="Nr. Cert. Militar" id="FormElement_0007">
+										<f:fields>
+											<Input id="idMilNr" value="{MilNr}" editable="{path:'MilNr', formatter:'.FormatEditable'}" valueState="{path:'AltMilNr', formatter:'.formatValueState'}"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Espécie Cert. Mil." id="FormElement_0007_1">
+										<f:fields>
+											<Input id="idMilType" value="{MilType}" editable="{path:'MilNr', formatter:'.FormatEditable'}" valueState="{path:'AltMilType', formatter:'.formatValueState'}"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Categoria Cert. Mil." id="FormElement_0007_2">
+										<f:fields>
+											<Input id="idMilCat" value="{MilCat}" editable="{path:'MilNr', formatter:'.FormatEditable'}" valueState="{path:'AltMilCat', formatter:'.formatValueState'}"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="UF de Expedição" id="FormElement_0007_3">
+										<f:fields>
+											<ComboBox id="idDtEmis_7" selectedKey="{EsEmis}" items="{/ZET_GLHR_COMBO_ESTADOSet}" valueState="{path:'AltEsEmis', formatter:'.formatValueState'}"
+												editable="{path:'MilNr', formatter:'.FormatEditable'}">
+												<core:Item key="{Bland}" text="{Bland}" id="idKeyEstNasc_7"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form class="editableForm" editable="true" id="_0008" visible="{path: 'Tpdoc', formatter:'.FormatVisibleForm'}">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_0008" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+								emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer_0008">
+								<f:formElements>
+									<f:FormElement label="Nr. ID Estrangeiro" id="FormElement_0008">
+										<f:fields>
+											<Input id="idIdforNr" value="{IdforNr}" editable="{path:'IdforNr', formatter:'.FormatEditable'}" valueState="{path:'AltIdforNr', formatter:'.formatValueState'}"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Tipo de Visto" id="FormElement_0008_1">
+										<f:fields>
+											<Input id="idVisaType_8" value="{VisaType}" editable="{path:'IdforNr', formatter:'.FormatEditable'}" valueState="{path:'AltVisaType', formatter:'.formatValueState'}"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Dt. chegada Brasil" id="FormElement_0008_2">
+										<f:fields>
+											<Input id="idDtArrv" value="{DtArrv}" editable="{path:'IdforNr', formatter:'.FormatEditable'}" type="Date" valueState="{path:'AltDtArrv', formatter:'.formatValueState'}"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Data Emissão" id="FormElement_0008_3">
+										<f:fields>
+											<Input id="idDtEmis_8" value="{DtEmis}" editable="{path:'IdforNr', formatter:'.FormatEditable'}" type="Date" valueState="{path:'AltDtEmis', formatter:'.formatValueState'}"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Órgão emissor RNE" id="FormElement_0008_4">
+										<f:fields>
+											<Input id="idRneorg" value="{Rneorg}" editable="{path:'IdforNr', formatter:'.FormatEditable'}" valueState="{path:'AltRneorg', formatter:'.formatValueState'}"/>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form class="editableForm" editable="true" id="_0009" visible="{path: 'Tpdoc', formatter:'.FormatVisibleForm'}">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_0009" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+								emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer_0009">
+								<f:formElements>
+									<f:FormElement label="Nr. Série Visto" id="FormElement_0009">
+										<f:fields>
+											<Input id="idVisaNr" value="{VisaNr}" editable="{path:'VisaNr', formatter:'.FormatEditable'}" valueState="{path:'AltVisaNr', formatter:'.formatValueState'}"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Tipo de Visto" id="FormElement_0009_1">
+										<f:fields>
+											<Input id="idVisaType" value="{VisaType}" editable="{path:'VisaNr', formatter:'.FormatEditable'}" valueState="{path:'AltVisaType', formatter:'.formatValueState'}"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement id="FormElement_0009_2">
+										<f:fields>
+											<CheckBox text="Conjugue brasileiro/a" id="idMarryBr" editable="{path:'VisaNr', formatter:'.FormatEditable'}" valueState="{path:'AltVisaNr', formatter:'.formatValueState'}"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement id="FormElement_0009_3">
+										<f:fields>
+											<CheckBox text="Filhos brasileiros" id="idChildbr" editable="{path:'VisaNr', formatter:'.FormatEditable'}" valueState="{path:'AltVisaNr', formatter:'.formatValueState'}"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Dt. chegada Brasil" id="FormElement_0009_4">
+										<f:fields>
+											<Input id="idDtArrv_9" value="{DtArrv}" editable="{path:'VisaNr', formatter:'.FormatEditable'}" type="Date" valueState="{path:'AltDtArrv', formatter:'.formatValueState'}"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Data Emissão" id="FormElement_0009_5">
+										<f:fields>
+											<Input id="idDtEmis_9" value="{DtEmis}" editable="{path:'VisaNr', formatter:'.FormatEditable'}" type="Date" valueState="{path:'AltDtEmis', formatter:'.formatValueState'}"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Cond. trab. estr." id="FormElement_0009_6">
+										<f:fields>
+											<ComboBox id="idForeignSit" selectedKey="{ForeignSit}" items="{/ZET_GLHR_HELP_FOREIGN_SITSet}" valueState="{path:'AltForeignSit', formatter:'.formatValueState'}"
+												editable="{path:'VisaNr', formatter:'.FormatEditable'}">
+												<core:Item key="{Id}" text="{Desc}" id="idKeyEstNasc_09"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Data Validade" id="FormElement_0009_7">
+										<f:fields>
+											<Input id="idZvalidade_9" value="{Zvalidade}" editable="{path:'VisaNr', formatter:'.FormatEditable'}" type="Date" valueState="{path:'AltZvalidade', formatter:'.formatValueState'}"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Clas. Cond. Trab." id="FormElement_0009_8">
+										<f:fields>
+											<Input id="idZclasTrab" value="{ZclasTrab}" editable="{path:'VisaNr', formatter:'.FormatEditable'}" valueState="{path:'AltZclasTrab', formatter:'.formatValueState'}"/>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form class="editableForm" editable="true" id="_0010" visible="{path: 'Tpdoc', formatter:'.FormatVisibleForm'}">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_0010" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+								emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer_0010">
+								<f:formElements>
+									<f:FormElement label="Nr. Cart. Habilit." id="FormElement_0010">
+										<f:fields>
+											<Input id="idDriveNr" value="{DriveNr}" editable="{path:'DriveNr', formatter:'.FormatEditable'}" valueState="{path:'AltDriveNr', formatter:'.formatValueState'}"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Órgão emissor CNH" id="FormElement_0010_1">
+										<f:fields>
+											<Input id="idCnhorg" value="{Cnhorg}" editable="{path:'DriveNr', formatter:'.FormatEditable'}" valueState="{path:'AltCnhorg', formatter:'.formatValueState'}"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Categoria Habilit." id="FormElement_0010_2">
+										<f:fields>
+											<ComboBox id="idDriveCat" selectedKey="{DriveCat}" items="{/ZET_GLHR_HELP_DRIVE_CATSet}" valueState="{path:'AltDriveCat', formatter:'.formatValueState'}"
+												editable="{path:'DriveNr', formatter:'.FormatEditable'}">
+												<core:Item key="{Id}" text="{Id}" id="idKeyEstNasc_10"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Data Emissão" id="FormElement_0010_3">
+										<f:fields>
+											<Input id="idDtEmis_10" value="{DtEmis}" editable="{path:'DriveNr', formatter:'.FormatEditable'}" type="Date" valueState="{path:'AltDtEmis', formatter:'.formatValueState'}"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="UF de Expedição" id="FormElement_0010_4">
+										<f:fields>
+											<ComboBox id="idEsEmis_10" selectedKey="{EsEmis}" items="{/ZET_GLHR_COMBO_ESTADOSet}" valueState="{path:'AltEsEmis', formatter:'.formatValueState'}"
+												editable="{path:'DriveNr', formatter:'.FormatEditable'}">
+												<core:Item key="{Bland}" text="{Bland}" id="idKeyEsEmis_10"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Data validade" id="FormElement_0010_5">
+										<f:fields>
+											<Input id="idZvalidade_10" value="{Zvalidade}" editable="{path:'DriveNr', formatter:'.FormatEditable'}" type="Date" valueState="{path:'AltZvalidade', formatter:'.formatValueState'}"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Data prim. habilit" id="FormElement_0010_6">
+										<f:fields>
+											<Input id="idZphab" value="{Zphab}" editable="{path:'DriveNr', formatter:'.FormatEditable'}" type="Date" valueState="{path:'AltZphab', formatter:'.formatValueState'}"/>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form class="editableForm" editable="true" id="_0011" visible="{path: 'Tpdoc', formatter:'.FormatVisibleForm'}">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_0011" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+								emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer_0011">
+								<f:formElements>
+									<f:FormElement label="Tipo de Visto" id="FormElement_0011">
+										<f:fields>
+											<Input id="idVisaType_11" value="{VisaType}" editable="{path:'VisaType', formatter:'.FormatEditable'}" valueState="{path:'AltVisaType', formatter:'.formatValueState'}"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Dt. chegada Brasil" id="FormElement_0011_1">
+										<f:fields>
+											<Input id="idDtArrv_11" value="{DtArrv}" editable="{path:'VisaType', formatter:'.FormatEditable'}" type="Date" valueState="{path:'AltDtArrv', formatter:'.formatValueState'}"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Número do Passaporte" id="FormElement_0011_2">
+										<f:fields>
+											<Input id="idPasspNr_11" value="{PasspNr}" editable="{path:'VisaType', formatter:'.FormatEditable'}" valueState="{path:'AltPasspNr', formatter:'.formatValueState'}"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Data Emissão" id="FormElement_0011_3">
+										<f:fields>
+											<Input id="idDtEmis_11" value="{DtEmis}" editable="{path:'VisaType', formatter:'.FormatEditable'}" type="Date" valueState="{path:'AltDtEmis', formatter:'.formatValueState'}"/>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form class="editableForm" editable="true" id="_0012" visible="{path: 'Tpdoc', formatter:'.FormatVisibleForm'}">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_0012" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+								emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer_0012">
+								<f:formElements>
+									<f:FormElement label="Número do NIT" id="FormElement_0012">
+										<f:fields>
+											<Input id="idNitNr" value="{NitNr}" editable="{path:'NitNr', formatter:'.FormatEditable'}" valueState="{path:'AltNitNr', formatter:'.formatValueState'}"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Data Emissão" id="FormElement_0012_1">
+										<f:fields>
+											<Input id="idDtEmis_12" value="{DtEmis}" editable="{path:'NitNr', formatter:'.FormatEditable'}" type="Date" valueState="{path:'AltDtEmis', formatter:'.formatValueState'}"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Número do documento" id="FormElement_0012_2">
+										<f:fields>
+											<Input id="idDocNr" value="{DocNr}" editable="{path:'NitNr', formatter:'.FormatEditable'}" valueState="{path:'AltDocNr', formatter:'.formatValueState'}"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Cond. trab. estr" id="FormElement_0012_3">
+										<f:fields>
+											<ComboBox id="idForeignSit_12" selectedKey="{ForeignSit}" items="{/ZET_GLHR_HELP_FOREIGN_SITSet}" valueState="{path:'AltForeignSit', formatter:'.formatValueState'}"
+												editable="{path:'NitNr', formatter:'.FormatEditable'}">
+												<core:Item key="{Id}" text="{Desc}" id="idKeyEstNasc_12"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form class="editableForm" editable="true" id="_0014" visible="{path: 'Tpdoc', formatter:'.FormatVisibleForm'}">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_0014" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+								emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer_0014">
+								<f:formElements>
+									<f:FormElement label="Número do RIC" id="FormElement_0014">
+										<f:fields>
+											<Input id="idRicnr" value="{Ricnr}" editable="{path:'Ricnr', formatter:'.FormatEditable'}" valueState="{path:'AltRicnr', formatter:'.formatValueState'}"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Orgão Expedidor RIC" id="FormElement_0014_1">
+										<f:fields>
+											<Input id="idRicorg" value="{Ricorg}" editable="{path:'Ricnr', formatter:'.FormatEditable'}" valueState="{path:'AltRicorg', formatter:'.formatValueState'}"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Data Emissão" id="FormElement_0014_2">
+										<f:fields>
+											<Input id="idDtEmis_14" value="{DtEmis}" editable="{path:'Ricnr', formatter:'.FormatEditable'}" type="Date" valueState="{path:'AltDtEmis', formatter:'.formatValueState'}"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="UF de Expedição" id="FormElement_0014_3">
+										<f:fields>
+											<ComboBox id="idEsEmis_14" selectedKey="{EsEmis}" items="{/ZET_GLHR_COMBO_ESTADOSet}" valueState="{path:'AltEsEmis', formatter:'.formatValueState'}"
+												editable="{path:'Ricnr', formatter:'.FormatEditable'}">
+												<core:Item key="{Bland}" text="{Bland}" id="idKeyEstNasc_14"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form class="editableForm" editable="true" id="_0015" visible="{path: 'Tpdoc', formatter:'.FormatVisibleForm'}">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_0015" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+								emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer_0015">
+								<f:formElements>
+									<f:FormElement label="Cart. Nacional Saúde" id="FormElement_0015">
+										<f:fields>
+											<Input id="idNhcnr" value="{Nhcnr}" editable="{path:'Nhcnr', formatter:'.FormatEditable'}" valueState="{path:'AltNhcnr', formatter:'.formatValueState'}"/>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form class="editableForm" editable="true" id="UPLOAD" visible="true">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_UPLOAD" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+								emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer_UPLOAD">
+								<f:formElements>
+									<f:FormElement id="IdonAddDoc">
+										<f:fields>
+											<UploadCollection id="UploadCollection" multiple="false" change="onChange" fileDeleted="onDeleteSelectedItems"
+												beforeUploadStarts="onBeforeUploadStarts" uploadComplete="onuploadComplete" items="{ path: '/ZET_GLRH_UPLOADSet', templateShareable: true }"
+												modelContextChange="onmodelListContextChange" mode="SingleSelectMaster" uploadButtonInvisible="true"
+												uploadUrl="/sap/opu/odata/sap/ZGWGLRH_MEU_CADASTRO_SRV/ZET_GLHR_UPFILESet"
+												noDataDescription="Para adicionar/alterar Anexos selecione o botão ( + )" noDataText="Aguardando novos Carregamentos"
+												numberOfAttachmentsText="Anexos">
+												<toolbar>
+													<OverflowToolbar id="myId" visible="true">
+														<Title id="attachmentTitle"/>
+														<ToolbarSpacer id="idToolbarSpacer"/>
+														<SearchField width="10rem" search="onSearch" enabled="false" visible="false" id="idSearchField"/>
+														<Button id="deleteSelectedButton" text="Delete" press="onDeleteSelectedItems" enabled="false" visible="false" type="Transparent"/>
+														<ToggleButton id="selectAllButton" text="Select all" press="onSelectAllPress" enabled="false" visible="false" type="Transparent"/>
+														<UploadCollectionToolbarPlaceholder id="IdUploadCollectionToolbar"/>
+													</OverflowToolbar>
+												</toolbar>
+												<items>
+													<UploadCollectionItem documentId="{DocId}" fileName="{Filename}" mimeType="{Mimetype}"
+														url="/sap/opu/odata/sap/ZGWGLRH_MEU_CADASTRO_SRV/ZET_GLHR_UPFILESet('{Pernr}${Infty}${Subty}$$${Tipo}${Favor}$${Icnum}${Dependentes}${Objps}${DocId}')/$value" enableEdit="false"
+														visibleEdit="false" deletePress="onFileDelete" selected="true"/>
+												</items>
+											</UploadCollection>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+				</content>
+					<footer>
+					<Toolbar id="idOverTollbar" design="Transparent">
+						<ToolbarSpacer id="idToolbarSpacerD"/>
+						<Button press="Aprova" text="Aprovar" icon="sap-icon://accept" id="idAprova" tooltip="Aprovar"
+							visible="true" iconFirst="true" type="Accept"/>
+						<Button press="Reprova" text="Reprova" icon="sap-icon://decline" id="idReprova" tooltip="Aprovar"
+							visible="true" iconFirst="true" type="Reject"/>
+					</Toolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

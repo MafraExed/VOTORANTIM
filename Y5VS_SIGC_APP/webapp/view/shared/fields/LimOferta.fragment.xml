@@ -1,0 +1,1 @@
+<c:FragmentDefinition xmlns="sap.m" xmlns:c="sap.ui.core" xmlns:f="sap.ui.layout.form"><f:FormContainer><f:formElements><f:FormElement label="{i18n>0008}"><f:fields><DatePicker id="limOferta" fieldGroupIds="groupAll" displayFormat='yyyy-MM-dd' name="limOferta" placeholder="{i18n>0008}"/></f:fields></f:FormElement></f:formElements></f:FormContainer></c:FragmentDefinition>

@@ -1,0 +1,178 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.uxap" xmlns:m="sap.m" xmlns:f="sap.f"
+	xmlns:form="sap.ui.layout.form" controllerName="workspace.zcockpit_bo_v3.controller.S1" xmlns:html="http://www.w3.org/1999/xhtml">
+	<ObjectPageLayout id="ObjectPageLayoutIS1" showTitleInHeaderContent="false" alwaysShowContentHeader="false"
+		preserveHeaderStateOnScroll="false" headerContentPinnable="false" toggleHeaderOnTitleClick="false" isChildPage="true"
+		upperCaseAnchorBar="false" showFooter="true">
+		<headerTitle>
+			<ObjectPageDynamicHeaderTitle id="ObjectHeaderTitleLayoutId">
+				<expandedHeading>
+					<m:Title text="{i18n>title_S1} - { path: 'GE>NumeroBo', formatter: '.myFormatter.shiftLeadingZeros'}" wrapping="true"
+						class="sapUiSmallMarginEnd" id="ObjectHeaderTitleId"/>
+				</expandedHeading>
+				<snappedHeading>
+					<m:FlexBox wrap="Wrap" fitContainer="true" alignItems="Center">
+						<m:Title text="{i18n>title_S1} - { path: 'GE>NumeroBo', formatter: '.myFormatter.shiftLeadingZeros'}" wrapping="true"
+							class="sapUiSmallMarginEnd"/>
+						<m:ObjectStatus text="{ path: 'GE>Status', formatter: '.myFormatter.statusConverterText'}"
+							icon="{ path: 'GE>Status', formatter: '.myFormatter.statusIconConverter'}"
+							state="{ path: 'GE>Status', formatter: '.myFormatter.statusConverter'}"/>
+					</m:FlexBox>
+				</snappedHeading>
+				<navigationActions>
+					<m:OverflowToolbarButton id="handleFullScreenS1Id" type="Transparent" icon="sap-icon://full-screen" press="handleFullScreen"
+						tooltip="{i18n>label_handleFullScreen}" visible="{= ${FlexibleColumn>/actionButtonsInfo/midColumn/fullScreen} !== null }"/>
+					<m:OverflowToolbarButton id="handleExitFullScreenS1Id" type="Transparent" icon="sap-icon://exit-full-screen" press="handleExitFullScreen"
+						tooltip="{i18n>label_handleExitFullScreen}" visible="{= ${FlexibleColumn>/actionButtonsInfo/midColumn/exitFullScreen} !== null }"/>
+					<m:OverflowToolbarButton id="handleCloseS1Id" type="Transparent" icon="sap-icon://decline" press="handleClose"
+						tooltip="{i18n>label_handleClose}" visible="{= ${FlexibleColumn>/actionButtonsInfo/midColumn/closeColumn} !== null }"/>
+				</navigationActions>
+				<actions>
+					<!-- <m:ToggleButton id="EditButtonId" text="{i18n>label_button_edit}" type="Emphasized" press="onEditToggleButtonPress"/> -->
+				</actions>
+			</ObjectPageDynamicHeaderTitle>
+		</headerTitle>
+		<headerContent>
+			<m:FlexBox id="FlexBoxIdS1" wrap="Wrap" fitContainer="true" alignItems="Stretch">
+				<m:VBox id="OccurrencesVBoxIdS1" justifyContent="Center" class="sapUiSmallMarginEnd">
+					<m:Title id="OccurrencesTextVBoxId" text="{i18n>label_occurrences}"/>
+					<m:ObjectNumber id="OccurrencesObjNumberVBoxId" number="{GE>Occurrences}" state="Success"/>
+				</m:VBox>
+				<m:VBox id="StatusVBoxIdS1" justifyContent="Center" class="sapUiSmallMarginEnd sapUiTinyMarginBottom">
+					<m:ObjectStatus text="{ path: 'GE>Status', formatter: '.myFormatter.statusConverterText'}"
+						icon="{ path: 'GE>Status', formatter: '.myFormatter.statusIconConverter'}"
+						state="{ path: 'GE>Status', formatter: '.myFormatter.statusConverter'}"/>
+				</m:VBox>
+			</m:FlexBox>
+		</headerContent>
+		<sections>
+			<ObjectPageSection id="ObjectPageSectionId" title="{i18n>label_resume}">
+				<subSections>
+					<ObjectPageSubSection id="ObjectPageSubSectionId">
+						<blocks>
+							<form:SimpleForm id="SimpleFormNfeId" maxContainerCols="2" editable="false" layout="ResponsiveGridLayout" labelSpanL="12" labelSpanM="12"
+								emptySpanL="0" emptySpanM="0" columnsL="1" columnsM="1">
+								<form:content>
+									<m:Title id="TitleNfeKeyId" text="{i18n>label_nf}"/>
+									<m:Label id="LabelNfeKeyId" text="{i18n>label_nfe_key}"/>
+									<m:Input id="InputNfeKeyId" type="Number" placeholder="{i18n>label_nfe_key}" enabled="true" editable="false" change="onChaveNfeInputSubmit"
+										value="{path:'GE>ChaveXmlNfe', type:'.myFormatter.customChvNfeType'}"/>
+									<m:Label id="LabelResponsibleId" text="{i18n>label_responsible}"/>
+									<m:Input id="InputResponsibleID" placeholder="{i18n>label_responsible}" enabled="true" editable="false" visible="false"/>
+									<m:Label id="LabelSupplierId" text="{i18n>label_supplier}"/>
+									<m:Text id="TextSupplierId" text="{GE>NomeLifnr}"/>
+									<m:Label id="LabelNfeNumberId" text="{i18n>label_nfe_number}"/>
+									<m:Text id="TextNfeNumberId" text="{GE>Nfenum} - {GE>Serie} "/>
+									<m:Label id="LabelNfeDateId" text="{i18n>label_nfe_date}"/>
+									<m:Text id="TextNfeDateId"
+										text="{path: 'GE>Docdat', type:'sap.ui.model.type.Date', formatOptions: {style: 'short',strictParsing: true , UTC: true}}"/>
+									<m:Label id="LabelBukrs" text="{i18n>title_Column_Itens_Bukrs}"/>
+									<m:Text id="TextBukrs" text="{GE>Bukrs}"/>
+									<m:Label id="LabelWerks" text="{i18n>title_Column_Itens_Plant}"/>
+									<m:Text id="TextWerks" text="{GE>Werks}"/>
+								</form:content>
+							</form:SimpleForm>
+						</blocks>
+						<blocks>
+							<form:SimpleForm id="SimpleFormValueId" maxContainerCols="2" editable="false" layout="ResponsiveGridLayout" labelSpanL="12" labelSpanM="12"
+								emptySpanL="0" emptySpanM="0" columnsL="1" columnsM="1">
+								<form:content>
+									<m:Title id="TitleValueId" text="{i18n>label_values}"/>
+									<m:Label id="LabelTotNfId" text="{i18n>label_nfe_total_value}"/>
+									<m:Text id="TextTotNfId" text="{path: 'GE>VlrTotalBrtNf', type: 'sap.ui.model.type.Float', formatOptions: {maxFractionDigits: 2}}"/>
+									<m:Label id="LabelTotBoId" text="{i18n>label_total_value}"/>
+									<m:Text id="TextTotBoId" text="{path: 'GE>VlrTotalBo', type: 'sap.ui.model.type.Float', formatOptions: {maxFractionDigits: 2}}"/>
+								</form:content>
+							</form:SimpleForm>
+						</blocks>
+						<blocks>
+							<form:SimpleForm id="SimpleFormDateId" maxContainerCols="2" editable="false" layout="ResponsiveGridLayout" labelSpanL="12" labelSpanM="12"
+								emptySpanL="0" emptySpanM="0" columnsL="1" columnsM="1">
+								<form:content>
+									<m:Title id="TitleBoDateId" text="{i18n>label_dates}" visible="false"/>
+									<m:Label id="LabelBoCreateDateId" text="{i18n>label_date_open}" visible="false"/>
+									<m:Text id="TextBoCreateDateId" text="{path: 'GE>Credat', type:'sap.ui.model.type.Date', formatOptions: {style: 'short'}}" visible="false"/>
+									<m:Label id="LabelBoModDateId" text="{i18n>label_date_last_modification}" visible="false"/>
+									<m:Text id="TextBoModDateId" text="{path: 'GE>Chadat', type:'sap.ui.model.type.Date', formatOptions: {style: 'short'}}" visible="false"/>
+								</form:content>
+							</form:SimpleForm>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			<ObjectPageSection id="ObjectPageSectionItensId" title="{i18n>label_itens}">
+				<subSections>
+					<ObjectPageSubSection id="ObjectPageSubSectionItensId">
+						<blocks>
+							<m:Table id="ItensTableId" items="{path : 'GE>ZAT_VCMM_BOHEADER_TO_BOITEM'}">
+								<m:columns>
+									<m:Column id="Column0IdS1" hAlign="Begin" demandPopin="true">
+										<m:Text id="ColumnText0Id" text="{i18n>title_Column_Itens_Item}"/>
+									</m:Column>
+									<m:Column hAlign="Begin" demandPopin="true" minScreenWidth="Tablet" popinDisplay="Inline">
+										<m:Text text="{i18n>title_Column_Itens_tp_bo}"/>
+									</m:Column>
+									<m:Column id="Column10IdS1" hAlign="Begin" demandPopin="true" minScreenWidth="Tablet" popinDisplay="Inline">
+										<m:Text id="ColumnText10Id" text="{i18n>title_Column_Itens_tp_item}"/>
+									</m:Column>
+									<m:Column id="Column1IdS1" hAlign="Begin" demandPopin="true" minScreenWidth="Desktop" popinDisplay="Inline">
+										<m:Text id="ColumnText1Id" text="{i18n>title_Column_Itens_current_processor}"/>
+									</m:Column>
+									<m:Column id="Column2IdS1" hAlign="Begin" demandPopin="true" minScreenWidth="Desktop" popinDisplay="Inline">
+										<m:Text id="ColumnText2Id" text="{i18n>title_Column_Itens_Item_NFe}"/>
+									</m:Column>
+									<m:Column id="Column3IdS1" hAlign="Begin" demandPopin="true" minScreenWidth="Desktop" popinDisplay="Inline">
+										<m:Text id="ColumnText3Id" text="{i18n>title_Column_Itens_purchase_order}"/>
+									</m:Column>
+									<m:Column id="Column4IdS1" hAlign="Begin" demandPopin="true" minScreenWidth="Desktop" popinDisplay="Inline">
+										<m:Text id="ColumnText4Id" text="{i18n>title_Column_Itens_purchase_order_item}"/>
+									</m:Column>
+									<m:Column id="Column5IdS1" hAlign="Begin" demandPopin="true" minScreenWidth="Desktop" popinDisplay="Inline">
+										<m:Text id="ColumnText5Id" text="{i18n>title_Column_Itens_Material}"/>
+									</m:Column>
+									<m:Column id="Column8IdS1" hAlign="Begin" demandPopin="true" minScreenWidth="Desktop" popinDisplay="Inline">
+										<m:Text id="ColumnText8Id" text="{i18n>title_Column_Itens_quantity}"/>
+									</m:Column>
+									<m:Column id="Column9IdS1" hAlign="End">
+										<m:Text id="ColumnText9Id" text="{i18n>title_Column_Status}"/>
+									</m:Column>
+								</m:columns>
+								<m:items>
+									<m:ColumnListItem id="ColumnListItemS1Id" type="Navigation" press="onListItemPress">
+										<m:cells>
+											<m:ObjectIdentifier id="ColumnListItemTitleS10Id" text="{ path: 'GE>ItemBo', formatter: '.myFormatter.shiftLeadingZeros'}"/>
+											<m:ObjectIdentifier text="{ parts:[{path: 'GE>TipoBo'},{path: 'GE>Descricao'}], formatter: '.myFormatter.statusConverterTextTypeBo'}"/>
+											<m:ObjectStatus id="ColumnListItemTitleS19Id" text="{GE>TpItemTxt}" tooltip="{GE>TpItemTxt}"
+												state="{ path: 'GE>TpItem', formatter: '.myFormatter.getTpItemState'}" icon="{ path: 'GE>TpItem', formatter: '.myFormatter.getTpItemIcon'}"/>
+											<m:ObjectIdentifier id="ColumnListItemTitleS11Id" text="{GE>NomeRespBo}"/>
+											<m:ObjectIdentifier id="ColumnListItemTitleS12Id" text="{GE>Itmnum}"/>
+											<m:ObjectIdentifier id="ColumnListItemTitleS13Id" text="{GE>Ebeln}"/>
+											<m:ObjectIdentifier id="ColumnListItemTitleS14Id" text="{GE>Ebelp}"/>
+											<m:ObjectIdentifier id="ColumnListItemTitleS15Id" text="{GE>Matnr}"/>
+											<m:ObjectNumber id="ColumnListItemTitleS18Id" number="{ path: 'GE>QuantidadeBo'}" unit="{path: 'GE>Meins'}"/>
+											<m:ObjectStatus text="{ path: 'GE>Status', formatter: '.myFormatter.statusConverterText'}"
+												icon="{ path: 'GE>Status', formatter: '.myFormatter.statusIconConverter'}"
+												state="{ path: 'GE>Status', formatter: '.myFormatter.statusConverter'}"/>
+										</m:cells>
+									</m:ColumnListItem>
+								</m:items>
+							</m:Table>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+		</sections>
+		<footer>
+			<m:OverflowToolbar id="OverflowToolbarId">
+				<m:ToolbarSpacer id="ToolbarSpacerId"/>
+				<m:Button id="btnAddItem" type="Accept" text="{i18n>label_button_add_item}" tooltip="{i18n>label_button_add_item}" icon="sap-icon://add"
+					press="onAddItemPressed" enabled="false"/>
+				<m:Button id="btnAddItemGneric" type="Default" text="{i18n>label_button_add_item_generic}" tooltip="{i18n>label_button_add_item_generic}"
+					icon="sap-icon://add-favorite" press="onAddItemGenericPressed" enabled="false"/>
+				<m:Button id="ButtonScanId" text="{i18n>label_button_scan}" icon="sap-icon://bar-code" tooltip="{i18n>label_button_scan}"
+					press="onPressScan" type="Default" visible="false"/>
+				<m:Button id="ButtonCancelId" icon="sap-icon://decline" type="Reject" text="{i18n>label_button_cancel}" tooltip="{i18n>label_button_cancel}"
+					press="onPressCancel" visible="true"/>
+			</m:OverflowToolbar>
+		</footer>
+	</ObjectPageLayout>
+</mvc:View>

@@ -1,0 +1,32 @@
+specVersion: "3.1"
+metadata:
+  name: y5gl_finance.y5gl_finance
+type: application
+server:
+  customMiddleware:
+    - name: fiori-tools-proxy
+      afterMiddleware: compression
+      configuration:
+        ignoreCertError: false
+        backend:
+          - path: /resources/Y5GL_FINANCE/Y5GL_FINANCE/Component
+            destination: ""
+            url: ""
+            pathPrefix: /sap/bc/lrep/flex/data/~S154+Caq8k4BNv3L8oxMQC7nago=~/Y5GL_FINANCE.Y5GL_FINANCE.Component?version=1.0.0
+        ui5:
+          path:
+            - /resources
+            - /test-resources
+          url: https://ui5.sap.com
+          version: 1.71.4
+    - name: fiori-tools-appreload
+      afterMiddleware: compression
+      configuration:
+        port: 35729
+        path: webapp
+        delay: 300
+    - name: fiori-tools-preview
+      afterMiddleware: fiori-tools-appreload
+      configuration:
+        component: Y5GL_FINANCE.Y5GL_FINANCE
+        ui5Theme: sap_fiori_3

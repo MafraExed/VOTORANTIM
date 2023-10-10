@@ -1,0 +1,16 @@
+<mvc:View
+	controllerName="nasa.ui5.monitorEmbarques.controller.BaseController"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m">
+
+	<MessagePage
+		id="page"
+		title="{i18n>detailNoObjectsAvailable}"
+		text="{i18n>detailNoObjectsAvailable}"
+		icon="{sap-icon://product}"
+		description=""
+		showNavButton="{device>/system/phone}"
+		navButtonPress="onNavBack">
+	</MessagePage>
+
+</mvc:View>

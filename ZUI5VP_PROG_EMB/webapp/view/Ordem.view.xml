@@ -1,0 +1,137 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:m="sap.m" xmlns:microchart="sap.suite.ui.microchart" xmlns:l="sap.ui.layout"
+	controllerName="fibriembarque.controller.Ordem">
+	<m:Page title="{i18n>ordemTitle}" showHeader="true" showFooter="true" showNavButton="{device>/system/phone}" navButtonPress="_onNavPress"
+		backgroundDesign="Solid">
+		<m:content>
+			<m:ObjectHeader intro="" title="{/Descricao_navio}" icon="/sap/opu/odata/sap/ZGWVPWM_PROGRAMACAO_EMBARQUE_SRV/ZET_VPWM_PICTURESSet('NAVIOICONE.png')/$value" number="{/Carga_total}" numberUnit="Unit"
+				numberState="None" showMarkers="false" markFavorite="false" markFlagged="false" backgroundDesign="Solid" condensed="false">
+				<m:attributes>
+					<m:ObjectAttribute title="{i18n>poraoTravel}" text="{/Viagemarm}" active="false"/>
+					<m:ObjectAttribute id="StartOperatio" title="{i18n>poraoStartOperation}" text="{/Inicio_op_date} - {/Inicio_op_time}" active="false"/>
+					<!--<m:ObjectAttribute id="EtimatedTime" title="{i18n>Estimated}" text="{/Termino_data_est} - {/Termino_time_est}" active="false"/>-->
+					<m:ObjectAttribute id="EtimatedTime" title="{i18n>Estimated}" text="" active="false"/>
+				</m:attributes>
+				<m:statuses>
+					<m:ObjectStatus text="{/StatusDescricao}" state="{/StatusType}" icon="sap-icon://{/SapIcon}"/>
+					<m:ObjectStatus text="{i18n>PoraoCarregando} - {/Carregados}" state="Success" icon="sap-icon://shipping-status"/>
+				</m:statuses>
+			</m:ObjectHeader>
+			<m:VBox alignItems="Center" direction="Column" fitContainer="true" width="100%" height="auto" justifyContent="Center" renderType="Bare"
+				visible="true" displayInline="true" class="backProgress margimTopProgress">
+				<m:ProgressIndicator percentValue="{/Porcentagem}" state="{/StatusType}" displayValue="{/Porcentagem}%" width="80%" class="backProgress"/>
+			</m:VBox>
+			<!--sap.ui.core.Control -->
+			<!--item = "{/}" items="{table/}"-->
+			<m:Table id="tableOrdem" items="{table>/}" width="100%" noDataText="No data" mode="None" fixedLayout="false" showSeparators="All"
+				growing="true" growingThreshold="20" growingScrollToLoad="true">
+				<m:infoToolbar>
+					<m:Toolbar width="100%" height="auto" design="Auto" visible="false" enabled="true">
+						<m:content>
+							<m:Label text="Label" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit"/>
+						</m:content>
+					</m:Toolbar>
+				</m:infoToolbar>
+				<m:headerToolbar/>
+				<m:columns>
+					<m:Column width="auto" hAlign="Center" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline"
+						mergeDuplicates="false">
+						<m:header>
+							<m:Text text="{i18n>poraoTableOrdem}" width="auto" maxLines="5" wrapping="true" textAlign="Center" textDirection="Inherit"/>
+						</m:header>
+						<m:footer/>
+					</m:Column>
+					<m:Column width="auto" hAlign="Center" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline"
+						mergeDuplicates="false">
+						<m:header>
+							<m:Text text="{i18n>poraoTableState}" width="auto" maxLines="1" wrapping="false" textAlign="Center" textDirection="Inherit"/>
+						</m:header>
+						<m:footer/>
+					</m:Column>
+					<m:Column width="auto" hAlign="Center" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline"
+						mergeDuplicates="false">
+						<m:header>
+							<m:Text text="{i18n>poraoTableOperationInit}" width="auto" maxLines="1" wrapping="false" textAlign="Center" textDirection="Inherit"/>
+						</m:header>
+						<m:footer/>
+					</m:Column>
+					<m:Column width="auto" hAlign="Center" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline"
+						mergeDuplicates="false">
+						<m:header>
+							<m:Text text="{i18n>poraoTableTime}" width="auto" maxLines="1" wrapping="false" textAlign="Center" textDirection="Inherit"/>
+						</m:header>
+						<m:footer/>
+					</m:Column>
+					<m:Column width="auto" hAlign="Center" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline"
+						mergeDuplicates="false">
+						<m:header>
+							<m:Text text="{i18n>poraoTableTimeEstimated}" width="auto" maxLines="5" wrapping="true" textAlign="Center" textDirection="Inherit"/>
+						</m:header>
+						<m:footer/>
+					</m:Column>
+					<m:Column width="auto" hAlign="Center" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline"
+						mergeDuplicates="false">
+						<m:header>
+							<m:Text text="{i18n>poraoTableShipment}" width="auto" maxLines="1" wrapping="false" textAlign="Center" textDirection="Inherit"/>
+						</m:header>
+						<m:footer/>
+					</m:Column>
+					<m:Column width="auto" hAlign="Center" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline"
+						mergeDuplicates="false">
+						<m:header>
+							<m:Text text="{i18n>poraoTableShipped}" width="auto" maxLines="1" wrapping="false" textAlign="Center" textDirection="Inherit"/>
+						</m:header>
+						<m:footer/>
+					</m:Column>
+					<m:Column width="auto" hAlign="Left" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline"
+						mergeDuplicates="false">
+						<m:header>
+							<m:Text text="{i18n>poraoTableProgress}" width="auto" maxLines="1" wrapping="false" textAlign="Left" textDirection="Inherit"/>
+						</m:header>
+						<m:footer/>
+					</m:Column>
+				</m:columns>
+				<m:items>
+					<m:ColumnListItem type="Active" press="_onRowPress">
+						<m:cells>
+							<m:Text text="{table>Oc}" width="auto" maxLines="1" wrapping="false" textAlign="Center" textDirection="Inherit"/>
+							<m:ObjectStatus text="{table>StatusDescricao}" state="{table>StatusType}"/>
+							<!--<m:ObjectStatus text="{StatusDescricao}" state="Success"/>-->
+							<m:VBox alignItems="Center" direction="Column" fitContainer="false" width="auto" height="auto" justifyContent="Center" renderType="Div"
+								visible="true" displayInline="false">
+								<m:ObjectNumber number="{table>Inicio_op_time}" unit="Hr" emphasized="true" state="None"/>
+								<m:Text text="{table>Inicio_op_date}"/>
+							</m:VBox>
+							<m:ObjectNumber number="{table>TempoDecorrido}" unit="Hr" emphasized="true" state="None"/>
+							<m:VBox alignItems="Center" direction="Column" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div"
+								visible="true" displayInline="false">
+								<m:ObjectNumber number="{table>Termino_time_est}" unit="Hr" emphasized="true" state="None"/>
+								<m:Text text="{table>Termino_data_est}"/>
+							</m:VBox>
+							<m:ObjectNumber number="{table>Carga_total}" unit="Unit" emphasized="true" state="None" textAlign="Center"/>
+							<m:ObjectNumber number="{table>Carregados}" unit="Unit" emphasized="true" state="{table>StatusType}" textAlign="Center"/>
+							<!--<m:ObjectNumber number="{Carregados}" unit="Unit" emphasized="true" state="Success" textAlign="Center"/>-->
+							<m:HBox alignItems="Center" direction="Row" fitContainer="false" width="75px" height="75px" justifyContent="Start" renderType="Div"
+								visible="true" displayInline="false">
+								<m:items>
+									<microchart:RadialMicroChart percentage="{table>Porcentagem}" valueColor="{table>GraficoColor}"/>
+								</m:items>
+								<m:layoutData/>
+							</m:HBox>
+						</m:cells>
+					</m:ColumnListItem>
+				</m:items>
+			</m:Table>
+		</m:content>
+		<m:footer>
+			<m:Bar design="Auto">
+				<m:contentRight>
+						<m:Button text="{i18n>carrRefresh}" type="Emphasized" icon="sap-icon://refresh" iconFirst="true" width="auto" enabled="true" visible="true"
+						iconDensityAware="false" press="_onAtualizaListButton"/>
+				</m:contentRight>
+				<m:contentMiddle/>
+				<m:contentRight/>
+			</m:Bar>
+		</m:footer>
+		<m:headerContent/>
+	</m:Page>
+</mvc:View>

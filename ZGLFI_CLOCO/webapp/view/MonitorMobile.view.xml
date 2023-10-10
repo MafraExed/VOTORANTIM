@@ -1,0 +1,160 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns:m="sap.m" xmlns:mc="sap.suite.ui.microchart" xmlns:table="sap.ui.table"
+	xmlns:comm="sap.suite.ui.commons" controllerName="FechamentoContabil.controller.Monitor" xmlns:html="http://www.w3.org/1999/xhtml">
+	<m:Page id="IdCorpoPagina" title="Monitor" showNavButton="false" navButtonPress="onNavButtonPressed" showHeader="false"
+		backgroundDesign="Transparent">
+		<m:content>
+			<m:VBox alignContent="Center" width="100%" backgroundDesign="Solid" alignItems="Center" height="100%">
+				<m:HBox width="100%" backgroundDesign="Solid" alignContent="Center" alignItems="Center" justifyContent="Center">
+					<m:Select id="idInputModelo" change="onNovoModelo" class="sapUiTinyMarginBegin inputKeys" items="{ path: 'Planos>/' }">
+						<core:Item key="{Planos>Instance}" text="{Planos>Profile}"/>
+					</m:Select>
+					<m:Select id="idInputPeriodo" change="onNovoPeriodo" class="sapUiTinyMarginBegin inputKeys" items="{ path: 'Periodos>/' }">
+						<core:Item key="{Periodos>Instance}" text="{Periodos>Data}"/>
+					</m:Select>
+					<!-- <m:MenuButton tooltip="Menu Principal" icon="sap-icon://menu2" class="sapUiSmallMarginBegin">
+						<m:menu>
+							<m:Menu>
+								<m:items>
+									<m:MenuItem text="Questionar status via email" icon="sap-icon://email" press="onQuestionarViaEmailPress"/>
+									<m:MenuItem text="Tutoriais em vídeo" icon="sap-icon://video" press="openVideoList"/>
+									<m:MenuItem text="Relatório de resultado" icon="sap-icon://vertical-waterfall-chart" press="getLinkRelatorio"/>
+								</m:items>
+							</m:Menu>
+						</m:menu>
+					</m:MenuButton> -->
+				</m:HBox>
+				<m:HBox id="idHboxPath" width="100%" justifyContent="Start" alignItems="Center" backgroundDesign="Solid">
+					<core:Icon class="path__icon__mobile" size="10px" src="sap-icon://menu" color="white" press="onConfigHierarquiaMobile"/>
+				</m:HBox>
+				<!--				<m:HBox width="100%" class="sapUiTinyMarginBottom" backgroundDesign="Solid" alignContent="Center" alignItems="Center" justifyContent="Center">
+					<m:Label id="idLabelDescricao" class="monitor__label" textAlign="Center"/>
+				</m:HBox>-->
+
+				<!-- <m:VBox width="100%" justifyContent="Center" class="sapUiTinyMarginTopBottom z_iphone" alignContent="Center" alignItems="Center"
+					backgroundDesign="Solid"> -->
+					
+					<!--<m:HBox height="29px"  width="100%" justifyContent="Start" alignItems="Center" class="sapUiTinyMarginTopBottom items__monitor">
+						<core:Icon src="sap-icon://action-settings" color="black" class="monitor__icon__settings" press="onConfigHierarquiaMobile"/>
+						<m:Label id="idPathHierarquia"  class="sapUiSmallMarginBegin label__path__hierarquia" />
+					</m:HBox>-->
+					<m:HBox width="100%" justifyContent="Center" alignContent="Center" alignItems="Center" height="350px" backgroundDesign="Solid" class="sapUiLargeMarginTopBottom z_iphone" style="margin-top:60px">
+						<m:Carousel loop="true" width="100%" backgroundDesign="Solid" >
+							<m:HBox justifyContent="Center" alignContent="Center" alignItems="Center" width="100%">
+								<m:VBox alignItems="Center" alignContent="Center" backgroundDesign="Solid" width="20%">
+									<m:Title text="Avanço Planejado" class="sapUiSmallMarginBottom title__graficos"/>
+									<m:FlexBox backgroundDesign="Solid" width="100%" justifyContent="Center" >
+										<!--<mc:RadialMicroChart tooltip="Representa percentualmente quanto das tarefas já deveriam ter sido concluídas, conforme o planejamento" 
+												 press="onPressGraficos" id="idAvancoPlan" percentage="0" />-->
+										<html:div class="chart plan">
+											<html:div class="radio_chart p0 plan" id="IdGraficoPlan"></html:div>
+											<html:div class="cap"></html:div>
+											<html:div class="value" id="IdValuePlan">0%</html:div>
+										</html:div>
+									</m:FlexBox>
+								</m:VBox>
+								<m:VBox alignItems="Center" alignContent="Center" backgroundDesign="Solid" width="20%">
+									<m:Title text="Avanço Real" class="sapUiSmallMarginBottom title__graficos"/>
+									<m:FlexBox backgroundDesign="Solid" width="80%" justifyContent="Center" >
+										<!--<mc:RadialMicroChart class="sapUiSmallMarginEnd" tooltip="Representa percentualmente quanto das tarefas já foram concluídas até o momento atual"
+											  id="idAvanco" valueColor="Good" percentage="0" />-->
+										<html:div class="chart avanco_phone">
+											<html:div class="radio_chart p0 avanco" id="IdGraficoAvanco"></html:div>
+											<html:div class="cap"></html:div>
+											<html:div class="value" id="IdValueAvanco">0%</html:div>
+										</html:div>
+									</m:FlexBox>
+								</m:VBox>
+							</m:HBox>
+							<!-- <m:HBox justifyContent="Center" alignContent="Center" alignItems="Center"> -->
+								<m:FlexBox  width="100%" height="90%" alignItems="Center" alignContent="Center" justifyContent="Center" direction="Column"
+									backgroundDesign="Solid">
+									<m:Title text="Atividades Previstas Vs Concluídas" class="sapUiSmallMarginBottom title__graficos"/>
+									<!-- <m:FlexBox width="90%" height="200px" backgroundDesign="Solid"> -->
+										<mc:DeltaMicroChart id="idAtividadePrevPlan" isResponsive="false" title1="Concluídas" title2="Planejadas" color="Critical"/>
+									<!-- </m:FlexBox> -->
+								</m:FlexBox>
+							<!-- </m:HBox> -->
+							<m:HBox justifyContent="Center" alignContent="Center" alignItems="Center" width="100%">
+								<!-- <m:FlexBox width="45%" height="95%" alignItems="Center" alignContent="Center" justifyContent="Start" direction="Column"
+									press="onPressGraficos" backgroundDesign="Solid"> -->
+									<!-- <m:Title text="TOP 5 Maiores Ofensores (h)" class="sapUiSmallMarginBottom title__graficos"/> -->
+									
+									<m:List id="idTopAtvAtrasadas" headerText="TOP 5 Maiores Ofensores (h)" items="{path: 'topAtividadesAtrasadas>/'}" width="360px">
+										<m:items>
+											<m:StandardListItem
+												infoState="Error"
+												title="{topAtividadesAtrasadas>Atividade}"
+												icon="{= ${topAtividadesAtrasadas>Critico} === '' ? 'sap-icon://past' : 'sap-icon://alert' }"
+												info="{topAtividadesAtrasadas>Valor}"
+												iconInset="true"
+												description="{topAtividadesAtrasadas>Empresa}" />
+										</m:items>
+									</m:List>
+									<!-- <m:VBox id="idVboxTOP5" class="sapUiSmallMarginTop" width="100%"></m:VBox> -->
+								<!-- </m:FlexBox> -->
+							</m:HBox>
+						</m:Carousel>
+					</m:HBox>
+				<!-- </m:VBox> -->
+				<m:VBox width="100%" alignContent="Center" alignItems="Center" backgroundDesign="Solid">
+					<m:HBox width="100%" class="items__monitor sapUiTinyMarginTopBottom" alignItems="Center" height="29px">
+						<m:HBox id="idHboxPathFluxoGeral" width="100%" justifyContent="Start" alignItems="Center">
+							<core:Icon class="path__icon__mobile" size="10px" src="sap-icon://menu" color="white" press="onConfigHierarquiaFluxoMobile"/>
+						</m:HBox>
+						<m:HBox justifyContent="Center" alignItems="Center">
+							<core:Icon noTabStop="true" id="idIconPlayFluxo" src="sap-icon://initiative" color="#406b80" size="30px"
+								class=" monitor__icon__settings__play" press="togglePlayFluxo"/>
+						</m:HBox>
+					</m:HBox>
+					<m:VBox width="100%" alignContent="Center" alignItems="Center" class="sapUiSmallMarginTop" justifyContent="Center" backgroundDesign="Solid">
+						<m:Carousel loop="true" width="100%" id="idCarousel"></m:Carousel>
+					</m:VBox>
+				</m:VBox>
+			</m:VBox>
+			<m:VBox id="idMenuHierarquia" class="menu__hierarquia__inativo__mobile menu__hierarquia__mobile " width="90%" height="85%">
+				<table:TreeTable id="TreeTableBasic" enableSelectAll="false" ariaLabelledBy="title" selectionMode="None" cellClick="onTreeClick"
+					minAutoRowCount="13"
+					rows="{ path : 'HierarquiaPastas>/', parameters : { countMode: 'Inline', treeAnnotationProperties : { hierarchyLevelFor : 'HierarquiaPastas>HierarchyLevel', hierarchyNodeFor : 'HierarquiaPastas>NodeID', hierarchyParentNodeFor : 'HierarquiaPastas>ParentNodeID', hierarchyDrillStateFor : 'HierarquiaPastas>DrillState' } } }">
+					<table:columns >
+						<table:Column width="100%" resizable="false">
+							<m:HBox width="100%" alignContent="Center" alignItems="Center">
+								<m:Label text="Hierarquia" class="menu__hierarquia__label"/>
+								<m:HBox width="100%" justifyContent="End">
+									<core:Icon src="sap-icon://decline" color="red" class="sapUiSmallMarginEnd" press="onConfigHierarquiaMobile" size="25px"/>
+								</m:HBox>
+							</m:HBox>
+							<table:template>
+								<m:HBox>
+									<m:Text text="{HierarquiaPastas>Description}" wrapping="false"/>
+									<m:Text text="{HierarquiaPastas>NodeID}" visible="false"/>
+								</m:HBox>
+							</table:template>
+						</table:Column>
+					</table:columns>
+				</table:TreeTable>
+			</m:VBox>
+			<m:VBox id="idMenuHierarquiaFluxoGeral" class="menu__hierarquia__inativo__mobile menu__hierarquia__mobile" width="90%" height="85%">
+				<table:TreeTable id="TreeTableFluxoGeral" enableSelectAll="false" ariaLabelledBy="title" selectionMode="None"
+					cellClick="onTreeClickFluxoGeral"
+					rows="{ path : 'HierarquiaPastas>/', parameters : { countMode: 'Inline', treeAnnotationProperties : { hierarchyLevelFor : 'HierarquiaPastas>HierarchyLevel', hierarchyNodeFor : 'HierarquiaPastas>NodeID', hierarchyParentNodeFor : 'HierarquiaPastas>ParentNodeID', hierarchyDrillStateFor : 'HierarquiaPastas>DrillState' } } }">
+					<table:columns>
+						<table:Column resizable="false" width="100%">
+							<m:HBox width="100%" alignContent="Center" alignItems="Center">
+								<m:Label text="Hierarquia" class="menu__hierarquia__label"/>
+								<m:HBox width="100%" justifyContent="End">
+									<core:Icon src="sap-icon://decline" color="red" class="sapUiSmallMarginEnd" press="onConfigHierarquiaFluxoMobile" size="25px"/>
+								</m:HBox>
+							</m:HBox>
+							<table:template>
+								<m:HBox>
+									<m:Text text="{HierarquiaPastas>Description}" wrapping="false"/>
+									<m:Text text="{HierarquiaPastas>NodeID}" visible="false"/>
+								</m:HBox>
+							</table:template>
+						</table:Column>
+					</table:columns>
+				</table:TreeTable>
+			</m:VBox>
+		</m:content>
+	</m:Page>
+</mvc:View>

@@ -1,0 +1,309 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns="sap.uxap" xmlns:m="sap.m" xmlns:f="sap.f" xmlns:layout="sap.ui.layout"
+	xmlns:mvc="sap.ui.core.mvc" height="100%" xmlns:table="sap.ui.table"
+	controllerName="com.sap.build.standard.operadorLogisticoCons.controller.NFdetail">
+	<m:Page showFooter="false" showNavButton="true" navButtonPress="_onNavBack">
+		<ObjectPageLayout id="ObjectPageLayout"
+		
+		showTitleInHeaderContent="false" alwaysShowContentHeader="true" preserveHeaderStateOnScroll="true"
+			headerContentPinnable="true" isChildPage="true" enableLazyLoading="false" 
+		showAnchorBarPopover="false" toggleHeaderOnTitleClick="false"
+		>
+			<headerTitle>
+				<ObjectPageDynamicHeaderTitle>
+					<expandedHeading>
+						<m:Title text="Nota Fiscal {NFHEADER>nfenum} - {NFHEADER>series}" wrapping="false" class="sapUiTinyMarginTop"/>
+					</expandedHeading>
+					<snappedHeading>
+						<m:Title text="Nota Fiscal {NFHEADER>nfenum} - {NFHEADER>series}" wrapping="false" class="sapUiTinyMarginTop"/>
+					</snappedHeading>
+					<actions>
+						<ObjectPageHeaderActionButton icon="sap-icon://refresh" type="Transparent" text="{i18n>lblUpdateIntNFe}" tooltip="{i18n>lblUpdateIntNFe}"
+						press="_onPressUpdateIntNFe"/>
+						<ObjectPageHeaderActionButton icon="sap-icon://cancel" type="Transparent" text="{i18n>lblInactiveNFe}" tooltip="{i18n>lblInactiveNFe}"
+						press="_onPressCancel"/>
+						<ObjectPageHeaderActionButton icon="sap-icon://activate" type="Transparent" text="{i18n>lblActiveNFe}" tooltip="{i18n>lblActiveNFe}"
+						press="_onPressActive" />
+					</actions>
+				</ObjectPageDynamicHeaderTitle>
+			</headerTitle>
+			<headerContent>
+				<layout:HorizontalLayout allowWrapping="true">
+					<layout:VerticalLayout class="sapUiMediumMarginEnd">
+						<m:ObjectAttribute title="Chave NF-e" text="{NFHEADER>Chvnfe}"/>
+					</layout:VerticalLayout>
+					<layout:VerticalLayout class="sapUiMediumMarginEnd">
+						<m:ObjectAttribute title="Etapa" text="{NFHEADER>etapa}"/>
+						<m:ObjectAttribute title="NF-e Integrada" text="{NFHEADER>statusInt}"/>
+						<m:ObjectStatus title="Ação" text="{NFHEADER>statusNfeDescr}" state="{NFHEADER>state}" />
+					</layout:VerticalLayout>
+				</layout:HorizontalLayout>
+			</headerContent>
+			<sections>
+				<ObjectPageSection id="section1" >
+					<subSections>
+						<ObjectPageSubSection id="section1_SS1" title="Nota Fiscal">
+							<blocks>
+								<sap.ui.layout.form:Form xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="false" id="form0">
+									<sap.ui.layout.form:layout>
+										<sap.ui.layout.form:ResponsiveGridLayout/>
+									</sap.ui.layout.form:layout>
+									<sap.ui.layout.form:formContainers>
+										<sap.ui.layout.form:FormContainer id="container0" title="Fornecedor">
+											<sap.ui.layout.form:formElements >
+												<sap.ui.layout.form:FormElement label="Fornecedor" id="element1">
+													<sap.ui.layout.form:fields>
+														<m:Text text="{NFHEADER>fornecedorNome}" width="100%" id="text2"/>
+													</sap.ui.layout.form:fields>
+												</sap.ui.layout.form:FormElement>
+												<sap.ui.layout.form:FormElement label="Cód. Fornecedor" id="element3">
+													<sap.ui.layout.form:fields>
+														<m:Text text="{NFHEADER>fornecedor}" width="100%" id="text3"/>
+													</sap.ui.layout.form:fields>
+												</sap.ui.layout.form:FormElement>
+												<sap.ui.layout.form:FormElement label="CNPJ Fornecedor" id="eleForn3">
+													<sap.ui.layout.form:fields>
+														<m:Text text="{path: 'NFHEADER>cnpjFornecedor', formatter: '.formatter.cnpjConverter'}" width="100%" id="textForn3"/>
+													</sap.ui.layout.form:fields>
+												</sap.ui.layout.form:FormElement>
+											</sap.ui.layout.form:formElements>
+										</sap.ui.layout.form:FormContainer>
+										<sap.ui.layout.form:FormContainer id="container2" title="Filial Destino">
+											<sap.ui.layout.form:formElements>
+												<sap.ui.layout.form:FormElement label="Filial" id="element4">
+													<sap.ui.layout.form:fields>
+														<m:Text text="{NFHEADER>descricaoFilial}" width="100%" id="text4"/>
+													</sap.ui.layout.form:fields>
+												</sap.ui.layout.form:FormElement>
+												<sap.ui.layout.form:FormElement label="Cód. Filial" id="element15">
+													<sap.ui.layout.form:fields>
+														<m:Text  text="{NFHEADER>branch}" width="100%" id="text5"/>
+													</sap.ui.layout.form:fields>
+												</sap.ui.layout.form:FormElement>
+												<sap.ui.layout.form:FormElement label="CNPJ Filial" id="eleFilial3">
+													<sap.ui.layout.form:fields>
+														<m:Text text="{path: 'NFHEADER>cnpjFilial' , formatter: '.formatter.cnpjConverter'}" width="100%" id="textFilial3"/>
+													</sap.ui.layout.form:fields>
+												</sap.ui.layout.form:FormElement>
+											</sap.ui.layout.form:formElements>
+										</sap.ui.layout.form:FormContainer>	
+										<sap.ui.layout.form:FormContainer id="container3" title="Valores">
+											<sap.ui.layout.form:formElements>
+												<sap.ui.layout.form:FormElement label="Valor Total Bruto" id="elementVal1">
+													<sap.ui.layout.form:fields>
+														<m:ObjectNumber number="{ path: 'NFHEADER>nfTot', type:'sap.ui.model.type.Flot', formatOptions:{minFractionDigits:2, maxFractionDigits:2}}"
+															unit="{NFHEADER>moeda}"/>
+													</sap.ui.layout.form:fields>
+												</sap.ui.layout.form:FormElement>
+											</sap.ui.layout.form:formElements>
+										</sap.ui.layout.form:FormContainer>
+										<sap.ui.layout.form:FormContainer id="container4" title="Datas">
+											<sap.ui.layout.form:formElements>
+												<sap.ui.layout.form:FormElement label="Data Emissão" id="elementDocDat">
+													<sap.ui.layout.form:fields>
+														<m:Text text="{path: 'NFHEADER>docDat', type:'sap.ui.model.type.Date', formatOptions: {style: 'short'}}" width="100%" id="texDtDat"/>
+													</sap.ui.layout.form:fields>
+												</sap.ui.layout.form:FormElement>
+											</sap.ui.layout.form:formElements>
+										</sap.ui.layout.form:FormContainer>
+										<sap.ui.layout.form:FormContainer id="container5" title="{i18n>TitlePreCon}">
+											<sap.ui.layout.form:formElements>
+												<sap.ui.layout.form:FormElement label="{i18n>lblPreConJustifi}" id="elementPreConJustifi">
+													<sap.ui.layout.form:fields>
+														<m:Text text="{path: 'NFHEADER>preconJustifi'}" width="auto" id="txtPreConJust"/>
+													</sap.ui.layout.form:fields>
+												</sap.ui.layout.form:FormElement>
+												<sap.ui.layout.form:FormElement label="{i18n>lblPreConArea}" id="elementPreConArea">
+													<sap.ui.layout.form:fields>
+														<m:Text text="{path: 'NFHEADER>preconArea'}" width="auto" id="txtPreconArea"/>
+													</sap.ui.layout.form:fields>
+												</sap.ui.layout.form:FormElement>
+												<sap.ui.layout.form:FormElement label="{i18n>lblPreConUname}" id="elementPreConUname">
+													<sap.ui.layout.form:fields>
+														<m:Text text="{path: 'NFHEADER>preconUname'}" width="auto" id="txtPreconUname"/>
+													</sap.ui.layout.form:fields>
+												</sap.ui.layout.form:FormElement>				
+												<sap.ui.layout.form:FormElement label="{i18n>lblPreConDatum}" id="elementPreConDatum">
+													<sap.ui.layout.form:fields>
+														<m:Text text="{path: 'NFHEADER>preconDatum', type:'sap.ui.model.type.Date', formatOptions: {style: 'short'}}" width="auto" id="txtPreconDatum"/>
+													</sap.ui.layout.form:fields>
+												</sap.ui.layout.form:FormElement>
+												<sap.ui.layout.form:FormElement label="{i18n>lblPreConUzeit}" id="elementPreConUzeit">
+													<sap.ui.layout.form:fields>
+														<m:Text text="{path: 'NFHEADER>preconUzeit', type: 'sap.ui.model.odata.type.Time', formatOptions: { pattern : 'HH:mm:ss'}}" width="auto" id="txtPreconUzeit"/>
+													</sap.ui.layout.form:fields>
+												</sap.ui.layout.form:FormElement>															
+											</sap.ui.layout.form:formElements>
+										</sap.ui.layout.form:FormContainer>
+										<sap.ui.layout.form:FormContainer id="container6" title="{i18n>TitleReceb}">
+											<sap.ui.layout.form:formElements>
+												<sap.ui.layout.form:FormElement label="{i18n>lblRecAvisoEntrega}" id="elementRecebJustifi">
+													<sap.ui.layout.form:fields>
+														<m:Text text="{path: 'NFHEADER>recAvisoEntrega'}" width="auto" id="txtRecAvisoEntrega"/>
+													</sap.ui.layout.form:fields>
+											</sap.ui.layout.form:FormElement>
+											<sap.ui.layout.form:FormElement label="{i18n>lblRecDocMaterial}" id="elementRecDocMaterial">
+													<sap.ui.layout.form:fields>
+														<m:Text text="{path: 'NFHEADER>recDocMaterial'}" width="auto" id="txtRecDocMaterial"/>
+													</sap.ui.layout.form:fields>
+											</sap.ui.layout.form:FormElement>
+											<sap.ui.layout.form:FormElement label="{i18n>lblRecAnoMaterial}" id="elementRecAnoMaterial">
+													<sap.ui.layout.form:fields>
+														<m:Text text="{path: 'NFHEADER>recAnoMaterial'}" width="auto" id="txtRecAnoMaterial"/>
+													</sap.ui.layout.form:fields>
+											</sap.ui.layout.form:FormElement>
+											<sap.ui.layout.form:FormElement label="{i18n>lblRecDocTransp}" id="elementRecDocTransp">
+													<sap.ui.layout.form:fields>
+														<m:Text text="{path: 'NFHEADER>recDocTransp'}" width="auto" id="txtRecDocTransp"/>
+													</sap.ui.layout.form:fields>
+											</sap.ui.layout.form:FormElement>											
+											<sap.ui.layout.form:FormElement label="{i18n>lblRecCusTransp}" id="elementRecCusTransp">
+													<sap.ui.layout.form:fields>
+														<m:Text text="{path: 'NFHEADER>recCusTransp'}" width="auto" id="txtRecCusTransp"/>
+													</sap.ui.layout.form:fields>
+												</sap.ui.layout.form:FormElement> 
+												<sap.ui.layout.form:FormElement label="{i18n>lblRecCusRedes}" id="elementRecCusRedes">
+													<sap.ui.layout.form:fields>
+														<m:Text text="{path: 'NFHEADER>recCusRedes'}" width="auto" id="txtRecCusRedes"/>
+													</sap.ui.layout.form:fields>
+												</sap.ui.layout.form:FormElement>
+											</sap.ui.layout.form:formElements>
+										</sap.ui.layout.form:FormContainer>
+									</sap.ui.layout.form:formContainers>
+								</sap.ui.layout.form:Form>
+							</blocks>
+						</ObjectPageSubSection>
+					</subSections>
+				</ObjectPageSection>
+				<ObjectPageSection id="section2">
+					<subSections>
+						<ObjectPageSubSection id="section1_SS2" title="Itens">
+							<table:Table id="tbItems" rows="{NFHEADER>NAVHEADITEM}" visibleRowCountMode="Auto" >
+								<table:Column width='5rem' hAlign="Center">
+									<m:Label text="Status"></m:Label>
+									<table:template>
+										<core:Icon src="{NFHEADER>Icon}" color="{NFHEADER>statusColor}" size="24px" height="32px" width="32px"/>
+									</table:template>
+								</table:Column>
+								<table:columns>
+									<table:Column width='5rem'>
+										<m:Label text="Item"></m:Label>
+										<table:template>
+											<m:Text text="{ path: 'NFHEADER>Itmnum', formatter: '.formatter.shiftLeadingZeros'}"/>
+										</table:template>
+									</table:Column>
+									<table:Column width='10rem' id="idMultiDescrPedido" hAlign="Center">
+										<table:multiLabels>
+											<m:Label text="Pedido"></m:Label>
+											<m:Label text="Número"></m:Label>
+										</table:multiLabels>
+										<table:template>
+											<m:Text text="{NFHEADER>ebeln}"/>
+										</table:template>
+									</table:Column>
+									<table:Column width='5rem'>
+										<table:multiLabels>
+											<m:Label text="Pedido"></m:Label>
+											<m:Label text="Item Pedido"></m:Label>
+										</table:multiLabels>
+										<table:template>
+											<m:Text text="{path: 'NFHEADER>ebelp', formatter: '.formatter.shiftLeadingZeros'}"/>
+										</table:template>
+									</table:Column>
+									<table:Column width='5rem'>
+										<table:multiLabels>
+											<m:Label text="Pedido"></m:Label>
+											<m:Label text="C.Contábil"></m:Label>
+										</table:multiLabels>
+										<table:template>
+											<m:Text text="{path: 'NFHEADER>Knttp'}"/>
+										</table:template>
+									</table:Column>
+									<table:Column width='5rem'>
+										<table:multiLabels>
+											<m:Label text="Pedido"></m:Label>
+											<m:Label text="Tipo"></m:Label>
+										</table:multiLabels>
+										<table:template>
+											<m:Text text="{path: 'NFHEADER>Bsart'}"/>
+										</table:template>
+									</table:Column>									
+									
+									<table:Column width="11rem"  id="idMultiMaterial" hAlign="Center">
+										<table:multiLabels>
+											<m:Label text="Material"></m:Label>
+											<m:Label text="SAP"></m:Label>
+										</table:multiLabels>
+										<table:template>
+											<m:Text text="{ path: 'NFHEADER>matnr' }"/>
+										</table:template>
+									</table:Column>
+									<table:Column width='20rem' hAlign="Center">
+										<table:multiLabels>
+											<m:Label text="Material"></m:Label>
+											<m:Label text="NF-e" ></m:Label>
+										</table:multiLabels>
+										<table:template>
+											<m:Text text="{NFHEADER>descProd}"/>
+										</table:template>
+									</table:Column>
+									<table:Column width='5rem' id="idMultiQtd" hAlign="Center">
+										<table:multiLabels>
+											<m:Label textAlign="Center" text="Quantidade"></m:Label>
+											<m:Label textAlign="Center" text="NF-e"></m:Label>
+										</table:multiLabels>
+										<table:template>
+											<m:ObjectNumber number="{ path: 'NFHEADER>menge'}" unit="{path: 'NFHEADER>meins'}"/>
+										</table:template>
+									</table:Column>
+									<table:Column width='5rem' hAlign="Center">
+										<table:multiLabels>
+											<m:Label textAlign="Center" text="Quantidade"></m:Label>
+											<m:Label textAlign="Center" text="Pedido"></m:Label>
+										</table:multiLabels>
+										<table:template>
+											<m:ObjectNumber number="{ path: 'NFHEADER>mengePo'}" unit="{path: 'NFHEADER>meinsPo'}"/>
+										</table:template>
+									</table:Column>
+									<table:Column width='5rem'>
+										<table:multiLabels>
+											<m:Label textAlign="Center" text="Quantidade"></m:Label>
+											<m:Label textAlign="Center" text="Etiqueta"></m:Label>
+										</table:multiLabels>
+										<table:template>
+											<m:ObjectNumber number="{ path: 'NFHEADER>mengeEtq'}"/>
+										</table:template>
+									</table:Column>
+									<table:Column width='5rem'>
+										<table:multiLabels>
+											<m:Label textAlign="Center" text="Quantidade"></m:Label>
+											<m:Label text="Material"></m:Label>
+										</table:multiLabels>
+										<table:template>
+											<m:ObjectNumber number="{ path: 'NFHEADER>mengeMat'}"/>
+										</table:template>
+									</table:Column>
+									<table:Column width='5rem'>
+										<table:multiLabels>
+											<m:Label textAlign="Center" text="Quantidade"></m:Label>
+											<m:Label text="Conferido"></m:Label>
+										</table:multiLabels>
+										<table:template>
+											<m:ObjectNumber number="{ path: 'NFHEADER>mengeConf'}"/>
+										</table:template>
+									</table:Column>
+									<table:Column width='10rem'>
+										<m:Label text="Valor Total Item"></m:Label>
+										<table:template>
+											<m:ObjectNumber number="{ path: 'NFHEADER>nfnet', type:'sap.ui.model.type.Float', formatOptions:{minFractionDigits:2, maxFractionDigits:2}}"
+												unit="{NFHEADER>moeda}"/>
+										</table:template>
+									</table:Column>
+								</table:columns>
+							</table:Table>
+						</ObjectPageSubSection>
+					</subSections>
+				</ObjectPageSection>
+			</sections>
+		</ObjectPageLayout>
+	</m:Page>
+</mvc:View>

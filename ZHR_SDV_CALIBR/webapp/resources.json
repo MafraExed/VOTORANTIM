@@ -1,0 +1,96 @@
+{
+    "resources": [
+        {
+            "name": "model/eixoCalibracao/FI1.json"
+        },
+        {
+            "name": "manifest.json"
+        },
+        {
+            "name": "model/models.js"
+        },
+        {
+            "name": "model/eixoCalibracao/FI5.json"
+        },
+        {
+            "name": "lib/imageMapster.js"
+        },
+        {
+            "name": "controller/CalibrationSessions.controller.js"
+        },
+        {
+            "name": "controller/CalibrationRoom.controller.js"
+        },
+        {
+            "name": "serviceBinding.js"
+        },
+        {
+            "name": "Component.js"
+        },
+        {
+            "name": "manifest-bundle.zip"
+        },
+        {
+            "name": "Component-preload.js",
+            "merged": true
+        },
+        {
+            "name": "model/models-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "lib/imageMapster-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/CalibrationSessions-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/CalibrationRoom-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "serviceBinding-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "Component-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "../../../sap-ui-version.json"
+        },
+        {
+            "name": "neo-app.json"
+        },
+        {
+            "name": "di.code-validation.core_issues.json"
+        },
+        {
+            "name": "view/fragment/ParticipantInfo.fragment.xml"
+        },
+        {
+            "name": "view/CalibrationSessions.view.xml"
+        },
+        {
+            "name": "view/CalibrationRoom.view.xml"
+        },
+        {
+            "name": "images/velocimetro1024.png"
+        },
+        {
+            "name": "images/velocimetro.png"
+        },
+        {
+            "name": "i18n/i18n.properties",
+            "raw": "i18n/i18n.properties"
+        },
+        {
+            "name": "css/style.css"
+        },
+        {
+            "name": "index.html"
+        }
+    ]
+}

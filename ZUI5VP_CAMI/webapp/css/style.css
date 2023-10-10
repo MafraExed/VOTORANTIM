@@ -1,0 +1,411 @@
+@media screen and (orientation: portrait) {
+  html {
+    transform: rotate(-90deg);
+    transform-origin: left top;
+    width: 100vh;
+    height: 100vh;
+    overflow-x: hidden;
+    position: absolute;
+    top: 100%;
+    left: 0;
+  }
+}
+.buttonConfirmCode {
+	width:90%!important;
+}
+#__data18{
+	display: flex;
+	justify-content: center;
+	width: 100%;
+}
+#__button5{
+	width:90% !important;
+}
+.dialogTruck{
+    height: 30vh;
+    width: 80vw;
+    top: calc(50% + -75px)!important;
+}
+.compositionFilter{
+	top: calc(50% + 45px)!important;
+}
+.dialogTruck {
+	max-height: 400px;
+}
+#__popover1{
+	position: relative;
+}
+.dialogTruck .sapMDialogSection{
+	height:100%;
+}
+#__popover0-cont{
+	margin: 0 20px;
+}
+.dialogTruck .sapMDialogScrollCont {
+	display:flex;
+	justify-content: space-evenly;
+	align-items:center;
+}
+.buttonConfirmCode .sapMBtnInner{
+	background:#48b927!important;
+}
+.stageText, .timerText {
+    text-align: center!important;
+}
+.DialogUnscheduledStage {
+	top:40%!important;
+}
+#__button3-inner{
+	background:#48b927;
+}
+#__hbox0{
+	display: flex;
+	justify-content: center;
+}
+#__data20{
+	min-width: 100% !important;
+	justify-content: center;
+	display: flex;
+}
+#__xmlview4--nextStageButton{
+	width:90% !important;
+}
+#__box10{
+	position:relative;
+}
+#__title1-inner{
+	font-weight: 700;
+}
+.dialogTruck .sapMFooter-CTX{
+	display: flex;
+	justify-content: center;
+	background-color: rgb(248, 248, 248) !important;
+	height: 48px!important;
+}
+#__button4-inner{
+	width: 100%;
+    background-color: #48b927;
+    font-size: 16px;
+    font-weight: bold !important;
+    height: 1rem;
+}
+#__button4-inner{
+	width: 90%;
+	display:flex;
+	justify-content:center;
+	height: 4rem !important;
+}
+#__button4-inner{
+	width:90%;
+}
+#__button4{
+	width: 90%;
+	justify-content: center;
+	display: flex;
+	margin-left: auto;
+	margin-right: auto;
+}
+#__button9-inner{
+	width: 90%;
+}
+#__xmlview6--nextStageButton{
+	width:90%;
+}
+#__page0-navButton{
+	height: 2rem !important;
+}
+.selectComposition{
+	margin-right: 630px;
+}
+.v-body-measure-label{
+	display:none;
+}
+.v-body-measure-value{
+	display:none;
+}
+.nextStageButton.resumeTrip{
+	justify-content: center;
+	display: flex;
+}
+.sapMBarContainer.sapMBarRight{
+	height: 3rem;
+}
+.closeProfile .sapMBtnIconFirst.sapMBtnInner{
+	margin-bottom:10px;
+}
+.sapMBtnDefault.sapMBtnIconFirst.sapMBtnInner.sapMFocusable{
+	height: auto !important;
+	margin-bottom: 15px;
+}
+.sapMBtn.lastTripButton{
+	width:80%;
+}
+.sapMBtnInner.confirmFilter{
+	width:90% !important;
+}
+.confirmFilter{
+	width: 100%;
+	position: relative;
+	justify-content: center;
+	display: flex;
+}
+.avatarIcon{
+	height: 1rem !important;
+}
+.resumeTrip .sapMBtnInner{
+	width:90% !important;
+}
+.lastTripButton.sapUiSmallMarginEnd{
+	height: 95%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-decoration: none;
+	color: #fff;
+	font-weight: bold;
+	background-color: #d83d3d !important;
+	border: 1px solid #9d2121;
+	border-radius: 30px;
+	box-shadow:  0px 2px 0px #9e4444, 0px 3px 15px rgba(125, 125, 125, 0.4), inset 0px 1px 0px rgba(255, 255, 255, 0.3), inset 0px 0px 3px rgba(224, 192, 192, 0.5);
+}
+.lastTripTitle {
+	font-size: 20px;
+}
+.sapMFlexBox {
+	margin-top: 5px;
+	margin-bottom: 25px;
+}
+.sapUiMediumMarginTop{
+	margin-top:none !important;
+}
+.lastTripButton {
+	height: 95%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-decoration: none;
+	color: #fff;
+	font-weight: bold;
+	background-color: #48b927;
+	padding: 5px 40px;
+    font-size: 16px;
+    border: 1px solid #026101;
+    border-radius:30px;
+    box-shadow:  0px 2px 0px #289309, 0px 3px 15px rgba(125, 125, 125, 0.4), inset 0px 1px 0px rgba(255, 255, 255, 0.3), inset 0px 0px 3px rgba(9, 32, 7, 0.5);
+}
+.sapMFlexItem {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+.sapMTBSpacer {
+	display: none;
+}
+.sapMBtnContent{
+	font-size: 16px;
+	font-weight: bold;	
+	color: white;
+}
+.sapMFooter-CTX{
+	height:3.5rem !important;
+	border-top: none !important;
+}
+.sapMBtnIcon{
+	color:#37d40e !important;
+}
+.sapMIBar-CTX, .sapMText, .sapMTitle{
+	color: #000 !important;
+}
+.stageText{
+	margin-top: 17px;
+	font-size: 22px !important;
+	font-family: "72-Web",Arial,Helvetica,sans-serif;
+}
+.sapMShellBrandingBar{
+	left: 0;
+	top: 0;
+	width: 0;
+	height: 0;
+}
+.unscheduledStageButton{
+	width:100% !important;
+}
+
+.v-m-title{
+	display:none;
+}
+
+.unscheduledStageButton .sapMBtnInner{
+	height:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: #fff;
+	background-color: #d83d3d;
+	padding: 20px 20px;
+	font-size: 18px;
+	border: 1px solid #9d2121;
+	border-radius: 22px;
+	box-shadow: 0px 2px 0px #9e4444, 0px 3px 15px rgba(125, 125, 125, 0.4), inset 0px 1px 0px rgba(255, 255, 255, 0.3), inset 0px 0px 3px rgba(224, 192, 192, 0.5);
+}
+
+.sapMLIBActive{
+	background: #b2b2b2 !important;
+}
+.sapMLIBSelected{
+	background: #b2b2b2 !important;
+}
+.sapMHeader-CTX{
+	background-color: #ececec !important;
+}
+.sapMInputValHelpInner{
+	color: #37d40e;
+}
+.v-title{
+	font-size:22px !important;
+}
+.viz-title-label{
+	font-weight:400 !important;
+}
+.sapUiBlockCellTitle{
+	font-weight:bold;
+}
+.sapMTBShrinkItem {
+	margin-left: -0.75rem!important;
+}
+.timerText{
+
+}
+.sapUiBlockLayoutSizeL:not(.sapUiBlockLayoutKeepFontSize) .sapUiBlockCellContent{
+	padding: 1rem 3rem;	
+}
+.buttonConfirmCode{
+	margin: 6px 0;
+	height: 4rem;
+}
+.selectTripButton{
+	height: 75%;
+	width: 45%;
+}
+.sapMBtn {
+	height: 3rem !important;
+}
+.sapMBtnDefault {
+	height: 5px !important;
+}
+.buttonConfirmCode .sapMBtnInner{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    background-color: #48b927;
+    padding: 20px 45px;
+    font-size: 16px;
+    border: 1px solid #026101;
+    border-radius:30px;
+    box-shadow:  0px 2px 0px #289309, 0px 3px 15px rgba(125, 125, 125, 0.4), inset 0px 1px 0px rgba(255, 255, 255, 0.3), inset 0px 0px 3px rgba(9, 32, 7, 0.5);
+}
+.selectTripButton .sapMBtnInner{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    background-color: #48b927;
+    padding: 20px 60px;
+    font-size: 24px;
+    border: 1px solid #026101;
+    border-radius:30px;
+    box-shadow:  0px 2px 0px #289309, 0px 3px 15px rgba(125, 125, 125, 0.4), inset 0px 1px 0px rgba(255, 255, 255, 0.3), inset 0px 0px 3px rgba(9, 32, 7, 0.5);
+}
+:not(.sapMBtnDisabled)>.sapMBtnInner.sapMBtnActive{
+	background-color: #315327;
+	border-color:#68b452;
+	box-shadow:  0px 2px 0px #289309, 0px 3px 15px rgba(125, 125, 125, 0.4), inset 0px 1px 0px rgba(255, 255, 255, 0.3), inset 0px 0px 3px rgba(9, 32, 7, 0.5);
+}
+.nextStageButton .sapMBtnInner{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: #fff;
+    background-color: #48b927;
+    padding: 20px 20px;
+    font-size: 18px;
+    border: 1px solid #026101;
+    border-radius:22px;
+    box-shadow: 0px 2px 0px #289309, 0px 3px 15px rgba(125, 125, 125, 0.4), inset 0px 1px 0px rgba(255, 255, 255, 0.3), inset 0px 0px 3px rgba(9, 32, 7, 0.5);
+}
+.unscheduledStageButton{
+	padding-top:0;
+}
+.DialogUnscheduledStage .sapMDialogSection{
+	padding: 0 20px;
+}
+.tripStateCarousel {
+	height: 70vh!important;
+}
+.tripStateCarousel {
+	max-height: 540px!important;
+}
+.tripStatesChart {
+	height:70vh!important;
+}
+.stageFlexBox>div{
+	text-align: center;
+	margin-bottom:24px;
+}
+.stageFlexBox h1 span{
+	font-size: 22px;
+}
+.stageFlexBox>div:last-child{
+	position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+.customForm{
+	display:flex;
+	justify-content:center;
+}
+.customForm div, .customForm span{
+	text-align:center!important;
+}
+.stageValues{
+	margin: 12px 0;
+}
+.stageValues>div{
+	width: 50%;
+}
+.stageValues>div:nth-child(1){
+	text-align:right;
+}
+.stageValues>div:nth-child(2){
+	text-align:left;
+}
+.stageValue{
+	margin:0 16px;
+	font-size:16px;
+}
+.stageValueDesc{
+	font-weight: bold;
+}
+.carouselBlock{
+	width:50%!important;
+}
+.chartBlock{
+	position:relative;
+}
+.chartBlock>div{
+	position: absolute;
+	top:0;
+}

@@ -1,0 +1,87 @@
+<mvc:View
+    controllerName="projectlog01.controller.Worklist"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:semantic="sap.f.semantic">
+
+    <semantic:SemanticPage
+        id="page"
+        headerPinnable="false"
+        toggleHeaderOnTitleClick="false">
+
+        <semantic:titleHeading>
+            <Title id="title01"
+                text="{i18n>worklistTitle}"
+                level="H2"/>
+        </semantic:titleHeading>
+
+        <semantic:content>
+            <Table
+                id="table"
+                width="auto"
+                items="{
+                    path: '/logs',
+                    sorter: {
+                        path: 'IdProcesso',
+                        descending: true
+                    }
+                }"
+                noDataText="{worklistView>/tableNoDataText}"
+                busyIndicatorDelay="{worklistView>/tableBusyDelay}"
+                growing="true"
+                growingScrollToLoad="true"
+                updateFinished=".onUpdateFinished">
+
+                <headerToolbar>
+                    <OverflowToolbar id="_IDGenOverflowToolbar1">
+                        <Title
+                            id="tableHeader"
+                            text="{worklistView>/worklistTableTitle}"
+                            level="H3"/>
+                        <ToolbarSpacer id="_IDGenToolbarSpacer1" />
+                        <SearchField
+                            id="searchField"
+                            tooltip="{i18n>worklistSearchTooltip}"
+                            search=".onSearch">
+                            <layoutData>
+                                <OverflowToolbarLayoutData id="_IDGenOverflowToolbarLayoutData1"
+                                    maxWidth="200px"
+                                    priority="NeverOverflow"/>
+                            </layoutData>
+                        </SearchField>
+                    </OverflowToolbar>
+                </headerToolbar>
+
+                <columns>
+                    <Column id="nameColumn">
+                        <Text text="{i18n>tableNameColumnTitle}" id="nameColumnTitle"/>
+                    </Column>
+                    <Column id="unitNumberColumn" hAlign="End">
+                        <Text text="{i18n>tableUnitNumberColumnTitle}" id="unitNumberColumnTitle"/>
+                    </Column>
+                </columns>
+
+                <items>
+                    <ColumnListItem id="_IDGenColumnListItem1"
+                        type="Navigation"
+                        press=".onPress">
+                        <cells>
+                            <ObjectIdentifier id="_IDGenObjectIdentifier1" title="{IdProcesso}"/>
+                            <ObjectNumber id="_IDGenObjectNumber1" />
+
+                            <ObjectIdentifier id="_IDGenObjectIdentifier2" title="{IdProcesso2}"/>
+                            <ObjectNumber id="_IDGenObjectNumber2" />
+
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </semantic:content>
+
+        <semantic:sendEmailAction>
+            <semantic:SendEmailAction id="shareEmail" press=".onShareEmailPress"/>
+        </semantic:sendEmailAction>
+
+    </semantic:SemanticPage>
+
+</mvc:View>

@@ -1,0 +1,137 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.ui.layout.form"
+	controllerName="Y5GL_APROVB.Y5GL_APROVB.controller.DADOS_PESSOAIS" xmlns:html="http://www.w3.org/1999/xhtml">
+	<App id="idAppDadosPessoais">
+		<pages id="idPagesDadosPessoais">
+			<Page id="IdPageDadosPessoais">
+				<customHeader>
+					<Bar id="idBarMasterDadosPessoais">
+						<contentLeft>
+							<Button icon="sap-icon://nav-back" id="idB_navback" press="onVoltar"/>
+						</contentLeft>
+						<contentMiddle>
+							<Title text="Dados Pessoais" titleStyle="H3" id="idTitleDependentes"/>
+						</contentMiddle>
+						<contentRight>
+							<Button icon="sap-icon://home" id="idteste" press="onBackMaster"/>
+						</contentRight>
+					</Bar>
+				</customHeader>
+				<content>
+					<OverflowToolbar id="idBar1">
+						<Title text="" level="H1" id="idTitleDep"/>
+					</OverflowToolbar>
+					<f:Form class="editableForm" editable="true" id="FUNSEJEM" visible="true">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_FUNSEJEM" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+								emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer">
+								<f:formElements>
+									<f:FormElement label="Nome Completo" id="FormElementNomeCompleto">
+										<f:fields>
+											<Input value="{NomeCompleto}" id="IdNomeCompleto" placeholder="Nome Completo" required="true" maxLength="25"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Data de nascimento" id="FormElementDatadeNascimento">
+										<f:fields>
+											<Input value="{DataNascimento}" id="IdDataNascimento" placeholder="Data de Nascimento" required="true" type="Date"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Sexo" id="FormElementSexo">
+										<f:fields>
+											<ComboBox id="IdSexo" selectedKey="{Sexo}" required="true" placeholder="Sexo" items="{/ZET_GLRH_COMBO_SEXO_ECSet}">
+												<core:Item key="{Id}" text="{Value}" id="idKeySexo"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Pais de Nascimento" id="FormPaisNascimento">
+										<f:fields>
+											<ComboBox id="IdPaisNasc" selectedKey="{PaisNasc}" required="true" placeholder="Pais de nascimento"
+												items="{/ZET_GLHR_COMBO_PAISNASCIMENTOSet}">
+												<core:Item key="{Spras}" text="{Landx}" id="idKeyPaisNasc"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Estado de Nascimento" id="FormEstNascimento">
+										<f:fields>
+											<ComboBox id="IdEstNasc" selectedKey="{EstNasc}" required="true" placeholder="Estado de nascimento" items="{/ZET_GLHR_COMBO_ESTADOSet}">
+												<core:Item key="{Spras}" text="{Bezei}" id="idKeyEstNasc"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Local de nascimento" id="FormElementLocaldeNascimento">
+										<f:fields>
+											<Input value="" showSuggestion="true" placeholder="Local de Nacimento" valueHelpRequest="handleValueHelp" showValueHelp="true"
+												id="IdLocNascimento" suggestionItems="{/ZET_GLHR_COMBO_MUNICIPIOSet}" suggest="handleSuggest">
+												<suggestionItems>
+													<core:Item text="{Zmunicipio}" id="idsugestionlocal"/>
+												</suggestionItems>
+											</Input>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Cod. Naturalidade" id="FormElementCodNat">
+										<f:fields>
+											<Input value="{CodNat}" id="IdCodNat" placeholder="Código de naturalidade" required="true" editable="false"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Nacionalidade" id="FormElementNacionalidade">
+										<f:fields>
+											<ComboBox id="IdNacionaliade" selectedKey="{Nacionalidade}" required="true" placeholder="Nacionalidade"
+												items="{/ZET_GLHR_COMBO_PAISNASCIMENTOSet}">
+												<core:Item key="{Land1}" text="{Natio}" id="idKeyNacionalidade"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Idioma" id="FormIdioma">
+										<f:fields>
+											<ComboBox id="IdIdioma" selectedKey="{Idioma}" required="true" placeholder="Idioma" items="{/ZET_GLHR_COMBO_IDIOMASet}">
+												<core:Item key="{Sprsl}" text="{Sptxt}" id="idKeyIdioma"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Estado Civil" id="FormEstCivil">
+										<f:fields>
+											<ComboBox id="IdEstCivil" selectedKey="{EstCivil}" required="true" placeholder="Estado Civil" items="{/ZET_GLRH_COMBO_EST_CIVIL_ECSet}">
+												<core:Item key="{Id}" text="{Value}" id="idKeyEstCivil"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Casado Desde" id="FormCasDesde">
+										<f:fields>
+											<Input value="{CasadoDesde}" id="IdCasadoDesde" placeholder="Casado Desde" required="true" type="Date"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Raça/Cor" id="FormRacaCor">
+										<f:fields>
+											<ComboBox id="IdRaca" selectedKey="{Raca}" required="true" placeholder="Raça/Cor" items="{/ZET_COMBO_CORESSet}">
+												<core:Item key="{Id}" text="{Descr}" id="idKeyRaca"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Aposentado" id="FormAposentado">
+										<f:fields>
+											<ComboBox id="IdAposentado" selectedKey="{Aposentado}" required="true" placeholder="Aposentado" items="{/ZET_GLHR_SIM_NAOSet}">
+												<core:Item key="{Id}" text="{DescId}" id="idAposentado"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+				</content>
+				<footer>
+					<Toolbar id="idOverTollbar" style="Clear" design="Solid">
+						<Button press="onSave" icon="sap-icon://save" id="IdSalvarDetailDep" tooltip="Salvar"/>
+						<Button press="onCancel" icon="sap-icon://cancel" id="IdCancelarDetailDep" tooltip="Cancelar"/>
+						<Button press="onEdit" icon="sap-icon://edit" id="IdEditDetailDep" tooltip="Editar" visible="false"/>
+						<ToolbarSpacer id="idToolbarSpacerD"/>
+						<Button press="onCancelaAprovacao" icon="sap-icon://decline" id="IdCancelaAprov" tooltip="Cancelar envio para Aprovação" iconFirst="false"/>
+						<Button press="onAprovar" icon="sap-icon://feeder-arrow" id="IdEnviarDetailDep" tooltip="Enviar para Aprovação" iconFirst="false"/>
+					</Toolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

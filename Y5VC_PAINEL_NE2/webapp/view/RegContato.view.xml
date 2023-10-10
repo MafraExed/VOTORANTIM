@@ -1,0 +1,149 @@
+<mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.f.semantic" xmlns:footerbar="sap.ushell.ui.footerbar"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:m="sap.m" xmlns:la="sap.ui.layout" xmlns:sv="sap.ui.comp.smartvariants"
+	xmlns:smartTable="sap.ui.comp.smarttable" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:l="controls"
+	xmlns:table="sap.ui.table" xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	controllerName="Y5VC_PAINEL_NE2.Y5VC_PAINEL_NE2.controller.RegContato">
+	<Page id="id_pagContatos" showHeader="false" showSubHeader="false">
+		<Panel id="idPanel1" class="sapUiSmallMarginBottom"/>
+		<f:Form editable="true" id="Form">
+			<f:toolbar>
+				<Toolbar id="TB1">
+					<Title id="Title1" text="Dados da execução"/>
+				</Toolbar>
+			</f:toolbar>
+			<f:layout>
+				<f:ResponsiveGridLayout labelSpanXL="2" labelSpanL="2" labelSpanM="2" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0"
+					emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="true"/>
+			</f:layout>
+			<f:formContainers>
+				<f:FormContainer>
+					<f:formElements>
+						<f:FormElement id="IDformel" label="Forma de contato">
+							<Select id="idSel1" forceSelection="false" items="{ path: '/ZET_VCFI_FORM_CONTSet'}">
+								<core:Item key="{FormCont}" text="{FormCont} - {TxtForm}"/>
+								<!--<core:Item key="2" text="phone"/>-->
+								<!--<core:Item key="3" text="email"/>-->
+							</Select>
+						</f:FormElement>
+						<f:FormElement id="IDforme2" label="Status de cobrança">
+							<Select id="idSel2" forceSelection="false" items="{ path: 'statusCobranca>/'}" change="OnResult">
+								<core:Item key="{statusCobranca>CodResult}" text="{statusCobranca>CodResult} - {statusCobranca>TxtResult}"/>
+								<!--<core:Item key="5" text="phone"/>-->
+								<!--<core:Item key="6" text="email"/>-->
+							</Select>
+						</f:FormElement>
+						<f:FormElement id="IDforme3" label="Detalhe do status">
+							<Select id="idSel3" forceSelection="false" items="{ path: 'detalheStatus>/'}" editable="false">
+								<core:Item key="{detalheStatus>CodResultDet}" text="{detalheStatus>TxtResult}"/>
+								<!--<core:Item key="8" text="phone"/>-->
+								<!--<core:Item key="9" text="email"/>-->
+							</Select>
+						</f:FormElement>
+						<f:FormElement label="Data">
+							<Input id="IdData" editable="true" type="Date"/>
+						</f:FormElement>
+						<f:FormElement label="Hora">
+							<Input id="IdHora" editable="true" type="Time"/>
+						</f:FormElement>
+						<f:FormElement label=" Executado por">
+							<Input id="IdUser" editable="true"/>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+				<f:FormContainer></f:FormContainer>
+			</f:formContainers>
+		</f:Form>
+		<f:Form editable="true">
+			<f:toolbar>
+				<Toolbar id="TB2">
+					<Title id="Title2" text="Info Cliente"/>
+				</Toolbar>
+			</f:toolbar>
+			<f:layout>
+				<f:ResponsiveGridLayout labelSpanXL="2" labelSpanL="2" labelSpanM="2" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0"
+					emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="true"/>
+			</f:layout>
+			<f:formContainers>
+				<f:FormContainer>
+					<f:formElements>
+						<f:FormElement id="IDforme4" label="Pessoa de contato">
+							<Input id="IdPessoa" editable="true"/>
+						</f:FormElement>
+						<f:FormElement id="IDforme5" label="Nº Telefone">
+							<Input id="Idtel" editable="true"/>
+						</f:FormElement>
+						<f:FormElement id="IDforme6" label="E-mail">
+							<Input id="Idemail" editable="true"/>
+						</f:FormElement>
+						<f:FormElement id="IDforme7" label="Nota">
+							<TextArea id="idText" rows="8"/>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+				<f:FormContainer></f:FormContainer>
+			</f:formContainers>
+		</f:Form>
+		<f:Form editable="true">
+			<f:toolbar>
+				<Toolbar id="TB20">
+					<Title id="Title20" text="Promessa de pagamento"/>
+				</Toolbar>
+			</f:toolbar>
+			<f:layout>
+				<f:ResponsiveGridLayout labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0"
+					emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false"/>
+			</f:layout>
+			<f:formContainers>
+				<f:FormContainer>
+					<f:formElements>
+						<f:FormElement id="IDforme41">
+							<MessageStrip id="Idtextolb"
+								text="Para criação de uma promessa de pagamento, a seleção de um ou mais títulos é obrigatória na tela anterior" type="Information"
+								showIcon="true"/>
+							<!--<Label id="Idtextolb" text="Para criação de uma promessa de pagamento, a seleção de um ou mais títulos é obrigatória na tela anterior"/>-->
+						</f:FormElement>
+						<f:FormElement id="IDforme40" label="Criar promessa de pagamento">
+							<Switch id="btnOnOff" state="true" change="OnOff" customTextOff="Não" customTextOn="Sim">
+								<layoutData>
+									<FlexItemData growFactor="1"/>
+								</layoutData>
+							</Switch>
+						</f:FormElement>
+						<f:FormElement id="IDforme50" label="Data prometida">
+							<Input id="IdDataProm" editable="true" type="Date"/>
+						</f:FormElement>
+						<f:FormElement id="IDforme60" label="Observação (50 caracteres)">
+							<Input id="IdObs2" editable="true" maxLength="50"/>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+			</f:formContainers>
+		</f:Form>
+		<f:Form editable="true">
+			<f:toolbar>
+				<Toolbar id="TB3">
+					<Title id="Title3" text="Anexos do registro"/>
+				</Toolbar>
+			</f:toolbar>
+			<f:layout>
+				<f:ResponsiveGridLayout labelSpanXL="2" labelSpanL="2" labelSpanM="2" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0"
+					emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="true"/>
+			</f:layout>
+			<f:formContainers>
+				<f:FormContainer>
+					<f:formElements>
+						<f:FormElement>
+							<UploadCollection id="UploadCollection" maximumFilenameLength="55" maximumFileSize="10" multiple="true" sameFilenameAllowed="true"
+								instantUpload="false" noDataDescription="" change="onChange" fileDeleted="onFileDeleted" filenameLengthExceed="onFilenameLengthExceed"
+								fileSizeExceed="onFileSizeExceed" typeMissmatch="onTypeMissmatch" uploadComplete="onUploadComplete"
+								uploadUrl="/sap/opu/odata/sap/ZGWVCFI_PAINEL_NEGOCIACAO_SRV/ZET_VCFI_REG_CONTSet" beforeUploadStarts="onBeforeUploadStarts"/>
+						</f:FormElement>
+						<f:FormElement>
+							<Button id="Button" text="Salvar" press="onStartUpload"/>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+			</f:formContainers>
+		</f:Form>
+	</Page>
+</mvc:View>

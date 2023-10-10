@@ -1,0 +1,15 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<ViewSettingsDialog
+		confirm="_handleSortDialogConfirm">
+		<sortItems>
+			<ViewSettingsItem text="{i18n>ColDocumento}" key="Docpkg" />
+			<ViewSettingsItem text="{i18n>TxtSelectOrdem}" key="Aufnr" />
+			<ViewSettingsItem text="{i18n>Werks}" key="Werks" />
+			<ViewSettingsItem text="{i18n>ColMaterial}" key="Matnr" />
+			<ViewSettingsItem text="{i18n>ColBdter}" key="Bdter" />
+			<ViewSettingsItem text="{i18n>ColLocation}" key="Lgpbe" />
+		</sortItems>
+	</ViewSettingsDialog>
+</core:FragmentDefinition>

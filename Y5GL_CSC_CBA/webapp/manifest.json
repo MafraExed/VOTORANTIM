@@ -1,0 +1,251 @@
+{
+    "_version": "1.9.0",
+    "sap.app": {
+        "id": "Y5GL_CSC_CBA.Y5GL_CSC_CBA",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/sap/ZGWGLRH_MEU_CADASTRO_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/metadata.xml"
+                }
+            }
+        },
+        "sourceTemplate": {
+            "id": "sap.ui.ui5-template-plugin.1worklist",
+            "version": "1.52.7",
+            "toolsId": "6bbbbf92-b48f-4eb1-a7c2-4d56c38f8c0d"
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "sap-icon://task",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "rootView": {
+            "viewName": "Y5GL_CSC_CBA.Y5GL_CSC_CBA.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "app"
+        },
+        "dependencies": {
+            "minUI5Version": "1.42.0",
+            "libs": {
+                "sap.collaboration": {
+                    "lazy": true
+                },
+                "sap.f": {},
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.ushell": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "Y5GL_CSC_CBA.Y5GL_CSC_CBA.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {
+                    "useBatch": false
+                }
+            }
+        },
+        "services": {
+            "ShellUIService": {
+                "factoryName": "sap.ushell.ui5service.ShellUIService",
+                "lazy": false,
+                "settings": {
+                    "setTitle": "auto"
+                }
+            }
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "viewPath": "Y5GL_CSC_CBA.Y5GL_CSC_CBA.view",
+                "controlId": "app",
+                "controlAggregation": "pages",
+                "bypassed": {
+                    "target": [
+                        "notFound"
+                    ]
+                },
+                "async": true
+            },
+            "routes": [
+                {
+                    "name": "worklist",
+                    "pattern": "",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "worklist"
+                    ]
+                },
+                {
+                    "name": "object",
+                    "pattern": "",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "object"
+                    ]
+                },
+                {
+                    "name": "BENEFICIOS_DETAIL",
+                    "pattern": "BENEFICIOS_DETAIL/{Beneficio}/{Chamado}/{Pernr}/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "BENEFICIOS_DETAIL"
+                    ]
+                },
+                {
+                    "name": "DADOS_PESSOAIS",
+                    "pattern": "DADOS_PESSOAIS/{Pernr}/{Chamado}/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "DADOS_PESSOAIS"
+                    ]
+                },
+                {
+                    "name": "DependenteDetail",
+                    "pattern": "DependenteDetail/{Pernr}/{Subty}/{Tipo}/{Objps}/{Favor}/{Icnum}//{Chamado}/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "DependenteDetail"
+                    ]
+                },
+                {
+                    "name": "Documentos_Detail",
+                    "pattern": "Documentos_Detail/{Pernr}/{Tipo}/{Subty}//{Chamado}/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "Documentos_Detail"
+                    ]
+                },
+                {
+                    "name": "FORMACAO_DETAIL",
+                    "pattern": "FORMACAO_DETAIL/{Pernr}/{Slart}//{Chamado}/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "FORMACAO_DETAIL"
+                    ]
+                }
+            ],
+            "targets": {
+                "worklist": {
+                    "viewName": "Worklist",
+                    "viewId": "worklist",
+                    "viewLevel": 1,
+                    "title": "{i18n>worklistViewTitle}"
+                },
+                "object": {
+                    "viewName": "Object",
+                    "viewId": "object",
+                    "viewLevel": 2,
+                    "title": "{i18n>objectViewTitle}"
+                },
+                "objectNotFound": {
+                    "viewName": "ObjectNotFound",
+                    "viewId": "objectNotFound"
+                },
+                "notFound": {
+                    "viewName": "NotFound",
+                    "viewId": "notFound"
+                },
+                "BENEFICIOS_DETAIL": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewName": "BENEFICIOS_DETAIL",
+                    "title": "Beneficios",
+                    "viewId": "BENEFICIOS_DETAIL",
+                    "viewLevel": 2
+                },
+                "DADOS_PESSOAIS": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewName": "DADOS_PESSOAIS",
+                    "title": "Meus Dados",
+                    "viewId": "DADOS_PESSOAIS",
+                    "viewLevel": 2
+                },
+                "DependenteDetail": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewName": "DepententeDetail",
+                    "title": "Dependentes",
+                    "viewId": "DependenteDetail",
+                    "viewLevel": 2
+                },
+                "Documentos_Detail": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewName": "Documentos_Detail",
+                    "title": "Documentos",
+                    "viewId": "Documentos_Detail",
+                    "viewLevel": 2
+                },
+                "FORMACAO_DETAIL": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewName": "FORMACAO_DETAIL",
+                    "title": "Formação",
+                    "viewId": "FORMACAO_DETAIL",
+                    "viewLevel": 2
+                }
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "./css/style.css",
+                    "id": ""
+                }
+            ]
+        }
+    },
+    "sap.platform.abap": {
+        "uri": "/sap/bc/ui5_ui5/sap/y5gl_csc_cba",
+        "_version": "1.1.0"
+    }
+}

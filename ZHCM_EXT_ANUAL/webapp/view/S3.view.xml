@@ -1,0 +1,53 @@
+<!--
+
+    Copyright (C) 2009-2014 SAP SE or an SAP affiliate company. All rights reserved
+
+-->
+<core:View 
+	controllerName="hcm.mypaystubs.view.S3" 
+	xmlns:core="sap.ui.core" 
+	xmlns:ctrl="hcm.mypaystubs.controls"
+	xmlns:form="sap.ui.layout.form" 
+	xmlns:l="sap.ui.layout" 
+	xmlns:me="sap.me" 
+	xmlns="sap.m">
+	<Page class="sapUiFioriObjectPage" enableScrolling="false" id="PAGE_DETAILS" title="{i18n>DISPLAY_NAME_DETAILS}">
+		<content>
+			<ObjectHeader 
+			    number="{path:'Amount', formatter:'hcm.mypaystubs.utils.Formatter.amountFormatter'}"
+				numberUnit="{parts: [{path: 'i18n>TAKE_HOME_PAY'},{path: 'Currency'}], formatter:'hcm.mypaystubs.utils.Formatter.stringFormatter'}"
+				title="{parts: [{path: 'PayrollType'},{path: 'Period'},{path: 'BonusDate'},{path: 'Reason'}], formatter:'hcm.mypaystubs.utils.Formatter.monthFormatterDetail'}">
+				<attributes>
+					<ObjectAttribute id="PAYROLL_PERIOD"
+						text="{path:'i18n>PAYROLL_PERIOD'}: {path:'StartDate', type:'sap.ui.model.type.Date', formatOptions: { style:'long', UTC: true}} - 
+						                                    {path:'EndDate',   type:'sap.ui.model.type.Date', formatOptions: { style:'long', UTC: true}}"
+						visible="{= ${PayrollType}  === 'A' || ${PayrollType}  === 'C' ? false : true }" />
+					<ObjectAttribute id="OFFCYCLE_REASON"
+						text="{parts: [{path: 'i18n>OFFCYCLE_REASON'},{path: 'GroupName'}], formatter:'hcm.mypaystubs.utils.Formatter.positionFormatter'}"
+						visible="{= ${PayrollType}  === 'A' || ${PayrollType}  === 'C' ? true : false }" />
+					<ObjectAttribute id="PAY_DATE"
+						text="{path:'i18n>PAY_DATE'}: {path:'PayDate', type:'sap.ui.model.type.Date', formatOptions: { style:'long', UTC: true}}" />	
+				</attributes>
+				<statuses>
+					<ObjectStatus id="MPS_DEDUCTIONS" state="Error"
+						text="{parts: [{path: 'i18n>PAYSLIP_DEDUCTIONS'},{path: 'Deduction'},{path: 'Currency'}], formatter:'hcm.mypaystubs.utils.Formatter.numberFormatter'}"/>
+					<ObjectStatus id="MPS_GROSSPAY" state="Success"
+						text="{parts: [{path: 'i18n>PAYSLIP_GROSSPAY'},{path: 'GrossPay'},{path: 'Currency'}], formatter:'hcm.mypaystubs.utils.Formatter.numberFormatter'}"/>
+				</statuses>
+				<!-- extension point for additional fields in header -->
+				<core:ExtensionPoint name="extS3Header"></core:ExtensionPoint>
+			</ObjectHeader>
+			<VBox alignItems="Center" id="PAYSLIP_BUSY_CURSOR_CONTAINER" visible="false" width="100%">
+				<BusyIndicator class="payslipBusyCursor" id="PAYSLIP_BUSY_CURSOR" size="40px"></BusyIndicator>
+			</VBox>
+			<ctrl:ZoomableScrollContainer class="payslipPdf sapThemePageBG sapUiMediumMarginBeginEnd" id="PAYSLIP_PDF_VIEWER_CONTAINER" initialScale="{NewModel>/initialScale}" maxScale="{NewModel>/maxScale}" minScale="{NewModel>/minScale}" vertical="true">
+				<ctrl:PDFViewer begin="showBusyCursor" complete="hideBusyCursor" errorMessage="{i18n>PDF_SERVICE_ERR_MESSAGE}" id="PDF_VIEWER_CTRL"
+					src="{NewModel>/PDFPayslipUrl}">
+				</ctrl:PDFViewer>
+			</ctrl:ZoomableScrollContainer>
+		</content>
+		<footer id="MPS_DETAIL_FOOTER">
+			<Bar id="MPS_DETAIL_FOOTER_BAR" translucent="true"/>
+		</footer>
+	</Page>
+</core:View>

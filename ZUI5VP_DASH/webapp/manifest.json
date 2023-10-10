@@ -1,0 +1,211 @@
+{
+    "_version": "1.5.0",
+    "sap.app": {
+        "id": "com.sap.dashboardappDashboardApp",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "sourceTemplate": {
+            "id": "servicecatalog.connectivityComponent",
+            "version": "0.0.0",
+            "toolsId": "a9246e8a-bf3a-4a62-838a-f1723c3e7b56"
+        },
+        "dataSources": {
+            "ZGWVPWM_DASHBOARD_SRV": {
+                "uri": "/sap/opu/odata/sap/ZGWVPWM_DASHBOARD_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/metadata.xml"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        },
+        "supportedThemes": [
+            "sap_hcb",
+            "sap_belize"
+        ]
+    },
+    "sap.ui5": {
+        "rootView": {
+            "viewName": "com.sap.dashboardappDashboardApp.view.App",
+            "type": "XML"
+        },
+        "dependencies": {
+            "minUI5Version": "1.30.0",
+            "libs": {
+                "sap.ui.core": {},
+                "sap.m": {},
+                "sap.ui.layout": {},
+                "sap.ushell": {},
+                "sap.collaboration": {},
+                "sap.ui.comp": {},
+                "sap.uxap": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "com.sap.dashboardappDashboardApp.i18n.i18n"
+                }
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewPath": "com.sap.dashboardappDashboardApp.view",
+                "viewType": "XML"
+            },
+            "routes": [
+                {
+                    "name": "terminal",
+                    "pattern": "",
+                    "target": [
+                        "terminal"
+                    ]
+                },
+                {
+                    "name": "master",
+                    "pattern": "terminal",
+                    "target": [
+                        "terminal",
+                        "master"
+                    ]
+                },
+                {
+                    "name": "detail",
+                    "pattern": "detalhes",
+                    "target": [
+                        "master",
+                        "detail"
+                    ]
+                },
+                {
+                    "name": "simular",
+                    "pattern": "simular",
+                    "target": [
+                        "master",
+                        "simular"
+                    ]
+                },
+                {
+                    "name": "estoqueMensal",
+                    "pattern": "estoqueMensal",
+                    "target": [
+                        "master",
+                        "estoqueMensal"
+                    ]
+                },
+                {
+                    "name": "lineup",
+                    "pattern": "lineup",
+                    "target": [
+                        "master",
+                        "lineup"
+                    ]
+                },
+                {
+                    "name": "navio",
+                    "pattern": "navio",
+                    "target": [
+                        "master",
+                        "navio"
+                    ]
+                },
+                {
+                    "name": "localEstoque",
+                    "pattern": "localEstoque",
+                    "target": [
+                        "detail",
+                        "localEstoque"
+                    ]
+                }
+            ],
+            "targets": {
+                "terminal": {
+                    "viewName": "Terminal",
+                    "controlId": "rootControl",
+                    "controlAggregation": "masterPages",
+                    "viewLevel": 0
+                },
+                "master": {
+                    "viewName": "Master",
+                    "controlId": "rootControl",
+                    "controlAggregation": "masterPages",
+                    "viewLevel": 1
+                },
+                "detail": {
+                    "viewName": "Detail",
+                    "controlId": "rootControl",
+                    "controlAggregation": "detailPages",
+                    "viewLevel": 2
+                },
+                "simular": {
+                    "viewName": "Simular",
+                    "controlId": "App",
+                    "controlAggregation": "pages",
+                    "viewLevel": 3
+                },
+                "estoqueMensal": {
+                    "viewName": "EstoqueMensal",
+                    "controlId": "App",
+                    "controlAggregation": "pages",
+                    "viewLevel": 4
+                },
+                "lineup": {
+                    "viewName": "LineUp",
+                    "controlId": "App",
+                    "controlAggregation": "pages",
+                    "viewLevel": 5
+                },
+                "navio": {
+                    "viewName": "Navio",
+                    "controlId": "App",
+                    "controlAggregation": "pages",
+                    "viewLevel": 6
+                },
+                "localEstoque": {
+                    "viewName": "LocalEstoque",
+                    "controlId": "rootControl",
+                    "controlAggregation": "detailPages",
+                    "viewLevel": 7
+                }
+            }
+        }
+    },
+    "sap.platform.abap": {
+        "uri": "/sap/bc/ui5_ui5/sap/zui5vp_dash",
+        "_version": "1.1.0"
+    }
+}

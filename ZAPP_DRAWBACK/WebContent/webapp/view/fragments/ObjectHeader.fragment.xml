@@ -1,0 +1,132 @@
+<core:FragmentDefinition xmlns="sap.uxap"
+	xmlns:m="sap.m" xmlns:suite="sap.suite.ui.commons" xmlns:semantic="sap.m.semantic"
+	xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form"  xmlns:ui="sap.ui.commons"
+	xmlns:t="sap.ui.table">
+
+
+	<l:DynamicSideContent id="DynamicSideContent"
+		class="sapUiDSCExplored sapUiContentPadding" sideContentFallDown="BelowM"
+		sideContentPosition="End" containerQuery="true" showSideContent="false"
+		breakpointChanged="updateToggleButtonState">
+
+		<l:mainContent>
+
+			<ObjectPageLayout id="HeaderLayout"
+				
+				showTitleInHeaderContent="true" showAnchorBar="false"
+				showAnchorBarPopover="true">
+
+
+
+
+				<headerTitle>
+					<ObjectPageHeader id="headerForTest" headerDesign="Light"
+						objectTitle="Drawback - Conta Corrente (AC {Acnum})"
+						showTitleSelector="false" showMarkers="true" markFavorite="false"
+						markFlagged="true"
+						icon="sap-icon://customer-order-entry"
+						objectSubtitle="{i18n>dadosAcTtAc}:	  {path: 'TtAc',formatter:'.formatter.formatNumberBrazil'} To "
+						isObjectIconAlwaysVisible="false" isObjectTitleAlwaysVisible="false"
+						isObjectSubtitleAlwaysVisible="false" isActionAreaAlwaysVisible="true">
+												
+					</ObjectPageHeader>
+				</headerTitle>
+
+				<headerContent>
+					<l:HorizontalLayout>
+					
+						<l:VerticalLayout>
+							
+							<ui:Label text="{i18n>dadosAcTtUsado}" design="Bold" icon="sap-icon://home-share"/>
+							<l:HorizontalLayout>
+								<ui:Label text="{TtUsado}" />
+							</l:HorizontalLayout>
+						</l:VerticalLayout>
+
+						<l:VerticalLayout>
+						</l:VerticalLayout>
+						<l:VerticalLayout>
+						</l:VerticalLayout>
+
+						<l:VerticalLayout>
+							<ui:Label text="{i18n>dadosAcTtReservado}" design="Bold" icon="sap-icon://cause" />
+							<l:HorizontalLayout>
+								<ui:Label text="{TtReservado}" />
+							</l:HorizontalLayout>
+						</l:VerticalLayout>
+
+
+						<l:VerticalLayout>
+						</l:VerticalLayout>
+						<l:VerticalLayout>
+						</l:VerticalLayout>
+
+						<l:VerticalLayout>
+							<ui:Label text="{i18n>dadosAcDtvenc}" design="Bold" icon="sap-icon://date-time"  />
+							<l:HorizontalLayout>
+								<ui:Label text="{path: 'dadosAc>/Dtvenc', type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'dd.MM.yyyy', strictParsing: true , UTC: true}}"/>
+							</l:HorizontalLayout>
+						</l:VerticalLayout>
+						
+
+					</l:HorizontalLayout>
+				
+				<l:VerticalLayout>
+					<m:ObjectNumber 										
+						number="{i18n>Saldo}: {SaldoFinal}"
+						numberUnit="To"
+						emphasized="true"
+						state="{path: 'SaldoFinal', formatter: '.formatter.classificaSaldo'}"
+						textDirection="Inherit"
+						textAlign="Begin"/>
+				</l:VerticalLayout>							
+					
+				
+				</headerContent>
+
+				<sections>
+					<ObjectPageSection>
+						<subSections>
+							<ObjectPageSubSection>
+								<blocks>
+									<f:SimpleForm maxContainerCols="1"
+										layout="ResponsiveGridLayout" width="100%">
+
+										<l:VerticalLayout>
+											<core:Fragment
+												fragmentName="nasa.ui5.controleDrawback.view.fragments.ObjectTabFilter"
+												type="XML" />
+
+
+										</l:VerticalLayout>
+									</f:SimpleForm>
+								</blocks>
+							</ObjectPageSubSection>
+						</subSections>
+					</ObjectPageSection>
+
+
+					<!-- O Object Page Section abaixo e sua estrutura, deve permanecer para 
+						que o header possa esconder as informa��es ao realizar o Scroll da P�gina -->
+					<!-- <ObjectPageSection> <subSections> <ObjectPageSubSection > <blocks> 
+						<f:SimpleForm/> </blocks> </ObjectPageSubSection> </subSections> </ObjectPageSection> -->
+
+				</sections>
+			</ObjectPageLayout>
+
+		</l:mainContent>
+<!-- 		<l:sideContent> -->
+<!-- 			<m:Toolbar> -->
+<!-- 				<m:Title text="My tasks" /> -->
+<!-- 				<m:ToolbarSpacer /> -->
+<!-- 				<m:Button tooltip="Fechar" -->
+<!-- 				press="handleSideContentHide" /> -->
+<!-- 			</m:Toolbar> -->
+<!-- 			<m:Text -->
+<!-- 				text=" Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. -->
+<!-- 									 Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."></m:Text> -->
+<!-- 		</l:sideContent> -->
+
+	</l:DynamicSideContent>
+
+</core:FragmentDefinition>

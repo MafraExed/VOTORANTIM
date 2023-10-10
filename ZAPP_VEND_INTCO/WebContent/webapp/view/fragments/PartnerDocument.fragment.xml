@@ -1,0 +1,80 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:f="sap.ui.layout.form"
+	xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout" xmlns:footerbar="sap.ushell.ui.footerbar">
+
+	<f:SimpleForm 
+			id="PartnerSimpleForm"
+			layout="ResponsiveGridLayout"
+			editable="true">
+			
+			<f:toolbar>
+				<Toolbar id="PartnerTitle1">
+					<Title text="{i18n>detailDocumentTitleTabFilterBarPartner}" level="H4" titleStyle="H4"/>
+					<ToolbarSpacer />
+<!-- 					<Button  -->
+<!-- 						id="detailDocumentPartnerButtonEdit"  -->
+<!-- 						icon="sap-icon://edit"  -->
+<!-- 						tooltip="{i18n>detailDocumentsTooltipButtonEdit}"  -->
+<!-- 						press="onChangeMode"/> -->
+				</Toolbar>
+			</f:toolbar>
+			
+		<f:content>			
+			
+		   <Table id="partnerTable" 
+			  items="{dataDocument>/dataPartners}" 
+			  growing="true"
+			  growingThreshold="3"
+			  growingScrollToLoad="true"
+			  mode="None">
+			   
+			<columns>
+				<Column 
+						hAlign="Center"
+						width="3rem">
+					<Text 
+						text="{i18n>detailDocumentsTitleParvw}" />
+				</Column>
+				<Column 
+						width="10rem">
+					<Text 
+						text="{i18n>detailDocumentsTitleParvwDesc}" />
+				</Column>
+				<Column 
+						width="8rem">
+					<Text 
+						text="{i18n>detailDocumentsTitleCodParc}" />
+				</Column>
+				<Column width="auto">
+					<Text text="{i18n>detailDocumentsTitleName1}" />
+				</Column>
+			</columns>
+			<items>
+				<ColumnListItem>
+					<cells>
+						<Text text="{dataDocument>Parvw}" />
+					</cells>
+					<cells>
+						<Text text="{path: 'dataDocument>Parvw',formatter:'.formatter.formatParceiro'}" />
+					</cells>
+					<cells>
+<!-- 						<Input -->
+<!-- 							editable="{detailDocumentView>/editFields}" -->
+<!-- 							value="{dataDocument>CodParc}"  -->
+<!-- 							showValueHelp="true"  -->
+<!-- 		                    valueHelpRequest="onHandleF4Partner" -->
+<!-- 		                    submit="onHandleSubmitPartner"/> -->
+
+						<Text text="{dataDocument>CodParc}" />
+					</cells>
+					<cells>
+						<Text text="{dataDocument>Name1}" />
+					</cells>
+					
+				</ColumnListItem>
+			</items>
+		</Table>
+		
+		</f:content>
+	</f:SimpleForm>
+</core:FragmentDefinition>

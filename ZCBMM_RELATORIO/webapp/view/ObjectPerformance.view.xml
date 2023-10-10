@@ -1,0 +1,50 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns="sap.suite.ui.commons" xmlns:m="sap.m" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:viz.data="sap.viz.ui5.data" xmlns:viz="sap.viz.ui5.controls" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+	controllerName="ZCBMM_RELATORIO.ZCBMM_RELATORIO.controller.ObjectPerformance">
+	<ChartContainer id="idChartContainerPerformance" title="{i18n>performanceTitle}" showFullScreen="true" autoAdjustHeight="true" showLegend="true"
+		class="ChartContainerHeader" showPersonalization="false" contentChange="attachContentChange">
+		<dimensionSelectors>
+			<m:Button id='naviButtonPerformance' type="Back" press="navButtonPress" visible="{device>/isPhone}"/>
+		</dimensionSelectors>
+		<content>
+			<ChartContainerContent icon="sap-icon://horizontal-bar-chart">
+				<content>
+					<viz:Popover id="idPopOverPerformance"></viz:Popover>
+					<viz:VizFrame id="idoVizFramePerformance" vizType='pie' uiConfig="{applicationSet:'fiori'}"
+						vizProperties="{
+			                plotArea: {
+			                  dataLabel: {
+			                    visible: true
+			                  },
+			                  colorPalette: ['#5cbae6', '#b6d957', '#fac364']
+			                },
+			                legend: {
+			                  title: {
+			                    visible: false
+			                  }
+			                },
+			                title: {
+			                  visible: true,
+			                  text: 'Relatório Performance'
+			                }
+			              }">
+						<viz:dataset>
+							<viz.data:FlattenedDataset data="{/ZET_CBMM_CF_PERFORMANCESet}">
+								<viz.data:dimensions>
+									<viz.data:DimensionDefinition name="Status" value="{Status}"/>
+								</viz.data:dimensions>
+								<viz.data:measures>
+									<viz.data:MeasureDefinition name="Valor" value="{Quantidade}"/>
+								</viz.data:measures>
+							</viz.data:FlattenedDataset>
+						</viz:dataset>
+						<viz:feeds>
+							<viz.feeds:FeedItem uid="size" type="Measure" values="Valor"/>
+							<viz.feeds:FeedItem uid="color" type="Dimension" values="Status"/>
+						</viz:feeds>
+					</viz:VizFrame>
+				</content>
+			</ChartContainerContent>
+		</content>
+	</ChartContainer>
+</mvc:View>

@@ -1,0 +1,33 @@
+{
+  "periodo": [
+  		{"text": "1º Tri", "value": "1"},
+        {"text": "2º Tri", "value": "2"},
+        {"text": "3º Tri", "value": "3"},
+        {"text": "4º Tri", "value": "4"}
+    ],
+    "tipo_custo": [
+        {"text": "Fixo", "value": "F"},
+        {"text": "Variável", "value": "V"}
+    ],
+    "gp_recorrente": [
+        {"text": "GP", "value": "GP"},
+        {"text": "Recorrente", "value": "REC"}
+    ],
+    "mat_ser": [
+        {"text": "Mat", "value": "MAT"},
+        {"text": "Ser", "value": "SER"}
+    ],
+    "abertura": [
+    	{"text": "Realizado", "value": "REALIZADO"},
+        {"text": "Planejado", "value": "PLANEJADO"},
+        {"text": "RF OM", "value": "RF"},
+        {"text": "Status", "value": "STATUS"},
+        {"text": "OM FY", "value": "OM-FY"},
+        {"text": "Comprometido", "value": "COMPROMETI"},
+        {"text": "A Planejar", "value": "A_PLANEJAR"}
+    ],
+    "tipo": [
+        {"text": "Mensal", "value": "MENSAL"},
+        {"text": "Semanal", "value": "SEMANAL"}
+    ]
+}

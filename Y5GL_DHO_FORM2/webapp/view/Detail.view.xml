@@ -1,0 +1,29 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	controllerName="Y5GL_DHO_FORM2.Y5GL_DHO_FORM2.controller.Detail" xmlns:html="http://www.w3.org/1999/xhtml">
+	<App id="idappbeneficios">
+		<pages>
+			<Page id="idPageMaster">
+				<customHeader>
+					<Bar id="idBarMaster">
+						<contentMiddle>
+							<Title text="DHO Formulários" titleStyle="H3" id="idTitleDependentes"/>
+						</contentMiddle>
+					</Bar>
+				</customHeader>
+				<content>
+					<List id="list" width="auto" class="sapFDynamicPageAlignContent" items="{ path: '/ZET_GLHR_FORMULARIOS_SUBTIPOSSet'}"
+						busyIndicatorDelay="{masterView>/delay}" noDataText="{masterView>/noDataText}"
+						mode="{= ${device>/system/phone} ? 'None' : 'SingleSelectMaster'}" growing="true" growingScrollToLoad="true"
+						updateFinished=".onUpdateFinished" selectionChange=".onSelectionChange" itemPress=".onSelectionChange">
+						<items>
+							<ObjectListItem type="Navigation" press=".onSelectionChange" title="{path: 'DescSubtipo', formatter:'.formatName'}" icon="{path: 'DescSubtipo', formatter:'.formatIconList'}"
+								highlight="Information" id="idObjectListItem">
+							</ObjectListItem>
+						</items>
+					</List>
+					<Button text="Voltar" width="100%" id="__button0" type="Back" press="voltarsuccesss" visible="false" iconFirst="true"/>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

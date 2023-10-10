@@ -1,0 +1,271 @@
+<mvc:View
+	controllerName="zvnmmarbaprapp.controller.Detail"
+	xmlns="sap.m"
+	xmlns:semantic="sap.f.semantic"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:tnt="sap.tnt">
+
+	<semantic:SemanticPage
+		id="detailPage"
+		busy="{detailView>/busy}"
+		busyIndicatorDelay="{detailView>/delay}"
+		showFooter="true">
+		<semantic:titleHeading>
+			<Title
+				text="{PRId}"
+				level="H3"/>
+		</semantic:titleHeading>
+		<semantic:headerContent>
+			<IconTabBar
+				id="idIconTabBar"
+				select=".onFilterSelect"
+				class="sapUiResponsiveContentPadding">
+				<items>
+					<IconTabFilter
+						icon="sap-icon://header"
+						text="Header"
+						key="Ok"
+						design="Horizontal">
+
+						<f:Form id="FormDisplay" editable="false">
+							<f:layout>
+							<f:ResponsiveGridLayout
+								labelSpanXL="4"
+								labelSpanL="4"
+								labelSpanM="12"
+								labelSpanS="12"
+								adjustLabelSpan="false"
+								emptySpanXL="0"
+								emptySpanL="0"
+								emptySpanM="0"
+								emptySpanS="0"
+								columnsXL="2"
+								columnsL="2"
+								columnsM="2"
+								singleContainerFullSize="false" />
+							</f:layout>
+							<f:formContainers>
+								<f:FormContainer title="{i18n>HeaderData}">
+									<f:formElements>
+										<f:FormElement label="{i18n>priceTitle}">
+											<f:fields>
+												<ObjectNumber
+													number="{
+															parts:[{path:'Amount'},{path:'Currency'}],
+															type: 'sap.ui.model.type.Currency',
+															formatOptions: {showMeasure: true}
+															}"
+													unit="" />
+											</f:fields>
+										</f:FormElement>
+										<f:FormElement label="{i18n>Title}">
+											<f:fields>
+												<Text text="{Title}"/> 
+											</f:fields>
+										</f:FormElement>
+										<f:FormElement label="{i18n>Requester}">
+											<f:fields>
+												<Text text="{Requester}"/> 
+											</f:fields>
+										</f:FormElement>										
+										<f:FormElement label="{i18n>SubmitDate}">
+											<f:fields>
+												<Text text="{
+													path: 'SubmitDate',
+													type: 'sap.ui.model.type.Date',
+													formatOptions: {
+														style: 'medium'
+													}}" />
+											</f:fields>
+										</f:FormElement>										
+										<f:FormElement label="{i18n>LastModified}">
+											<f:fields>
+												<Text text="{
+													path: 'LastModified',
+													type: 'sap.ui.model.type.Date',
+													formatOptions: {
+														style: 'medium'
+													}}" />
+											</f:fields>
+										</f:FormElement>										
+									</f:formElements>
+								</f:FormContainer>
+							</f:formContainers>
+						</f:Form>
+					</IconTabFilter>
+					<IconTabSeparator />
+					<IconTabFilter
+						icon="sap-icon://begin"
+						text="{i18n>Records}"
+						design="Horizontal"
+						key="Ok">
+							<Table 
+								id="RecordsItemsList"
+								width="auto"
+								items="{ZET_VNMM_GET_PR_DETAILS_APPROVALSSet}"
+								noDataText="{i18n>detailLineItemTableNoDataText}"
+								busyIndicatorDelay="{detailView>/lineItemTableDelay}">
+
+								<columns>
+									<Column width="100px">
+										<Text text="{i18n>Approver}"/>
+									</Column>
+									<Column width="100px">
+										<Text text="{i18n>Reason}"/>
+									</Column>
+									<Column width="100px">
+										<Text text="{i18n>Status}"/>
+									</Column>
+									<Column width="100px">									
+										<Text text="{i18n>Date}"/>
+									</Column>
+								</columns>
+								<items>
+									<ColumnListItem>
+										<cells>
+											<ObjectIdentifier
+												title="{Approver}"/>
+											<ObjectIdentifier
+												title="{Reason}"/>
+											<ObjectIdentifier
+												title="{Status}"/>
+											<Text text="{
+												path: 'Date',
+												type: 'sap.ui.model.type.Date',
+												formatOptions: {
+													style: 'medium'
+												}}" />
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+
+		</semantic:headerContent>
+		<semantic:content>
+			<ScrollContainer  width="100%" horizontal="true" vertical="true" focusable="true">
+				<Table
+					id="lineItemsList"
+					width="auto"
+					items="{ZET_VNMM_GET_PR_DETAILS_ITEMSSet01}"
+					updateFinished=".onListUpdateFinished"
+					noDataText="{i18n>detailLineItemTableNoDataText}"
+					busyIndicatorDelay="{detailView>/lineItemTableDelay}">
+					<headerToolbar>
+						<Toolbar>
+							<Title
+								id="lineItemsTitle"
+								text="{detailView>/lineItemListTitle}"
+								titleStyle="H3"
+								level="H3"/>
+						</Toolbar>
+					</headerToolbar>
+					<columns>
+						<Column width="100px">
+							<Text text="{i18n>detailLineItemTableIDColumn}"/>
+						</Column>
+						<Column width="200px">
+							<Text text="{i18n>PartNumber}"/>
+						</Column>
+						<Column width="140px">
+							<Text text="{i18n>Qty}"/>
+						</Column>
+						<Column width="140px">
+							<Text text="{i18n>Amount}"/>
+						</Column>
+						<Column width="140px">
+							<Text text="{i18n>Supplier}"/>
+						</Column>
+						<Column width="140px">
+							<Text text="{i18n>Plant}"/>
+						</Column>
+						<Column width="140px">
+							<Text text="{i18n>AccountCategory}"/>
+						</Column>
+						<Column width="140px">
+							<Text text="{i18n>CostCenterIOName}"/>
+						</Column>
+						<Column width="140px">
+							<Text text="{i18n>GLAccount}"/>
+						</Column>
+						<Column width="140px">
+							<Text text="{i18n>ItemCategory}"/>
+						</Column>
+						<Column width="140px">
+							<Text text="{i18n>DeliverTo}"/>
+						</Column>
+					</columns>
+					<items>
+						<ColumnListItem>
+							<cells>
+								<ObjectIdentifier
+									title="{ItemId}"/>
+								<ObjectIdentifier
+									title="{PartNumber}"
+									text="{ShortName}"/>
+								<Text text="{Qty}"/>
+								<Text text="{Amount}"/>
+								<Text text="{Supplier}"/>
+								<Text text="{Plant}"/>
+
+								<ObjectIdentifier
+									title="{AccountCategory}"
+									text="{AccCatDescription}"/>
+
+								<Text text="{CostCenterIOValue}"/>
+
+								<ObjectIdentifier
+									title="{GLAccount}"
+									text="{GLAccountDescription}"/>
+
+								<Text text="{ItemCategory}"/>
+								<Text text="{DeliverTo}"/>
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+			</ScrollContainer>
+		</semantic:content>
+		<!--Semantic ShareMenu Buttons-->
+		<semantic:titleCustomTextActions>
+			<Button text="{i18n>OpeninAriba}" press="onOpenInAribaPress"/>
+		</semantic:titleCustomTextActions>
+
+		<semantic:closeAction>
+			<semantic:CloseAction
+					id="closeColumn"
+					press=".onCloseDetailPress"/>
+		</semantic:closeAction>
+
+		<semantic:fullScreenAction>
+			<semantic:FullScreenAction
+					id="enterFullScreen"
+					visible="{= !${device>/system/phone} &amp;&amp; !${appView>/actionButtonsInfo/midColumn/fullScreen}}"
+					press=".toggleFullScreen"/>
+		</semantic:fullScreenAction>
+		<semantic:exitFullScreenAction>
+			<semantic:ExitFullScreenAction
+					id="exitFullScreen"
+					visible="{= !${device>/system/phone} &amp;&amp; ${appView>/actionButtonsInfo/midColumn/fullScreen}}"
+					press=".toggleFullScreen"/>
+		</semantic:exitFullScreenAction>
+		
+		<semantic:positiveAction>
+			<semantic:PositiveAction press="onApproveButtonPress"/>
+		</semantic:positiveAction>
+
+		<semantic:negativeAction>
+			<semantic:NegativeAction press="onRejectButtonPress"/>
+		</semantic:negativeAction>		
+
+		<semantic:footerCustomActions>
+			<Button text="Withdraw" press="onWithdrawButtonPress"/>
+		</semantic:footerCustomActions>
+
+	</semantic:SemanticPage>
+
+</mvc:View>

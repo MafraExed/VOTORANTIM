@@ -1,0 +1,91 @@
+[{
+	"DtInic": "/Date(1400017490000)/",
+	"DtFim": "/Date(1424727890000)/",
+	"Status": "Status 1",
+	"Quantidade": 4190,
+	"__metadata": {
+		"uri": "ZET_CBMM_CF_PERFORMANCESet(DtInic=datetime'2014-05-13T21%3A44%3A50',Status='Status%201')",
+		"type": "ZGWCBMM_RELATORIO_SRV.ZET_CBMM_CF_PERFORMANCE"
+	}
+}, {
+	"DtInic": "/Date(1012077890000)/",
+	"DtFim": "/Date(1048974290000)/",
+	"Status": "Status 2",
+	"Quantidade": 4308,
+	"__metadata": {
+		"uri": "ZET_CBMM_CF_PERFORMANCESet(DtInic=datetime'2002-01-26T20%3A44%3A50',Status='Status%202')",
+		"type": "ZGWCBMM_RELATORIO_SRV.ZET_CBMM_CF_PERFORMANCE"
+	}
+}, {
+	"DtInic": "/Date(1278452690000)/",
+	"DtFim": "/Date(1012077890000)/",
+	"Status": "Status 2",
+	"Quantidade": 4175,
+	"__metadata": {
+		"uri": "ZET_CBMM_CF_PERFORMANCESet(DtInic=datetime'2010-07-06T21%3A44%3A50',Status='Status%203')",
+		"type": "ZGWCBMM_RELATORIO_SRV.ZET_CBMM_CF_PERFORMANCE"
+	}
+}, {
+	"DtInic": "/Date(1367012690000)/",
+	"DtFim": "/Date(1225831490000)/",
+	"Status": "Status 1",
+	"Quantidade": 4390,
+	"__metadata": {
+		"uri": "ZET_CBMM_CF_PERFORMANCESet(DtInic=datetime'2013-04-26T21%3A44%3A50',Status='Status%204')",
+		"type": "ZGWCBMM_RELATORIO_SRV.ZET_CBMM_CF_PERFORMANCE"
+	}
+}, {
+	"DtInic": "/Date(1148420690000)/",
+	"DtFim": "/Date(1234820690000)/",
+	"Status": "Status 1",
+	"Quantidade": 7169,
+	"__metadata": {
+		"uri": "ZET_CBMM_CF_PERFORMANCESet(DtInic=datetime'2006-05-23T21%3A44%3A50',Status='Status%205')",
+		"type": "ZGWCBMM_RELATORIO_SRV.ZET_CBMM_CF_PERFORMANCE"
+	}
+}, {
+	"DtInic": "/Date(1545165890000)/",
+	"DtFim": "/Date(1395783890000)/",
+	"Status": "Status 2",
+	"Quantidade": 8687,
+	"__metadata": {
+		"uri": "ZET_CBMM_CF_PERFORMANCESet(DtInic=datetime'2018-12-18T20%3A44%3A50',Status='Status%206')",
+		"type": "ZGWCBMM_RELATORIO_SRV.ZET_CBMM_CF_PERFORMANCE"
+	}
+}, {
+	"DtInic": "/Date(1440452690000)/",
+	"DtFim": "/Date(966203090000)/",
+	"Status": "Status 2",
+	"Quantidade": 3292,
+	"__metadata": {
+		"uri": "ZET_CBMM_CF_PERFORMANCESet(DtInic=datetime'2015-08-24T21%3A44%3A50',Status='Status%207')",
+		"type": "ZGWCBMM_RELATORIO_SRV.ZET_CBMM_CF_PERFORMANCE"
+	}
+}, {
+	"DtInic": "/Date(1056145490000)/",
+	"DtFim": "/Date(1574282690000)/",
+	"Status": "Status 3",
+	"Quantidade": 3765,
+	"__metadata": {
+		"uri": "ZET_CBMM_CF_PERFORMANCESet(DtInic=datetime'2003-06-20T21%3A44%3A50',Status='Status%208')",
+		"type": "ZGWCBMM_RELATORIO_SRV.ZET_CBMM_CF_PERFORMANCE"
+	}
+}, {
+	"DtInic": "/Date(1191879890000)/",
+	"DtFim": "/Date(1051825490000)/",
+	"Status": "Status 3",
+	"Quantidade": 3057,
+	"__metadata": {
+		"uri": "ZET_CBMM_CF_PERFORMANCESet(DtInic=datetime'2007-10-08T21%3A44%3A50',Status='Status%209')",
+		"type": "ZGWCBMM_RELATORIO_SRV.ZET_CBMM_CF_PERFORMANCE"
+	}
+}, {
+	"DtInic": "/Date(1139431490000)/",
+	"DtFim": "/Date(1076791490000)/",
+	"Status": "Status 3",
+	"Quantidade": 6547,
+	"__metadata": {
+		"uri": "ZET_CBMM_CF_PERFORMANCESet(DtInic=datetime'2006-02-08T20%3A44%3A50',Status='Status%2010')",
+		"type": "ZGWCBMM_RELATORIO_SRV.ZET_CBMM_CF_PERFORMANCE"
+	}
+}]

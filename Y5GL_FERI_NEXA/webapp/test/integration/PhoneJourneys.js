@@ -1,0 +1,1 @@
+sap.ui.define(["sap/ui/test/Opa5","./arrangements/Startup","./arrangements/FLP","./NavigationJourneyPhone","./NotFoundJourneyPhone"],function(e,n,a){"use strict";e.extendConfig({arrangements:new a,assertions:new a,viewNamespace:"Y5GL_FERI_NEXA.Y5GL_FERI_NEXA.view.",autoWait:true})});

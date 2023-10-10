@@ -1,0 +1,51 @@
+<mvc:View controllerName="ZCBMM_ACEITE_RESERVA.ZCBMM_ACEITE_RESERVA.controller.Aceite" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:semantic="sap.f.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:smartFilterBar="sap.ui.comp.smartfilterbar" xmlns:m="sap.m" xmlns:sv="sap.ui.comp.smartvariants"
+	xmlns:smartTable="sap.ui.comp.smarttable" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:l="controls"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	<Page id="page" navButtonPress="onNavBack" showNavButton="{device>/system/phone}" title="Informações quantidade Aceite"
+		busy="{detailView>/busy}" busyIndicatorDelay="{detailView>/delay}" floatingFooter="false">
+		<HBox width="100%" id="__hbox0">
+			<Input value="" id="idReserva" visible="false"/>
+			<Input value="" id="idItem" visible="false"/>
+			<Input value="" id="idStatusReserva" visible="false"/>
+			<Input value="" id="idEliminado" visible="false"/>
+			<Input value="" id="idRegFinal" visible="false"/>
+			<Input value="" id="idMaterial" visible="false"/>
+			<Input value="" id="idCentro" visible="false"/>
+			<Input value="" id="idQtdNecessaria" visible="false"/>
+			<Input value="" id="idQtdRetReserva" visible="false"/>
+			<Input value="" id="idLogin" visible="false"/>
+			<Input value="" id="idReceptor" visible="false"/>
+			<Input value="" id="idLogin1" visible="false"/>
+		</HBox>
+		<f:Form class="editableForm" editable="true">
+			<f:layout>
+				<f:ResponsiveGridLayout labelSpanXL="6" labelSpanL="6" labelSpanM="6" labelSpanS="6" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0"
+					emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="3" columnsM="3" singleContainerFullSize="false"/>
+			</f:layout>
+			<f:formContainers>
+				<f:FormContainer>
+					<f:formElements>
+						<f:FormElement>
+							<f:fields>
+								<Input value="" id="idQtdAceite" editable="true" required="true"/>
+							</f:fields>
+							<f:label>
+								<Label text="Quantidade de Aceite" design="Bold"/>
+							</f:label>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+			</f:formContainers>
+		</f:Form>
+		<footer>
+			<Toolbar>
+				<Button text="Salvar" icon="sap-icon://save" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"
+					press="onSave" tooltip="Salvar inclusão"/>
+				<Button text="Voltar" icon="sap-icon://undo" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"
+					press="onBack" tooltip="Voltar"/>
+			</Toolbar>
+		</footer>
+	</Page>
+</mvc:View>

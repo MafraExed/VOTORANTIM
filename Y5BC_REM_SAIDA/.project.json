@@ -1,0 +1,21 @@
+{
+  "mockpreview": {
+    "mockUri": "",
+    "metadataFilePath": "",
+    "loadJSONFiles": false,
+    "loadCustomRequests": false,
+    "mockRequestsFilePath": ""
+  },
+  "deploy": {
+    "destination": "SAP_GW_HUB",
+    "name": "Y5BC_REM_SAIDA"
+  },
+  "hybrid": {
+    "FacadeConfig": {
+      "cordova-plugin-device-orientation": false,
+      "accelerometer": {},
+      "compass": {},
+      "bFacade": false
+    }
+  }
+}

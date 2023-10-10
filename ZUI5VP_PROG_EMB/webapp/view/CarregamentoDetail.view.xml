@@ -1,0 +1,247 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="fibriembarque.controller.CarregamentoDetail" xmlns:uxap="sap.uxap"
+	xmlns:layout="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:m="sap.m" xmlns:core="sap.ui.core" xmlns:semantic="sap.m.semantic"
+	xmlns:table="sap.ui.table" xmlns:fmt="sap.ui.core.format">
+	<!--{/Nome}-->
+	<m:Page id="page" title="{headerData>/Descricao_navio}" class="backColor" showHeader="true" showFooter="true" showNavButton="true"
+		navButtonPress="_onNavPress">
+		<m:headerContent>
+			<!--<m:Button text="" type="Default" icon="sap-icon://sys-prev-page" iconFirst="true" width="auto" enabled="true" visible="true"-->
+			<!--    iconDensityAware="false" press="_onPrevPress" />-->
+			<!--<m:Button text="" type="Transparent" icon="sap-icon://sys-next-page" iconFirst="true" width="auto" enabled="true" visible="true"-->
+			<!--    iconDensityAware="false" press="_onNextPress" />-->
+		</m:headerContent>
+		<m:content>
+			<uxap:ObjectPageLayout showTitleInHeaderContent="false" showHeaderContent="true" showAnchorBar="true" showFooter="true"
+				subSectionLayout="TitleOnTop">
+				<uxap:headerContent id="headerContent">
+					<!-- defaultSpan="L3 M4 S12" defaultIndent="L1 M1 S0"-->
+					<layout:HorizontalLayout>
+						<m:Image id="image" src="/sap/opu/odata/sap/ZGWVPWM_PROGRAMACAO_EMBARQUE_SRV/ZET_VPWM_PICTURESSet('NAVIO.jpg')/$value" class="daniloImagem"></m:Image>
+						<layout:Grid id="layoutGrid" defaultSpan="L5 M5 S12" defaultIndent="L1 M1 S0" position="Left" width="100%" containerQuery="false"
+							hSpacing="0" vSpacing="0" binding="{ path: '/headerData' }">
+							<layout:content>
+								<!--<m:VBox>-->
+								<m:HBox alignItems="Start" direction="Row" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div"
+									visible="true" displayInline="false">
+									<m:items>
+										<m:Title text="{i18n>poraoTravel}:" titleStyle="H4" width="auto" textAlign="Begin" visible="true"/>
+										<m:Text text="" width="3px" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+										<!--<m:Title text="{/Viagem}" titleStyle="H3" width="auto" textAlign="Begin" visible="true"/>-->
+										<m:Title text="{headerData>/Viagemarm}" titleStyle="H5" width="auto" textAlign="Begin" visible="true"/>
+									</m:items>
+									<m:layoutData/>
+								</m:HBox>
+								<m:HBox alignItems="End" direction="Row" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div"
+									visible="true" displayInline="false">
+									<m:items>
+										<m:Title text="{i18n>poraoTitle}:" titleStyle="H4" width="auto" textAlign="Begin" visible="true"/>
+										<m:Text text="" width="3px" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+										<!--<m:Title text="{/Porao}" titleStyle="H3" width="auto" textAlign="Begin" visible="true"/>-->
+										<m:Title text="{headerData>/Porao_Porao}" titleStyle="H4" width="auto" textAlign="Begin" visible="true"/>
+									</m:items>
+									<m:layoutData/>
+								</m:HBox>
+								<!--<m:HBox alignItems="End" direction="Row" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div"-->
+								<!--	visible="true" displayInline="false">-->
+								<!--	<m:items>-->
+								<!--		<m:Title text="{i18n>carrDate}:" titleStyle="H4" width="auto" textAlign="Begin" visible="true"/>-->
+								<!--		<m:Text text="" width="3px" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>-->
+								<!--<m:Title text="{/Date}" titleStyle="H3" width="auto" textAlign="Begin" visible="true"/>-->
+								<!--		<m:Title text="{headerData>/Dtdocecc}" titleStyle="H4" width="auto" textAlign="Begin" visible="true"/>-->
+								<!--	</m:items>-->
+								<!--	<m:layoutData/>-->
+								<!--</m:HBox>-->
+								<m:HBox alignItems="End" direction="Row" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div"
+									visible="true" displayInline="false">
+									<m:items>
+										<m:Title text="{i18n>carrStartTime}:" titleStyle="H4" width="auto" textAlign="Begin" visible="true"/>
+										<m:Text text="" width="3px" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+										<!--<m:Title text="{/HoraInicio}" titleStyle="H3" width="auto" textAlign="Begin" visible="true"/>-->
+										<m:Title text="{headerData>/Inicio_op_date} - {headerData>/Inicio_op_time}" titleStyle="H4" width="auto" textAlign="Begin" visible="true"/>
+									</m:items>
+									<m:layoutData/>
+								</m:HBox>
+								<!--</m:VBox>-->
+								<!--<m:VBox>-->
+								<m:HBox alignItems="Stretch" direction="Row" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div"
+									visible="true" displayInline="false">
+									<m:items>
+										<m:Title text="{i18n>carrHarbor}:" titleStyle="H4" width="auto" textAlign="Begin" visible="true"/>
+										<m:Text text="" width="3px" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+										<!--<m:Title text="{/Porto}" titleStyle="H3" width="auto" textAlign="Begin" visible="true"/>-->
+										<m:Title text="{headerData>/Porto_desc}" titleStyle="H4" width="auto" textAlign="Begin" visible="true"/>
+									</m:items>
+									<m:layoutData/>
+								</m:HBox>
+								<m:HBox alignItems="Stretch" direction="Row" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div"
+									visible="true" displayInline="false">
+									<m:items>
+										<m:Title text="{i18n>carrAmount}:" titleStyle="H4" width="auto" textAlign="Begin" visible="true"/>
+										<m:Text text="" width="3px" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+										<!--<m:Title text="{/TotalCarga}" titleStyle="H3" width="auto" textAlign="Begin" visible="true"/>-->
+										<m:Title text="{headerData>/Carga_total}" titleStyle="H4" width="auto" textAlign="Begin" visible="true"/>
+									</m:items>
+									<m:layoutData/>
+								</m:HBox>
+								<m:HBox alignItems="Stretch" direction="Row" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div"
+									visible="true" displayInline="false">
+									<m:items>
+										<m:Title text="{i18n>carrFinish}:" titleStyle="H4" width="auto" textAlign="Begin" visible="true"/>
+										<m:Text text="" width="3px" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+										<!--<m:Title text="{/Termino}" titleStyle="H3" width="auto" textAlign="Begin" visible="true"/>-->
+										<m:Title text="{headerData>/Termino_data_est} - {headerData>/Termino_time_est}" titleStyle="H4" width="auto" textAlign="Begin"
+											visible="true"/>
+									</m:items>
+									<m:layoutData/>
+								</m:HBox>
+								<!--</m:VBox>-->
+							</layout:content>
+						</layout:Grid>
+					</layout:HorizontalLayout>
+				</uxap:headerContent>
+				<uxap:headerTitle>
+					<!--<m:Panel id="ididid" visible="false">-->
+					<!--<uxap:ObjectPageHeader id="headerhader" objectImageURI="https://imgur.com/X4TkfY2.jpg" objectTitle="  {headerData>/Descricao_navio}" objectImageShape="Circle"-->
+					<!--	objectSubtitle="{i18n>poraoTravel}: {headerData>/Viagemarm} / {i18n>poraoTitle}: {headerData>/Porao_Porao}" headerDesign="Light" isObjectIconAlwaysVisible="false"-->
+					<!--	isObjectTitleAlwaysVisible="false" isObjectSubtitleAlwaysVisible="false" isActionAreaAlwaysVisible="true">-->
+					<uxap:ObjectPageHeader id="headerhader" objectImageURI="https://imgur.com/X4TkfY2.jpg" objectImageShape="Circle" headerDesign="Light"
+						isObjectIconAlwaysVisible="false" isObjectTitleAlwaysVisible="false" isObjectSubtitleAlwaysVisible="false" isActionAreaAlwaysVisible="true" class="upContent">
+						<!--<uxap:ObjectPageHeader objectImageURI="https://imgur.com/X4TkfY2.jpg" objectTitle="Artic Myst" objectImageShape="Circle"-->
+						<!--	objectSubtitle="{i18n>poraoTravel}: {/Viagem} / Porão: {/Porao}" headerDesign="Light" isObjectIconAlwaysVisible="false"-->
+						<!--	isObjectTitleAlwaysVisible="false" isObjectSubtitleAlwaysVisible="false" isActionAreaAlwaysVisible="true">-->
+						<uxap:actions>
+							<core:Icon id="iconProduct" src="sap-icon://product" size="30px" height="48px" width="48px" visible="true"/>
+							<m:Text id="textRemaining" text="{i18n>carrRemainingAmount}:" width="auto" maxLines="1" wrapping="false" textAlign="Begin"
+								textDirection="Inherit"/>
+							<m:Text text="{= ${headerData>/Carga_total} - ${headerData>/Carregados} }" width="auto" maxLines="1" wrapping="false" textAlign="Begin"
+								textDirection="Inherit"/>
+							<m:Text id="textSeparator" text="" width="20px" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+							<core:Icon id="iconUpload" src="sap-icon://upload" size="30px" height="48px" width="48px" visible="true"/>
+							<m:Text id="textShippedAmount" text="{i18n>carrShippedAmount}:" width="auto" maxLines="1" wrapping="false" textAlign="Begin"
+								textDirection="Inherit"/>
+							<m:Text text="{headerData>/Carregados}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+						</uxap:actions>
+					</uxap:ObjectPageHeader>
+				</uxap:headerTitle>
+				<uxap:sections>
+					<uxap:ObjectPageSection showTitle="false" title="Lista" titleUppercase="true" visible="true">
+						<uxap:subSections>
+							<uxap:ObjectPageSubSection title="{i18n>carrTitle}" mode="Expanded">
+								<uxap:blocks>
+									<!--items="{/}"-->
+									<m:Table id="tableViagens" items="{/}" width="100%" fixedLayout="false" noDataText="No data" mode="None" showSeparators="All" growing="true"
+										growingThreshold="20" growingScrollToLoad="false">
+										<m:infoToolbar>
+											<m:Toolbar width="100%" height="auto" design="Auto" visible="false" enabled="true">
+												<m:content>
+													<m:Label text="Label" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit"/>
+													<m:ToolbarSpacer width=""/>
+												</m:content>
+											</m:Toolbar>
+										</m:infoToolbar>
+										<m:headerToolbar>
+											<m:Toolbar width="auto" height="46px" design="Transparent" visible="true" enabled="true">
+												<m:content>
+													<m:Title text="{i18n>carrTravlesCama}" titleStyle="H3" width="auto" textAlign="Begin" visible="true"/>
+													<m:ToolbarSpacer width=""/>
+													<m:Title text="{i18n>carrTravlesPrev}" titleStyle="H5" width="auto" textAlign="Begin" visible="true"/>
+													<m:Button text="" type="Default" icon="sap-icon://sys-prev-page" iconFirst="true" width="auto" enabled="true" visible="true"
+														iconDensityAware="false" press="_onPrevPress"/>
+													<m:Title text="{i18n>carrTravlesNext}" titleStyle="H5" width="auto" textAlign="Begin" visible="true"/>
+													<m:Button text="" type="Default" icon="sap-icon://sys-next-page" iconFirst="true" width="auto" enabled="true" visible="true"
+														iconDensityAware="false" press="_onNextPress"/>
+												</m:content>
+												<m:tooltip/>
+											</m:Toolbar>
+										</m:headerToolbar>
+										<m:columns>
+											<m:Column width="auto" hAlign="Left" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline"
+												mergeDuplicates="false">
+												<m:header>
+													<m:Text text="{i18n>carrCamada}." width="auto" maxLines="1" wrapping="false" textAlign="Center" textDirection="Inherit"/>
+												</m:header>
+												<m:footer/>
+											</m:Column>
+											<m:Column width="auto" hAlign="Left" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline"
+												mergeDuplicates="false">
+												<m:header>
+													<m:Text text="{i18n>carrTableOrder}." width="auto" maxLines="1" wrapping="false" textAlign="Center" textDirection="Inherit"/>
+												</m:header>
+												<m:footer/>
+											</m:Column>
+											<m:Column width="auto" hAlign="Left" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline"
+												mergeDuplicates="false">
+												<m:header>
+													<m:Text text="{i18n>carrTableAmount}." width="auto" maxLines="1" wrapping="false" textAlign="Center" textDirection="Inherit"/>
+												</m:header>
+												<m:footer/>
+											</m:Column>
+											<m:Column width="auto" hAlign="Left" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline"
+												mergeDuplicates="false">
+												<m:header>
+													<m:Text text="{i18n>carrTableType}" width="auto" maxLines="1" wrapping="false" textAlign="Center" textDirection="Inherit"/>
+												</m:header>
+												<m:footer/>
+											</m:Column>
+											<m:Column width="auto" hAlign="Left" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline"
+												mergeDuplicates="false">
+												<m:header>
+													<m:Text text="{i18n>carrTableTotal}" width="auto" maxLines="1" wrapping="false" textAlign="Center" textDirection="Inherit"/>
+												</m:header>
+												<m:footer/>
+											</m:Column>
+											<m:Column width="auto" hAlign="Left" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline"
+												mergeDuplicates="false">
+												<m:header>
+													<m:Text text="{i18n>carrTableStartTime}" width="auto" maxLines="1" wrapping="false" textAlign="Center" textDirection="Inherit"/>
+												</m:header>
+												<m:footer/>
+											</m:Column>
+											<m:Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+												<m:header>
+													<m:Text text="{i18n>carrTableStatus}" width="auto" maxLines="1" wrapping="false" textAlign="Center" textDirection="Inherit"/>
+												</m:header>
+												<m:footer/>
+											</m:Column>
+										</m:columns>
+										<m:items>
+											<m:ColumnListItem>
+												<m:cells>
+													<m:Text text="{Camada}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+													<m:Text text="{OrdCamada}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+													<m:Text text="{ parts: ['Qtd'], formatter: '.formatValue' }" width="auto" maxLines="1" wrapping="false" textAlign="Begin"
+														textDirection="Inherit"/>
+													<m:Text text="{Tipo}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+													<!--<m:Text text="{Placa}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>-->
+													<m:Text text="{Total}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+													<!--<m:Text text="{Auxiliar}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>-->
+													<m:Text text="{HoraInicio}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+													<core:Icon src="{Situacao}" size="20px" height="48px" width="48px" visible="true" press="_onChangeStatusItem"/>
+												</m:cells>
+											</m:ColumnListItem>
+										</m:items>
+									</m:Table>
+								</uxap:blocks>
+								<uxap:moreBlocks/>
+								<uxap:actions/>
+							</uxap:ObjectPageSubSection>
+						</uxap:subSections>
+						<uxap:customAnchorBarButton/>
+					</uxap:ObjectPageSection>
+				</uxap:sections>
+			</uxap:ObjectPageLayout>
+		</m:content>
+		<m:footer>
+			<m:Bar design="Auto">
+				<m:contentRight>
+					<m:Button id="btnRefreshData" text="{i18n>carrRefresh}" type="Emphasized" icon="sap-icon://refresh" iconFirst="true" width="auto" enabled="true" visible="true"
+						iconDensityAware="false" press="_onAtualizaList"/>
+					<m:Button id="btnPlay" text="{i18n>carrPlay}" type="Accept" icon="sap-icon://media-play" iconFirst="true" width="auto" enabled="true"
+						visible="true" iconDensityAware="false" press="_onPlayCarregamento"/>
+					<m:Button id="btnPause" text="{i18n>carrPause}" type="Reject" icon="sap-icon://media-pause" iconFirst="true" width="auto" enabled="true"
+						visible="false" iconDensityAware="false" press="_onStopCarregamento"/>
+				</m:contentRight>
+			</m:Bar>
+		</m:footer>
+	</m:Page>
+</mvc:View>

@@ -1,0 +1,179 @@
+<mvc:View controllerName="Y5GL_REL_FERI2.Y5GL_REL_FERI2.controller.Worklist" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:ch="sap.ui.comp.smartmicrochart" xmlns:cht="sap.suite.ui.microchart" xmlns:semantic="sap.f.semantic" xmlns:table="sap.ui.table"
+	xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+	xmlns:m="sap.m" xmlns:smartField="sap.ui.comp.smartfield" xmlns:la="sap.ui.layout" xmlns:sv="sap.ui.comp.smartvariants"
+	xmlns:smartTable="sap.ui.comp.smarttable" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:l="controls" xmlns:bc="sap.ndc"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	<Page showHeader="false" showSubHeader="false">
+		<smartFilterBar:SmartFilterBar id="smartFilterBar" useToolbar="true" persistencyKey="SmartTablePKey" entitySet="ZET_GLHR_REL_FERI_PERUSet" visible="true" assignedFiltersChanged="onAssignedFiltersChanged">
+			<smartFilterBar:controlConfiguration>
+				<smartFilterBar:ControlConfiguration key="PerBegin" id="idPerBegin" index="0" label="Período Inicial" groupId="_BASIC" width="auto"
+					controlType="date" filterType="single">
+				</smartFilterBar:ControlConfiguration>
+				<smartFilterBar:ControlConfiguration key="PerEnd" id="idPerEnd" index="1" label="Período Final" groupId="_BASIC" width="auto"
+					controlType="date" filterType="single"></smartFilterBar:ControlConfiguration>
+				<smartFilterBar:ControlConfiguration key="Pernr" id="idPernr" index="2" label="Codigo" groupId="_BASIC" width="auto"></smartFilterBar:ControlConfiguration>
+				<smartFilterBar:ControlConfiguration key="StatusOcu" id="idStatusOcu" index="3" label="Estado de ocupación" groupId="_BASIC" width="auto">
+					<smartFilterBar:defaultFilterValues low="3"></smartFilterBar:defaultFilterValues>
+				</smartFilterBar:ControlConfiguration>
+				<smartFilterBar:ControlConfiguration key="Bukrs" id="idBukrs" index="3" label="Sociedad" groupId="_BASIC" width="auto" mandatory="mandatory"></smartFilterBar:ControlConfiguration>
+				<smartFilterBar:ControlConfiguration key="Werks" id="idWerks" label="Div. Personal"  width="auto" visibleInAdvancedArea="true"></smartFilterBar:ControlConfiguration>
+				<smartFilterBar:ControlConfiguration key="Btrtl" id="idBtrl" label="sDiv. Personal"  width="auto" visibleInAdvancedArea="true"></smartFilterBar:ControlConfiguration>
+				<smartFilterBar:ControlConfiguration key="Abkrs" id="idAbkrs" label="Área Nómina"  width="auto" visibleInAdvancedArea="true"></smartFilterBar:ControlConfiguration>
+				<smartFilterBar:ControlConfiguration key="Kostl" id="idKostl" label="Ce. coste"  width="auto" visibleInAdvancedArea="true"></smartFilterBar:ControlConfiguration>
+				<smartFilterBar:ControlConfiguration key="SubGrpEmp" id="idSubGrpEmp" label="Grupo Personal / Area Peronal de empleados" width="auto" visibleInAdvancedArea="true"></smartFilterBar:ControlConfiguration>
+				<smartFilterBar:ControlConfiguration key="FerRealizadas" id="idFerRealizadas"  groupId="_BASIC" width="auto" visible="false"></smartFilterBar:ControlConfiguration>
+				<smartFilterBar:ControlConfiguration key="FerProgApro" id="idFerProgApro"  groupId="_BASIC" width="auto" visible="false"></smartFilterBar:ControlConfiguration>
+				<smartFilterBar:ControlConfiguration key="FerAberto" id="idFerAberto"  groupId="_BASIC" width="auto" visible="false"></smartFilterBar:ControlConfiguration>
+				<smartFilterBar:ControlConfiguration key="PeriAquiPerd" id="idPeriAquiPerd"  groupId="_BASIC" width="auto" visible="false"></smartFilterBar:ControlConfiguration>
+				<smartFilterBar:ControlConfiguration key="NotVencProgFeriComp" id="idNotVencProgFeriComp"  groupId="_BASIC" width="auto" visible="false"></smartFilterBar:ControlConfiguration>
+			</smartFilterBar:controlConfiguration>
+		</smartFilterBar:SmartFilterBar>
+		<VBox>
+			<CheckBox id="idFerRel" text="Vacaciones tomadas" selected="true"/>
+			<CheckBox id="idFerProg" text="Vacaciones programados / aprobados" selected="true"/>
+			<CheckBox id="idFerAber" text="Vacaciones en abierto" selected="true"/>
+			<CheckBox id="idPerAqui" text="Período de adquisición perdido" selected="true"/>
+			<CheckBox id="idNotVenc" text="Notificar vencimiento y programar feriados de manera obligatoria" selected="false" visible="false"/>
+		</VBox>
+		<smartTable:SmartTable id="smartTable" entitySet="ZET_GLHR_REL_FERI_PERUSet" smartFilterId="smartFilterBar" tableType="ResponsiveTable"
+			useExportToExcel="true" useVariantManagement="true" useTablePersonalisation="true" header="Histórico" showRowCount="true"
+			ignoreFromPersonalisation="Periodo,StatusOcu,Btrtl,Abkrs,Kostl,SubGrpEmp,FerRealizadas,FerProgApro,FerAberto,PeriAquiPerd,NotVencProgFeriComp,MailFunc,MailGest,MailRh,Numbr,Msg,Pg131,PerEnd,PerBegin,Subty,Stltx"
+			persistencyKey="SmartTableRefApp_Explored" enableAutoBinding="false" app:useSmartField="true" class="sapUiResponsiveContentPadding"
+			showFullScreenButton="true" initiallyVisibleFields="Pernr,Bukrs,Butxt,Werks,Name1,Ename,Begda,Endda,Desta,Deend"
+			beforeRebindTable="onbeforeRebindTable">
+			<table:Table selectionMode="None" id="table" enableBusyIndicator="true" busyIndicatorDelay="100" alternateRowColors="true" threshold="999"
+				visibleRowCount="20">
+				<table:Column width="100px">
+					<m:Label text="Codigo"/>
+					<table:template>
+						<m:Text text="{Pernr}"/>
+					</table:template>
+					<table:customData>
+						<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;Pernr&quot;, &quot;leadingProperty&quot;: &quot;Pernr&quot;}"/>
+					</table:customData>
+				</table:Column>
+				<table:Column width="100px">
+					<m:Label text="Sociedad"/>
+					<table:template>
+						<m:Text text="{Bukrs}"/>
+					</table:template>
+					<table:customData>
+						<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;Bukrs&quot;, &quot;leadingProperty&quot;: &quot;Bukrs&quot;}"/>
+					</table:customData>
+				</table:Column>
+				<table:Column width="200px">
+					<m:Label text="Nombre de la Sociedad"/>
+					<table:template>
+						<m:Text text="{Butxt}"/>
+					</table:template>
+					<table:customData>
+						<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;Butxt&quot;, &quot;leadingProperty&quot;: &quot;Butxt&quot;}"/>
+					</table:customData>
+				</table:Column>
+				<table:Column width="100px">
+					<m:Label text="Div. Personal"/>
+					<table:template>
+						<m:Text text="{Werks}"/>
+					</table:template>
+					<table:customData>
+						<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;Werks&quot;, &quot;leadingProperty&quot;: &quot;Werks&quot;}"/>
+					</table:customData>
+				</table:Column>
+				<table:Column width="200px">
+					<m:Label text="Nombre de Div. personal"/>
+					<table:template>
+						<m:Text text="{Name1}"/>
+					</table:template>
+					<table:customData>
+						<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;Name1&quot;, &quot;leadingProperty&quot;: &quot;Name1&quot;}"/>
+					</table:customData>
+				</table:Column>
+				<table:Column width="200px">
+					<m:Label text="Nombre del colaborador"/>
+					<table:template>
+						<m:Text text="{Ename}"/>
+					</table:template>
+					<table:customData>
+						<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;Ename&quot;,&quot;leadingProperty&quot;: &quot;Ename&quot;}"/>
+					</table:customData>
+				</table:Column>
+				<table:Column width="100px">
+					<m:Label text="Início Per. Aquisitivo"/>
+					<table:template>
+						<m:Text text="{Begda}"/>
+					</table:template>
+					<table:customData>
+						<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;Begda&quot;, &quot;leadingProperty&quot;: &quot;Begda&quot;}"/>
+					</table:customData>
+				</table:Column>
+				<table:Column width="100px">
+					<m:Label text="Fin per. Adquisitivo"/>
+					<table:template>
+						<m:Text text="{Endda}"/>
+					</table:template>
+					<table:customData>
+						<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;Endda&quot;, &quot;leadingProperty&quot;: &quot;Endda&quot;}"/>
+					</table:customData>
+				</table:Column>
+				<table:Column width="100px">
+					<m:Label text="Inicio Per. Deducción"/>
+					<table:template>
+						<m:Text text="{Desta}"/>
+					</table:template>
+					<table:customData>
+						<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;Desta&quot;, &quot;leadingProperty&quot;: &quot;Desta&quot;}"/>
+					</table:customData>
+				</table:Column>
+				<table:Column width="100px">
+					<m:Label text="Fin Per. Deducción"/>
+					<table:template>
+						<m:Text text="{Deend}"/>
+					</table:template>
+					<table:customData>
+						<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;Deend&quot;, &quot;leadingProperty&quot;: &quot;Deend&quot;}"/>
+					</table:customData>
+				</table:Column>
+				<table:Column width="100px">
+					<m:Label text="Plazo de 20 días"/>
+					<table:template>
+						<m:Text text="{Dt120}"/>
+					</table:template>
+					<table:customData>
+						<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;Dt120&quot;, &quot;leadingProperty&quot;: &quot;Dt120&quot;}"/>
+					</table:customData>
+				</table:Column>
+				<table:Column width="100px">
+					<m:Label text="Plazo de 30 días"/>
+					<table:template>
+						<m:Text text="{Dt130}"/>
+					</table:template>
+					<table:customData>
+						<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;Dt130&quot;, &quot;leadingProperty&quot;: &quot;Dt130&quot;}"/>
+					</table:customData>
+				</table:Column>
+				<table:Column width="100px">
+					<m:Label text="Plazo de 60 días"/>
+					<table:template>
+						<m:Text text="{Dt160}"/>
+					</table:template>
+					<table:customData>
+						<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;Dt160&quot;, &quot;leadingProperty&quot;: &quot;Dt160&quot;}"/>
+					</table:customData>
+				</table:Column>
+				<table:Column width="100px">
+					<m:Label text="Plazo de 90 días"/>
+					<table:template>
+						<m:Text text="{Dt190}"/>
+					</table:template>
+					<table:customData>
+						<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;Dt190&quot;, &quot;leadingProperty&quot;: &quot;Dt190&quot;}"/>
+					</table:customData>
+				</table:Column>
+			</table:Table>
+			<smartTable:layoutData>
+				<m:FlexItemData growFactor="1" baseSize="0%"/>
+			</smartTable:layoutData>
+		</smartTable:SmartTable>
+	</Page>
+</mvc:View>

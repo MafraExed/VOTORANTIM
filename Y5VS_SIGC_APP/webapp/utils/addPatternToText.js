@@ -1,0 +1,1 @@
+"use strict";sap.ui.define([],function(){return function(n,t){if(n.length<t&&n.length+2<=t){return["*",n,"*"].join("")}if(n.length<t&&n.length+1===t){return[n,"*"].join("")}return n}});

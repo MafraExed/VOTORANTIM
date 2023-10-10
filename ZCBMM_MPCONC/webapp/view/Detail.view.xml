@@ -1,0 +1,80 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:m="sap.m"
+	xmlns:smartFilterBar="sap.ui.comp.smartfilterbar" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:smartTable="sap.ui.comp.smarttable"
+	xmlns:table="sap.ui.table" xmlns:f="sap.ui.layout.form" xmlns:l="controls" xmlns:semantic="sap.f.semantic"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" controllerName="ZCBMM_MPCONC.ZCBMM_MPCONC.controller.Detail"
+	width="100%" height="100%">
+	<semantic:SemanticPage id="detailPage" busy="{detailView>/busy}" busyIndicatorDelay="{detailView>/delay}">
+		<semantic:titleHeading>
+			<Title text="Relatório de Aprovação - Mapa de concorrêcia"/>
+		</semantic:titleHeading>
+		<semantic:headerContent>
+			<ObjectAttribute text="Solicitação: {IdSolicitacao}"/>
+			<ObjectAttribute text="Centro: {WerksO}"/>
+			<ObjectAttribute text="Observação: {Observacao}"/>
+		</semantic:headerContent>
+		<semantic:content>
+			<IconTabBar id="iconTabBar" class="sapUiResponsiveContentPadding" selectedKey="Tab" select="onSelectFilter">
+				<items>
+					<IconTabFilter key="0" id="TabFilterResumo" text="Resumo" icon="sap-icon://compare" visible="true">
+						<Input value="{IdSolicitacao}" id="IdIdSolicitacao" editable="false" visible="false"/>
+						<Input value="{WerksO}" id="IdWerksO" editable="false" visible="false"/>
+						<smartTable:SmartTable id="smartTable" entitySet="ZET_CBMM_CF_VEICONDSet" useExportToExcel="false"
+							useVariantManagement="false" useTablePersonalisation="false" tableType="ResponsiveTable" showRowCount="true" beforeExport="VerificaExcel"
+							initiallyVisibleFields="IntDescr,Desctransp,Tpveiculo,VlrNegoc,Vigencia,Volume,DataBase,PrazoPag,Incoterm" showFullScreenButton="false"
+							enableAutoBinding="false" beforeRebindTable="atualizaTabela" class="sapUiResponsiveContentPadding" persistencyKey="SmartTableRefApp_Explored"
+							app:useSmartField="true">
+							<smartTable:layoutData>
+								<FlexItemData growFactor="1" baseSize="0%"/>
+							</smartTable:layoutData>
+						</smartTable:SmartTable>
+					</IconTabFilter>
+					<IconTabFilter key="0" id="TabFilterResultado" text="Resultado" icon="sap-icon://compare-2" visible="true">
+						<Label text="Justificativa:" labelFor="IdJustif"/>
+						<TextArea value="" id="IdJustif" editable="false" visible="true" rows="8" width="100%"/>
+						<smartTable:SmartTable id="smartTable2" entitySet="ZET_CBMM_CF_VEICONDSet" useExportToExcel="false"
+							useVariantManagement="false" useTablePersonalisation="true" tableType="ResponsiveTable" showRowCount="true" beforeExport="VerificaExcel"
+							initiallyVisibleFields="IntDescr,Tpveiculo,VlrNegoc,FretePedag,Orcamento,Performance,VarPrecos,Saving,Tco"
+							showFullScreenButton="false" enableAutoBinding="false" beforeRebindTable="atualizaTabela2" class="sapUiResponsiveContentPadding"
+							persistencyKey="SmartTableRefApp_Explored" app:useSmartField="true">
+							<smartTable:layoutData>
+								<FlexItemData growFactor="1" baseSize="0%"/>
+							</smartTable:layoutData>
+						</smartTable:SmartTable>
+					</IconTabFilter>
+					<IconTabFilter key="0" id="TabFilterMapa" text="Mapa" icon="sap-icon://decision" visible="true">
+						<smartTable:SmartTable id="smartTable3" entitySet="ZET_CBMM_CF_VEICONDSet" useExportToExcel="false"
+							useVariantManagement="false" useTablePersonalisation="false" tableType="ResponsiveTable" showRowCount="true" beforeExport="VerificaExcel"
+							initiallyVisibleFields="IntDescr,Desctransp,Tpveiculo,AproTec,HabQuali,VlrNegoc,Saving,VlrProp,Volume" showFullScreenButton="false"
+							enableAutoBinding="false" beforeRebindTable="atualizaTabela3" class="sapUiResponsiveContentPadding"
+							persistencyKey="SmartTableRefApp_Explored" app:useSmartField="true" requestAtLeastFields="Vencedor">
+							<table:Table id="table" enableBusyIndicator="true" busyIndicatorDelay="100">
+								<table:rowSettingsTemplate>
+									<table:RowSettings highlight="{= ${Vencedor} === 'X' ? 'Success' :'None' }"/>
+								</table:rowSettingsTemplate>
+							</table:Table>
+							<smartTable:layoutData>
+								<FlexItemData growFactor="1" baseSize="0%"/>
+							</smartTable:layoutData>
+						</smartTable:SmartTable>
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+		</semantic:content>
+		<semantic:titleCustomTextActions>
+			<Button text="Aprovar" icon="sap-icon://accept" press="onAprovar"/>
+			<Button text="Reprovar" icon="sap-icon://decline" press="onReprov"/>
+			<Button text="Imprimir PDF" icon="sap-icon://pdf-reader" press="onImprime"/>
+		</semantic:titleCustomTextActions>
+		<semantic:closeAction>
+			<semantic:CloseAction id="closeColumn" press="onCloseDetailPress"/>
+		</semantic:closeAction>
+		<semantic:fullScreenAction>
+			<semantic:FullScreenAction id="enterFullScreen"
+				visible="{= !${device>/system/phone} &amp;&amp; !${appView>/actionButtonsInfo/midColumn/fullScreen}}" press="toggleFullScreen"/>
+		</semantic:fullScreenAction>
+		<semantic:exitFullScreenAction>
+			<semantic:ExitFullScreenAction id="exitFullScreen"
+				visible="{= !${device>/system/phone} &amp;&amp; ${appView>/actionButtonsInfo/midColumn/fullScreen}}" press="toggleFullScreen"/>
+		</semantic:exitFullScreenAction>
+	</semantic:SemanticPage>
+</mvc:View>

@@ -1,0 +1,55 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Measures.V1.xml">
+		<edmx:Include Alias="MEASURES" Namespace="Org.OData.Measures.V1" />
+	</edmx:Reference>
+	<edmx:Reference Uri="https://mydomain.com/catalogService/common/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+		<edmx:Include Alias="COMMON" Namespace="com.sap.vocabularies.Common.v1" />
+	</edmx:Reference>
+		<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZGWVCFI_PAINEL_NEGOCIACAO_SRV" xml:lang="pt" sap:schema-version="1">
+			<EntityType Name="ZET_VCFI_DOCUMENTO_CONT" sap:content-version="1">
+				<Key><PropertyRef Name="Bukrs"/><PropertyRef Name="Belnr"/><PropertyRef Name="Gjahr"/></Key><Property Name="Bukrs" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Empresa" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false"/><Property Name="Belnr" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Nº documento" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false"/><Property Name="Gjahr" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Exercício" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false"/><Property Name="Blart" Type="Edm.String" MaxLength="2" sap:unicode="false" sap:label="Tp.doc." sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Bldat" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Data documento" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false"/><Property Name="Budat" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Data lçto." sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Monat" Type="Edm.String" MaxLength="2" sap:unicode="false" sap:label="Período" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Cpudt" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Entrado em" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Cputm" Type="Edm.Time" Precision="0" sap:unicode="false" sap:label="Hora registro" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Aedat" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Modificado em" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Upddt" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Últ.atualização" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Wwert" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Data conversão" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Usnam" Type="Edm.String" MaxLength="12" sap:unicode="false" sap:label="Nome do usuário" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Tcode" Type="Edm.String" MaxLength="20" sap:unicode="false" sap:label="Código transação" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Bvorg" Type="Edm.String" MaxLength="16" sap:unicode="false" sap:label="Nº interempr." sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Xblnr" Type="Edm.String" MaxLength="16" sap:unicode="false" sap:label="Referência" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Dbblg" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="Doc.lançto.per." sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Stblg" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="Estorno com" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="ZET_VCFI_ITEM_DOC_CONT" sap:content-version="1">
+				<Key><PropertyRef Name="Bukrs"/><PropertyRef Name="Belnr"/><PropertyRef Name="Gjahr"/><PropertyRef Name="Buzei"/></Key><Property Name="Bukrs" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Empresa" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false"/><Property Name="Belnr" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Nº documento" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false"/><Property Name="Gjahr" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Exercício" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false"/><Property Name="Buzei" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Item" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Buzid" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="ID-linha lçto." sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Augdt" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Compensação" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Augcp" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Dt.compens." sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Augbl" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="DocCompens" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Bschl" Type="Edm.String" MaxLength="2" sap:unicode="false" sap:label="Chv.lançamento" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Koart" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="Tipo conta" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Umskz" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="Código RzE" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Umsks" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="Classe operação" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Zumsk" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="Cd.RzE destinaç" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Shkzg" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="Débito/Crédito" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Gsber" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:label="Divisão" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Pargb" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:label="Div.parceiro" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Mwskz" Type="Edm.String" MaxLength="2" sap:unicode="false" sap:label="Cód.imposto" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Qsskz" Type="Edm.String" MaxLength="2" sap:unicode="false" sap:label="Código IRF" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityContainer Name="ZGWVCFI_PAINEL_NEGOCIACAO_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx"><EntitySet Name="ZET_VCFI_DOCUMENTO_CONTSet" EntityType="ZGWVCFI_PAINEL_NEGOCIACAO_SRV.ZET_VCFI_DOCUMENTO_CONT" sap:creatable="false"
+				sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="ZET_VCFI_TIT_COBRARSet" EntityType="ZGWVCFI_PAINEL_NEGOCIACAO_SRV.ZET_VCFI_ITEM_DOC_CONT" sap:creatable="false"
+				sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/></EntityContainer><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/ZGWVCFI_PAINEL_NEGOCIACAO_SRV/$metadata"/><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/ZGWVCFI_PAINEL_NEGOCIACAO_SRV/$metadata"/></Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

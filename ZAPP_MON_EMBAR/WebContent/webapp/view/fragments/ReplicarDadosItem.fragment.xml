@@ -1,0 +1,163 @@
+<core:FragmentDefinition
+  xmlns="sap.m"
+  xmlns:f="sap.ui.layout.form"
+  xmlns:layout="sap.ui.layout"
+  xmlns:core="sap.ui.core">
+  <Dialog
+    title='{i18n>DuplicateItemTitle}'
+    type='Message'
+    stretchOnPhone="true"
+    draggable="true"
+    contentWidth="65%">
+    <content>
+       <VBox class="sapUiSmallMargin"> 
+         <f:Form editable="true" ariaLabelledBy="Title1"> 
+           <f:layout> 
+             <f:ResponsiveGridLayout  
+             	labelSpanXL="4" 
+ 					labelSpanL="3" 
+ 					labelSpanM="4" 
+ 					labelSpanS="12" 
+ 					adjustLabelSpan="false" 
+ 					emptySpanXL="0" 
+ 					emptySpanL="4" 
+ 					emptySpanM="0" 
+ 					emptySpanS="0" 
+ 					columnsXL="1" 
+ 					columnsL="1" 
+ 					columnsM="1" 
+ 					singleContainerFullSize="false" /> 
+           </f:layout> 
+           <f:formContainers> 
+             <f:FormContainer> 
+               <f:formElements> 
+
+                             
+                 <f:FormElement label="{i18n>addItemInco1}"> 
+                   <!--  <f:fields> 
+                   	<Input 
+                       id="ReplicarFieldInco1" 
+                       tooltip="{i18n>addItemInco1}"  
+                       value="{replicarItem>/Inco1}" 
+                       maxLength="3" 
+                       width="4rem" 
+                       required="true" 
+                       showValueHelp="true"  
+                       valueHelpRequest="onHandleF4Incoterms" 
+                       submit="onHandleSubmitIncoterms"> 
+                       <layoutData> 
+                             <layout:GridData span="L2 M2 S8" /> 
+                       </layoutData> 
+                     </Input> 
+                     <Text id="ReplicarFieldBezei" text="{replicarItem>/Bezei}"></Text>  
+                   </f:fields>  -->
+                   
+                   
+                    <layout:HorizontalLayout>
+                  	<Input
+                      id="ReplicarFieldInco1"
+                      class="addItemDocrefClass"
+                      tooltip="{i18n>addItemInco1}"  
+                      value="{replicarItem>/Inco1}" 
+                      maxLength="3" 
+                      width="4rem" 
+                    
+                      showValueHelp="true"  
+                      valueHelpRequest="onHandleF4Incoterms" 
+                      submit="onHandleSubmitIncoterms"/> 
+                                            
+                    <Input
+                      id="ReplicarFieldInco2"
+                      value="{replicarItem>/Inco2}"
+                      maxLength="20"
+                      width="10rem"/>
+                     
+                    </layout:HorizontalLayout>
+                   
+                   
+                 </f:FormElement> 
+                	
+ 				 <f:FormElement label="{i18n>addItemZterm}"> 
+                   <f:fields> 
+                   <Input  
+                   	  id="ReplicarFieldZterm"  
+                       tooltip="{i18n>addItemZterm}"  
+                       value="{replicarItem>/Zterm}" 
+                       maxLength="4" 
+                       width="6rem" 
+                      
+                       showValueHelp="true"  
+                       valueHelpRequest="onHandleF4Zterm" 
+                       submit="onHandleSubmitZterm"> 
+                       <layoutData> 
+                             <layout:GridData span="L2 M2 S8" /> 
+                       </layoutData> 
+                     </Input> 
+                     <Text id="ReplicarFieldZtermDsc" text="{replicarItem>/ZtermDsc}" class="textfields"></Text>  
+                   </f:fields> 
+                 </f:FormElement> 
+                
+                
+                 	<f:FormElement label="{i18n>addItemCeMercante}"> 
+                   <f:fields> 
+                     <Input 
+                       id="ReplicarCeMercante" 
+                   	  tooltip="{i18n>addItemCeMercante}" 
+                       value="{replicarItem>/CeMercante}" 
+                       maxLength="20" 
+                       width="12rem" 
+                       /> 
+                   </f:fields> 
+                 </f:FormElement> 
+                
+                
+ 				<f:FormElement label="{i18n>addItemNumeroRe}"> 
+                   <f:fields> 
+                   	<Input 
+                       id="ReplicarNumeroRe" 
+                       tooltip="{i18n>addItemNumeroRe}"  
+                       value="{replicarItem>/Renum}" 
+                       maxLength="14" 
+                       width="10rem"/> 
+                   </f:fields> 
+                 </f:FormElement> 
+
+    		        <f:FormElement label="{i18n>addItemMarks}"> 
+                   <f:fields> 
+                   	<Input 
+                       id="ReplicarMarks" 
+                       tooltip="{i18n>addItemMarks}"  
+                       value="{replicarItem>/Marks}" 
+                       maxLength="50" 
+                       width="26rem"/> 
+                   </f:fields> 
+                 </f:FormElement> 
+                      
+               </f:formElements> 
+             </f:FormContainer> 
+           </f:formContainers> 
+         </f:Form> 
+       </VBox> 
+   
+   
+   
+    </content>
+    <buttons>
+	    <Button 
+	    	id="ReplicarItemButtonMsg" 
+	    	tooltip="{i18n>messageLogProcessamento}"
+	    	text="{messagePopOver>/count}" 
+	    	type="Emphasized" 
+	    	icon="sap-icon://message-popup" 
+	    	press="onHandleMessagePopover"/>
+	    <Button 
+	    	tooltip="{i18n>ReplicarTooltipButtonSave}" 
+	       	icon="sap-icon://save" 
+	    	press="onHandleSaveReplicarDadosItem"/>
+	    <Button 
+	    	tooltip="{i18n>ReplicarTooltipButtonCancel}" 
+	    	icon="sap-icon://sys-cancel" 
+	    	press="onHanleCloseReplicarDadosItem"/>
+    </buttons>
+  </Dialog>
+</core:FragmentDefinition>

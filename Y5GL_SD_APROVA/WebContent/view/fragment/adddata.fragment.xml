@@ -1,0 +1,387 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form">
+	<VBox>
+		<f:Form 
+			editable="false">
+			<f:layout>
+				<f:ResponsiveGridLayout
+					labelSpanXL="4"
+					labelSpanL="3"
+					labelSpanM="4"
+					labelSpanS="12"
+					adjustLabelSpan="false"
+					emptySpanXL="0"
+					emptySpanL="4"
+					emptySpanM="0"
+					emptySpanS="0"
+					columnsXL="1"
+					columnsL="1"
+					columnsM="1"
+					singleContainerFullSize="false" />
+			</f:layout>			
+			<f:formContainers>
+				<f:FormContainer>
+					<f:formElements>
+						<f:FormElement>
+							<Table inset="false"
+							items="{ path: 'KPIView>/Traco' }">
+								<headerToolbar>
+									<Toolbar>
+										<Title text="{i18n>TitleTraco}"/>
+									</Toolbar>
+								</headerToolbar>							
+								<columns>
+									<Column demandPopin="true">
+										<Text text="{i18n>ColumnFilial}"/>
+									</Column>
+									<Column minScreenWidth="Tablet" demandPopin="true">
+										<Text text="{i18n>ColumnTraco}"/>
+									</Column>
+									<Column minScreenWidth="Tablet" demandPopin="true">
+										<Text text="{i18n>ColumnPrecoNegociado}"/>
+									</Column>
+									<Column minScreenWidth="Tablet" demandPopin="true">
+										<Text text="{i18n>ColumnVolume}"/>
+									</Column>
+									<Column minScreenWidth="Tablet" demandPopin="true">
+										<Text text="{i18n>ColumnMargemLivre}"/>
+									</Column>
+									<Column minScreenWidth="Tablet" demandPopin="true">
+										<Text text="{i18n>ColumnDesconto}"/>
+									</Column>
+									<Column minScreenWidth="Tablet" demandPopin="true">
+										<Text text="{i18n>ColumnPrecoRegra}"/>
+									</Column>
+								</columns>		
+								<items>
+									<ColumnListItem vAlign="Middle">
+										<cells>
+											<Text text="{KPIView>Filial}"/>
+											<Text text="{KPIView>Traco}"/>
+											<Text text="{KPIView>PrecoNegociado}"/>
+											<Text text="{KPIView>Volume}"/>
+											<Text text="{KPIView>MargemLivre}"/>
+											<Text text="{KPIView>Desconto}"/>
+											<Text text="{KPIView>PrecoRegra}"/>
+										</cells>
+									</ColumnListItem>
+								</items>									
+							</Table>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+			</f:formContainers>			
+		</f:Form>
+		<f:Form 
+			editable="false">
+			<f:layout>
+				<f:ResponsiveGridLayout
+					labelSpanXL="4"
+					labelSpanL="3"
+					labelSpanM="4"
+					labelSpanS="12"
+					adjustLabelSpan="false"
+					emptySpanXL="0"
+					emptySpanL="4"
+					emptySpanM="0"
+					emptySpanS="0"
+					columnsXL="1"
+					columnsL="1"
+					columnsM="1"
+					singleContainerFullSize="false" />
+			</f:layout>			
+			<f:formContainers>
+				<f:FormContainer>
+					<f:formElements>
+						<f:FormElement>
+							<Table inset="false"
+							items="{ path: 'KPIView>/Bomba' }">
+								<headerToolbar>
+									<Toolbar>
+										<Title text="{i18n>TitleBomba}"/>
+									</Toolbar>
+								</headerToolbar>														
+								<columns>
+									<Column demandPopin="true">
+										<Text text="{i18n>ColumnFilial}"/>
+									</Column>
+									<Column minScreenWidth="Tablet" demandPopin="true">
+										<Text text="{i18n>ColumnBomba}"/>
+									</Column>
+									<Column minScreenWidth="Tablet" demandPopin="true">
+										<Text text="{i18n>ColumnPrecoNegociado}"/>
+									</Column>
+									<Column minScreenWidth="Tablet" demandPopin="true">
+										<Text text="{i18n>ColumnVolume}"/>
+									</Column>
+									<Column minScreenWidth="Tablet" demandPopin="true">
+										<Text text="{i18n>ColumnMargemLivre}"/>
+									</Column>
+									<Column minScreenWidth="Tablet" demandPopin="true">
+										<Text text="{i18n>ColumnDesconto}"/>
+									</Column>
+									<Column minScreenWidth="Tablet" demandPopin="true">
+										<Text text="{i18n>ColumnPrecoRegra}"/>
+									</Column>
+								</columns>		
+								<items>
+									<ColumnListItem vAlign="Middle">
+										<cells>
+											<Text text="{KPIView>Filial}"/>
+											<Text text="{KPIView>Bomba}"/>
+											<Text text="{KPIView>PrecoNegociado}"/>
+											<Text text="{KPIView>Volume}"/>
+											<Text text="{KPIView>MargemLivre}"/>
+											<Text text="{KPIView>Desconto}"/>
+											<Text text="{KPIView>PrecoRegra}"/>
+										</cells>
+									</ColumnListItem>
+								</items>									
+							</Table>
+						</f:FormElement>
+					</f:formElements>					
+				</f:FormContainer>
+			</f:formContainers>			
+		</f:Form>		
+		<f:Form 
+			editable="false">
+			<f:layout>
+				<f:ResponsiveGridLayout
+					labelSpanXL="4"
+					labelSpanL="3"
+					labelSpanM="4"
+					labelSpanS="12"
+					adjustLabelSpan="false"
+					emptySpanXL="0"
+					emptySpanL="4"
+					emptySpanM="0"
+					emptySpanS="0"
+					columnsXL="2"
+					columnsL="2"
+					columnsM="1"
+					singleContainerFullSize="false" />
+			</f:layout>			
+			<f:formContainers>
+				<f:FormContainer>
+					<f:formElements>
+						<f:FormElement>
+							<Table inset="false"
+							items="{ path: 'KPIView>/Adicionais' }">
+								<headerToolbar>
+									<Toolbar>
+										<Title text="{i18n>TitleAddtn}"/>
+									</Toolbar>
+								</headerToolbar>						
+								<columns>
+									<Column demandPopin="true">
+										<Text text="{i18n>ColumnAdicional01}"/>
+									</Column>
+									<Column minScreenWidth="Tablet" demandPopin="true">
+										<Text text="{i18n>ColumnRegraNegocio}"/>
+									</Column>
+									<Column minScreenWidth="Tablet" demandPopin="true">
+										<Text text="{i18n>ColumnProposta}"/>
+									</Column>
+								</columns>		
+								<items>
+									<ColumnListItem vAlign="Middle">
+										<cells>
+											<Text text="{KPIView>Adicional}"/>
+											<Text text="{KPIView>Regra}"/>
+											<Text text="{KPIView>Proposta}"/>
+										</cells>
+									</ColumnListItem>
+								</items>									
+							</Table>
+						</f:FormElement>
+					</f:formElements>						
+				</f:FormContainer>					
+			</f:formContainers>			
+		</f:Form>				
+		<f:Form 
+			editable="false">
+			<f:layout>
+				<f:ResponsiveGridLayout
+					labelSpanXL="4"
+					labelSpanL="3"
+					labelSpanM="4"
+					labelSpanS="12"
+					adjustLabelSpan="false"
+					emptySpanXL="0"
+					emptySpanL="4"
+					emptySpanM="0"
+					emptySpanS="0"
+					columnsXL="3"
+					columnsL="2"
+					columnsM="2"
+					singleContainerFullSize="false" />
+			</f:layout>			
+			<f:formContainers>
+				<f:FormContainer>
+					<f:formElements>	
+						<f:FormElement>
+							<Table inset="false"
+							items="{ path: 'KPIView>/Acrescimo' }">
+								<headerToolbar>
+									<Toolbar>
+										<Title text="{i18n>TitleAcrsc}"/>
+									</Toolbar>
+								</headerToolbar>							
+								<columns>
+									<Column demandPopin="true">
+										<Text text="{i18n>ColumnAcrescimo}"/>
+									</Column>
+									<Column minScreenWidth="Tablet" demandPopin="true">
+										<Text text="{i18n>ColumnPercentual}"/>
+									</Column>
+								</columns>		
+								<items>
+									<ColumnListItem vAlign="Middle">
+										<cells>
+											<Text text="{KPIView>Margem}"/>
+											<Text text="{KPIView>Percentual}"/>
+										</cells>
+									</ColumnListItem>
+								</items>									
+							</Table>
+						</f:FormElement>												
+					</f:formElements>						
+				</f:FormContainer>		
+				<f:FormContainer>
+					<f:formElements>	
+						<f:FormElement>
+							<Table inset="false"
+							items="{ path: 'KPIView>/Margem' }">
+								<headerToolbar>
+									<Toolbar>
+										<Title text="{i18n>TitleMargm}"/>
+									</Toolbar>
+								</headerToolbar>							
+								<columns>
+									<Column demandPopin="true">
+										<Text text="{i18n>ColumnMargem}"/>
+									</Column>
+									<Column minScreenWidth="Tablet" demandPopin="true">
+										<Text text="{i18n>ColumnValor}"/>
+									</Column>
+								</columns>		
+								<items>
+									<ColumnListItem vAlign="Middle">
+										<cells>
+											<Text text="{KPIView>Margem}"/>
+											<Text text="{KPIView>Valor}"/>
+										</cells>
+									</ColumnListItem>
+								</items>									
+							</Table>
+						</f:FormElement>												
+					</f:formElements>					
+				</f:FormContainer>
+			</f:formContainers>			
+		</f:Form>
+		<f:Form 
+			editable="false">
+			<f:layout>
+				<f:ResponsiveGridLayout
+					labelSpanXL="4"
+					labelSpanL="3"
+					labelSpanM="4"
+					labelSpanS="12"
+					adjustLabelSpan="false"
+					emptySpanXL="0"
+					emptySpanL="4"
+					emptySpanM="0"
+					emptySpanS="0"
+					columnsXL="3"
+					columnsL="2"
+					columnsM="2"
+					singleContainerFullSize="false" />
+			</f:layout>			
+			<f:formContainers>
+				<f:FormContainer>
+					<f:formElements>	
+						<f:FormElement>
+							<Table inset="false"
+							items="{ path: 'KPIView>/Recomendacao' }">
+								<headerToolbar>
+									<Toolbar>
+										<Title text="{i18n>TitleRecmd}"/>
+									</Toolbar>
+								</headerToolbar>							
+								<columns>
+									<Column demandPopin="true">
+										<Text text="{i18n>ColumnRecomendacao}"/>
+									</Column>
+								</columns>		
+								<items>
+									<ColumnListItem vAlign="Middle">
+										<cells>
+											<Text text="{KPIView>Recomendacao}"/>
+										</cells>
+									</ColumnListItem>
+								</items>									
+							</Table>
+						</f:FormElement>												
+					</f:formElements>						
+				</f:FormContainer>		
+				<f:FormContainer>
+					<f:formElements>	
+						<f:FormElement>
+							<Table inset="false"
+							items="{ path: 'KPIView>/Familia' }">
+								<headerToolbar>
+									<Toolbar>
+										<Title text="{i18n>TitleGestn}"/>
+									</Toolbar>
+								</headerToolbar>							
+								<columns>
+									<Column demandPopin="true">
+										<Text text="{i18n>ColumnFamilia}"/>
+									</Column>
+									<Column minScreenWidth="Tablet" demandPopin="true">
+										<Text text="{i18n>ColumnDesconto}"/>
+									</Column>
+								</columns>		
+								<items>
+									<ColumnListItem vAlign="Middle">
+										<cells>
+											<Text text="{KPIView>Familia}"/>
+											<Text text="{KPIView>Percentual}"/>
+										</cells>
+									</ColumnListItem>
+								</items>									
+							</Table>
+						</f:FormElement>												
+					</f:formElements>					
+				</f:FormContainer>
+				<f:FormContainer>
+					<f:formElements>	
+						<f:FormElement>
+							<Table inset="false"
+							items="{ path: 'KPIView>/RecomendacaoBomba' }">
+								<headerToolbar>
+									<Toolbar>
+										<Title text="{i18n>TitleRecmdBomba}"/>
+									</Toolbar>
+								</headerToolbar>							
+								<columns>
+									<Column demandPopin="true">
+										<Text text="{i18n>ColumnRecomendacao}"/>
+									</Column>
+								</columns>		
+								<items>
+									<ColumnListItem vAlign="Middle">
+										<cells>
+											<Text text="{KPIView>Recomendacao}"/>
+										</cells>
+									</ColumnListItem>
+								</items>									
+							</Table>
+						</f:FormElement>												
+					</f:formElements>						
+				</f:FormContainer>				
+			</f:formContainers>			
+		</f:Form>								
+	</VBox>
+</core:FragmentDefinition>	

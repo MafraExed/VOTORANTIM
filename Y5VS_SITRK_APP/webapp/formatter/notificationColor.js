@@ -1,0 +1,1 @@
+"use strict";sap.ui.define([],function(){return function(){var n=arguments.length>0&&arguments[0]!==undefined?arguments[0]:"";var e={E:"#ff0000",I:"#008a3b"};return e["".concat(n)]||"#008a3b"}});

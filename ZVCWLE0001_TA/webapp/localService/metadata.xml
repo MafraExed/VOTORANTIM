@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZGWVCLE_TERMO_SRV" xml:lang="pt" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="ZET_VCLE_DADOSCLIENTE" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="nome"/>
+                    <PropertyRef Name="cpf"/>
+                    <PropertyRef Name="token"/>
+                </Key>
+                <Property Name="nome" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="cpf" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="token" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZET_VCLE_PDF" m:HasStream="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="contexto"/>
+                </Key>
+                <Property Name="contexto" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MimeType" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZET_VCLE_RESPOSTA_PROC" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="message"/>
+                </Key>
+                <Property Name="message" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="id" Type="Edm.String" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityContainer Name="ZGWVCLE_TERMO_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="ZET_VCLE_DADOSCLIENTECollection" EntityType="ZGWVCLE_TERMO_SRV.ZET_VCLE_DADOSCLIENTE" sap:content-version="1"/>
+                <EntitySet Name="ZET_VCLE_PDFSet" EntityType="ZGWVCLE_TERMO_SRV.ZET_VCLE_PDF" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ZET_VCLE_RESPOSTA_PROCSet" EntityType="ZGWVCLE_TERMO_SRV.ZET_VCLE_RESPOSTA_PROC" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <FunctionImport Name="ZFI_VCLE_ACEITE" ReturnType="ZGWVCLE_TERMO_SRV.ZET_VCLE_RESPOSTA_PROC" EntitySet="ZET_VCLE_RESPOSTA_PROCSet" m:HttpMethod="POST" sap:action-for="ZGWVCLE_TERMO_SRV.ZET_VCLE_RESPOSTA_PROC">
+                    <Parameter Name="token" Type="Edm.String" Mode="In" MaxLength="10"/>
+                    <Parameter Name="cpf" Type="Edm.String" Mode="In" MaxLength="11"/>
+                    <Parameter Name="nome" Type="Edm.String" Mode="In" MaxLength="50"/>
+                </FunctionImport>
+            </EntityContainer>
+            <atom:link rel="self" href="http://votfiodev:8000/sap/opu/odata/sap/ZGWVCLE_TERMO_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://votfiodev:8000/sap/opu/odata/sap/ZGWVCLE_TERMO_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

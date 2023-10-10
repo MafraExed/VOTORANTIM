@@ -1,0 +1,1 @@
+"use strict";sap.ui.define([],function(){return function(n){var r=n.KEY,t=n.KEY_SEL;return r==="X"||t==="X"}});

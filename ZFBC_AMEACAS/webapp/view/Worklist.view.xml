@@ -1,0 +1,161 @@
+<mvc:View xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" controllerName="fibria.com.ZFBC_AMEACAS.controller.Worklist">
+
+	<semantic:FullscreenPage id="page" semanticRuleSet="Optimized" title="{i18n>worklistViewTitle}">
+		<semantic:content>
+			<!--Table
+				id="table"
+				width="auto"
+				visible="false"
+				class="sapUiResponsiveMargin"
+				items="{
+					path: '/GeralRiscos',
+					sorter: {
+						path: 'Risco',
+						descending: false
+					}
+				}"
+				noDataText="{worklistView>/tableNoDataText}"
+				busyIndicatorDelay="{worklistView>/tableBusyDelay}"
+				growing="true"
+				growingScrollToLoad="true"
+				updateFinished="onUpdateFinished">
+
+				<headerToolbar>
+					<Toolbar>
+						<Title id="tableHeader" text="{worklistView>/worklistTableTitle}"/>
+						<ToolbarSpacer />
+						<SearchField
+							id="searchField"
+							tooltip="{i18n>worklistSearchTooltip}"
+							search="onSearch"
+							width="auto">
+						</SearchField>
+					</Toolbar>
+				</headerToolbar>
+
+				<columns>
+					<Column id="nameColumn">
+						<Text text="{i18n>tableNameColumnTitle}" id="nameColumnTitle"/>
+					</Column>
+					<Column id="unitNumberColumn" hAlign="End">
+						<Text text="{i18n>tableUnitNumberColumnTitle}" id="unitNumberColumnTitle"/>
+					</Column>
+				</columns>
+
+				<items>
+					<ColumnListItem
+						type="Navigation"
+						press="onPress">
+						<cells>
+							<ObjectIdentifier
+								title="{Risco}"/>
+							<ObjectNumber
+								number="{
+									path: 'Perin',
+									formatter: '.formatter.numberUnit'
+								}"
+								unit="{Nmedida}"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table-->
+			<sap.ui.layout:Grid xmlns:sap.ui.layout="sap.ui.layout" class="sapUiResponsiveMargin" defaultSpan="L3 M6 S6">
+				<sap.ui.layout:content>
+					<Label text="Diretoria / Unidade Organizacional" id="lblDiretoriaUnidOrg" design="Bold" textDirection="LTR">
+						<layoutData>
+							<sap.ui.layout:GridData xmlns:sap.ui.layout="sap.ui.layout" span="XL3 L3 M3 S3"/>
+						</layoutData>
+					</Label>
+					<Input id="iptDiretoriaUnidOrg" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="handleValueHelpOrganizacao">
+						<layoutData>
+							<sap.ui.layout:GridData xmlns:sap.ui.layout="sap.ui.layout" span="XL3 L3 M3 S3"/>
+						</layoutData>
+					</Input>
+					<Label text="Categoria de Risco" id="lblCategoriaRisco" design="Bold" textDirection="LTR">
+						<layoutData>
+							<sap.ui.layout:GridData xmlns:sap.ui.layout="sap.ui.layout" span="XL2 L2 M2 S2"/>
+						</layoutData>
+					</Label>
+					<Input id="iptCategoriaRisco" valueHelpRequest="handleValueHelpCatrisco" showValueHelp="true" valueHelpOnly="true">
+							<layoutData>
+							<sap.ui.layout:GridData xmlns:sap.ui.layout="sap.ui.layout" span="XL4 L4 M4 S4"/>
+						</layoutData>
+					</Input>
+					<Label text="Responsáveis" id="lblResponsavel" design="Bold" textDirection="LTR">
+						<layoutData>
+							<sap.ui.layout:GridData xmlns:sap.ui.layout="sap.ui.layout" span="XL3 L3 M3 S3"/>
+						</layoutData>
+					</Label>
+					<Input id="iptResponsavel" valueHelpRequest="handleValueHelpFdrisco" showValueHelp="true" valueHelpOnly="true">
+							<layoutData>
+							<sap.ui.layout:GridData xmlns:sap.ui.layout="sap.ui.layout" span="XL3 L3 M3 S3"/>
+						</layoutData>
+					</Input>
+					<Label text="Data Inicial do Risco" id="lblDataInicial" design="Bold" textDirection="LTR">
+						<layoutData>
+							<sap.ui.layout:GridData xmlns:sap.ui.layout="sap.ui.layout" span="XL2 L2 M2 S2"/>
+						</layoutData>
+					</Label>
+				 <!--DatePicker id="dtpDataPromessa    " displayFormat="dd/MM/yyyy" enabled="true" visible="true" textAlign="right" width="150px" textDirection="RTL" change="onDataPickerChange" valueFormat="MM/dd/yyyy"/-->
+					<DatePicker id="dtpDataInicialRisco" displayFormat="dd/MM/yyyy" enabled="true" visible="true" textAlign="Right" width="200px" textDirection="RTL" change="onDataPickerChange" valueFormat="MM-dd-yyyy">
+							<layoutData>
+							<sap.ui.layout:GridData xmlns:sap.ui.layout="sap.ui.layout" span="XL4 L4 M4 S4"/>
+						</layoutData>
+					</DatePicker>
+					<Label text="Tipo de Visão" id="lblTipoVisao" design="Bold" textDirection="LTR">
+						<layoutData>
+							<sap.ui.layout:GridData xmlns:sap.ui.layout="sap.ui.layout" span="XL3 L3 M3 S3"/>
+						</layoutData>
+					</Label>
+					<!--Input name="TipoVisao" id="iptTipoVisao" valueLiveUpdate="true" visible="true" enabled="true" valueHelpRequest="handleValueHelpTipoVisao" showValueHelp="true" valueHelpOnly="true">
+						<layoutData>
+							<sap.ui.layout:GridData xmlns:sap.ui.layout="sap.ui.layout" span="XL3 L3 M3 S3"/>
+						</layoutData>
+					</Input-->
+					<ComboBox xmlns:sap.ui.core="sap.ui.core" id="cbxTipoVisao" editable="true" enabled="true" visible="true" width="auto" valueState="None" maxWidth="100%" selectedKey="{worklistView>/tipoVisao}">
+						<layoutData>
+							<sap.ui.layout:GridData xmlns:sap.ui.layout="sap.ui.layout" span="XL3 L3 M3 S3"/>
+						</layoutData>
+					    <items>
+					        <sap.ui.core:ListItem key="01" text="Inerente" enabled="true"/>
+					        <sap.ui.core:ListItem key="02" text="Residual" enabled="true"/>
+					        <sap.ui.core:ListItem key="03" text="Residual Planejada" enabled="true"/>
+						</items>
+					</ComboBox>
+					<!--ComboBox xmlns:sap.ui.core="sap.ui.core" id="cbxCategoriaRisco" editable="true" enabled="true" visible="true" width="auto" valueState="None" maxWidth="100%" items="{      path: '/CategoriaRiscoSet',      sorter: {       path: 'Objid',       descending: false      }     }" selectedKey="{worklistView>/categoriaRisco}">
+						<items>
+							<sap.ui.core:ListItem key="{Objid}" text="{Stext}" enabled="true"/>
+						</items>
+					</ComboBox-->
+				</sap.ui.layout:content>
+			</sap.ui.layout:Grid>
+			<!--ComboBox xmlns:sap.ui.core="sap.ui.core" id="cbxTipoVisao" editable="true" enabled="true" visible="true" width="auto" valueState="None" maxWidth="100%" selectedKey="">
+			    <items>
+			        <sap.ui.core:ListItem key="01" text="Inerente" enabled="true"/>
+			        <sap.ui.core:ListItem key="02" text="Residual" enabled="true"/>
+			        <sap.ui.core:ListItem key="03" text="Residual Planejada" enabled="true"/>
+				</items>
+			</ComboBox-->
+		</semantic:content>
+
+		<semantic:sendEmailAction>
+			<semantic:SendEmailAction id="shareEmail" press="onShareEmailPress"/>
+		</semantic:sendEmailAction>
+
+		<semantic:shareInJamAction>
+			<semantic:ShareInJamAction id="shareInJam" visible="{FLP>/isShareInJamActive}" press="onShareInJamPress"/>
+		</semantic:shareInJamAction>
+
+		<semantic:saveAsTileAction>
+			<footerbar:AddBookmarkButton id="shareTile" title="{worklistView>/saveAsTileTitle}"/>
+		</semantic:saveAsTileAction>
+
+	<semantic:mainAction>
+
+	    <semantic:MainAction text="Executar" id="btnExecutar" press="onExecutar"/>
+
+	</semantic:mainAction>
+
+	</semantic:FullscreenPage>
+
+</mvc:View>

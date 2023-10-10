@@ -1,0 +1,131 @@
+{
+    "resources": [
+        {
+            "name": ".che/project.json"
+        },
+        {
+            "name": ".gitignore"
+        },
+        {
+            "name": ".project.json"
+        },
+        {
+            "name": ".user.project.json"
+        },
+        {
+            "name": "Component-preload.js",
+            "merged": true
+        },
+        {
+            "name": "Component.js"
+        },
+        {
+            "name": "Gruntfile.js"
+        },
+        {
+            "name": "controller/App.controller.js"
+        },
+        {
+            "name": "controller/BaseController.js"
+        },
+        {
+            "name": "controller/CarregamentoDetail.controller.js"
+        },
+        {
+            "name": "controller/Master.controller.js"
+        },
+        {
+            "name": "controller/Ordem.controller.js"
+        },
+        {
+            "name": "controller/Porao.controller.js"
+        },
+        {
+            "name": "controller/UnitDetail.controller.js"
+        },
+        {
+            "name": "css/style.css"
+        },
+        {
+            "name": "css/style2.css"
+        },
+        {
+            "name": "dist"
+        },
+        {
+            "name": "i18n/i18n.properties",
+            "raw": "i18n/i18n.properties"
+        },
+        {
+            "name": "i18n/i18n_en.properties",
+            "raw": "i18n/i18n.properties",
+            "locale": "_en"
+        },
+        {
+            "name": "i18n/i18n_pt.properties",
+            "raw": "i18n/i18n.properties",
+            "locale": "_pt"
+        },
+        {
+            "name": "index.html"
+        },
+        {
+            "name": "localService/metadata.xml"
+        },
+        {
+            "name": "manifest.json"
+        },
+        {
+            "name": "model/models.js"
+        },
+        {
+            "name": "neo-app.json"
+        },
+        {
+            "name": "node_modules"
+        },
+        {
+            "name": "package-lock.json"
+        },
+        {
+            "name": "package.json"
+        },
+        {
+            "name": "resources.json",
+            "merged": true
+        },
+        {
+            "name": "sap-ui-cachebuster-info.json"
+        },
+        {
+            "name": "util/Collection.js"
+        },
+        {
+            "name": "util/apiConnector.js"
+        },
+        {
+            "name": "view/App.view.xml"
+        },
+        {
+            "name": "view/CarregamentoDetail.view.xml"
+        },
+        {
+            "name": "view/Master.view.xml"
+        },
+        {
+            "name": "view/MotivosParadaTableDialog.fragment.xml"
+        },
+        {
+            "name": "view/Ordem.view.xml"
+        },
+        {
+            "name": "view/Porao.view.xml"
+        },
+        {
+            "name": "view/UnitDetail.view.xml"
+        },
+        {
+            "name": "view/UnitsDialog.fragment.xml"
+        }
+    ]
+}

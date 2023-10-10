@@ -1,0 +1,30 @@
+<mvc:View controllerName="viewcontroller.View1" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	xmlns:l="sap.ui.layout" displayBlock="true">
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="page" title="Liberação de Carregamento Bonificação">
+					<content>
+						<l:VerticalLayout>
+							<Text text=" " width="1rem"/>
+							<l:HorizontalLayout>
+								<Text text=" " width="1rem"/>
+								<Label id="lbl01" text="Controle de Portaria:" design="Bold"/>
+								<Text text=" " width="1rem"/>
+								<Text id="tProcess"/>
+							</l:HorizontalLayout>
+							<Text text=" " width="1rem"/>
+							<Text text=" " width="1rem"/>
+							<l:HorizontalLayout>
+								<Text text=" " width="2rem"/>
+								<Button xmlns="sap.m" text="Aprovar" id="button1" press="onAprov" icon="sap-icon://accept" type="Accept" visible="false"/>
+								<Text text=" " width="4rem"/>
+								<Button xmlns="sap.m" text="Reprovar" id="button0" press="onReprov" icon="sap-icon://decline" type="Reject" visible="false"/>
+							</l:HorizontalLayout>
+						</l:VerticalLayout>
+					</content>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>

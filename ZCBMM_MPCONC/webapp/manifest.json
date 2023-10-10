@@ -1,0 +1,166 @@
+{
+    "_version": "1.9.0",
+    "sap.app": {
+        "id": "ZCBMM_MPCONC.ZCBMM_MPCONC",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/sap/ZGWCBMM_CONTRATACAO_FRETE_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/metadata.xml"
+                }
+            }
+        },
+        "sourceTemplate": {
+            "id": "sap.ui.ui5-template-plugin.2masterdetail",
+            "version": "1.56.1",
+            "toolsId": "fc0d5521-b2bf-46be-b2fc-d2e26aa2bcfa"
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "sap-icon://detail-view",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "rootView": {
+            "viewName": "ZCBMM_MPCONC.ZCBMM_MPCONC.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "app"
+        },
+        "dependencies": {
+            "minUI5Version": "1.42.0",
+            "libs": {
+                "sap.ui.core": {},
+                "sap.m": {},
+                "sap.f": {},
+                "sap.ushell": {},
+                "sap.collaboration": {
+                    "lazy": true
+                }
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "ZCBMM_MPCONC.ZCBMM_MPCONC.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true
+            }
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.f.routing.Router",
+                "viewType": "XML",
+                "viewPath": "ZCBMM_MPCONC.ZCBMM_MPCONC.view",
+                "controlId": "layout",
+                "controlAggregation": "beginColumnPages",
+                "bypassed": {
+                    "target": "notFound"
+                },
+                "async": true
+            },
+            "routes": [
+                {
+                    "pattern": "",
+                    "name": "master",
+                    "target": "master"
+                },
+                {
+                    "pattern": "ZET_CBMM_CF_FRETESet/{Bukrs}/{Werks}/{IdSolicitacao}/",
+                    "name": "object",
+                    "target": [
+                        "master",
+                        "object"
+                    ]
+                },
+                {
+                    "name": "Imprime",
+                    "pattern": "Imprime/{IdSolicitacao}/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "master",
+                        "Imprime"
+                    ]
+                }
+            ],
+            "targets": {
+                "master": {
+                    "viewName": "Master",
+                    "viewLevel": 1,
+                    "viewId": "master"
+                },
+                "object": {
+                    "viewName": "Detail",
+                    "viewId": "detail",
+                    "viewLevel": 1,
+                    "controlAggregation": "midColumnPages"
+                },
+                "detailObjectNotFound": {
+                    "viewName": "DetailObjectNotFound",
+                    "viewId": "detailObjectNotFound",
+                    "controlAggregation": "midColumnPages"
+                },
+                "notFound": {
+                    "viewName": "NotFound",
+                    "viewId": "notFound"
+                },
+                "Imprime": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearAggregation": true,
+                    "viewName": "Imprime",
+                    "title": "Imprime",
+                    "viewId": "Imprime",
+                    "controlAggregation": "midColumnPages",
+                    "viewLevel": 3
+                }
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "/sap/bc/ui5_ui5/sap/zcbmm_mpconc/style.css",
+                    "id": ""
+                }
+            ]
+        }
+    },
+    "sap.platform.abap": {
+        "uri": "/sap/bc/ui5_ui5/sap/zcbmm_mpconc",
+        "_version": "1.1.0"
+    },
+    "sap.platform.hcp": {
+        "uri": "",
+        "_version": "1.1.0"
+    }
+}

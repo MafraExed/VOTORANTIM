@@ -1,0 +1,195 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZGWFBRC_PORTAL_SRV" xml:lang="pt" sap:schema-version="1">
+			<EntityType Name="Subscription" sap:semantics="subscriptions" sap:content-version="1">
+				<Key><PropertyRef Name="ID"/></Key><Property Name="ID" Type="Edm.String" Nullable="false" MaxLength="32" sap:label="Sub. ID" sap:creatable="false" sap:updatable="false"
+					sap:filterable="false"/><Property Name="user" Type="Edm.String" MaxLength="12" m:FC_TargetPath="SyndicationAuthorName" m:FC_KeepInContent="false"
+					sap:label="Nome do usuário" sap:creatable="false" sap:filterable="false"/><Property Name="updated" Type="Edm.DateTime" Precision="0" m:FC_TargetPath="SyndicationUpdated" m:FC_KeepInContent="false"
+					sap:label="Registro hora" sap:creatable="false" sap:filterable="false"/><Property Name="title" Type="Edm.String" MaxLength="255" m:FC_TargetPath="SyndicationTitle" m:FC_KeepInContent="false" sap:label="Title"
+					sap:filterable="false"/><Property Name="deliveryAddress" Type="Edm.String" sap:label="Delivery Address" sap:filterable="false"/><Property Name="persistNotifications" Type="Edm.Boolean" sap:label="Persist Notification" sap:filterable="false"/><Property Name="collection" Type="Edm.String" MaxLength="40" sap:label="Collection" sap:filterable="false"/><Property Name="filter" Type="Edm.String" sap:label="Filter" sap:filterable="false"/><Property Name="select" Type="Edm.String" MaxLength="255" sap:label="Select" sap:filterable="false"/><Property Name="changeType" Type="Edm.String" MaxLength="30" sap:label="Change Type"/></EntityType>
+			<EntityType Name="Notification" sap:semantics="notifications" sap:content-version="1">
+				<Key><PropertyRef Name="ID"/></Key><Property Name="ID" Type="Edm.String" Nullable="false" MaxLength="32" sap:label="Notification ID"/><Property Name="collection" Type="Edm.String" MaxLength="40" sap:label="Collection"/><Property Name="title" Type="Edm.String" m:FC_TargetPath="SyndicationTitle" m:FC_KeepInContent="false" sap:label="Notif. Text"/><Property Name="updated" Type="Edm.DateTime" Precision="0" m:FC_TargetPath="SyndicationUpdated" m:FC_KeepInContent="false"
+					sap:label="Registro hora"/><Property Name="changeType" Type="Edm.String" MaxLength="30" sap:label="Change Type"/><Property Name="entriesOfInterest" Type="Edm.Int32" sap:label="No. of Entries"/><Property Name="recipient" Type="Edm.String" MaxLength="112" sap:label="Recipient" sap:creatable="false" sap:updatable="false"/></EntityType>
+			<EntityType Name="Historico" sap:content-version="1">
+				<Key><PropertyRef Name="Banfn"/><PropertyRef Name="Bnfpo"/><PropertyRef Name="Kostl"/><PropertyRef Name="Timestamp"/></Key><Property Name="Banfn" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Documento" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Bnfpo" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Item" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Kostl" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Centro custo" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Timestamp" Type="Edm.String" Nullable="false" MaxLength="15" sap:label="Timestamp" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="TipoDoc" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Tipo Documento" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Date" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Data" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Time" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Hora" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Relcode" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Relcode" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Userlib" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="Usuário" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="UserlibSubst" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="Usuário Substituto" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Status" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="Requisicao" sap:content-version="1">
+				<Key><PropertyRef Name="Banfn"/><PropertyRef Name="Bnfpo"/><PropertyRef Name="Kostl"/></Key><Property Name="Banfn" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Documento" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Bnfpo" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Item" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Kostl" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Centro custo" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="IUser" Type="Edm.String" MaxLength="12" sap:label="Nome do usuário" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false"/><Property Name="Bukrs" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Empresa" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="NameBukrs" Type="Edm.String" Nullable="false" MaxLength="25" sap:label="Nome da Empresa" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Txz01" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Descrição" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Werks" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Centro" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="NameWerks" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Nome Centro" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="NameKostl" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Nome C.Custo" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Usnam" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="Solicitante" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="NameText" Type="Edm.String" Nullable="false" MaxLength="80" sap:label="Nome Solicitante" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Bsart" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Tipo Documento" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="NameBsart" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Denominação Tipo Doc" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Menge" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:label="Quantidade" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Erdat" Type="Edm.DateTime" Precision="7" sap:label="Data criação" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Lfdat" Type="Edm.DateTime" Precision="7" sap:label="Data de remessa" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Afnam" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="Requisitante" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Valor" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:label="Valor Total" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Moeda" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Moeda documento" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="currency-code"/><Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Status" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Status1" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Status" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Status2" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Status" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="IdentSubst" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="Usuário Substituto" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><NavigationProperty Name="ToHistory" Relationship="ZGWFBRC_PORTAL_SRV.Assoc_Rc_Historico" FromRole="FromRole_Assoc_Rc_Historico"
+					ToRole="ToRole_Assoc_Rc_Historico"/><NavigationProperty Name="ToCm" Relationship="ZGWFBRC_PORTAL_SRV.Assoc_Rc_Cm" FromRole="FromRole_Assoc_Rc_Cm" ToRole="ToRole_Assoc_Rc_Cm"/><NavigationProperty Name="ToDetalhe" Relationship="ZGWFBRC_PORTAL_SRV.Assoc_Rc_De" FromRole="FromRole_Assoc_Rc_De"
+					ToRole="ToRole_Assoc_Rc_De"/><NavigationProperty Name="ToRota" Relationship="ZGWFBRC_PORTAL_SRV.Assoc_Rc_Rota" FromRole="FromRole_Assoc_Rc_Rota"
+					ToRole="ToRole_Assoc_Rc_Rota"/><NavigationProperty Name="ToLog" Relationship="ZGWFBRC_PORTAL_SRV.Assoc_Rc_Log" FromRole="FromRole_Assoc_Rc_Log"
+					ToRole="ToRole_Assoc_Rc_Log"/><NavigationProperty Name="ToTimeLine" Relationship="ZGWFBRC_PORTAL_SRV.Assoc_Rc_TimeLine" FromRole="FromRole_Assoc_Rc_TimeLine"
+					ToRole="ToRole_Assoc_Rc_TimeLine"/></EntityType>
+			<EntityType Name="Detalhe" sap:content-version="1">
+				<Key><PropertyRef Name="Documento"/><PropertyRef Name="Nome"/><PropertyRef Name="Texto"/></Key><Property Name="Documento" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Documento" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Item" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Item" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Nome" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="Nome" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="DataHora" Type="Edm.String" MaxLength="50" sap:label="DataHora" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Texto" Type="Edm.String" Nullable="false" MaxLength="255" sap:label="Texto" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Kostl" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Kostl" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="Rota" sap:content-version="1">
+				<Key><PropertyRef Name="Count"/><PropertyRef Name="Usrlib"/></Key><Property Name="Documento" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Documento" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Count" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Contador:" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Kostl" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Kostl" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Item" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Item" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Usrlib" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="Nome do usuário" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Grupo" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Grupo" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Nome" Type="Edm.String" Nullable="false" MaxLength="80" sap:label="Nome completo" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Status" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Recebido" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Recebido" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Liberado" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Liberado" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><NavigationProperty Name="ToGrupo" Relationship="ZGWFBRC_PORTAL_SRV.Assoc_Rota_Grupo" FromRole="FromRole_Assoc_Rota_Grupo"
+					ToRole="ToRole_Assoc_Rota_Grupo"/></EntityType>
+			<EntityType Name="Log" sap:content-version="1">
+				<Key><PropertyRef Name="Docnumber"/><PropertyRef Name="Timestamp"/></Key><Property Name="Documento" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="ReqC" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Item" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Item RC" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Kostl" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Kostl" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Docnumber" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="char20" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Timestamp" Type="Edm.DateTime" Nullable="false" Precision="0" sap:label="Registro hora" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Userlib" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="Nome do usuário" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ReleaseDate" Type="Edm.DateTime" Nullable="false" Precision="7" sap:label="Autor.desde" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ReleaseTime" Type="Edm.Time" Nullable="false" Precision="0" sap:label="Entrado às" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="MsgType" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Tipo mensagem" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Type" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Campo de caracteres do comprimento 10"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Description" Type="Edm.String" Nullable="false" MaxLength="256" sap:label="char256" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Title" Type="Edm.String" Nullable="false" MaxLength="256" sap:label="char256" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Subtitle" Type="Edm.String" Nullable="false" MaxLength="256" sap:label="char256" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="Grupo" sap:content-version="1">
+				<Key><PropertyRef Name="Usrlib"/></Key><Property Name="Usrlib" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="Usuário" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Nome" Type="Edm.String" sap:label="Nome" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="Count" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Contador" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="Return" sap:content-version="1">
+				<Key><PropertyRef Name="Type"/><PropertyRef Name="Message"/></Key><Property Name="Type" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Tipo do erro" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false"/><Property Name="Message" Type="Edm.String" Nullable="false" MaxLength="100" sap:label="Mensagem" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false"/></EntityType>
+			<EntityType Name="Comentario" sap:content-version="1">
+				<Key><PropertyRef Name="Documento"/><PropertyRef Name="Texto"/></Key><Property Name="Banfn" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Documento" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Item" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Item" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Kostl" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Kostl" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Documento" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Documento" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Nome" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="Nome" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="DataHora" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="DataHora" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Texto" Type="Edm.String" Nullable="false" MaxLength="255" sap:label="Texto" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="Timeline" sap:content-version="1">
+				<Key><PropertyRef Name="Documento"/><PropertyRef Name="DataHora"/><PropertyRef Name="Texto"/></Key><Property Name="Documento" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Doc.vendas" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Processo" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Processo" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Bnfpo" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Item" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Kostl" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Centro custo" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Nome" Type="Edm.String" Nullable="false" sap:label="Comentário" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="DataHora" Type="Edm.String" Nullable="false" sap:label="Data Hora" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Texto" Type="Edm.String" Nullable="false" sap:label="Texto" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="Picture" Type="Edm.String" Nullable="false" sap:label="Foto" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Titulo" Type="Edm.String" Nullable="false" sap:label="Titulo" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Status" Type="Edm.String" Nullable="false" sap:label="Status" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Icon" Type="Edm.String" Nullable="false" sap:label="Icon" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/></EntityType>
+			<Association Name="Assoc_Rota_Grupo" sap:content-version="1"><End Type="ZGWFBRC_PORTAL_SRV.Rota" Multiplicity="1" Role="FromRole_Assoc_Rota_Grupo"/><End Type="ZGWFBRC_PORTAL_SRV.Grupo" Multiplicity="*" Role="ToRole_Assoc_Rota_Grupo"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_Assoc_Rota_Grupo"><PropertyRef Name="Count"/><PropertyRef Name="Usrlib"/></Principal>
+					<Dependent Role="ToRole_Assoc_Rota_Grupo"><PropertyRef Name="Count"/><PropertyRef Name="Usrlib"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="Assoc_Rc_Cm" sap:content-version="1"><End Type="ZGWFBRC_PORTAL_SRV.Requisicao" Multiplicity="1" Role="FromRole_Assoc_Rc_Cm"/><End Type="ZGWFBRC_PORTAL_SRV.Comentario" Multiplicity="*" Role="ToRole_Assoc_Rc_Cm"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_Assoc_Rc_Cm"><PropertyRef Name="Kostl"/><PropertyRef Name="Banfn"/><PropertyRef Name="Bnfpo"/></Principal>
+					<Dependent Role="ToRole_Assoc_Rc_Cm"><PropertyRef Name="Kostl"/><PropertyRef Name="Banfn"/><PropertyRef Name="Item"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="Assoc_Rc_De" sap:content-version="1"><End Type="ZGWFBRC_PORTAL_SRV.Requisicao" Multiplicity="1" Role="FromRole_Assoc_Rc_De"/><End Type="ZGWFBRC_PORTAL_SRV.Detalhe" Multiplicity="*" Role="ToRole_Assoc_Rc_De"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_Assoc_Rc_De"><PropertyRef Name="Kostl"/><PropertyRef Name="Banfn"/><PropertyRef Name="Bnfpo"/></Principal>
+					<Dependent Role="ToRole_Assoc_Rc_De"><PropertyRef Name="Kostl"/><PropertyRef Name="Documento"/><PropertyRef Name="Item"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="Assoc_Rc_Rota" sap:content-version="1"><End Type="ZGWFBRC_PORTAL_SRV.Requisicao" Multiplicity="1" Role="FromRole_Assoc_Rc_Rota"/><End Type="ZGWFBRC_PORTAL_SRV.Rota" Multiplicity="*" Role="ToRole_Assoc_Rc_Rota"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_Assoc_Rc_Rota"><PropertyRef Name="Kostl"/><PropertyRef Name="Banfn"/><PropertyRef Name="Bnfpo"/></Principal>
+					<Dependent Role="ToRole_Assoc_Rc_Rota"><PropertyRef Name="Kostl"/><PropertyRef Name="Documento"/><PropertyRef Name="Item"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="Assoc_Rc_Log" sap:content-version="1"><End Type="ZGWFBRC_PORTAL_SRV.Requisicao" Multiplicity="1" Role="FromRole_Assoc_Rc_Log"/><End Type="ZGWFBRC_PORTAL_SRV.Log" Multiplicity="*" Role="ToRole_Assoc_Rc_Log"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_Assoc_Rc_Log"><PropertyRef Name="Kostl"/><PropertyRef Name="Banfn"/><PropertyRef Name="Bnfpo"/></Principal>
+					<Dependent Role="ToRole_Assoc_Rc_Log"><PropertyRef Name="Kostl"/><PropertyRef Name="Documento"/><PropertyRef Name="Item"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="Assoc_Rc_TimeLine" sap:content-version="1"><End Type="ZGWFBRC_PORTAL_SRV.Requisicao" Multiplicity="1" Role="FromRole_Assoc_Rc_TimeLine"/><End Type="ZGWFBRC_PORTAL_SRV.Timeline" Multiplicity="*" Role="ToRole_Assoc_Rc_TimeLine"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_Assoc_Rc_TimeLine"><PropertyRef Name="Banfn"/><PropertyRef Name="Bnfpo"/><PropertyRef Name="Kostl"/></Principal>
+					<Dependent Role="ToRole_Assoc_Rc_TimeLine"><PropertyRef Name="Documento"/><PropertyRef Name="Bnfpo"/><PropertyRef Name="Kostl"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="Assoc_Rc_Historico" sap:content-version="1"><End Type="ZGWFBRC_PORTAL_SRV.Requisicao" Multiplicity="1" Role="FromRole_Assoc_Rc_Historico"/><End Type="ZGWFBRC_PORTAL_SRV.Historico" Multiplicity="*" Role="ToRole_Assoc_Rc_Historico"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_Assoc_Rc_Historico"><PropertyRef Name="Kostl"/><PropertyRef Name="Bnfpo"/><PropertyRef Name="Banfn"/></Principal>
+					<Dependent Role="ToRole_Assoc_Rc_Historico"><PropertyRef Name="Kostl"/><PropertyRef Name="Bnfpo"/><PropertyRef Name="Banfn"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<EntityContainer Name="ZGWFBRC_PORTAL_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx"><EntitySet Name="SubscriptionCollection" EntityType="ZGWFBRC_PORTAL_SRV.Subscription" sap:content-version="1"/><EntitySet Name="NotificationCollection" EntityType="ZGWFBRC_PORTAL_SRV.Notification" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="Historicos" EntityType="ZGWFBRC_PORTAL_SRV.Historico" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="Requisicaos" EntityType="ZGWFBRC_PORTAL_SRV.Requisicao" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:content-version="1"/><EntitySet Name="Detalhes" EntityType="ZGWFBRC_PORTAL_SRV.Detalhe" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:content-version="1"/><EntitySet Name="Rotas" EntityType="ZGWFBRC_PORTAL_SRV.Rota" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:searchable="true" sap:content-version="1"/><EntitySet Name="Logs" EntityType="ZGWFBRC_PORTAL_SRV.Log" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:content-version="1"/><EntitySet Name="Grupos" EntityType="ZGWFBRC_PORTAL_SRV.Grupo" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:searchable="true" sap:content-version="1"/><EntitySet Name="ReturnCollection" EntityType="ZGWFBRC_PORTAL_SRV.Return" sap:content-version="1"/><EntitySet Name="Comentarios" EntityType="ZGWFBRC_PORTAL_SRV.Comentario" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:content-version="1"/><EntitySet Name="Timelines" EntityType="ZGWFBRC_PORTAL_SRV.Timeline" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+				<AssociationSet Name="Assoc_Rc_LogSet" Association="ZGWFBRC_PORTAL_SRV.Assoc_Rc_Log" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="Requisicaos" Role="FromRole_Assoc_Rc_Log"/><End EntitySet="Logs" Role="ToRole_Assoc_Rc_Log"/></AssociationSet>
+				<AssociationSet Name="Assoc_Rc_DeSet" Association="ZGWFBRC_PORTAL_SRV.Assoc_Rc_De" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="Requisicaos" Role="FromRole_Assoc_Rc_De"/><End EntitySet="Detalhes" Role="ToRole_Assoc_Rc_De"/></AssociationSet>
+				<AssociationSet Name="Assoc_Rota_GrupoSet" Association="ZGWFBRC_PORTAL_SRV.Assoc_Rota_Grupo" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="Rotas" Role="FromRole_Assoc_Rota_Grupo"/><End EntitySet="Grupos" Role="ToRole_Assoc_Rota_Grupo"/></AssociationSet>
+				<AssociationSet Name="Assoc_Rc_TimeLineSet" Association="ZGWFBRC_PORTAL_SRV.Assoc_Rc_TimeLine" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="Requisicaos" Role="FromRole_Assoc_Rc_TimeLine"/><End EntitySet="Timelines" Role="ToRole_Assoc_Rc_TimeLine"/></AssociationSet>
+				<AssociationSet Name="Assoc_Rc_RotaSet" Association="ZGWFBRC_PORTAL_SRV.Assoc_Rc_Rota" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="Requisicaos" Role="FromRole_Assoc_Rc_Rota"/><End EntitySet="Rotas" Role="ToRole_Assoc_Rc_Rota"/></AssociationSet>
+				<AssociationSet Name="Assoc_Rc_HistoricoSet" Association="ZGWFBRC_PORTAL_SRV.Assoc_Rc_Historico" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="Requisicaos" Role="FromRole_Assoc_Rc_Historico"/><End EntitySet="Historicos" Role="ToRole_Assoc_Rc_Historico"/></AssociationSet>
+				<AssociationSet Name="Assoc_Rc_CmSet" Association="ZGWFBRC_PORTAL_SRV.Assoc_Rc_Cm" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="Requisicaos" Role="FromRole_Assoc_Rc_Cm"/><End EntitySet="Comentarios" Role="ToRole_Assoc_Rc_Cm"/></AssociationSet>
+				<FunctionImport Name="OnFuncAction" ReturnType="ZGWFBRC_PORTAL_SRV.Return" EntitySet="ReturnCollection" m:HttpMethod="POST"
+					sap:action-for="ZGWFBRC_PORTAL_SRV.Requisicao"><Parameter Name="Userid" Type="Edm.String" Mode="In" MaxLength="12"/><Parameter Name="Documento" Type="Edm.String" Mode="In"/><Parameter Name="Coment" Type="Edm.String" Mode="In" MaxLength="255"/><Parameter Name="Action" Type="Edm.String" Mode="In" MaxLength="1"/></FunctionImport>
+			</EntityContainer><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/ZGWFBRC_PORTAL_SRV/$metadata"/><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/ZGWFBRC_PORTAL_SRV/$metadata"/></Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

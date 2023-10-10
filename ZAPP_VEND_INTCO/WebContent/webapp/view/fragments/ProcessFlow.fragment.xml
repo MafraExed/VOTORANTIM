@@ -1,0 +1,45 @@
+<core:FragmentDefinition 
+	xmlns="sap.m" 
+	xmlns:suite="sap.suite.ui.commons" 
+	xmlns:core="sap.ui.core">
+	
+	<Toolbar>
+		<Title text="{i18n>detailFlowTitle}" level="H5" titleStyle="H5"/>
+		<ToolbarSpacer />
+		<Button 
+				id="processFlowButtonZoomIn" 
+				icon="sap-icon://zoom-in" 
+				tooltip="{i18n>processFlowTooltipButtonZoomIn}" 
+				press="onZoomIn"/>
+		<Button 
+				id="processFlowButtonZoomOut" 
+				icon="sap-icon://zoom-out" 
+				tooltip="{i18n>processFlowTooltipButtonZoomOut}" 
+				press="onZoomOut"/>
+	</Toolbar> 
+
+	<suite:ProcessFlow id="processFlowPage" 
+	             	   scrollable="true" 
+	             	   foldedCorners="false"
+	             	   wheelZoomable="true"
+	             	   lanes="{processFlow>/laneFlow}"
+	             	   nodes="{processFlow>/nodeFlow}"
+	             	   nodePress="onNodePress">
+	  <suite:nodes>
+        <suite:ProcessFlowNode laneId="{processFlow>Lane}" 
+		                       nodeId="{processFlow>Node}" 
+		                       title="{processFlow>Title}" 
+		                       titleAbbreviation = "{processFlow>TitleAbrv}" 
+		                       children="{path: 'processFlow>Children', formatter: '.formatter.formatProcessFlowChildren'}" 
+		                       state="{processFlow>Status}" 
+		                       stateText="{processFlow>StatusText}" 
+		                       texts="{path: 'processFlow>Text', formatter: '.formatter.formatProcessFlowText'}"/>
+      </suite:nodes>           	   
+      <suite:lanes>
+        <suite:ProcessFlowLaneHeader laneId="{processFlow>Lane}" 
+		                             iconSrc="{processFlow>Icon}" 
+		                             text="{processFlow>Labl}" 
+		                             position="{processFlow>Npos}"/>
+      </suite:lanes>
+    </suite:ProcessFlow>
+</core:FragmentDefinition>

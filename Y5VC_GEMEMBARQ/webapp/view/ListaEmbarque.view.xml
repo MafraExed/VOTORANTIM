@@ -1,0 +1,128 @@
+<mvc:View controllerName="workspace.zmonit_embarque.zmonit_embarque.controller.ListaEmbarque" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:html="http://www.w3.org/1999/xhtml" displayBlock="true" xmlns="sap.m" xmlns:f="sap.f" xmlns:core="sap.ui.core"
+	xmlns:smartFilterBar="sap.ui.comp.smartfilterbar" xmlns:smartTable="sap.ui.comp.smarttable">
+	<App id="idAppControl">
+		<f:DynamicPage headerExpanded="true" showFooter="true" class="sapUiSizeCompact">
+			<f:title>
+				<f:DynamicPageTitle>
+					<f:heading></f:heading>
+				</f:DynamicPageTitle>
+			</f:title>
+			<f:header>
+				<f:DynamicPageHeader pinnable="true">
+					<f:content>
+						<smartFilterBar:SmartFilterBar initialise="onInitFilterBar" id="smartFilterBarEmbarque" entitySet="ZET_VCMM_EMBARQUE_ITEMSet"
+							persistencyKey="SmartFilterPKey" liveMode="false">
+							<smartFilterBar:controlConfiguration>
+								<smartFilterBar:ControlConfiguration key="ZAT_VCMM_EMBARQUE_ITM_TO_EMBARQUE_HEADER.Status">
+									<smartFilterBar:customControl>
+										<Select>
+											<core:Item key="#" text="{i18n>StsTodos}"/>
+											<core:Item key="" text="{i18n>StsIniciado}"/>
+											<core:Item key="D" text="{i18n>StsLibDiv}"/>
+											<core:Item key="L" text="{i18n>StsLib}"/>
+											<core:Item key="X" text="{i18n>StsCarregado}"/>
+											<core:Item key="Z" text="{i18n>StsEncerrado}"/>
+										</Select>
+									</smartFilterBar:customControl>
+								</smartFilterBar:ControlConfiguration>
+							</smartFilterBar:controlConfiguration>
+							<!-- layout data used to make the table growing but the filter bar fixed -->
+							<smartFilterBar:layoutData>
+								<FlexItemData shrinkFactor="0"/>
+							</smartFilterBar:layoutData>
+						</smartFilterBar:SmartFilterBar>
+					</f:content>
+				</f:DynamicPageHeader>
+			</f:header>
+			<f:content>
+				<VBox fitContainer="false">
+					<smartTable:SmartTable id="smartTableBarEmbarque" smartFilterId="smartFilterBarEmbarque" tableType="ResponsiveTable" editable="false"
+						entitySet="ZET_VCMM_EMBARQUE_ITEMSet" useVariantManagement="true" useTablePersonalisation="true" persistencyKey="smartTableBarEmbarque"
+						header="{i18n>TableTitulo}" showRowCount="false" useExportToExcel="true" enableAutoBinding="true" beforeRebindTable="onBeforeRebindTable"
+						demandPopin="true" class="sapUiResponsiveContentPadding"
+						requestAtLeastFields="Chvnfe,ZAT_VCMM_EMBARQUE_ITEM_TO_NFHEADER/series,ZAT_VCMM_EMBARQUE_ITM_TO_EMBARQUE_HEADER/StsProc,ZAT_VCMM_EMBARQUE_ITM_TO_EMBARQUE_HEADER/Status">
+						<smartTable:customToolbar>
+							<OverflowToolbar design="Transparent">
+								<ToolbarSpacer/>
+								<OverflowToolbarButton icon="sap-icon://discussion-2" tooltip="{i18n>LogTitle}" press="onPressLogGR"/>
+								<OverflowToolbarButton icon="sap-icon://notification-2" tooltip="{i18n>LogTitleSimul}" press="onPressLogSimul"/>
+							</OverflowToolbar>
+						</smartTable:customToolbar>
+						<!--  Table integration -->
+						<Table mode="MultiSelect" growingThreshold="20" growing="true" growingScrollToLoad="false">
+							<columns>
+								<Column width="80px">
+									<customData>
+										<!-- Custom Field -->
+										<core:CustomData key="p13nData"
+											value='\{"columnKey": "Embarque","leadingProperty": "Embarque","sortProperty": "Embarque","filterProperty": "Embarque", "columnIndex":"0"}'/>
+									</customData>
+									<Text text="{i18n>ColEmbarque}"/>
+								</Column>
+								<Column>
+									<customData>
+										<!-- Custom Field -->
+										<core:CustomData key="p13nData"
+											value='\{"columnKey": "ZAT_VCMM_EMBARQUE_ITM_TO_EMBARQUE_HEADER/StatusText","leadingProperty": "ZAT_VCMM_EMBARQUE_ITM_TO_EMBARQUE_HEADER/StatusText", "columnIndex":"1"}'/>
+									</customData>
+									<Text text="{i18n>ColStsText}"/>
+								</Column>
+								<Column>
+									<customData>
+										<!-- Custom Field -->
+										<core:CustomData key="p13nData"
+											value='\{"columnKey": "ZAT_VCMM_EMBARQUE_ITM_TO_EMBARQUE_HEADER/StsProcText","leadingProperty": "ZAT_VCMM_EMBARQUE_ITM_TO_EMBARQUE_HEADER/StsProcText", "columnIndex":"2"}'/>
+									</customData>
+									<Text text="{i18n>ColStsProcText}"/>
+								</Column>
+								<Column>
+									<customData>
+										<!-- Custom Field -->
+										<core:CustomData key="p13nData"
+											value='\{"columnKey": "ZAT_VCMM_EMBARQUE_ITEM_TO_NFHEADER/nfenum","leadingProperty": "ZAT_VCMM_EMBARQUE_ITEM_TO_NFHEADER/nfenum", "columnIndex":"3"}'/>
+									</customData>
+									<Text text="{i18n>ColNfeNum}"/>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem>
+									<cells>
+										<Text text="{path: 'Embarque', formatter: '.myFormatter.shiftLeadingZeros'}"/>
+										<ObjectStatus text="{ZAT_VCMM_EMBARQUE_ITM_TO_EMBARQUE_HEADER/StsProcText}"
+											state="{path: 'ZAT_VCMM_EMBARQUE_ITM_TO_EMBARQUE_HEADER/StsProc', formatter: '.myFormatter.stsProcState'}"
+											icon="{path: 'ZAT_VCMM_EMBARQUE_ITM_TO_EMBARQUE_HEADER/StsProc', formatter: '.myFormatter.stsProcIcon'}"/>
+										<ObjectStatus text="{ZAT_VCMM_EMBARQUE_ITM_TO_EMBARQUE_HEADER/StatusText}"
+											state="{path: 'ZAT_VCMM_EMBARQUE_ITM_TO_EMBARQUE_HEADER/Status', formatter: '.myFormatter.stsState'}"
+											icon="{path: 'ZAT_VCMM_EMBARQUE_ITM_TO_EMBARQUE_HEADER/Status', formatter: '.myFormatter.stsIcon'}"/>
+										<Text text="{ZAT_VCMM_EMBARQUE_ITEM_TO_NFHEADER/nfenum}-{ZAT_VCMM_EMBARQUE_ITEM_TO_NFHEADER/series}"/>
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+						<!--  EndTable integration -->
+					</smartTable:SmartTable>
+				</VBox>
+			</f:content>
+			<f:footer>
+				<OverflowToolbar>
+					<ToolbarSpacer />
+					<Button xmlns="sap.m" text="{i18n>BtnProcEmb}" tooltip="{i18n>BtnProcEmb}" id="button3" icon="sap-icon://process" type="Accept"
+						press="handleProcEmb"/>
+					<Button xmlns="sap.m" text="{i18n>BtnLibEmb}" tooltip="{i18n>BtnLibEmb}" id="button4" icon="sap-icon://accept" type="Accept"
+						press="handleLibEmb"/>
+					<Button xmlns="sap.m" text="{i18n>BtnLibDiverEmb}" tooltip="{i18n>BtnLibDiverEmb}" id="button5" icon="sap-icon://add-process" type="Accept"
+						press="handleDiverEmb"/>
+					<Button xmlns="sap.m" text="{i18n>BtnEditEmb}" tooltip="{i18n>BtnEditEmb}" id="button7" icon="sap-icon://edit" type="Default"
+						press="handleEditEmb"/>
+					<Button xmlns="sap.m" text="{i18n>BtnCancEmb}" tooltip="{i18n>BtnCancEmb}" id="button6" icon="sap-icon://decline" type="Reject"
+						press="handleCancEmb"/>
+					<Button xmlns="sap.m" text="{i18n>BtnGerarArquivo}" tooltip="{i18n>BtnGerarArquivo}" id="button2" icon="sap-icon://download" type="Default"
+						press="handleDownFile"/>
+					<Button xmlns="sap.m" text="{i18n>BtnScanEtiq}" tooltip="{i18n>BtnScanEtiq}" icon="sap-icon://bar-code" id="button0" type="Default"
+						press="handlePressScan"/>
+				</OverflowToolbar>
+			</f:footer>
+		</f:DynamicPage>
+	</App>
+</mvc:View>

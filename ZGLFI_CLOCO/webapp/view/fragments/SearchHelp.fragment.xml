@@ -1,0 +1,12 @@
+<core:FragmentDefinition xmlns="sap.ui.comp.valuehelpdialog"
+	xmlns:m="sap.m"
+	xmlns:fb="sap.ui.comp.filterbar"
+	xmlns:core="sap.ui.core">
+	<ValueHelpDialog title="Product"  cancel=".onValueHelpCancelPress" afterClose=".onValueHelpAfterClose" key="NodeID" descriptionKey="DescTarefa">
+
+		<filterBar>
+			<fb:FilterBar id="searchHelpFilter" advancedMode="true" search=".onFilterBarSearch" isRunningInValueHelpDialog="true">
+			</fb:FilterBar>
+		</filterBar>
+	</ValueHelpDialog>
+</core:FragmentDefinition>

@@ -1,0 +1,127 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.ui.layout.form"
+	controllerName="ZCBMM_CF_CEGA.ZCBMM_CF_CEGA.controller.Teste" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page title="{i18n>hed_aceite}">
+		<content>
+			<Panel >
+				<content>
+					<ObjectHeader title="{i18n>avis_receb_header} {CodAviso}" introActive="true" titleActive="true"
+						intro="{/#AceiteReservaCB/Fornecedor/@sap:label}: {Fornecedor} ({Lifnr})">
+						<attributes>
+							<ObjectAttribute title="{/#AceiteReservaCB/Nfnum/@sap:label}" text="{Nfnum}"/>
+							<ObjectAttribute title="{/#AceiteReservaCB/Series/@sap:label}" text="{Series}"/>
+							<ObjectAttribute title="{/#AceiteReservaCB/Ebeln/@sap:label}" text="{Ebeln}"/>
+						</attributes>
+					</ObjectHeader>
+				</content>
+			</Panel>
+			
+			<Panel>
+				<content>
+					<Table id="aceiteItemsTable" items="{ path: 'ToIt', sorter : { path : 'Ebelp' }}" noDataText="" headerText="Itens Selecionados">
+						<items>
+							<ColumnListItem>
+								<cells>
+									<Text text="{Ebeln}"/>
+									<Text text="{Ebelp}"/>
+									<Text text="{Matnr}"/>
+									<Text text="{Maktx}"/>
+									<Text text="{Volume}"/>
+									<Text text="{Quantidade}"/>
+								</cells>
+							</ColumnListItem>
+						</items>
+						<columns>
+							<Column >
+								<header>
+									<Label text="{/#AceiteReserva/Ebeln/@sap:label}"/>
+								</header>
+							</Column>
+							<Column >
+								<header>
+									<Label text="{/#AceiteReserva/Ebelp/@sap:label}"/>
+								</header>
+							</Column>
+							<Column >
+								<header>
+									<Label text="{/#AceiteReserva/Matnr/@sap:label}"/>
+								</header>
+							</Column>
+							<Column >
+								<header>
+									<Label text="{/#AceiteReserva/Maktx/@sap:label}"/>
+								</header>
+							</Column>
+							<Column >
+								<header>
+									<Label text="{/#AceiteReserva/Volume/@sap:label}"/>
+								</header>
+							</Column>
+							<Column >
+								<header>
+									<Label text="{/#AceiteReserva/Quantidade/@sap:label}"/>
+								</header>
+							</Column>
+						</columns>
+					</Table>
+					<!--<Table id="aceiteItemsTable2" items="{ path: '/AceiteReservaCBSet', parameters: { expand: 'ToIt' } }" noDataText="" headerText="Itens Selecionados">-->
+					<!--	<items>-->
+					<!--		<ColumnListItem>-->
+					<!--			<cells>-->
+					<!--				<Text text="{CodAviso}"/>-->
+					<!--				<Text text="{Ebeln}" maxLines="2" wrapping="false" />-->
+					<!--				<Text text="{Nfe}"/>-->
+					<!--				<Text text="{Serie}"/>-->
+					<!--				<ObjectIdentifier title="{Fornecedor}" text="{DescForn}"/>-->
+					<!--				<List items="{ToIt}">-->
+					<!--					<items>-->
+					<!--						<StandardListItem title="{Ebelp}"/>-->
+					<!--					</items>-->
+					<!--				</List>-->
+					<!--			</cells>-->
+					<!--		</ColumnListItem>-->
+					<!--	</items>-->
+					<!--	<columns>-->
+					<!--		<Column >-->
+					<!--			<header>-->
+					<!--				<Label text="{/#AceiteReserva/CodAviso/@sap:label}"/>-->
+					<!--			</header>-->
+					<!--		</Column>-->
+					<!--		<Column >-->
+					<!--			<header>-->
+					<!--				<Label text="{/#AceiteReserva/Ebeln/@sap:label}"/>-->
+					<!--			</header>-->
+					<!--		</Column>-->
+					<!--		<Column >-->
+					<!--			<header>-->
+					<!--				<Label text="{/#AceiteReserva/Nfe/@sap:label}"/>-->
+					<!--			</header>-->
+					<!--		</Column>-->
+					<!--		<Column >-->
+					<!--			<header>-->
+					<!--				<Label text="{/#AceiteReserva/Serie/@sap:label}"/>-->
+					<!--			</header>-->
+					<!--		</Column>-->
+					<!--		<Column >-->
+					<!--			<header>-->
+					<!--				<Label text="{/#AceiteReserva/Fornecedor/@sap:label}"/>-->
+					<!--			</header>-->
+					<!--		</Column>-->
+					<!--		<Column >-->
+					<!--			<header>-->
+					<!--				<Label text="it"/>-->
+					<!--			</header>-->
+					<!--		</Column>-->
+					<!--	</columns>-->
+					<!--</Table>-->
+				</content>
+			</Panel>
+		</content>
+		<footer>
+			<Toolbar>
+				<ToolbarSpacer/>
+				<Button text="Registrar Aceite" press=".onRegistrarAceitePress" tooltip="Registrar Aceite de Recebimento" type="Accept"
+					icon="sap-icon://accept"/>
+			</Toolbar>
+		</footer>
+	</Page>
+</mvc:View>

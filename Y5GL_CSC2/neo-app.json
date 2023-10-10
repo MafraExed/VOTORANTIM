@@ -1,0 +1,53 @@
+{
+  "welcomeFile": "index.html",
+  "routes": [
+    {
+      "path": "/sap/opu/odata",
+      "target": {
+        "type": "destination",
+        "name": "SAP_GW_HUB",
+        "entryPath": "/sap/opu/odata"
+      },
+      "description": "GW HUB DEFAULT"
+    },
+    {
+      "path": "/sap/bc/ui5_ui5",
+      "target": {
+        "type": "destination",
+        "name": "SAP_GW_HUB",
+        "entryPath": "/sap/bc/ui5_ui5"
+      },
+      "description": "GW HUB DEFAULT"
+    },
+    {
+      "path": "/resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/resources",
+        "version": "1.71.4"
+      },
+      "description": "SAPUI5 Resources"
+    },
+    {
+      "path": "/test-resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/test-resources",
+        "version": "1.71.4"
+      },
+      "description": "SAPUI5 Test Resources"
+    },
+    {
+      "path": "/resources/Y5GL_CSC2/Y5GL_CSC2/Component",
+      "target": {
+        "type": "destination",
+        "name": "SAP_GW_HUB",
+        "entryPath": "/sap/bc/lrep/flex/data/~yykmTUKfnzRaf07hyetE63wL9JA=~/Y5GL_CSC2.Y5GL_CSC2.Component?version=1.0.0",
+        "preferLocal": true
+      },
+      "description": "Y5GL_CSC2/Y5GL_CSC2/Component Reuse Library"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core"
+	controllerName="ZPUI_BCMM_COND.ZPUI_BCMM_COND.controller.Rota">
+	<SelectDialog title="Transportadora" class="sapUiPopupWithPadding" items="{/ZET_CBMM_CF_TRANSP_HSet}" search="_handleValueHelpTransp"
+		confirm="ConfirmTransp" cancel="_handleValueHelpClose" >
+		<StandardListItem iconDensityAware="false" iconInset="false" title="{Lifnr}" description="{Name}"/>
+	</SelectDialog>
+</core:FragmentDefinition>

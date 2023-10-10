@@ -1,0 +1,49 @@
+.w3-tag {
+    background-color: rgba(20, 20, 20, 0.1);
+    color: #fff;
+    display: inline-block;
+    padding-left: 8px;
+    padding-right: 8px;
+    text-align: center;
+    z-index: 15;
+    cursor: pointer;
+    font-size: 9px;
+    margin: 2px;
+    position: absolute;
+    min-width: 120px;
+    visibility: hidden;
+}
+
+.bigLabel {
+    font-size: 18px;
+}
+
+.pageTitle {
+    color: #fff;
+    text-shadow: black 0.1em 0.1em 0.2em;
+    font-size: 24px;
+    font-weight: 900;
+}
+
+.veryBigLabel {
+    font-size: 24px;
+}
+
+.btnCentralizado {
+    margin-top: 20px;
+    margin-left: 460px;
+}
+
+.shadow {
+    min-height: 70px;
+    padding: 10px;
+    margin-top: 10px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    -webkit-box-shadow: 1px 1px 2px 3px #ccc;
+    /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+    -moz-box-shadow: 1px 1px 2px 3px #ccc;
+    /* Firefox 3.5 - 3.6 */
+    box-shadow: 1px 1px 2px 3px #ccc;
+    /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+}

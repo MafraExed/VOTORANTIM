@@ -1,0 +1,335 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:html="http://www.w3.org/1999/xhtml" controllerName="Y5GL_EC_CAD2.Y5GL_EC_CAD2.controller.DADOS_PESSOAIS">
+	<App id="idAppDadosPessoais">
+		<pages id="idPagesDadosPessoais">
+			<Page id="IdPageDadosPessoais">
+				<customHeader>
+					<Bar id="idBarMasterDadosPessoais">
+						<contentLeft>
+							<Button icon="sap-icon://nav-back" press="onBackMaster" text="Voltar"/>
+						</contentLeft>
+						<contentMiddle>
+							<Title text="Dados Pessoais" titleStyle="H3" id="idTitleDependentes"/>
+						</contentMiddle>
+					</Bar>
+				</customHeader>
+				<content>
+					<HBox width="100%" height="1000%" id="idGif" class="Loading" busyIndicatorSize="Auto" backgroundDesign="Solid">
+						<Image src="imagens/voto_load_white.gif" width="100%" class="footer_img" id="idimg" backgroundSize="100%"/>
+					</HBox>
+					<MessageStrip id="idMessage" text="Aguardando aprovação CSC" type="Warning" showIcon="true" showCloseButton="false" class="sapUiMediumMarginBottom" visible="{path:'Status', formatter:'.formatVisible'}"/>
+					<Input id="idTipo" value="{Status}" visible="false"/>
+					<f:Form class="editableForm" editable="true" id="form1" visible="false">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_FUNSEJEM" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer">
+								<f:formElements>
+									<f:FormElement label="Nome Completo" id="FormElementNomeCompleto">
+										<f:fields>
+											<Input value="{Nome}" id="IdNomeCompleto" placeholder="Nome Completo" required="true" maxLength="80"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Data de nascimento" id="FormElementDatadeNascimento">
+										<f:fields>
+											<Input value="{DtNasc}" id="IdDataNascimento" placeholder="Data de Nascimento" required="true" type="Date" editable="false"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Sexo" id="FormElementSexo">
+										<f:fields>
+											<ComboBox id="IdSexo" selectedKey="{Sexo}" required="true" placeholder="Sexo" items="{/ZET_GLRH_COMBO_SEXO_ECSet}">
+												<core:Item key="{Id}" text="{Value}" id="idKeySexo"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="País de Nascimento" id="FormPaisNascimento">
+										<f:fields>
+											<ComboBox id="IdPaisNasc" selectedKey="{Pais}" required="true" placeholder="País de nascimento" items="{/ZET_GLHR_COMBO_PAISNASCIMENTOSet}" editable="false">
+												<core:Item key="{Land1}" text="{Landx}" id="idKeyPaisNasc"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Estado de Nascimento" id="FormEstNascimento">
+										<f:fields>
+											<ComboBox id="IdEstNasc" selectedKey="{Estado}" required="true" placeholder="Estado de nascimento" items="{/ZET_GLHR_COMBO_ESTADOSet}" editable="false">
+												<core:Item key="{Bland}" text="{Bezei}" id="idKeyEstNasc"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Local de nascimento" id="FormElementLocaldeNascimento">
+										<f:fields>
+											<Input value="{Municipio}" showSuggestion="true" placeholder="Local de Nacimento" valueHelpRequest="handleValueHelp" showValueHelp="true" id="IdLocNascimento" suggestionItems="{/ZET_GLHR_COMBO_MUNICIPIOSet}" suggest="handleSuggest" editable="false">
+												<suggestionItems>
+													<core:Item text="{Zmunicipio}" id="idsugestionlocal"/>
+												</suggestionItems>
+											</Input>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Cód. Naturalidade" id="FormElementCodNat">
+										<f:fields>
+											<Input value="{CodNaturalidade}" id="IdCodNat" placeholder="Código de naturalidade" required="true" editable="false"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Nacionalidade" id="FormElementNacionalidade">
+										<f:fields>
+											<ComboBox id="IdNacionaliade" selectedKey="{Nacionalidade}" required="true" placeholder="Nacionalidade" editable="false" items="{/ZET_GLHR_COMBO_PAISNASCIMENTOSet}">
+												<core:Item key="{Land1}" text="{Natio}" id="idKeyNacionalidade"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Idioma" id="FormIdioma">
+										<f:fields>
+											<ComboBox id="IdIdioma" selectedKey="{Idioma}" required="true" placeholder="Idioma" items="{/ZET_GLHR_COMBO_IDIOMASet}" editable="false">
+												<core:Item key="{Sprsl}" text="{Sptxt}" id="idKeyIdioma"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Estado Civil" id="FormEstCivil">
+										<f:fields>
+											<ComboBox id="IdEstCivil" selectedKey="{EstadoCivil}" required="true" placeholder="Estado Civil" items="{/ZET_GLRH_COMBO_EST_CIVIL_ECSet}" change="onCivil">
+												<core:Item key="{Id}" text="{Value}" id="idKeyEstCivil"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Estado Civil Desde" id="FormCasDesde" visible ="false" >
+										<f:fields>
+											<Input value="{DtCasamento}" id="IdCasadoDesde" placeholder="Estado Civil Desde" required="false" visible ="false"  type="Date"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Aposentado" id="FormAposentado">
+										<f:fields>
+											<ComboBox id="IdAposentado" selectedKey="{Aposentado}" required="true" placeholder="Aposentado" items="{/ZET_GLHR_SIM_NAOSet}" editable="false">
+												<core:Item key="{Id}" text="{DescId}" id="idAposentado"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Raça/Cor" id="FormRacaCor">
+										<f:fields>
+											<ComboBox id="IdRaca" selectedKey="{Raca}" required="true" placeholder="Raça/Cor" items="{/ZET_COMBO_CORESSet}" editable="true">
+												<core:Item key="{Race}" text="{Descr}" id="idKeyRaca"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+								
+									<f:FormElement label="Qual é seu gênero?" id="FormgGenero">
+										<f:fields>
+											<ComboBox id="idGenero" selectedKey="{Genero}" required="true" placeholder="Qual é seu gênero?" items="{/ZET_COMBO_GENERO_ECSet}" change="onChangeReal">
+												<core:Item key="{Id}" text="{Value}" id="idKeyGenero"/>
+											</ComboBox>
+										</f:fields>
+										<f:fields>
+											<Button press="Genero" icon="sap-icon://sys-help-2" id="idButtonGenero" width="15%" class="NewButton"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Qual sua orientação afetivo-sexual?" id="FormOrientacaoSex">
+										<f:fields>
+											<ComboBox id="IdOrientacaoSex" selectedKey="{Orientacaosex}" required="true" placeholder="Qual sua orientação afetivo-sexual?" items="{/ZET_COMBO_ORIENTACAOSEX_ECSet}" change="onChangeReal">
+												<core:Item key="{Id}" text="{Value}" id="idKeyOrientacaoSex"/>
+											</ComboBox>
+											<Button press="naoOrientacaoSexual" icon="sap-icon://sys-help-2" id="idnaoOrientacaoSexual" width="15%"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Você é uma pessoa transgênero?" id="FormTransgenero">
+										<f:fields>
+											<ComboBox id="IdTransgenero" selectedKey="{Transgenero}" required="true" placeholder="Você é uma pessoa transgênero?" items="{/ZET_COMBO_TRANSGENERCO_ECSet}" change="onTrans">
+												<core:Item key="{Id}" text="{Value}" id="idTransgenero"/>
+											</ComboBox>
+											<Button press="buttonTrans" icon="sap-icon://sys-help-2" id="idButtonTrans" width="15%"/>
+										</f:fields>
+									</f:FormElement>
+										<f:FormElement label="Nome Social" id="FormNomeSocial" visible ="false" >
+										<f:fields>
+											<Input value="{NomeSocial}" id="IdNomeSocial" placeholder="NomeSocial" required="false" visible="false" />
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement id="idCheckBox_edit">
+										<f:fields>
+												
+												<CheckBox text="Eu concordo em compartilhar meu dados pessoais com a CBA, a fim de que sejam realizadas ações para promoção da diversidade, equidade e inclusão, e estou ciente das diretrizes contidas na Privacidade dos Empregados(as) disponível na intranet no Portal +Compliance." selected="{path:'Aceite', formatter:'.formatAceite'}" id="RealCheckBox_edit" wrapping="true"/>
+
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form class="editableForm" editable="true" id="Form2" visible="true">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer2">
+								<f:formElements>
+									<f:FormElement label="Nome Completo" id="FormElementNomeCompleto_edit">
+										<f:fields>
+											<Input value="{Nome}" id="IdNomeCompletoEdit" placeholder="Nome Completo" required="true" maxLength="80" editable="false"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Data de nascimento" id="FormElementDatadeNascimento_Edit">
+										<f:fields>
+											<Input value="{DtNasc}" id="IdDataNascimento_Edit" placeholder="Data de Nascimento" required="true" type="Date" editable="false"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Sexo" id="FormElementSexo_Edit">
+										<f:fields>
+											<ComboBox id="IdSexo_Edit" selectedKey="{Sexo}" required="true" placeholder="Sexo" items="{/ZET_GLRH_COMBO_SEXO_ECSet}" editable="false">
+												<core:Item key="{Id}" text="{Value}" id="idKeySexo_Edit"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="País de Nascimento" id="FormPaisNascimento_Edit">
+										<f:fields>
+											<ComboBox id="IdPaisNasc_Edit" selectedKey="{Pais}" required="true" placeholder="País de nascimento" items="{/ZET_GLHR_COMBO_PAISNASCIMENTOSet}" editable="false">
+												<core:Item key="{Land1}" text="{Landx}" id="idKeyPaisNasc_Edit"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Estado de Nascimento" id="FormEstNascimento_Edit">
+										<f:fields>
+											<ComboBox id="IdEstNasc_Edit" selectedKey="{Estado}" required="true" placeholder="Estado de nascimento" items="{/ZET_GLHR_COMBO_ESTADOSet}" editable="false">
+												<core:Item key="{Bland}" text="{Bezei}" id="idKeyEstNasc_Edit"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Local de nascimento" id="FormElementLocaldeNascimento_Edit">
+										<f:fields>
+											<Input value="{Municipio}" showSuggestion="true" placeholder="Local de Nacimento" valueHelpRequest="handleValueHelp" showValueHelp="true" id="IdLocNascimento_Edit" suggestionItems="{/ZET_GLHR_COMBO_MUNICIPIOSet}" suggest="handleSuggest" editable="false">
+												<suggestionItems>
+													<core:Item text="{Zmunicipio}" id="idsugestionlocal_Edit"/>
+												</suggestionItems>
+											</Input>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Cod. Naturalidade" id="FormElementCodNat_Edit">
+										<f:fields>
+											<Input value="{CodNaturalidade}" id="IdCodNat_Edit" placeholder="Código de naturalidade" required="true" editable="false"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Nacionalidade" id="FormElementNacionalidade_Edit">
+										<f:fields>
+											<ComboBox id="IdNacionaliade_Edit" selectedKey="{Nacionalidade}" required="true" placeholder="Nacionalidade" items="{/ZET_GLHR_COMBO_PAISNASCIMENTOSet}" editable="false">
+												<core:Item key="{Land1}" text="{Natio}" id="idKeyNacionalidade_Edit"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Idioma" id="FormIdioma_Edit">
+										<f:fields>
+											<ComboBox id="IdIdioma_Edit" selectedKey="{Idioma}" required="true" placeholder="Idioma" items="{/ZET_GLHR_COMBO_IDIOMASet}" editable="false">
+												<core:Item key="{Sprsl}" text="{Sptxt}" id="idKeyIdioma_Edit"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Estado Civil" id="FormEstCivil_edit">
+										<f:fields>
+											<ComboBox id="IdEstCivil_edit" selectedKey="{EstadoCivil}" required="true" placeholder="Estado Civil" items="{/ZET_GLRH_COMBO_EST_CIVIL_ECSet}" editable="false" change="onCivil">
+												<core:Item key="{Id}" text="{Value}" id="idKeyEstCivil_Edit"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Estado Civil Desde" id="FormCasDesde_Edit" visible ="false" >
+										<f:fields>
+											<Input value="{DtCasamento}" id="IdCasadoDesde_Edit" placeholder="Estado Civil Desde" required="false" type="Date" editable="false" visible ="false" />
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Aposentado" id="FormAposentado_Edit">
+										<f:fields>
+											<ComboBox id="IdAposentado_Edit" selectedKey="{Aposentado}" required="true" placeholder="Aposentado" items="{/ZET_GLHR_SIM_NAOSet}" editable="false">
+												<core:Item key="{Id}" text="{DescId}" id="idAposentado_Edit"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Raça/Cor" id="FormRacaCor_Edit">
+										<f:fields>
+											<ComboBox id="IdRaca_Edit" selectedKey="{Raca}" required="true" placeholder="Raça/Cor" items="{/ZET_COMBO_CORESSet}" editable="false">
+												<core:Item key="{Race}" text="{Descr}" id="idKeyRaca_Edit"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Qual é seu gênero?" id="FormgGenero_Edit">
+										<f:fields>
+											<ComboBox id="idGenero_Edit" selectedKey="{Genero}" required="true" placeholder="Qual é seu gênero?" items="{/ZET_COMBO_GENERO_ECSet}" editable="false" width="150%" maxWidth="150%" >
+												<core:Item key="{Id}" text="{Value}" id="idKeyGenero_Edit"/>
+											</ComboBox>
+										</f:fields>
+										<f:fields>
+											<Button press="Genero" icon="sap-icon://sys-help-2" id="idButtonGenero_Edit" width="15%" class="NewButton"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Qual sua orientação afetivo-sexual?" id="FormOrientacaoSex_Edit">
+										<f:fields>
+											<ComboBox id="IdOrientacaoSex_Edit" selectedKey="{Orientacaosex}" required="true" placeholder="Qual sua orientação afetivo-sexual?" items="{/ZET_COMBO_ORIENTACAOSEX_ECSet}" editable="false" maxWidth="150%" width="150%" change="onChangeReal">
+												<core:Item key="{Id}" text="{Value}" id="idKeyOrientacaoSex_Edit"/>
+											</ComboBox>
+											<Button press="naoOrientacaoSexual" icon="sap-icon://sys-help-2" id="idnaoOrientacaoSexual_Edit" width="15%" class="NewButton"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Você é uma pessoa transgênero?" id="FormTransgenero_Edit">
+										<f:fields>
+											<ComboBox id="IdTransgenero_Edit" selectedKey="{Transgenero}" required="true" placeholder="Você é uma pessoa transgênero?" items="{/ZET_COMBO_TRANSGENERCO_ECSet}" editable="false" width="150%" maxWidth="150%" change="onTrans">
+												<core:Item key="{Id}" text="{Value}" id="idTransgenero_Edit"/>
+											</ComboBox>
+										</f:fields>
+										<f:fields>
+											<Button press="buttonTrans" icon="sap-icon://sys-help-2" id="idButtonTrans_Edit" width="15%" class="NewButton"/>
+										</f:fields>
+									</f:FormElement>
+											<f:FormElement label="Nome Social" id="FormNomeSocial_Edit" visible="false">
+										<f:fields>
+											<Input value="{NomeSocial}" id="IdNomeSocial_Edit" placeholder="NomeSocial" required="false" editable="false" visible="false"/>
+										</f:fields>
+									</f:FormElement>
+							
+									<f:FormElement id="idCheckBox">
+										<f:fields>
+											
+											<CheckBox text="Eu concordo em compartilhar meu dados pessoais com a CBA, a fim de que sejam realizadas ações para promoção da diversidade, equidade e inclusão, e estou ciente das diretrizes contidas na Privacidade dos Empregados(as) disponível na intranet no Portal +Compliance." selected="{path:'Aceite', formatter:'.formatVisibleEdit'}" id="RealCheckBox" wrapping="true"/>
+											
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form class="editableForm" editable="true" id="UPLOAD" visible="true">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_UPLOAD" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer_UPLOAD">
+								<f:formElements>
+									<f:FormElement label="*Para adicionar Anexos selecione o botão (+) " id="IdonAddDoc">
+										<f:fields>
+											<UploadCollection id="UploadCollection" multiple="false" change="onChange" fileDeleted="onDeleteSelectedItems" beforeUploadStarts="onBeforeUploadStarts" uploadComplete="onuploadComplete" items="{ path: '/ZET_GLRH_UPLOADSet', templateShareable: true }" modelContextChange="onmodelListContextChange" mode="SingleSelectMaster" uploadButtonInvisible="true" uploadUrl="/sap/opu/odata/sap/ZGWGLRH_MEU_CADASTRO_SRV/ZET_GLHR_UPFILESet" noDataDescription="Para adicionar/alterar Anexos selecione o botão ( + )" noDataText="Aguardando novos Carregamentos" numberOfAttachmentsText="Anexos">
+												<toolbar>
+													<OverflowToolbar id="myId" visible="true">
+														<Title id="attachmentTitle"/>
+														<ToolbarSpacer id="idToolbarSpacer"/>
+														<SearchField width="10rem" search="onSearch" enabled="false" visible="false" id="idSearchField"/>
+														<Button id="deleteSelectedButton" text="Delete" press="onDeleteSelectedItems" enabled="false" visible="false" type="Transparent"/>
+														<ToggleButton id="selectAllButton" text="Select all" press="onSelectAllPress" enabled="false" visible="false" type="Transparent"/>
+														<UploadCollectionToolbarPlaceholder id="IdUploadCollectionToolbar"/>
+													</OverflowToolbar>
+												</toolbar>
+												<items>
+													<UploadCollectionItem documentId="{DocId}" fileName="{Filename}" mimeType="{Mimetype}" id="UploadCollectionItem" url="/sap/opu/odata/sap/ZGWGLRH_MEU_CADASTRO_SRV/ZET_GLHR_UPFILESet('{Pernr}${Infty}${Subty}$$${Tipo}${Favor}$${Icnum}${Dependentes}${Objps}${DocId}')/$value" enableEdit="false" visibleEdit="false" deletePress="onFileDelete" selected="true"/>
+												</items>
+											</UploadCollection>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+				</content>
+				<footer>
+					<Toolbar id="idOverTollbar" design="Transparent">
+						<ToolbarSpacer id="idToolbarSpacerD"/>
+						<Button press="onAprovar" text="Enviar" icon="sap-icon://save" id="IdEnviarDetailDep" tooltip="Gravar infotipo" iconFirst="true" visible="false"/>
+						<Button press="onCancel" text="Cancelar" icon="sap-icon://cancel" id="IdCancelarDetailDep" tooltip="Cancelar Alteração" iconFirst="true" visible="false"/>
+						<Button press="onEdit" text="Alterar" icon="sap-icon://edit" id="IdEditDados" tooltip="Editar" visible="{path:'Status', formatter:'.formatVisibleEdit'}" iconFirst="true"/>
+					</Toolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

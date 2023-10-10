@@ -1,0 +1,143 @@
+{
+    "_version": "1.9.0",
+    "sap.app": {
+        "id": "br.com.suzano.ZUI5VP_SHIP_SOF",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "dataSources": {
+            "ZGWVPWM_VESSELS_SOF_SRV": {
+                "uri": "/sap/opu/odata/sap/ZGWVPWM_VESSELS_SOF_SRV",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/ZGWVPWM_VESSELS_SOF_SRV/metadata.xml"
+                }
+            }
+        },
+        "sourceTemplate": {
+            "id": "sap.ui.ui5-template-plugin.2masterdetail",
+            "version": "1.52.7",
+            "toolsId": "2cd2761e-a4c8-40aa-9a0f-194c6ac5fd5b"
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "sap-icon://detail-view",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "rootView": {
+            "viewName": "br.com.suzano.ZUI5VP_SHIP_SOF.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "idBoardingControl"
+        },
+        "dependencies": {
+            "minUI5Version": "1.42.0",
+            "libs": {
+                "sap.f": {},
+                "sap.m": {},
+                "sap.ui.comp": {
+                    "minVersion": ""
+                },
+                "sap.ui.core": {},
+                "sap.ui.export": {
+                    "minVersion": ""
+                },
+                "sap.ui.layout": {
+                    "minVersion": ""
+                },
+                "sap.viz": {
+                    "minVersion": ""
+                }
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "config": {
+            "fullWidth": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "br.com.suzano.ZUI5VP_SHIP_SOF.i18n.i18n"
+                }
+            }
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.f.routing.Router",
+                "viewType": "XML",
+                "viewPath": "br.com.suzano.ZUI5VP_SHIP_SOF.view",
+                "controlId": "idBoardingControl",
+                "transition": "slide",
+                "async": true
+            },
+            "routes": [
+                {
+                    "pattern": ":Layout:",
+                    "name": "master",
+                    "target": [
+                        "master",
+                        "object"
+                    ]
+                },
+                {
+                    "pattern": "detail/{Layout}/{DocTransporte}",
+                    "name": "object",
+                    "target": [
+                        "master",
+                        "object"
+                    ]
+                }
+            ],
+            "targets": {
+                "master": {
+                    "viewName": "Master",
+                    "controlAggregation": "beginColumnPages",
+                    "viewId": "master"
+                },
+                "object": {
+                    "viewName": "Detail",
+                    "controlAggregation": "midColumnPages",
+                    "viewId": "detail"
+                },
+                "detailObjectNotFound": {
+                    "viewName": "DetailObjectNotFound",
+                    "controlAggregation": "endColumnPages"
+                },
+                "detailNoObjectsAvailable": {
+                    "viewName": "DetailNoObjectsAvailable",
+                    "controlAggregation": "endColumnPages"
+                },
+                "notFound": {
+                    "viewName": "NotFound",
+                    "controlAggregation": "endColumnPages"
+                }
+            }
+        }
+    },
+    "sap.platform.abap": {
+        "uri": "/sap/bc/ui5_ui5/sap/zui5vp_ship_sof",
+        "_version": "1.1.0"
+    }
+}

@@ -1,0 +1,14 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Dialog title="Lista de Hyperlinks da Tarefa" type="Standard">
+		<content>
+			<List id="LinkListDialog" noDataText="Nenhum link encontrado" mode="Delete" delete="onDeleteLink" enableBusyIndicator="true" growing="true"
+				itemPress="onLinkListClick"/>
+		</content>
+		<beginButton>
+			<Button text="Adicionar novo link" icon="sap-icon://add" press="onAddNewLink" enabled="true"/>
+		</beginButton>
+		<endButton>
+			<Button text="Cancelar" icon="sap-icon://decline" press="onLinkListClose"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

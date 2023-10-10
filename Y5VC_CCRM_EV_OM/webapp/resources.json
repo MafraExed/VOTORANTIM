@@ -1,0 +1,144 @@
+{
+    "resources": [
+        {
+            "name": "localService/metadata.xml"
+        },
+        {
+            "name": "localService/ZGWVCPM_EVOL_OM_SRV/metadata.xml"
+        },
+        {
+            "name": "localService/mockserver.js"
+        },
+        {
+            "name": "controller/ErrorHandler.js"
+        },
+        {
+            "name": "controller/App.controller.js"
+        },
+        {
+            "name": "controller/BaseController.js"
+        },
+        {
+            "name": "controller/EvOM.controller.js"
+        },
+        {
+            "name": "model/models.js"
+        },
+        {
+            "name": "model/formatter.js"
+        },
+        {
+            "name": "model/filter.json"
+        },
+        {
+            "name": "manifest.json"
+        },
+        {
+            "name": "Component.js"
+        },
+        {
+            "name": "i18n/i18n.properties",
+            "raw": "i18n/i18n.properties"
+        },
+        {
+            "name": "i18n/i18n_en.properties",
+            "raw": "i18n/i18n.properties"
+        },
+        {
+            "name": "i18n/i18n_pt_BR.properties",
+            "raw": "i18n/i18n.properties"
+        },
+        {
+            "name": "i18n/i18n_pt.properties",
+            "raw": "i18n/i18n.properties"
+        },
+        {
+            "name": "test/flpSandboxMockServer.html"
+        },
+        {
+            "name": "test/integration/opaTests.qunit.html"
+        },
+        {
+            "name": "test/integration/AllJourneys.js"
+        },
+        {
+            "name": "test/integration/NotFoundJourney.js"
+        },
+        {
+            "name": "test/integration/pages/Browser.js"
+        },
+        {
+            "name": "test/integration/pages/App.js"
+        },
+        {
+            "name": "test/integration/pages/NotFound.js"
+        },
+        {
+            "name": "test/integration/pages/shareOptions.js"
+        },
+        {
+            "name": "test/integration/pages/Object.js"
+        },
+        {
+            "name": "test/integration/pages/Common.js"
+        },
+        {
+            "name": "test/integration/pages/EvOM.js"
+        },
+        {
+            "name": "test/integration/ObjectJourney.js"
+        },
+        {
+            "name": "test/integration/EvOMJourney.js"
+        },
+        {
+            "name": "test/integration/FLPIntegrationJourney.js"
+        },
+        {
+            "name": "test/integration/NavigationJourney.js"
+        },
+        {
+            "name": "test/flpSandbox.html"
+        },
+        {
+            "name": "test/testsuite.qunit.html"
+        },
+        {
+            "name": "test/unit/helper/FakeI18nModel.js"
+        },
+        {
+            "name": "test/unit/unitTests.qunit.html"
+        },
+        {
+            "name": "test/unit/controller/Worklist.controller.js"
+        },
+        {
+            "name": "test/unit/controller/App.controller.js"
+        },
+        {
+            "name": "test/unit/allTests.js"
+        },
+        {
+            "name": "test/unit/model/models.js"
+        },
+        {
+            "name": "test/unit/model/formatter.js"
+        },
+        {
+            "name": "view/App.view.xml"
+        },
+        {
+            "name": "view/EvOM.view.xml"
+        },
+        {
+            "name": "test.html"
+        },
+        {
+            "name": "Component-preload.js",
+            "merged": true
+        },
+        {
+            "name": "neo-app.json"
+        }
+    ]
+}

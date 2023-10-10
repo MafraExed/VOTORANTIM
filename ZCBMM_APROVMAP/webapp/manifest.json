@@ -1,0 +1,211 @@
+{
+    "_version": "1.9.0",
+    "sap.app": {
+        "id": "ZCBMM_APROVMAP.ZCBMM_APROVMAP",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/sap/ZGWCBMM_CONTRATACAO_FRETE_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/metadata.xml"
+                }
+            }
+        },
+        "sourceTemplate": {
+            "id": "sap.ui.ui5-template-plugin.1worklist",
+            "version": "1.52.7",
+            "toolsId": "613ba726-a51a-4be3-b99e-43e31f44d3a1"
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "sap-icon://task",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "rootView": {
+            "viewName": "ZCBMM_APROVMAP.ZCBMM_APROVMAP.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "app"
+        },
+        "dependencies": {
+            "minUI5Version": "1.42.0",
+            "libs": {
+                "sap.ui.core": {},
+                "sap.m": {},
+                "sap.f": {},
+                "sap.ushell": {},
+                "sap.collaboration": {
+                    "lazy": true
+                }
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "ZCBMM_APROVMAP.ZCBMM_APROVMAP.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true
+            }
+        },
+        "services": {
+            "ShellUIService": {
+                "factoryName": "sap.ushell.ui5service.ShellUIService",
+                "lazy": false,
+                "settings": {
+                    "setTitle": "auto"
+                }
+            }
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "viewPath": "ZCBMM_APROVMAP.ZCBMM_APROVMAP.view",
+                "controlId": "app",
+                "controlAggregation": "pages",
+                "bypassed": {
+                    "target": [
+                        "notFound"
+                    ]
+                },
+                "async": true
+            },
+            "routes": [
+                {
+                    "pattern": "",
+                    "name": "worklist",
+                    "target": [
+                        "worklist"
+                    ]
+                },
+                {
+                    "name": "Worklist_Detail",
+                    "pattern": "ZET_CBMM_CF_FRETESet/{IdSolicitacao}/{WerksO}",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "Worklist_Detail"
+                    ]
+                },
+                {
+                    "name": "BackWork",
+                    "pattern": "BackWork/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "BackWork"
+                    ]
+                },
+                {
+                    "name": "Mapa",
+                    "pattern": "Mapa/{Bukrs}/{WerksO}/{IdSolicitacao}/{IdRota}/{NrTransp}/{TpVeiculo}/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "Mapa"
+                    ]
+                },
+                {
+                    "name": "Backend",
+                    "pattern": "Backend/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "Backend"
+                    ]
+                }
+            ],
+            "targets": {
+                "worklist": {
+                    "viewName": "Worklist",
+                    "viewId": "worklist",
+                    "viewLevel": 1,
+                    "title": "Mapa de Concorrência"
+                },
+                "object": {
+                    "viewName": "Object",
+                    "viewId": "object",
+                    "viewLevel": 2,
+                    "title": "{i18n>objectViewTitle}"
+                },
+                "objectNotFound": {
+                    "viewName": "ObjectNotFound",
+                    "viewId": "objectNotFound"
+                },
+                "notFound": {
+                    "viewName": "NotFound",
+                    "viewId": "notFound"
+                },
+                "Worklist_Detail": {
+                    "viewType": "XML",
+                    "transition": "flip",
+                    "clearAggregation": true,
+                    "viewName": "Worklist_Detail",
+                    "title": "Transportadoras / Veículos",
+                    "viewId": "Worklist_Detail",
+                    "viewLevel": 3
+                },
+                "BackWork": {
+                    "viewType": "XML",
+                    "transition": "flip",
+                    "clearAggregation": true,
+                    "viewId": "BackWork",
+                    "title": "BackWork",
+                    "viewName": "Worklist",
+                    "viewLevel": 1
+                },
+                "Mapa": {
+                    "viewType": "XML",
+                    "transition": "flip",
+                    "clearAggregation": true,
+                    "viewLevel": 5,
+                    "viewName": "Mapa",
+                    "title": "Mapa",
+                    "viewId": "Mapa"
+                },
+                "Backend": {
+                    "viewType": "XML",
+                    "transition": "flip",
+                    "clearAggregation": true,
+                    "viewName": "Worklist_Detail",
+                    "title": "Detalhes Veículos",
+                    "viewId": "Backend",
+                    "viewLevel": 2
+                }
+            }
+        }
+    },
+    "sap.platform.abap": {
+        "uri": "/sap/bc/ui5_ui5/sap/zcbmm_aprovmap",
+        "_version": "1.1.0"
+    }
+}

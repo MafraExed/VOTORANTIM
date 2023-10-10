@@ -1,0 +1,333 @@
+<core:FragmentDefinition
+  xmlns="sap.m"
+  xmlns:f="sap.ui.layout.form"
+  xmlns:layout="sap.ui.layout"
+  xmlns:core="sap.ui.core">
+  <Dialog
+  	id="idDialogItem"
+    title='{i18n>addItemTitle}'
+    type='Message'
+    stretchOnPhone="true"
+    draggable="true"
+    contentWidth="65%">
+    <content>
+      <VBox class="sapUiSmallMargin">
+        <f:Form editable="true" ariaLabelledBy="Title1">
+          <f:layout>
+            <f:ResponsiveGridLayout 
+            	labelSpanXL="4"
+					labelSpanL="3"
+					labelSpanM="4"
+					labelSpanS="12"
+					adjustLabelSpan="false"
+					emptySpanXL="0"
+					emptySpanL="4"
+					emptySpanM="0"
+					emptySpanS="0"
+					columnsXL="1"
+					columnsL="1"
+					columnsM="1"
+					singleContainerFullSize="false" />
+          </f:layout>
+          <f:formContainers>
+            <f:FormContainer>
+              <f:formElements>
+
+                 <f:FormElement label="{i18n>addItemDocItem}">
+                  
+						 <layout:HorizontalLayout width="100%">
+						 	<Input
+					    	id="addItemDocref"  	
+					    	tooltip="{i18n>addItemDocref}" 
+					        value="{addItem>/Docref}"
+					        maxLength="14"
+					        width="8rem"
+					        
+					        class="addItemDocrefClass">	
+					         <layoutData>
+                            	<layout:GridData span="L3 M3 S8" />
+                     		 </layoutData>
+                    		</Input>				 
+						 
+						 	<Input
+						 	id="addItemDocrefItem"
+					        tooltip="{i18n>addItemDocrefItem}" 
+					        value="{addItem>/DocrefItem}"
+					        maxLength="6"
+					        width="4.5rem"
+					        class="addItemDocrefClass">			 
+						 	  <layoutData>
+                            	<layout:GridData span="L2 M2 S8" />
+                     		 </layoutData>
+                    		</Input>	
+                    		
+						 	<Button 
+						 	id="addItemBtn"
+					    	text="{i18n>addItemButtonBuscar}" 
+					    	tooltip="{i18n>addItemButtonTooltipBuscar}" 
+					    	press="onPressBuscar">
+					    	  <layoutData>
+                            	<layout:GridData span="L2 M2 S8" />
+                     		 </layoutData>
+                    		</Button>			
+									
+						 </layout:HorizontalLayout>
+					                  
+                </f:FormElement>
+                
+                
+                <f:FormElement label="{i18n>addItemInco1}" >
+                 
+                    <layout:HorizontalLayout>
+                  	<Input
+                      id="addItemFieldInco1"
+                      class="addItemDocrefClass"
+                      tooltip="{i18n>addItemInco1}" 
+                      value="{addItem>/Inco1}"
+                      maxLength="3"
+                      width="4rem"
+                      
+                      showValueHelp="true" 
+                      valueHelpRequest="onHandleF4Incoterms"
+                      submit="onHandleSubmitIncoterms"/>
+                                            
+                    <Input
+                      id="addItemFieldInco2"
+                      value="{addItem>/Inco2}"
+                      maxLength="20"
+                      width="10rem"
+                      required="false"/>
+                    </layout:HorizontalLayout>
+                   
+                </f:FormElement>
+                
+      
+                <f:FormElement label="{i18n>addItemTipoVenda}">
+                  <f:fields>
+                  <Select 
+                  	id="addItemTipoVenda"
+                    width="12rem"
+                   
+                  	tooltip="{i18n>addItemTipoVenda}"
+                    selectedKey="{addItem>/Tipovenda}"
+                    items="{ path: 'detailView>/listTipoVenda' }">
+                          <core:Item 
+                          		id="addItemSelectTipoVenda" 
+                          		key="{detailView>Value}" 
+                          		text="{detailView>Name}" />
+                  </Select>
+                  </f:fields>
+                </f:FormElement>         
+                
+         
+                <f:FormElement label="{i18n>detailTitleTableWerkso}">
+                  <f:fields>
+                  	<Input
+                      id="addItemWerkso"
+                      tooltip="{i18n>detailTitleTableWerkso}" 
+                      value="{addItem>/Werkso}"
+                      maxLength="14"
+                      width="10rem"/>
+                  </f:fields>
+                </f:FormElement>
+     
+                  <f:FormElement label="{i18n>detailTitleTableLgorto}">
+                  <f:fields>
+                  	<Input
+                      id="addItemLgorto"
+                      tooltip="{i18n>detailTitleTableLgorto}" 
+                      value="{addItem>/Lgorto}"
+                      maxLength="14"
+                      width="10rem"/>
+                  </f:fields>
+                </f:FormElement>
+     
+       			        
+       			       			                
+                <f:FormElement label="{i18n>shlpRouteTitleRoute}">
+                  <f:fields>
+                  <Input id="addItemFieldRoute"
+                  	  tooltip="{i18n>shlpRouteTitleRoute}" 
+                      value="{addItem>/Route}"
+                      maxLength="12"
+                      width="6rem"
+                    
+                      showValueHelp="true" 
+                      valueHelpRequest="onHandleF4Route"
+                      submit="onHandleSubmitRoute">
+                      <layoutData>
+                            <layout:GridData span="L2 M2 S8" />
+                      </layoutData>
+                    </Input>
+                    <Text id="addItemFieldRouteDsc" text="{addItem>/RouteDsc}" /> 
+                  </f:fields>
+                </f:FormElement>        
+       			               			        
+       			                
+                <f:FormElement label="{i18n>addItemPtdst}">
+                  <f:fields>
+                  <Input id="addItemFieldPtdst"
+                  	  tooltip="{i18n>addItemPtdst}" 
+                      value="{addItem>/Ptdst}"
+                      maxLength="18"
+                      width="6rem"
+                     
+                      showValueHelp="true" 
+                      valueHelpRequest="onHandleF4Ptdst"
+                      submit="onHandleSubmitPtdst">
+                      <layoutData>
+                            <layout:GridData span="L2 M2 S8" />
+                      </layoutData>
+                    </Input>
+                    <Text id="addItemFieldPtdstDsc" text="{addItem>/PtdstDsc}" ></Text> 
+                  </f:fields>
+                </f:FormElement>
+                
+                <f:FormElement label="{i18n>addItemMatnr}">
+                  <f:fields>
+                  <Input id="addItemFieldMatnr"
+                  	  tooltip="{i18n>addItemMatnr}"  
+                      value="{addItem>/Matnr}"
+                      maxLength="18"
+                      width="8rem"
+                      
+                      showValueHelp="true" 
+                      valueHelpRequest="onHandleF4Matnr"
+                      submit="onHandleSubmitMatnr">
+                      <layoutData>
+                            <layout:GridData span="L2 M2 S8" />
+                      </layoutData>
+                    </Input>
+                    <Text id="addItemFieldMatnrDsc" text="{addItem>/MatnrDsc}"></Text> 
+                  </f:fields>
+                </f:FormElement>
+
+
+
+<!--  value="{path: 'addItem>/Weight', -->
+<!-- 							       type: 'sap.ui.model.type.Float',                                                          -->
+<!-- 							       formatOptions: { groupingEnabled: true,  -->
+<!-- 									        		groupingSeparator: '.',  -->
+<!-- 									        		decimalSeparator : ',',  -->
+<!-- 									        		minFractionDigits: 3 } }" -->
+
+
+
+
+                <f:FormElement label="{i18n>addItemPeso}">
+                 <layout:HorizontalLayout>
+                    <Input
+                      id="addItemPeso"
+                  	  tooltip="{i18n>addItemPeso}"
+                      value="{addItem>/Weight}"
+                                                             
+                      maxLength="15"
+                      width="9rem"
+                      
+                      class="addItemDocrefClass"/>
+                      
+                      <Input
+                      id="addItemUnit"
+                      tooltip="{i18n>addItemUnit}"
+                      value="{addItem>/Unit}"
+                      maxLength="3"
+                      width="4rem"
+                     />
+                      
+                      
+                  </layout:HorizontalLayout>
+                </f:FormElement>
+				
+				
+				 <f:FormElement label="{i18n>addItemZterm}">
+                  <f:fields>
+                  <Input 
+                  	  id="addItemFieldZterm" 
+                      tooltip="{i18n>addItemZterm}" 
+                      value="{addItem>/Zterm}"
+                      maxLength="4"
+                      width="6rem"
+                      
+                      showValueHelp="true" 
+                      valueHelpRequest="onHandleF4Zterm"
+                      submit="onHandleSubmitZterm">
+                      <layoutData>
+                            <layout:GridData span="L2 M2 S8" />
+                      </layoutData>
+                    </Input>
+                    <Text id="addItemFieldZtermDsc" text="{addItem>/ZtermDsc}" ></Text> 
+					<!--    Mudar posicao campo textos, use a classe: class="textfields" -->
+                  </f:fields>
+                </f:FormElement>
+                
+				<f:FormElement label="{i18n>addItemNumeroRe}">
+                  <f:fields>
+                  	<Input
+                      id="addItemNumeroRe"
+                      tooltip="{i18n>addItemNumeroRe}" 
+                      value="{addItem>/Renum}"
+                      maxLength="14"
+                      width="10rem"/>
+                  </f:fields>
+                </f:FormElement>
+
+   				<f:FormElement label="{i18n>addItemCeMercante}">
+                  <f:fields>
+                    <Input
+                      id="addItemCeMercante"
+                  	  tooltip="{i18n>addItemCeMercante}"
+                      value="{addItem>/CeMercante}"
+                      maxLength="20"
+                      width="12rem"
+                      required="false"/>
+                  </f:fields>
+                </f:FormElement>
+
+				<f:FormElement label="{i18n>addItemBlnum}">
+                  <f:fields>
+                    <Input
+                      id="addItemBlnum"
+                  	  tooltip="{i18n>addItemBlnum}"
+                      value="{addItem>/Blnum}"
+                      maxLength="30"
+                      width="16rem"/>
+                  </f:fields>
+                </f:FormElement>
+			
+                <f:FormElement label="{i18n>addItemMarks}">
+                  <f:fields>
+                  	<Input
+                      id="addItemMarks"
+                      tooltip="{i18n>addItemMarks}" 
+                      value="{addItem>/Marks}"
+                      maxLength="50"
+                      width="26rem"
+                      />
+                  </f:fields>
+                </f:FormElement>
+                      
+              </f:formElements>
+            </f:FormContainer>
+          </f:formContainers>
+        </f:Form>
+      </VBox>
+    </content>
+    <buttons>
+	    <Button 
+	    	id="addItemButtonMsg" 
+	    	tooltip="{i18n>messageLogProcessamento}"
+	    	text="{messagePopOver>/count}" 
+	    	type="Emphasized" 
+	    	icon="sap-icon://message-popup" 
+	    	press="onHandleMessagePopover"/>
+	    <Button 
+	    	tooltip="{i18n>addItemTooltipButtonSave}" 
+	       	icon="sap-icon://save" 
+	    	press="onHandleSaveAddItem" />
+	    <Button 
+	    	tooltip="{i18n>addItemTooltipButtonCancel}" 
+	    	icon="sap-icon://sys-cancel" 
+	    	press="onHanleCloseAddItem" />
+    </buttons>
+  </Dialog>
+</core:FragmentDefinition>

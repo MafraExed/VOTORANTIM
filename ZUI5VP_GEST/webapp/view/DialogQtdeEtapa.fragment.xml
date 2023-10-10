@@ -1,0 +1,22 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" >
+	<Dialog class="fragmentDialog" horizontalScrolling="false" showHeader="true" state="None" stretch="{device>/system/phone}"
+		title="Informações" type="Standard" verticalScrolling="true" afterOpen="dialogAfterOpen">
+		<content>
+			<f:SimpleForm editable="false" layout="ResponsiveGridLayout" labelSpanXL="3" labelSpanL="3"
+				labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1"
+				columnsL="1" columnsM="1" singleContainerFullSize="false" class="sapUiTinyMarginBegin">
+				<f:content>
+					<Label text="Descrição"></Label>
+					<Text text="{dialogEtapa>/DescricaoEtapa}"></Text>
+					<Label text="Quantidade"></Label>
+					<Text text="{dialogEtapa>/Quantidade}"></Text>
+					<Label text="Tipo"></Label>
+					<Text text="{= ${dialogEtapa>/Tipo} === 'C' ? 'Ciclo' : 'Extra' }"></Text>
+				</f:content>
+			</f:SimpleForm>
+		</content>
+		<beginButton>
+			<Button width="200px" text="Ok" press="onCloseDialog"></Button>
+		</beginButton>
+	</Dialog>
+</core:FragmentDefinition>

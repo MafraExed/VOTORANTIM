@@ -1,0 +1,34 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	controllerName="Y5GL_SOLICIT.Y5GL_SOLICIT.controller.Master" xmlns:html="http://www.w3.org/1999/xhtml">
+	<App id="idappbeneficios">
+		<pages>
+			<Page id="idPageMaster">
+				<customHeader>
+					<Bar id="idBarMaster">
+						<contentMiddle>
+							<core:Icon src="sap-icon://home" id="icon"/>
+							<Link text="Página Inicial" href="#Shell-home" id="Pagina"/>
+						</contentMiddle>
+					</Bar>
+				</customHeader>
+				<content>
+					<List id="list" width="auto" class="sapFDynamicPageAlignContent" items="{ path: '/ZET_GLHR_MINHAS_SOLICITACOESSet'}"
+						busyIndicatorDelay="{masterView>/delay}" noDataText="{masterView>/noDataText}"
+						mode="{= ${device>/system/phone} ? 'None' : 'SingleSelectMaster'}" growing="true" growingScrollToLoad="true"
+						updateFinished=".onUpdateFinished" selectionChange=".onSelectionChange" itemPress=".onSelectionChange">
+						<items>
+							<ObjectListItem type="Navigation" press=".onSelectionChange" title="{IdApp}: {Beneficio}" icon="{path:'IdApp', formatter:'.formatIconList'}"
+								highlight="{path:'Status', formatter:'.formatHighLight'}" id="idObjectListItem">
+								<attributes>
+									<ObjectAttribute text="Chamado: {Chamado}" id="id1"/>
+									<ObjectAttribute text="Data de criação: {DtCriacaoUsr}" id="id2"/>
+									<ObjectAttribute text="Status: {Status}" id="id"/>
+								</attributes>
+							</ObjectListItem>
+						</items>
+					</List>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

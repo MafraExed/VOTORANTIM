@@ -1,0 +1,66 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	busy="true"
+	busyIndicatorDelay="0">
+	<Dialog showHeader="true" title="Alterar Status" class="sapUiContentPadding" type="Standard">
+		<content >
+			<HBox width="100%">
+				<VBox width="100%">
+					<HBox class="sapUiTinyMarginBottom" id="idTarefaStatusTitle">
+						<Label text="tarefa:" design="Bold" class="sapUiTinyMarginEnd"/>
+						<Label id="changeStatusTaskDesc"/>
+					</HBox>
+					<HBox class="sapUiTinyMarginBottom" id="idTarefaStatus">
+						<Label text="status atual:" design="Bold" class="sapUiTinyMarginEnd"/>
+						<Label id="changeStatusCurrentStatus"/>
+					</HBox>
+
+					<VBox id="idLateTasksSection" visible="{viewAtividades>/atividadeAtrasada}">
+						<HBox>
+							<core:Icon class="sapUiTinyMarginEnd" src="sap-icon://warning" color="red" />
+							<Label text="Justificativa para tarefa(s) atrasada(s):" design="Bold" class="sapUiTinyMarginEnd"/>
+							<core:Icon class="sapUiTinyMarginBegin" src="sap-icon://past" color="red" />
+						</HBox>
+						<Select	forceSelection="false" selectedKey="{motivosAtraso>/motivoSelecionado}" items="{path: 'motivosAtraso>/motivos'}">
+							<core:Item key="{motivosAtraso>Motivo}" text="{motivosAtraso>Motivo}" />
+						</Select>
+					</VBox>
+					
+					<HBox id="idTarefaStatusReproc" visible="false">
+						<core:Icon class="sapUiTinyMarginEnd" src="sap-icon://warning" color="red" />
+						<Label text="Justificativa para reprocessamento de tarefa:" design="Bold"/>
+						<core:Icon class="sapUiTinyMarginBegin" src="sap-icon://repost" color="red" />
+					</HBox>
+
+					<Input width="100%" maxLength="60" id="inputStatusMotivo" placeholder="Justificativa"/>
+					<TextArea width="100%" visible="false" placeholder="Detalhes do Motivo (obrigatório)" id="changeStatusTextArea" growing="true" rows="5" maxLength="1000"/>
+
+					<VBox id="idLateTasksSectionMass" visible="false" class="sapUiSmallMarginTop">
+						<Label text="Comentário para o restante das tarefas" design="Bold" class="sapUiTinyMarginEnd"/>
+						<Input width="100%" maxLength="60" id="inputStatusMotivoMass" placeholder="Justificativa (opcional)"/>
+					</VBox>
+
+					<Label text="Selecione o novo Status:" design="Bold" class="sapUiSmallMarginTopBottom"/>
+					<VBox width="100%" justifyContent="SpaceAround" alignItems="Center">
+						<Button id="idProc" text="Em processamento" icon="sap-icon://process" press="pressChangeStatus" class="sapUiTinyMarginBottom"/>
+						<Button id="idOk" text="Concluído sem erros" icon="sap-icon://complete" press="pressChangeStatus"
+							class="popup_options_icon_ok sapUiTinyMarginBottom"/>
+						<!-- <Button id="idAviso" text="Concluído com avisos" icon="sap-icon://complete" press="pressChangeStatus"
+							class="popup_options_icon_aviso sapUiTinyMarginBottom"/> -->
+						<Button id="idAprov" text="Enviar para Aprovação" icon="sap-icon://hr-approval" press="pressChangeStatus"
+							class="sapUiTinyMarginBottom"/>
+						<!-- <Button id="idErro" text="Concluído com erros" icon="sap-icon://complete" press="pressChangeStatus"
+							class="popup_options_icon_nok sapUiTinyMarginBottom"/> -->
+					</VBox>
+				</VBox>
+			</HBox>
+		</content>
+		<buttons>
+			<Button text="Exibir tarefas Atrasadas" id="btnDisplayLateTasks" visible="false" press="openLateTasksPopup"/>
+			<Button text="Cancelar" type="Emphasized" press="onChangeStatusDialogClose"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>
+

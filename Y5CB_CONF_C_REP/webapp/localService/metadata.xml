@@ -1,0 +1,519 @@
+<!--<edmx:Edmx xmlns:sap="http://www.sap.com/Protocols/SAPData" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+	xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" Version="1.0">
+	
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		
+		<Schema xml:lang="pt" xmlns="http://schemas.microsoft.com/ado/2008/09/edm" sap:schema-version="1" Namespace="ZGWCBMM_CONF_CEG_REPARO_SRV">
+			
+			<EntityType sap:content-version="1" Name="ZET_CBMM_MATERIAL">
+				
+				<Key>
+					<PropertyRef Name="Id"/>
+				</Key>
+				<Property Name="Id" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Material" sap:unicode="false" MaxLength="18"
+					Nullable="false" Type="Edm.String"/>
+				<Property Name="Descr" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Descr. Material" sap:unicode="false"
+					MaxLength="40" Nullable="false" Type="Edm.String" sap:filterable="false"/>
+			</EntityType>
+			
+			<EntityType sap:content-version="1" Name="ZET_CBMM_SH_MATNR">
+				
+				<Key>
+					<PropertyRef Name="Matnr"/>
+				</Key>
+				<Property Name="Matnr" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Material" sap:unicode="false"
+					MaxLength="18" Nullable="false" Type="Edm.String" sap:filterable="false"/>
+				<Property Name="Maktx" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Denominação" sap:unicode="false"
+					MaxLength="40" Nullable="false" Type="Edm.String" sap:filterable="false"/>
+			</EntityType>
+			
+			<EntityType sap:content-version="1" Name="ZET_CBMM_ACEITE_RESERVAIT">
+				
+				<Key>
+					<PropertyRef Name="CodAviso"/>
+					<PropertyRef Name="Cliente"/>
+					<PropertyRef Name="Nfe"/>
+					<PropertyRef Name="Matnr"/>
+					<PropertyRef Name="Ebeln"/>
+					<PropertyRef Name="Ebelp"/>
+				</Key>
+				<Property Name="CodAviso" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Código Aviso" sap:unicode="false"
+					MaxLength="10" Nullable="false" Type="Edm.String"/>
+				<Property Name="Cliente" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Cliente" sap:unicode="false"
+					MaxLength="10" Nullable="false" Type="Edm.String"/>
+				<Property Name="Nfe" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Nº da NF-e" sap:unicode="false"
+					MaxLength="12" Nullable="false" Type="Edm.String"/>
+				<Property Name="Matnr" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Material" sap:unicode="false"
+					MaxLength="18" Nullable="false" Type="Edm.String"/>
+				<Property Name="Ebeln" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Doc.compras" sap:unicode="false"
+					MaxLength="10" Nullable="false" Type="Edm.String"/>
+				<Property Name="Ebelp" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Item" sap:unicode="false" MaxLength="5"
+					Nullable="false" Type="Edm.String"/>
+				<Property Name="Matricula" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Matrícula" sap:unicode="false"
+					MaxLength="8" Nullable="false" Type="Edm.String" sap:filterable="false"/>
+				<Property Name="DtCriacaoReceb" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Data Recebimento"
+					sap:unicode="false" Type="Edm.DateTime" sap:filterable="false" Precision="7"/>
+				<Property Name="DescrCliente" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Nome do Cliente"
+					sap:unicode="false" MaxLength="30" Nullable="false" Type="Edm.String" sap:filterable="false"/>
+				<Property Name="Data" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Data Modificação" sap:unicode="false"
+					Type="Edm.DateTime" sap:filterable="false" Precision="7"/>
+				<Property Name="Hora" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Hora" sap:unicode="false" Nullable="false"
+					Type="Edm.Time" sap:filterable="false" Precision="0"/>
+				<Property Name="Login" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Login" sap:unicode="false" MaxLength="12"
+					Nullable="false" Type="Edm.String" sap:filterable="false"/>
+				<Property Name="Nome" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Nome" sap:unicode="false" MaxLength="30"
+					Nullable="false" Type="Edm.String" sap:filterable="false"/>
+				<Property Name="Volume" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Volume" sap:unicode="false"
+					Nullable="false" Type="Edm.Decimal" sap:filterable="false" Precision="15" Scale="3"/>
+				<Property Name="EfetuaEm" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Efetuada Em" sap:unicode="false"
+					MaxLength="1" Nullable="false" Type="Edm.String" sap:filterable="false"/>
+				<Property Name="Maktx" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Descrição Material" sap:unicode="false"
+					MaxLength="40" Nullable="false" Type="Edm.String" sap:filterable="false"/>
+				<Property Name="Quantidade" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Qtd.remessa" sap:unicode="false"
+					Nullable="false" Type="Edm.Decimal" sap:filterable="false" Precision="13" Scale="3"/>
+				<NavigationProperty Name="ToHD" ToRole="FromRole_ZAT_CBMM_AceiteCB_to_IT" FromRole="ToRole_ZAT_CBMM_AceiteCB_to_IT"
+					Relationship="ZGWCBMM_CONF_CEG_REPARO_SRV.ZAT_CBMM_AceiteCB_to_IT"/>
+			</EntityType>
+			
+			<EntityType sap:content-version="1" Name="ZET_CBMM_FORNECIMENTOCB" sap:semantics="aggregate">
+				
+				<Key>
+					<PropertyRef Name="Kunnr"/>
+					<PropertyRef Name="Nfnum"/>
+				</Key>
+				<Property Name="Kunnr" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Cliente" sap:unicode="false"
+					MaxLength="10" Nullable="false" Type="Edm.String"/>
+				<Property Name="Nfnum" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Número NFe" sap:unicode="false"
+					MaxLength="12" Nullable="false" Type="Edm.String"/>
+				<Property Name="Recdat" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Data do recebimento" sap:unicode="false"
+					Type="Edm.DateTime" Precision="7"/>
+				<Property Name="Cliente" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Descr Cliente" sap:unicode="false"
+					MaxLength="30" Nullable="false" Type="Edm.String" sap:filterable="false"/>
+				<Property Name="AvisoEntrega" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Aviso de Recebimento"
+					sap:unicode="false" MaxLength="10" Nullable="false" Type="Edm.String"/>
+				<Property Name="XmlChaveNfe" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Chave de acesso"
+					sap:unicode="false" MaxLength="44" Nullable="false" Type="Edm.String"/>
+				<Property Name="ContagemRealizada" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Contagem Realizada"
+					sap:unicode="false" MaxLength="1" Nullable="false" Type="Edm.String" sap:filterable="false"/>
+				<Property Name="ErroContagem" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Erro na contagem"
+					sap:unicode="false" MaxLength="1" Nullable="false" Type="Edm.String" sap:filterable="false"/>
+				<Property Name="Multiplos" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Multiplus" sap:unicode="false"
+					MaxLength="1" Nullable="false" Type="Edm.String" sap:filterable="false"/>
+				<Property Name="Ebeln" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Doc.compras" sap:unicode="false"
+					MaxLength="10" Nullable="false" Type="Edm.String"/>
+				<Property Name="QtVolume" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Quantidade volumes"
+					sap:unicode="false" MaxLength="5" Nullable="false" Type="Edm.String" sap:filterable="false"/>
+				<Property Name="Email" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Email" sap:unicode="false" MaxLength="50"
+					Nullable="false" Type="Edm.String" sap:filterable="false"/>
+				<Property Name="EntrMercRealizada" sap:sortable="false" sap:updatable="false" sap:creatable="false"
+					sap:label="Entrada de mercadoria realizada" sap:unicode="false" MaxLength="1" Nullable="false" Type="Edm.String" sap:filterable="false"/>
+				<NavigationProperty Name="ToIT" ToRole="ToRole_ZAT_CBMM_FornecimentoCB_to_IT" FromRole="FromRole_ZAT_CBMM_FornecimentoCB_to_IT"
+					Relationship="ZGWCBMM_CONF_CEG_REPARO_SRV.ZAT_CBMM_FornecimentoCB_to_IT"/>
+			</EntityType>
+			
+			<EntityType sap:content-version="1" Name="ZET_CBMM_FORNECIMENTOIT">
+				
+				<Key>
+					<PropertyRef Name="Kunnr"/>
+					<PropertyRef Name="Nfnum"/>
+					<PropertyRef Name="Matnr"/>
+					<PropertyRef Name="Subit"/>
+				</Key>
+				<Property Name="Kunnr" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Cliente" sap:unicode="false"
+					MaxLength="10" Nullable="false" Type="Edm.String"/>
+				<Property Name="Meins" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="UM básica" sap:unicode="false"
+					MaxLength="3" Nullable="false" Type="Edm.String" sap:filterable="false" sap:semantics="unit-of-measure"/>
+				<Property Name="Nfnum" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Num. NFe" sap:unicode="false"
+					MaxLength="12" Nullable="false" Type="Edm.String"/>
+				<Property Name="Ebeln" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Doc.compras" sap:unicode="false"
+					MaxLength="10" Nullable="false" Type="Edm.String"/>
+				<Property Name="Ebelp" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Item" sap:unicode="false" MaxLength="5"
+					Nullable="false" Type="Edm.String" sap:filterable="false"/>
+				<Property Name="Matnr" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Material" sap:unicode="false"
+					MaxLength="18" Nullable="false" Type="Edm.String" sap:filterable="false"/>
+				<Property Name="Maktx" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Descr.Material" sap:unicode="false"
+					MaxLength="40" Nullable="false" Type="Edm.String" sap:filterable="false"/>
+				<Property Name="Recdat" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Data do recebimento" sap:unicode="false"
+					Type="Edm.DateTime" sap:filterable="false" Precision="7"/>
+				<Property Name="Subit" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Subitem NF" sap:unicode="false"
+					MaxLength="4" Nullable="false" Type="Edm.String" sap:filterable="false"/>
+				<NavigationProperty Name="ToCB" ToRole="FromRole_ZAT_CBMM_FornecimentoCB_to_IT" FromRole="ToRole_ZAT_CBMM_FornecimentoCB_to_IT"
+					Relationship="ZGWCBMM_CONF_CEG_REPARO_SRV.ZAT_CBMM_FornecimentoCB_to_IT"/>
+			</EntityType>
+			
+			<EntityType sap:content-version="1" Name="ZET_CBMM_CLIENTE">
+				
+				<Key>
+					<PropertyRef Name="Id"/>
+				</Key>
+				<Property Name="Id" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Cliente" sap:unicode="false" MaxLength="10"
+					Nullable="false" Type="Edm.String" sap:filterable="false"/>
+				<Property Name="Cliente" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Desc. Cliente" sap:unicode="false"
+					MaxLength="35" Nullable="false" Type="Edm.String" sap:filterable="false"/>
+			</EntityType>
+			
+			<EntityTyp sap:content-version="1" Name="ZET_CBMM_ACEITE_RESERVACB" m:HasStream="true">
+				
+				<Key>
+					<PropertyRef Name="Ebeln"/>
+					<PropertyRef Name="CodAviso"/>
+					<PropertyRef Name="Cliente"/>
+					<PropertyRef Name="Nfe"/>
+				</Key>
+				<Property Name="Ebeln" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Doc.compras" sap:unicode="false"
+					MaxLength="10" Nullable="false" Type="Edm.String" sap:filterable="false"/>
+				<Property Name="CodAviso" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Código Aviso" sap:unicode="false"
+					MaxLength="10" Nullable="false" Type="Edm.String"/>
+				<Property Name="Cliente" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Cliente" sap:unicode="false"
+					MaxLength="10" Nullable="false" Type="Edm.String"/>
+				<Property Name="Nfe" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Nº da NF-e" sap:unicode="false"
+					MaxLength="12" Nullable="false" Type="Edm.String"/>
+				<NavigationProperty Name="ToLog" ToRole="ToRole_ZAT_CBMM_AceiteCB_to_Log" FromRole="FromRole_ZAT_CBMM_AceiteCB_to_Log"
+					Relationship="ZGWCBMM_CONF_CEG_REPARO_SRV.ZAT_CBMM_AceiteCB_to_Log"/>
+				<NavigationProperty Name="ToIT" ToRole="ToRole_ZAT_CBMM_AceiteCB_to_IT" FromRole="FromRole_ZAT_CBMM_AceiteCB_to_IT"
+					Relationship="ZGWCBMM_CONF_CEG_REPARO_SRV.ZAT_CBMM_AceiteCB_to_IT"/>
+			</EntityType>
+			
+			<EntityType sap:content-version="1" Name="ZET_CBMM_ACEITE_RESERVA_LOG">
+				
+				<Key>
+					<PropertyRef Name="CodAviso"/>
+					<PropertyRef Name="Cliente"/>
+					<PropertyRef Name="Nfe"/>
+					<PropertyRef Name="Ebeln"/>
+				</Key>
+				<Property Name="CodAviso" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Fornecimento" sap:unicode="false"
+					MaxLength="10" Nullable="false" Type="Edm.String" sap:filterable="false"/>
+				<Property Name="Cliente" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Cliente" sap:unicode="false"
+					MaxLength="10" Nullable="false" Type="Edm.String" sap:filterable="false"/>
+				<Property Name="Nfe" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Nº da NF-e" sap:unicode="false"
+					MaxLength="12" Nullable="false" Type="Edm.String" sap:filterable="false"/>
+				<Property Name="Ebeln" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Doc.compras" sap:unicode="false"
+					MaxLength="10" Nullable="false" Type="Edm.String" sap:filterable="false"/>
+				<Property Name="Value" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Value" sap:unicode="false"
+					Nullable="false" Type="Edm.Binary" sap:filterable="false"/>
+				<Property Name="MimeType" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="MimeType" sap:unicode="false"
+					MaxLength="128" Nullable="false" Type="Edm.String" sap:filterable="false"/>
+				<NavigationProperty Name="ToCB" ToRole="FromRole_ZAT_CBMM_AceiteCB_to_Log" FromRole="ToRole_ZAT_CBMM_AceiteCB_to_Log"
+					Relationship="ZGWCBMM_CONF_CEG_REPARO_SRV.ZAT_CBMM_AceiteCB_to_Log"/>
+			</EntityType>
+			
+			<EntityType sap:content-version="1" Name="ZET_CBMM_CONF_EFETUADA">
+				
+				<Key>
+					<PropertyRef Name="Bukrs"/>
+					<PropertyRef Name="Cliente"/>
+					<PropertyRef Name="Nfnum"/>
+				</Key>
+				<Property Name="CodAviso" sap:label="Fornecimento" sap:unicode="false" MaxLength="10" Nullable="false" Type="Edm.String"/>
+				<Property Name="Bukrs" sap:label="Empresa" sap:unicode="false" MaxLength="4" Nullable="false" Type="Edm.String"/>
+				<Property Name="Cliente" sap:label="Cliente" sap:unicode="false" MaxLength="10" Nullable="false" Type="Edm.String"/>
+				<Property Name="Nfnum" sap:label="NF Num" sap:unicode="false" MaxLength="12" Nullable="false" Type="Edm.String"/>
+				<Property Name="ContagemRealizada" sap:label="Contagem Realizada" sap:unicode="false" MaxLength="1" Type="Edm.String"/>
+				<Property Name="ErroQtdContagem" sap:label="Erro na quantidade" sap:unicode="false" MaxLength="1" Type="Edm.String" sap:filterable="false"/>
+				<Property Name="Usuario" sap:label="Nome do usuário" sap:unicode="false" MaxLength="12" Type="Edm.String"/>
+				<Property Name="Data" sap:label="Data" sap:unicode="false" MaxLength="10" Type="Edm.String"/>
+				<Property Name="Hora" sap:label="Hora" sap:unicode="false" MaxLength="8" Type="Edm.String"/>
+				<Property Name="EntrMercRealizada" sap:label="Entrada de mercadoria realizada." sap:unicode="false" MaxLength="1" Type="Edm.String"/>
+			</EntityType>
+			
+			<EntityType sap:content-version="1" Name="ZET_CBMM_HIST_CONF_CEGAIT">
+				
+				<Key>
+					<PropertyRef Name="CodAviso"/>
+					<PropertyRef Name="Cliente"/>
+					<PropertyRef Name="Nfe"/>
+					<PropertyRef Name="Matnr"/>
+					<PropertyRef Name="Ebeln"/>
+					<PropertyRef Name="Ebelp"/>
+				</Key>
+				<Property Name="CodAviso" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Código Aviso" sap:unicode="false"
+					MaxLength="10" Nullable="false" Type="Edm.String"/>
+				<Property Name="Cliente" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Cliente" sap:unicode="false"
+					MaxLength="10" Nullable="false" Type="Edm.String" sap:filterable="false"/>
+				<Property Name="Nfe" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Nº da NF-e" sap:unicode="false"
+					MaxLength="12" Nullable="false" Type="Edm.String"/>
+				<Property Name="Matnr" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Material" sap:unicode="false"
+					MaxLength="18" Nullable="false" Type="Edm.String" sap:filterable="false"/>
+				<Property Name="Ebeln" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Doc.compras" sap:unicode="false"
+					MaxLength="10" Nullable="false" Type="Edm.String"/>
+				<Property Name="Ebelp" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Item" sap:unicode="false" MaxLength="5"
+					Nullable="false" Type="Edm.String" sap:filterable="false"/>
+				<Property Name="DtCriacao" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Data Criação" sap:unicode="false"
+					Type="Edm.DateTime" Precision="7"/>
+				<Property Name="DescCli" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Nome do Cliente" sap:unicode="false"
+					MaxLength="30" Nullable="false" Type="Edm.String" sap:filterable="false"/>
+				<Property Name="Aceite" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Aceito?" sap:unicode="false"
+					MaxLength="1" Nullable="false" Type="Edm.String"/>
+				<Property Name="Data" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Data" sap:unicode="false"
+					Type="Edm.DateTime" sap:filterable="false" Precision="7"/>
+				<Property Name="Hora" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Hora" sap:unicode="false" Nullable="false"
+					Type="Edm.Time" sap:filterable="false" Precision="0"/>
+				<Property Name="Volume" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Volume" sap:unicode="false"
+					Type="Edm.Decimal" sap:filterable="false" Precision="15" Scale="3"/>
+				<Property Name="Quantidade" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Quantidade" sap:unicode="false"
+					Type="Edm.Decimal" sap:filterable="false" Precision="13" Scale="3"/>
+				<Property Name="Matricula" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Matrícula" sap:unicode="false"
+					MaxLength="8" Nullable="false" Type="Edm.String" sap:filterable="false"/>
+				<Property Name="Login" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Login" sap:unicode="false" MaxLength="12"
+					Nullable="false" Type="Edm.String" sap:filterable="false"/>
+				<Property Name="EfetuaEm" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Entr. Mercadoria" sap:unicode="false"
+					MaxLength="1" Nullable="false" Type="Edm.String" sap:filterable="false"/>
+				<Property Name="Nome" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Nome" sap:unicode="false" MaxLength="30"
+					Nullable="false" Type="Edm.String" sap:filterable="false"/>
+				<NavigationProperty Name="ToCB" ToRole="FromRole_ZAT_CBMM_HistoricoConfCegaCB_to_IT" FromRole="ToRole_ZAT_CBMM_HistoricoConfCegaCB_to_IT"
+					Relationship="ZGWCBMM_CONF_CEG_REPARO_SRV.ZAT_CBMM_HistoricoConfCegaCB_to_IT"/>
+			</EntityType>
+			
+			<EntityType sap:content-version="1" Name="ZET_CBMM_HIST_CONF_CEGACB">
+				
+				<Key>
+					<PropertyRef Name="CodAviso"/>
+					<PropertyRef Name="Cliente"/>
+					<PropertyRef Name="Nfe"/>
+					<PropertyRef Name="Ebeln"/>
+				</Key>
+				<Property Name="CodAviso" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Código Aviso" sap:unicode="false"
+					MaxLength="10" Nullable="false" Type="Edm.String"/>
+				<Property Name="Cliente" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Cliente" sap:unicode="false"
+					MaxLength="10" Nullable="false" Type="Edm.String" sap:filterable="false"/>
+				<Property Name="Nfe" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Nº da NF-e" sap:unicode="false"
+					MaxLength="12" Nullable="false" Type="Edm.String"/>
+				<Property Name="Ebeln" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Doc.compras" sap:unicode="false"
+					MaxLength="10" Nullable="false" Type="Edm.String"/>
+				<NavigationProperty Name="ToIT" ToRole="ToRole_ZAT_CBMM_HistoricoConfCegaCB_to_IT" FromRole="FromRole_ZAT_CBMM_HistoricoConfCegaCB_to_IT"
+					Relationship="ZGWCBMM_CONF_CEG_REPARO_SRV.ZAT_CBMM_HistoricoConfCegaCB_to_IT"/>
+			</EntityType>
+			
+			<EntityType sap:content-version="1" Name="ZET_CBMM_IMPRESSORA">
+				
+				<Key>
+					<PropertyRef Name="Name"/>
+				</Key>
+				<Property Name="Name" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Disposit.saída" sap:unicode="false"
+					MaxLength="30" Nullable="false" Type="Edm.String" sap:filterable="false"/>
+				<Property Name="Padest" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Nome breve" sap:unicode="false"
+					MaxLength="4" Nullable="false" Type="Edm.String" sap:filterable="false"/>
+				<Property Name="Pastandort" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Localização" sap:unicode="false"
+					MaxLength="64" Nullable="false" Type="Edm.String" sap:filterable="false"/>
+			</EntityType>
+			
+			<EntityType sap:content-version="1" Name="ZET_CBMM_IMPRESSAO">
+				
+				<Key>
+					<PropertyRef Name="Matnr"/>
+					<PropertyRef Name="Id"/>
+				</Key>
+				<Property Name="CodAviso" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Fornecimento" sap:unicode="false"
+					MaxLength="10" Nullable="false" Type="Edm.String" sap:filterable="false"/>
+				<Property Name="Nfnum" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Nota Fiscal" sap:unicode="false"
+					MaxLength="9" Nullable="false" Type="Edm.String" sap:filterable="false"/>
+				<Property Name="Ebeln" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Doc. Compras" sap:unicode="false"
+					MaxLength="10" Nullable="false" Type="Edm.String" sap:filterable="false"/>
+				<Property Name="Ebelp" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Item" sap:unicode="false" MaxLength="5"
+					Nullable="false" Type="Edm.String" sap:filterable="false"/>
+				<Property Name="Maktx" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Descrição" sap:unicode="false"
+					MaxLength="40" Nullable="false" Type="Edm.String" sap:filterable="false"/>
+				<Property Name="Matnr" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Material" sap:unicode="false"
+					MaxLength="18" Nullable="false" Type="Edm.String"/>
+				<Property Name="Quantidade" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Qtd.remessa" sap:unicode="false"
+					MaxLength="10" Nullable="false" Type="Edm.String" sap:filterable="false"/>
+				<Property Name="Id" sap:sortable="false" sap:updatable="false" sap:creatable="false" sap:label="Id" sap:unicode="false" MaxLength="10"
+					Nullable="false" Type="Edm.String" sap:filterable="false"/>
+			</EntityType>
+			
+			<Association sap:content-version="1" Name="ZAT_CBMM_FornecimentoCB_to_IT">
+				<End Type="ZGWCBMM_CONF_CEG_REPARO_SRV.ZET_CBMM_FORNECIMENTOCB" Role="FromRole_ZAT_CBMM_FornecimentoCB_to_IT" Multiplicity="0..1"/>
+				<End Type="ZGWCBMM_CONF_CEG_REPARO_SRV.ZET_CBMM_FORNECIMENTOIT" Role="ToRole_ZAT_CBMM_FornecimentoCB_to_IT" Multiplicity="*"/>
+				
+				<ReferentialConstraint>
+					
+					<Principal Role="FromRole_ZAT_CBMM_FornecimentoCB_to_IT">
+						<PropertyRef Name="Nfnum"/>
+						<PropertyRef Name="Kunnr"/>
+					</Principal>
+					
+					<Dependent Role="ToRole_ZAT_CBMM_FornecimentoCB_to_IT">
+						<PropertyRef Name="Nfnum"/>
+						<PropertyRef Name="Kunnr"/>
+					</Dependent>
+				</ReferentialConstraint>
+			</Association>
+			
+			<Association sap:content-version="1" Name="ZAT_CBMM_AceiteCB_to_IT">
+				<End Type="ZGWCBMM_CONF_CEG_REPARO_SRV.ZET_CBMM_ACEITE_RESERVACB" Role="FromRole_ZAT_CBMM_AceiteCB_to_IT" Multiplicity="1"/>
+				<End Type="ZGWCBMM_CONF_CEG_REPARO_SRV.ZET_CBMM_ACEITE_RESERVAIT" Role="ToRole_ZAT_CBMM_AceiteCB_to_IT" Multiplicity="*"/>
+				
+				<ReferentialConstraint>
+					
+					<Principal Role="FromRole_ZAT_CBMM_AceiteCB_to_IT">
+						<PropertyRef Name="Cliente"/>
+						<PropertyRef Name="Ebeln"/>
+						<PropertyRef Name="CodAviso"/>
+						<PropertyRef Name="Nfe"/>
+					</Principal>
+					
+					<Dependent Role="ToRole_ZAT_CBMM_AceiteCB_to_IT">
+						<PropertyRef Name="Cliente"/>
+						<PropertyRef Name="Ebeln"/>
+						<PropertyRef Name="CodAviso"/>
+						<PropertyRef Name="Nfe"/>
+					</Dependent>
+				</ReferentialConstraint>
+			</Association>
+			
+			<Association sap:content-version="1" Name="ZAT_CBMM_AceiteCB_to_Log">
+				<End Type="ZGWCBMM_CONF_CEG_REPARO_SRV.ZET_CBMM_ACEITE_RESERVACB" Role="FromRole_ZAT_CBMM_AceiteCB_to_Log" Multiplicity="1"/>
+				<End Type="ZGWCBMM_CONF_CEG_REPARO_SRV.ZET_CBMM_ACEITE_RESERVA_LOG" Role="ToRole_ZAT_CBMM_AceiteCB_to_Log" Multiplicity="*"/>
+				
+				<ReferentialConstraint>
+					
+					<Principal Role="FromRole_ZAT_CBMM_AceiteCB_to_Log">
+						<PropertyRef Name="Cliente"/>
+						<PropertyRef Name="Ebeln"/>
+						<PropertyRef Name="CodAviso"/>
+						<PropertyRef Name="Nfe"/>
+					</Principal>
+					
+					<Dependent Role="ToRole_ZAT_CBMM_AceiteCB_to_Log">
+						<PropertyRef Name="Cliente"/>
+						<PropertyRef Name="Ebeln"/>
+						<PropertyRef Name="CodAviso"/>
+						<PropertyRef Name="Nfe"/>
+					</Dependent>
+				</ReferentialConstraint>
+			</Association>
+			
+			<Association sap:content-version="1" Name="ZAT_CBMM_HistoricoConfCegaCB_to_IT">
+				<End Type="ZGWCBMM_CONF_CEG_REPARO_SRV.ZET_CBMM_HIST_CONF_CEGACB" Role="FromRole_ZAT_CBMM_HistoricoConfCegaCB_to_IT" Multiplicity="1"/>
+				<End Type="ZGWCBMM_CONF_CEG_REPARO_SRV.ZET_CBMM_HIST_CONF_CEGAIT" Role="ToRole_ZAT_CBMM_HistoricoConfCegaCB_to_IT" Multiplicity="*"/>
+				
+				<ReferentialConstraint>
+					
+					<Principal Role="FromRole_ZAT_CBMM_HistoricoConfCegaCB_to_IT">
+						<PropertyRef Name="Cliente"/>
+						<PropertyRef Name="CodAviso"/>
+						<PropertyRef Name="Nfe"/>
+						<PropertyRef Name="Ebeln"/>
+					</Principal>
+					
+					<Dependent Role="ToRole_ZAT_CBMM_HistoricoConfCegaCB_to_IT">
+						<PropertyRef Name="Cliente"/>
+						<PropertyRef Name="CodAviso"/>
+						<PropertyRef Name="Nfe"/>
+						<PropertyRef Name="Ebeln"/>
+					</Dependent>
+				</ReferentialConstraint>
+			</Association>
+			
+			<EntityContainer Name="ZGWCBMM_CONF_CEG_REPARO_SRV_Entities" sap:supported-formats="atom json xlsx" m:IsDefaultEntityContainer="true">
+				<EntitySet sap:content-version="1" Name="ZET_CBMM_MATERIALSet" sap:updatable="false" sap:creatable="false" sap:addressable="false"
+					sap:pageable="false" sap:deletable="false" EntityType="ZGWCBMM_CONF_CEG_REPARO_SRV.ZET_CBMM_MATERIAL"/>
+				<EntitySet sap:content-version="1" Name="ZET_CBMM_SH_MATNRSet" sap:updatable="false" sap:creatable="false" sap:addressable="false"
+					sap:pageable="false" sap:deletable="false" EntityType="ZGWCBMM_CONF_CEG_REPARO_SRV.ZET_CBMM_SH_MATNR"/>
+				<EntitySet sap:content-version="1" Name="ZET_CBMM_ACEITE_RESERVASet" sap:updatable="false" sap:creatable="false" sap:addressable="false"
+					sap:pageable="false" sap:deletable="false" EntityType="ZGWCBMM_CONF_CEG_REPARO_SRV.ZET_CBMM_ACEITE_RESERVAIT"/>
+				<EntitySet sap:content-version="1" Name="ZET_CBMM_FORNECIMENTOCBSet" sap:updatable="false" sap:creatable="false" sap:addressable="false"
+					sap:pageable="false" sap:deletable="false" EntityType="ZGWCBMM_CONF_CEG_REPARO_SRV.ZET_CBMM_FORNECIMENTOCB"/>
+				<EntitySet sap:content-version="1" Name="ZET_CBMM_FORNECIMENTOITSet" sap:updatable="false" sap:creatable="false" sap:addressable="false"
+					sap:pageable="false" sap:deletable="false" EntityType="ZGWCBMM_CONF_CEG_REPARO_SRV.ZET_CBMM_FORNECIMENTOIT"/>
+				<EntitySet sap:content-version="1" Name="ZET_CBMM_FORNECEDORSet" sap:updatable="false" sap:creatable="false" sap:addressable="false"
+					sap:pageable="false" sap:deletable="false" EntityType="ZGWCBMM_CONF_CEG_REPARO_SRV.ZET_CBMM_CLIENTE"/>
+				<EntitySet sap:content-version="1" Name="ZET_CBMM_ACEITE_RESERVACBSet" sap:updatable="false" sap:creatable="false" sap:addressable="false"
+					sap:pageable="false" sap:deletable="false" EntityType="ZGWCBMM_CONF_CEG_REPARO_SRV.ZET_CBMM_ACEITE_RESERVACB"/>
+				<EntitySet sap:content-version="1" Name="ZET_CBMM_ACEITE_RESERVA_LOGSet" sap:updatable="false" sap:creatable="false" sap:addressable="false"
+					sap:pageable="false" sap:deletable="false" EntityType="ZGWCBMM_CONF_CEG_REPARO_SRV.ZET_CBMM_ACEITE_RESERVA_LOG"/>
+				<EntitySet sap:content-version="1" Name="ZET_CBMM_CONF_EFETUADASet" sap:updatable="false" sap:creatable="false" sap:addressable="false"
+					sap:pageable="false" sap:deletable="false" EntityType="ZGWCBMM_CONF_CEG_REPARO_SRV.ZET_CBMM_CONF_EFETUADA"/>
+				<EntitySet sap:content-version="1" Name="ZET_CBMM_HIST_CONF_CEGASet" sap:updatable="false" sap:creatable="false" sap:addressable="false"
+					sap:pageable="false" sap:deletable="false" EntityType="ZGWCBMM_CONF_CEG_REPARO_SRV.ZET_CBMM_HIST_CONF_CEGAIT"/>
+				<EntitySet sap:content-version="1" Name="ZET_CBMM_HIST_CONF_CEGACBSet" sap:updatable="false" sap:creatable="false" sap:addressable="false"
+					sap:pageable="false" sap:deletable="false" EntityType="ZGWCBMM_CONF_CEG_REPARO_SRV.ZET_CBMM_HIST_CONF_CEGACB"/>
+				<EntitySet sap:content-version="1" Name="ZET_CBMM_IMPRESSORASet" sap:updatable="false" sap:creatable="false" sap:addressable="false"
+					sap:pageable="false" sap:deletable="false" EntityType="ZGWCBMM_CONF_CEG_REPARO_SRV.ZET_CBMM_IMPRESSORA"/>
+				<EntitySet sap:content-version="1" Name="ZET_CBMM_IMPRESSAOSet" sap:updatable="false" sap:creatable="false" sap:addressable="false"
+				sap:pageable="false" sap:deletable="false" EntityType="ZGWCBMM_CONF_CEG_REPARO_SRV.ZET_CBMM_IMPRESSAO"/>
+				
+				<AssociationSet sap:content-version="1" Name="ZAT_CBMM_FornecimentoCB_to_ITSet" sap:updatable="false" sap:creatable="false"
+					sap:deletable="false" Association="ZGWCBMM_CONF_CEG_REPARO_SRV.ZAT_CBMM_FornecimentoCB_to_IT">
+					<End Role="FromRole_ZAT_CBMM_FornecimentoCB_to_IT" EntitySet="ZET_CBMM_FORNECIMENTOCBSet"/>
+					<End Role="ToRole_ZAT_CBMM_FornecimentoCB_to_IT" EntitySet="ZET_CBMM_FORNECIMENTOITSet"/>
+				</AssociationSet>
+				
+				<AssociationSet sap:content-version="1" Name="ZAT_CBMM_AceiteCB_to_ITSet" sap:updatable="false" sap:creatable="false" sap:deletable="false"
+					Association="ZGWCBMM_CONF_CEG_REPARO_SRV.ZAT_CBMM_AceiteCB_to_IT">
+					<End Role="FromRole_ZAT_CBMM_AceiteCB_to_IT" EntitySet="ZET_CBMM_ACEITE_RESERVACBSet"/>
+					<End Role="ToRole_ZAT_CBMM_AceiteCB_to_IT" EntitySet="ZET_CBMM_ACEITE_RESERVASet"/>
+				</AssociationSet>
+				
+				<AssociationSet sap:content-version="1" Name="ZAT_CBMM_HistoricoConfCegaCB_to_ITSet" sap:updatable="false" sap:creatable="false"
+					sap:deletable="false" Association="ZGWCBMM_CONF_CEG_REPARO_SRV.ZAT_CBMM_HistoricoConfCegaCB_to_IT">
+					<End Role="FromRole_ZAT_CBMM_HistoricoConfCegaCB_to_IT" EntitySet="ZET_CBMM_HIST_CONF_CEGACBSet"/>
+					<End Role="ToRole_ZAT_CBMM_HistoricoConfCegaCB_to_IT" EntitySet="ZET_CBMM_HIST_CONF_CEGASet"/>
+				</AssociationSet>
+				
+				<AssociationSet sap:content-version="1" Name="ZAT_CBMM_AceiteCB_to_LogSet" sap:updatable="false" sap:creatable="false" sap:deletable="false"
+					Association="ZGWCBMM_CONF_CEG_REPARO_SRV.ZAT_CBMM_AceiteCB_to_Log">
+					<End Role="FromRole_ZAT_CBMM_AceiteCB_to_Log" EntitySet="ZET_CBMM_ACEITE_RESERVACBSet"/>
+					<End Role="ToRole_ZAT_CBMM_AceiteCB_to_Log" EntitySet="ZET_CBMM_ACEITE_RESERVA_LOGSet"/>
+				</AssociationSet>
+				
+				<FunctionImport Name="ContagemCega" EntitySet="ZET_CBMM_ACEITE_RESERVASet"
+					sap:action-for="ZGWCBMM_CONF_CEG_REPARO_SRV.ZET_CBMM_FORNECIMENTOIT" m:HttpMethod="POST"
+					ReturnType="ZGWCBMM_CONF_CEG_REPARO_SRV.ZET_CBMM_ACEITE_RESERVAIT">
+					<Parameter Name="Ebeln" MaxLength="10" Type="Edm.String" Mode="In"/>
+					<Parameter Name="Ebelp" MaxLength="5" Type="Edm.String" Mode="In"/>
+					<Parameter Name="Cliente" MaxLength="10" Type="Edm.String" Mode="In"/>
+					<Parameter Name="Matnr" MaxLength="18" Type="Edm.String" Mode="In"/>
+					<Parameter Name="Nfe" MaxLength="9" Type="Edm.String" Mode="In"/>
+					<Parameter Name="Quantidade" MaxLength="20" Type="Edm.String" Mode="In"/>
+					<Parameter Name="Serie" MaxLength="3" Type="Edm.String" Mode="In"/>
+					<Parameter Name="Subitem" MaxLength="4" Type="Edm.String" Mode="In"/>
+					<Parameter Name="Usuario" MaxLength="12" Type="Edm.String" Mode="In"/>
+					<Parameter Name="Volume" Type="Edm.Decimal" Precision="3" Scale="3" Mode="In"/>
+				</FunctionImport>
+				
+				<FunctionImport Name="ImprimirPorMaterial" EntitySet="ZET_CBMM_IMPRESSAOSet"
+					sap:action-for="ZGWCBMM_CONF_CEG_REPARO_SRV.ZET_CBMM_IMPRESSAO" m:HttpMethod="POST"
+					ReturnType="ZGWCBMM_CONF_CEG_REPARO_SRV.ZET_CBMM_IMPRESSAO">
+					<Parameter Name="AvisoEntrega" MaxLength="10" Type="Edm.String" Mode="In"/>
+					<Parameter Name="Item" MaxLength="6" Type="Edm.String" Mode="In"/>
+					<Parameter Name="Matnr" MaxLength="18" Type="Edm.String" Mode="In"/>
+					<Parameter Name="Name" MaxLength="30" Type="Edm.String" Mode="In"/>
+					<Parameter Name="Quantidade" Type="Edm.Int32" Mode="In"/>
+				</FunctionImport>
+				
+				<FunctionImport Name="PreviewImprimirPorAviso" EntitySet="ZET_CBMM_IMPRESSAOSet"
+					sap:action-for="ZGWCBMM_CONF_CEG_REPARO_SRV.ZET_CBMM_IMPRESSAO" m:HttpMethod="GET"
+					ReturnType="Collection(ZGWCBMM_CONF_CEG_REPARO_SRV.ZET_CBMM_IMPRESSAO)">
+					<Parameter Name="CodAviso" MaxLength="10" Type="Edm.String" Mode="In"/>
+				</FunctionImport>
+				
+				<FunctionImport Name="RegistrarEntrMerc" EntitySet="ZET_CBMM_FORNECIMENTOCBSet"
+					sap:action-for="ZGWCBMM_CONF_CEG_REPARO_SRV.ZET_CBMM_FORNECIMENTOCB" m:HttpMethod="POST"
+					ReturnType="ZGWCBMM_CONF_CEG_REPARO_SRV.ZET_CBMM_FORNECIMENTOCB">
+					<Parameter Name="Lifnr" MaxLength="10" Type="Edm.String" Mode="In"/>
+					<Parameter Name="Nfnum" MaxLength="9" Type="Edm.String" Mode="In"/>
+				</FunctionImport>
+				
+				<FunctionImport Name="AceitarAviso" EntitySet="ZET_CBMM_ACEITE_RESERVASet"
+					sap:action-for="ZGWCBMM_CONF_CEG_REPARO_SRV.ZET_CBMM_ACEITE_RESERVAIT" m:HttpMethod="POST"
+					ReturnType="ZGWCBMM_CONF_CEG_REPARO_SRV.ZET_CBMM_ACEITE_RESERVAIT">
+					<Parameter Name="CodAviso" MaxLength="10" Type="Edm.String" Mode="In"/>
+					<Parameter Name="Ebeln" MaxLength="10" Type="Edm.String" Mode="In"/>
+					<Parameter Name="Ebelp" MaxLength="5" Type="Edm.String" Mode="In"/>
+					<Parameter Name="Cliente" MaxLength="10" Type="Edm.String" Mode="In"/>
+					<Parameter Name="Login" MaxLength="100" Type="Edm.String" Mode="In"/>
+					<Parameter Name="Matnr" MaxLength="18" Type="Edm.String" Mode="In"/>
+					<Parameter Name="Matricula" MaxLength="8" Type="Edm.String" Mode="In"/>
+					<Parameter Name="Nfe" MaxLength="9" Type="Edm.String" Mode="In"/>
+					<Parameter Name="Nome" MaxLength="30" Type="Edm.String" Mode="In"/>
+				</FunctionImport>
+			</EntityContainer>
+			<atom:link xmlns:atom="http://www.w3.org/2005/Atom"
+				href="http://brsaolsvfid01.votorantim.grupo:8000/sap/opu/odata/SAP/ZGWCBMM_CONF_CEG_REPARO_SRV/$metadata" rel="self"/>
+			<atom:link xmlns:atom="http://www.w3.org/2005/Atom"
+				href="http://brsaolsvfid01.votorantim.grupo:8000/sap/opu/odata/SAP/ZGWCBMM_CONF_CEG_REPARO_SRV/$metadata" rel="latest-version"/>
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>-->

@@ -1,0 +1,49 @@
+<mvc:View controllerName="y5lestermo.controller.Termo"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:f="sap.ui.layout.form"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <content>
+        	<VBox id="_IDGenVBox1" class="sapUiSmallMargin">
+		    <Text id="_IDGenText1" text="Prezado cliente, através desta página solicitamos que seja dada ciência na atual versão do termo da Votorantim."/> 
+		    <Text id="_IDGenText2" text="" />
+            <Text id="_IDGenText3" text="Salientamos a necessidade da leitura do novo Termo, o qual deve ser baixado através do botão Baixar nova versão do Termo."/>
+		    <Text id="_IDGenText4" text="" />
+            <Text id="_IDGenText5" text="A aprovação deve ser feita através desta página via o preenchimento dos campos abaixo e finalizado com o botão de aceite." />
+		    <Text id="_IDGenText6" text="" />
+		    <Text id="_IDGenText7" text="Antecipadamente agradecemos a sua atenção e colaboração." />
+		    <Text id="_IDGenText8" text="" />
+		    <Text id="_IDGenText9" text="Empresa" />
+		    <Text id="_IDGenText10" text="" />
+        	<Button id="_IDGenButton1" icon= "sap-icon://customer-order-entry" class="sapUiLargeMarginBegin" text="Baixar nova versão do Termo..." press="onTermo" />
+		    <Text id="_IDGenText11" text="" />
+			<f:SimpleForm class="editableForm" columnsL="1" columnsM="1" editable="true" emptySpanL="4" emptySpanM="4" id="idFormResposta"
+				labelSpanL="3" labelSpanM="3" layout="ResponsiveGridLayout" maxContainerCols="2" minWidth="1024"
+				title="Informações a serem fornecidas :">
+				<f:content>
+    
+            <Label id="_IDGenLabel1" text="Nome" required="true" />                
+        		<Input id = "idInputNome" 
+	        		width="400px"
+		        	fieldWidth="60px"
+			        class="sapUiSmallMarginBottom" valueLiveUpdate="true"
+                    liveChange="_validateSaveEnablement"
+                 />
+				<Label id="_IDGenLabel2" text="CPF" required="true" />
+				<Input id = "idInputCPF" class="sapUiSmallMarginBottom"  width="120px" fieldWidth="60px" mask="CCC.CCC.CCC-CC" placeholderSymbol="."  valueLiveUpdate="true" liveChange="_validateSaveEnablement">
+
+				</Input>
+
+				<Label id="_IDGenLabel3" text="Token" required="true"/> 
+				<Input id = "idInputToken" class="sapUiSmallMarginBottom"  width="120px" fieldWidth="60px" mask="CCCCCCCCCC" placeholderSymbol="_" placeholder="Ver Email" valueLiveUpdate="true" liveChange="_validateSaveEnablement">
+				</Input>
+
+				</f:content>
+			</f:SimpleForm>
+                <Text id="_IDGenText14"  text="" />                  
+            	<Button id="_IDGenButton2" icon="sap-icon://approvals" type="Accept" class="sapUiLargeMarginBegin"  enabled="{= ${viewModel>/mode} }" text="Estou ciente e de acordo com o novo Termo" press="onCiente" />
+
+	</VBox>        
+        </content>
+    </Page>
+</mvc:View>

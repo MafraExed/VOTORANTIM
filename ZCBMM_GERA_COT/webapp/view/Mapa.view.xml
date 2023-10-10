@@ -1,0 +1,167 @@
+<mvc:View controllerName="ZCBMM_GERAR_COTACAO.ZCBMM_GERAR_COTACAO.controller.Mapa" xmlns:html="http://www.w3.org/1999/xhtml" xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:m="sap.m" xmlns:smartTable="sap.ui.comp.smarttable"
+	xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:u="sap.ui.unified" xmlns:sv="sap.ui.comp.smartvariants" xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core" xmlns:l="controls" xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" width="100%"
+	height="100%" xmlns:Table="sap.ui.table">
+	<App>
+		<pages>
+			<Page title="Condições">
+				<content>
+					<f:Form class="editableForm" editable="true">
+						<f:layout>
+							<f:ResponsiveGridLayout labelSpanXL="6" labelSpanL="6" labelSpanM="6" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0"
+								emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="true"/>
+						</f:layout>
+					</f:Form>
+					<f:Form class="editableForm" editable="true">
+						<f:layout>
+							<f:ResponsiveGridLayout labelSpanXL="5" labelSpanL="5" labelSpanM="5" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0"
+								emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="3" columnsM="3" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer>
+								<f:formElements>
+									<f:FormElement visible="true">
+										<Button text="Voltar" icon="sap-icon://undo" iconFirst="true" width="50%" enabled="true" visible="true" iconDensityAware="false"
+											press="onVotar" tooltip="Voltar" id="B_voltar" type="Default"/>
+									</f:FormElement>
+									<f:FormElement visible="false">
+										<f:fields>
+											<Input value="" id="IdNrtransp" editable="false"/>
+										</f:fields>
+										<f:label>
+											<Label text="{/#ZET_CBMM_CF_VEICOND/Nrtransp/@sap:label}" design="Bold"/>
+										</f:label>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+							<f:FormContainer>
+								<f:formElements>
+									<f:FormElement visible="false">
+										<f:fields>
+											<Input value="" id="Idsolicitacao" editable="false"/>
+										</f:fields>
+										<f:label>
+											<Label text="{/#ZET_CBMM_CF_VEICOND/Idsolicitacao/@sap:label}" design="Bold"/>
+										</f:label>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+							<f:FormContainer>
+								<f:formElements>
+									<f:FormElement visible="false">
+										<f:fields>
+											<Input value="" id="IdWerkso" editable="false"/>
+										</f:fields>
+										<f:label>
+											<Label text="{/#ZET_CBMM_CF_VEICOND/Werkso/@sap:label}" design="Bold"/>
+										</f:label>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<VBox fitContainer="true" id="form1" visible="true" height="100%">
+						<f:Form class="editableForm" editable="true">
+							<f:layout>
+								<f:ResponsiveGridLayout labelSpanXL="5" labelSpanL="5" labelSpanM="5" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0"
+									emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false"/>
+							</f:layout>
+							<f:formContainers>
+								<f:FormContainer>
+									<f:formElements>
+										<f:FormElement visible="true" id="FormSt1">
+											<smartTable:SmartTable id="smartTable" entitySet="ZET_CBMM_CF_VEICONDSet" useOnlyOneSolidToolbar="false" useExportToExcel="false"
+												useVariantManagement="false" useTablePersonalisation="false" tableType="Table" header="Condições" showRowCount="true"
+												beforeExport="VerificaExcel"
+												initiallyVisibleFields="Matnr,Bukrs,Werks,Nrtransp,Desctransp,Kschl,Incoterm,Intinerario,Tpveiculo,QtdEscala,Montante,VlrNegoc,VlrProp,Moeda,UmEscala,DataInicio,DataFim,Orcamento"
+												showFullScreenButton="true" enableAutoBinding="true" beforeRebindTable="atualizaTabela" class="sapUiResponsiveContentPadding"
+												persistencyKey="SmartTableRefApp_Explored" app:useSmartField="true" editable="false">
+												<smartTable:customToolbar>
+													<Toolbar>
+														<Button text="Editar" icon="sap-icon://edit" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"
+															press="onEdit" tooltip="Editar" id="B_Edit" type="Default"/>
+													</Toolbar>
+												</smartTable:customToolbar>
+												<smartTable:layoutData>
+													<FlexItemData growFactor="1" baseSize="0%"/>
+												</smartTable:layoutData>
+											</smartTable:SmartTable>
+										</f:FormElement>
+										<f:FormElement visible="false" id="FormSt2">
+											<smartTable:SmartTable id="smartTable1" entitySet="ZET_CBMM_CF_VEICONDSet" useOnlyOneSolidToolbar="false" useExportToExcel="false"
+												useVariantManagement="false" useTablePersonalisation="false" tableType="Table" header="Condições" showRowCount="true"
+												beforeExport="VerificaExcel"
+												initiallyVisibleFields="Bukrs,Werks,Nrtransp,Desctransp,Kschl,Incoterm,Intinerario,Tpveiculo,QtdEscala,Montante,VlrNegoc,VlrProp,Moeda,UmEscala,DataInicio,DataFim,Orcamento"
+												showFullScreenButton="true" enableAutoBinding="true" beforeRebindTable="atualizaTabela" class="sapUiResponsiveContentPadding"
+												persistencyKey="SmartTableRefApp_Explored" app:useSmartField="true" editable="true">
+												<smartTable:customToolbar>
+													<Toolbar>
+														<Button text="Salvar" icon="sap-icon://save" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"
+															press="onSalvar" tooltip="Salvar" id="B_Salvar" type="Default"/>
+														<Button text="Cancelar" icon="sap-icon://reset" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"
+															press="onCancelar" tooltip="Cancelar" id="B_Cancelar" type="Default"/>
+													</Toolbar>
+												</smartTable:customToolbar>
+												<Table:Table mode="MultiSelect" id="table" enableBusyIndicator="true" busyIndicatorDelay="100">
+													<Table:columns>
+														<Table:Column width="8rem">
+															<m:Label text="Material"/>
+															<Table:template>
+																<m:Input id="teste" editable="true" value="{Matnr}" showValueHelp="true" valueHelpRequest="handleValueHelpMap"/>
+															</Table:template>
+														</Table:Column>
+													</Table:columns>
+												</Table:Table>
+												<smartTable:layoutData>
+													<FlexItemData growFactor="1" baseSize="0%"/>
+												</smartTable:layoutData>
+											</smartTable:SmartTable>
+										</f:FormElement>
+									</f:formElements>
+								</f:FormContainer>
+							</f:formContainers>
+						</f:Form>
+						<f:Form title="Selecione um arquivo CSV para Upload.">
+							<f:layout>
+								<f:ResponsiveGridLayout labelSpanXL="5" labelSpanL="5" labelSpanM="5" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0"
+									emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false"/>
+							</f:layout>
+							<f:formContainers>
+								<f:FormContainer>
+									<f:formElements>
+										<f:FormElement>
+											<UploadCollection id="UploadCollection" multiple="true" change="onChange" fileDeleted="onFileDeleted"
+												beforeUploadStarts="onBeforeUploadStarts" uploadComplete="onuploadComplete"
+												items="{ path: '/ZET_CBMM_CF_UPLOADSet', templateShareable: true }" modelContextChange="onmodelContextChange" mode="SingleSelectMaster"
+												uploadUrl="/sap/opu/odata/sap/ZGWCBMM_CONTRATACAO_FRETE_SRV/ZET_CBMM_CF_UPFILESet">
+												<toolbar>
+													<OverflowToolbar id="myId">
+														<Title id="attachmentTitle"/>
+														<ToolbarSpacer/>
+														<Button id="deleteSelectedButton" text="Delete" press="onDeleteSelectedItems" enabled="false" visible="false" type="Transparent"/>
+														<ToggleButton id="selectAllButton" text="Select all" press="onSelectAllPress" enabled="false" visible="false" type="Transparent"/>
+														<UploadCollectionToolbarPlaceholder/>
+													</OverflowToolbar>
+												</toolbar>
+												<items>
+													<UploadCollectionItem documentId="{DocId}" fileName="{Filename}" mimeType="{Mimetype}"
+														url="/sap/opu/odata/sap/ZGWCBMM_CONTRATACAO_FRETE_SRV/ZET_CBMM_CF_UPFILESet('{IdSolicitacao}${DocId}${Filename}')/$value" enableEdit="false"
+														visibleEdit="false" deletePress="ondeletePress">
+														<attributes>
+															<ObjectAttribute text="Carregado por {Autor} em {DtCriacao}"/>
+														</attributes>
+													</UploadCollectionItem>
+												</items>
+											</UploadCollection>
+										</f:FormElement>
+									</f:formElements>
+								</f:FormContainer>
+							</f:formContainers>
+						</f:Form>
+					</VBox>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

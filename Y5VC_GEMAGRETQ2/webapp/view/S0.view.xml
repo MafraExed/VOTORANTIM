@@ -1,0 +1,45 @@
+<mvc:View controllerName="Workspace.zagrupador_v2.controller.S0" xmlns="sap.m" displayBlock="true" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="page" title="{i18n>titleS0}">
+					<content>
+						<!-- Para buscar somente os iniciados -->
+						<List noDataText="{i18n>NotFound}" id="list0" includeItemInSelection="true" growing="true" growingThreshold="10" growingScrollToLoad="false">
+							<items>
+								<!-- Template -->
+								<StandardListItem type="Navigation" title="{path: 'GE>Agrupador', formatter: '.myFormatter.shiftLeadingZeros'}"
+									description="{path:'GE>Credat', formatter: '.myFormatter.date'} {path:'GE>Cretim', formatter: '.myFormatter.time'}
+												 / 
+												 {i18n>TitleRota} -
+												 {path: 'GE>Rota'}"
+												 id="item0"
+									activeIcon="sap-icon://accept" icon="sap-icon://database" visible="true" press="handleListItemPress"/>
+									<!--{path: 'GE>DescricaoRota'}"-->
+								<!--description="{parts:[{path:'Data'},{path:'Hora'}]}" id="item0" activeIcon="sap-icon://accept"-->
+							</items>
+							<headerToolbar>
+								<Toolbar width="100%" id="toolbar1">
+									<content>
+										<SearchField xmlns="sap.m" search="handleSearch" placeholder="{i18n>SearchFor}" id="field0"/>
+									</content>
+								</Toolbar>
+							</headerToolbar>
+						</List>
+					</content>
+					<footer>
+						<Bar id="bar3">
+							<contentMiddle>
+								<!--<Button text="{i18n>BtnScanEtiq}" tooltip="{i18n>BtnScanEtiq}" icon="sap-icon://bar-code" id="button0" type="Default"-->
+								<!--	press="handlePressScan" activeIcon="sap-icon://accept"/>-->
+								<Button text="{i18n>BtnCriar}" tooltip="{i18n>BtnCriar}" id="button3" icon="sap-icon://create" type="Accept" press="handleCriar"
+									activeIcon="sap-icon://accept"/>
+							</contentMiddle>
+						</Bar>
+					</footer>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>

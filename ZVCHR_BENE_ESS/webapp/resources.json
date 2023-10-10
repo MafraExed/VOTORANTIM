@@ -1,0 +1,109 @@
+{
+    "resources": [
+        {
+            "name": "model/formatter.js"
+        },
+        {
+            "name": "model/models.js"
+        },
+        {
+            "name": "resources.json",
+            "merged": true
+        },
+        {
+            "name": "neo-app.json"
+        },
+        {
+            "name": "Component.js"
+        },
+        {
+            "name": "localService/metadata.xml"
+        },
+        {
+            "name": "localService/mockserver.js"
+        },
+        {
+            "name": ".project.json"
+        },
+        {
+            "name": "controller/Master.controller.js"
+        },
+        {
+            "name": "controller/NotFound.controller.js"
+        },
+        {
+            "name": "controller/BaseController.js"
+        },
+        {
+            "name": "controller/Add.controller.js"
+        },
+        {
+            "name": "controller/Detail.controller.js"
+        },
+        {
+            "name": "controller/App.controller.js"
+        },
+        {
+            "name": "controller/ListSelector.js"
+        },
+        {
+            "name": "controller/ErrorHandler.js"
+        },
+        {
+            "name": "manifest.json"
+        },
+        {
+            "name": ".user.project.json"
+        },
+        {
+            "name": "thirdparty/openui5/camera/library.js"
+        },
+        {
+            "name": "thirdparty/openui5/camera/library-preload.js"
+        },
+        {
+            "name": "thirdparty/openui5/camera/Camera.js"
+        },
+        {
+            "name": "thirdparty/openui5/camera/CameraRenderer.js"
+        },
+        {
+            "name": "view/ViewSettingsDialog.fragment.xml"
+        },
+        {
+            "name": "view/Add.view.xml"
+        },
+        {
+            "name": "view/App.view.xml"
+        },
+        {
+            "name": "view/NotFound.view.xml"
+        },
+        {
+            "name": "view/Upload.fragment.xml"
+        },
+        {
+            "name": "view/Detail.view.xml"
+        },
+        {
+            "name": "view/estilo.css"
+        },
+        {
+            "name": "view/Master.view.xml"
+        },
+        {
+            "name": "view/Foto.fragment.xml"
+        },
+        {
+            "name": "view/DetailObjectNotFound.view.xml"
+        },
+        {
+            "name": "i18n/i18n.properties",
+            "raw": "i18n/i18n.properties"
+        },
+        {
+            "name": "Component-preload.js",
+            "merged": true
+        }
+    ]
+}

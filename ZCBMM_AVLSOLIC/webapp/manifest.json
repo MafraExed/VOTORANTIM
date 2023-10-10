@@ -1,0 +1,292 @@
+{
+    "_version": "1.9.0",
+    "sap.app": {
+        "id": "ZCBMM_AVLSOLIC.ZCBMM_AVLSOLIC",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/sap/ZGWCBMM_CONTRATACAO_FRETE_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/metadata.xml"
+                }
+            }
+        },
+        "sourceTemplate": {
+            "id": "sap.ui.ui5-template-plugin.1worklist",
+            "version": "1.52.7",
+            "toolsId": "e5aa237f-48f6-4083-a3c6-61b2662ef196"
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "sap-icon://task",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "rootView": {
+            "viewName": "ZCBMM_AVLSOLIC.ZCBMM_AVLSOLIC.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "app"
+        },
+        "dependencies": {
+            "minUI5Version": "1.42.0",
+            "libs": {
+                "sap.ui.core": {},
+                "sap.m": {},
+                "sap.f": {},
+                "sap.ushell": {},
+                "sap.collaboration": {
+                    "lazy": true
+                }
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "ZCBMM_AVLSOLIC.ZCBMM_AVLSOLIC.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true
+            }
+        },
+        "services": {
+            "ShellUIService": {
+                "factoryName": "sap.ushell.ui5service.ShellUIService",
+                "lazy": false,
+                "settings": {
+                    "setTitle": "auto"
+                }
+            }
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "viewPath": "ZCBMM_AVLSOLIC.ZCBMM_AVLSOLIC.view",
+                "controlId": "app",
+                "controlAggregation": "pages",
+                "bypassed": {
+                    "target": [
+                        "notFound"
+                    ]
+                },
+                "async": true
+            },
+            "routes": [
+                {
+                    "pattern": "",
+                    "name": "worklist",
+                    "target": [
+                        "worklist"
+                    ]
+                },
+                {
+                    "pattern": "ZET_CBMM_CF_FRETESet/{IdSolicitacao}/{WerksO}/",
+                    "name": "object",
+                    "target": [
+                        "object"
+                    ]
+                },
+                {
+                    "name": "Add_Solicitacao",
+                    "pattern": "Add_Solicitacao/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "Add_Solicitacao"
+                    ]
+                },
+                {
+                    "name": "Back",
+                    "pattern": "Back/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "Back"
+                    ]
+                },
+                {
+                    "name": "Add_Rota",
+                    "pattern": "Add_Rota/{Bukrs}/{Werks}/{IdSolicitacao}/{Carteira}/{Modalidade}/{Prioridade}/{Finalidade}/{GrpCompras}/{DtInic}/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "Add_Rota"
+                    ]
+                },
+                {
+                    "name": "Detail_Rota",
+                    "pattern": "Detail_Rota/{Bukrs}/{Werks}/{IdSolicitacao}/{Carteira}/{Modalidade}/{Prioridade}/{Finalidade}/{GrpCompras}/{DtInic}/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "Detail_Rota"
+                    ]
+                },
+                {
+                    "name": "BackSol",
+                    "pattern": "BackSol/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "BackSol"
+                    ]
+                },
+                {
+                    "name": "objectRota",
+                    "pattern": "objectRota/{Bukrs}/{WerksO}/{IdSolicitacao}/{IdRota}/{Carteira}/{Modalidade}/{Prioridade}/{Finalidade}/{GrpCompras}/{DtInic}/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "objectRota"
+                    ]
+                },
+                {
+                    "name": "BackObjectRota",
+                    "pattern": "BackObjectRota/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "BackObjectRota"
+                    ]
+                },
+                {
+                    "name": "BackAddSol",
+                    "pattern": "BackAddSol/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "BackAddSol"
+                    ]
+                }
+            ],
+            "targets": {
+                "worklist": {
+                    "viewName": "Worklist",
+                    "viewId": "worklist",
+                    "viewLevel": 1,
+                    "title": "{i18n>worklistViewTitle}",
+                    "transition": "flip"
+                },
+                "object": {
+                    "viewName": "Object",
+                    "viewId": "object",
+                    "viewLevel": 2,
+                    "title": "{i18n>objectViewTitle}",
+                    "transition": "flip"
+                },
+                "objectNotFound": {
+                    "viewName": "ObjectNotFound",
+                    "viewId": "objectNotFound"
+                },
+                "notFound": {
+                    "viewName": "NotFound",
+                    "viewId": "notFound"
+                },
+                "Add_Solicitacao": {
+                    "viewType": "XML",
+                    "transition": "flip",
+                    "clearAggregation": true,
+                    "viewName": "Add_Solicitacao",
+                    "title": "Adicionar Solicitação",
+                    "viewId": "Add_Solicitacao",
+                    "viewLevel": 2
+                },
+                "Back": {
+                    "viewType": "XML",
+                    "transition": "flip",
+                    "clearAggregation": true,
+                    "viewName": "Worklist",
+                    "title": "{i18n>worklistViewTitle}",
+                    "viewId": "Back",
+                    "viewLevel": 1
+                },
+                "Add_Rota": {
+                    "viewType": "XML",
+                    "transition": "flip",
+                    "clearAggregation": true,
+                    "viewName": "Add_Rota",
+                    "title": "Adicionar Rota",
+                    "viewId": "Add_Rota",
+                    "viewLevel": 3
+                },
+                "Detail_Rota": {
+                    "viewType": "XML",
+                    "transition": "flip",
+                    "clearAggregation": true,
+                    "viewName": "Detail_Rota",
+                    "title": "Incluir Rota",
+                    "viewId": "Detail_Rota",
+                    "viewLevel": 3
+                },
+                "BackSol": {
+                    "viewType": "XML",
+                    "transition": "flip",
+                    "clearAggregation": true,
+                    "viewName": "Object",
+                    "title": "Incluir Rota",
+                    "viewId": "BackSol",
+                    "viewLevel": 2
+                },
+                "objectRota": {
+                    "viewType": "XML",
+                    "transition": "flip",
+                    "clearAggregation": true,
+                    "viewName": "objectRota",
+                    "title": "Detalhes da Rota",
+                    "viewId": "objectRota",
+                    "viewLevel": 3
+                },
+                "BackObjectRota": {
+                    "viewType": "XML",
+                    "transition": "flip",
+                    "clearAggregation": true,
+                    "viewName": "Object",
+                    "title": "{i18n>objectViewTitle}",
+                    "viewId": "BackObjectRota",
+                    "viewLevel": 2
+                },
+                "BackAddSol": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearAggregation": true,
+                    "viewName": "Add_Solicitacao",
+                    "title": "Adicionar Solicitação",
+                    "viewId": "BackAddSol",
+                    "viewLevel": 2
+                }
+            }
+        }
+    },
+    "sap.platform.abap": {
+        "uri": "/sap/bc/ui5_ui5/sap/zcbmm_avlsolic",
+        "_version": "1.1.0"
+    }
+}

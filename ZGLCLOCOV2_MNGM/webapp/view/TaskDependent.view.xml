@@ -1,0 +1,32 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="votorantim.corp.clocov2planmanagement.controller.TaskDependent"
+	xmlns:core="sap.ui.core"
+	xmlns:dnd="sap.ui.core.dnd" class="sapUiSizeCompact"
+	xmlns:graph="sap.suite.ui.commons.networkgraph"
+	xmlns="sap.m">
+	<graph:Graph enableWheelZoom="false" height="100%" id="idGrapPredSuc" nodes="{graphPredSuc>/nodes}" lines="{graphPredSuc>/lines}">
+		<graph:nodes>
+			<graph:Node key="{graphPredSuc>key}" title="{graphPredSuc>title}" actionButtons="{path:'graphPredSuc>actionButtons', templateShareable:true}" attributes="{path:'graphPredSuc>attributes', templateShareable:true}" status="{graphPredSuc>graphStatus}" showActionLinksButton="false" showDetailButton="false" showExpandButton="false" shape="Box">
+				<graph:customData>
+					<core:CustomData key="task" value="{graphPredSuc>}" />
+				</graph:customData>
+				<graph:attributes>
+					<graph:ElementAttribute label="{graphPredSuc>label}" value="{graphPredSuc>value}"/>
+				</graph:attributes>
+				<graph:actionButtons>
+                    <graph:ActionButton
+                        icon="{graphPredSuc>icon}"
+                        title="{graphPredSuc>title}"
+                        press="pressOptionsGraph" />
+                </graph:actionButtons>
+			</graph:Node>
+		</graph:nodes>
+		<graph:lines>
+			<graph:Line  from="{graphPredSuc>from}" press="linePress"  to="{graphPredSuc>to}">
+				<graph:customData>
+					<core:CustomData key="task" value="{graphPredSuc>}" />
+				</graph:customData>
+			</graph:Line>
+		</graph:lines>
+	</graph:Graph>
+
+</mvc:View>

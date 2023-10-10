@@ -1,0 +1,147 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout" xmlns:footerbar="sap.ushell.ui.footerbar">
+
+	<Toolbar>
+		<Title text="{i18n>objectTitle}"
+			level="H4" titleStyle="H4" />
+		<ToolbarSpacer />
+	</Toolbar>
+<Panel width="auto">
+<content>
+	<Table id="tableMov" 
+		   width="auto" 
+		   class="sapUiResponsiveMargin"
+		   noDataText="{appView>/tableNoDataText}"
+		   busyIndicatorDelay="{appView>/tableBusyDelay}"
+		   growing="true" 
+		   growingScrollToLoad="true" 
+		   updateFinished="onHandleTableLoad"
+		   growingThreshold="5"
+		   fixedLayout="true" 
+		   items="{AcToMov}">
+	
+	  <columns>
+	   	  	<Column hAlign="Begin" width="5rem">
+				<!-- mergeDuplicates="true" -->
+				<Label text="{i18n>objVbelnVf}" />
+			</Column>
+
+			<Column hAlign="Begin" width="5rem">
+				<Label text="{i18n>objRenum}" />
+			</Column>
+
+			<Column hAlign="Begin" width="6rem">
+				<Label text="{i18n>objDcrnv}" />
+			</Column>
+
+<!-- 			<Column hAlign="Begin" width="3rem"> -->
+<!-- 				<Label text="{i18n>objPtdst}" /> -->
+<!-- 			</Column> -->
+
+			<Column hAlign="Begin" width="7rem">
+				<Label text="{i18n>objPtdstDsc}" /> <!-- {i18n>objPtdst} -  -->
+			</Column>
+
+			<Column hAlign="End" width="6.5rem">
+				<Label text="{i18n>objDtnfe}" />
+			</Column>
+			
+			<Column hAlign="Begin" width="6rem">
+				<Label text="{i18n>objVolume}" />
+			</Column>
+
+			<Column hAlign="Begin" width="6rem">
+				<Label text="{i18n>objPeso}" />
+			</Column>
+
+			<Column hAlign="Begin" width="6rem">
+				<Label text="{i18n>objSaldo}" />
+			</Column>
+
+			<Column hAlign="Begin" width="6rem">
+				<Label text="{i18n>objNfenum}" />
+			</Column>
+
+			<Column hAlign="Begin" width="6rem">
+				<!-- mergeDuplicates="true" -->
+				<Label text="{i18n>objVbelnVa}" />
+			</Column>
+
+			<Column hAlign="Begin" width="6rem">
+				<Label text="{i18n>objValorCif}" />
+			</Column>
+
+			<Column hAlign="Begin" width="6rem">
+				<Label text="{i18n>objValorFob}" />
+			</Column>
+			
+			<Column hAlign="Begin" width="6rem">
+				<Label text="{i18n>objValorFrete}" />
+			</Column>
+
+			<Column hAlign="Begin" width="6rem">
+				<Label text="{i18n>objValorSeguro}" />
+			</Column>
+		
+		</columns>
+	
+		<items>
+			<ColumnListItem>
+				<cells>
+					<ObjectIdentifier title="{VbelnVf}"/>
+					<Text text="{Renum}"/>
+					<Text text="{Dcrnv}"/>
+					
+<!-- 					<ObjectNumber number="{Usinc}" -->
+<!-- 									unit="{path: 'Dtinc', type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'dd.MM.yyyy', strictParsing: true , UTC: true}}   -->
+<!-- 									{path: 'Tminc', formatter:'.formatter.formatDateTime'}" -->
+<!-- 									emphasized="false"/> -->
+					
+					<ObjectNumber number="{Ptdst}"
+									unit="{PtdstDsc}"
+									emphasized="false"/>
+							
+<!-- 					<Text text="{Ptdst}"/> -->
+<!-- 					<Text text="{PtdstDsc}"/> -->
+									
+					<Text text="{path: 'Dtnfe', type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'dd.MM.yyyy', strictParsing: true , UTC: true}}"/>
+				
+					<Text text="{Volume}"/>
+					
+					<Text text="{Peso}"/>
+					
+					<ObjectStatus text="{Saldo}"
+					state="{path: 'Saldo', formatter: '.formatter.classificaSaldo'}"/>
+					
+					<Text text="{Nfenum}"/>
+					<Text text="{VbelnVa}"/>
+					
+					
+					<ObjectNumber number="{ValorCif}"
+									unit="{Moeda}"
+									emphasized="false"/>
+					
+					
+					<ObjectNumber number="{ValorFob}"
+									unit="{Moeda}"
+									emphasized="false"/>
+					
+				
+					<ObjectNumber number="{ValorFrete}"
+									unit="{Moeda}"
+									emphasized="false"/>
+					
+					<ObjectNumber number="{ValorSeguro}"
+									unit="{Moeda}"
+									emphasized="false"/>
+					
+				</cells>
+			</ColumnListItem>
+		</items>	
+	</Table>
+</content>
+
+
+</Panel>
+</core:FragmentDefinition>

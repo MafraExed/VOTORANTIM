@@ -1,0 +1,101 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	controllerName="ZCBMM_CF_CEGA.ZCBMM_CF_CEGA.controller.EntradaHistorico" xmlns:html="http://www.w3.org/1999/xhtml">
+	<App>
+		<pages>
+			<Page title="Histórico">
+				<content>
+					<Panel >
+						<content>
+							<ObjectHeader title="{i18n>avis_receb_header} {CodAviso}" introActive="true" titleActive="true"
+								intro="{/#HistoricoConfCegaCB/Fornecedor/@sap:label}: {Fornecedor}">
+								<attributes>
+									<ObjectAttribute title="{/#HistoricoConfCegaCB/Nfe/@sap:label}" text="{Nfe}"/>
+									<ObjectAttribute title="{/#HistoricoConfCegaCB/Serie/@sap:label}" text="{Serie}"/>
+									<ObjectAttribute title="{/#HistoricoConfCegaCB/Ebeln/@sap:label}" text="{Ebeln}"/>
+								</attributes>
+								<!--<statuses>-->
+								<!--	<ObjectStatus state="{= ${ContagemRealizada} === 'X' ? 'Success' : 'Error' }"-->
+								<!--		text="Contagem: {= ${ContagemRealizada} === 'X' ? 'Realizada' : 'Pendente' }"/>-->
+								<!--	<ObjectStatus state="{= ${EntrMercRealizada} === 'X' ? 'Success' : 'Error' }"-->
+								<!--		text="E.M.: {= ${EntrMercRealizada} === 'X' ? 'Realizada' : 'Pendente' }"/>-->
+								<!--</statuses>-->
+							</ObjectHeader>
+						</content>
+					</Panel>
+					<Image src="{ToFoto/0/$value}"></Image>
+					<VBox fitContainer="true">
+						<Panel>
+							<content>
+								<Table id="HistoricoConfCegaItemTable" items="{ path: 'ToIt', sorter : { path : 'Ebelp' }}" class="sapUiResponsivePadding"
+									headerText="Itens">
+									<items>
+										<ColumnListItem>
+											<cells>
+												<Text text="{Ebelp}"/>
+												<ObjectIdentifier title="{Matnr}" text="{Maktx}"/>
+												<Text text="{Aceite}"/>
+												<Text text="{EfetuaEm}"/>
+												<Text text="{Login}"/>
+												<Text text="{Matricula}"/>
+												<Text text="{Volume}"/>
+												<Text text="{Quantidade}"/>
+											</cells>
+										</ColumnListItem>
+									</items>
+									<columns>
+										<Column >
+											<header>
+												<Label text="{/#HistoricoConfCega/Ebelp/@sap:label}"/>
+											</header>
+										</Column>
+										<Column >
+											<header>
+												<Label text="{/#HistoricoConfCega/Matnr/@sap:label}"/>
+											</header>
+										</Column>
+										<Column >
+											<header>
+												<Label text="{/#HistoricoConfCega/Aceite/@sap:label}"/>
+											</header>
+										</Column>
+										<Column >
+											<header>
+												<Label text="{/#HistoricoConfCega/EfetuaEm/@sap:label}"/>
+											</header>
+										</Column>
+										<Column >
+											<header>
+												<Label text="{/#HistoricoConfCega/Login/@sap:label}"/>
+											</header>
+										</Column>
+										<Column >
+											<header>
+												<Label text="{/#HistoricoConfCega/Matricula/@sap:label}"/>
+											</header>
+										</Column>
+										<Column >
+											<header>
+												<Label text="{/#HistoricoConfCega/Volume/@sap:label}"/>
+											</header>
+										</Column>
+										<Column >
+											<header>
+												<Label text="{/#HistoricoConfCega/Quantidade/@sap:label}"/>
+											</header>
+										</Column>
+									</columns>
+								</Table>
+							</content>
+						</Panel>
+					</VBox>
+				</content>
+				<footer>
+					<Toolbar>
+						<ToolbarSpacer/>
+						<Button text="{i18n>foto_aprovador}" type="Emphasized" icon="sap-icon://picture" press=".onFotoPress"></Button>
+					</Toolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

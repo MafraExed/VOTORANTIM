@@ -1,0 +1,5 @@
+"use strict";var _excluded=["sign","option"];function _objectWithoutProperties(t,e){if(t==null)return{};var i=_objectWithoutPropertiesLoose(t,e);var o,n;if(Object.getOwnPropertySymbols){var r=Object.getOwnPropertySymbols(t);for(n=0;n<r.length;n++){o=r[n];if(e.indexOf(o)>=0)continue;if(!Object.prototype.propertyIsEnumerable.call(t,o))continue;i[o]=t[o]}}return i}function _objectWithoutPropertiesLoose(t,e){if(t==null)return{};var i={};var o=Object.keys(t);var n,r;for(r=0;r<o.length;r++){n=o[r];if(e.indexOf(n)>=0)continue;i[n]=t[n]}return i}
+/*!
+ * SiGC - GestiÃ³n de Compras
+ * (c) Copyright 2022 Innova Internacional S.A.S.
+ */sap.ui.define(["sap/ui/base/Object"],function(t){return t.extend("com.innova.sitrack.model.variant.ItemVariant",{constructor:function t(e){var i=e.sign,o=i===void 0?"I":i,n=e.option,r=n===void 0?"EQ":n,s=_objectWithoutProperties(e,_excluded);this.FUNCTION=s.function;this.ZVARIANT=s.nameVariant;this.GRUPO=s.group;this.TABNAME=s.tabname;this.FIELDNAME=s.fieldname;this.ZSIGN=o;this.ZOPTION=r;this.LOW=s.low;this.HIGH=s.high}})});

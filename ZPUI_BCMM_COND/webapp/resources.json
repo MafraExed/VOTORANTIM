@@ -1,0 +1,151 @@
+{
+    "resources": [
+        {
+            "name": ".che/project.json"
+        },
+        {
+            "name": ".gitignore"
+        },
+        {
+            "name": ".project.json"
+        },
+        {
+            "name": ".user.project.json"
+        },
+        {
+            "name": "Component-preload.js",
+            "merged": true
+        },
+        {
+            "name": "Component.js"
+        },
+        {
+            "name": "Gruntfile.js"
+        },
+        {
+            "name": "ZPUI_BCMM_COND.zip"
+        },
+        {
+            "name": "controller/AddTransp.controller.js"
+        },
+        {
+            "name": "controller/App.controller.js"
+        },
+        {
+            "name": "controller/BaseController.js"
+        },
+        {
+            "name": "controller/Cond.controller.js"
+        },
+        {
+            "name": "controller/Detail.controller.js"
+        },
+        {
+            "name": "controller/ErrorHandler.js"
+        },
+        {
+            "name": "controller/ListSelector.js"
+        },
+        {
+            "name": "controller/Master.controller.js"
+        },
+        {
+            "name": "controller/Rota.controller.js"
+        },
+        {
+            "name": "controller/Transpo.controller.js"
+        },
+        {
+            "name": "dist"
+        },
+        {
+            "name": "extended_runnable_file.html"
+        },
+        {
+            "name": "i18n/i18n.properties",
+            "raw": "i18n/i18n.properties"
+        },
+        {
+            "name": "localService/metadata.xml"
+        },
+        {
+            "name": "localService/mockserver.js"
+        },
+        {
+            "name": "manifest.json"
+        },
+        {
+            "name": "model/GroupSortState.js"
+        },
+        {
+            "name": "model/formatter.js"
+        },
+        {
+            "name": "model/grouper.js"
+        },
+        {
+            "name": "model/models.js"
+        },
+        {
+            "name": "neo-app.json"
+        },
+        {
+            "name": "node_modules"
+        },
+        {
+            "name": "package-lock.json"
+        },
+        {
+            "name": "package.json"
+        },
+        {
+            "name": "resources.json",
+            "merged": true
+        },
+        {
+            "name": "sap-ui-cachebuster-info.json"
+        },
+        {
+            "name": "view/AddTransp.view.xml"
+        },
+        {
+            "name": "view/App.view.xml"
+        },
+        {
+            "name": "view/Cond.view.xml"
+        },
+        {
+            "name": "view/Condicoes.fragment.xml"
+        },
+        {
+            "name": "view/Detail.view.xml"
+        },
+        {
+            "name": "view/DetailNoObjectsAvailable.view.xml"
+        },
+        {
+            "name": "view/DetailObjectNotFound.view.xml"
+        },
+        {
+            "name": "view/Master.view.xml"
+        },
+        {
+            "name": "view/NotFound.view.xml"
+        },
+        {
+            "name": "view/Rota.view.xml"
+        },
+        {
+            "name": "view/Transp.fragment.xml"
+        },
+        {
+            "name": "view/Transpo.view.xml"
+        },
+        {
+            "name": "view/Veic.fragment.xml"
+        },
+        {
+            "name": "view/ViewSettingsDialog.fragment.xml"
+        }
+    ]
+}

@@ -1,0 +1,104 @@
+<mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.f.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" controllerName="ZVCRH_VISAO_EMPREGADO.ZVCRH_VISAO_EMPREGADO.controller.Detail">
+	<App id="app">
+		<pages>
+			<Page title="Adicionar Dependentes / Benefícios" backgroundDesign="Solid">
+					<customHeader>
+					<Bar>
+						<contentMiddle>
+							<!--items-->
+								<Button press="onVoltar" text="Voltar" type="Back" width="90%"/>
+						</contentMiddle>
+					</Bar>
+				</customHeader>
+				<content>
+					<Input value="{Pernr}" id="IdPernr" visible="false"/>
+					<Input value="{Subty}" id="IdSubty" visible="false"/>
+					<Input value="{Objps}" id="IdObjps" visible="false"/>
+					<Input value="{Arquivo}" id="Idarq" visible="false"/>
+					<f:Form id="FormChange480_12120" editable="true">
+						<f:layout>
+							<f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer>
+								<f:formElements>
+									<f:FormElement visible="false">
+										<f:fields>
+											<Input value="{Status}" id="IdStatus" editable="false"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Grau de Parentesco">
+										<f:fields>
+											<ComboBox id="IdParentesco" selectedKey="{Famsa}"  required="false" placeholder="Selecione o país de nascimento" items="{/ZET_VCRH_COMBO_PARENTESCOSet}" editable="false">
+												<core:Item key="{Id}" text="{Value}"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Nome">
+										<f:fields>
+											<Input value="{Favor}" id="IdFavor" placeholder="Preencha com o 1° Nome" editable="false"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Sobrenome">
+										<f:fields>
+											<Input value="{Fanam}" id="IdFanam" placeholder="Preencha com o Sobrenome" editable="false"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Data de Nascimento">
+										<f:fields>
+											<Input value="{Fgbdt}" id="IdFgbdt" placeholder="Preencha com data de nascimento" editable="false" type="Date"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Sexo">
+										<f:fields>
+											<ComboBox id="IdSexo" selectedKey="{Fasex}" required="false" items="{/ZET_VCRH_COMBO_SEXOSet}" editable="false">
+												<core:Item key="{Id}" text="{Value}"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Estado Civil">
+										<f:fields>
+											<ComboBox id="IdZzestciv" selectedKey="{Zzestciv}" required="false" items="{/ZET_VCRH_COMBO_EST_CIVILSet}" editable="false">
+												<core:Item key="{Id}" text="{Value}" enabled="false"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Anexos: Inserir aqui sua documentação" id="IdonAddDoc">
+										<f:fields>
+											<Button press="onAddDoc" text="Anexar Documento"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Anexos" id="IdonDoc">
+										<f:fields>
+											<Button press="getanexo" text="Download Anexo" type="Accept" icon="sap-icon://vds-file"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement id="IdMsg">
+										<f:fields>
+											<MessageStrip text="Aguardando aprovação CSC! Submetida em {Datum} às {Uzeit}" showIcon="true" type="Warning"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement id="IdMotivo">
+										<f:fields>
+											<MessageStrip text="Reprovado: {Observacao}" showIcon="true" type="Error"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement id="IdonEnviar">
+										<f:fields>
+											<Button press="onEnviar" text="Enviar" type="Emphasized" visible="false"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement id="IdonVoltar">
+										<f:fields>
+											<Button press="onVoltar" text="Voltar" type="Emphasized" visible="false"/>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

@@ -1,0 +1,490 @@
+<mvc:View 
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc" 
+	xmlns:semantic="sap.m.semantic" 
+	xmlns:f="sap.ui.layout.form" 
+	xmlns:footerbar="sap.ushell.ui.footerbar" 
+	xmlns:viz="sap.viz.ui5.controls" 
+	xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" 
+	xmlns:viz.data="sap.viz.ui5.data" 
+	controllerName="fibria.com.ZFBC_AMEACAS.controller.FichaRisco"
+	xmlns:data="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	<Page id="page" busy="{objectView>/busy}" busyIndicatorDelay="{objectView>/delay}" backgroundDesign="Transparent" navButtonType="Emphasized" showHeader="false" floatingFooter="true">
+		<content>
+			<sap.ui.layout:Splitter xmlns:sap.ui.layout="sap.ui.layout" height="auto" orientation="Vertical">
+				<Table id="tblComentarios1a" class="marginTableIE">
+					<layoutData><sap.ui.layout:SplitterLayoutData xmlns:sap.ui.layout="sap.ui.layout" size="64px" resizable="false"/></layoutData>
+					<columns>
+						<Column id="colComentarios1a" hAlign="Center">
+							<header>
+								<Label text="{EDescription1a}" id="lblComentarios1a" design="Bold" class="columnTextWhite myCustomSize"/>
+							</header>
+						</Column>
+					</columns>
+					<items>
+						<ColumnListItem id="cliComentarios1a">
+							<cells>
+								<Text id="txtComentarios1a" text="{EDescription1b}" class="myCustomText" textAlign="Center" textDirection="RTL" width="100%"/>
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+				<sap.ui.layout:Splitter xmlns:sap.ui.layout="sap.ui.layout">
+					<sap.ui.layout:layoutData><sap.ui.layout:SplitterLayoutData xmlns:sap.ui.layout="sap.ui.layout" size="199px" resizable="false"/></sap.ui.layout:layoutData>
+					<sap.ui.layout:contentAreas>
+						<Table id="tblComentarios" class="marginTableIE">
+							<layoutData><sap.ui.layout:SplitterLayoutData xmlns:sap.ui.layout="sap.ui.layout" size="50%" resizable="false"/></layoutData>
+							<columns>
+								<Column id="colComentarios" hAlign="Center">
+									<header>
+										<Label text="Comentários" id="lblComentarios" design="Bold" class="columnTextWhite"/>
+									</header>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem id="cliComentarios">
+									<cells>
+										<sap.ui.layout:Splitter xmlns:sap.ui.layout="sap.ui.layout" orientation="Vertical" height="157px">
+											<Text text="{ECausaprincipal2}" id="txtComentarios" textAlign="Center"/>
+										</sap.ui.layout:Splitter>
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+						<Table id="tblCausas" class="marginTableIE">
+							<layoutData><sap.ui.layout:SplitterLayoutData xmlns:sap.ui.layout="sap.ui.layout" size="25%" resizable="false"/></layoutData>
+							<columns>
+								<Column id="colCausas" hAlign="Center">
+									<header>
+										<Label text="Causas" id="lblCausas" design="Bold" class="columnTextWhite"/>
+									</header>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem id="cliCausas">
+									<cells>
+										<sap.ui.layout:Splitter xmlns:sap.ui.layout="sap.ui.layout" orientation="Vertical">
+											<Text text="{EMotive3}" id="txtCausas" textAlign="Center">
+												<layoutData><sap.ui.layout:SplitterLayoutData xmlns:sap.ui.layout="sap.ui.layout" size="157px" resizable="false"/></layoutData>
+											</Text>
+										</sap.ui.layout:Splitter>
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+						<sap.ui.layout:Splitter xmlns:sap.ui.layout="sap.ui.layout" orientation="Vertical" class="noBorder">
+							<sap.ui.layout:layoutData><sap.ui.layout:SplitterLayoutData xmlns:sap.ui.layout="sap.ui.layout" size="25%" resizable="false"/></sap.ui.layout:layoutData>
+							<Table id="tblRiscoDonosHeader" showNoData="false" class="marginTableIE">
+								<layoutData><sap.ui.layout:SplitterLayoutData xmlns:sap.ui.layout="sap.ui.layout" size="32px" resizable="false"/></layoutData>
+								<columns>
+									<Column id="colRiscoDonos" hAlign="Center">
+										<header>
+											<Label text="Dono do Risco" id="lblRiscoDonos" design="Bold" class="columnTextWhite"/>
+										</header>
+									</Column>
+								</columns>
+							</Table>
+							<ScrollContainer id="scrTableItems" vertical="true" class="noMarginTop">
+								<layoutData><sap.ui.layout:SplitterLayoutData xmlns:sap.ui.layout="sap.ui.layout" size="27px" resizable="false"/></layoutData>
+								<Table id="tblRiscoDonosCells" items="{path: '/RiscoDonos'}" noDataText=" " class="marginTableIE">
+									<layoutData><sap.ui.layout:SplitterLayoutData xmlns:sap.ui.layout="sap.ui.layout" size="27px" resizable="false"/></layoutData>
+										<columns>
+											<Column id="colRiscoDonosCells" hAlign="Center"/>
+										</columns>
+									<items>
+										<ColumnListItem id="cliRiscoDonos">
+											<cells>
+												<Text text="{Fullnname}" id="txtRiscoDonos"/>
+											</cells>
+										</ColumnListItem>
+									</items>
+								</Table>
+							</ScrollContainer>
+							<Table id="tblAreas" class="marginTableIE">
+								<layoutData><sap.ui.layout:SplitterLayoutData xmlns:sap.ui.layout="sap.ui.layout" size="64px" resizable="false"/></layoutData>
+								<columns>
+									<Column id="colAreas" hAlign="Center">
+										<header>
+											<Label text="Áreas" id="lblAreas" design="Bold" class="columnTextWhite"/>
+										</header>
+									</Column>
+								</columns>
+								<items>
+									<ColumnListItem id="cliAreas">
+										<cells>
+											<Text text="{EZarea5}" id="txtAreas"/>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+							<sap.ui.layout:Splitter xmlns:sap.ui.layout="sap.ui.layout">
+								<sap.ui.layout:layoutData><sap.ui.layout:SplitterLayoutData xmlns:sap.ui.layout="sap.ui.layout" size="64px" resizable="false"/></sap.ui.layout:layoutData>
+								<Table id="tblSeguravel" class="marginTableIE">
+									<layoutData><sap.ui.layout:SplitterLayoutData xmlns:sap.ui.layout="sap.ui.layout" size="50%" resizable="false"/></layoutData>
+									<columns>
+										<Column id="colSeguravel" hAlign="Center">
+											<header>
+												<Label text="Segurável" id="lblSeguravel" design="Bold" class="columnTextWhite"/>
+											</header>
+										</Column>
+									</columns>
+									<items>
+										<ColumnListItem id="cliSeguravel">
+											<cells>
+												<Text text="{ESeguravel6a}" id="txtSeguravel"/>
+											</cells>
+										</ColumnListItem>
+									</items>
+								</Table>
+								<Table id="tblCobertura" class="marginTableIE">
+									<layoutData><sap.ui.layout:SplitterLayoutData xmlns:sap.ui.layout="sap.ui.layout" size="50%" resizable="false"/></layoutData>
+									<columns>
+										<Column id="colCobertura" hAlign="Center">
+											<header>
+												<Label text="Possui Seguro" id="lblCobertura" design="Bold" class="columnTextWhite"/>
+											</header>
+										</Column>
+									</columns>
+									<items>
+										<ColumnListItem id="cliCobertura">
+											<cells>
+												<Text text="{ECobertura6b}" id="txtCobertura"/>
+											</cells>
+										</ColumnListItem>
+									</items>
+								</Table>
+							</sap.ui.layout:Splitter>
+						</sap.ui.layout:Splitter>
+					</sap.ui.layout:contentAreas>
+				</sap.ui.layout:Splitter>
+				<sap.ui.layout:Splitter xmlns:sap.ui.layout="sap.ui.layout">
+					<sap.ui.layout:layoutData><sap.ui.layout:SplitterLayoutData xmlns:sap.ui.layout="sap.ui.layout" size="337px"/></sap.ui.layout:layoutData>
+					<sap.ui.layout:Splitter xmlns:sap.ui.layout="sap.ui.layout" height="100%">
+						<sap.ui.layout:layoutData><sap.ui.layout:SplitterLayoutData xmlns:sap.ui.layout="sap.ui.layout" size="3.5%" resizable="false"/></sap.ui.layout:layoutData>
+						<Image id="imgAnaliseRisco" width="100%" height="331px"/>
+					</sap.ui.layout:Splitter>
+					<sap.ui.layout:Splitter xmlns:sap.ui.layout="sap.ui.layout" height="100%" orientation="Vertical">
+						<sap.ui.layout:layoutData><sap.ui.layout:SplitterLayoutData xmlns:sap.ui.layout="sap.ui.layout" size="32%" resizable="false"/></sap.ui.layout:layoutData>
+						<sap.ui.layout:Splitter xmlns:sap.ui.layout="sap.ui.layout">
+							<sap.ui.layout:layoutData><sap.ui.layout:SplitterLayoutData xmlns:sap.ui.layout="sap.ui.layout" size="32px" resizable="false"/></sap.ui.layout:layoutData>
+							<Table id="tblProbabilidadeTitulo" showNoData="false" class="marginTableIE">
+								<layoutData><sap.ui.layout:SplitterLayoutData xmlns:sap.ui.layout="sap.ui.layout" size="64.1%" resizable="false"/></layoutData>
+								<columns>
+									<Column id="colProbabilidadeTitulo" hAlign="Center" class="marginTableIE">
+										<header>
+											<Label text="Probabilidade" id="lblProbabilidadeTitulo" design="Bold" class="columnTextWhite"/>
+										</header>
+									</Column>
+								</columns>
+							</Table>
+							<Table id="tblProbabilidadeValor" showNoData="false" class="noMarginCellTop">
+								<layoutData><sap.ui.layout:SplitterLayoutData xmlns:sap.ui.layout="sap.ui.layout" size="auto" resizable="false"/></layoutData>
+								<columns>
+									<Column id="colProbabilidadeValor" hAlign="Center"/>
+								</columns>
+								<items>
+									<ColumnListItem id="cliProbabilidade">
+										<cells>
+											<Text text="{ENivelprobabilidade}" id="txtProbabilidadeValor" class="noMarginLeftRight" wrapping="false"/>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+						</sap.ui.layout:Splitter>
+						<sap.ui.layout:Splitter xmlns:sap.ui.layout="sap.ui.layout" class="sapUiNoMargin">
+							<sap.ui.layout:layoutData><sap.ui.layout:SplitterLayoutData xmlns:sap.ui.layout="sap.ui.layout" size="225px" resizable="false"/></sap.ui.layout:layoutData>
+							<sap.ui.layout:Splitter xmlns:sap.ui.layout="sap.ui.layout">
+								<sap.ui.layout:layoutData><sap.ui.layout:SplitterLayoutData xmlns:sap.ui.layout="sap.ui.layout" size="10%" resizable="false"/></sap.ui.layout:layoutData>
+								<Image id="imgEsferaImpacto" width="100%" height="225px" class="imageNoMargin"/>
+							</sap.ui.layout:Splitter>
+							<sap.ui.layout:Splitter xmlns:sap.ui.layout="sap.ui.layout" orientation="Vertical">
+								<sap.ui.layout:layoutData><sap.ui.layout:SplitterLayoutData xmlns:sap.ui.layout="sap.ui.layout" size="auto" resizable="false"/></sap.ui.layout:layoutData>
+								<sap.ui.layout:Splitter xmlns:sap.ui.layout="sap.ui.layout">
+									<sap.ui.layout:layoutData><sap.ui.layout:SplitterLayoutData xmlns:sap.ui.layout="sap.ui.layout" size="224px"/></sap.ui.layout:layoutData>
+									<Table noDataText=" " id="tblRiscoImpactosCatg" items="{ path: '/RiscoImpactos', sorter: { path: 'Objid', descending: false } }" backgroundDesign="Transparent" class="marginTableIE">
+										<layoutData><sap.ui.layout:SplitterLayoutData xmlns:sap.ui.layout="sap.ui.layout" size="60%" resizable="false"/></layoutData>
+										<columns>
+											<Column id="colEsferaImpactosCatg"/>
+										</columns>
+										<items>
+											<ColumnListItem id="cliEsferaImpactosCatg">
+												<cells>
+													<Text text="{ImpCatgTx}" id="txtEsferaImpactosCatg" class="noMarginLeftRight" wrapping="false"/>
+												</cells>
+											</ColumnListItem>
+										</items>
+									</Table>
+									<Table noDataText=" " id="tblRiscoImpactosLevel" items="{ path: '/RiscoImpactos', sorter: { path: 'Objid', descending: false } }" class="marginTableIE">
+										<layoutData><sap.ui.layout:SplitterLayoutData xmlns:sap.ui.layout="sap.ui.layout" size="auto" resizable="false"/></layoutData>
+										<columns>
+											<Column id="colEsferaImpactosLevel" hAlign="Center"/>
+										</columns>
+										<items>
+											<ColumnListItem id="cliEsferaImpactosLevel">
+												<cells>
+													<Text text="{ImpactLevelTx}" id="txtEsferaImpactosLevel" class="noMarginLeftRight" wrapping="false"/>
+												</cells>
+											</ColumnListItem>
+										</items>
+									</Table>
+								</sap.ui.layout:Splitter>
+							</sap.ui.layout:Splitter>
+						</sap.ui.layout:Splitter>
+						<sap.ui.layout:Splitter xmlns:sap.ui.layout="sap.ui.layout">
+							<sap.ui.layout:layoutData><sap.ui.layout:SplitterLayoutData xmlns:sap.ui.layout="sap.ui.layout" size="32px" resizable="false"/></sap.ui.layout:layoutData>
+							<Table id="tblNivelImpactoTitulo" showNoData="false" class="marginTableIE">
+								<layoutData><sap.ui.layout:SplitterLayoutData xmlns:sap.ui.layout="sap.ui.layout" size="64.1%" resizable="false"/></layoutData>
+								<columns>
+									<Column id="colNivelImpactoTitulo" hAlign="Center">
+										<header>
+											<Label text="Impacto Final" id="lblNivelImpactoTitulo" design="Bold" class="columnTextWhite"/>
+										</header>
+									</Column>
+								</columns>
+							</Table>
+							<Table id="tblNivelImpactoValor" class="marginTableIE">
+								<layoutData><sap.ui.layout:SplitterLayoutData xmlns:sap.ui.layout="sap.ui.layout" size="auto" resizable="false"/></layoutData>
+								<columns>
+									<Column id="colNivelImpactoValor" hAlign="Center"/>
+								</columns>
+								<items>
+									<ColumnListItem id="cliNivelImpactoValor">
+										<cells>
+											<Text text="{ENivelimpacto}" id="txtNivelImpactoValor" class="noMarginLeftRight" wrapping="false"/>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+						</sap.ui.layout:Splitter>
+						<sap.ui.layout:Splitter xmlns:sap.ui.layout="sap.ui.layout">
+							<sap.ui.layout:layoutData><sap.ui.layout:SplitterLayoutData xmlns:sap.ui.layout="sap.ui.layout" size="32px"/></sap.ui.layout:layoutData>
+							<Table id="tblNivelRiscoTitulo" showNoData="false" class="marginTableIE">
+								<layoutData><sap.ui.layout:SplitterLayoutData xmlns:sap.ui.layout="sap.ui.layout" size="64.1%" resizable="false"/></layoutData>
+								<columns>
+									<Column id="colNivelRiscoTitulo" hAlign="Center">
+										<header>
+											<Label text="Nível do Risco" id="lblNivelRiscoTitulo" design="Bold" class="columnTextWhite"/>
+										</header>
+									</Column>
+								</columns>
+							</Table>
+							<Table id="tblNivelRiscoValor" class="marginTableIE">
+								<layoutData><sap.ui.layout:SplitterLayoutData xmlns:sap.ui.layout="sap.ui.layout" size="auto" resizable="false"/></layoutData>
+								<columns>
+									<Column id="colNivelRiscoValor" hAlign="Center"/>
+								</columns>
+								<items>
+									<ColumnListItem id="cliNivelRiscoValor">
+										<cells>
+											<Text text="{ENivelrisco}" id="txtNivelRiscoValor" textAlign="Center" class="noMarginLeftRight" wrapping="false"/>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+						</sap.ui.layout:Splitter>
+					</sap.ui.layout:Splitter>
+					<sap.ui.layout:Splitter xmlns:sap.ui.layout="sap.ui.layout" height="100%">
+						<sap.ui.layout:layoutData><sap.ui.layout:SplitterLayoutData xmlns:sap.ui.layout="sap.ui.layout" size="39.6%" resizable="false"/></sap.ui.layout:layoutData>
+						<Table id="tblMatrizAvaliacao">
+							<layoutData><sap.ui.layout:SplitterLayoutData xmlns:sap.ui.layout="sap.ui.layout" size="auto" resizable="false"/></layoutData>
+							<columns>
+								<Column id="colMatrizAvaliacao" hAlign="Center">
+									<header>
+										<Label text="Matriz de Avaliação" id="lblMatrizAvaliacao" design="Bold" class="columnTextWhite"/>
+									</header>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem id="cliMatrizAvaliacao">
+									<cells>
+										<sap.ui.layout:Splitter xmlns:sap.ui.layout="sap.ui.layout" height="293px">
+											<viz:VizFrame id="vzfMatrizImpacto" uiConfig="{applicationSet:'fiori'}" height="100%" width="100%" vizType="heatmap">
+												<viz:dataset>
+													<viz.data:FlattenedDataset data="{/matrizimpactoameaca}">
+														<viz.data:dimensions>
+															<viz.data:DimensionDefinition name="Probabilidade" value="{Probabilidade}"/>
+															<viz.data:DimensionDefinition name="Impacto" value="{Impacto}"/>
+														</viz.data:dimensions>
+														<viz.data:measures>
+															<viz.data:MeasureDefinition name="Cor" value="{Cor}"/>
+														</viz.data:measures>
+													</viz.data:FlattenedDataset>
+												</viz:dataset>
+												<viz:feeds>
+													<viz.feeds:FeedItem uid="color" type="Measure" values="Cor"/>
+													<viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="Impacto"/>
+													<viz.feeds:FeedItem uid="categoryAxis2" type="Dimension" values="Probabilidade"/>
+												</viz:feeds>
+											</viz:VizFrame>
+										</sap.ui.layout:Splitter>
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+					</sap.ui.layout:Splitter>
+					<sap.ui.layout:Splitter xmlns:sap.ui.layout="sap.ui.layout" height="100%" orientation="Vertical">
+						<sap.ui.layout:layoutData><sap.ui.layout:SplitterLayoutData xmlns:sap.ui.layout="sap.ui.layout" size="24.9%" resizable="false"/></sap.ui.layout:layoutData>
+						<Table id="tblOrigem" class="marginTableIE">
+							<layoutData><sap.ui.layout:SplitterLayoutData xmlns:sap.ui.layout="sap.ui.layout" size="64px" resizable="false"/></layoutData>
+							<columns>
+								<Column id="colOrigem" hAlign="Center">
+									<header>
+										<Label text="Origem" id="lblOrigem" design="Bold" class="columnTextWhite"/>
+									</header>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem id="cliOrigem">
+									<cells>
+										<Text text="{ERmcausa12}" id="txtOrigem"/>
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+						<Table id="tblEfeitos" class="marginTableIE">
+							<layoutData><sap.ui.layout:SplitterLayoutData xmlns:sap.ui.layout="sap.ui.layout" size="64px" resizable="false"/></layoutData>
+							<columns>
+								<Column id="colEfeitos" hAlign="Center">
+									<header>
+										<Label text="Efeitos" id="lblEfeitos" design="Bold" class="columnTextWhite"/>
+									</header>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem id="cliEfeitos">
+									<cells>
+										<Text text="{ERmefeito13}" id="txtEfeitos"/>
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+						<Table id="tblVelocidadeMaterializacao" class="marginTableIE">
+							<layoutData><sap.ui.layout:SplitterLayoutData xmlns:sap.ui.layout="sap.ui.layout" size="64px" resizable="false"/></layoutData>
+							<columns>
+								<Column id="colVelocidadeMaterializacao" hAlign="Center">
+									<header>
+										<Label text="Velocidade de Materialização" id="lblVelocidadeMaterializacao" design="Bold" class="columnTextWhite"/>
+									</header>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem id="cliVelocidadeMaterializacao">
+									<cells>
+										<Text text="{ENimpacto14}" id="txtVelocidadeMaterializacao"/>
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+						<Table id="tblPotencialCrises" class="marginTableIE">
+							<layoutData><sap.ui.layout:SplitterLayoutData xmlns:sap.ui.layout="sap.ui.layout" size="64px" resizable="false"/></layoutData>
+							<columns>
+								<Column id="colPotencialCrises" hAlign="Center">
+									<header>
+										<Label text="Potencial para Crises" id="lblPotencialCrises" design="Bold" class="columnTextWhite"/>
+									</header>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem id="cliPotencialCrises">
+									<cells>
+										<Text text="{ERmcrisis15}" id="txtPotencialCrises"/>
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+						<Table id="tblRevisaoAnalise" class="marginTableIE">
+							<layoutData><sap.ui.layout:SplitterLayoutData xmlns:sap.ui.layout="sap.ui.layout" size="64px" resizable="false"/></layoutData>
+							<columns>
+								<Column id="colRevisaoAnalise" hAlign="Center">
+									<header>
+										<Label text="Revisão Análise" id="lblRevisaoAnalise" design="Bold" class="columnTextWhite"/>
+									</header>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem id="cliRevisaoAnalise">
+									<cells>
+										<Text text="{ERevisaoAnalise}" id="txtRevisaoAnalise"/>
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+					</sap.ui.layout:Splitter>
+				</sap.ui.layout:Splitter>
+				<Table id="tblMedidas" showNoData="false" class="marginTableIE">
+					<layoutData><sap.ui.layout:SplitterLayoutData xmlns:sap.ui.layout="sap.ui.layout" size="32px" resizable="false"/></layoutData>
+					<columns>
+						<Column id="colMedidas" hAlign="Center">
+							<header>
+								<Label text="MEDIDAS - Planos de Ação / Seguros / Controles" id="lblMedidas" design="Bold" class="columnTextWhite"/>
+							</header>
+						</Column>
+					</columns>
+				</Table>
+				<Table id="tblRiscoMedida" items="{ path: '/RiscoMedidas', sorter: { path: 'Objid', descending: false } }">
+					<layoutData><sap.ui.layout:SplitterLayoutData xmlns:sap.ui.layout="sap.ui.layout" size="{objectView>/SizeRiscoMedida}" resizable="false"/></layoutData>
+					<columns>
+						<!--Column id="colMedidasCodigo" hAlign="Center">
+							<header>
+				                <Text text="Código" id="lblMedidasCodigo" class="myCustomText"/>
+				            </header>
+				        </Column-->
+						<Column id="colMedidasDescricao" hAlign="Center" width="25%">
+							<header>
+				                <Text text="Descrição" id="lblMedidasDescricao" class="myCustomText"/>
+				            </header>
+				        </Column>
+						<Column id="colMedidasTipo" hAlign="Center">
+							<header>
+				                <Text text="Tipo" id="lblMedidasTipo" class="myCustomText"/>
+				            </header>
+				        </Column>
+						<Column id="colMedidasResponsavel" hAlign="Center" width="20%">
+							<header>
+				                <Text text="Responsável" id="lblMedidasResponsavel" class="myCustomText"/>
+				            </header>
+				        </Column>
+						<Column id="colMedidasDataInicio" hAlign="Center">
+							<header>
+				                <Text text="Dt Início" id="lblMedidasDataInicio" class="myCustomText"/>
+				            </header>
+				        </Column>
+						<Column id="colMedidasDataTermino" hAlign="Center">
+							<header>
+				                <Text text="Dt Término" id="lblMedidasDataTermino" class="myCustomText"/>
+				            </header>
+				        </Column>
+						<Column id="colMedidasEficacia" hAlign="Center" width="15%">
+							<header>
+				                <Text text="Eficácia" id="lblMedidasEficacia" class="myCustomText"/>
+				            </header>
+				        </Column>
+						<Column id="colMedidasComentarios" hAlign="Center" width="15%">
+							<header>
+				                <Text text="Comentários" id="lblMedidasComentarios" class="myCustomText"/>
+				            </header>
+				        </Column>
+					</columns>
+					<items>
+						<ColumnListItem id="cliRiscoMedida">
+							<cells>
+								<!--Text text="{Objid}" id="txtMedidasCodigo"/-->
+								<Text text="{Title}" id="txtMedidasDescricao"/>
+								<Text text="{ResponseTypeTx}" id="txtMedidasTipo"/>
+								<Text text="{Fullname}" id="txtMedidasResponsavel" wrapping="false"/>
+								<Text text="{path: 'EffectiveFrom', formatter: '.formatterDate'}" id="txtMedidasDataInicio"/>
+								<Text text="{path: 'EffectiveTo', formatter: '.formatterDate'}" id="txtMedidasDataTermino"/>
+								<Text text="{RespEffectTxt}" id="txtMedidasEficacia"/>
+								<Text text="{Steps}" id="txtMedidasComentarios"/>
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+			</sap.ui.layout:Splitter>
+			<Toolbar>
+				<ToolbarSpacer/>
+				<Button text="Imprimir" class="marginDefalt" data:targetId="page" press="onPrint" width="auto" id="__button1" type="Emphasized" icon="sap-icon://print" activeIcon="sap-icon://print"/>
+			</Toolbar>
+		</content>
+	</Page>
+</mvc:View>

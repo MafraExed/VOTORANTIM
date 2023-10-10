@@ -1,0 +1,34 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="FibriaStatusViagem.controller.DialogUnscheduledStage" xmlns="sap.m">
+    <Dialog contentWidth="300px" class="DialogUnscheduledStage" horizontalScrolling="true" showHeader="true" state="None" stretch="false" title="Motivo da Parada" type="Standard" verticalScrolling="true">
+        <content>
+            <RadioButtonGroup id="unscheduledStageRadioButtons" buttons="{stagesList>/}"  columns="1" selectedIndex="0" valueState="None" width="auto" editable="true" enabled="true" textDirection="Inherit" select="_onRadioButtonGroupSelect">
+                <buttons>
+                    <RadioButton text="{stagesList>DescricaoEtapa}" editable="true" enabled="true" visible="true" width="auto" valueState="None" selected="false"/>
+                </buttons>
+            </RadioButtonGroup>
+            <TextArea id="reasonTextArea" rows="4" cols="60" maxLength="250" wrapping="None" enabled="true" visible="true" liveChange="_onReasonTextAreaLiveChange" />
+            <Button id="confirmButton" text="Confirmar" class="buttonConfirmCode" type="Default" iconFirst="true" width="100%" enabled="true" visible="true" iconDensityAware="false" press="_onConfirmButtonPress"/>
+        </content>
+        <beginButton/>
+        <!--<buttons>-->
+        <!--    <Button text="OK" type="Default" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onButtonPress"/>-->
+        <!--</buttons>-->
+        <customHeader>
+		<Bar>
+		<contentLeft>
+		
+		</contentLeft>
+		
+		<contentMiddle>
+		<Text id="motivoParada" text = "Motivo da Parada"></Text>
+		</contentMiddle>
+		
+		<contentRight>
+		<Button type="Transparent" icon="sap-icon://decline" press="_onCloseDialogButtonPress"></Button>
+		</contentRight>		
+		</Bar>
+		</customHeader>
+        <endButton/>
+        <subHeader/>
+    </Dialog>
+</mvc:View>

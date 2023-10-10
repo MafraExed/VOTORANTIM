@@ -1,0 +1,1 @@
+function initModel(){var a="/odata/v2/CalibrationSession/";var e=new sap.ui.model.odata.ODataModel(a,true);sap.ui.getCore().setModel(e)}

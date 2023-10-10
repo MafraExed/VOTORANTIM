@@ -1,0 +1,5 @@
+"use strict";function _defineProperty(e,t,n){if(t in e){Object.defineProperty(e,t,{value:n,enumerable:true,configurable:true,writable:true})}else{e[t]=n}return e}
+/*!
+ * SiTrack - Seguimiento de compras
+ * (c) Copyright 2022 Innova Internacional S.A.S.
+ */sap.ui.define(["com/innova/sitrack/model/variant/ItemVariant"],function(e){return{getInputData:function t(n){var a=n.isVariant,r=n.field,i=n.functionName,u=n.group;var f=r.getName();var l=r.getValue();if(a){return _defineProperty({},f,new e({fieldname:f,function:i,group:u,low:l,tabname:r.data("tabname")}))}return _defineProperty({},f,l)},setInputData:function e(t){var n=t.field,a=t.data;n.setValue(a.LOW)},cleanInput:function e(t){var n=t.field;n.setValue(undefined);n.setDescription(undefined)},isInputValid:function e(t){var n=t.field;if(n.getShowSuggestion()||n.getValueHelpOnly()){return!!n.getSelectedKey()}return!!n.getValue()}}});

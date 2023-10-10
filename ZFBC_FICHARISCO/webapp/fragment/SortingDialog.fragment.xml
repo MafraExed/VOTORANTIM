@@ -1,0 +1,13 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<ViewSettingsDialog
+		confirm="handleConfirm">
+		<sortItems>
+			<ViewSettingsItem text="Risco" key="Stext" selected="true" />
+			<ViewSettingsItem text="Categoria" key="RiskCategoryTxt" />
+			<ViewSettingsItem text="Diretoria" key="OrgunitTxt" />
+			<ViewSettingsItem text="Nível do Risco" key="RiskLabel" />
+		</sortItems>
+	</ViewSettingsDialog>
+</core:FragmentDefinition>

@@ -1,0 +1,228 @@
+<core:FragmentDefinition xmlns="sap.m" 
+						 xmlns:mvc="sap.ui.core.mvc" 
+						 xmlns:semantic="sap.m.semantic" 
+						 xmlns:core="sap.ui.core" 
+						 xmlns:l="sap.ui.layout" 
+						 xmlns:footerbar="sap.ushell.ui.footerbar">
+	<Panel width="auto">
+		<headerToolbar>
+			<Toolbar>
+				<Title text="{i18n>detailTitleTableItemFatura}" />
+				<ToolbarSpacer /> </Toolbar>
+		</headerToolbar>
+		<content>
+			<Table id="faturaTable" items="{ShipmentDetailToInvoiceReport}" 
+				   mode="MultiSelect" 
+				   FixedLayout="true" 
+				   growing="true" 
+				   growingThreshold="3" 
+				   growingScrollToLoad="true">
+				<columns>
+					<Column width="3rem">
+						<Text text="{i18n>detailTitleTableTpVenda}" /> 
+					</Column>
+					
+					<Column width="4rem" minScreenWidth="Tablet" demandPopin="true">
+						<Text text="{i18n>detailTitleTablePortoDestino}" /> 
+					</Column>
+					
+					<Column width="6rem" hAlign="Center" minScreenWidth="Tablet" demandPopin="true">
+						<Text text="{i18n>detailTitleTableVbelnVa}" /> 
+					</Column>
+					
+					<Column width="6rem">
+						<Text text="{i18n>detailTitleTableVbelnVf}" /> 
+					</Column>
+					
+					<Column width="6rem" demandPopin="true">
+						<Text text="{i18n>detailTitleTableNfe}" /> 
+					</Column>
+					
+					<Column width="3rem" hAlign="Center" demandPopin="true">
+						<Text text="{i18n>detailTitleTableNfeStatus}" />
+					</Column>
+					
+					<Column width="5rem" hAlign="Center" minScreenWidth="Tablet" demandPopin="true">
+						<Text text="{i18n>detailTitleTableFkdat}" /> 
+					</Column>
+					
+					<Column width="5rem" minScreenWidth="Tablet" hAlign="Center" demandPopin="true">
+						<Text text="{i18n>detailTitleTableZterm}" />
+					</Column>
+					
+					<Column width="5rem" demandPopin="true">
+						<Text text="{i18n>detailTitleTableInco}" /> 
+					</Column>
+					
+					<Column width="8rem" demandPopin="true">
+						<Text text="{i18n>detailTitleTablePagador}" /> 
+					</Column>
+					
+					<Column width="8rem" demandPopin="true">
+						<Text text="{i18n>detailTitleTableRecebedor}" /> 
+					</Column>
+					
+					<Column width="7rem" minScreenWidth="Tablet" demandPopin="true">
+						<Text text="{i18n>detailTitleTableFkimg}" /> 
+					</Column>
+					
+					<Column width="7rem" minScreenWidth="Tablet" demandPopin="true">
+						<Text text="{i18n>detailTitleTableVolumn}" /> 
+					</Column>
+					
+					<Column width="8rem" minScreenWidth="Tablet" demandPopin="true">
+						<Text text="{i18n>detailTitleTableNetwr}" /> 
+					</Column>
+					
+					<Column width="7rem" minScreenWidth="Tablet" demandPopin="true">
+						<Text text="{i18n>detailTitleTableVlfob}" /> 
+					</Column>
+					
+					<Column width="7rem" minScreenWidth="Tablet" demandPopin="true">
+						<Text text="{i18n>detailTitleTableVlfrete}" /> 
+					</Column>
+					
+					<Column width="7rem" minScreenWidth="Tablet" demandPopin="true">
+						<Text text="{i18n>detailTitleTableVlseguro}" /> 
+					</Column>
+					
+					<Column width="8rem" demandPopin="true">
+						<Text text="{i18n>detailTitleTableZolla}" /> 
+					</Column>
+					
+					<Column width="8rem" demandPopin="true">
+						<Text text="{i18n>detailTitleTableAzoll}" />
+					</Column>
+					
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<Text text="{path: 'Tipovenda', formatter: '.formatter.formatTipoVenda'}" /> 
+						</cells>
+						
+						<cells>
+							<Text text="{Ptdst}" /> 
+						</cells>
+						
+						<cells>
+							<Text text="{VbelnVa}" /> 
+						</cells>
+						
+						<cells>
+							<Text text="{VbelnVf}" /> 
+						</cells>
+						
+						<cells>
+							<Text text="{Nfenum}-{NfeSerie}" /> 
+						</cells>
+						
+						<cells>
+							<ObjectStatus state="{path: 'NfeStatus', formatter: '.formatter.mudarStateNfe'}" 
+										  icon="{path: 'NfeStatus', formatter: '.formatter.mudarIconNfe'}" 
+										  tooltip="{path: 'NfeStatus', formatter: '.formatter.mudarTextoStatusNfe'}" /> 
+						</cells>
+						
+						<cells>
+							<Text text="{path: 'Fkdat',  
+											 		type: 'sap.ui.model.type.Date', 
+											 		formatOptions: {
+												 						pattern: 'dd.MM.yyyy', 
+												 						strictParsing: true , 
+												 						UTC: true
+											 					    }
+													}" />
+						</cells>
+						
+						<cells>
+							<Text text="{Zterm}" /> </cells>
+						<cells>
+							<Text text="{Inco1}" /> </cells>
+						<cells>
+							<ObjectNumber number="{Pagador}" 
+										  unit="{PagadorTxt}" 
+										  tooltip="{PagadorTxt}" 
+										  emphasized="false" /> 
+						</cells>
+						
+						<cells>
+							<ObjectNumber number="{Recebedor}" 
+										  unit="{RecebedorTxt}" 
+										  tooltip="{RecebedorTxt}" 
+										  emphasized="false" /> 
+						</cells>
+						
+						<cells>
+							<ObjectNumber number="{
+												path: 'Fkimg',formatter:'.formatter.formatNumberBrazil'
+											}" 
+										  unit="{Unit}" 
+										  emphasized="false" /> 
+						</cells>
+						
+						<cells>
+							<ObjectNumber number="{path : 'Volum', formatter:'.formatter.formatNumberBrazil', type : 'sap.ui.model.odata.type.String', 
+													constraints: { isDigitSequence : true, maxLength : 10 }}"
+										  unit="UN"
+										  emphasized="false"/> 
+							
+						</cells>
+						
+						<cells>
+							 <ObjectNumber number="{
+												parts:[{path:'Netwr'},{path:'Waerk'}],
+												type: 'sap.ui.model.type.Currency',
+												formatOptions: {showMeasure: false}
+											}" 
+										  unit="{Waerk}"
+										  tooltip="{Waerk}"
+										  emphasized="false"/> 
+						</cells>
+						
+						<cells>
+							<Text text="{Vlfob}"></Text>
+						</cells>
+						
+						<cells>
+							 
+							<ObjectNumber number="{
+												parts:[{path:'Vlfrete'},{path:'Waerk'}],
+												type: 'sap.ui.model.type.Currency',
+												formatOptions: {showMeasure: false}
+											}" 
+										  unit="{Waerk}" 
+										  tooltip="{Waerk}" 
+										  emphasized="false"/> 
+						</cells>
+						
+						<cells>
+							<ObjectNumber number="{
+												parts:[{path:'Vlseguro'},{path:'Waerk'}],
+												type: 'sap.ui.model.type.Currency',
+												formatOptions: {showMeasure: false}
+											}" 
+										  unit="{Waerk}"
+										  tooltip="{Waerk}"
+										  emphasized="false"/>
+						</cells>
+						
+						<cells>
+							<ObjectNumber number="{Zolla}" 
+										  unit="{ZollaTxt}" 
+										  tooltip="{ZollaTxt}" 
+										  emphasized="false" /> 
+						</cells>
+						
+						<cells>
+							<ObjectNumber number="{Azoll}" 
+										  unit="{AzollTxt}" 
+										  tooltip="{AzollTxt}" 
+										  emphasized="false" /> 
+						</cells>
+						
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+	</Panel>
+</core:FragmentDefinition>

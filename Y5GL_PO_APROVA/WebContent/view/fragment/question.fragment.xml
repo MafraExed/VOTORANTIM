@@ -1,0 +1,26 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+	<Dialog title="{i18n>QUESTION}" type="Message" state="Warning">
+		<!-- contentWidth="96%" contentHeight="96%" stretchOnPhone="true" -->
+		<content>
+			<Text text="{i18n>QUESTIONPO} {Ebeln} ?" />
+			<f:SimpleForm>
+				<f:content>
+					<Label text="{i18n>MAILTO}" labelFor="txtName" />
+					<Text id="txtName" text="{Nameusnam}" />
+					<Label text="{i18n>MAILAD}" labelFor="txtEmail" />
+					<Text id="txtEmail" text="{EMail}" />
+					<Label text="{i18n>MAILBO}" />
+					<TextArea id="taQuestion" width="100%" rows="4" cols="20" height="100%"
+						value="{Coment}" liveChange="onLiveButtonConfirm"/>
+				</f:content>
+			</f:SimpleForm>
+		</content>
+		<beginButton>
+			<Button text="{i18n>CONFIRM}" press="onConfirmQuestion" enabled="false"/>
+		</beginButton>
+		<endButton>
+			<Button text="{i18n>CANCEL}" press="onCloseDialog" />
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

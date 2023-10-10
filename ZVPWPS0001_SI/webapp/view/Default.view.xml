@@ -1,0 +1,144 @@
+<mvc:View controllerName="portal.zvpwps0001_si.controller.Default" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc"
+	displayBlock="false" xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+	xmlns:smartTable="sap.ui.comp.smarttable">
+	<App>
+		<Page title="{i18n>title}" showHeader="true" class="sapUiSizeCompact">
+			<content>
+				<VBox fitContainer="true">
+					<smartTable:SmartTable id="objectList" entitySet="Sisbs" beforeRebindTable="onBeforeRebindTable" smartFilterId="smartFilterBar"
+						tableType="ResponsiveTable" useExportToExcel="false" useVariantManagement="false" useTablePersonalisation="false"
+						header="{i18n>DocumentosH}" showRowCount="true" persistencyKey="SmartTableAnalytical_Explored" showTablePersonalisation="false"
+						enableAutoBinding="true" demandPopin="true" editTogglable="false" class="sapUiResponsiveContentPadding" dataReceived="onDataReceived">
+						<smartTable:customToolbar>
+							<Toolbar>
+								<ToolbarSpacer/>
+								<!--<Button id="BtAprovarD" text="{i18n>AprovarD}" press="onApprove" tooltip="{i18n>BtnAprovarD}" enabled="false"
+									visible="{path: 'Administrador>/isApro'}"></Button>
+								<Button id="BtRefreshD" press="onRefresh" icon="sap-icon://refresh" tooltip="{i18n>BtnRefreshD}" visible="{path: 'Administrador>/isApro'}"></Button>
+								selectionChange="handleSelectionChange" --><ComboBox id="IdSubstituto" placeholder="{i18n>UserSubs}"  showSecondaryValues="true"
+									filterSecondaryValues="true" visible="{path: 'Administrador>/isAdm'}" value="{/Substituto>Nome}" selectedKey="{/Substituto>Ident}"
+									items="{Substituto>/Usuarios}">
+									<core:ListItem key="{Substituto>Ident}" text="{Substituto>Nome}"/>
+								</ComboBox>
+								<Button id="BtnSearch" press="onSort" icon="sap-icon://employee-lookup" tooltip="{i18n>BtnUserSubs}"
+									visible="{path: 'Administrador>/isAdm'}"></Button>
+							</Toolbar>
+						</smartTable:customToolbar>
+						<Table id="IdHeaderSet" mode="MultiSelect" selectionChange="onGeneratedRowSelectionChange" growing="true" growingThreshold="20">
+							<columns>
+								<Column width="40px" hAlign="Center">
+									<customData>
+										<core:CustomData key="p13nData"
+											value='\{"columnKey": "Status","columnIndex":"0", "leadingProperty": ["Status","Status1","Status2","IdentSubst"]}'/>
+									</customData>
+									<Text text="Status"/>
+								</Column>
+							</columns>
+							<columns>
+								<Column width="80px" hAlign="Left">
+									<customData>
+										<core:CustomData key="p13nData" value='\{"columnKey": "Numprocesso","columnIndex":"1", "leadingProperty": "Numprocesso"}'/>
+									</customData>
+									<Text text="{i18n>Numprocesso}"/>
+								</Column>
+							</columns>
+							<columns>
+								<Column width="auto" hAlign="Left">
+									<customData>
+										<core:CustomData key="p13nData" value='\{"columnKey": "Descricao","columnIndex":"2","leadingProperty": "Descricao"}'/>
+									</customData>
+									<Text text="{i18n>Descricao}"/>
+								</Column>
+							</columns>
+							<columns>
+								<Column width="auto" hAlign="Left">
+									<customData>
+										<core:CustomData key="p13nData" value='\{"columnKey": "Bukrs","columnIndex":"3","leadingProperty": ["Bukrs","NameBukrs"]}'/>
+									</customData>
+									<Text text="{i18n>Bukrs}"/>
+								</Column>
+							</columns>
+							<columns>
+								<Column width="auto" hAlign="Left">
+									<customData>
+										<core:CustomData key="p13nData" value='\{"columnKey": "Werks","columnIndex":"4","leadingProperty": ["Werks","WerksName"]}'/>
+									</customData>
+									<Text text="{i18n>Werks}"/>
+								</Column>
+							</columns>
+							<columns>
+								<Column width="80px" hAlign="Left">
+									<customData>
+										<core:CustomData key="p13nData" value='\{"columnKey": "TpRegistro","columnIndex":"5", "leadingProperty": "TpRegistro"}'/>
+									</customData>
+									<Text text="{i18n>TpRegistro}"/>
+								</Column>
+							</columns>
+							<columns>
+								<Column width="80px" hAlign="Left">
+									<customData>
+										<core:CustomData key="p13nData" value='\{"columnKey": "DataCriacao","columnIndex":"6", "leadingProperty": "DataCriacao"}'/>
+									</customData>
+									<Text text="{i18n>DataCriacao}"/>
+								</Column>
+							</columns>
+							<columns>
+								<Column width="auto" hAlign="Left">
+									<customData>
+										<core:CustomData key="p13nData" value='\{"columnKey": "NameText","columnIndex":"7", "leadingProperty": "NameText"}'/>
+									</customData>
+									<Text text="{i18n>NameText}"/>
+								</Column>
+							</columns>
+							<columns>
+								<Column width="120px" hAlign="Right">
+									<customData>
+										<core:CustomData key="p13nData" value='\{"columnKey": "Valor","columnIndex":"8", "leadingProperty": ["Valor", "Moeda"]}'/>
+									</customData>
+									<Text text="{i18n>Valor}"/>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem id="columnListItem" vAlign="Middle" type="Navigation" press="onItemSelect">
+									<cells>
+										<HBox>
+											<core:Icon src="{ path: 'Status', formatter: '.formatter.mudarIcon' }" color="{ path: 'Status', formatter: '.formatter.mudarCor' }"
+												tooltip="{ path: 'Status', formatter: '.formatter.tooltip' }">
+												<core:layoutData>
+													<FlexItemData growFactor="1"/>
+												</core:layoutData>
+											</core:Icon>
+											<core:Icon src="{ path: 'Status1', formatter: '.formatter.mudarIcon' }" color="{ path: 'Status1', formatter: '.formatter.mudarCor' }"
+												tooltip="{ parts: [{path: 'Status1', formatter: '.formatter.tooltip'}, {path: 'IdentSubst'}]} ">
+												<core:layoutData>
+													<FlexItemData growFactor="1"/>
+												</core:layoutData>
+											</core:Icon>
+										</HBox>
+										<Text text="{path:'Numprocesso'}"/>
+										<Text text="{path:'Descricao'}"/>
+										<Text text="{ parts: [ {path: 'Bukrs'}, {path: 'NameBukrs'}]}"/>
+										<Text text="{ parts: [ {path: 'Werks'}, {path: 'WerksName'}]}"/>
+										<Text text="{path:'TpRegistro'}"/>
+										<Text
+											text="{path:'DataCriacao', type: 'sap.ui.model.type.DateTime', formatOptions: { pattern: 'dd/MM/yyyy', strictParsing: true , UTC: true } }"/>
+										<Text text="{path:'NameText'}"/>
+										<Text text="{ parts: [ {path: 'Valor'}, {path: 'Moeda'} ], type:'sap.ui.model.type.Currency', formatOptions: { currencyCode: false } }"/>
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+					</smartTable:SmartTable>
+				</VBox >
+			</content>
+			<footer>
+				<Toolbar>
+					<ToolbarSpacer/>
+					<Button id="BtAprovarD" type="Emphasized" text="{i18n>AprovarD}" press="onApprove" tooltip="{i18n>BtnAprovarD}" enabled="false"
+						visible="{path: 'Administrador>/isApro'}"></Button>
+					<Button id="BtRefreshD" press="onRefresh" icon="sap-icon://refresh" tooltip="{i18n>BtnRefreshD}" visible="{path: 'Administrador>/isApro'}"></Button>
+				</Toolbar>
+			</footer>
+		</Page>
+	</App>
+</mvc:View>

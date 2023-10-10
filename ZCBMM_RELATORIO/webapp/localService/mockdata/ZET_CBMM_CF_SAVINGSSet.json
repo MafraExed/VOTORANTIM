@@ -1,0 +1,91 @@
+[{
+	"DtInic": "/Date(1055540697000)/",
+	"DtFim": "/Date(1429739097000)/",
+	"IdSolicitacao": 5716,
+	"Valor": 4678,
+	"__metadata": {
+		"uri": "ZET_CBMM_CF_SAVINGSSet(DtInic=datetime'2003-06-13T21%3A44%3A57',IdSolicitacao=5716)",
+		"type": "ZGWCBMM_RELATORIO_SRV.ZET_CBMM_CF_SAVINGS"
+	}
+}, {
+	"DtInic": "/Date(1372455897000)/",
+	"DtFim": "/Date(1302299097000)/",
+	"IdSolicitacao": 9968,
+	"Valor": 3769,
+	"__metadata": {
+		"uri": "ZET_CBMM_CF_SAVINGSSet(DtInic=datetime'2013-06-28T21%3A44%3A57',IdSolicitacao=9968)",
+		"type": "ZGWCBMM_RELATORIO_SRV.ZET_CBMM_CF_SAVINGS"
+	}
+}, {
+	"DtInic": "/Date(1110059097000)/",
+	"DtFim": "/Date(1290977097000)/",
+	"IdSolicitacao": 758,
+	"Valor": 6729,
+	"__metadata": {
+		"uri": "ZET_CBMM_CF_SAVINGSSet(DtInic=datetime'2005-03-05T21%3A44%3A57',IdSolicitacao=758)",
+		"type": "ZGWCBMM_RELATORIO_SRV.ZET_CBMM_CF_SAVINGS"
+	}
+}, {
+	"DtInic": "/Date(1501019097000)/",
+	"DtFim": "/Date(954193497000)/",
+	"IdSolicitacao": 297,
+	"Valor": 1116,
+	"__metadata": {
+		"uri": "ZET_CBMM_CF_SAVINGSSet(DtInic=datetime'2017-07-25T21%3A44%3A57',IdSolicitacao=297)",
+		"type": "ZGWCBMM_RELATORIO_SRV.ZET_CBMM_CF_SAVINGS"
+	}
+}, {
+	"DtInic": "/Date(988407897000)/",
+	"DtFim": "/Date(1492897497000)/",
+	"IdSolicitacao": 2394,
+	"Valor": 5732,
+	"__metadata": {
+		"uri": "ZET_CBMM_CF_SAVINGSSet(DtInic=datetime'2001-04-27T21%3A44%3A57',IdSolicitacao=2394)",
+		"type": "ZGWCBMM_RELATORIO_SRV.ZET_CBMM_CF_SAVINGS"
+	}
+}, {
+	"DtInic": "/Date(982791897000)/",
+	"DtFim": "/Date(1005252297000)/",
+	"IdSolicitacao": 1914,
+	"Valor": 3795,
+	"__metadata": {
+		"uri": "ZET_CBMM_CF_SAVINGSSet(DtInic=datetime'2001-02-21T21%3A44%3A57',IdSolicitacao=1914)",
+		"type": "ZGWCBMM_RELATORIO_SRV.ZET_CBMM_CF_SAVINGS"
+	}
+}, {
+	"DtInic": "/Date(1163105097000)/",
+	"DtFim": "/Date(1072471497000)/",
+	"IdSolicitacao": 6800,
+	"Valor": 3931,
+	"__metadata": {
+		"uri": "ZET_CBMM_CF_SAVINGSSet(DtInic=datetime'2006-11-09T20%3A44%3A57',IdSolicitacao=6800)",
+		"type": "ZGWCBMM_RELATORIO_SRV.ZET_CBMM_CF_SAVINGS"
+	}
+}, {
+	"DtInic": "/Date(1393883097000)/",
+	"DtFim": "/Date(1037393097000)/",
+	"IdSolicitacao": 5247,
+	"Valor": 2646,
+	"__metadata": {
+		"uri": "ZET_CBMM_CF_SAVINGSSet(DtInic=datetime'2014-03-03T21%3A44%3A57',IdSolicitacao=5247)",
+		"type": "ZGWCBMM_RELATORIO_SRV.ZET_CBMM_CF_SAVINGS"
+	}
+}, {
+	"DtInic": "/Date(1360701897000)/",
+	"DtFim": "/Date(1148161497000)/",
+	"IdSolicitacao": 1532,
+	"Valor": 5332,
+	"__metadata": {
+		"uri": "ZET_CBMM_CF_SAVINGSSet(DtInic=datetime'2013-02-12T20%3A44%3A57',IdSolicitacao=1532)",
+		"type": "ZGWCBMM_RELATORIO_SRV.ZET_CBMM_CF_SAVINGS"
+	}
+}, {
+	"DtInic": "/Date(1086644697000)/",
+	"DtFim": "/Date(1259009097000)/",
+	"IdSolicitacao": 286,
+	"Valor": 9108,
+	"__metadata": {
+		"uri": "ZET_CBMM_CF_SAVINGSSet(DtInic=datetime'2004-06-07T21%3A44%3A57',IdSolicitacao=286)",
+		"type": "ZGWCBMM_RELATORIO_SRV.ZET_CBMM_CF_SAVINGS"
+	}
+}]

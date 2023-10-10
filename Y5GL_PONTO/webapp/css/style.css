@@ -1,0 +1,138 @@
+.Loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    height: 100%;
+    width: 1080px;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.footer_img{
+	position: relative;
+	top: 2.5%;
+}
+
+.LoadingFalse {
+    display: none;
+}
+
+
+.sapMImg {
+    border: none;
+    width: 150px;
+}
+
+.TextoPonto{
+    font-size: 10px;
+    text-align: right;
+}
+
+.Titulo {
+    font-size: 18px;
+    color: #004370;
+    font-family: Arial;
+}
+
+.tdh {
+    border: thin solid #FFFFFF;
+    font-weight: bold;
+}
+
+.linha1 {
+    font-size: 11px;
+    color: #000;
+    font-family: Arial;
+    background-color: #FFF;
+}
+
+.Header {
+    font-size: 11px;
+    color: #000;
+    font-family: Arial;
+    background: rgb(219, 219, 219);
+    border-color: #e7e7e7;
+    border-style: solid;
+    padding: 5px;
+    border: thin;
+}
+
+.Header2 {
+    font-size: 10px;
+    color: #FFF;
+    font-family: Arial;
+    background: rgb(8, 2, 51);
+    padding: 3px;
+    font-style: normal;
+    border: 1px solid #FFFFFF;
+}
+
+.tdln {
+    border: thin solid #99DFFC;
+    font-weight: bold;
+}
+
+.tdl {
+    font-weight: bold;
+    border: 1px solid #99DFFC;
+}
+
+.linha1 {
+    font-size: 11px;
+    color: #000;
+    font-family: Arial;
+    background: rgb(219, 219, 219);
+    border-color: #e7e7e7;
+    border-style: solid;
+    padding: 5px;
+    border: thin;
+}
+
+.linha2 {
+    border-color: #FFFFFF;
+    border-style: solid;
+    border: thin;
+    font-size: 11px;
+    color: #FFF;
+    font-family: Arial;
+    font-stretch: semi-expanded;
+    background-color: rgba(17, 60, 234);
+}
+
+.linha3 {
+    font-size: 11px;
+    color: #000;
+    font-family: Arial;
+    background: rgb(219, 219, 219);
+    border-color: #e7e7e7;
+    border-style: solid;
+    padding: 5px;
+    border: thin;
+}
+
+.linha4 {
+    border-color: #e7e7e7;
+    border-style: solid;
+    border: thin;
+    font-size: 11px;
+    color: #FFF;
+    font-family: Arial;
+    background: rgb(8, 2, 51);
+    padding: 5px;
+}
+
+.linha5 {
+    font-size: 16px;
+    color: #FFF;
+    font-family: Arial;
+    font-weight: bold;
+    background: rgb(8, 2, 51);
+}
+
+.linha6 {
+    font-size: 16px;
+    color: #000;
+    font-family: Arial;
+    font-weight: bold;
+    background: rgb(999, 999, 999);
+}

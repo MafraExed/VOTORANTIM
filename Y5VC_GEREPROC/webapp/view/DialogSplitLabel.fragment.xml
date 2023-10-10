@@ -1,0 +1,27 @@
+<core:FragmentDefinition xmlns:l="sap.ui.layout" xmlns:u="sap.ui.unified" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:core="sap.ui.core"
+	xmlns:f="sap.ui.layout.form">
+	<Dialog id="idDialogSplitLabel" title="{i18n>title_Split_Label}" stretch="false" class="sapUiSizeCompact">
+		<VBox class="sapUiSmallMargin">
+			<f:SimpleForm id="idFormSplitLabel" editable="true" layout="ResponsiveGridLayout" labelSpanXL="3" labelSpanL="3"
+				labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1"
+				columnsL="1" columnsM="1" singleContainerFullSize="false">
+				<f:content>
+					<Label text="{i18n>lbl_label_number}"/>
+					<Text text="{SPLABEL>/nretq}"></Text>
+					<Label text="{i18n>lbl_initial_quantity}"/>
+					<Text id="idTxtFragMenge" text="{SPLABEL>/menge}"  ></Text>
+					<Label text="{i18n>lbl_label_quantity}"/>
+					<Input id="idIpFragQuantity" value="{SPLABEL>/labelQuantity}" change="_onChangeFragQuantity"></Input>
+					<Label id="idLblResult" text="{i18n>lbl_summary}"/>
+					<Text id="idTxtResult" text=""/>
+				</f:content>
+			</f:SimpleForm>
+		</VBox>
+		<beginButton>
+			<Button text="{i18n>btn_save}" press="_onSaveDialog" type="Emphasized"/>
+		</beginButton>
+		<endButton>
+			<Button text="{i18n>btn_cancel}" press="_onCancelDialog" />
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

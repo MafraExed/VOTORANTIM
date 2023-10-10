@@ -1,0 +1,23 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+	<Dialog title="{i18n>ACAOTOMAR}" type="Standard">
+		<content>
+			<f:SimpleForm>
+				<f:content>
+					<Label text="{i18n>ACTION}"/>
+					<RadioButtonGroup id="ActionGroup" select="onActionGroupSelect">
+						<RadioButton id="rBtnNFPayment" text="{i18n>NFPayment}" selected="true"/>
+						<RadioButton id="rBtnPOPayment" text="{i18n>POPayment}"/>
+					</RadioButtonGroup>
+					<Label text="{i18n>VALUE}" id="lblActionValue"/>
+					<Input id="inputActionValue" type="Number"/>
+				</f:content>
+			</f:SimpleForm>
+		</content>
+		<beginButton>
+			<Button text="{i18n>CONFIRM}" press="onConfirmAcaoTomar"/>
+		</beginButton>
+		<endButton>
+			<Button text="{i18n>CANCEL}" press="onCloseAcaoTomar"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,106 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.ui.layout.form"
+	controllerName="Y5GL_EC_BENEFICIOS.Y5GL_EC_BENEFICIOS.controller.ENDERECO" xmlns:html="http://www.w3.org/1999/xhtml">
+	<App id="idAppEndereco">
+		<pages>
+			<Page title="Endereco" id="idPageDocumentos">
+				<customHeader>
+					<Bar id="idBarMasterDadosPessoais">
+						<contentLeft>
+							<Button icon="sap-icon://nav-back" id="idB_navback99" press="onBackMaster" text="Voltar"/>
+						</contentLeft>
+						<contentMiddle>
+							<Title text="Endereço" titleStyle="H3" id="idTitleDependentes"/>
+						</contentMiddle>
+					</Bar>
+				</customHeader>
+				<content>
+					<MessageStrip id="idMessage" text="Aguardando aprovação CSC" type="Warning" showIcon="true" showCloseButton="false"
+						class="sapUiMediumMarginBottom" visible="{path:'Status', formatter:'.formatVisible'}"/>
+					<Input id="idTipo" value="{Status}" visible="false"/>
+					<OverflowToolbar id="idBar1">
+						<Title text="" level="H1" id="idTitleDep"/>
+					</OverflowToolbar>
+					<f:Form class="editableForm" editable="true" id="FUNSEJEM" visible="true">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_FUNSEJEM" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+								emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer">
+								<f:formElements>
+									<f:FormElement label="Endereco" id="FormElementTipoDeEdenreco">
+										<f:fields>
+											<ComboBox id="IdTipoEnd" selectedKey="{Subty}" editable="false" required="true"
+												placeholder="Tipo de Endereço" items="{/ZET_GLHR_TIPO_END_ECSet}">
+												<core:Item key="{Subty}" text="{Stext}" id="idKeyTipoEnd"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Codigo Postal" id="FormElementCodigoPostal">
+										<f:fields>
+											<Input placeholder="Informe o CEP" id="IdCEP" change="onChangeCEP" value="{Cep}" editable="{path:'Cep', formatter:'.FormatEditable'}"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Tipo de Endereco" id="FormElementTpEdenreco">
+										<f:fields>
+											<ComboBox id="IdTipo_End" selectedKey="{Zztpend}" editable="false" required="true"
+												placeholder="Tipo de Endereço" items="{/ZET_COMBO_TP_ENDERECOSet}">
+												<core:Item key="{Ztpen}" text="{Zdeen}" id="IdKeyipo_End"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Rua" id="FormElementRua">
+										<f:fields>
+											<Input value="{Rua}" id="IdRua" placeholder="Rua" required="true" maxLength="60" editable="false"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Numero" id="FormElementNumero">
+										<f:fields>
+											<Input value="{Numero}" id="IdNumero" placeholder="Numero" required="true" maxLength="25" editable="{path:'Numero', formatter:'.FormatEditable'}"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Complemento" id="FormElementComplemento">
+										<f:fields>
+											<Input value="{Complemento}" id="IdComplemento" placeholder="Complemento" required="true" maxLength="25" editable="{path:'Numero', formatter:'.FormatEditable'}"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Bairo" id="FormElementBairro">
+										<f:fields>
+											<Input value="{Bairro}" id="IdBairro" placeholder="Bairro" required="true" maxLength="25" editable="false"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Cidade" id="FormElementCidade">
+										<f:fields>
+											<Input value="{Cidade}" id="IdCidade" placeholder="Cidade" required="true" maxLength="25" editable="false"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="UF" id="FormElementUF">
+										<f:fields>
+											<Input value="{Uf}" id="IdUF" placeholder="UF" required="true" maxLength="25" editable="false"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Código do Municipio" id="FormElementCodMunicipio">
+										<f:fields>
+											<Input value="{Ibge}" id="IdCodMunicipio" placeholder="Codigo Municipio" required="true" maxLength="25" editable="false"/>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+				</content>
+				<footer>
+					<Toolbar id="idOverTollbar" design="Solid">
+							<HBox width="25%" height="25%" id="idGif" class="Loading">
+							<Image src="imagens/voto_load_white.gif" width="100px" class="footer_img" id="idimg"/>
+						</HBox>
+						<ToolbarSpacer id="idToolbarSpacerD"/>
+						<Button text="Cancelar" press="onCancela" icon="sap-icon://cancel" id="IdCancelaAprov" tooltip="Cancelar envio para Aprovação" iconFirst="true" visible="{path:'Subty', formatter:'.FormatButtom1'}"/>
+						<Button text="Enviar" press="onSave" icon="sap-icon://save" id="IdSalvarDetailDep" tooltip="Enviar" visible="{path:'Subty', formatter:'.FormatButtom1'}" iconFirst="true"/>
+						<Button text="Editar" press="onEdit" icon="sap-icon://edit" id="IdEditDetailDep" tooltip="Editar" visible="{path:'Status', formatter:'.formatVisibleEdit'}" iconFirst="true"/>
+					</Toolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

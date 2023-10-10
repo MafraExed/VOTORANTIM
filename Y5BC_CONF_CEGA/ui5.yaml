@@ -1,0 +1,32 @@
+specVersion: "3.1"
+metadata:
+  name: y5bc_conf_cega.y5bc_conf_cega
+type: application
+server:
+  customMiddleware:
+    - name: fiori-tools-proxy
+      afterMiddleware: compression
+      configuration:
+        ignoreCertError: false
+        backend:
+          - path: /resources/Y5BC_CONF_CEGA/Y5BC_CONF_CEGA/Component
+            destination: ""
+            url: ""
+            pathPrefix: /sap/bc/lrep/flex/data/~mOK2lTjWqsnbHqSl2hHnrjkpLP0=~/Y5BC_CONF_CEGA.Y5BC_CONF_CEGA.Component?version=1.0.0
+        ui5:
+          path:
+            - /resources
+            - /test-resources
+          url: https://ui5.sap.com
+          version: 1.63.1
+    - name: fiori-tools-appreload
+      afterMiddleware: compression
+      configuration:
+        port: 35729
+        path: webapp
+        delay: 300
+    - name: fiori-tools-preview
+      afterMiddleware: fiori-tools-appreload
+      configuration:
+        component: Y5BC_CONF_CEGA.Y5BC_CONF_CEGA
+        ui5Theme: sap_fiori_3

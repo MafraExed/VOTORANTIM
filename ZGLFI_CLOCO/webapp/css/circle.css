@@ -1,0 +1,978 @@
+.chart {
+    position: relative;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: #e3e6e7;
+    ;
+}
+
+.chart .radio_chart {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.chart .radio_chart.avanco,
+.radio_chart.tarefas {
+    background: #2b7d2b;
+}
+
+.chart .radio_chart.plan {
+    background: #5899da;
+}
+
+.chart.plan {
+    width: 5em;
+    height: 5em;
+    font-size: 1.5em;
+}
+
+.chart.avanco {
+    margin-top: 1.6em;
+    width: 5em;
+    height: 5em;
+    font-size: 1.9em;
+    color: #2b7d2b;
+}
+
+.chart.avanco_phone {
+    width: 5em;
+    height: 5em;
+    font-size: 1.5em;
+    color: #2b7d2b;
+}
+
+.chart.tarefas {
+    width: 4em;
+    height: 4em;
+    font-size: 1.2em;
+    color: #2b7d2b;
+}
+
+.chart .cap {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform: scale(.8);
+    background-color: #fff;
+    margin: 0 auto;
+    border-radius: 50%;
+}
+
+.chart .value {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    top: 37.5%;
+    position: absolute;
+}
+
+.radio_chart.p0 {
+    clip-path: polygon(100% 0, 100% 0%, 100% 0%, 100% 0%, 100% 0%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 0%, 100% 0%, 100% 0%, 100% 0%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 0%, 100% 0%, 100% 0%, 100% 0%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p1 {
+    clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 4%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 4%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 4%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p2 {
+    clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 8%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 8%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 8%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p3 {
+    clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 12%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 12%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 12%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p4 {
+    clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 16%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 16%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 16%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p5 {
+    clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 20%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 20%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 20%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p6 {
+    clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 24%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 24%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 24%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p7 {
+    clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 28%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 28%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 28%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p8 {
+    clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 32%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 32%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 32%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p9 {
+    clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 36%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 36%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 36%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p10 {
+    clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 40%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 40%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 40%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p11 {
+    clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 44%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 44%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 44%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p12 {
+    clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 48%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 48%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 48%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p13 {
+    clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 52%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 52%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 52%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p14 {
+    clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 56%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 56%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 56%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p15 {
+    clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 60%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 60%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 60%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p16 {
+    clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 64%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 64%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 64%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p17 {
+    clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 68%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 68%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 68%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p18 {
+    clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 72%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 72%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 72%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p19 {
+    clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 76%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 76%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 76%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p20 {
+    clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 80%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 80%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 80%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p21 {
+    clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 84%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 84%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 84%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p22 {
+    clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 88%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 88%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 88%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p23 {
+    clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 92%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 92%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 92%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p24 {
+    clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 96%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 96%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 96%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p25 {
+    clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p26 {
+    clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 96% 100%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 96% 100%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 96% 100%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p27 {
+    clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 92% 100%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 92% 100%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 92% 100%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p28 {
+    clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 88% 100%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 88% 100%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 88% 100%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p29 {
+    clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 84% 100%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 84% 100%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 84% 100%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p30 {
+    clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 80% 100%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 80% 100%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 80% 100%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p31 {
+    clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 76% 100%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 76% 100%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 76% 100%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p32 {
+    clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 72% 100%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 72% 100%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 72% 100%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p33 {
+    clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 68% 100%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 68% 100%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 68% 100%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p34 {
+    clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 64% 100%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 64% 100%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 64% 100%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p35 {
+    clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 60% 100%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 60% 100%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 60% 100%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p36 {
+    clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 56% 100%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 56% 100%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 56% 100%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p37 {
+    clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 52% 100%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 52% 100%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 52% 100%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p38 {
+    clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 48% 100%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 48% 100%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 48% 100%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p39 {
+    clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 44% 100%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 44% 100%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 44% 100%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p40 {
+    clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 40% 100%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 40% 100%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 40% 100%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p41 {
+    clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 36% 100%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 36% 100%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 36% 100%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p42 {
+    clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 32% 100%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 32% 100%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 32% 100%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p43 {
+    clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 28% 100%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 28% 100%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 28% 100%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p44 {
+    clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 24% 100%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 24% 100%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 24% 100%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p45 {
+    clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 20% 100%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 20% 100%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 20% 100%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p46 {
+    clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 16% 100%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 16% 100%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 16% 100%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p47 {
+    clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 12% 100%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 12% 100%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 12% 100%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p48 {
+    clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 8% 100%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 8% 100%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 8% 100%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p49 {
+    clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 4% 100%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 4% 100%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 4% 100%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p50 {
+    clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 0% 100%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 0% 100%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0% 100%, 0% 100%, 0% 100%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p51 {
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 96%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 96%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 96%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p52 {
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 92%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 92%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 92%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p53 {
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 88%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 88%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 88%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p54 {
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 84%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 84%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 84%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p55 {
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 80%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 80%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 80%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p56 {
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 76%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 76%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 76%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p57 {
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 72%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 72%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 72%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p58 {
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 68%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 68%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 68%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p59 {
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 64%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 64%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 64%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p60 {
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 60%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 60%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 60%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p61 {
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 56%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 56%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 56%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p62 {
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 52%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 52%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 52%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p63 {
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 48%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 48%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 48%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p64 {
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 44%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 44%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 44%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p65 {
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 40%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 40%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 40%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p66 {
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 36%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 36%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 36%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p67 {
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 32%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 32%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 32%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p68 {
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 28%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 28%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 28%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p69 {
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 24%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 24%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 24%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p70 {
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 20%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 20%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 20%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p71 {
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 16%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 16%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 16%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p72 {
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 12%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 12%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 12%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p73 {
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 8%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 8%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 8%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p74 {
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 4%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 4%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 4%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p75 {
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 0%, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 0%, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%, 0 0%, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p76 {
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 4% 0, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 4% 0, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 4% 0, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p77 {
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 8% 0, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 8% 0, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 8% 0, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p78 {
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 12% 0, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 12% 0, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 12% 0, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p79 {
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 16% 0, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 16% 0, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 16% 0, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p80 {
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 20% 0, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 20% 0, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 20% 0, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p81 {
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 24% 0, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 24% 0, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 24% 0, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p82 {
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 28% 0, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 28% 0, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 28% 0, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p83 {
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 32% 0, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 32% 0, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 32% 0, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p84 {
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 36% 0, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 36% 0, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 36% 0, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p85 {
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 40% 0, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 40% 0, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 40% 0, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p86 {
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 44% 0, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 44% 0, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 44% 0, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p87 {
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 48% 0, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 48% 0, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 48% 0, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p88 {
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 52% 0, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 52% 0, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 52% 0, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p89 {
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 56% 0, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 56% 0, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 56% 0, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p90 {
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 60% 0, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 60% 0, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 60% 0, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p91 {
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 64% 0, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 64% 0, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 64% 0, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p92 {
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 68% 0, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 68% 0, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 68% 0, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p93 {
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 72% 0, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 72% 0, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 72% 0, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p94 {
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 76% 0, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 76% 0, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 76% 0, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p95 {
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 80% 0, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 80% 0, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 80% 0, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p96 {
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 84% 0, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 84% 0, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 84% 0, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p97 {
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 88% 0, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 88% 0, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 88% 0, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p98 {
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 92% 0, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 92% 0, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 92% 0, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p99 {
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 96% 0, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 96% 0, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 96% 0, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}
+
+.radio_chart.p100 {
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 100% 0, 50% 50%);
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 100% 0, 50% 50%);
+    -moz-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0, 100% 0, 50% 50%);
+    -transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+}

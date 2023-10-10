@@ -1,0 +1,9 @@
+.cust {
+    border: none !important;
+}
+.sapMLIB {
+    border: none;
+}
+.sapMPanelContent:not(.sapMPanelBGTransparent {
+    border: none;
+}

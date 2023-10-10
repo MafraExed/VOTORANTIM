@@ -1,0 +1,26 @@
+.sapMObjectMarker .sapUiIcon {
+    color: rgb(251, 5, 5);
+}
+
+.tableHdr .sapMListTblHeaderCell {
+            padding: 0rem;
+}
+
+.columnLabelStyle {
+  cursor: pointer !important;
+}
+
+.HBoxStyle {
+  margin-top:5%;
+  margin-left: 5%;
+  margin-bottom:5%;
+}
+
+#tableMain .sapMListTblHeader{
+  cursor: pointer;
+}
+
+#acnumColfilter {
+ 	
+ padding: 0.2rem;	
+}

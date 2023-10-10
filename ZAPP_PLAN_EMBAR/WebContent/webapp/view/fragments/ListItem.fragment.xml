@@ -1,0 +1,144 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout" xmlns:footerbar="sap.ushell.ui.footerbar">
+
+	<Panel width="auto">
+			<headerToolbar>
+				<Toolbar>
+					<Title id="tableHeader" text="{detailView>/itemListTableTitle}"/>
+					<ToolbarSpacer />
+						<SearchField
+							placeholder="{i18n>detailTitleFilterPlaceHolder}"
+							search="onSearch" 
+							width="15rem"/>
+					
+				</Toolbar>
+			</headerToolbar>  
+		<content>
+	
+			<Table id="shipDetailTable" 
+				  items="{ShipPlanDetailToItems}" 
+				   mode="MultiSelect"
+				   updateFinished="onHandleTableLoad"
+				   selectionChange="onHandleSelectionChange"
+				   growing="true"
+				   growingThreshold="3"
+				   growingScrollToLoad="true">
+				   
+				<columns>
+					<Column width="1.2rem" hAlign="Center">
+						<Text text="{i18n>detailTitleTableStatus}" tooltip="{i18n>detailTooltipTitleTableStatus}"/>
+					</Column>
+					<Column width="3rem"
+							hAlign="Center"
+							minScreenWidth="Tablet"
+							demandPopin="true">
+						<Text text="{i18n>detailTitleTablePtorg}" />
+					</Column>
+					
+					
+					<Column width="4rem"
+							minScreenWidth="Tablet"
+							demandPopin="true">
+						<Text text="{i18n>detailTitleTableWerkso}" tooltip="{i18n>detailTitleTableWerkso}" />
+					</Column>
+					
+					<Column width="3rem"
+							minScreenWidth="Tablet"
+							demandPopin="true">
+						<Text text="{i18n>detailTitleTableLgorto}" tooltip="{i18n>detailTitleTableLgorto}" />
+					</Column>
+								
+					<Column 
+								width="5rem"
+								minScreenWidth="Tablet"
+								demandPopin="true">
+						<Text 
+								text="{i18n>detailTitleTableDteta}" />
+					</Column>
+					<Column width="6rem"
+							minScreenWidth="Tablet"
+							demandPopin="true">
+						<Text text="{i18n>detailTitleTableDestino}" />
+					</Column>
+				
+					<Column width="4.5rem">
+						<Text text="{i18n>detailTitleTableMaterial}" />
+					</Column>
+					<Column width="5rem" 
+							minScreenWidth="Tablet"
+							demandPopin="true">
+						<Text text="{i18n>detailTitleTablePeso}" />
+					</Column>
+					<Column width="4rem" 
+							minScreenWidth="Tablet"
+							demandPopin="true">
+						<Text text="{i18n>detailTitleTableVolum}" />
+					</Column>
+					<Column width="5rem">
+						<Text text="{i18n>detailTitleTableDocRef}" />
+					</Column>
+					<Column width="3rem">
+						<Text text="{i18n>detailTitleTableItem}" />
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<ObjectStatus
+								state="{path: 'Status', formatter: '.formatter.mudarStatus'}"
+								icon="{path: 'Status', formatter: '.formatter.mudarIconIte'}"
+								tooltip="{path: 'Status', formatter: '.formatter.mudarTexto'}" />
+		
+						</cells>
+						<cells>
+							<ObjectNumber number="{Ptorg}" emphasized="false"/>
+						</cells>
+						<cells>
+							<Text text="{Werkso}"/> 
+						</cells>
+								
+						<cells>
+							<Text text="{Lgorto}"/>
+						</cells>
+
+						<cells>
+							<Text text="{path: 'Dteta', type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'dd.MM.yyyy', strictParsing: true , UTC: true}}" />
+						</cells>
+						<cells>
+<!-- 							<ObjectNumber number="{Kdmat}"  -->
+<!-- 										  emphasized="false"/> -->
+							<Text text="{Kdmat}"/>
+
+						</cells>
+					
+						<cells>
+							<ObjectNumber number="{Matnr}"
+										  unit="{MatnrDsc}"
+										  emphasized="false"/>			  
+						</cells>
+						<cells>
+							<ObjectNumber number="{path: 'Weight',formatter:'.formatter.formatNumberBrazil'}"
+										  unit="{Unit}" 
+										  emphasized="false"/>
+						</cells>
+						<cells>
+						
+							<ObjectNumber number="{path : 'Volumn', formatter:'.formatter.formatNumberBrazil', type: 'sap.ui.model.odata.type.String', constraints: {isDigitSequence : true, maxLength : 10}}"
+										  unit="UN" 
+										  emphasized="false"/>
+							
+						</cells>
+						<cells>
+							<Text text="{Docref}" />
+						</cells>
+						<cells>
+							<Text text="{DocrefItem}" />
+						</cells>
+					</ColumnListItem>
+				</items>
+		
+			</Table>
+		</content>
+	</Panel>
+</core:FragmentDefinition>

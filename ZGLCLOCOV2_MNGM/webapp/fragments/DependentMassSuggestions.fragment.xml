@@ -1,0 +1,67 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:table="sap.ui.table"
+    xmlns:f="sap.f"
+	xmlns:l="sap.ui.layout"
+	width="800px">
+    <Dialog contentHeight="600px" showHeader="true" contentWidth="800px" title="Sugestão de Modificação em Massa">
+    	<Page showHeader="false" showNavButton="false" >
+		<!-- <headerContent>
+			<Title level="H1" text="Sugestão de Modificação em Massa" />
+		</headerContent> -->
+        <content>
+
+			<VBox>
+				<f:Card class="zpadding" >
+					<f:content>
+						<HBox width="100%" alignContent="Center" alignItems="Center" justifyContent="Center">
+							<HBox width="90%" alignContent="Center" alignItems="Center" justifyContent="Center">
+								<FormattedText htmlText="{suggestMassDep>/title}" /> 
+							</HBox>
+						</HBox>
+					</f:content>
+				</f:Card>
+				<HBox>
+					<table:Table rows="{suggestMassDep>/compatibleCompanies}" visibleRowCountMode="Fixed" fixedRowCount="20" selectionMode="None">
+						<table:columns>
+							<table:Column width="15%" hAlign="Center" filterProperty="Empresa" sortProperty="Empresa">
+								<Label text="Empresa" />
+								<table:template>
+									<Text text="{suggestMassDep>Empresa}" wrapping="false" />
+								</table:template>
+							</table:Column>
+							<table:Column width="75%" hAlign="Center" sortProperty="Status">
+								<Label text="Status" />
+								<table:template>
+									<Text text="{path: 'suggestMassDep>Status', formatter: '.formatter.formatSuggestStatus' }" visible="{= ${suggestMassDep>main} ? false : true }" wrapping="false" />
+								</table:template>
+							</table:Column>
+							<table:Column width="10%" hAlign="Center" sortProperty="Apply">
+								<CheckBox selected="{path: 'suggestMassDep>/selectAll'}" select="slectAllSuggest"/>
+								<table:template>
+									<CheckBox selected="{path: 'suggestMassDep>Apply'}" select="onSelectSuggestChange" enabled="{= ${suggestMassDep>main} ? false : ${suggestMassDep>Status} ? true : false }" />
+								</table:template>
+							</table:Column>
+						</table:columns>
+					</table:Table> 
+				</HBox>
+			</VBox>
+
+    	</content>
+		<footer>
+			<OverflowToolbar>
+				<ToolbarSpacer/>
+				<Button type="Emphasized" text="Aplicar" press="onPressSaveTask($event, 'applySuggestMassDep')" id="buttonApplySuggestMass" enabled="{suggestMassDep>/hasSelectedItems}">
+					<layoutData><OverflowToolbarLayoutData priority="NeverOverflow" /></layoutData>
+				</Button>
+				<Button  text="Cancelar" press="closeSuggestMassDep">
+					<layoutData><OverflowToolbarLayoutData priority="NeverOverflow" /></layoutData>
+				</Button>
+			</OverflowToolbar>
+		</footer>
+
+	</Page>
+    </Dialog>
+</core:FragmentDefinition>

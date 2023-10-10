@@ -1,0 +1,201 @@
+{
+    "resources": [
+        {
+            "name": "controller/BaseController.js"
+        },
+        {
+            "name": "model/models.js"
+        },
+        {
+            "name": "model/formatter.js"
+        },
+        {
+            "name": "localService/mockserver.js"
+        },
+        {
+            "name": "controller/Worklist.controller.js"
+        },
+        {
+            "name": "controller/Object.controller.js"
+        },
+        {
+            "name": "controller/NotFound.controller.js"
+        },
+        {
+            "name": "controller/FORMACAO_DETAIL.controller.js"
+        },
+        {
+            "name": "controller/ErrorHandler.js"
+        },
+        {
+            "name": "controller/Documentos_Detail.controller.js"
+        },
+        {
+            "name": "controller/DepententeDetail.controller.js"
+        },
+        {
+            "name": "controller/DADOS_PESSOAIS.controller.js"
+        },
+        {
+            "name": "manifest.json"
+        },
+        {
+            "name": "controller/BENEFICIOS_DETAIL.controller.js"
+        },
+        {
+            "name": "controller/App.controller.js"
+        },
+        {
+            "name": "Component.js"
+        },
+        {
+            "name": "manifest-bundle.zip"
+        },
+        {
+            "name": "Component-preload.js",
+            "merged": true
+        },
+        {
+            "name": "model/models-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "model/formatter-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "localService/mockserver-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/Worklist-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/Object-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/NotFound-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/FORMACAO_DETAIL-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/ErrorHandler-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/Documentos_Detail-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/DepententeDetail-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/DADOS_PESSOAIS-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/BaseController-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/BENEFICIOS_DETAIL-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/App-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "Component-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "../../sap-ui-version.json"
+        },
+        {
+            "name": "neo-app.json"
+        },
+        {
+            "name": "di.code-validation.core_issues.json"
+        },
+        {
+            "name": "i18n/i18n.properties",
+            "raw": "i18n/i18n.properties"
+        },
+        {
+            "name": "view/Worklist.view.xml"
+        },
+        {
+            "name": "view/Status.fragment.xml"
+        },
+        {
+            "name": "view/Processo.fragment.xml"
+        },
+        {
+            "name": "view/Pernr.fragment.xml"
+        },
+        {
+            "name": "view/Operador.fragment.xml"
+        },
+        {
+            "name": "view/ObjectNotFound.view.xml"
+        },
+        {
+            "name": "view/Object.view.xml"
+        },
+        {
+            "name": "view/NotFound.view.xml"
+        },
+        {
+            "name": "view/LocNascimento.fragment.xml"
+        },
+        {
+            "name": "view/FORMACAO_DETAIL.view.xml"
+        },
+        {
+            "name": "view/DtCriacao.fragment.xml"
+        },
+        {
+            "name": "view/Documentos_Detail.view.xml"
+        },
+        {
+            "name": "view/DepententeDetail.view.xml"
+        },
+        {
+            "name": "view/DADOS_PESSOAIS.view.xml"
+        },
+        {
+            "name": "view/Chamado.fragment.xml"
+        },
+        {
+            "name": "view/BENEFICIOS_DETAIL.view.xml"
+        },
+        {
+            "name": "view/App.view.xml"
+        },
+        {
+            "name": "view/App.fragment.xml"
+        },
+        {
+            "name": "localService/metadata.xml"
+        },
+        {
+            "name": "imagens/Transparente_CBA_.gif"
+        },
+        {
+            "name": "imagens/Transparente_CBA.gif"
+        },
+        {
+            "name": "imagens/Transf_CBA.gif"
+        },
+        {
+            "name": "css/style.css"
+        }
+    ]
+}

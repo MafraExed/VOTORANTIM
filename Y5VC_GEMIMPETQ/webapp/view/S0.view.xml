@@ -1,0 +1,23 @@
+<mvc:View xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:layout="sap.ui.layout"
+	controllerName="Workspace.zimprimir_etiqueta.controller.S0" displayBlock="true">
+	<App id="EntraNfe">
+		<pages>
+			<Page id="idPage" title="{i18n>titleS0}">
+				<layout:VerticalLayout class="sapUiContentPadding" width="100%">
+					<layout:content>
+						<Label text="{i18n>Chave_NfeInput_Label}" labelFor="Chave_NfeInput"/>
+						<Input id="Chave_NfeInput" placeholder="{i18n>chave}" enabled="true" editable="true" submit="onChaveNfeInputSubmit"
+							value="{/InputChvnfe}"/>
+					</layout:content>
+				</layout:VerticalLayout>
+				<footer>
+					<Toolbar>
+						<ToolbarSpacer/>
+						<Button text="{i18n>scan}" icon="sap-icon://bar-code" press="onPressScan" type="Default"/>
+						<ToolbarSpacer/>
+					</Toolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

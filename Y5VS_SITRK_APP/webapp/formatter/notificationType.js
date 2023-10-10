@@ -1,0 +1,1 @@
+"use strict";sap.ui.define(["sap/ui/core/MessageType"],function(e){return function(){var n=arguments.length>0&&arguments[0]!==undefined?arguments[0]:"";var r={E:e.Error,W:e.Warning,I:e.Success,S:e.Success};return r["".concat(n)]||e.None}});

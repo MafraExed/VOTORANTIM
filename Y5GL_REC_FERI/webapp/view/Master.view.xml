@@ -1,0 +1,33 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml"
+	controllerName="Y5GL_REC_FERI.Y5GL_REC_FERI.controller.Master" displayBlock="true">
+	<App id="app" pages="{/ZET_GLHR_PERIODOS}">
+		<pages>
+			<Page title="Períodos" backgroundDesign="Solid">
+				<customHeader>
+					<Bar>
+						<contentLeft>
+							<Label/>
+							<Label text="{Nome}" design="Bold" />
+						</contentLeft>
+					</Bar>
+				</customHeader>
+				<content>
+					<List id="list" items="{ path: '/ZET_GLHR_PERIODOS'}" noDataText="{masterView>/noDataText}" itemPress="onSelectionChange" selectionChange="onSelectionChange">
+						<items>
+							<ObjectListItem title="{LabelTitulo}" type="Navigation" press="onSelectionChange" icon="sap-icon://employee-pane" highlight="Information"
+								fieldGroupIds="">
+								<attributes>
+									<ObjectAttribute text="{LabelPeriodo}"/>
+								</attributes>
+								<firstStatus>
+									<ObjectStatus text="{Status}" id="__status1" state="{= ${Status} === 'Em aprovação' ? 'Warning' : ${StatusTxt2} === 'Em aberto' ? 'Error' : 'Success'}"/>
+								</firstStatus>
+							</ObjectListItem>
+						</items>
+					</List>
+					<Button text="Voltar" width="100%" id="__button0" type="Back" press="NA" visible="false"/>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

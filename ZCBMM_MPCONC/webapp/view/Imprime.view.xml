@@ -1,0 +1,15 @@
+<mvc:View controllerName="ZCBMM_MPCONC.ZCBMM_MPCONC.controller.Imprime" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" height="100%">
+	<Page>
+		<UploadCollection id="UploadCollection" multiple="true" change="onChange" fileDeleted="onFileDeleted"
+			beforeUploadStarts="onBeforeUploadStarts" uploadComplete="onuploadComplete"
+			items="{ path: '/ZET_CBMM_CF_MAPASet', templateShareable: true }" modelContextChange="onmodelContextChange" mode="SingleSelectMaster"
+			uploadUrl="/sap/opu/odata/sap/ZGWCBMM_CONTRATACAO_FRETE_SRV/ZET_CBMM_CF_UPFILESet">
+			<items>
+				<UploadCollectionItem fileName="{Filename}" mimeType="{Mimetype}"
+					url="/sap/opu/odata/sap/ZGWCBMM_CONTRATACAO_FRETE_SRV/ZET_CBMM_CF_UPFILESet('{IdSolicitacao}')/$value" enableEdit="false" visibleEdit="false"
+					deletePress="ondeletePress">
+				</UploadCollectionItem>
+			</items>
+		</UploadCollection>
+	</Page>
+</mvc:View>

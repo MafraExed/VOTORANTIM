@@ -1,0 +1,135 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:f="sap.f" xmlns:mvc="sap.ui.core.mvc" xmlns:filterbar="sap.ui.comp.filterbar"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:variant="sap.ui.comp.variants" controllerName="workspace.zcockpit_bo_v3.controller.S0">
+	<f:DynamicPage id="dynamicPageId" toggleHeaderOnTitleClick="false">
+		<!-- DynamicPage Title -->
+		<f:title>
+			<f:DynamicPageTitle>
+				<f:heading>
+					<Title id="DynamicPageTitleId" text="{i18n>title_S0}"/>
+				</f:heading>
+			</f:DynamicPageTitle>
+		</f:title>
+		<!-- DynamicPage Header -->
+		<f:header>
+			<f:DynamicPageHeader pinnable="true">
+				<f:content>
+					<variant:VariantManagement variantItems="{/Variants}" enabled="true" showExecuteOnSelection="false" showShare="false" id="variantFilter">
+						<variant:variantItems>
+							<variant:VariantItem text="{VariantName}" key="{VariantKey}"/>
+						</variant:variantItems>
+					</variant:VariantManagement>
+					<filterbar:FilterBar id="filterBarBO" useToolbar="true" showGoOnFB="true" search="onSearch" filterContainerWidth="300px" >
+						<filterbar:filterGroupItems >
+							<filterbar:FilterGroupItem label="{i18n>label_search_status}" name="fgiSts" groupName="gpFilter" visibleInFilterBar="true">
+								<filterbar:control>
+									<Select id="selectStatus" forceSelection="true" selectedKey="{StatusLoc>/selectedStsBo}" items="{StatusLoc>/StatusBoSet}"
+										change="onFilterChange">
+										<core:ListItem key="{StatusLoc>Status}" text="{StatusLoc>Name}"/>
+									</Select>
+								</filterbar:control>
+							</filterbar:FilterGroupItem>
+							<filterbar:FilterGroupItem label="{i18n>label_search_Incident_Number}" name="fgiNumBo" groupName="gpFilter" visibleInFilterBar="true">
+								<filterbar:control>
+									<MultiInput id="ipNumBo" placeholder="{i18n>label_search_Incident_Number}" showValueHelp="false" enableMultiLineMode="true"
+										tokenUpdate="onFilterChange"></MultiInput>
+								</filterbar:control>
+							</filterbar:FilterGroupItem>
+							<filterbar:FilterGroupItem label="{i18n>label_nfenum}" name="fiNfenum" groupName="gpFilter" visibleInFilterBar="true">
+								<filterbar:control>
+									<MultiInput id="ipnfenum" placeholder="{i18n>label_nfenum}" showValueHelp="false" enableMultiLineMode="true"
+										tokenUpdate="onFilterChange"></MultiInput>
+								</filterbar:control>
+							</filterbar:FilterGroupItem>							
+							<filterbar:FilterGroupItem label="{i18n>label_werks}" name="fiWerks" groupName="gpFilter" visibleInFilterBar="true">
+								<filterbar:control>
+									<MultiComboBox id="ipwerks" items="{path: 'GE>/ZET_VCMM_WERKS_IHSet', sorter: { path: 'Name'} }">
+										<core:Item key="{GE>Werks}" text="{GE>Name}"/>
+									</MultiComboBox>
+								</filterbar:control>
+							</filterbar:FilterGroupItem>
+							<filterbar:FilterGroupItem label="{i18n>label_resp_bo}" name="fiResp" groupName="gpFilter" visibleInFilterBar="true">
+								<filterbar:control>
+									<MultiComboBox id="ipresp" items="{path: 'GE>/ZET_VCMM_RESP_BO_IHSet', sorter: { path: 'Name'} }">
+										<core:Item key="{GE>RespBo}" text="{GE>Name}"/>
+									</MultiComboBox>
+								</filterbar:control>
+							</filterbar:FilterGroupItem>
+							<filterbar:FilterGroupItem label="{i18n>label_search_Nfe}" name="fiChvNfe" groupName="gpFilter1" visibleInFilterBar="true">
+								<filterbar:control>
+									<MultiInput id="ipchvnfe" placeholder="{i18n>label_search_Nfe}" showValueHelp="false" enableMultiLineMode="true"
+										tokenUpdate="onFilterChange"></MultiInput>
+								</filterbar:control>
+							</filterbar:FilterGroupItem>
+
+						</filterbar:filterGroupItems>
+					</filterbar:FilterBar>
+				</f:content>
+			</f:DynamicPageHeader>
+		</f:header>
+		<!-- DynamicPage Content -->
+		<f:content>
+			<VBox id="VboxS0Id" fitContainer="true">
+				<OverflowToolbar id="OverflowToolbarS0Id" class="sapFDynamicPageAlignContent">
+					<!--add variant management-->
+					<variant:VariantManagement variantItems="{/Variants}" enabled="true" showExecuteOnSelection="false" showShare="false" id="variantTable">
+						<variant:variantItems>
+							<variant:VariantItem text="{VariantName}" key="{VariantKey}"/>
+						</variant:variantItems>
+					</variant:VariantManagement>
+					<ToolbarSpacer id="ToolbarSpacer0Id"/>
+					<OverflowToolbarButton id="OverflowToolbarButtonCreateS0Id" icon="sap-icon://create" text="{i18n>label_button_create}"
+						tooltip="{i18n>label_button_create}" type="Transparent" press="onCreateBO"/>
+					<OverflowToolbarButton id="OverflowToolbarButtonRefreshS0Id" icon="sap-icon://refresh" text="{i18n>label_button_refresh}"
+						tooltip="{i18n>label_button_refresh}" type="Transparent" press="onRefresh"/>
+					<OverflowToolbarButton id="btnConfTable" type="Transparent" icon="sap-icon://settings"/>
+					<OverflowToolbarButton id="btnExport" type="Transparent" icon="sap-icon://excel-attachment" press="onExport"/>
+				</OverflowToolbar>
+				<Table id="BosTable" items="{ path: 'GE>/ZET_VCMM_BOHEADERSet', sorter: { path: 'NumeroBo', descending: true }}" inset="false" width="auto"
+					class="sapFDynamicPageAlignContent" growing="false" growingThreshold="25" growingScrollToLoad="false" alternateRowColors="true"
+					updateFinished="onUpdateFinished">
+					<columns>
+						<Column id="Column0IdS0" hAlign="Begin" demandPopin="true">
+							<Text id="ColumnText0Id" text="{i18n>title_Column_Incident_Number}"/>
+						</Column>
+						<Column id="Column1IdS0" hAlign="Begin" demandPopin="true" minScreenWidth="Tablet" popinDisplay="Inline">
+							<Text id="ColumnText1Id" text="{i18n>title_Column_Nfe}"/>
+						</Column>
+						<Column id="Column2IdS0" hAlign="Begin" demandPopin="true" minScreenWidth="Desktop" popinDisplay="Inline">
+							<Text id="ColumnText2Id" text="{i18n>title_Column_Nfe_value}"/>
+						</Column>
+						<Column hAlign="Begin" demandPopin="true" minScreenWidth="Desktop" popinDisplay="Inline">
+							<Text text="{i18n>title_Column_Resp_Bo}"/>
+						</Column>
+						<Column id="Column3IdS0" hAlign="Begin" demandPopin="true" minScreenWidth="Desktop" popinDisplay="Inline">
+							<Text id="ColumnText3Id" text="{i18n>title_Column_Werks}"/>
+						</Column>
+						<Column id="Column4IdS0" hAlign="Begin" demandPopin="true" minScreenWidth="Desktop" popinDisplay="Inline">
+							<Text id="ColumnText4Id" text="{i18n>title_Column_Date_Open}"/>
+						</Column>
+						<Column id="Column5IdS0" hAlign="Begin" demandPopin="true" minScreenWidth="Desktop" popinDisplay="Inline">
+							<Text id="ColumnText5Id" text="{i18n>title_Column_Status}"/>
+						</Column>
+					</columns>
+					<items>
+						<ColumnListItem id="ColumnListItemS0Id" type="Navigation" press="onListItemPress">
+							<cells>
+								<ObjectIdentifier id="ColumnListItemTitle0Id" title="{ path: 'GE>NumeroBo', formatter: '.myFormatter.shiftLeadingZeros'}"/>
+								<ObjectIdentifier id="ColumnListItemTitle1Id"
+									text="{GE>Nfenum} {= ${GE>Serie} === '' ? '' : '-'} {= ${GE>Serie} === '' ? '' : ${GE>Serie} }"/>
+								<ObjectIdentifier id="ColumnListItemTitle2Id"
+									text="{path: 'GE>VlrTotalBrtNf', type: 'sap.ui.model.type.Float', formatOptions: {maxFractionDigits: 2}}"/>
+								<ObjectIdentifier text="{GE>RespBo}"/>									
+								<ObjectIdentifier id="ColumnListItemTitle3Id" text="{GE>Werks}" title="{GE>WerksName}"/>
+								<ObjectIdentifier id="ColumnListItemTitle4Id"
+									text="{path: 'GE>Credat', type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'dd/MM/yyyy', strictParsing: true , UTC: true}}"/>
+								<ObjectStatus text="{ path: 'GE>Status', formatter: '.myFormatter.statusConverterText'}"
+									icon="{ path: 'GE>Status', formatter: '.myFormatter.statusIconConverter'}"
+									state="{ path: 'GE>Status', formatter: '.myFormatter.statusConverter'}"/>
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+			</VBox>
+		</f:content>
+	</f:DynamicPage>
+</mvc:View>

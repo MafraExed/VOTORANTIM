@@ -1,0 +1,246 @@
+<mvc:View 
+		controllerName="nasa.ui5.recebimentoOffshore.controller.Detail" 
+		xmlns="sap.m"
+		xmlns:mvc="sap.ui.core.mvc" 
+		xmlns:semantic="sap.m.semantic"
+		xmlns:footerbar="sap.ushell.ui.footerbar" 
+		xmlns:core="sap.ui.core"
+		xmlns:l="sap.ui.layout">
+
+	<semantic:DetailPage 
+						id="pageDetail" 
+						navButtonPress="onNavBack"
+						showNavButton="true" 
+						title="{i18n>detailTitle}"
+						busy="{detailView>/busy}" 
+						busyIndicatorDelay="{detailView>/delay}">
+		
+		<semantic:customHeaderContent>
+			<Button id="ListItemFullButton" 
+					icon="sap-icon://full-screen" 
+					visible="{= ${device>/system/phone} === false}"
+					press="onFullScreenPage" />
+		</semantic:customHeaderContent>
+
+		<semantic:content>
+
+		<ObjectHeader id="objectHeader" title="{Dcrnv} - {Nvoyg}"
+						  markFlagged="true" showMarkers="{path:'Stdline', formatter:'.formatter.formatVisibleMarker'}"
+						  number="{path: 'Dteta',type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'dd.MM.yyyy', strictParsing: true , UTC: true}}"
+						  numberUnit="ETA">
+
+ 				<attributes>
+					<ObjectAttribute
+						title="{i18n>detailTitlePtorg}"
+						text="{Ptorg}"/>
+	
+				</attributes>
+				
+				<statuses>
+					<ObjectStatus class="sapUiSmallMarginBottom"
+						   		  text="{path:  'Status', formatter: '.formatter.mudarTexto'}" 
+								  state="{path: 'Status', formatter: '.formatter.mudarStatus'}"
+								  icon="{path:  'Status', formatter: '.formatter.mudarIcon'}" />
+				</statuses>
+				
+
+				<additionalNumbers> 
+
+				<ObjectNumber id="idoobjNumber" 
+					 		  number="{parts: [{path:'Peso'}], formatter:'.formatter.formatNumberBrazil'}"
+					 		  tooltip="Peso"
+					 		  state="{path: 'Status', formatter: '.formatter.mudarStatus2'}"
+					 		  unit="{Unit}"/>
+
+				</additionalNumbers>
+
+			</ObjectHeader> 
+			
+			<IconTabBar expandable="false"
+						id="iconTabBar"
+						select="onHandleSelectFilterBar"
+						class="sapUiResponsiveContentPadding">
+				<items>
+					<!-- MENU TABS 1 -->
+					
+					<IconTabFilter 
+							id="iconTabBarFilter1"
+							key="tabItem1"
+							icon="sap-icon://activities"
+							text="{i18n>detailTitleTableItemList}"
+							tooltip="{i18n>detailTitleTabFilterBar}">
+						<core:Fragment 
+								fragmentName="nasa.ui5.recebimentoOffshore.view.fragments.ListItem" 
+								type="XML"/>
+					</IconTabFilter>
+					
+					<!--  MENU TABS 2 -->
+					<IconTabFilter 
+							id="iconTabBarFilter2"
+							key="tabItem2"
+							icon="sap-icon://receipt"
+							text="{i18n>detailTitleTableItemList2}"
+							tooltip="{i18n>detailTitleTabFilterBar2}">
+						<core:Fragment 
+								fragmentName="nasa.ui5.recebimentoOffshore.view.fragments.ListRecebimentoFIT" 
+								type="XML"/> 
+					</IconTabFilter>
+					
+					<!--  MENU TABS 3 -->
+					<IconTabFilter 
+							id="iconTabBarFilter3"
+							key="tabItem3"
+							icon="sap-icon://simple-payment"
+							text="{i18n>detailTitleTableItemList3}"
+							tooltip="{i18n>detailTitleTabFilterBar3}">
+						<core:Fragment 
+								fragmentName="nasa.ui5.recebimentoOffshore.view.fragments.ListFaturaFIT" 
+								type="XML"/>
+					</IconTabFilter>
+					<IconTabSeparator id="iconTabBarFilter4Separador" icon=""/>
+					<!--  MENU TABS 4 -->
+					<IconTabFilter 
+							id="iconTabBarFilter4"
+							key="tabItem4"
+							icon="sap-icon://sales-order"
+							text="{i18n>detailTitleTableItemList4}"
+							tooltip="{i18n>detailTitleTabFilterBar4}">
+						<core:Fragment 
+								fragmentName="nasa.ui5.recebimentoOffshore.view.fragments.ListVendaINC" 
+								type="XML"/>
+					</IconTabFilter>
+					
+					<!-- MENU TABS 5 -->
+					<IconTabFilter 
+							id="iconTabBarFilter5"
+							key="tabItem5"
+							icon="sap-icon://receipt"
+							text="{i18n>detailTitleTableItemList5}"
+							tooltip="{i18n>detailTitleTabFilterBar5}">
+						<core:Fragment 
+								fragmentName="nasa.ui5.recebimentoOffshore.view.fragments.ListRecebimentoINC" 
+								type="XML"/>
+					</IconTabFilter>
+					
+					<!--  MENU TABS 6 -->
+					<IconTabFilter 
+							id="iconTabBarFilter6"
+							key="tabItem6"
+							visible="false"
+							icon="sap-icon://simple-payment"
+							text="{i18n>detailTitleTableItemList6}"
+							tooltip="{i18n>detailTitleTabFilterBar6}">
+						<core:Fragment 
+								fragmentName="nasa.ui5.recebimentoOffshore.view.fragments.ListFaturaINC" 
+								type="XML"/>
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+
+		</semantic:content>
+		<semantic:customFooterContent>
+			<Button 
+					id="detailViewButtonMsg" 
+					visible="true"
+					text="{messagePopOver>/count}" 
+					tooltip="{i18n>detailTooltipMsgBtn}" 
+	    			type="Emphasized" 
+	    			icon="sap-icon://message-popup" 
+	    			press="onHandleMessagePopover"/>
+			<Button 
+					id="detailViewRecebFITBtn"					
+					icon="sap-icon://receipt"
+					visible="true"
+					press="onHandleRecebFIT" 
+					tooltip="{i18n>detailViewRecebFIT}"/>
+<!-- 			<Button  -->
+<!-- 					id="detailViewEstRecFITBtn" -->
+<!-- 					icon="sap-icon://sys-cancel-2" -->
+<!-- 					visible="false" -->
+<!-- 					press="onHandleEstRecFIT"  -->
+<!-- 					tooltip="{i18n>detailViewEstornar}"/> -->
+<!-- 			<Button  -->
+<!-- 					id="detailViewEstFatFITBtn"			 -->
+<!-- 					icon="sap-icon://sys-cancel-2" -->
+<!-- 					visible="false" -->
+<!-- 					press="onHandleEstFatFIT"  -->
+<!-- 					tooltip="{i18n>detailViewEstornar}"/> -->
+			<Button 
+					id="detailViewAtualFreteBtn"
+					icon="sap-icon://shipping-status"
+					visible="false"
+					press="onHandleAtualFrete" 
+					tooltip="{i18n>detailViewAtualFrete}"/>
+			<Button 
+					id="detailViewRecebINCBtn"
+					icon="sap-icon://receipt"
+					visible="false"
+					press="onHandleRecebINC" 
+					tooltip="{i18n>detailViewRecebINC}"/>
+					
+<!-- 			<Button  -->
+<!-- 					id="detailViewEstRecINCBtn" -->
+<!-- 					icon="sap-icon://sys-cancel-2" -->
+<!-- 					visible="false" -->
+<!-- 					press="onHandleEstRecINC"  -->
+<!-- 					tooltip="{i18n>detailViewEstornar}"/> -->
+					
+<!-- 			<Button id="detailViewEstFatINCBtn" -->
+<!-- 					icon="sap-icon://sys-cancel-2" -->
+<!-- 					visible="false" -->
+<!-- 					press="onHandleEstFatINC"  -->    
+<!-- 					tooltip="{i18n>detailViewEstornar}"/> -->
+					
+				<MenuButton  icon="sap-icon://shortcut" tooltip="{i18n>tooltipMenuItem}">
+				<menu>
+					<Menu itemSelected="onHandleGoApp">
+						<items>
+						
+							<MenuItem id="detailViewMonitorApp"
+									  key="NasaMonitor"	
+									  text="{i18n>descriptionAppMonitor}" 
+									  icon="sap-icon://BusinessSuiteInAppSymbols/icon-ship" />
+									  
+							<MenuItem id="detailViewIntercompSalesApp"
+									  key="VendaIntercompany"
+									  text="{i18n>descriptionAppInterCompSales}"
+									  icon="sap-icon://home-share" />
+									  
+							<MenuItem id="detailViewDeliveryApp"
+									  key="NasaRemessa"	
+									  text="{i18n>descriptionAppDelivery}" 
+									  icon="sap-icon://Fiori6/F0869" />
+									  
+							<MenuItem id="detailViewExportRegisterApp"
+									  key="NasaExportRegistration"
+									  text="{i18n>descriptionAppExportRegister}" 
+									  icon="sap-icon://Fiori7/F1338" />
+									  
+							<MenuItem id="detailViewTransportApp"
+									  key="NasaTransporte"
+									  text="{i18n>descriptionAppTransport}" 
+									  icon="sap-icon://Fiori4/F0666" />
+									  
+							<MenuItem id="detailViewSaidaMercadoriaApp"
+									  key="NasaSM"
+									  text="{i18n>descriptionAppSaidaMercadoria}" 
+									  icon="sap-icon://Fiori3/F0538" />
+									  
+							<MenuItem id="detailViewInvoicingApp"
+									  key="NasaInvoicing"
+									  text="{i18n>descriptionAppInvoiving}" 
+									  icon="sap-icon://Fiori2/F0025" />
+									  
+<!-- 							<MenuItem id="detailViewOffshoreReceivingApp" -->
+<!-- 									  key="NasaOffshoreReceiving" -->
+<!-- 									  text="{i18n>descriptionAppOffshoreReceiving}"  -->
+<!-- 									  icon="sap-icon://home-share" /> -->
+						</items>
+					</Menu>
+					
+				</menu>
+			</MenuButton>		
+					
+		</semantic:customFooterContent>
+	</semantic:DetailPage>
+</mvc:View>

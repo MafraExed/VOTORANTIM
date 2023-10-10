@@ -1,0 +1,23 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<ResponsivePopover title="{i18n>TitleGrupoUser}" class="sapUiPopupWithPadding" contentWidth="35%" modal="true" placement="Right">
+		<endButton>
+			<Button id="PopOverPartnerButtonClose" text="{i18n>TitleFechar}" press="handleCloseButton"/>
+		</endButton>
+		<content>
+			<Table id="partnerTable" items="{detailGrupoExportView>/itemsPartner}" mode="None">
+				<columns>
+					<Column width="auto" hAlign="Left">
+						<Text text="{i18n>TitleUser}"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<Text text="{detailGrupoExportView>Nome}"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+	</ResponsivePopover>
+</core:FragmentDefinition>

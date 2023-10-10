@@ -1,0 +1,49 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Dialog id="idDialogSplitLabel" title="{i18n>text_divergence}" class="sapUiContentPadding" contentWidth="600px" contentHeight="600px">
+		<content>
+			<SegmentedButton id="item" width="100%" class="sapUiTinyMarginBottom" selectedKey="021">
+				<items>
+					<!--Sobra do Item-->
+					<SegmentedButtonItem text="{i18n>text_leftover}" press="onPressLeftover" key="017"/>
+					<!--Item sem Nota-->
+					<SegmentedButtonItem text="{i18n>text_item_without_note}" press="onPressOthers" key="021"/>
+					<!--Avaria-->
+					<SegmentedButtonItem text="{i18n>text_broke}" press="onPressOthers" key="019"/>
+				</items>
+			</SegmentedButton>
+			<List id="ListBO">
+				<DisplayListItem id="MatNFDescBO" label="{i18n>desc_nf}"/>
+				<DisplayListItem id="MatSAPDescBO" label="{i18n>desc_sap}"/>
+			</List>
+			<List >
+				<InputListItem label="{i18n>text_qtd}" class="sapUiTinyMarginBottom">
+					<Input id="qtd_material_bo" placeholder="{i18n>text_qtd_material}" type="Number" required="true"/>
+				</InputListItem>
+			</List>
+			<TextArea id="Text_area" placeholder="{i18n>text_description}" growing="true" growingMaxLines="3" width="95%"
+				class="sapUiTinyMargin"/>
+			<UploadCollection id="UploadCollection" maximumFilenameLength="55" maximumFileSize="10" multiple="false" change="onChange"
+				fileSizeExceed="onFileSizeExceed" selectionChange="onSelectionChange" typeMissmatch="onTypeMissmatch" uploadComplete="onUploadComplete"
+				beforeUploadStarts="onBeforeUploadStarts" fileDeleted="onFileDeleted"
+				items="{ path : 'BOANEXOLOC>/', templateShareable: false }" mode="MultiSelect">
+				<items>
+					<UploadCollectionItem documentId="{BOANEXOLOC>Guid}" fileName="{BOANEXOLOC>FilePath}" mimeType="{mimeType}" thumbnailUrl="{thumbnailUrl}"
+						url="{url}" enableEdit="false" enableDelete="false" visibleDelete="false" visibleEdit="false"
+						attributes="{ path: 'attributes', templateShareable: false }" statuses="{ path: 'statuses', templateShareable: false }"
+						selected="{BOANEXOLOC>selected}">
+						<attributes>
+							<ObjectAttribute title="{title}" text="{ parts: [ 'text', 'type' ], formatter : '.formatAttribute' }" active="false"/>
+						</attributes>
+						<statuses>
+							<ObjectStatus title="{title}" text="{text}" state="{state}"/>
+						</statuses>
+					</UploadCollectionItem>
+				</items>
+			</UploadCollection>
+		</content>
+		<buttons>
+			<Button text="{i18n>text_salve}" press="onSaveBO" type="Accept"/>
+			<Button text="{i18n>text_close}" press="onCloseBO" type="Reject"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,60 @@
+.myButtonHeight .sapMBtnInner{
+	height: 50px !important;
+	width: 70px !important;
+	text-align: center !important;
+	display:table-cell !important;
+	vertical-align: middle !important;
+	color: #000000 !important;
+	font-size: 0.6rem !important;
+}
+.myLayoutHeightY {
+	height: 50px !important;
+}
+.myLayoutHeightX {
+	height: 35px !important;
+}
+.styleImpacto {
+	align: center !important;
+}
+.styleProbabilidade {
+	vertical-align: center !important;
+}
+.columnButtonY .sapMBtnInner{
+	background-color: #FFFFFF !important;
+	height: 50px !important;
+	width: 50px !important;
+	display:table-cell !important;
+	vertical-align: middle !important;
+	text-align: right !important;
+	border: none;
+	color: #000000!important;
+	font-size: 0.6rem !important;
+}
+.columnButtonX .sapMBtnInner{
+	background-color: #FFFFFF !important;
+	height: 28px !important;
+	width: 70px !important;
+	display:table-cell !important;
+	vertical-align: bottom !important;
+	border: none;
+	color: #000000 !important;
+	font-size: 0.6rem !important;
+}
+.imageAlignment {
+	align: center !important;
+}
+.backgroundColorVH .sapMBtnInner{
+	background-color: #FF0000 !important;
+}
+.backgroundColorH .sapMBtnInner{
+	background-color: #DE8703 !important;
+}
+.backgroundColorM .sapMBtnInner{
+	background-color: #FFFF00 !important;
+}
+.backgroundColorL .sapMBtnInner{
+	background-color: #00B050 !important;
+}
+.backgroundColorVL .sapMBtnInner{
+	background-color: #92D050 !important;
+}

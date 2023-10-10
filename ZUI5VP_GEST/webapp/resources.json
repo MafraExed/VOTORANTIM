@@ -1,0 +1,175 @@
+{
+    "resources": [
+        {
+            "name": ".che/project.json"
+        },
+        {
+            "name": ".gitignore"
+        },
+        {
+            "name": ".project.json"
+        },
+        {
+            "name": ".user.project.json"
+        },
+        {
+            "name": "Component-preload.js",
+            "merged": true
+        },
+        {
+            "name": "Component.js"
+        },
+        {
+            "name": "Gruntfile.js"
+        },
+        {
+            "name": "controller/App.controller.js"
+        },
+        {
+            "name": "controller/DetalhesMeta.controller.js"
+        },
+        {
+            "name": "controller/DialogDadosDoSpot.js"
+        },
+        {
+            "name": "controller/DialogFiltroCaminhao.js"
+        },
+        {
+            "name": "controller/DialogFiltroEtapa.js"
+        },
+        {
+            "name": "controller/DialogFiltroMaterial.js"
+        },
+        {
+            "name": "controller/DialogFiltroMotorista.js"
+        },
+        {
+            "name": "controller/Grafico.controller.js"
+        },
+        {
+            "name": "controller/ListaViagens.controller.js"
+        },
+        {
+            "name": "controller/Mapa.controller.js"
+        },
+        {
+            "name": "controller/TempoPermanencia.controller.js"
+        },
+        {
+            "name": "css/style.css"
+        },
+        {
+            "name": "dist"
+        },
+        {
+            "name": "extended_runnable_file.html"
+        },
+        {
+            "name": "flp-config.json"
+        },
+        {
+            "name": "i18n/i18n.properties",
+            "raw": "i18n/i18n.properties"
+        },
+        {
+            "name": "index.html"
+        },
+        {
+            "name": "localService/ZGWVPWM_GESTAO_CAMINHOES_SRV/metadata.xml"
+        },
+        {
+            "name": "localService/metadata.xml"
+        },
+        {
+            "name": "manifest.json"
+        },
+        {
+            "name": "model/models.js"
+        },
+        {
+            "name": "neo-app.json"
+        },
+        {
+            "name": "node_modules"
+        },
+        {
+            "name": "package-lock.json"
+        },
+        {
+            "name": "package.json"
+        },
+        {
+            "name": "resources.json",
+            "merged": true
+        },
+        {
+            "name": "sap-ui-cachebuster-info.json"
+        },
+        {
+            "name": "view/App.view.xml"
+        },
+        {
+            "name": "view/DetalhesMeta.view.xml"
+        },
+        {
+            "name": "view/DialogDadosDoSpot.fragment.xml"
+        },
+        {
+            "name": "view/DialogFiltroCaminhao.fragment.xml"
+        },
+        {
+            "name": "view/DialogFiltroCaminhao_Centro.fragment.xml"
+        },
+        {
+            "name": "view/DialogFiltroCaminhao_PlacaCarreta1.fragment.xml"
+        },
+        {
+            "name": "view/DialogFiltroCaminhao_PlacaCarreta2.fragment.xml"
+        },
+        {
+            "name": "view/DialogFiltroCaminhao_PlacaCavalo.fragment.xml"
+        },
+        {
+            "name": "view/DialogFiltroEtapa.fragment.xml"
+        },
+        {
+            "name": "view/DialogFiltroEtapa_CentroOrigem.fragment.xml"
+        },
+        {
+            "name": "view/DialogFiltroEtapa_Destino.fragment.xml"
+        },
+        {
+            "name": "view/DialogFiltroMaterial.fragment.xml"
+        },
+        {
+            "name": "view/DialogFiltroMotorista.fragment.xml"
+        },
+        {
+            "name": "view/DialogQtde.fragment.xml"
+        },
+        {
+            "name": "view/DialogQtdeEtapa.fragment.xml"
+        },
+        {
+            "name": "view/DialogSelecionarFiltros.fragment.xml"
+        },
+        {
+            "name": "view/Grafico.view.xml"
+        },
+        {
+            "name": "view/ListaViagens.view.xml"
+        },
+        {
+            "name": "view/Mapa.view.xml"
+        },
+        {
+            "name": "view/Popover.fragment.xml"
+        },
+        {
+            "name": "view/TempoPermanencia.view.xml"
+        },
+        {
+            "name": "webServices/apiConnector.js"
+        }
+    ]
+}

@@ -1,0 +1,44 @@
+<mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.f.semantic" xmlns:footerbar="sap.ushell.ui.footerbar"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:m="sap.m" xmlns:la="sap.ui.layout" xmlns:sv="sap.ui.comp.smartvariants"
+	xmlns:smartTable="sap.ui.comp.smarttable" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:l="controls"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	controllerName="Y5VC_PAINEL_NE2.Y5VC_PAINEL_NE2.controller.Anexos">
+	<Page id="id_pagList" showHeader="false" showSubHeader="false">
+		<!--<f:Form editable="true" id="form_item">-->
+		<!--	<f:layout>-->
+		<!--		<f:ResponsiveGridLayout labelSpanXL="5" labelSpanL="5" labelSpanM="5" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0"-->
+		<!--			emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="3" columnsM="3" singleContainerFullSize="true"/>-->
+		<!--	</f:layout>-->
+		<!--	<f:formContainers>-->
+		<!--		<f:FormContainer>-->
+		<!--			<f:formElements>-->
+		<!--				<f:FormElement id="form3" visible="true">-->
+		<!--					<Text text="oi"/>-->
+			<UploadCollection id="UploadCollection" items="{ path: '/ZET_VCFI_ANEXOSSet', templateShareable: false }" maximumFilenameLength="55"
+				maximumFileSize="20" multiple="true" sameFilenameAllowed="true" instantUpload="false" noDataDescription="" change="onChange"
+				uploadComplete="onUploadComplete" beforeUploadStarts="onBeforeUploadStarts" mode="None" uploadButtonInvisible="true" uploadEnabled="false"
+				uploadUrl="/sap/opu/odata/sap/ZGWVCFI_PAINEL_NEGOCIACAO_SRV/ZET_VCFI_ANEXOSSet"
+				>
+				<items>
+					<UploadCollectionItem id="idColItem" enableDelete="false" documentId="{ItemAnexo}" fileName="{Filename}" mimeType="{Mimetype}"
+						enableEdit="false" visibleEdit="false" deletePress="ondeletePress"
+						url="/sap/opu/odata/sap/ZGWVCFI_PAINEL_NEGOCIACAO_SRV/ZET_VCFI_ANEXOSSet(Fikrs='{Fikrs}',NotaId='{NotaId}',GjahrNota='{GjahrNota}',ItemAnexo='{ItemAnexo}')/$value"
+						>
+						<!--<attributes>-->
+						<!--	<ObjectAttribute text="Documento"/>-->
+						<!--</attributes>-->
+						<!--<statuses>-->
+						<!--	<ObjectStatus title="TItulo" text="texto" state="None"/>-->
+						<!--</statuses>-->
+					</UploadCollectionItem>
+			</items>
+		</UploadCollection>
+		<!--uploadUrl="/sap/opu/odata/sap/ZGWVCFI_PAINEL_NEGOCIACAO_SRV/ZET_VCFI_ANEXOSSet"-->
+		<!--url="/sap/opu/odata/sap/ZGWVCFI_PAINEL_NEGOCIACAO_SRV/ZET_VCFI_ANEXOSSet('{IdSolicitacao}${DocId}${Filename}')/$value"-->
+		<!--				</f:FormElement>-->
+		<!--			</f:formElements>-->
+		<!--		</f:FormContainer>-->
+		<!--	</f:formContainers>-->
+		<!--</f:Form>-->
+	</Page>
+</mvc:View>

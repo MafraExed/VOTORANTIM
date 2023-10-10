@@ -1,0 +1,133 @@
+{
+    "resources": [
+        {
+            "name": "view/Object.view.xml"
+        },
+        {
+            "name": "view/ObjectNotFound.view.xml"
+        },
+        {
+            "name": "view/NotFound.view.xml"
+        },
+        {
+            "name": "view/App.view.xml"
+        },
+        {
+            "name": "view/Fornecimento.view.xml"
+        },
+        {
+            "name": "view/Teste.view.xml"
+        },
+        {
+            "name": "view/EntradaHistorico.view.xml"
+        },
+        {
+            "name": "view/ImpressaoPorAviso.view.xml"
+        },
+        {
+            "name": "view/Worklist.view.xml"
+        },
+        {
+            "name": "extended_runnable_file.html"
+        },
+        {
+            "name": "Component-preload.js",
+            "merged": true
+        },
+        {
+            "name": "i18n/i18n.properties",
+            "raw": "i18n/i18n.properties"
+        },
+        {
+            "name": "fragment/BatchProcessingReturn.fragment.xml"
+        },
+        {
+            "name": "fragment/Aceite.fragment.xml"
+        },
+        {
+            "name": "fragment/NovosValoresContagemCega.fragment.xml"
+        },
+        {
+            "name": "model/models.js"
+        },
+        {
+            "name": "model/formatter.js"
+        },
+        {
+            "name": "fioriHtmlRunner.html"
+        },
+        {
+            "name": ".user.project.json"
+        },
+        {
+            "name": "manifest.json"
+        },
+        {
+            "name": "neo-app.json"
+        },
+        {
+            "name": "Component.js"
+        },
+        {
+            "name": "localService/ZGWCBMM_CONF_CEGA_SRV/metadata.xml"
+        },
+        {
+            "name": "localService/metadata.xml"
+        },
+        {
+            "name": "localService/mockserver.js"
+        },
+        {
+            "name": "controller/ImpressaoPorAviso.controller.js"
+        },
+        {
+            "name": "controller/Object.controller.js"
+        },
+        {
+            "name": "controller/App.controller.js"
+        },
+        {
+            "name": "controller/EntradaHistorico.controller.js"
+        },
+        {
+            "name": "controller/Fornecimento.controller.js"
+        },
+        {
+            "name": "controller/NotFound.controller.js"
+        },
+        {
+            "name": "controller/ErrorHandler.js"
+        },
+        {
+            "name": "controller/BaseController.js"
+        },
+        {
+            "name": "controller/Worklist.controller.js"
+        },
+        {
+            "name": "controller/Teste.controller.js"
+        },
+        {
+            "name": "resources.json",
+            "merged": true
+        },
+        {
+            "name": "thirdparty/openui5/camera/Camera.js"
+        },
+        {
+            "name": "thirdparty/openui5/camera/library-preload.js"
+        },
+        {
+            "name": "thirdparty/openui5/camera/CameraRenderer.js"
+        },
+        {
+            "name": "thirdparty/openui5/camera/library.js"
+        },
+        {
+            "name": ".project.json"
+        },
+        {
+            "name": "annotations/local_annotations.xml"
+        }
+    ]
+}

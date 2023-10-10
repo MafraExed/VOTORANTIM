@@ -1,0 +1,1 @@
+<c:FragmentDefinition xmlns="sap.m" xmlns:c="sap.ui.core"><ResponsivePopover id="myPopover" class="sapUiContentPadding" title="{i18n>0259}" placement="Bottom" resizable="true" modal="true" contentWidth="50%"><endButton><Button text="{i18n>Commons.0041}" type="Reject"/></endButton></ResponsivePopover></c:FragmentDefinition>

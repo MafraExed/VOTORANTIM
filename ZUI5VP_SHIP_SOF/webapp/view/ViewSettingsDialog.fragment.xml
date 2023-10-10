@@ -1,0 +1,37 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+
+	<ViewSettingsDialog
+		id="viewSettingsDialog"
+		confirm="onConfirmViewSettingsDialog"
+		resetFilters="onViewSettingsDialogResetFilters">
+		<filterItems id="filterItems">
+			<ViewSettingsFilterItem
+				id="filterItemVessel"
+				text="{i18n>masterFilterVesselName}"
+				key="NomeNavio"
+				multiSelect="true"
+				selected="true"
+				enabled="false">
+				<items/>
+			</ViewSettingsFilterItem>
+			<ViewSettingsFilterItem
+				id="filterItemStatus"
+				text="Status"
+				key="StatusText"
+				multiSelect="false"
+				enabled="false"/>
+				</items>
+			<ViewSettingsFilterItem
+				id="filterItemDate"
+				text="{i18n>masterSortDataCreat}"
+				key="DataCreat"
+				multiSelect="false"
+				enabled="false"/>
+				</items>
+			</ViewSettingsFilterItem>
+		</filterItems>
+	</ViewSettingsDialog>
+
+</core:FragmentDefinition>

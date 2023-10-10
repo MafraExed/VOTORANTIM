@@ -1,0 +1,167 @@
+{
+    "resources": [
+        {
+            "name": "css/vsa_logo.png"
+        },
+        {
+            "name": "manifest.json"
+        },
+        {
+            "name": "manifest_.json"
+        },
+        {
+            "name": "model/models.js"
+        },
+        {
+            "name": "model/formatter.js"
+        },
+        {
+            "name": "localService/mockserver.js"
+        },
+        {
+            "name": "controller/Pagto_Mensal.controller.js"
+        },
+        {
+            "name": "controller/Master.controller.js"
+        },
+        {
+            "name": "controller/ListSelector.js"
+        },
+        {
+            "name": "controller/ErrorHandler.js"
+        },
+        {
+            "name": "controller/Detail.controller.js"
+        },
+        {
+            "name": "controller/BaseController.js"
+        },
+        {
+            "name": "controller/App.controller.js"
+        },
+        {
+            "name": "Component.js"
+        },
+        {
+            "name": "manifest-bundle.zip"
+        },
+        {
+            "name": "Component-preload.js",
+            "merged": true
+        },
+        {
+            "name": "model/models-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "model/formatter-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "localService/mockserver-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/Pagto_Mensal-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/Master-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/ListSelector-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/ErrorHandler-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/Detail-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/BaseController-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/App-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "Component-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "../../sap-ui-version.json"
+        },
+        {
+            "name": "neo-app.json"
+        },
+        {
+            "name": "di.code-validation.core_issues.json"
+        },
+        {
+            "name": "view/admto_15.view.xml"
+        },
+        {
+            "name": "view/ViewSettingsDialog.fragment.xml"
+        },
+        {
+            "name": "view/Pagto_Mensal.view.xml"
+        },
+        {
+            "name": "view/NotFound.view.xml"
+        },
+        {
+            "name": "view/Master.view.xml"
+        },
+        {
+            "name": "view/DetailObjectNotFound.view.xml"
+        },
+        {
+            "name": "view/Detail.view.xml"
+        },
+        {
+            "name": "view/App.view.xml"
+        },
+        {
+            "name": "localService/metadata.xml"
+        },
+        {
+            "name": "imagens/vsa_logo.png"
+        },
+        {
+            "name": "imagens/voto_load.gif"
+        },
+        {
+            "name": "imagens/Transparente_CBA.gif"
+        },
+        {
+            "name": "imagens/Cba_aluminio_logo.png"
+        },
+        {
+            "name": "i18n/i18n.properties",
+            "raw": "i18n/i18n.properties"
+        },
+        {
+            "name": "css/style.css"
+        },
+        {
+            "name": "Icones/PPRRV.png"
+        },
+        {
+            "name": "Icones/PAGAMENTO_MENSAL.png"
+        },
+        {
+            "name": "Icones/INFORME_RENDIMENTO.png"
+        },
+        {
+            "name": "Icones/ADIANTAMENTO_15.png"
+        },
+        {
+            "name": "Icones/13_SALARIO.png"
+        }
+    ]
+}

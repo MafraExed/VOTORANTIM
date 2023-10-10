@@ -1,0 +1,7 @@
+{
+  "tipo_custo": [
+  		{"text": "", "value": ""},
+        {"text": "Fixo", "value": "F"},
+        {"text": "Variável", "value": "V"}
+    ]
+}

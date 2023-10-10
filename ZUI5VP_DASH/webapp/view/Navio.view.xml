@@ -1,0 +1,120 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="com.sap.dashboardappDashboardApp.controller.Navio" xmlns:m="sap.m"
+	xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout">
+	<m:Page showHeader="true" title="" showFooter="true" showNavButton="true" navButtonPress="onNavBack">
+		<m:content>
+			<m:Bar design="Auto">
+				<m:contentLeft></m:contentLeft>
+				<m:contentMiddle>
+					<m:Title id="nomeNavio" text="" titleStyle="H1" width="auto" textAlign="Begin" visible="true"/>
+				</m:contentMiddle>
+				<m:contentRight>
+					<m:HBox alignItems="Stretch" direction="Row" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div"
+						visible="true" displayInline="false">
+						<m:items>
+							<core:Icon src="sap-icon://calendar" size="26px" color="#000080" height="30px" width="30px"/>
+							<!--<core:Icon src="sap-icon://calendar" size="24px" height="48px" width="36px" visible="true"/>-->
+							<m:Title id="dataNavio" text="" titleStyle="H3" width="auto" textAlign="Begin" visible="true" class="marginright"/>
+						</m:items>
+						<m:layoutData/>
+					</m:HBox>
+				</m:contentRight>
+			</m:Bar>
+			<m:Panel height="auto" width="100%" headerText="" expandable="false" expanded="true" expandAnimation="false" backgroundDesign="Solid">
+				<m:content>
+					<m:Panel height="auto" width="100%" headerText="" expandable="false" expanded="true" expandAnimation="true" backgroundDesign="Solid">
+						<m:content>
+							<layout:Grid defaultIndent="L2 M1 S0" defaultSpan="L8 M8 S12" position="Left" width="100%" containerQuery="false" hSpacing="1" vSpacing="1">
+								<layout:content>
+									<m:VBox alignItems="Stretch" direction="Column" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div"
+										visible="true" displayInline="false">
+										<m:items>
+											<m:HBox alignItems="Center" direction="Row" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div"
+												visible="true" displayInline="false">
+												<m:items>
+													<core:Icon src="sap-icon://map-2" size="48px" color="#000080" height="48px" width="48px" backgroundColor="" visible="true"/>
+													<m:VBox alignItems="Center" direction="ColumnReverse" fitContainer="true" width="100%" renderType="Div" visible="true" height="auto">
+														<m:items>
+															<m:VBox alignItems="End" direction="ColumnReverse" fitContainer="false" width="auto" height="auto" justifyContent="End" renderType="Div"
+																visible="true" displayInline="false">
+																<m:items>
+																	<m:HBox>
+																		<m:Title text="{i18n>DestinoNavio}:" titleStyle="H2" width="auto" textAlign="Center" visible="true"/>
+																		<m:Title id="destinoNavio" text="" class="spaceleft" titleStyle="H2" width="auto" textAlign="Center" visible="true"/>
+																	</m:HBox>
+																</m:items>
+																<m:layoutData/>
+															</m:VBox>
+														</m:items>
+														<m:layoutData/>
+													</m:VBox>
+												</m:items>
+												<m:layoutData/>
+											</m:HBox>
+										</m:items>
+										<m:layoutData/>
+									</m:VBox>
+									<m:VBox alignItems="Stretch" direction="Column" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div"
+										visible="true" displayInline="false">
+										<m:items>
+											<m:HBox alignItems="Center" direction="Row" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div"
+												visible="true" displayInline="false">
+												<m:items>
+													<core:Icon src="sap-icon://sys-enter-2" size="48px" color="green" height="48px" width="48px" backgroundColor="" visible="true"/>
+													<m:VBox alignItems="Center" direction="ColumnReverse" fitContainer="true" width="100%" renderType="Div" visible="true" height="auto">
+														<m:items>
+															<m:VBox alignItems="End" direction="ColumnReverse" fitContainer="false" width="auto" height="auto" justifyContent="End" renderType="Div"
+																visible="true" displayInline="false">
+																<m:items>
+																	<m:Hbox>
+																		<m:Title text="{i18n>volumeTotal} " titleStyle="H2" width="auto" textAlign="Center" visible="true" class="space"/>
+																		<m:Title id="totalToneladas" text="" titleStyle="H2" width="auto" textAlign="Center" visible="true"/>
+																	</m:Hbox>
+																</m:items>
+																<m:layoutData/>
+															</m:VBox>
+														</m:items>
+														<m:layoutData/>
+													</m:VBox>
+												</m:items>
+												<m:layoutData/>
+											</m:HBox>
+										</m:items>
+										<m:layoutData/>
+									</m:VBox>
+									<m:VBox alignItems="Stretch" direction="Column" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div"
+										visible="true" displayInline="false">
+										<m:items>
+											<m:Text
+												text="___________________________________________________________________________________________________________________________________________________________________________________________________"
+												width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+											<m:List id="listVenda" width="100%" headerText="" footerText="" backgroundDesign="Solid" showSeparators="Inner" growing="true"
+												growingThreshold="20" growingScrollToLoad="true" items="{ path : '/' }">
+												<m:items>
+													<m:StandardListItem icon="sap-icon://add-activity-2" title="{Descmat}" description="{Saldo} T" info="" type="Inactive" selected="false"/>
+												</m:items>
+											</m:List>
+											<m:Text
+												text="__________________________________________________________________________________________________________________________________________________________________________________________________________________________________________"
+												width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+										</m:items>
+										<m:layoutData/>
+									</m:VBox>
+								</layout:content>
+							</layout:Grid>
+						</m:content>
+					</m:Panel>
+				</m:content>
+			</m:Panel>
+		</m:content>
+		<m:footer>
+			<m:Bar design="Auto">
+				<m:contentLeft/>
+				<m:contentMiddle/>
+				<m:contentRight/>
+			</m:Bar>
+		</m:footer>
+		<m:headerContent/>
+		<m:subHeader/>
+		<m:customHeader/>
+	</m:Page>
+</mvc:View>

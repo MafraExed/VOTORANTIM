@@ -1,0 +1,32 @@
+/* Enter your custom styles here */
+.widthGrafico{
+	width: 90vw;
+}
+.tamDataRange .sapUiVlt{
+    width: auto!important;
+}
+.largeComboBox{
+	width: 18rem!important;
+}
+.smallComboBox{
+	width: 12rem !important;
+}
+.parent{}
+.parent .sapMFlexItemAlignAuto{      /* TAMANHO PARA O SEARCHFIELD DO DIALOGFILTROS.FRAGMENT */
+	width: 100% !important;
+}
+html.sap-tablet .sapMDialog, html.sap-desktop .sapMDialog {
+    min-width: 18rem;
+}
+/*.borda{
+	border: 1px solid;
+}*/
+.margem{
+	margin-left: -100px;
+}
+.margemMaior{
+	margin-left: -50px;
+}
+.margemTop{
+	margin-top: 10px;
+}

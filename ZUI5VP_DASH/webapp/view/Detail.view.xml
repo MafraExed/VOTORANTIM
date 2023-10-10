@@ -1,0 +1,488 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:m="sap.m" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns:f="sap.ui.layout.form"
+	controllerName="com.sap.dashboardappDashboardApp.controller.Detail">
+	<m:Page showHeader="true" title="{i18n>pageTitle}" showFooter="true" navButtonPress="onNavBack" showNavButton="{device>/system/phone}">
+		<m:content>
+			<m:Bar design="Auto">
+				<m:contentLeft>
+					<m:HBox alignItems="Start" direction="Row" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div"
+						visible="true" displayInline="false">
+						<m:items>
+							<m:Text text="" width="10px" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+							<!--aqui-->
+							<core:Icon src="sap-icon://date-time" size="26px" color="#000080" height="30px" width="30px"/>
+							<m:Text text="" width="10px" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+							<m:Title id="dataTopo" titleStyle="H3" width="auto" textAlign="Begin" visible="true"/>
+						</m:items>
+						<m:layoutData/>
+					</m:HBox>
+				</m:contentLeft>
+				<m:contentMiddle/>
+				<m:contentRight/>
+			</m:Bar>
+			<m:IconTabBar id="iconTabBar" expandable="false" expanded="true" applyContentPadding="false" backgroundDesign="Solid" upperCase="false"
+				visible="true">
+				<m:content/>
+				<m:items>
+					<m:IconTabFilter icon="sap-icon://add-product" iconColor="Default" text="{i18n>iconEntrada}" count="" design="Vertical" enabled="true"
+						showAll="false" textDirection="Inherit" visible="true">
+						<m:content>
+							<m:Panel height="auto" width="100%" headerText="" expandable="false" expanded="true" expandAnimation="true" backgroundDesign="Solid">
+								<m:content>
+									<m:HBox alignItems="Center" direction="Row" fitContainer="false" width="auto" height="auto" justifyContent="Center" renderType="Div"
+										visible="true" displayInline="false">
+										<m:items>
+											<core:Icon src="sap-icon://sys-enter-2" size="48px" color="Green" height="48px" width="48px" backgroundColor="" visible="true"/>
+											<m:Text text="" width="15px" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+											<m:VBox alignItems="End" direction="ColumnReverse" fitContainer="false" width="auto" height="auto" justifyContent="End" renderType="Div"
+												visible="true" displayInline="false">
+												<m:items>
+													<layout:HorizontalLayout>
+														<m:Title class="space" text="{i18n>totalRecebido}" titleStyle="H3" width="auto" textAlign="Center" visible="true"/>
+														<m:Title id="totalRecebido" text="" titleStyle="H3" width="auto" textAlign="Center" visible="true"/>
+													</layout:HorizontalLayout>
+												</m:items>
+												<m:layoutData/>
+											</m:VBox>
+										</m:items>
+										<m:layoutData/>
+									</m:HBox>
+									<f:SimpleForm editable="false" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="3" labelSpanM="4" labelSpanS="12"
+										adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="1" columnsM="1"
+										singleContainerFullSize="false">
+										<f:content>
+											<m:VBox alignItems="Stretch" direction="Column" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div"
+												visible="true" displayInline="false">
+												<m:items>
+													<m:HBox alignItems="Center" direction="Row" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div"
+														visible="true" displayInline="false">
+														<m:items>
+															<core:Icon src="sap-icon://cargo-train" size="36px" height="48px" width="48px" backgroundColor="" visible="true"/>
+															<m:VBox alignItems="Center" direction="ColumnReverse" fitContainer="true" width="100%" renderType="Div" visible="true" height="auto">
+																<m:items>
+																	<m:VBox alignItems="End" direction="ColumnReverse" fitContainer="false" width="auto" height="auto" justifyContent="End" renderType="Div"
+																		visible="true" displayInline="false">
+																		<m:items>
+																			<m:Title text="{i18n>listaTrem}" titleStyle="H3" width="auto" textAlign="Center" visible="true"/>
+																		</m:items>
+																		<m:layoutData/>
+																	</m:VBox>
+																</m:items>
+																<m:layoutData/>
+															</m:VBox>
+														</m:items>
+														<m:layoutData/>
+													</m:HBox>
+													<m:Text
+														text="___________________________________________________________________________________________________________________________________________________________________________________________________"
+														width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+													<m:List id="listEntradaTrem" width="100%" headerText="" footerText="" backgroundDesign="Solid" showSeparators="Inner" growing="true"
+														growingThreshold="20" growingScrollToLoad="true" items="{ path : '/' }">
+														<m:infoToolbar>
+															<m:Toolbar width="100%" height="auto" design="Auto" visible="false" enabled="true">
+																<m:content>
+																	<m:Label text="Label" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit"/>
+																</m:content>
+															</m:Toolbar>
+														</m:infoToolbar>
+														<m:headerToolbar/>
+														<m:items>
+															<m:StandardListItem icon="{icon}" title="{material}" description="{peso}" type="{listType}" selected="false"/>
+														</m:items>
+													</m:List>
+													<m:Text text="_____________________________________________________________________________________________________________________"
+														width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+													<layout:HorizontalLayout>
+														<m:ObjectStatus title="" class="space" text="" state="Success" icon="sap-icon://sys-enter"/>
+														<m:ObjectStatus class="space" title="" text="{i18n>volumeTotal}" state="Success"/>
+														<m:ObjectStatus id="cargaTrem" title="" text="" state="Success"/>
+													</layout:HorizontalLayout>
+													<m:Text
+														text="________________________________________________________________________________________________________________________________________________________________"
+														width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+												</m:items>
+												<m:layoutData/>
+											</m:VBox>
+											<m:VBox id="vboxEntradaCaminhao" alignItems="Stretch" direction="Column" fitContainer="false" width="auto" height="auto"
+												justifyContent="Start" renderType="Div" visible="true" displayInline="false">
+												<m:items>
+													<m:HBox alignItems="Center" direction="Row" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div"
+														visible="true" displayInline="false">
+														<m:items>
+															<core:Icon src="sap-icon://shipping-status" size="36px" height="48px" width="48px" visible="true"/>
+															<m:VBox alignItems="Center" direction="ColumnReverse" fitContainer="true" width="100%" renderType="Div" visible="true" height="auto">
+																<m:items>
+																	<m:VBox alignItems="End" direction="ColumnReverse" fitContainer="false" width="auto" height="auto" justifyContent="End" renderType="Div"
+																		visible="true" displayInline="false">
+																		<m:items>
+																			<m:Title text="{i18n>listaCaminhao}" titleStyle="H3" width="auto" textAlign="Center" visible="true"/>
+																		</m:items>
+																		<m:layoutData/>
+																	</m:VBox>
+																</m:items>
+																<m:layoutData/>
+															</m:VBox>
+														</m:items>
+														<m:layoutData/>
+													</m:HBox>
+													<m:Text
+														text="___________________________________________________________________________________________________________________________________________________________________________________________________"
+														width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+													<m:List id="listEntradaCaminhao" width="100%" headerText="" footerText="" backgroundDesign="Solid" showSeparators="Inner" growing="true"
+														growingThreshold="20" growingScrollToLoad="true" items="{ path : '/' }">
+														<m:infoToolbar>
+															<m:Toolbar width="100%" height="auto" design="Auto" visible="false" enabled="true">
+																<m:content>
+																	<m:Label text="Label" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit"/>
+																</m:content>
+															</m:Toolbar>
+														</m:infoToolbar>
+														<m:headerToolbar/>
+														<m:items>
+															<m:StandardListItem icon="{icon}" title="{material}" description="{peso}" type="{listType}" selected="false"/>
+														</m:items>
+													</m:List>
+													<m:Text
+														text="____________________________________________________________________________________________________________________________________________________________"
+														width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+													<layout:HorizontalLayout>
+														<m:ObjectStatus title="" class="space" text="" state="Success" icon="sap-icon://sys-enter"/>
+														<m:ObjectStatus title="" class="space" text="{i18n>cargaRecebida}" state="Success"/>
+														<m:ObjectStatus id="cargaCaminhao" title="" text="" state="Success"/>
+													</layout:HorizontalLayout>
+													<m:Text
+														text="_______________________________________________________________________________________________________________________________________________________________________________________"
+														width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+												</m:items>
+												<m:layoutData/>
+											</m:VBox>
+										</f:content>
+									</f:SimpleForm>
+								</m:content>
+							</m:Panel>
+						</m:content>
+					</m:IconTabFilter>
+					<m:IconTabSeparator id="abaSaida2" icon="" iconDensityAware="false"/>
+					<m:IconTabFilter id="abaSaida" icon="sap-icon://journey-arrive" iconColor="Default" text="{i18n>iconSaida}" count="" design="Vertical"
+						enabled="true" showAll="false" textDirection="Inherit" visible="true">
+						<m:content>
+							<m:Panel height="auto" width="100%" headerText="" expandable="false" expanded="true" expandAnimation="true" backgroundDesign="Solid">
+								<m:content>
+									<m:VBox id="vendaNavio" alignItems="Center" direction="Column" fitContainer="true" width="auto" renderType="Div" visible="true"
+										height="auto">
+										<m:items>
+											<m:HBox alignItems="Center" direction="Row" fitContainer="true" width="auto" height="auto" justifyContent="Start" renderType="Div"
+												visible="true" displayInline="false">
+												<m:items>
+													<m:Image class="space" src="/sap/opu/odata/sap/ZGWVPWM_DASHBOARD_SRV/ZET_VPWM_PICTURESSet('NAVIO.jpg')/$value" height="auto" width="50px"
+														densityAware="false"/>
+													<m:Title class="space" text="Navio:" titleStyle="H2" width="auto" textAlign="Begin" visible="true"/>
+													<m:Title id="nomeNavio" text="Kiwi Arrow" titleStyle="H2" width="auto" textAlign="Begin" visible="true"/>
+												</m:items>
+												<m:layoutData/>
+											</m:HBox>
+										</m:items>
+										<m:layoutData/>
+									</m:VBox>
+									<m:Text text="" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+									<f:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="12"
+										adjustLabelSpan="false" emptySpanXL="1" emptySpanL="1" emptySpanM="1" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1"
+										singleContainerFullSize="false">
+										<f:content>
+											<m:HBox alignItems="Center" direction="Row" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div"
+												visible="true" displayInline="false">
+												<m:items>
+													<core:Icon src="sap-icon://sys-enter-2" size="36px" color="Green" height="48px" width="48px" backgroundColor="" visible="true"/>	<m:VBox alignItems="Center" direction="ColumnReverse" fitContainer="true" width="100%" renderType="Div" visible="true" height="auto">
+														<m:items>
+															<m:VBox alignItems="End" direction="ColumnReverse" fitContainer="false" width="auto" height="auto" justifyContent="End" renderType="Div"
+																visible="true" displayInline="false">
+																<m:items>
+																	<layout:HorizontalLayout>
+																		<m:Title class="space" text="{i18n>volumeTotal}" titleStyle="H3" width="auto" textAlign="Center" visible="true"/>
+																		<m:Title id="volumeTotal" text="" titleStyle="H3" width="auto" textAlign="Center" visible="true"/>
+																	</layout:HorizontalLayout>
+																</m:items>
+																<m:layoutData/>
+															</m:VBox>
+														</m:items>
+														<m:layoutData/>
+													</m:VBox>
+												</m:items>
+												<m:layoutData/>
+											</m:HBox>
+											<m:HBox alignItems="Center" direction="Row" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div"
+												visible="true" displayInline="false">
+												<m:items>
+													<core:Icon src="sap-icon://alert" size="36px" color="#b30000" height="48px" width="48px" backgroundColor="" visible="true"/>
+													<m:VBox alignItems="Center" direction="ColumnReverse" fitContainer="true" width="100%" renderType="Div" visible="true" height="auto">
+														<m:items>
+															<m:VBox alignItems="End" direction="ColumnReverse" fitContainer="false" width="auto" height="auto" justifyContent="End" renderType="Div"
+																visible="true" displayInline="false">
+																<m:items>
+																	<layout:HorizontalLayout>
+																		<m:Title class="space" text="{i18n>totalAvarias}" titleStyle="H3" width="auto" textAlign="Center" visible="true"/>
+																		<m:Title id="totalAvarias" text="" titleStyle="H3" width="auto" textAlign="Center" visible="true"/>
+																	</layout:HorizontalLayout>
+																</m:items>
+																<m:layoutData/>
+															</m:VBox>
+														</m:items>
+														<m:layoutData/>
+													</m:VBox>
+												</m:items>
+												<m:layoutData/>
+											</m:HBox>
+										</f:content>
+									</f:SimpleForm>
+									<f:SimpleForm layout="ResponsiveGridLayout" labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12" columnsXL="3" columnsL="3"
+										columnsM="1">
+										<f:content>
+											<m:VBox alignItems="Stretch" direction="Column" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div"
+												visible="true" displayInline="false">
+												<m:items>
+													<m:HBox alignItems="Center" direction="Row" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div"
+														visible="true" displayInline="false">
+														<m:items>
+															<m:Image src="/sap/opu/odata/sap/ZGWVPWM_DASHBOARD_SRV/ZET_VPWM_PICTURESSet('NAVIOICONE.png')/$value" height="38px" width="38px"
+																densityAware="false"/>
+															<m:VBox alignItems="Center" direction="ColumnReverse" fitContainer="true" width="100%" renderType="Div" visible="true" height="auto">
+																<m:items>
+																	<m:VBox alignItems="End" direction="ColumnReverse" fitContainer="false" width="auto" height="auto" justifyContent="End" renderType="Div"
+																		visible="true" displayInline="false">
+																		<m:items>
+																			<m:Title text="Navio" titleStyle="H3" width="auto" textAlign="Center" visible="true"/>
+																		</m:items>
+																		<m:layoutData/>
+																	</m:VBox>
+																</m:items>
+																<m:layoutData/>
+															</m:VBox>
+														</m:items>
+														<m:layoutData/>
+													</m:HBox>
+													<m:Text
+														text="___________________________________________________________________________________________________________________________________________________________________________________________________"
+														width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+													<m:List id="listSaidaNavio" width="100%" headerText="" footerText="" backgroundDesign="Solid" showSeparators="Inner" growing="true"
+														growingThreshold="20" growingScrollToLoad="true" items="{ path : '/' }">
+														<m:infoToolbar>
+															<m:Toolbar width="100%" height="auto" design="Auto" visible="false" enabled="true">
+																<m:content>
+																	<m:Label text="Label" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit"/>
+																</m:content>
+															</m:Toolbar>
+														</m:infoToolbar>
+														<m:headerToolbar/>
+														<m:items>
+															<m:StandardListItem icon="{icon}" title="{material}" description="{peso}" info="{avaria}" infoState="Error" type="{listType}"
+																selected="false"/>
+														</m:items>
+													</m:List>
+													<m:Text
+														text="__________________________________________________________________________________________________________________________________________________________________________________________________________________________________________"
+														width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+													<layout:HorizontalLayout>
+														<m:ObjectStatus title="" class="space" text="" state="Success" icon="sap-icon://sys-enter"/>
+														<m:ObjectStatus class="space" text="{i18n>volumeTotal}" state="Success" icon=""/>
+														<m:ObjectStatus id="qtdeVendidaNavio" text="" state="Success" icon=""/>
+													</layout:HorizontalLayout>
+													<layout:HorizontalLayout>
+														<m:ObjectStatus class="space" title="" text="" state="Error" icon="sap-icon://alert"/>
+														<m:ObjectStatus class="space" title="" text="{i18n>totalAvarias}" state="Error"/>
+														<m:ObjectStatus id="qtdeAvaria" title="" text="" state="Error"/>
+													</layout:HorizontalLayout>
+													<m:Text
+														text="________________________________________________________________________________________________________________________________________________________________"
+														width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+												</m:items>
+												<m:layoutData/>
+											</m:VBox>
+											<m:VBox id="xboxSaidaTrem" alignItems="Stretch" direction="Column" fitContainer="false" width="auto" height="auto" justifyContent="Start"
+												renderType="Div" visible="true" displayInline="false">
+												<m:items>
+													<m:HBox alignItems="Center" direction="Row" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div"
+														visible="true" displayInline="false">
+														<m:items>
+															<core:Icon src="sap-icon://cargo-train" size="36px" height="42px" width="42px" backgroundColor="" visible="true"/>
+															<m:VBox alignItems="Center" direction="ColumnReverse" fitContainer="true" width="100%" renderType="Div" visible="true" height="auto">
+																<m:items>
+																	<m:VBox alignItems="End" direction="ColumnReverse" fitContainer="false" width="auto" height="auto" justifyContent="End" renderType="Div"
+																		visible="true" displayInline="false">
+																		<m:items>
+																			<m:Title text="Trem" titleStyle="H3" width="auto" textAlign="Center" visible="true"/>
+																		</m:items>
+																		<m:layoutData/>
+																	</m:VBox>
+																</m:items>
+																<m:layoutData/>
+															</m:VBox>
+														</m:items>
+														<m:layoutData/>
+													</m:HBox>
+													<m:Text
+														text="___________________________________________________________________________________________________________________________________________________________________________________________________"
+														width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+													<m:List id="listSaidaTrem" width="100%" headerText="" footerText="" backgroundDesign="Solid" showSeparators="Inner" growing="true"
+														growingThreshold="20" growingScrollToLoad="true" items="{ path : '/' }">
+														<m:infoToolbar>
+															<m:Toolbar width="100%" height="auto" design="Auto" visible="false" enabled="true">
+																<m:content>
+																	<m:Label text="Label" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit"/>
+																</m:content>
+															</m:Toolbar>
+														</m:infoToolbar>
+														<m:headerToolbar/>
+														<m:items>
+															<m:StandardListItem icon="{icon}" title="{material}" description="{peso}" info="" infoState="Error" type="{listType}" selected="false"/>
+														</m:items>
+													</m:List>
+													<m:Text
+														text="__________________________________________________________________________________________________________________________________________________________________________________________________________________________________________"
+														width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+													<layout:HorizontalLayout>
+														<m:ObjectStatus title="" class="space" text="" state="Success" icon="sap-icon://sys-enter"/>
+														<m:ObjectStatus class="space" text="{i18n>volumeTotal}" state="Success" icon=""/>
+														<m:ObjectStatus id="qtdeVendidaTrem" text="" state="Success" icon=""/>
+													</layout:HorizontalLayout>
+													<m:Text
+														text="________________________________________________________________________________________________________________________________________________________________"
+														width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+												</m:items>
+												<m:layoutData/>
+											</m:VBox>
+											<m:VBox id="xboxSaidaCaminhao" alignItems="Stretch" direction="Column" fitContainer="false" width="auto" height="auto"
+												justifyContent="Start" renderType="Div" visible="true" displayInline="false">
+												<m:items>
+													<m:HBox alignItems="Center" direction="Row" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div"
+														visible="true" displayInline="false">
+														<m:items>
+															<core:Icon src="sap-icon://shipping-status" size="36px" height="42px" width="42px" visible="true"/>
+															<m:VBox alignItems="Center" direction="ColumnReverse" fitContainer="true" width="100%" renderType="Div" visible="true" height="auto">
+																<m:items>
+																	<m:VBox alignItems="End" direction="ColumnReverse" fitContainer="false" width="auto" height="auto" justifyContent="End" renderType="Div"
+																		visible="true" displayInline="false">
+																		<m:items>
+																			<m:Title text="{i18n>listaCaminhao}" titleStyle="H3" width="auto" textAlign="Center" visible="true"/>
+																		</m:items>
+																		<m:layoutData/>
+																	</m:VBox>
+																</m:items>
+																<m:layoutData/>
+															</m:VBox>
+														</m:items>
+														<m:layoutData/>
+													</m:HBox>
+													<m:Text
+														text="___________________________________________________________________________________________________________________________________________________________________________________________________"
+														width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+													<m:List id="listSaidaCaminhao" width="100%" headerText="" footerText="" backgroundDesign="Solid" showSeparators="Inner" growing="true"
+														growingThreshold="20" growingScrollToLoad="true" items="{ path : '/' }">
+														<m:infoToolbar>
+															<m:Toolbar width="100%" height="auto" design="Auto" visible="false" enabled="true">
+																<m:content>
+																	<m:Label text="Label" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit"/>
+																</m:content>
+															</m:Toolbar>
+														</m:infoToolbar>
+														<m:headerToolbar/>
+														<m:items>
+															<m:StandardListItem icon="{icon}" title="{material}" description="{peso}" info="" infoState="Error" type="{listType}" selected="false"/>
+														</m:items>
+													</m:List>
+													<m:Text
+														text="____________________________________________________________________________________________________________________________________________________________"
+														width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+													<layout:HorizontalLayout>
+														<m:ObjectStatus title="" class="space" text="" state="Success" icon="sap-icon://sys-enter"/>
+														<m:ObjectStatus class="space" text="{i18n>volumeTotal}" state="Success" icon=""/>
+														<m:ObjectStatus id="qtdeVendidaCaminhao" text="" state="Success" icon=""/>
+													</layout:HorizontalLayout>
+													<m:Text
+														text="____________________________________________________________________________________________________________________________________________________________"
+														width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+												</m:items>
+												<m:layoutData/>
+											</m:VBox>
+										</f:content>
+									</f:SimpleForm>
+								</m:content>
+							</m:Panel>
+						</m:content>
+					</m:IconTabFilter>
+					<m:IconTabSeparator id="abaEstoque2" icon="" iconDensityAware="false"/>
+					<m:IconTabFilter id="abaEstoque" icon="sap-icon://factory" iconColor="Default" text="{i18n>iconEstoque}" count="" design="Vertical"
+						showAll="false" textDirection="Inherit" enabled="true" visible="true" iconDensityAware="false">
+						<m:content>
+							<m:Panel height="auto" width="100%" headerText="" expandable="false" expanded="true" expandAnimation="true" backgroundDesign="Solid">
+								<m:content>
+									<m:VBox alignItems="Stretch" direction="Column" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div"
+										visible="true" displayInline="false">
+										<m:items>
+											<m:HBox alignItems="Center" direction="Row" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div"
+												visible="true" displayInline="false">
+												<m:items>
+													<core:Icon src="sap-icon://building" size="48px" color="#000080" height="48px" width="48px" backgroundColor="" visible="true"/>
+													<m:VBox alignItems="Center" direction="ColumnReverse" fitContainer="true" width="100%" renderType="Div" visible="true" height="auto">
+														<m:items>
+															<m:VBox alignItems="End" direction="ColumnReverse" fitContainer="false" width="auto" height="auto" justifyContent="End" renderType="Div"
+																visible="true" displayInline="false">
+																<m:items>
+																	<layout:HorizontalLayout>
+																		<m:Title class="space" text="{i18n>estoqueTotal}" titleStyle="H2" width="auto" textAlign="Center" visible="true"/>
+																		<m:Title id="estoqueTotal" text="" titleStyle="H2" width="auto" textAlign="Center" visible="true"/>
+																	</layout:HorizontalLayout>
+																</m:items>
+																<m:layoutData/>
+															</m:VBox>
+														</m:items>
+														<m:layoutData/>
+													</m:VBox>
+												</m:items>
+												<m:layoutData/>
+											</m:HBox>
+										</m:items>
+										<m:layoutData/>
+									</m:VBox>
+									<f:SimpleForm editable="true" layout="ResponsiveGridLayout" singleContainerFullSize="false">
+										<f:content>
+											<m:VBox alignItems="Stretch" direction="Column" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div"
+												visible="true" displayInline="false">
+												<m:items>
+													<!--<m:Button text="mudar cor" press="onAtulizaCores"></m:Button>-->
+													<m:List id="listEstoqueDiario" width="100%" headerText="" footerText="" backgroundDesign="Solid" showSeparators="All" growing="true"
+														growingThreshold="20" growingScrollToLoad="true" items="{ path : '/' }" press="onPressLocalEstoque">
+														<m:infoToolbar>
+															<m:Toolbar width="100%" height="auto" design="Auto" visible="false" enabled="true">
+																<m:content>
+																	<m:Label text="Label" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit"/>
+																</m:content>
+															</m:Toolbar>
+														</m:infoToolbar>
+														<m:headerToolbar/>
+														<m:items>
+															<m:StandardListItem icon="{icon}" title="{material}" description="{peso}" type="{listType}" info="{cargaAntiga}" selected="false" press="onPressLocalEstoque"/>
+														</m:items>
+													</m:List>
+												</m:items>
+												<m:layoutData/>
+											</m:VBox>
+										</f:content>
+									</f:SimpleForm>
+								</m:content>
+							</m:Panel>
+						</m:content>
+					</m:IconTabFilter>
+				</m:items>
+			</m:IconTabBar>
+		</m:content>
+		<m:footer>
+			<m:Bar design="Auto">
+				<m:contentLeft/>
+				<m:contentMiddle/>
+				<m:contentRight/>
+			</m:Bar>
+		</m:footer>
+		<m:headerContent/>
+		<m:subHeader/>
+		<m:customHeader/>
+	</m:Page>
+</mvc:View>

@@ -1,0 +1,6 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog title="Informe o Operador" class="sapUiPopupWithPadding" items="{/ZET_GLHR_HELP_DOCUMENTOSSet}" search="onSearch"
+		confirm="onConfirmDocumento" cancel="_handleValueHelpClose">
+		<StandardListItem iconDensityAware="false" iconInset="false" title="{Subty}" description="{Stext}" icon="sap-icon://add-folder"/>
+	</SelectDialog>
+</core:FragmentDefinition>

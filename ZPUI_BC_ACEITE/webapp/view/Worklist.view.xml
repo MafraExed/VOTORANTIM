@@ -1,0 +1,329 @@
+<core:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.f.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:smartFilterBar="sap.ui.comp.smartfilterbar" xmlns:m="sap.m" xmlns:table="sap.ui.table" xmlns:sv="sap.ui.comp.smartvariants" xmlns:smartTable="sap.ui.comp.smarttable" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:l="controls" xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" controllerName="ZCBMM_ACEITE_RESERVA.ZCBMM_ACEITE_RESERVA.controller.Worklist">
+	<Page title="Gestão de reservas" class="sapUiContentPadding">
+		<!--<Page floatingFooter="true" enableScrolling="true" showHeader="false">-->
+		<IconTabBar id="iconTabBar" class="sapUiResponsiveContentPadding" selectedKey="Tab" modelContextChange="onChangeContext" select="onSelectFilter">
+			<items>
+				<IconTabFilter key="1" id="Filter01" text="Aceite" icon="sap-icon://newspaper" visible="true" tooltip="Aceite">
+					<smartFilterBar:SmartFilterBar id="smartFilterBar1" persistencyKey="SmartTablePKey" useToolbar="false" assignedFiltersChanged="onAssignedFiltersChanged" entitySet="ZET_CBMM_CF_ACEITESet" visible="true">
+						<smartFilterBar:controlConfiguration>
+							<smartFilterBar:ControlConfiguration key="AgrupRes" id="idAgrupRes" index="0" label="Agrupamento Reserva" groupId="_BASIC" width="auto" visibleInAdvancedArea="true"/>
+							<smartFilterBar:ControlConfiguration key="Reserva" id="idReserva" index="1" label="Reserva" groupId="_BASIC" width="auto" visibleInAdvancedArea="true"/>
+							<smartFilterBar:ControlConfiguration key="Material" id="idMaterial" index="2" label="Material" groupId="_BASIC" width="auto" visibleInAdvancedArea="true"/>
+							<smartFilterBar:ControlConfiguration key="DtNecessidade" id="idDtNecessidade" index="3" label="DtNecessidade" groupId="_BASIC" width="auto" visibleInAdvancedArea="true">
+								<!--<smartFilterBar:customControl>-->
+								<!--	<DatePicker-->
+								<!--		displayFormat="dd/MM/yyyy"-->
+								<!--		valueFormat="dd/MM/yyyy"-->
+								<!--		/>-->
+								<!--</smartFilterBar:customControl>-->
+							</smartFilterBar:ControlConfiguration>
+						</smartFilterBar:controlConfiguration>
+						<smartFilterBar:layoutData>
+							<FlexItemData shrinkFactor="0"/>
+						</smartFilterBar:layoutData>
+					</smartFilterBar:SmartFilterBar>
+					<f:Form>
+						<f:layout>
+							<f:ResponsiveGridLayout labelSpanXL="5" labelSpanL="5" labelSpanM="5" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer>
+								<f:formElements>
+									<f:FormElement>
+										<smartTable:SmartTable id="smartTable" entitySet="ZET_CBMM_CF_ACEITESet" smartFilterId="smartFilterBar1" useOnlyOneSolidToolbar="true" useExportToExcel="true" useVariantManagement="true" useTablePersonalisation="false" tableType="Table" showRowCount="true" showFullScreenButton="true" requestAtLeastFields="AgrupRes,DtNecessidade,Hora,Reserva,Item,Material,DescrMat,QtdNecessaria,QtdRetReserva,QtdAceite,Nome,Matricula,DtAceite" enableAutoBinding="false" class="sapUiResponsiveContentPadding" persistencyKey="SmartTablePKey">
+											<Table id="table" enableBusyIndicator="true" busyIndicatorDelay="100">
+												<columns>
+													<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+														<Text text="AgrupRes"/>
+													</Column>
+													<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+														<Text text="DtNecessidade"/>
+													</Column>
+													<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+														<Text text="Reserva"/>
+													</Column>
+													<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+														<Text text="Item"/>
+													</Column>
+													<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+														<Text text="Material"/>
+													</Column>
+													<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+														<Text text="DescrMat"/>
+													</Column>
+													<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+														<Text text="QtdNecessaria"/>
+													</Column>
+													<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+														<Text text="QtdRetReserva"/>
+													</Column>
+													<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+														<Text text="QtdAceite"/>
+													</Column>
+												</columns>
+												<items>
+													<ColumnListItem>
+														<cells>
+															<Text text="{AgrupRes}"/>
+															<Text text="{path: 'DtNecessidade', formatter: '.formatter.formatDate'}"/>
+															<Text text="{Reserva}"/>
+															<Text text="{Item}"/>
+															<Text text="{Material}"/>
+															<Text text="{DescrMat}"/>
+															<Text text="{QtdNecessaria}"/>
+															<Text text="{QtdRetReserva}"/>
+															<!--<m:Input id="inputId" type="Number" value="{QtdAceite}"></m:Input>-->
+															<Input id="inputId" type="Number"/>
+														</cells>
+													</ColumnListItem>
+												</items>
+											</Table>
+											<smartTable:layoutData>
+												<FlexItemData growFactor="1" baseSize="0%"/>
+											</smartTable:layoutData>
+										</smartTable:SmartTable>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<!--<VBox>-->
+					<!--	<core:HTML id="html"></core:HTML>-->
+					<!--</VBox>-->
+					<!--<VBox>-->
+					<!--	<HBox>-->
+					<!--		<Button id="Signature" text="Signature" press="onSign"></Button>-->
+					<!--		<Button id="Save" text="Save" press="saveButton"></Button>-->
+					<!--		<Button id="clear" text="Clear" press="clearButton"></Button>-->
+					<!--	</HBox>-->
+					<!--</VBox>-->
+				</IconTabFilter>
+				<IconTabFilter key="2" id="Filter02" text="Consultas de Aceite" icon="sap-icon://newspaper" visible="true" tooltip="Consultas">
+					<smartFilterBar:SmartFilterBar id="smartFilterBar2" persistencyKey="SmartTablePKey" useToolbar="false" entitySet="ZET_CBMM_CF_ACEITEConsultaSet" visible="true" assignedFiltersChanged="onAssignedFiltersChanged">
+						<smartFilterBar:controlConfiguration>
+							<smartFilterBar:ControlConfiguration key="Reserva" id="idReserva2" index="0" label="Reserva" groupId="_BASIC" width="auto" visibleInAdvancedArea="true"/>
+							<smartFilterBar:ControlConfiguration key="Material" id="idMaterial2" index="1" label="Material" groupId="_BASIC" width="auto" visibleInAdvancedArea="true"/>
+							<smartFilterBar:ControlConfiguration key="Data" id="idData2" index="2" label="Data" groupId="_BASIC" width="auto" visibleInAdvancedArea="true"/>
+							<smartFilterBar:ControlConfiguration key="DtAceite" id="idDtAceite2" index="3" label="Data Aceite" groupId="_BASIC" width="auto" visibleInAdvancedArea="false"/>
+							<!--<smartFilterBar:customControl>-->
+							<!--	<DatePicker-->
+							<!--		displayFormat="dd/MM/yyyy"-->
+							<!--		valueFormat="dd/MM/yyyy"-->
+							<!--		/>-->
+							<!--</smartFilterBar:customControl>-->
+							<!--</smartFilterBar:ControlConfiguration>-->
+						</smartFilterBar:controlConfiguration>
+						<smartFilterBar:layoutData>
+							<FlexItemData shrinkFactor="0"/>
+						</smartFilterBar:layoutData>
+					</smartFilterBar:SmartFilterBar>
+					<f:Form>
+						<f:layout>
+							<f:ResponsiveGridLayout labelSpanXL="5" labelSpanL="5" labelSpanM="5" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer>
+								<f:formElements>
+									<f:FormElement>
+										<smartTable:SmartTable id="smartTable2" entitySet="ZET_CBMM_CF_ACEITEConsultaSet" smartFilterId="smartFilterBar2" useExportToExcel="true" useVariantManagement="false" useTablePersonalisation="true" tableType="Table" header="Consulta baixas por reserva" showRowCount="true" showFullScreenButton="true" requestAtLeastFields="Reserva,Item,Material,DescrMat,Centro,QtdNecessaria,QtdRetReserva,QtdAceite,Nome,Matricula,Data,Hora,DtAceite" enableAutoBinding="false" class="sapUiResponsiveContentPadding" persistencyKey="SmartTablePKey">
+											<smartTable:customData>
+												<core:CustomData key="dateFormatSettings" value='\{"UTC":true\}'/>
+											</smartTable:customData>
+											<table:Table selectionMode="None" id="table1" enableBusyIndicator="true" busyIndicatorDelay="100" enableCellFilter="false" rowSelectionChange="CountCheck" enableColumnFreeze="true" enableColumnReordering="true" visibleRowCount="20">
+												<table:Column autoResizable="true">
+													<Label text="Data"/>
+													<table:template>
+														<Text text="{Data}"/>
+													</table:template>
+													<table:customData>
+														<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;Data&quot;, &quot;columnIndex&quot;:&quot;1&quot;, &quot;leadingProperty&quot;: &quot;Data&quot;}"/>
+													</table:customData>
+												</table:Column>
+												<table:Column autoResizable="true">
+													<Label text="Hora"/>
+													<table:template>
+														<Text text="{Hora}"/>
+													</table:template>
+													<table:customData>
+														<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;Hora&quot;, &quot;columnIndex&quot;:&quot;2&quot;, &quot;leadingProperty&quot;: &quot;Hora&quot;}"/>
+													</table:customData>
+												</table:Column>
+												<table:Column autoResizable="true">
+													<Label text="Reserva"/>
+													<table:template>
+														<Text text="{Reserva}"/>
+													</table:template>
+													<table:customData>
+														<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;Reserva&quot;, &quot;columnIndex&quot;:&quot;3&quot;, &quot;leadingProperty&quot;: &quot;Reserva&quot;}"/>
+													</table:customData>
+												</table:Column>
+												<table:Column autoResizable="true">
+													<Label text="Item"/>
+													<table:template>
+														<Text text="{Item}"/>
+													</table:template>
+													<table:customData>
+														<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;Item&quot;, &quot;columnIndex&quot;:&quot;4&quot;, &quot;leadingProperty&quot;: &quot;Item&quot;}"/>
+													</table:customData>
+												</table:Column>
+												<table:Column autoResizable="true">
+													<Label text="Material"/>
+													<table:template>
+														<Text text="{Material}"/>
+													</table:template>
+													<table:customData>
+														<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;Material&quot;, &quot;columnIndex&quot;:&quot;5&quot;, &quot;leadingProperty&quot;: &quot;Material&quot;}"/>
+													</table:customData>
+												</table:Column>
+												<table:Column autoResizable="true">
+													<Label text="DescrMat"/>
+													<table:template>
+														<Text text="{DescrMat}"/>
+													</table:template>
+													<table:customData>
+														<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;DescrMat&quot;, &quot;columnIndex&quot;:&quot;6&quot;, &quot;leadingProperty&quot;: &quot;DescrMat&quot;}"/>
+													</table:customData>
+												</table:Column>
+												<table:Column autoResizable="true">
+													<Label text="QtdNecessaria"/>
+													<table:template>
+														<Text text="{QtdNecessaria}"/>
+													</table:template>
+													<table:customData>
+														<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;QtdNecessaria&quot;, &quot;columnIndex&quot;:&quot;7&quot;, &quot;leadingProperty&quot;: &quot;QtdNecessaria&quot;}"/>
+													</table:customData>
+												</table:Column>
+												<table:Column autoResizable="true">
+													<Label text="QtdRetReserva"/>
+													<table:template>
+														<Text text="{QtdRetReserva}"/>
+													</table:template>
+													<table:customData>
+														<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;QtdRetReserva&quot;, &quot;columnIndex&quot;:&quot;8&quot;, &quot;leadingProperty&quot;: &quot;QtdRetReserva&quot;}"/>
+													</table:customData>
+												</table:Column>
+												<table:Column autoResizable="true">
+													<Label text="QtdAceite"/>
+													<table:template>
+														<Text text="{QtdAceite}"/>
+													</table:template>
+													<table:customData>
+														<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;QtdAceite&quot;, &quot;columnIndex&quot;:&quot;9&quot;, &quot;leadingProperty&quot;: &quot;QtdAceite&quot;}"/>
+													</table:customData>
+												</table:Column>
+												<table:Column autoResizable="true">
+													<Label text="Nome"/>
+													<table:template>
+														<Text text="{Nome}"/>
+													</table:template>
+													<table:customData>
+														<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;Nome&quot;, &quot;columnIndex&quot;:&quot;10&quot;, &quot;leadingProperty&quot;: &quot;Nome&quot;}"/>
+													</table:customData>
+												</table:Column>
+												<table:Column autoResizable="true">
+													<Label text="Matricula"/>
+													<table:template>
+														<Text text="{Matricula}"/>
+													</table:template>
+													<table:customData>
+														<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;Matricula&quot;, &quot;columnIndex&quot;:&quot;11&quot;, &quot;leadingProperty&quot;: &quot;Matricula&quot;}"/>
+													</table:customData>
+												</table:Column>
+												<table:Column autoResizable="true">
+													<Label text="Login"/>
+													<table:template>
+														<Text text="{Login}"/>
+													</table:template>
+													<table:customData>
+														<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;Login&quot;, &quot;columnIndex&quot;:&quot;11&quot;, &quot;leadingProperty&quot;: &quot;Login&quot;}"/>
+													</table:customData>
+												</table:Column>
+												<table:Column autoResizable="true">
+													<Label text="DtAceite"/>
+													<table:template>
+														<!--<Text text="{ path: 'DtAceite', type: 'sap.ui.model.odata.type.DateTime', formatOptions: { pattern: 'dd/MM/yyyy' } }"/>-->
+														<Text text="{DtAceite}"/>
+													</table:template>
+													<table:customData>
+														<core:CustomData key="p13nData" value="\{&quot;columnKey&quot;: &quot;DtAceite&quot;, &quot;columnIndex&quot;:&quot;11&quot;, &quot;leadingProperty&quot;: &quot;DtAceite&quot;}"/>
+													</table:customData>
+												</table:Column>
+											</table:Table>
+											<!--<Table id="table2" enableBusyIndicator="true" busyIndicatorDelay="100">-->
+											<!--	<columns>-->
+											<!--		<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">-->
+											<!--			<Text text="Data"/>-->
+											<!--		</Column>-->
+											<!--		<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center" visible="false">-->
+											<!--			<Text text="Hora"/>-->
+											<!--		</Column>-->
+											<!--		<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">-->
+											<!--			<Text text="Reserva"/>-->
+											<!--		</Column>-->
+											<!--		<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">-->
+											<!--			<Text text="Item"/>-->
+											<!--		</Column>-->
+											<!--		<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">-->
+											<!--			<Text text="Material"/>-->
+											<!--		</Column>-->
+											<!--		<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">-->
+											<!--			<Text text="DescrMat"/>-->
+											<!--		</Column>-->
+											<!--		<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">-->
+											<!--			<Text text="QtdNecessaria"/>-->
+											<!--		</Column>-->
+											<!--		<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">-->
+											<!--			<Text text="QtdRetReserva"/>-->
+											<!--		</Column>-->
+											<!--		<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">-->
+											<!--			<Text text="QtdAceite"/>-->
+											<!--		</Column>-->
+											<!--		<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">-->
+											<!--			<Text text="Nome"/>-->
+											<!--		</Column>-->
+											<!--		<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">-->
+											<!--			<Text text="Matricula"/>-->
+											<!--		</Column>-->
+											<!--<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">-->
+											<!--	<Text text="Foto"/>-->
+											<!--</Column>-->
+											<!--	</columns>-->
+											<!--	<items>-->
+											<!--		<ColumnListItem>-->
+											<!--			<cells>-->
+											<!--				<Text id="datareserva" text="{path: 'Data', formatter: '.formatter.formatDate'}"/>-->
+											<!--				<Text id="horareserva" text="{path: 'Hora', formatter: '.formatter.formatTime'}"/>-->
+											<!--				<Text id="idreserva" text="{Reserva}"/>-->
+											<!--				<Text id="itemreserva" text="{Item}"/>-->
+											<!--				<Text text="{Material}"/>-->
+											<!--				<Text text="{DescrMat}"/>-->
+											<!--				<Text text="{QtdNecessaria}"/>-->
+											<!--				<Text text="{QtdRetReserva}"/>-->
+											<!--				<Text text="{QtdAceite}"/>-->
+											<!--				<Text text="{Nome}"/>-->
+											<!--				<Text text="{Matricula}"/>-->
+											<!--<Button icon="sap-icon://camera" press="onPhoto"/>-->
+											<!--			</cells>-->
+											<!--		</ColumnListItem>-->
+											<!--	</items>-->
+											<!--</Table>-->
+											<smartTable:layoutData>
+												<FlexItemData growFactor="1" baseSize="0%"/>
+											</smartTable:layoutData>
+										</smartTable:SmartTable>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+				</IconTabFilter>
+			</items>
+		</IconTabBar>
+		<footer>
+			<Toolbar>
+				<!--<ToolbarSpacer/>-->
+				<Button text="Salvar" press="save" icon="sap-icon://save"/>
+			</Toolbar>
+		</footer>
+	</Page>
+</core:View>

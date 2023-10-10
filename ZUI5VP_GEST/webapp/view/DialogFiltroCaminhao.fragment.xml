@@ -1,0 +1,56 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Dialog busyIndicatorDelay="1" horizontalScrolling="false" state="None" stretch="false" title="Filtro por Caminhão" type="Standard" verticalScrolling="true">
+		<content>
+			<ScrollContainer horizontal="true">
+				<HBox class="sapUiSmallMargin">
+					<VBox class="sapUiSmallMarginEnd">
+						<Label text="Centro"/>
+						<Input value="Un. Aracruz" width="12.5rem" showValueHelp="true" valueHelpRequest="onFilterByCentro" editable="true"/>
+					</VBox>
+					<VBox class="sapUiSmallMarginEnd">
+						<Label text="Placa do Cavalo"/>
+						<Input id="inptPlacaCavalo" width="12.5rem" showValueHelp="true" valueHelpRequest="onFilterByCavalo"/>
+					</VBox>
+					<VBox class="sapUiSmallMarginEnd">
+						<Label text="Placa da Carreta 1"/>
+						<Input width="12.5rem" showValueHelp="true" valueHelpRequest="onFilterByCarreta1"/>
+					</VBox>
+					<VBox>
+						<Label text="Placa da Carreta 2"/>
+						<Input width="12.5rem" showValueHelp="true" valueHelpRequest="onFilterByCarreta2"/>
+					</VBox>
+				</HBox>
+			</ScrollContainer>
+			
+			<List id="listaCaminhoes" class="sapUiSmallMarginBegin" items="{path: 'filtroCaminhao>/'}">
+				<items>
+					<ObjectListItem press="onComposicaoSelecionada" class="sapUiSmallMarginEnd" title="Composição: {filtroCaminhao>Composicao}" type="Active">
+						<firstStatus>
+							<ObjectStatus text="{filtroCaminhao>CompSelected}" state="Success"/>
+						</firstStatus>
+						<attributes>
+							<ObjectAttribute title="Placa Cavalo" text="{filtroCaminhao>PlcCavalo}"/>
+							<ObjectAttribute title="Placa Carreta 1" text="{filtroCaminhao>PlcCarro1}"/>
+							<ObjectAttribute title="Placa Carreta 2" text="{filtroCaminhao>PlcCarro2}"/>
+						</attributes>
+					</ObjectListItem>
+				</items>
+				<headerToolbar>
+					<Toolbar class="sapUiSmallMarginEnd">
+						<Title text="Lista de Caminhões" level="H2" visible="{= !${device>/system/phone} }" />
+						<ToolbarSpacer visible="{= !${device>/system/phone} }" />
+						<SearchField width="50%" liveChange="_onSearchFieldLiveChange"/>
+						<ToolbarSpacer visible="{device>/system/phone}" />
+						<Button text="Limpar Filtros" type="Emphasized" press="onCleanFilters"/>
+					</Toolbar>
+				</headerToolbar>
+			</List>
+		</content>
+		<beginButton>
+			<Button text="Cancelar" type="Reject" press="onClose"/>
+		</beginButton>
+		<endButton>
+			<Button text="Aplicar" type="Accept" press="onApplyFilter"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,131 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:m="sap.m" xmlns:chart="sap.chart" xmlns:data="sap.chart.data" xmlns:layout="sap.ui.layout"
+	xmlns:core="sap.ui.core" xmlns="sap.m" controllerName="com.sap.dashboardappDashboardApp.controller.Simular">
+	<m:Page showHeader="true" title="Simulação" showFooter="true" showNavButton="true" navButtonPress="onNavBack">
+		<m:content>
+			<m:Panel id="panel" height="auto" width="100%" headerText="" expandable="false" expanded="true" expandAnimation="false"
+				backgroundDesign="Solid">
+				<m:content>
+					<OverflowToolbar>
+						<Button text="Simular Entrada" press="onPressSimularEntrada" activeIcon="sap-icon://collections-management"
+							icon="sap-icon://collections-management"></Button>
+						<Button text="Alterar mês" press="onPressTrocarMes" activeIcon="sap-icon://appointment" icon="sap-icon://appointment"></Button>
+						<m:ToolbarSpacer></m:ToolbarSpacer>
+						<Button text="Resetar" press="onPressResetar" width="130px" activeIcon="sap-icon://reset" icon="sap-icon://reset">
+							<layoutData>
+								<ToolbarLayoutData shrinkable="true"/>
+							</layoutData>
+						</Button>
+						<ToggleButton text="Legenda" pressed="true" width="130px" id="toggleButton" activeIcon="sap-icon://legend" icon="sap-icon://legend"
+							press="onToggleButtonPress">
+							<layoutData>
+								<ToolbarLayoutData shrinkable="true"/>
+							</layoutData>
+						</ToggleButton>
+						<content/>
+					</OverflowToolbar>
+					<chart:Chart id="LineChart" width="100%" height="450px" visibleDimensions="Dias,Navios" visibleMeasures="Estoque,Capacidade"
+						chartType="line" isAnalytical="true" selectionMode="Single" uiConfig="{}"
+						vizProperties="{plotArea:{dataLabel:{visible: true,hideWhenOverlap:true}}}" renderComplete="onRenderComplete">
+						<chart:dimensions>
+							<data:Dimension name="Dias" label="Dias" role="category"/>
+							<data:Dimension name="Navios" label="Navios" role="category"/>
+						</chart:dimensions>
+						<chart:measures>
+							<data:Measure name="Estoque" label="Estoque" role="axis2"/>
+							<data:Measure name="Capacidade" label="Capacidade" role="axis2"/>
+						</chart:measures>
+					</chart:Chart>
+					<m:Bar design="Footer">
+						<m:contentLeft/>
+						<m:contentMiddle>
+							<m:Title text="Simulação" titleStyle="H2" width="auto" textAlign="Begin" visible="true"/>
+						</m:contentMiddle>
+						<m:contentRight/>
+					</m:Bar>
+					<layout:Grid defaultIndent="L0 M0 S0" defaultSpan="L6 M6 S12" position="Left" width="100%" containerQuery="false" hSpacing="0" vSpacing="0">
+						<layout:content>
+							<m:VBox alignItems="Stretch" direction="Column" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div"
+								visible="true" displayInline="false">
+								<m:items>
+									<m:HBox alignItems="Center" direction="Row" fitContainer="false" width="auto" height="auto" justifyContent="Center" renderType="Div"
+										visible="true" displayInline="false">
+										<m:items>
+											<m:Image src="/sap/opu/odata/sap/ZGWVPWM_DASHBOARD_SRV/ZET_VPWM_PICTURESSet('NAVIOICONE.png')/$value" height="40px" width="40px"
+												densityAware="false"/>
+											<m:Text text="" width="20px" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+											<m:Title text="Navios" titleStyle="H2" width="auto" textAlign="Begin" visible="true"/>
+										</m:items>
+										<m:layoutData/>
+									</m:HBox>
+									<FlexBox alignItems="Start" justifyContent="Center">
+										<items>
+											<m:RadioButtonGroup id="rbgNavios" buttons="{/}" columns="1" valueState="None" width="auto" editable="true" enabled="true"
+												textDirection="Inherit" select="onRadioButtonGroupChange">
+												<m:RadioButton text="{Text}" selected="{Selected}"/>
+												<!--<m:buttons>-->
+												<!--	<m:RadioButton selected="true" text="04/09 - Saga Fortune - 9.420 T" editable="true" enabled="true" visible="true" width="auto" valueState="None"/>-->
+												<!--	<m:RadioButton selected="false" text="09/09 - Kiwi Arrow - 10.289 T" editable="true" enabled="true" visible="true" width="auto" valueState="None"/>-->
+												<!--	<m:RadioButton selected="false" text="14/09 - Penguim Arrow - 13.492 T" editable="true" enabled="true" visible="true" width="auto" valueState="None"/>-->
+												<!--	<m:RadioButton selected="false" text="18/09 - Halophyla - 13.991 T" editable="true" enabled="true" visible="true" width="auto" valueState="None"/>-->
+												<!--	<m:RadioButton selected="false" text="24/09 - Ray Of Light - 9.240 T" editable="true" enabled="true" visible="true" width="auto" valueState="None"/>-->
+												<!--</m:buttons>-->
+											</m:RadioButtonGroup>
+										</items>
+									</FlexBox>
+									<!--<m:RadioButtonGroup id="rbgNavios" buttons="{/}" columns="1" valueState="None" width="auto" editable="true" enabled="true"-->
+									<!--	textDirection="Inherit" select="onRadioButtonGroupChange">-->
+									<!--	<m:RadioButton text="{Text}" selected="{Selected}"/>-->
+									<!--<m:buttons>-->
+									<!--	<m:RadioButton selected="true" text="04/09 - Saga Fortune - 9.420 T" editable="true" enabled="true" visible="true" width="auto" valueState="None"/>-->
+									<!--	<m:RadioButton selected="false" text="09/09 - Kiwi Arrow - 10.289 T" editable="true" enabled="true" visible="true" width="auto" valueState="None"/>-->
+									<!--	<m:RadioButton selected="false" text="14/09 - Penguim Arrow - 13.492 T" editable="true" enabled="true" visible="true" width="auto" valueState="None"/>-->
+									<!--	<m:RadioButton selected="false" text="18/09 - Halophyla - 13.991 T" editable="true" enabled="true" visible="true" width="auto" valueState="None"/>-->
+									<!--	<m:RadioButton selected="false" text="24/09 - Ray Of Light - 9.240 T" editable="true" enabled="true" visible="true" width="auto" valueState="None"/>-->
+									<!--</m:buttons>-->
+									<!--</m:RadioButtonGroup>-->
+								</m:items>
+								<m:layoutData/>
+							</m:VBox>
+							<m:VBox alignItems="Stretch" direction="Column" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div"
+								visible="true" displayInline="false">
+								<m:items>
+									<m:HBox alignItems="Center" direction="Inherit" fitContainer="false" width="auto" height="auto" justifyContent="Center" renderType="Div"
+										visible="true" displayInline="false">
+										<m:items>
+											<core:Icon src="sap-icon://calendar" size="34px" color="" height="48px" width="48px" visible="true"/>
+											<m:Text text="" width="20px" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+											<m:Title text="Nova data" titleStyle="H2" width="auto" textAlign="Begin" visible="true"/>
+										</m:items>
+										<m:layoutData/>
+									</m:HBox>
+									<m:Slider id="mySliderDate" min="1" max="30" value="4" step="1" enabled="false" visible="true" width="100%" progress="true"
+										change="onSliderChange" liveChange="onSliderLiveChange"/>
+									<m:Title id="titleSliderDate" text="Dia: " titleStyle="H2" width="auto" textAlign="Begin" visible="true"/>
+								</m:items>
+								<m:layoutData/>
+							</m:VBox>
+						</layout:content>
+					</layout:Grid>
+					<m:VBox alignItems="Stretch" direction="Column" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div"
+						visible="true" displayInline="false">
+						<m:items/>
+						<m:layoutData/>
+					</m:VBox>
+				</m:content>
+			</m:Panel>
+		</m:content>
+		<m:footer>
+			<m:Bar design="Auto">
+				<m:contentLeft/>
+				<m:contentMiddle/>
+				<m:contentRight/>
+			</m:Bar>
+		</m:footer>
+		<m:headerContent>
+			<core:Icon src="sap-icon://simulate" size="26px" color="#000080" height="30px" width="30px"/>
+			<!--<core:Icon src="sap-icon://simulate" size="36px" color="#000080" height="48px" width="48px" visible="true"/>-->
+		</m:headerContent>
+		<m:subHeader/>
+		<m:customHeader/>
+	</m:Page>
+</mvc:View>

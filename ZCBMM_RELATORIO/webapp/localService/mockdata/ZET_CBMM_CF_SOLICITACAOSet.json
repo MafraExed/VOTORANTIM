@@ -1,0 +1,101 @@
+[{
+	"DtInic": "/Date(1255898684000)/",
+	"DtFim": "/Date(1555710284000)/",
+	"IdSolicitacao": 7898,
+	"Solicitacao": "Em aberto no prazo",
+	"Valor": 1,
+	"__metadata": {
+		"uri": "ZET_CBMM_CF_SOLICITACAOSet(DtInic=datetime'2009-10-18T20%3A44%3A44',IdSolicitacao=7898)",
+		"type": "ZGWCBMM_RELATORIO_SRV.ZET_CBMM_CF_SOLICITACAO"
+	}
+}, {
+	"DtInic": "/Date(960846284000)/",
+	"DtFim": "/Date(1463089484000)/",
+	"IdSolicitacao": 5401,
+	"Solicitacao": "Em aberto no prazo",
+	"Valor": 1,
+	"__metadata": {
+		"uri": "ZET_CBMM_CF_SOLICITACAOSet(DtInic=datetime'2000-06-12T21%3A44%3A44',IdSolicitacao=5401)",
+		"type": "ZGWCBMM_RELATORIO_SRV.ZET_CBMM_CF_SOLICITACAO"
+	}
+}, {
+	"DtInic": "/Date(1270417484000)/",
+	"DtFim": "/Date(1022708684000)/",
+	"IdSolicitacao": 4348,
+	"Solicitacao": "Em aberto atrasado",
+	"Valor": 1,
+	"__metadata": {
+		"uri": "ZET_CBMM_CF_SOLICITACAOSet(DtInic=datetime'2010-04-04T21%3A44%3A44',IdSolicitacao=4348)",
+		"type": "ZGWCBMM_RELATORIO_SRV.ZET_CBMM_CF_SOLICITACAO"
+	}
+}, {
+	"DtInic": "/Date(1387917884000)/",
+	"DtFim": "/Date(1204839884000)/",
+	"IdSolicitacao": 8326,
+	"Solicitacao": "Em aberto atrasado",
+	"Valor": 1,
+	"__metadata": {
+		"uri": "ZET_CBMM_CF_SOLICITACAOSet(DtInic=datetime'2013-12-24T20%3A44%3A44',IdSolicitacao=8326)",
+		"type": "ZGWCBMM_RELATORIO_SRV.ZET_CBMM_CF_SOLICITACAO"
+	}
+}, {
+	"DtInic": "/Date(1416861884000)/",
+	"DtFim": "/Date(1538430284000)/",
+	"IdSolicitacao": 8204,
+	"Solicitacao": "Recusada",
+	"Valor": 1,
+	"__metadata": {
+		"uri": "ZET_CBMM_CF_SOLICITACAOSet(DtInic=datetime'2014-11-24T20%3A44%3A44',IdSolicitacao=8204)",
+		"type": "ZGWCBMM_RELATORIO_SRV.ZET_CBMM_CF_SOLICITACAO"
+	}
+}, {
+	"DtInic": "/Date(1331502284000)/",
+	"DtFim": "/Date(1345326284000)/",
+	"IdSolicitacao": 4580,
+	"Solicitacao": "Recusada",
+	"Valor": 1,
+	"__metadata": {
+		"uri": "ZET_CBMM_CF_SOLICITACAOSet(DtInic=datetime'2012-03-11T21%3A44%3A44',IdSolicitacao=4580)",
+		"type": "ZGWCBMM_RELATORIO_SRV.ZET_CBMM_CF_SOLICITACAO"
+	}
+}, {
+	"DtInic": "/Date(1231879484000)/",
+	"DtFim": "/Date(1196628284000)/",
+	"IdSolicitacao": 7245,
+	"Solicitacao": "Recusada",
+	"Valor": 1,
+	"__metadata": {
+		"uri": "ZET_CBMM_CF_SOLICITACAOSet(DtInic=datetime'2009-01-13T20%3A44%3A44',IdSolicitacao=7245)",
+		"type": "ZGWCBMM_RELATORIO_SRV.ZET_CBMM_CF_SOLICITACAO"
+	}
+}, {
+	"DtInic": "/Date(1144100684000)/",
+	"DtFim": "/Date(1499636684000)/",
+	"IdSolicitacao": 1715,
+	"Solicitacao": "Concluída",
+	"Valor": 1,
+	"__metadata": {
+		"uri": "ZET_CBMM_CF_SOLICITACAOSet(DtInic=datetime'2006-04-03T21%3A44%3A44',IdSolicitacao=1715)",
+		"type": "ZGWCBMM_RELATORIO_SRV.ZET_CBMM_CF_SOLICITACAO"
+	}
+}, {
+	"DtInic": "/Date(1391028284000)/",
+	"DtFim": "/Date(1208987084000)/",
+	"IdSolicitacao": 1204,
+	"Solicitacao": "Concluída",
+	"Valor": 1,
+	"__metadata": {
+		"uri": "ZET_CBMM_CF_SOLICITACAOSet(DtInic=datetime'2014-01-29T20%3A44%3A44',IdSolicitacao=1204)",
+		"type": "ZGWCBMM_RELATORIO_SRV.ZET_CBMM_CF_SOLICITACAO"
+	}
+}, {
+	"DtInic": "/Date(1039985084000)/",
+	"DtFim": "/Date(1132951484000)/",
+	"IdSolicitacao": 3872,
+	"Solicitacao": "Concluída",
+	"Valor": 1,
+	"__metadata": {
+		"uri": "ZET_CBMM_CF_SOLICITACAOSet(DtInic=datetime'2002-12-15T20%3A44%3A44',IdSolicitacao=3872)",
+		"type": "ZGWCBMM_RELATORIO_SRV.ZET_CBMM_CF_SOLICITACAO"
+	}
+}]

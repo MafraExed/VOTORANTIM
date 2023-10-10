@@ -1,0 +1,1 @@
+sap.ui.define(["./BaseController"],function(e){"use strict";return e.extend("Y5GL_PONTO.Y5GL_PONTO.controller.DetailObjectNotFound",{})});

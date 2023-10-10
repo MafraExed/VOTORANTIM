@@ -1,0 +1,11 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:lab="openui5.camera" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:u="sap.ui.unified">
+	<Dialog title="Foto" beforeClose="beforeClose">
+		<content>
+			<lab:Camera width="{= ${device>/system/desktop} ? '600px' : '80%'}" height="{= ${device>/system/desktop} ? '350px' : '100%'}"
+				snapshot=".onSnapshot" singleShotMode="false" id="IdCamera"/>
+		</content>
+		<endButton>
+			<Button id="btnClose" text="Fechar" enabled="true" press="closeDialog"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

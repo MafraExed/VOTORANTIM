@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema Namespace="ZGWFBGL_AUDITORIA_MM_IV_SRV" xml:lang="pt" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+			<EntityType Name="Auditoria" sap:content-version="1">
+				<Key><PropertyRef Name="Tipoinv"/><PropertyRef Name="Werks"/><PropertyRef Name="Iblnr"/><PropertyRef Name="Gjahr"/><PropertyRef Name="Ivkey"/><PropertyRef Name="Ivnum"/><PropertyRef Name="Ivpos"/><PropertyRef Name="Zeili"/></Key><Property Name="Tipoinv" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Tipo de Inventário" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false"/><Property Name="Werks" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Centro" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false"/><Property Name="Name1" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Desc. Centro" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Iblnr" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Doc. inventário" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false"/><Property Name="Gjahr" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Exercício" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false"/><Property Name="Ivkey" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Chave Inventário" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false"/><Property Name="Ivnum" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Doc. inventário" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Ivpos" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Item invent." sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Idatu" Type="Edm.DateTime" Precision="8" sap:label="Data criação" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Lgnum" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Nº depósito" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Lgtyp" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Tipo depósito" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Lgpla" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Posição depósito" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Zeili" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Item" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Matnr" Type="Edm.String" Nullable="false" MaxLength="18" sap:label="Material" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false"/><Property Name="Maktx" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Descrição Material" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Bldat" Type="Edm.DateTime" Precision="8" sap:label="Data criação" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false"/><Property Name="Zldat" Type="Edm.DateTime" Precision="8" sap:label="Data contagem" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false"/><Property Name="Budat" Type="Edm.DateTime" Precision="8" sap:label="Data ajuste" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false"/><Property Name="Charg" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Lote" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false"/><Property Name="Lgort" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Depósito" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false"/><Property Name="Buchm" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:label="Qtd Contábil" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Menge" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:label="Qtd Contada" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Wrtbm" Type="Edm.Decimal" Nullable="false" Precision="14" Scale="3" sap:label="Qtd Diferença" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Meins" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="UM básica" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/><Property Name="Diwzl" Type="Edm.Decimal" Nullable="false" Precision="14" Scale="3" sap:label="Vl Diferença" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Diwzl1" Type="Edm.Decimal" Nullable="false" Precision="14" Scale="3" sap:label="Vl Diferença Neg." sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Waers" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Moeda" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false" sap:semantics="currency-code"/><Property Name="Xblni" Type="Edm.String" Nullable="false" MaxLength="16" sap:label="Referência" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false"/><Property Name="Dstat" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Status (Portal)" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Irnum" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Referência" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false"/><Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Status" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false"/></EntityType>
+			<EntityContainer Name="ZGWFBGL_AUDITORIA_MM_IV_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx"><EntitySet Name="AuditoriaSet" EntityType="ZGWFBGL_AUDITORIA_MM_IV_SRV.Auditoria" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:content-version="1"/></EntityContainer><atom:link rel="self"
+				href="https://webidecp-p901738trial.dispatcher.hanatrial.ondemand.com/destinations/FIORI_VOTO/sap/opu/odata/sap/ZGWFBGL_AUDITORIA_MM_IV_SRV/$metadata"
+				xmlns:atom="http://www.w3.org/2005/Atom"/><atom:link rel="latest-version"
+				href="https://webidecp-p901738trial.dispatcher.hanatrial.ondemand.com/destinations/FIORI_VOTO/sap/opu/odata/sap/ZGWFBGL_AUDITORIA_MM_IV_SRV/$metadata"
+				xmlns:atom="http://www.w3.org/2005/Atom"/></Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

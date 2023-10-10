@@ -1,0 +1,120 @@
+
+<mvc:View
+    controllerName="votorantim.project02wksdetail.controller.Worklist"
+    xmlns="sap.m"
+    xmlns:t="sap.ui.table"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:semantic="sap.f.semantic">
+
+    <semantic:SemanticPage
+        id="page"
+        headerPinnable="false"
+        toggleHeaderOnTitleClick="false">
+
+        <semantic:titleHeading>
+            <Title id="_IDGenTitle1"
+                text="{i18n>worklistTitle}"
+                level="H2"/>
+        </semantic:titleHeading>
+
+        <semantic:content>
+            <Table
+                id="table"
+                width="auto"
+                items="{
+                    path: '/logs',
+                    sorter: {
+                        path: 'CompanyCode',
+                        descending: false
+                    }
+                }"
+                noDataText="{worklistView>/tableNoDataText}"
+                busyIndicatorDelay="{worklistView>/tableBusyDelay}"
+                growing="true"
+                growingScrollToLoad="true"
+                updateFinished=".onUpdateFinished">
+
+                <headerToolbar>
+                    <OverflowToolbar id="_IDGenOverflowToolbar1">
+                        <Title
+                            id="tableHeader"
+                            text="{worklistView>/worklistTableTitle}"
+                            level="H3"/>
+                        <ToolbarSpacer id="_IDGenToolbarSpacer1" />
+                        <SearchField
+                            id="searchField"
+                            tooltip="{i18n>worklistSearchTooltip}"
+                            search=".onSearch">
+                            <layoutData>
+                                <OverflowToolbarLayoutData id="_IDGenOverflowToolbarLayoutData1"
+                                    maxWidth="200px"
+                                    priority="NeverOverflow"/>
+                            </layoutData>
+                        </SearchField>
+                    </OverflowToolbar>
+                </headerToolbar>
+
+                <columns>
+                    <Column id="statusColumn" width="4rem" hAlign="Center">
+                        <Text text="{i18n>tableStatusColumnTitle}" id="statusColumnTitle"/>
+                    </Column>
+                    <Column id="companyCodeColumn" hAlign="Left">
+                        <Text text="{i18n>tableCompanyCodeColumnTitle}" id="companyCodeTitle"/>
+                    </Column>
+                    <Column id="processoColumn" hAlign="Left">
+                        <Text text="{i18n>tableProcessoColumnTitle}" id="processoTitle"/>
+                    </Column>                    
+                    <Column id="guidColumn" hAlign="Left">
+                        <Text text="{i18n>tableGuidColumnTitle}" id="guidColumnTitle"/>
+                    </Column>
+                    <Column id="seqColumn" hAlign="Left">
+                        <Text text="{i18n>tableSeqColumnTitle}" id="seqColumnTitle"/>
+                    </Column>
+                    <Column id="msgColumn" hAlign="Left">
+                        <Text text="{i18n>tableMsgColumnTitle}" id="msgColumnTitle"/>
+                    </Column>
+                    <Column id="dataHoraColumn" hAlign="Left">
+                        <Text text="{i18n>tableDataHoraColumnTitle}" id="dataHoraTitle"/>
+                    </Column>
+                    <Column id="dataHoraColumn2" hAlign="Left">
+                        <Text text="{i18n>tableDataHoraColumnTitle}" id="dataHoraTitle2"/>
+                    </Column>                      
+                </columns>
+
+                <items>
+                    <ColumnListItem id="_IDGenColumnListItem1"
+                        type="Navigation"
+                        press=".onPress">
+                        <cells>
+                            <!-- <ObjectIdentifier id="_IDGenObjectIdentifier1"
+                                title="{MsgStatus}" />                        
+                            -->
+                            <ObjectStatus id="_IDGenObjectStatus1" class="sapUiSmallMarginBottom" text="{MsgStatus}" icon="sap-icon://cancel" state="Information" />
+                            
+                            <ObjectIdentifier id="_IDGenObjectIdentifier3"
+                                title="{CompanyCode}"/>
+                            <ObjectIdentifier id="_IDGenObjectIdentifier4"
+                                title="{Processo}"/>   
+                            <ObjectIdentifier id="_IDGenObjectIdentifier2"
+                                title="{Guid}"/>
+                            <ObjectIdentifier id="_IDGenObjectIdentifier5"
+                                title="{Seq}"/>
+                            <ObjectIdentifier id="_IDGenObjectIdentifier6"
+                                title="{Msg}"/>
+                            <ObjectIdentifier id="_IDGenObjectIdentifier7"
+                                title="{Data}" visible = "true" tooltip = "Teste ToolTip" />                                
+                            <ObjectNumber id="_IDGenObjectData1"
+                                unit="{Data}" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </semantic:content>
+
+        <semantic:sendEmailAction>
+            <semantic:SendEmailAction id="shareEmail" press=".onShareEmailPress"/>
+        </semantic:sendEmailAction>
+
+    </semantic:SemanticPage>
+
+</mvc:View>

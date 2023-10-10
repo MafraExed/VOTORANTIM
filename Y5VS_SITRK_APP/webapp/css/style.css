@@ -1,0 +1,78 @@
+/* add your custom styles here */
+
+.red .sapMBtnInner {
+  background: #e74c3c !important;
+  border: 1px solid #e74c3c !important;
+}
+
+.blue .sapMBtnInner {
+  background: #5dade2 !important;
+  border: 1px solid #5dade2 !important;
+}
+
+.yellow .sapMBtnInner {
+  background: #f1c40f !important;
+  border: 1px solid #f1c40f !important;
+}
+
+.gray .sapMBtnInner {
+  background: #bdc3c7 !important;
+  border: 1px solid #bdc3c7 !important;
+}
+
+.black .sapMBtnInner {
+  background: #353535 !important;
+  border: 1px solid #353535 !important;
+}
+
+.green .sapMBtnInner {
+  background: #2ecc71 !important;
+  border: 1px solid #2ecc71 !important;
+}
+
+.custom .sapMBtnIcon {
+  color: white !important;
+  text-shadow: 0 0 0rem #ffffff !important;
+}
+
+.custom-icon .sapMBtnInner .sapMBtnIcon.sapMImg {
+  max-width: 2.3rem !important;
+}
+
+.sapMPI {
+  min-height: 0.8rem !important;
+}
+.sapMPI.sapMPIDisplayOnly {
+  height: 0rem !important;
+  margin-bottom: 3px !important;
+}
+
+.sapUiIcon.border-icon {
+  border-radius: 0.5rem !important;
+}
+
+.segmentToolbar {
+  background-color: #ffffff !important;
+  border-bottom: black !important;
+}
+
+.home-background {
+  background: linear-gradient(to bottom, #1a4d80 0%, #178299 50%, #2dabb3 100%);
+}
+
+.text-white {
+  color: #fff !important;
+  text-shadow: none !important;
+}
+
+/* .sapMSegBBtnInner {
+  background-color: #FFFFFF !important;
+}
+
+.sapMSegBBtnInner:hover {
+  background-color: #3F5161 !important;
+}
+
+.sapMSegBBtnInner:focus {
+  background-color: yellow !important;
+} */

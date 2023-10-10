@@ -1,0 +1,232 @@
+<core:FragmentDefinition 
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc" 
+	xmlns:semantic="sap.m.semantic" 
+	xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout" 
+	xmlns:footerbar="sap.ushell.ui.footerbar">
+
+	<Panel width="auto">
+		<headerToolbar>
+			<Toolbar>
+				<Title 
+						id="tableHeaderFatINC" 
+						text="{i18n>detailTitleTabFilterBar6}"/>
+				<ToolbarSpacer />
+				<SearchField
+						id="detailFilterListFatInc"
+						placeholder="{i18n>detailTitleFilterPlaceHolder}"
+						search="onSearch" 
+						width="15rem"/>
+				</Toolbar>
+			</headerToolbar>
+		<content>
+<!-- 				    mode="MultiSelect" -->
+			<Table 
+					id="shipDetailFatINCTable" 
+				  	items="{ShipmentDetailToFaturamentoINC}" 
+				    FixedLayout="true"
+				    growing="true"
+				    growingThreshold="3"
+				    growingScrollToLoad="true">
+				
+				<columns>
+					<Column 
+								width="5rem">
+						<Text 
+								text="{i18n>detailTitleTableEbeln}" />
+					</Column>
+					<Column 
+								width="3rem">
+						<Text 
+								text="{i18n>detailTitleTableEbelp}" />
+					</Column>
+					<Column 
+								width="5rem">
+						<Text 
+								text="{i18n>detailTitleTableBelnr}" />
+					</Column>
+					<Column 
+								width="4rem"
+								minScreenWidth="Tablet"
+								demandPopin="true">
+						<Text 
+								text="{i18n>detailTitleTableBukrs}" />
+					</Column>
+					<Column 
+								width="7rem"
+								minScreenWidth="Tablet"
+								demandPopin="true">
+						<Text 
+								text="{i18n>detailTitleTableLifnr}" />
+					</Column>
+					<Column 
+								width="5rem"
+								minScreenWidth="Tablet"
+								demandPopin="true">
+						<Text 
+								text="{i18n>detailTitleTableEpwce}" />
+					</Column>
+					<Column 
+								width="5rem"
+								minScreenWidth="Tablet"
+								demandPopin="true">
+						<Text 
+								text="{i18n>detailTitleTableBldat}" />
+					</Column>
+					<Column 
+								width="5rem"
+								minScreenWidth="Tablet"
+								demandPopin="true">
+						<Text 
+								text="{i18n>detailTitleTableBudat}" />
+					</Column>
+					<Column 
+								width="5rem"
+								minScreenWidth="Tablet"
+								demandPopin="true">
+						<Text 
+								text="{i18n>detailTitleTableZbd1t}" />
+					</Column>
+					<Column 
+								width="3rem"
+								minScreenWidth="Tablet"
+								demandPopin="true">
+						<Text 
+								text="{i18n>detailTitleTableBuzei}" />
+					</Column>
+					<Column 
+								width="5rem"
+								minScreenWidth="Tablet"
+								demandPopin="true">
+						<Text 
+								text="{i18n>detailTitleTableLfbnr}" />
+					</Column>
+					<Column 
+								width="4.5rem" 
+								demandPopin="true">
+						<Text 	
+								text="{i18n>detailTitleTableMaterial}" />
+					</Column>
+					<Column 
+								width="7rem"
+								minScreenWidth="Tablet"
+								
+								demandPopin="true">
+						<Text 
+								text="{i18n>detailTitleTableMenge}" />
+					</Column>
+					<Column 
+								width="5rem"
+								minScreenWidth="Tablet"
+								demandPopin="true">
+						<Text 
+								text="{i18n>detailTitleTableCharg}" />
+					</Column>
+					<Column 
+								width="7rem"
+								minScreenWidth="Tablet"
+							
+								demandPopin="true">
+						<Text 
+								text="{i18n>detailTitleTableWrbtr}" />
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<Text 
+								text="{Ebeln}" />
+						</cells>
+						<cells>
+							<Text 
+								text="{Ebelp}" />
+						</cells>
+						<cells>
+							<Text 
+								text="{Belnr}" />
+						</cells>
+						<cells>
+							<Text 
+								text="{Bukrs}" />
+						</cells>
+						<cells>
+							<ObjectNumber
+								number="{Lifnr}"
+								unit="{LifnrDsc}"
+								emphasized="false"/>
+						</cells>
+						<cells>
+							<Text 
+								text="{Epwce}" />
+						</cells>
+						<cells>
+							<Text 
+								text="{path: 'Bldat',  
+									   type: 'sap.ui.model.type.Date', 
+									   formatOptions: {
+												 		pattern: 'dd.MM.yyyy', 
+												 		strictParsing: true , 
+												 		UTC: true
+											 		  }
+									   }" />
+						</cells>
+						<cells>
+							<Text 
+								text="{path: 'Budat',  
+									   type: 'sap.ui.model.type.Date', 
+									   formatOptions: {
+												 		pattern: 'dd.MM.yyyy', 
+												 		strictParsing: true , 
+												 		UTC: true
+											 		  }
+									   }" />
+						</cells>
+						<cells>
+							<Text 
+								text="{Zbd1t} {Zbd1tDsc}" />
+						</cells>
+						<cells>
+							<Text 
+								text="{Buzei}" />
+						</cells>
+						<cells>
+							<Text 
+								text="{Lfbnr}" />
+						</cells>
+						<cells>
+							<ObjectNumber
+								number="{Matnr}"
+								unit="{MatnrDsc}"
+								emphasized="false"/>
+						</cells>
+						<cells>
+							<ObjectNumber
+								number="{path: 'Menge', formatter:'.formatter.formatNumberBrazil'}"
+								unit="{Bstme}" 
+								emphasized="false"/>
+						</cells>
+						<cells>
+							<Text 
+								text="{Charg}" />
+						</cells>
+						<cells>
+							<ObjectNumber
+									class="sapUiSmallMarginBottom"
+									number="{
+												parts:[{path:'Wrbtr'},{path:'Waers'}],
+												type: 'sap.ui.model.type.Currency',
+												formatOptions: {showMeasure: false}
+											}"
+									unit="{Waers}"
+									emphasized="false" />
+						</cells>
+					</ColumnListItem>
+				</items>
+			
+			</Table>
+	
+		</content>
+	</Panel>
+
+</core:FragmentDefinition>

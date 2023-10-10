@@ -1,0 +1,75 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core">
+		<f:SimpleForm 
+			id="HeadPOSimpleForm"
+			layout="ResponsiveGridLayout"
+			editable="true"
+ 			columnsXL="2"
+			columnsL="2"
+			columnsM="2">
+			
+			<f:toolbar>
+				<Toolbar id="HeadPOTitle1">
+					<Title text="{i18n>detailDocumentTitleTabFilterBar}" level="H4" titleStyle="H4"/>
+					<ToolbarSpacer />
+					<Button 
+						id="detailDocumentPOButtonEdit" 
+						icon="sap-icon://edit" 
+						tooltip="{i18n>detailDocumentsTooltipButtonEdit}" 
+						press="onChangeMode"/>
+				</Toolbar>
+			</f:toolbar>
+			
+			<f:content>	
+				<core:Title id="detailDocumentsPOTitle1"/>			
+				<Label text="{i18n>detailDocumentsTitleBukrs}" labelFor="detailDocumentPOBukrsField"/> 
+					<Text id="detailDocumentPOBukrsField"
+						  text="{dataDocument>/dataHeadPO/Bukrs} {dataDocument>/dataHeadPO/BukrsTxt}" />
+				
+				<Label text="{i18n>detailDocumentsTitleBsart}" labelFor="detailDocumentPOBsartField"/> 
+				<Text id="detailDocumentPOBsartField"
+				 	 text="{dataDocument>/dataHeadPO/Bsart}" />
+				
+				<Label text="{i18n>detailDocumentsTitleEkorg}" labelFor="detailDocumentPOEkorgField"/> 
+				<Text id="detailDocumentPOEkorgField"
+				 	 text="{dataDocument>/dataHeadPO/Ekorg} {dataDocument>/dataHeadPO/EkorgTxt}" />
+				
+				<Label text="{i18n>detailDocumentsTitleEkgrp}" labelFor="detailDocumentPOEkgrpField"/> 
+				<Text id="detailDocumentPOEkgrpField"
+				 	 text="{dataDocument>/dataHeadPO/Ekgrp} {dataDocument>/dataHeadPO/EkgrpTxt}" />
+					
+					
+<!-- 					FORNECEDOR -->
+				<Label text="{i18n>detailDocumentsTitleLifnr}" labelFor="detailDocumentPOLifnrField"/>
+				<Text id="detailDocumentPOLifnrField"
+				 	 text="{dataDocument>/dataHeadPO/Lifnr} {dataDocument>/dataHeadPO/LifnrTxt}" />
+
+
+
+				<core:Title id="detailDocumentsPOTitle2"/>
+				
+				
+				<Label text="{i18n>detailDocumentsTitleMwskz}" labelFor="detailDocumentsPOTitleMwskzField"/> 
+				<Input 
+					id="detailDocumentsPOTitleMwskzField"
+					editable="{detailDocumentView>/editFields}"
+					required="true"
+					value="{dataDocument>/dataHeadPO/Mwskz}" 
+					maxLength="2" 
+					width="120px"/>
+				
+				<Label text="{i18n>detailDocumentsTitleMoeda}" labelFor="detailDocumentsPOTitleMoedaField"/> 
+				<Input 
+					id="detailDocumentsPOTitleMoedaField"
+					editable="{detailDocumentView>/editFields}"
+					required="true"
+					value="{dataDocument>/dataHeadPO/Waers}" 
+					maxLength="5" 
+					width="120px"/>
+				
+			</f:content>
+		</f:SimpleForm>
+</core:FragmentDefinition>

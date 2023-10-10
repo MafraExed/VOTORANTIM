@@ -1,0 +1,50 @@
+{
+	"landingValues": {
+		"EMBAB": {
+			"cultura": "51833",
+			"desempenho": "51834"
+		},
+		"EMBDE": {
+			"cultura": "51833",
+			"desempenho": "51835"
+		},
+		"EMBAC": {
+			"cultura": "51833",
+			"desempenho": "51836"
+		},
+		"TEMAB": {
+			"cultura": "51832",
+			"desempenho": "51834"
+		},
+		"TEMDE": {
+			"cultura": "51832",
+			"desempenho": "51835"
+		},
+		"TEMAC": {
+			"cultura": "51832",
+			"desempenho": "51836"
+		},
+		"SEMAB": {
+			"cultura": "51831",
+			"desempenho": "51834"
+		},
+		"SEMDE": {
+			"cultura": "51831",
+			"desempenho": "51835"
+		},
+		"SEMAC": {
+			"cultura": "51831",
+			"desempenho": "51836"
+		}
+	},
+	"eixoCultura": {
+		"51833": "EMB",
+		"51832": "TEM",
+		"51831": "SEM"
+	},
+	"eixoDesempenho": {
+		"51834": "AB",
+		"51835": "DE",
+		"51836": "AC"
+	}
+}

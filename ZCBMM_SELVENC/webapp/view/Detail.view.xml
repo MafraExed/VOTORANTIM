@@ -1,0 +1,137 @@
+<mvc:View controllerName="ZCBMM_SEL_VENCEDOR.ZCBMM_SEL_VENCEDOR.controller.Detail" xmlns:html="http://www.w3.org/1999/xhtml" xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:smartFilterBar="sap.ui.comp.smartfilterbar" xmlns:m="sap.m"
+	xmlns:footerbar="sap.ushell.ui.footerbar" 
+	
+	xmlns:sv="sap.ui.comp.smartvariants" 
+	xmlns:smartTable="sap.ui.comp.smarttable"
+	xmlns:table="sap.ui.table" 
+	xmlns:f="sap.ui.layout.form" 
+	xmlns:core="sap.ui.core" xmlns:l="controls" xmlns:u="sap.ui.unified"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" width="100%" height="100%">
+	<semantic:DetailPage id="page" navButtonPress="onNavBack" showNavButton="{device>/system/phone}" title="Informações da Solicitação"
+		busy="{detailView>/busy}" busyIndicatorDelay="{detailView>/delay}" showFooter="false">
+		<semantic:content>
+			<VBox>
+				<ObjectHeader title="Seleção Vencedor" intro="" id="idheader0" icon="sap-icon://competitor" iconActive="true" responsive="true"/>
+			</VBox>
+			<f:Form class="editableForm" editable="true">
+				<f:layout>
+					<f:ResponsiveGridLayout 
+					labelSpanXL="2" 
+					labelSpanL="2" 
+					labelSpanM="2" 
+					labelSpanS="12" 
+					adjustLabelSpan="true" 
+					emptySpanXL="0"
+					emptySpanL="0"
+						emptySpanM="0" emptySpanS="0"
+						columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false"/>
+				</f:layout>
+				<f:formContainers>
+					<f:FormContainer>
+						<f:formElements>
+							<f:FormElement visible="false">
+								<f:fields>
+									<Input value="{Idsolicitacao}" id="Idsolicitacao" editable="false"/>
+								</f:fields>
+								<f:label>
+									<Label text="Id Solicitação" design="Bold"/>
+								</f:label>
+							</f:FormElement>
+							<f:FormElement visible="false">
+								<f:fields>
+									<Input value="{Werkso}" id="IdWerkso" editable="false"/>
+								</f:fields>
+								<f:label>
+									<Label text="Centro" design="Bold"/>
+								</f:label>
+							</f:FormElement>
+						</f:formElements>
+					</f:FormContainer>
+					<f:FormContainer>
+						<f:formElements>
+							<f:FormElement visible="true">
+								<f:fields>
+									<TextArea value="{Justif}" id="IdJustif" editable="true"/>
+								</f:fields>
+								<f:label>
+									<Label text="Justificativa" design="Bold"/>
+								</f:label>
+							</f:FormElement>
+						</f:formElements>
+					</f:FormContainer>
+					<f:FormContainer>
+						<f:formElements>
+							
+							<f:FormElement>
+								<smartTable:SmartTable id="smartTable" entitySet="ZET_CBMM_CF_VEICONDSet" useOnlyOneSolidToolbar="false" useExportToExcel="true"
+									useVariantManagement="false" useTablePersonalisation="false" tableType="Table" header="Condições" showRowCount="true"
+									beforeExport="VerificaExcel"
+									initiallyVisibleFields="Kschl,IntDescr,Tpveiculo,Desctransp,Volume,Vigencia,DataBase,PrazoPag,VlrNegoc,VlrProp,FretePedag,Orcamento,Performance,VarPrecos,Saving,Tco,TcoOrc,AproTec,HabQuali,Idrota,Nrtransp,QtdEscala"
+									showFullScreenButton="true" enableAutoBinding="true" beforeRebindTable="atualizaTabela" class="sapUiResponsiveContentPadding"
+									persistencyKey="SmartTableRefApp_Explored" app:useSmartField="true" editable="false" requestAtLeastFields="Sugerir" dataReceived="AfterUpdate">
+									<smartTable:customToolbar>
+										<Toolbar>
+											<Button icon="sap-icon://decision" text="Confirmar Vencedores" press="onConfirm" id="B_CVencedores" visible="true"/>
+											<Button text="Voltar Status" icon="sap-icon://nav-back" press="onVoltar"/>
+											<Button text="Editar" icon="sap-icon://edit" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"
+												press="onEdit" tooltip="Editar" id="B_Edit" type="Default"/>
+											<Button text="Salvar" icon="sap-icon://save" iconFirst="true" width="auto" enabled="true" visible="false" iconDensityAware="false"
+												press="onSalvar" tooltip="Salvar" id="B_Salvar" type="Default"/>
+
+											<u:FileUploader
+												id="fileUploader"
+												name="myFileUpload"
+												uploadUrl="upload/"
+												tooltip="Upload your file to the local server"
+												change="handleUploadStart"
+												uploadComplete="handleUploadComplete"
+												iconOnly="true"
+												icon="sap-icon://browse-folder"
+												uploadOnChange="true"
+												fileType="csv"
+
+												
+												visible="false"
+											/>	
+											
+											<Button text="Upload" icon="sap-icon://upload" iconFirst="true" width="auto" enabled="true" visible="false" iconDensityAware="false"
+												press="onUpload" tooltip="Upload" id="B_Upload" type="Reject"/>											
+											
+											<Button text="Cancelar" icon="sap-icon://reset" iconFirst="true" width="auto" enabled="true" visible="false" iconDensityAware="false"
+												press="onCancelar" tooltip="Cancelar" id="B_Cancelar" type="Default"/>
+											
+										</Toolbar>
+									</smartTable:customToolbar>
+									
+									
+									<table:Table id="table" enableBusyIndicator="true" busyIndicatorDelay="100" visibleRowCount="50">
+										<table:rowSettingsTemplate>
+											<table:RowSettings highlight="{= ${Sugerir} === 'x' ? 'Success' :'None' }"/>
+										</table:rowSettingsTemplate>
+										
+										
+										
+										
+										
+										
+										
+										
+									</table:Table>
+									
+									
+									<smartTable:layoutData>
+										<FlexItemData growFactor="1" baseSize="0%"/>
+									</smartTable:layoutData>
+								</smartTable:SmartTable>
+							</f:FormElement>
+							
+							
+							
+						</f:formElements>
+					</f:FormContainer>
+				</f:formContainers>
+			</f:Form>
+		</semantic:content>
+	</semantic:DetailPage>
+</mvc:View>

@@ -1,0 +1,59 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="FibriaStatusViagem.controller.SelectTruckPopover" xmlns="sap.m"
+	xmlns:form="sap.ui.layout.form">
+	<Dialog contentHeight="500px" contentWidth="300px" horizontalScrolling="true" showHeader="true" state="None" stretch="false" title="Filtros"
+		type="Standard" verticalScrolling="true" class="dialogTruck" afterOpen="afterOpen">
+		<content>
+			<List id="compositionList" class="compositionList" items="{composition>/}" mode="SingleSelectMaster" width="100%" headerText="Priority"
+				footerText="" backgroundDesign="Solid" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" visible="true"
+				itemPress="_onCompositionItemPress">
+				<headerToolbar>
+					<Toolbar enabled="true" visible="true" width="" design="Transparent">
+						<content>
+							<SearchField placeholder="Search" showSearchButton="true" visible="true" width="100%" liveChange="_onSearchFieldLiveChange"/>
+							<Button type="Transparent" class="filterIcon" icon="sap-icon://filter" width="40px" enabled="true" press="_onAddFiltersButtonPress"/>
+						</content>
+					</Toolbar>
+				</headerToolbar>
+				<items>
+					<!--<ActionListItem id="actionItem" text="{composition>Composicao}" visible="true" press="_onActionListItemPress"/>-->
+					<ObjectListItem type="Active" intro="Composição" title="{composition>Composicao}" number="{composition>Centro}" numberUnit="Centro">
+						<tooltip></tooltip>
+						<!-- sap.ui.core.TooltipBase -->
+						<customData></customData>
+						<!-- sap.ui.core.CustomData -->
+						<layoutData></layoutData>
+						<!-- sap.ui.core.LayoutData -->
+						<dependents></dependents>
+						<!-- sap.ui.core.Control -->
+						<attributes>
+							<ObjectAttribute text="Cavalo: {composition>PlcCavalo}"></ObjectAttribute>
+						</attributes>
+						<!-- sap.m.ObjectAttribute -->
+						<firstStatus>
+							<ObjectStatus text="Carro 1: {composition>PlcCarro1}"></ObjectStatus>
+						</firstStatus>
+						<!-- sap.m.ObjectStatus -->
+						<secondStatus>
+							<ObjectStatus text="Carro 2: {composition>PlcCarro2}"></ObjectStatus>
+						</secondStatus>
+						<!-- sap.m.ObjectStatus -->
+					</ObjectListItem>
+				</items>
+			</List>
+		</content>
+		<buttons>
+			<Button text="Confirmar" class="buttonConfirmCode" iconFirst="true" enabled="true" visible="true"
+				iconDensityAware="false" press="_onConfirmCodeButtonPress"/>
+		</buttons>
+		<customHeader>
+			<Bar>
+				<contentLeft></contentLeft>
+				<contentMiddle>
+					<Text id="customTitle" text="Selecione uma composição"></Text>
+				</contentMiddle>
+				<contentRight></contentRight>
+			</Bar>
+		</customHeader>
+		<subHeader/>
+	</Dialog>
+</mvc:View>

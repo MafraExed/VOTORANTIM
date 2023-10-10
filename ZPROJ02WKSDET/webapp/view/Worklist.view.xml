@@ -1,0 +1,155 @@
+<mvc:View
+    controllerName="votorantim.project02wksdetail.controller.Worklist"
+    xmlns="sap.m"
+    xmlns:t="sap.ui.table"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:semantic="sap.f.semantic">
+
+    <semantic:SemanticPage
+        id="page"
+        headerPinnable="false"
+        toggleHeaderOnTitleClick="false">
+
+        <semantic:titleHeading>
+            <Title id="_IDGenTitle1"
+                text="{i18n>worklistTitle} - {worklistView>/worklistTableTitle}"
+                level="H2"/>
+        </semantic:titleHeading>
+      
+        <semantic:content>
+            <Table
+                id="table"
+                width="auto"
+                items="{
+                    path: '/logs',
+                    sorter: {
+                        path: 'CompanyCode',
+                        descending: false
+                    }
+                }"
+                noDataText="{worklistView>/tableNoDataText}"
+                busyIndicatorDelay="{worklistView>/tableBusyDelay}"
+                growing="true"
+                growingScrollToLoad="true"
+                updateFinished=".onUpdateFinished">
+
+                <headerToolbar>
+                    <OverflowToolbar id="_IDGenOverflowToolbar1">
+                        <Title
+                            id="tableHeader"
+                            text="{worklistView>/worklistTableTitle}"
+                            level="H3"/>
+
+						<HBox id="_IDGenHBox1" >
+							<HBox id="_IDGenHBox2" wrap="Wrap" width="60rem">
+                                <ComboBox xmlns="sap.m" id="inputEmpresa" placeholder="Empresa">
+                                    <items>
+                                    <core:Item xmlns:core="sap.ui.core" key="VSA" 
+                                        text="VSA"  id="_IDGenEmp1"/>
+                                    <core:Item xmlns:core="sap.ui.core" key="CBA" 
+                                        text="CBA" id="_IDGenEmp2"/>
+                                    <core:Item xmlns:core="sap.ui.core" key="JS" 
+                                        text="CBA" id="_IDGenEmp3"/>
+                                    <core:Item xmlns:core="sap.ui.core" key="VE" 
+                                        text="CBA" id="_IDGenEmp4"/>
+                                    </items>
+                                </ComboBox>
+                                <ComboBox xmlns="sap.m" id="inputProcesso" placeholder="Processo">
+                                    <items>
+                                    <core:Item xmlns:core="sap.ui.core" key="ACESSORH_ENVIOCARGOS" text="AcessoRH - Envio de Cargos" id="_IDGenProc1"/>
+                                    <core:Item xmlns:core="sap.ui.core" key="ACESSORH_CADASTROSCONCLUIDOS" text="AcessoRH - Envio de Funcionário para o EC" id="_IDGenProc2"/>
+                                    <core:Item xmlns:core="sap.ui.core" key="ACESSORH_PH_CONCLUIDO" text="Candidato gravado na entidade PH do EC" id="_IDGenProc3"/>
+                                    <core:Item xmlns:core="sap.ui.core" key="FIM_CRIACAO_USUARIO" text="FIM - Atualização dos dados do Funcionário no EC" id="_IDGenProc4"/>
+                                    <core:Item xmlns:core="sap.ui.core" key="KENOBY_CRIA_USUARIOS" text="Kenoby - Criação de Usuário" id="_IDGenProc5"/>
+                                    <core:Item xmlns:core="sap.ui.core" key="KENOBY_ENVIA_CARGOS" text="Kenoby - Envio de Cargos" id="_IDGenProc6"/>
+                                    <core:Item xmlns:core="sap.ui.core" key="KENOBY_CANDIDATOSELECIONADO" text="Kenoby - Envio do Candidato para o MDF" id="_IDGenProc7"/>
+                                    <!-- <core:Item xmlns:core="sap.ui.core" key="WEBDESK" text="Webdesk - Abertura de Chamado de Contratação" id="_IDGenProc8"/> -->
+                                    </items>
+                                </ComboBox>
+                                <!-- <Input id="inputID" placeholder="ID"/> -->
+                                <DatePicker id="inputDate" displayFormat="short" class="sapUiSmallMarginBottom" placeholder="Data da Execução" valueFormat="yyyy-MM-dd"/>
+                                <Button id="_IDGenButton1" icon="sap-icon://synchronize" press="buscaRegistros"/>	
+                            </HBox>
+                            <!-- <HBox id="_IDGenHBox3" width="19rem" justifyContent="End">
+								<Button id="_IDGenButton1" icon="sap-icon://synchronize" press="buscaRegistros"/>	
+							</HBox> -->
+                        </HBox>                        
+                        <ToolbarSpacer id="_IDGenToolbarSpacer1"/>                        
+                        <!-- <SearchField
+                            id="searchField"
+                            tooltip="{i18n>worklistSearchTooltip}"
+                            search=".onSearch">
+                            <layoutData>
+                                <OverflowToolbarLayoutData id="_IDGenOverflowToolbarLayoutData1"
+                                    maxWidth="200px"
+                                    priority="NeverOverflow"/>
+                            </layoutData>
+                        </SearchField> -->
+                        
+                    </OverflowToolbar>
+                </headerToolbar>
+
+                <columns>
+                    <Column id="statusColumn" width="4rem" hAlign="Center">
+                        <Text text="{i18n>tableStatusColumnTitle}" id="statusColumnTitle"/>
+                    </Column>
+                    <Column id="companyCodeColumn" hAlign="Left">
+                        <Text text="{i18n>tableCompanyCodeColumnTitle}" id="companyCodeTitle"/>
+                    </Column>
+                    <Column id="processoColumn" hAlign="Left">
+                        <Text text="{i18n>tableProcessoColumnTitle}" id="processoTitle"/>
+                    </Column>                    
+                    <Column id="guidColumn" hAlign="Left">
+                        <Text text="{i18n>tableGuidColumnTitle}" id="guidColumnTitle"/>
+                    </Column>
+                    <Column id="seqColumn" hAlign="Left">
+                        <Text text="{i18n>tableSeqColumnTitle}" id="seqColumnTitle"/>
+                    </Column>
+                    <Column id="msgColumn" hAlign="Left">
+                        <Text text="{i18n>tableMsgColumnTitle}" id="msgColumnTitle"/>
+                    </Column>
+                    <Column id="dataHoraColumn" hAlign="Left">
+                        <Text text="{i18n>tableDataHoraColumnTitle}" id="dataHoraTitle"/>
+                    </Column>
+                    <Column id="dataHoraColumn2" hAlign="Left">
+                        <Text text="{i18n>tableDataHoraColumnTitle}" id="dataHoraTitle2"/>
+                    </Column>                      
+                </columns>
+
+                <items>
+                    <ColumnListItem id="_IDGenColumnListItem1"
+                        type="Navigation"
+                        press=".onPress">
+                        <cells>
+                            <!-- <ObjectIdentifier id="_IDGenObjectIdentifier1"
+                                title="{MsgStatus}" />                        
+                            -->
+                            <ObjectStatus id="_IDGenObjectStatus1" class="sapUiSmallMarginBottom" text="{MsgStatus}" icon="sap-icon://cancel" state="Information" />
+                            
+                            <ObjectIdentifier id="_IDGenObjectIdentifier3"
+                                title="{CompanyCode}"/>
+                            <ObjectIdentifier id="_IDGenObjectIdentifier4"
+                                title="{Processo}"/>   
+                            <ObjectIdentifier id="_IDGenObjectIdentifier2"
+                                title="{Guid}"/>
+                            <ObjectIdentifier id="_IDGenObjectIdentifier5"
+                                title="{Seq}"/>
+                            <ObjectIdentifier id="_IDGenObjectIdentifier6"
+                                title="{Msg}"/>
+                            <ObjectIdentifier id="_IDGenObjectIdentifier7"
+                                title="{Data}" visible = "true" tooltip = "Teste ToolTip" />                                
+                            <ObjectNumber id="_IDGenObjectData1"
+                                unit="{Data}" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </semantic:content>
+
+        <semantic:sendEmailAction>
+            <semantic:SendEmailAction id="shareEmail" press=".onShareEmailPress"/>
+        </semantic:sendEmailAction>
+
+    </semantic:SemanticPage>
+
+</mvc:View>

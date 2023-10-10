@@ -1,0 +1,91 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout" xmlns:footerbar="sap.ushell.ui.footerbar">
+
+	<Table id="tableMain" 
+		   width="auto" 
+		   class="sapUiResponsiveMargin" 
+		   noDataText="{appView>/tableNoDataText}" 
+		   busyIndicatorDelay="{appView>/tableBusyDelay}"
+		   growing="true" 
+		   growingScrollToLoad="true" 
+		   updateFinished="onUpdateFinished"
+		   growingThreshold="10"
+		   FixedLayout="true"
+	  	   items="{path: '/ZET_FBSD_ACSet',
+               sorter: {
+                  path: 'Acnum',
+                  descending: false,
+                  group: false
+                  }
+               }"
+               
+               >
+
+		<columns>
+			<Column hAlign="Begin" width="4rem" >
+				<!-- mergeDuplicates="true" -->
+				<Label text="Ato Concessorio" class="columnLabelStyle" tooltip="Clique para filtrar"/>
+			</Column>
+
+			<Column hAlign="End" width="4rem">
+				<Label text="{i18n>mainAcDtvenc}" class="columnLabelStyle"/>
+			</Column>
+
+			<Column hAlign="Begin" width="5rem">
+				<Label text="{i18n>mainAcTt_ac}" class="columnLabelStyle"/>
+			</Column>
+
+			<Column hAlign="Begin" width="5rem">
+				<Label text="{i18n>mainAcTt_usado}" class="columnLabelStyle" />
+			</Column>
+
+			<Column hAlign="Begin" width="5rem">
+				<Label text="{i18n>mainAcTt_reservado}" class="columnLabelStyle"/>
+			</Column>
+
+			<Column hAlign="Begin" width="5rem">
+				<Label text="{i18n>mainAcSaldoF}" class="columnLabelStyle"/>
+			</Column>
+			
+			<Column hAlign="Begin" width="7rem">
+				<Label text="{i18n>mainAcDtinc}" class="columnLabelStyle"/>
+			</Column>
+	  </columns>
+
+		<items>
+			<ColumnListItem type="Navigation" press="onPress">
+				<cells>				
+					<ObjectIdentifier 
+						title="{Acnum}" titleActive="true" 
+						titlePress="onPress"/>
+					
+					<Text text="{path: 'Dtvenc', type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'dd.MM.yyyy', strictParsing: true , UTC: true}}"
+						  />
+					
+					<ObjectNumber number="{path: 'TtAc',formatter:'.formatter.formatNumberBrazil'}"
+									unit="TO" emphasized="false"/>
+					
+					<ObjectNumber number="{path: 'TtUsado',formatter:'.formatter.formatNumberBrazil'}"
+									unit="TO" emphasized="false"/>
+					
+					<ObjectNumber number="{path: 'TtReservado',formatter:'.formatter.formatNumberBrazil'}"
+									unit="TO" emphasized="false"/>
+									
+					<ObjectNumber number="{path: 'SaldoFinal',formatter:'.formatter.formatNumberBrazil'}"
+									unit="TO" state="{path: 'SaldoFinal', formatter: '.formatter.classificaSaldo'}"
+									emphasized="false"/>	
+																	         										    
+					<ObjectNumber number="{Usnameinc}"
+									unit="{path: 'Dtinc', type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'dd.MM.yyyy', strictParsing: true , UTC: true}}  
+									{path: 'Tminc', formatter:'.formatter.formatDateTime'}"
+									emphasized="false"/>
+					
+				
+				</cells>
+			</ColumnListItem>
+		</items>
+
+	</Table>
+
+</core:FragmentDefinition>

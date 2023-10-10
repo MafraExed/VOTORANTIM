@@ -1,0 +1,48 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	busy="true"
+	busyIndicatorDelay="0">
+	<Dialog contentWidth="600px" title="Aprovações" showHeader="false" class="sapUiContentPadding" type="Standard">
+		<content >
+		<List items="{
+			path: 'workflowStatus>/',
+			sorter: {
+				path: 'Level',
+				descending: false,
+				group: true
+			},
+			groupHeaderFactory: '.getGroupLevel'
+		}">
+			<CustomListItem>
+				<HBox alignItems="Center" class="sapUiTinyMargin" justifyContent="SpaceBetween">
+					<HBox alignItems="Center">
+						<Label class="sapUiSmallMarginEnd" text="{workflowStatus>ApproverName}" />
+						<core:Icon src="sap-icon://employee-rejections" size="20px" color="red" visible="{= ${workflowStatus>Status} === 'R'}"/>
+						<core:Icon src="sap-icon://accept" size="20px" color="#1e873d" visible="{= ${workflowStatus>Status} === 'A'}"/>
+					</HBox>
+					<HBox visible="{= ${workflowStatus>CanApprove} &amp;&amp; ${viewAtividades>/selectedTaskStatus}}">
+						<Button class="sapUiTinyMarginEnd" type="Reject" text="Rejeitar" press="approveRejectTask($event,'reject')"/>
+						<Button type="Emphasized" text="Aprovar" press="approveRejectTask($event,'approve')"/>
+					</HBox>
+				</HBox>
+			</CustomListItem>
+
+			<headerToolbar>
+			<OverflowToolbar>
+				<Title text="Lista de Aprovadores" level="H2" />
+				<ToolbarSpacer />
+				<Button
+					text="Histórico de Aprovações"
+					press="onPressApprovalsHistory" />
+			</OverflowToolbar>
+		</headerToolbar>
+		</List>
+		</content>
+		<endButton>
+			<Button text="Fechar" press="onApprovalskDialogClose"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>
+

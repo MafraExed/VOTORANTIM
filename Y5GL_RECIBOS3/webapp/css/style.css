@@ -1,0 +1,209 @@
+.Loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    height: 100%;
+    width: 1080px;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.CLASSE_VSA {
+    position: relative;
+    top: 3%;
+    left: 50%;
+    margin-right: -5%;
+}
+
+.CLASSE_CBA {
+    position: relative;
+    top: 2.5%;
+    left: 0%;
+    margin-right: -5%;
+}
+
+.sapMObjLIconDiv>.sapMImg {
+    max-height: 3rem;
+    max-width: 2.9rem;
+}
+
+.LoadingFalse {
+    display: none;
+}
+
+#backBtn {
+    visibility: hidden;
+}
+
+#IdBetrgD {
+    color: red;
+}
+
+.sapUshellShellHeadItm>span {
+    visibility: hidden;
+}
+
+.sapMTextMaxLine {
+    font-variant: small-caps;
+    font-size: medium;
+    padding-top: 10px;
+}
+
+.sapMTextNoWrap {
+    text-overflow: ellipsis;
+    word-wrap: normal;
+}
+
+.sapMListTbl .sapMText,
+.sapMListTbl .sapMLabel {
+    font-size: 0.65rem;
+    font-weight: normal;
+}
+
+.sapMObjectNumberText {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    vertical-align: middle;
+    font-size: 0.65rem;
+}
+
+
+/* ---------------------------------------- */
+
+.Titulo {
+    font-size: 24px;
+    color: #004370;
+    font-family: Verdana;
+}
+
+.tdh {
+    border: 1px solid #FFFFFF;
+    font-weight: bold;
+}
+
+.linha1 {
+    font-size: 20px;
+    color: #000;
+    font-family: Verdana;
+    background-color: #FFF;
+    border-color: #e7e7e7;
+    border-style: solid;
+    padding: 5px;
+    border: thin;
+}
+
+.Header {
+    font-size: 12px;
+    color: #FFF;
+    font-family: Verdana;
+    background-color: #113CEA;
+    padding: 3px;
+    font-style: normal;
+    border: 1px solid #FFFFFF;
+}
+
+.tdln {
+    border: 1px solid #FFFFFF;
+    color: red;
+    font-weight: bold;
+}
+
+.tdl {
+    font-weight: bold;
+    border: 1px solid #FFFFFF;
+    padding: 1px;
+}
+
+.tdm {
+    font-weight: bold;
+    border: 1px solid #FFFFFF;
+    word-wrap: break-word;
+    MAX-WIDTH: 97px;
+}
+
+
+.tdk {
+    font-weight: bold;
+    border: 1px solid #FFFFFF;
+    padding: 1px;
+    MAX-WIDTH: 5px;
+}
+
+.tdlw {
+    font-weight: bold;
+}
+
+.sapMImg {
+    width: 150px;
+}
+
+.linha1 {
+    font-size: 11px;
+    color: #000;
+    font-family: Verdana;
+    background-color: #dbdbdb;
+    border-color: #e7e7e7;
+    border-style: solid;
+    padding: 5px;
+    border: thin;
+}
+
+.linha2 {
+    border-color: #e7e7e7;
+    border-style: solid;
+    border: thin;
+    font-size: 11px;
+    color: #000;
+    font-family: Verdana;
+    font-stretch: semi-expanded;
+    background-color: #dbdbdb;
+    padding: 5px;
+}
+
+.linha3 {
+    border-color: #e7e7e7;
+    border-style: solid;
+    border: thin;
+    font-size: 13px;
+    color: #FFF;
+    font-family: Verdana;
+    background-color: #113CEA;
+    padding: 5px;
+}
+
+.linha4 {
+    border-color: #e7e7e7;
+    border-style: solid;
+    border: thin;
+    font-size: 15px;
+    color: #FFF;
+    font-family: Verdana;
+    background-color: #080233;
+    padding: 5px;
+}
+
+.linha5 {
+    border-color: #e7e7e7;
+    border-style: solid;
+    border: thin;
+    font-size: 13px;
+    color: #FFF;
+    font-family: Verdana;
+    background-color: #080233;
+    padding: 7px;
+    font-weight: bold;
+}
+
+.ClassNome {
+    font-size: 15px;
+    color: #000;
+    font-family: Verdana;
+    background-color: #FFF;
+    border-color: #e7e7e7;
+    border-style: solid;
+    padding: 5px;
+    border: thin;
+}

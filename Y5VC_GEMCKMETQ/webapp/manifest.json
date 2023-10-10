@@ -1,0 +1,137 @@
+{
+    "_version": "1.8.0",
+    "sap.app": {
+        "id": "Workspace.zconferencia_etiquetas",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "sourceTemplate": {
+            "id": "servicecatalog.connectivityComponentForManifest",
+            "version": "0.0.0",
+            "toolsId": "3fce78fa-27e8-4ad7-8905-b0108e9bf5c3"
+        },
+        "dataSources": {
+            "ZGWVCMM_GESTAO_ESTOQUE_SRV": {
+                "uri": "/sap/opu/odata/sap/ZGWVCMM_GESTAO_ESTOQUE_SRV/",
+                "type": "OData",
+                "settings": {
+                    "localUri": "localService/ZGWVCMM_GESTAO_ESTOQUE_SRV/metadata.xml"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        },
+        "supportedThemes": [
+            "sap_hcb",
+            "sap_belize"
+        ]
+    },
+    "sap.ui5": {
+        "rootView": {
+            "viewName": "Workspace.zconferencia_etiquetas.view.S0",
+            "type": "XML"
+        },
+        "dependencies": {
+            "minUI5Version": "1.30.0",
+            "libs": {
+                "sap.ui.layout": {},
+                "sap.ui.core": {},
+                "sap.m": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "Workspace.zconferencia_etiquetas.i18n.i18n"
+                }
+            },
+            "NFHEADER": {
+                "type": "sap.ui.model.odata.v2.ODataModel",
+                "settings": {
+                    "defaultOperationMode": "Server",
+                    "defaultBindingMode": "OneWay",
+                    "defaultCountMode": "Request"
+                },
+                "dataSource": "ZGWVCMM_GESTAO_ESTOQUE_SRV",
+                "preload": true
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "Workspace.zconferencia_etiquetas.view",
+                "controlAggregation": "pages",
+                "controlId": "Nfe",
+                "clearControlAggregation": false
+            },
+            "routes": [
+                {
+                    "name": "inicio",
+                    "pattern": "NF_scan",
+                    "target": [
+                        "S0"
+                    ]
+                },
+                {
+                    "name": "visao_etq",
+                    "pattern": "S1/{chvNfe}",
+                    "target": [
+                        "S1"
+                    ]
+                }
+            ],
+            "targets": {
+                "S0": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewName": "S0",
+                    "viewLevel": 1
+                },
+                "S1": {
+                    "viewType": "XML",
+                    "viewName": "S1",
+                    "transition": "slide",
+                    "viewId": "PageS1",
+                    "viewLevel": 1
+                }
+            }
+        }
+    },
+    "sap.platform.abap": {
+        "uri": "/sap/bc/ui5_ui5/sap/y5vc_gemckmetq/",
+        "_version": "1.1.0"
+    }
+}

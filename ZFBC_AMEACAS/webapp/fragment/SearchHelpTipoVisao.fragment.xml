@@ -1,0 +1,13 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog
+		title="Tipo Visão"
+		class="sapUiPopupWithPadding"
+		confirm="_handleFdriscoSHClose"
+		cancel="_handleFdriscoSHClose">
+		<StandardListItem title="01" description="Inerente" />
+		<StandardListItem title="02" description="Residual" />
+		<StandardListItem title="03" description="Residual Planejada" />
+	</SelectDialog>
+</core:FragmentDefinition>

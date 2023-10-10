@@ -1,0 +1,1 @@
+sap.ui.define(["Y5GL_DHO4/Y5GL_DHO4/controller/BaseController"],function(e){"use strict";return e.extend("Y5GL_DHO4.Y5GL_DHO4.controller.NotFound",{onLinkPressed:function(){this.getRouter().navTo("worklist")}})});

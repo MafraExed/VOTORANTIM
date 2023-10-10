@@ -1,0 +1,46 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns:m="sap.m" xmlns:mc="sap.suite.ui.microchart"
+	xmlns:comm="sap.suite.ui.commons" xmlns:table="sap.ui.table" xmlns:u="sap.ui.unified" xmlns:l="sap.ui.layout"
+	controllerName="FechamentoContabil.controller.Atividades" xmlns:html="http://www.w3.org/1999/xhtml" width="100%">
+	<m:Page id="IdCorpoPagina"  showFooter="false" showHeader="False" >
+		<m:content>
+			<m:HBox width="100%"  backgroundDesign="Solid" alignContent="Center" alignItems="Center" justifyContent="Center"> 
+				<m:Select id="idInputModelo" change="onNovoModelo" class="sapUiTinyMarginBegin inputKeys"
+							items="{
+								path: 'Planos>/' 
+							}">
+					<core:Item key="{Planos>Instance}" text="{Planos>Profile}" />
+				</m:Select>
+				<m:Select id="idInputPeriodo" change="onNovoPeriodo" class="sapUiTinyMarginBegin inputKeys"
+							items="{
+								path: 'Periodos>/' 
+							}">
+					<core:Item key="{Periodos>Instance}" text="{Periodos>Data}" />
+				</m:Select>
+			</m:HBox>
+			<m:HBox id="idHboxPath" width="100%" justifyContent="Start" alignItems="Center" backgroundDesign="Solid">
+				<core:Icon class="path__icon__mobile" size="10px" src="sap-icon://menu" color="white" press="onConfigHierarquiaMobile"/>
+			</m:HBox>
+			<m:List id="listMobile" items="{path: 'Tarefas>/'}" class="sapUiTinyMarginTop" width="100%" >
+				<m:CustomListItem >
+					<m:VBox class="sapUiTinyMarginTopBottom" width="100%">
+						<m:HBox alignItems="Center" width="100%">
+							<core:Icon class="sapUiTinyMarginBegin" src="{Tarefas>ICON_STATUS}" color="{Tarefas>COLOR_STATUS}" tooltip="{Tarefas>STATUS}" size="25px"/>
+							<m:Label text="{Tarefas>DESC_TAREFA}" class="sapUiTinyMarginBegin label_atividades_mobile label_atividades_size_mobile"/>
+						</m:HBox>
+						<m:HBox alignItems="Center">
+							<m:Label text="Início Planejado:" class="sapUiTinyMarginBeginEnd label_atividades_item_mobile" />
+							<!--<m:DatePicker class="gantt__plan__date" value="{Tarefas>DATA_INICIO_PLAN}" displayFormat="short" valueFormat="yyyyMMdd" change="onChangeDate" tooltip="{Tarefas>DATA_INICIO_PLAN}"/>-->
+							<m:Label class="atvd_obile_datetiem sapUiTinyMarginEnd" text="{ path: 'Tarefas>DATA_INICIO_PLAN', formatter: '.formatter.formatDate' }"/>
+							<m:Label class="atvd_obile_datetiem" text="{ path: 'Tarefas>HORA_INICIO_PLAN', formatter: '.formatter.formatTime' }"/>
+							<!--<m:TimePicker class="sapUiTinyMarginEnd gantt__plan__date"	value="{Tarefas>HORA_INICIO_PLAN}" valueFormat="HHmm" displayFormat="HH:mm"	editable="false"/>	-->
+						</m:HBox>
+						<m:HBox class="sapUiTinyMarginBeginEnd" alignItems="Center">
+							<m:Label text="Resp.:" class="label_atividades_item_mobile"/>
+							<m:Label text="{Tarefas>RESP_EXEC}" class="sapUiTinyMarginBegin label_atividades_item_mobile"/>
+						</m:HBox>
+					</m:VBox>
+				</m:CustomListItem>
+			</m:List>
+		</m:content>
+	</m:Page>
+</mvc:View>

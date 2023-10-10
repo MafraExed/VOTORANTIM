@@ -1,0 +1,261 @@
+{
+    "resources": [
+        {
+            "name": "model/models-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "manifest.json"
+        },
+        {
+            "name": "model/models.js"
+        },
+        {
+            "name": "model/formatter.js"
+        },
+        {
+            "name": "localService/mockserver.js"
+        },
+        {
+            "name": "controller/NotFound.controller.js"
+        },
+        {
+            "name": "controller/Master.controller.js"
+        },
+        {
+            "name": "controller/ListSelector.js"
+        },
+        {
+            "name": "controller/IMPORT.controller.js"
+        },
+        {
+            "name": "controller/FORMACAO.controller.js"
+        },
+        {
+            "name": "controller/FORMACAO_DETAIL.controller.js"
+        },
+        {
+            "name": "controller/ErrorHandler.js"
+        },
+        {
+            "name": "controller/ENDERECO.controller.js"
+        },
+        {
+            "name": "controller/DOCUMENTOS.controller.js"
+        },
+        {
+            "name": "controller/Documentos_Detail.controller.js"
+        },
+        {
+            "name": "controller/DetailObjectNotFound.js"
+        },
+        {
+            "name": "controller/DetailObjectNotFound.controller.js"
+        },
+        {
+            "name": "controller/Detail.controller.js"
+        },
+        {
+            "name": "controller/DepententeDetail.controller.js"
+        },
+        {
+            "name": "controller/DEPENDENTES.controller.js"
+        },
+        {
+            "name": "controller/DADOS_PESSOAIS.controller.js"
+        },
+        {
+            "name": "controller/BENEFICIOS.controller.js"
+        },
+        {
+            "name": "controller/BENEFICIOS_DETAIL.controller.js"
+        },
+        {
+            "name": "controller/BaseController.js"
+        },
+        {
+            "name": "controller/App.controller.js"
+        },
+        {
+            "name": "Component.js"
+        },
+        {
+            "name": "manifest-bundle.zip"
+        },
+        {
+            "name": "Component-preload.js",
+            "merged": true
+        },
+        {
+            "name": "localService/mockserver-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "model/formatter-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/NotFound-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/Master-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/ListSelector-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/IMPORT-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/FORMACAO-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/FORMACAO_DETAIL-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/ErrorHandler-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/ENDERECO-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/DOCUMENTOS-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/Documentos_Detail-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/DetailObjectNotFound-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/DetailObjectNotFound-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/Detail-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/DepententeDetail-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/DEPENDENTES-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/DADOS_PESSOAIS-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/BENEFICIOS-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/BENEFICIOS_DETAIL-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/BaseController-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/App-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "Component-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "../../sap-ui-version.json"
+        },
+        {
+            "name": "neo-app.json"
+        },
+        {
+            "name": "di.code-validation.core_issues.json"
+        },
+        {
+            "name": "view/ViewSettingsDialog.fragment.xml"
+        },
+        {
+            "name": "view/NotFound.view.xml"
+        },
+        {
+            "name": "view/Master.view.xml"
+        },
+        {
+            "name": "view/LocNascimento.fragment.xml"
+        },
+        {
+            "name": "view/IMPORT.view.xml"
+        },
+        {
+            "name": "view/FORMACAO.view.xml"
+        },
+        {
+            "name": "view/FORMACAO_DETAIL.view.xml"
+        },
+        {
+            "name": "view/ENDERECO.view.xml"
+        },
+        {
+            "name": "view/DOCUMENTOS.view.xml"
+        },
+        {
+            "name": "view/Documentos_Detail.view.xml"
+        },
+        {
+            "name": "view/DetailObjectNotFound.view.xml"
+        },
+        {
+            "name": "view/Detail.view.xml"
+        },
+        {
+            "name": "view/DepententeDetail.view.xml"
+        },
+        {
+            "name": "view/DEPENDENTES.view.xml"
+        },
+        {
+            "name": "view/DADOS_PESSOAIS.view.xml"
+        },
+        {
+            "name": "view/BENEFICIOS.view.xml"
+        },
+        {
+            "name": "view/BENEFICIOS_DETAIL.view.xml"
+        },
+        {
+            "name": "view/App.view.xml"
+        },
+        {
+            "name": "localService/metadata.xml"
+        },
+        {
+            "name": "imagens/Transparente_CBA.gif"
+        },
+        {
+            "name": "imagens/Transf_CBA.gif"
+        },
+        {
+            "name": "i18n/i18n.properties",
+            "raw": "i18n/i18n.properties"
+        },
+        {
+            "name": "css/style.css"
+        }
+    ]
+}

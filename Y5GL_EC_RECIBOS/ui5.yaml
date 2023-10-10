@@ -1,0 +1,27 @@
+specVersion: "3.1"
+metadata:
+  name: y5gl_ec_recibos.y5gl_ec_recibos
+type: application
+server:
+  customMiddleware:
+    - name: fiori-tools-proxy
+      afterMiddleware: compression
+      configuration:
+        ignoreCertError: false
+        ui5:
+          path:
+            - /resources
+            - /test-resources
+          url: https://ui5.sap.com
+          version: 1.52.37
+    - name: fiori-tools-appreload
+      afterMiddleware: compression
+      configuration:
+        port: 35729
+        path: webapp
+        delay: 300
+    - name: fiori-tools-preview
+      afterMiddleware: fiori-tools-appreload
+      configuration:
+        component: Y5GL_EC_RECIBOS.Y5GL_EC_RECIBOS
+        ui5Theme: sap_fiori_3

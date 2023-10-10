@@ -1,0 +1,252 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout" xmlns:footerbar="sap.ushell.ui.footerbar">
+		
+	<Panel width="auto">
+
+		<headerToolbar>
+			<Toolbar>
+				<Title text="{i18n>itensEmbarqueTitle}" level="H4" titleStyle="H4"/>
+				<ToolbarSpacer />
+					<SearchField
+						id="detailFilter"
+						placeholder="{i18n>detailTitleFilterPlaceHolder}"
+						search="onSearch" 
+						width="15rem"/>
+						
+
+			</Toolbar>
+		</headerToolbar>  
+			
+		<content>
+			<Table id="itensEmbarqueTable" 
+				   mode="MultiSelect"
+				   items="{ShipmentDetailToItems}" 
+				   fixedLayout="true"
+				   updateFinished="onHandleTableLoad"
+				   visibleRowCount="2"
+				   growing="true"
+				   growingThreshold="3"
+				   growingTriggerText=""
+				   growingScrollToLoad="true"
+				   growingDirection="Downwards">
+				   		
+				   						
+				<columns>
+					<Column width="1.2rem">
+						<Text text="{i18n>itensEmbarqueColumnTableValicacao}" tooltip="Validação"/>
+					</Column>
+					
+					<Column width="3.5rem">
+						<Text text="{i18n>itensEmbarqueColumnTableItem}" />
+					</Column>
+											
+					<Column width="7rem"		minScreenWidth="Tablet"			demandPopin="true">
+						<Text text="{i18n>detailTitleTableWerkso}" tooltip="{i18n>detailTitleTableWerkso}" />
+					</Column>
+					
+					<Column width="5rem"
+							minScreenWidth="Tablet"
+							demandPopin="true">
+						<Text text="{i18n>detailTitleTableLgorto}" tooltip="{i18n>detailTitleTableLgorto}" />
+					</Column>
+					
+					<Column width="3.5rem">
+						<Text text="{i18n>itensEmbarqueColumnTableTipoVenda}" />
+					</Column>
+					
+					<Column width="6rem">
+						<Text text="{i18n>itensEmbarqueColumnTableDestino}"  />
+					</Column>
+							
+					<Column width="7rem">
+						<Text text="{i18n>shlpRouteTitleRoute}" />
+					</Column>		
+							
+										
+					<Column width="7rem"	minScreenWidth="Tablet"	demandPopin="true">
+						<Text text="{i18n>detailTitleTableWerksd}" tooltip="{i18n>detailTitleTableWerksd}" />
+					</Column>
+					
+					<Column width="5rem" minScreenWidth="Tablet" demandPopin="true">
+						<Text text="{i18n>detailTitleTableLgortd}" tooltip="{i18n>detailTitleTableLgortd}" />
+					</Column>
+														
+					<Column width="4.5rem">			
+						<Text text="{i18n>itensEmbarqueColumnTableMaterial}" />
+					</Column>
+					
+					<Column width="6rem">
+						<Text text="{i18n>itensEmbarqueColumnTablePeso}" />
+					</Column>
+					
+					<Column width="5rem">
+						<Text text="{i18n>itensEmbarqueColumnTableVolume}" />
+					</Column>
+							
+					<Column width="3.5rem">
+						<Text text="{i18n>itensEmbarqueColumnTableInco}" />
+					</Column>	
+							
+					<Column width="7rem" >
+						<Text text="{i18n>itensEmbarqueColumnTableCondPag}"  />
+					</Column>
+					
+					<Column width="7.5rem">
+						<Text text="{i18n>itensEmbarqueColumnTableDocRef}" />
+					</Column>
+					
+					<Column width="5rem">
+						<Text text="{i18n>itensEmbarqueColumnTableDocRefItem}" />
+					</Column>
+					
+					<Column width="8rem">
+						<Text text="{i18n>itensEmbarqueColumnTableNumeroRe}" />
+					</Column>
+					
+					<Column width="8rem">
+						<Text text="{i18n>itensEmbarqueColumnTableCeMercante}" />
+					</Column>			
+					
+					<Column width="12rem">
+						<Text text="{i18n>itensEmbarqueColumnTableNumeroBl}" />
+					</Column>
+										
+					<Column width="20rem">
+						<Text text="{i18n>itensEmbarqueColumnTableMarcacao}" />
+					</Column>
+				
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<ObjectStatus
+								state="{path: 'Stalert', formatter: '.formatter.mudarStateProblema'}"
+								icon="{path: 'Stalert', formatter: '.formatter.mudarIconProblema'}"
+								tooltip="{StalertDsc}" />
+						</cells>	
+											
+						<cells>
+							<Text text="{ShpmtIt}" />
+						</cells>
+						
+						<cells>
+							
+							<ObjectNumber
+							number="{Werkso}" 
+							unit="{WerksoDsc}"
+							emphasized="false"/>
+						</cells>
+								
+						<cells>
+							<Text text="{Lgorto}"/>
+						</cells>
+						
+						
+						<cells>
+							<Text text="{path: 'Tipovenda',formatter:'.formatter.formatTpVenda'}" />
+						</cells>
+						
+						<cells>
+							<ObjectNumber
+									number="{Ptdst}"
+									unit="{PtdstDsc}" 
+									emphasized="false"
+									tooltip="{PtdstDsc}"/>
+						</cells>
+						
+						<cells>
+							
+						    <ObjectNumber
+							number="{Route}" 
+							unit="{RouteDsc}"
+							tooltip="{RouteDsc}"
+							emphasized="false"/>
+						</cells>
+						
+						<cells>
+							
+						    <ObjectNumber
+							number="{Werksd}" 
+							unit="{WerksdDsc}"
+							emphasized="false"/>
+						</cells>
+								
+						<cells>
+							<Text text="{Lgortd}"/>
+						</cells>
+						
+						
+						<cells>
+							<ObjectNumber
+							number="{Matnr}" 
+							unit="{MatnrDsc}"
+							emphasized="false"
+							tooltip="{MatnrDsc}"/>
+						</cells>
+						<cells>
+							<ObjectNumber
+									number="{
+												path: 'Weight',formatter:'.formatter.formatNumberBrazil'
+											}"
+									numberUnit="{Unit}" 
+									emphasized="false"/>
+						</cells>
+						<cells>
+							<Text text="{
+											path : 'Volumn', 
+											formatter:'.formatter.formatNumberBrazil',
+										    type : 'sap.ui.model.odata.type.String', 
+										    constraints: { 
+										         isDigitSequence : true,
+										         maxLength : 10
+										    }
+										} UN" />
+						</cells>
+										
+						<cells>
+							
+								<ObjectNumber
+									number="{Inco1}"
+									unit="{Inco2}"
+									emphasized="false"/>
+					
+						</cells>
+						<cells>
+							<ObjectNumber
+								number="{Zterm}"
+								unit="{ZtermDsc}"
+								emphasized="false"
+								tooltip="{ZtermDsc}"/>
+							
+						</cells>
+						
+						<cells>
+							<Text text="{Docref}" />
+						</cells>
+						
+						<cells>
+							<Text text="{DocrefItem}" />
+						</cells>
+						
+						<cells>
+							<Text text="{Renum}" />
+						</cells>		
+						
+						<cells>
+							<Text text="{CeMercante}" />
+						</cells>
+						
+						<cells>
+							<Text text="{Blnum}" />
+						</cells>
+						
+						<cells>
+							<Text text="{Marks}" />
+						</cells>								
+					</ColumnListItem>
+				</items>	
+			</Table>
+		</content>
+	</Panel>
+</core:FragmentDefinition>

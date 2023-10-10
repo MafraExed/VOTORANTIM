@@ -1,0 +1,45 @@
+{
+  "run": [
+    {
+      "filePath": "/Component.js",
+      "previewMode": 1,
+      "dataMode": 1,
+      "workspace": "withoutWorkspace",
+      "ui5ActiveVersion": null,
+      "ui5VerSource": null,
+      "isDefaultVersion": 0,
+      "urlParameters": [],
+      "hashParameter": "",
+      "backendSystem": [
+        {
+          "source": "SAP_GW_HUB",
+          "destinations": "SAP_GW_FI1_DEBUG_DESTINATION"
+        }
+      ],
+      "_metadata": {
+        "id": 6965826,
+        "runnerId": "fiorirunner",
+        "displayName": "Configuratio_DEBUG",
+        "lastRunTimeStamp": 1543944835589
+      }
+    },
+    {
+      "filePath": "/Component.js",
+      "previewMode": 1,
+      "dataMode": 1,
+      "workspace": "withoutWorkspace",
+      "ui5ActiveVersion": null,
+      "ui5VerSource": null,
+      "isDefaultVersion": 0,
+      "urlParameters": [],
+      "hashParameter": "",
+      "backendSystem": [],
+      "_metadata": {
+        "id": 929551,
+        "runnerId": "fiorirunner",
+        "displayName": "Configuration",
+        "lastRunTimeStamp": 1542306791234
+      }
+    }
+  ]
+}

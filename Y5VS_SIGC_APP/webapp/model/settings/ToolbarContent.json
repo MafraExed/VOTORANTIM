@@ -1,0 +1,25 @@
+{
+  "selectedKey": "page1",
+  "navigation": [
+    {
+      "title": "PreselecciÃ³n/LicitaciÃ³n",
+      "icon": "sap-icon://attachment-e-pub",
+      "expanded": true,
+      "key": "root1",
+      "items": [
+        {
+          "title": "Tipos de proceso",
+          "key": "sProcessTypeId"
+        },
+        {
+          "title": "Textos tipo de proceso",
+          "key": "sProcessTypeTextId"
+        },
+        {
+          "title": "CategorÃ­as",
+          "key": "sCategoriesId"
+        }
+      ]
+    }
+  ]
+}

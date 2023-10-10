@@ -1,0 +1,55 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.ui.layout.form"
+	xmlns:smartTable="sap.ui.comp.smarttable" controllerName="Y5GL_SOLICIT.Y5GL_SOLICIT.controller.Detail"
+	xmlns:table="sap.ui.table" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:u="sap.ui.unified"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	<App id="idAppBeneficios_Detail">
+		<pages id="idPagesBeneficiosDetail">
+			<Page id="idTitle">
+				<customHeader>
+					<Bar id="idBarMaster">
+						<contentLeft>
+							<Button icon="sap-icon://nav-back" id="idB_navback" press="onVoltar" text="Voltar"/>
+						</contentLeft>
+						<contentMiddle>
+							<Title text="Detalhes" titleStyle="H3" id="idTitleDependentes"/>
+						</contentMiddle>
+						<contentRight>
+						</contentRight>
+					</Bar>
+				</customHeader>
+				<content>
+					<HBox width="100%" height="1000%" id="idGif" class="Loading" busyIndicatorSize="Auto" backgroundDesign="Solid">
+						<Image src="imagens/voto_load_white.gif" width="100%" class="footer_img" id="idimg" backgroundSize="100%"/>
+					</HBox>
+					<f:Form class="editableForm" editable="true" id="FUNSEJEM" visible="{path:'Tipo', formatter:'.FormatForm'}">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_FUNSEJEM" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+								emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer_FUNSEJEM">
+								<f:formElements>
+									<f:FormElement label="Chamado" id="FormContainer">
+										<f:fields>
+											<Input value="{Chamado}" id="idChamado" visible="true" width="100%" editable="false"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Data de Criação" id="FormContainer1">
+										<f:fields>
+											<Input value="{DataCriacao}" id="idDataCriacao" visible="true" width="100%" editable="false"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Motivo" id="FormContainer1_">
+										<f:fields>
+											<TextArea value="{Motivo}" rows="8" id="idbPLAN" visible="true" width="100%" editable="false"/>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

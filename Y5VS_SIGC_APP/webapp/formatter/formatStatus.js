@@ -1,0 +1,5 @@
+"use strict";function ownKeys(e,t){var r=Object.keys(e);if(Object.getOwnPropertySymbols){var n=Object.getOwnPropertySymbols(e);t&&(n=n.filter(function(t){return Object.getOwnPropertyDescriptor(e,t).enumerable})),r.push.apply(r,n)}return r}function _objectSpread(e){for(var t=1;t<arguments.length;t++){var r=null!=arguments[t]?arguments[t]:{};t%2?ownKeys(Object(r),!0).forEach(function(t){_defineProperty(e,t,r[t])}):Object.getOwnPropertyDescriptors?Object.defineProperties(e,Object.getOwnPropertyDescriptors(r)):ownKeys(Object(r)).forEach(function(t){Object.defineProperty(e,t,Object.getOwnPropertyDescriptor(r,t))})}return e}function _defineProperty(e,t,r){if(t in e){Object.defineProperty(e,t,{value:r,enumerable:true,configurable:true,writable:true})}else{e[t]=r}return e}
+/*!
+ * SiGC - GestiÃ³n de Compras
+ * (c) Copyright 2022 Innova Internacional S.A.S.
+ */sap.ui.define(["com/innova/sigc/model/process/processStatus/useProcessStatus"],function(e){return function(t){var r=t.status,n=r===void 0?"":r,o=t.i18n;return n&&n.split("").map(function(t){var r=e.getStatusMetadata(t);return _objectSpread(_objectSpread({},r),{},{text:o.getText(r.text)})})}});

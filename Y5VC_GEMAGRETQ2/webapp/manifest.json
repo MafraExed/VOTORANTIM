@@ -1,0 +1,139 @@
+{
+    "_version": "1.8.0",
+    "sap.app": {
+        "id": "Workspace.zagrupador_v2",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "sourceTemplate": {
+            "id": "servicecatalog.connectivityComponentForManifest",
+            "version": "0.0.0",
+            "toolsId": "a0b0633b-27a5-4983-96f4-1fad79e3f9be"
+        },
+        "dataSources": {
+            "ZGWVCMM_GESTAO_ESTOQUE_SRV": {
+                "uri": "/sap/opu/odata/sap/ZGWVCMM_GESTAO_ESTOQUE_SRV/",
+                "type": "OData",
+                "settings": {
+                    "localUri": "localService/metadata.xml"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        },
+        "supportedThemes": [
+            "sap_hcb",
+            "sap_belize"
+        ]
+    },
+    "sap.ui5": {
+        "rootView": {
+            "viewName": "Workspace.zagrupador_v2.view.S0",
+            "type": "XML"
+        },
+        "dependencies": {
+            "minUI5Version": "1.30.0",
+            "libs": {
+                "sap.ui.layout": {},
+                "sap.ui.core": {},
+                "sap.m": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "Workspace.zagrupador_v2.i18n.i18n"
+                }
+            },
+            "GE": {
+                "type": "sap.ui.model.odata.v2.ODataModel",
+                "settings": {
+                    "defaultOperationMode": "Server",
+                    "defaultBindingMode": "OneWay",
+                    "defaultCountMode": "Request",
+                    "refreshAfterChange": true
+                },
+                "dataSource": "ZGWVCMM_GESTAO_ESTOQUE_SRV",
+                "preload": true
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "Workspace.zagrupador_v2.view",
+                "controlAggregation": "pages",
+                "controlId": "app",
+                "clearControlAggregation": false
+            },
+            "routes": [
+                {
+                    "name": "S0",
+                    "pattern": "",
+                    "target": [
+                        "S0"
+                    ]
+                },
+                {
+                    "name": "S1",
+                    "pattern": "S1/{agrupador}",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "S1"
+                    ]
+                }
+            ],
+            "targets": {
+                "S0": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewName": "S0",
+                    "controlAggregation": "pages"
+                },
+                "S1": {
+                    "viewType": "XML",
+                    "viewName": "S1",
+                    "transition": "slide",
+                    "controlAggregation": "pages"
+                }
+            }
+        }
+    },
+    "sap.platform.abap": {
+        "uri": "/sap/bc/ui5_ui5/sap/y5vc_gemagretq2/webapp",
+        "_version": "1.1.0"
+    }
+}

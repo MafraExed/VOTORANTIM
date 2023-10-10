@@ -1,0 +1,163 @@
+{
+    "_version": "1.12.0",
+    "sap.app": {
+        "id": "cba.hr.sdvCalibracaoSF",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "sourceTemplate": {
+            "id": "servicecatalog.connectivityComponentForManifest",
+            "version": "0.0.0",
+            "toolsId": "e4d7879e-265f-4bec-8406-533b2e7bf57a"
+        },
+        "dataSources": {
+            "SFactors": {
+                "uri": "/sap/opu/odata/sap/ZGWCBHR_SFSF_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/metadata.xml"
+                }
+            },
+            "ECC": {
+                "uri": "/sap/opu/odata/sap/ZGWCBHR_SDV_SUCCESS_FACTORS_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/metadata.xml"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "services": {
+            "ShellUIService": {
+                "factoryName": "sap.ushell.ui5service.ShellUIService"
+            }
+        },
+        "flexEnabled": false,
+        "rootView": {
+            "viewName": "cba.hr.sdvCalibracaoSF.view.CalibrationSessions",
+            "type": "XML",
+            "async": true,
+            "id": "CalibrationSessions"
+        },
+        "dependencies": {
+            "minUI5Version": "1.65.6",
+            "libs": {
+                "sap.ui.layout": {},
+                "sap.ui.core": {},
+                "sap.m": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "cba.hr.sdvCalibracaoSF.i18n.i18n"
+                }
+            },
+            "SFactors": {
+                "type": "sap.ui.model.odata.v2.ODataModel",
+                "settings": {
+                    "defaultOperationMode": "Server",
+                    "defaultBindingMode": "OneWay",
+                    "defaultCountMode": "Request",
+                    "useBatch": true
+                },
+                "dataSource": "SFactors",
+                "preload": true
+            },
+            "ECC": {
+                "type": "sap.ui.model.odata.v2.ODataModel",
+                "settings": {
+                    "defaultOperationMode": "Server",
+                    "defaultBindingMode": "OneWay",
+                    "defaultCountMode": "Request",
+                    "useBatch": true
+                },
+                "dataSource": "ECC",
+                "preload": true
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ],
+            "mapster": [
+                {
+                    "uri": "lib/imageMapster.js"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "cba.hr.sdvCalibracaoSF.view",
+                "controlAggregation": "pages",
+                "controlId": "app",
+                "clearControlAggregation": false
+            },
+            "routes": [
+                {
+                    "name": "TargetCalibrationSessions",
+                    "pattern": "RouteCalibrationSessions",
+                    "target": [
+                        "TargetCalibrationSessions"
+                    ]
+                },
+                {
+                    "name": "TargetCalibrationRoom",
+                    "pattern": "RouteCalibrationRoom/{calibrationOwnerId}/{calibrationSessionId}",
+                    "target": [
+                        "TargetCalibrationRoom"
+                    ]
+                }
+            ],
+            "targets": {
+                "TargetCalibrationSessions": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "viewName": "CalibrationSessions"
+                },
+                "TargetCalibrationRoom": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "viewName": "CalibrationRoom"
+                }
+            }
+        }
+    },
+    "sap.platform.abap": {
+        "uri": "/sap/bc/ui5_ui5/sap/zhr_sdv_calibr/webapp",
+        "_version": "1.1.0"
+    }
+}

@@ -1,0 +1,29 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m">
+		
+	
+	<IconTabBar id="idIconTabBarMulti" expanded="{device>/isNoPhone}"
+		select="onHandleIconTabBarSelect" class="sapUiResponsiveContentPadding" expandable="false">
+		<items> 
+			
+					<IconTabFilter id="filter1" icon="sap-icon://customer-order-entry"
+						tooltip="{i18n>objTabBar1}" design="Horizontal" text="{i18n>objTabBar1}" >
+
+						<core:Fragment
+							fragmentName="nasa.ui5.controleDrawback.view.fragments.MovimentosAc"
+							type="XML" />
+
+					</IconTabFilter>
+
+					<IconTabFilter id="filter2" icon="sap-icon://activity-items"
+						tooltip="{i18n>objTabBar2}" design="Horizontal" text="{i18n>objTabBar2}" >
+
+						<core:Fragment fragmentName="nasa.ui5.controleDrawback.view.fragments.DadosAc"
+							type="XML" />
+
+					</IconTabFilter>
+			
+		</items>
+	</IconTabBar>
+
+</core:FragmentDefinition>

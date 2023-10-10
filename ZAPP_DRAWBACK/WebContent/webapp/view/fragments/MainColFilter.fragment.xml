@@ -1,0 +1,45 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core" >
+  
+  <ResponsivePopover title="Options"
+  placement= "Bottom"
+  afterOpen= "onOpen">
+    <content>
+        <List>
+          <items>
+          	    <StandardListItem
+			    title="Ordenar em ordem Crescente"
+			    icon="sap-icon://sort-ascending"
+			   	press="onAscending"
+			    iconInset="true"
+			    iconDensityAware="true"
+			    type="Active"/>
+          	
+          	    <StandardListItem
+			    title="Ordenar em ordem Decrescente"
+			    icon="sap-icon://sort-descending"
+			   	press="onDescending"
+			    iconInset="true"
+			    type="Active"/>
+			    
+			              
+            <CustomListItem>
+            <HBox alignItems="Center"
+                  justifyContent="Center"
+                  class="HBoxStyle">
+            	<Label text="" />
+            <Label text="Filtro :" />
+            <Input id="acnumColfilter" 
+            	   placeholder="Ex.: abc,cde,efg..."
+            	   width="85%"
+                   change="onChange" />
+            </HBox>
+            </CustomListItem>
+          </items>
+        </List>
+    </content>
+  </ResponsivePopover>
+  
+  
+  
+</core:FragmentDefinition>

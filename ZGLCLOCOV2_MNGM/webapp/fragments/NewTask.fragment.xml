@@ -1,0 +1,216 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:table="sap.ui.table"
+    xmlns:l="sap.ui.layout" class="sapUiSizeCompact"
+    xmlns:f="sap.ui.layout.form">
+    <Dialog showHeader="true" title="{i18n>detailNewTask}">
+        <f:Form editable="true">
+            <f:layout>
+                <f:ResponsiveGridLayout labelSpanXL="6" labelSpanL="6" labelSpanM="6" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="4" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false" />
+            </f:layout>
+            <f:formContainers>
+                <f:FormContainer>
+                    <f:formElements >
+                        <f:FormElement label="{i18n>detailDescription}">
+                            <f:fields>
+                                <Input required="true" id="newTaskDesc" value="{
+                                                path: 'newTask>/Description',
+                                                type : 'sap.ui.model.type.String',
+                                            constraints : {
+                                                minLength: 1
+                                            }
+                                            }" maxLength="60" />
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement label="{i18n>taskCompanyCode}">
+						<f:fields>
+							<Input id="idNewTaskCompany" required="true" change="onDataChanged" value="{
+																		path: 'newTask>/Empresa',
+																		type : 'sap.ui.model.type.String',
+																		constraints : {
+																		minLength: 1
+																		}
+																	}"  showValueHelp="true" valueHelpRequest="showCompanySearchHelp"/> 
+						    <CheckBox text="{i18n>taskCoe}" selected="{newTask>/Coe}" textAlign="Center"/>
+						</f:fields>
+					</f:FormElement>
+                    <f:FormElement label="Área/Departamento">
+						<f:fields>
+							<Input id="idNewTaskArea" required="false" change="onDataChanged" value="{
+																		path: 'newTask>/Departamento',
+																		type : 'sap.ui.model.type.String',
+																		constraints : {
+																		minLength: 1
+																		}
+																	}"  showValueHelp="true" valueHelpRequest="showDepartamentSearchHelp('idNewTaskArea')"/> 
+						</f:fields>
+					</f:FormElement>
+                        <f:FormElement label="{i18n>detailResponsible}">
+                            <f:fields>
+                                <Input id="idBtnCreateUserResp" value="{newTask>/User_respons}" showValueHelp="true" valueHelpRequest="showUserSearchHelp"/>
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement label="{i18n>detailResponsibleExec}">
+                            <f:fields>
+                                <Input required="true" id="idBtnCreateUserExec" value="{
+                                                                        path: 'newTask>/User_respons_exec',
+                                                                        type : 'sap.ui.model.type.String',
+                                                                    constraints : {
+                                                                        minLength: 1
+                                                                    }
+                                                                    }" showValueHelp="true" valueHelpRequest="showUserSearchHelp"/>
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement label="{i18n>taskType}">
+                            <f:fields>
+                                <Select id="newTaskType" selectedKey="{newTask>/Kind}">
+                                    <items>
+                                        <core:Item text="{i18n>TaskTypeJob}" key="0"/>
+                                        <core:Item text="{i18n>TaskTypeTcode}" key="2"/>
+                                        <core:Item text="{i18n>TaskTypeReminder}" key="3"/>
+                                    </items>
+                                </Select>
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement visible="{= ${newTask>/Kind} === '2'}" label="{i18n>TaskTypeTcode}">
+                            <f:fields>
+                                <Input required="true" id="tcodeNewTask" visible="{= ${newTask>/Kind} === '2'}" showValueHelp="true" valueHelpRequest="showTcodeSearchHelp" value="{
+                                                                                                                                                                    path: 'newTask>/Transacao',
+                                                                                                                                                                    type : 'sap.ui.model.type.String',
+                                                                                                                                                                constraints : {
+                                                                                                                                                                    minLength: 1
+                                                                                                                                                                }
+                                                                                                                                                                }" />
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement visible="{= ${newTask>/Kind} === '0'}" label="{i18n>TaskTypeProgram}">
+                            <f:fields>
+                                <Input required="true" id="jobNewTask" visible="{= ${newTask>/Kind} === '0'}" value="{
+                                                                                                    path: 'newTask>/Programa',
+                                                                                                    type : 'sap.ui.model.type.String',
+                                                                                                constraints : {
+                                                                                                    minLength: 1
+                                                                                                }
+                                                                                                }" showValueHelp="true" valueHelpRequest="showJobSearchHelp"/>
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement visible="{= ${newTask>/Kind} === '0'}" label="{i18n>TaskVariant}">
+                            <f:fields>
+                                <Input required="true" id="varNewTask" visible="{= ${newTask>/Kind} === '0'}" value="{
+                                                                                                    path: 'newTask>/Variante',
+                                                                                                    type : 'sap.ui.model.type.String',
+                                                                                                constraints : {
+                                                                                                    minLength: 1
+                                                                                                }
+                                                                                                }" showValueHelp="true" valueHelpRequest="showVarSearchHelp" />
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement label="{i18n>tasklCriticalPath}">
+                            <f:fields>
+                                <Select selectedKey="{newTask>/CaminhoCritico}">
+                                    <items>
+                                        <core:Item text="{i18n>appYes}" key="X"/>
+                                        <core:Item text="{i18n>appNo}" key=""/>
+                                    </items>
+                                </Select>
+                            </f:fields>
+                        </f:FormElement>
+                    </f:formElements>
+                </f:FormContainer>
+                <f:FormContainer>
+                    <f:formElements >
+                        <f:FormElement label="{i18n>detailTaskMonth}">
+                            <f:fields>
+                                <Switch state="{newTask>/EncerramentoMes}" customTextOn=" " customTextOff=" "/>
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement label="{i18n>detailTask3Month}">
+                            <f:fields>
+                                <Switch state="{newTask>/EncerramentoTri}" customTextOn=" " customTextOff=" "/>
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement label="{i18n>detailTaskYear}">
+                            <f:fields>
+                                <Switch state="{newTask>/EncerramentoAno}" customTextOn=" " customTextOff=" "/>
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement label="{i18n>detailTaskSpecial}">
+                            <f:fields>
+                                <Switch state="{newTask>/EncerramentoEspec}" customTextOn=" " customTextOff=" "/>
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement label="{i18n>detailTaskUser}">
+                            <f:fields>
+                                <Switch state="{newTask>/EncerramentoUsuario}" customTextOn=" " customTextOff=" "/>
+                            </f:fields>
+                        </f:FormElement>
+                    </f:formElements>
+                </f:FormContainer>
+                <f:FormContainer >
+                    <f:title>
+                        <core:Title text="Início Planejado" />
+                    </f:title>
+                    <f:formElements>
+                        <f:FormElement >
+                            <f:fields>
+                                <Input required="true" id="newTaskPlanDias" type="Number" change="onDataChanged" value="{
+                                                                                    path: 'newTask>/InicioPlanejadoDias',
+                                                                                    type : 'sap.ui.model.type.String',
+                                                                                constraints : {
+                                                                                    minLength: 1
+                                                                                }
+                                                                                }" description="dias"></Input>
+                                <TimePicker required="true" id="newTaskPlanHoras" value="{
+                                                    path: 'newTask>/InicioPlanejadoHoras',
+                                                    type : 'sap.ui.model.type.String',
+                                                constraints : {
+                                                    minLength: 1
+                                                }
+                                                }" valueFormat="HHmmss" displayFormat="HH:mm" maskMode="On" change="onDataChanged" placeholder="Hora" />
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement>
+                            <f:fields>
+                                <Select selectedKey="{newTask>/InicioPlanAposDataBase}" change="onDataChanged">
+                                    <items>
+                                        <core:Item text="Antes da data base" key=""/>
+                                        <core:Item text="Após a data base" key="X"/>
+                                    </items>
+                                </Select>
+                            </f:fields>
+                        </f:FormElement>
+                    </f:formElements>
+                </f:FormContainer>
+
+                <f:FormContainer >
+                    <f:title>
+                        <core:Title text="Duração Planejada" />
+                    </f:title>
+                    <f:formElements>
+                        <f:FormElement >
+                            <f:fields>
+                                <Input type="Number" change="onDataChanged" value="{newTask>/DuracaoPlanejadoDias}" description="dias"></Input>
+                                <TimePicker required="true" id="newTaskPlaDuracHoras" value="{
+                                                    path: 'newTask>/DuracaoPlanejadoHoras',
+                                                    type : 'sap.ui.model.type.String',
+                                                constraints : {
+                                                    minLength: 1
+                                                }
+                                                }" valueFormat="HHmmss" displayFormat="HH:mm" maskMode="On" change="onDataChanged" title="Hora" placeholder="Hora" />
+                            </f:fields>
+                        </f:FormElement>
+                    </f:formElements>
+                </f:FormContainer>
+            </f:formContainers>
+
+        </f:Form>
+
+        <beginButton>
+            <Button type="Emphasized" text="{i18n>appApply}" press="onCreateTask"/>
+        </beginButton>
+        <endButton>
+            <Button text="{i18n>appCancel}" press="onCloseNewTaskDialog"/>
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

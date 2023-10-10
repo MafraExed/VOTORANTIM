@@ -1,0 +1,9 @@
+<service xmlns:atom="http://www.w3.org/2005/Atom" xmlns:app="http://www.w3.org/2007/app" xmlns="http://www.w3.org/2007/app"
+	xml:base="https://dbcorplwu9ep3mzz.br1.hana.ondemand.com:443/PKG_COCKPIT_INTEGRACAO_EC/ODATA_TB_COCKPIT_INTEGRACAO_EC.xsodata/">
+	<workspace>
+		<atom:title>Default</atom:title>
+		<collection href="TB_COCKPIT_INTEGRACAO_EC">
+			<atom:title>TB_COCKPIT_INTEGRACAO_EC</atom:title>
+		</collection>
+	</workspace>
+</service>

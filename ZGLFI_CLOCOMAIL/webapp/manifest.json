@@ -1,0 +1,135 @@
+{
+    "_version": "1.1.0",
+    "sap.app": {
+        "_version": "1.1.0",
+        "id": "ClocoEmailSetup",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "title": "",
+        "description": "",
+        "resources": "resources.json",
+        "ach": "ach",
+        "sourceTemplate": {
+            "id": "servicecatalog.connectivityComponentForManifest",
+            "version": "0.0.0",
+            "toolsId": "98b6569b-b3e6-49d3-a1ce-73ab98ed16ad"
+        },
+        "dataSources": {
+            "ZGWGLFI_CLOCO_SRV": {
+                "uri": "/sap/opu/odata/sap/ZGWGLFI_CLOCO_SRV/",
+                "type": "OData",
+                "settings": {
+                    "localUri": "localService/metadata.xml"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "_version": "1.1.0",
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        },
+        "supportedThemes": [
+            "sap_hcb",
+            "sap_bluecrystal"
+        ]
+    },
+    "sap.ui5": {
+        "_version": "1.1.0",
+        "rootView": {
+            "viewName": "ClocoEmailSetup.view.App",
+            "type": "XML"
+        },
+        "dependencies": {
+            "minUI5Version": "1.52.0",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.ui.layout": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "ClocoEmailSetup.i18n.i18n"
+                }
+            },
+            "": {
+                "type": "sap.ui.model.odata.v2.ODataModel",
+                "settings": {
+                    "defaultOperationMode": "Server",
+                    "defaultBindingMode": "OneWay",
+                    "defaultCountMode": "Request",
+                    "useBatch": false
+                },
+                "dataSource": "ZGWGLFI_CLOCO_SRV",
+                "preload": true
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "viewPath": "ClocoEmailSetup.view",
+                "controlAggregation": "pages",
+                "routerClass": "sap.m.routing.Router",
+                "greedy": true,
+                "controlId": "app"
+            },
+            "targets": {
+                "main": {
+                    "viewType": "XML",
+                    "transition": "show",
+                    "clearAggregation": true,
+                    "viewName": "Main",
+                    "viewLevel": 1,
+                    "viewPath": "ClocoEmailSetup.view",
+                    "controlAggregation": "pages",
+                    "routerClass": "sap.m.routing.Router",
+                    "controlId": "app"
+                }
+            },
+            "routes": [
+                {
+                    "name": "Main",
+                    "pattern": "",
+                    "target": [
+                        "main"
+                    ]
+                }
+            ]
+        }
+    },
+    "sap.platform.hcp": {
+        "uri": "webapp",
+        "_version": "1.1.0"
+    },
+    "sap.platform.abap": {
+        "uri": "/sap/bc/ui5_ui5/sap/zglfi_clocomail",
+        "_version": "1.1.0"
+    }
+}

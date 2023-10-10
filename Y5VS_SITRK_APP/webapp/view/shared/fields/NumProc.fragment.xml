@@ -1,0 +1,1 @@
+<c:FragmentDefinition xmlns="sap.m" xmlns:c="sap.ui.core" xmlns:f="sap.ui.layout.form"><f:FormContainer><f:formElements><f:FormElement label="{main>/textPool/K274}"><f:fields><Input id="numProcInput" editable="false" name="numProc" placeholder="{main>/textPool/K274}"/></f:fields></f:FormElement></f:formElements></f:FormContainer></c:FragmentDefinition>

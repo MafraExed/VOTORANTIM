@@ -1,0 +1,20 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog
+		id="selectDialogBOType"
+	    noDataText="{i18n>error_BOType_noDataText}"
+		title="{i18n>title_BOType_Fragment}"
+		class="sapUiPopupWithPadding"
+		items="{path : 'GE>/ZET_VCMM_BOTYPE_IHSet', sort:'TipoBo'}"
+		search="_handleBoTypeValueHelpSearch"
+		confirm="_handleBoTypeValueHelpClose"
+		cancel="_handleBoTypeValueHelpClose">
+		<StandardListItem
+			iconDensityAware="false"
+			iconInset="false"
+			activeIcon="sap-icon://accept"
+			title="{GE>Descricao}" 
+			description="{GE>TipoBo}" />
+	</SelectDialog>
+</core:FragmentDefinition>

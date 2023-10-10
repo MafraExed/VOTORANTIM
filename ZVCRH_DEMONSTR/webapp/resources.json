@@ -1,0 +1,112 @@
+{
+    "resources": [
+        {
+            "name": ".che/project.json"
+        },
+        {
+            "name": ".gitignore"
+        },
+        {
+            "name": ".project.json"
+        },
+        {
+            "name": ".user.project.json"
+        },
+        {
+            "name": "Component-preload.js",
+            "merged": true
+        },
+        {
+            "name": "Component.js"
+        },
+        {
+            "name": "Demonstrativo.pdf"
+        },
+        {
+            "name": "Formulario.html"
+        },
+        {
+            "name": "Formulario2.html"
+        },
+        {
+            "name": "Gruntfile.js"
+        },
+        {
+            "name": "controller/Demonstrativo.controller.js"
+        },
+        {
+            "name": "controller/View1.controller.js"
+        },
+        {
+            "name": "controller/pdf.controller.js"
+        },
+        {
+            "name": "css/style.css"
+        },
+        {
+            "name": "css.css"
+        },
+        {
+            "name": "dist"
+        },
+        {
+            "name": "i18n/i18n.properties",
+            "raw": "i18n/i18n.properties"
+        },
+        {
+            "name": "index.html"
+        },
+        {
+            "name": "localService/ZGWVCHR_DEMONSTRATIVOS_SRV/metadata.xml"
+        },
+        {
+            "name": "localService/ZGWVCHR_FERIAS_ESS_SRV/metadata.xml"
+        },
+        {
+            "name": "localService/ZGWVCHR_LIST_DEPENDENTES_SRV/metadata.xml"
+        },
+        {
+            "name": "localService/metadata.xml"
+        },
+        {
+            "name": "logo.png"
+        },
+        {
+            "name": "manifest.json"
+        },
+        {
+            "name": "model/models.js"
+        },
+        {
+            "name": "neo-app.json"
+        },
+        {
+            "name": "node_modules"
+        },
+        {
+            "name": "package-lock.json"
+        },
+        {
+            "name": "package.json"
+        },
+        {
+            "name": "resources.json",
+            "merged": true
+        },
+        {
+            "name": "sap-ui-cachebuster-info.json"
+        },
+        {
+            "name": "view/Demonstrativo.view.xml"
+        },
+        {
+            "name": "view/Formulario3.html"
+        },
+        {
+            "name": "view/View1.view.xml"
+        },
+        {
+            "name": "view/pdf.view.xml"
+        }
+    ]
+}

@@ -1,0 +1,392 @@
+<mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.f.semantic" xmlns:footerbar="sap.ushell.ui.footerbar"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:smartFilterBar="sap.ui.comp.smartfilterbar" xmlns:m="sap.m"
+	xmlns:smartField="sap.ui.comp.smartfield" xmlns:sv="sap.ui.comp.smartvariants" xmlns:smartTable="sap.ui.comp.smarttable"
+	xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:l="controls"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	controllerName="ZCBMM_CF_CEGA.ZCBMM_CF_CEGA.controller.Worklist">
+	<!--</mvc:View> xmlns:smartField="sap.ui.comp.smartfield"-->
+	<!--controllerName="sap.ui.comp.sample.smartfield.SmartField" class="sapUiSizeCompact" xmlns:l="sap.ui.layout">-->
+	<Page showHeader="false" showSubHeader="false">
+		<IconTabBar id="iconTabBar" selectedKey="{WorklistView>/selectedTab}" select=".onSelectedTabChange" expandable="false">
+			<items>
+				<IconTabFilter key="1" id="Filter02" text="Avisos de Recebimento" icon="sap-icon://newspaper" visible="true" tooltip="Conferência Cega"
+					design="Horizontal">
+					<smartFilterBar:SmartFilterBar id="SF_ConferenciaCega" persistencyKey="SmartTablePKey" useToolbar="false" entitySet="FornecimentoCBSet"
+						visible="true">
+						<smartFilterBar:controlConfiguration>
+							<!--<smartFilterBar:ControlConfiguration key="CodAviso" id="IdCodAviso" index="2" label="Cod Aviso Entrega" groupId="_BASIC" width="auto"-->
+							<!--	visibleInAdvancedArea="true"/>-->
+							<!--<smartFilterBar:ControlConfiguration key="Fornecedor" id="IdFornecedor" index="0" label="Fornecedor" groupId="_BASIC" width="auto"-->
+							<!--	visibleInAdvancedArea="true"/>-->
+							<!--<smartFilterBar:ControlConfiguration key="Nfe" id="IdNfe" index="0" label="Nota Fiscal" groupId="_BASIC" width="auto"-->
+							<!--	visibleInAdvancedArea="true"/>-->
+							<!--<smartFilterBar:ControlConfiguration key="Serie" id="IdSerie" index="0" label="N° Série" groupId="_BASIC" width="auto"-->
+							<!--	visibleInAdvancedArea="true"/>-->
+							<!--<smartFilterBar:ControlConfiguration key="XmlChaveNfe" id="XmlChaveNfe" index="0" label="{/#ZET_CBMM_CF_CONF_CEGA/XmlChaveNfe/@sap:label}"-->
+							<!--	groupId="_BASIC" width="auto" visibleInAdvancedArea="true"/>-->
+							<!--<smartFilterBar:ControlConfiguration key="Recdat" id="DtRecebimento" index="0"-->
+							<!--	label="{/#FornecimentoCB/Recdat/@sap:label}" groupId="_BASIC" width="auto" visibleInAdvancedArea="true"/>-->
+							<!-- TODO: Label from metadata vs local -->
+						</smartFilterBar:controlConfiguration>
+						<!--layout data used to make the table growing but the filter bar fixed -->
+						<!--<smartFilterBar:layoutData>-->
+						<!--	<m:FlexItemData shrinkFactor="0"/>-->
+						<!--</smartFilterBar:layoutData>-->
+					</smartFilterBar:SmartFilterBar>
+					<f:Form editable="true">
+						<f:layout>
+							<f:ResponsiveGridLayout labelSpanXL="5" labelSpanL="5" labelSpanM="5" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0"
+								emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="3" columnsM="3" singleContainerFullSize="true"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer>
+								<f:formElements>
+									<f:FormElement id="form1" visible="true">
+										<smartTable:SmartTable demandPopin="true" id="ST_ConferenciaCega" entitySet="FornecimentoCBSet" smartFilterId="SF_ConferenciaCega"
+											useExportToExcel="true" useVariantManagement="true" useTablePersonalisation="true" header="Avisos de Recebimento" showRowCount="true"
+											showFullScreenButton="true" enableAutoBinding="false"
+											requestAtLeastFields="Ebeln,Lifnr,Nfnum,Series,QtVolume,Recdat,Fornecedor,Multiplos,ErroContagem,AvisoEntrega"
+											beforeRebindTable=".onConferenciaCegaBeforeRebindTable" persistencyKey="SmartTablePKey">
+											<!--ignoreFromPersonalisation="Aceite,Data,Hora,Login,Matricula,EfetuaEm,Quantidade,Volume"-->
+											<smartTable:customData>
+												<core:CustomData key="dateFormatSettings" value='\{"UTC":true\}'/>
+											</smartTable:customData>
+											<!--initiallyVisibleFields="CodAviso,Fornecedor,DescForn,Nfe,Serie,DtCriacao"-->
+											<m:Table growing="true" growingThreshold="100" mode="None" id="table2" enableBusyIndicator="true" busyIndicatorDelay="100">
+												<m:columns>
+													<Column >
+														<customData>
+															<core:CustomData key="p13nData" value='\{"columnKey": "Lifnr","leadingProperty": "Lifnr", "columnIndex": 2}'/>
+														</customData>
+														<Text text="{/#FornecimentoCB/Lifnr/@sap:label}"/>
+													</Column>
+													<Column >
+														<customData>
+															<core:CustomData key="p13nData" value='\{"columnKey": "Recdat","leadingProperty": "Recdat", "columnIndex": 5}'/>
+														</customData>
+														<Text text="{/#FornecimentoCB/Recdat/@sap:label}"/>
+													</Column>
+													<!--	<Column width="4em">-->
+													<!--		<customData>-->
+													<!--			<core:CustomData key="p13nData" value='\{"columnKey": "Volume","leadingProperty": "Volume"}'/>-->
+													<!--		</customData>-->
+													<!--		<Text text="Novo Volume:"/>-->
+													<!--	</Column>	-->
+												</m:columns>
+												<m:items>
+													<m:ColumnListItem type="Navigation" press=".onFornecimentoListItemPress">
+														<m:cells>
+															<ObjectIdentifier title="{Lifnr}" text="{Fornecedor}"/>
+															<Text text="{ path: 'Recdat', type: 'sap.ui.model.odata.type.DateTime', formatOptions: { pattern: 'dd/MM/yyyy' } }"/>
+															<!--			<m:Input type="Number" value="{Quantidade}" editable="false" id="qtd"/>-->
+															<!--			<m:Input type="Number" value="{Volume}" editable="false" id="vlm"/>-->
+														</m:cells>
+													</m:ColumnListItem>
+												</m:items>
+											</m:Table>
+											<smartTable:layoutData>
+												<m:FlexItemData growFactor="1" baseSize="0%"/>
+											</smartTable:layoutData>
+										</smartTable:SmartTable>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+				</IconTabFilter>
+				<IconTabFilter key="2" id="Filter03" text="Aceite Área Receb." icon="sap-icon://task" tooltip="Aceite Área de Recebimento"
+					design="Horizontal">
+					<!--ZET_CBMM_CF_CEGA_ACTSet-->
+					<smartFilterBar:SmartFilterBar id="SF_AceiteAreaReceb" persistencyKey="SmartTablePKey" useToolbar="false"
+						requestAtLeastFields="CodAviso,Fornecedor,Nfe,Serie,Matnr,Ebeln,Ebelp,DtCriacao,DescForn,Data,Hora,Login,Volume,Quantidade,Matricula,EfetuaEm"
+						assignedFiltersChanged="onAssignedFiltersChanged" entitySet="AceiteReservaCBSet" visible="true">
+						<smartFilterBar:controlConfiguration>
+							<smartFilterBar:ControlConfiguration key="AvisoEntrega" id="idAvisoEntrega2" index="0" label="Cod Aviso Entrega" groupId="_BASIC"
+								width="auto" visibleInAdvancedArea="true"/>
+							<smartFilterBar:ControlConfiguration key="Data" id="idData2" index="2" label="Data" groupId="_BASIC" width="auto"
+								visibleInAdvancedArea="true"/>
+							<smartFilterBar:ControlConfiguration key="Branch" id="idBranch2" index="2" label="Centro Fiscal" groupId="_BASIC" width="auto"
+								visibleInAdvancedArea="true"/>
+							<smartFilterBar:ControlConfiguration key="Nfnum" id="idNfnum2" index="2" label="Pedido" groupId="_BASIC" width="auto"
+								visibleInAdvancedArea="true"/>
+						</smartFilterBar:controlConfiguration>
+						<!--layout data used to make the table growing but the filter bar fixed -->
+						<smartFilterBar:layoutData>
+							<m:FlexItemData shrinkFactor="0"/>
+						</smartFilterBar:layoutData>
+					</smartFilterBar:SmartFilterBar>
+					<f:Form class="editableForm" editable="true">
+						<f:layout>
+							<f:ResponsiveGridLayout labelSpanXL="5" labelSpanL="5" labelSpanM="5" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0"
+								emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="3" columnsM="3" singleContainerFullSize="true"/>
+						</f:layout>
+						<f:FormContainer>
+							<f:FormElement id="form2" visible="true">
+								<!-- ZET_CBMM_CF_CEGA_ACTSet -->
+								<smartTable:SmartTable demandPopin="true" id="ST_AceiteAreaReceb" entitySet="AceiteReservaCBSet" smartFilterId="SF_AceiteAreaReceb"
+									useOnlyOneSolidToolbar="true" useExportToExcel="true" useVariantManagement="true" useTablePersonalisation="true" tableType="Table"
+									header="Aceite de recebimento" showRowCount="true" showFullScreenButton="true"
+									initiallyVisibleFields="AvisoEntrega,Aceite,Branch,Nfnum,Bukrs,Data" beforeRebindTable="onbeforeRebindTable"
+									class="sapUiResponsiveContentPadding" persistencyKey="SmartTablePKey">
+									<m:Table mode="SingleSelectLeft" growing="true" growingThreshold="100" id="table3" enableBusyIndicator="true" busyIndicatorDelay="100">
+										<!--<m:items>-->
+										<!--	<m:ColumnListItem type="Navigation" press=".onHistoricoListItemPress"></m:ColumnListItem>-->
+										<!--</m:items>-->
+									</m:Table>
+									<!--<smartField:SmartField value="{Sale}" id="idSaleDisplay" contextEditable="false">-->
+									<!--<smartField:layoutData>-->
+									<!--	<l:GridData spanL="2" spanM="2" spanS="2"/>-->
+									<!--</smartField:layoutData>-->
+									<!--</smartField:SmartField>-->
+									<smartTable:layoutData>
+										<m:FlexItemData growFactor="1" baseSize="0%"/>
+									</smartTable:layoutData>
+								</smartTable:SmartTable>
+							</f:FormElement>
+						</f:FormContainer>
+					</f:Form>
+				</IconTabFilter>
+				<IconTabFilter key="3" id="Filter04" text="Consulta Histórico" icon="sap-icon://work-history" tooltip="Consulta Histórico"
+					design="Horizontal">
+					<smartFilterBar:SmartFilterBar id="smartFilterBar3" persistencyKey="SmartTablePKey" useToolbar="false"
+						assignedFiltersChanged="onAssignedFiltersChanged" entitySet="HistoricoConfCegaSet" visible="true">
+						<smartFilterBar:controlConfiguration>
+							<smartFilterBar:ControlConfiguration key="Bukrs" id="idBukrs" index="0" label="Empresa" groupId="_BASIC" width="auto"
+								visibleInAdvancedArea="true"/>
+							<smartFilterBar:ControlConfiguration key="Branch" id="idBranch" index="2" label="Centro" groupId="_BASIC" width="auto"
+								visibleInAdvancedArea="true"/>
+							<smartFilterBar:ControlConfiguration key="Nfnum" id="idNFNUM" index="2" label="Nota Fiscal" groupId="_BASIC" width="auto"
+								visibleInAdvancedArea="true"/>
+							<smartFilterBar:ControlConfiguration key="Data" id="idData" index="2" label="Data" groupId="_BASIC" width="auto"
+								visibleInAdvancedArea="true"/>
+							<smartFilterBar:ControlConfiguration key="Hora" id="idHora" index="2" label="Hora" groupId="_BASIC" width="auto"
+								visibleInAdvancedArea="true"/>
+							<smartFilterBar:ControlConfiguration key="Login" id="idLogin" index="2" label="Login" groupId="_BASIC" width="auto"
+								visibleInAdvancedArea="true"/>
+						</smartFilterBar:controlConfiguration>
+						<!--layout data used to make the table growing but the filter bar fixed -->
+						<smartFilterBar:layoutData>
+							<m:FlexItemData shrinkFactor="0"/>
+						</smartFilterBar:layoutData>
+					</smartFilterBar:SmartFilterBar>
+					<f:Form class="editableForm" editable="true">
+						<f:layout>
+							<f:ResponsiveGridLayout labelSpanXL="5" labelSpanL="5" labelSpanM="5" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0"
+								emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="3" columnsM="3" singleContainerFullSize="true"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer>
+								<f:formElements>
+									<f:FormElement id="form3" visible="true">
+										<!--ZET_CBMM_CF_CEGA001Set /old entityset-->
+										<smartTable:SmartTable demandPopin="true" id="smartTable" entitySet="HistoricoConfCegaSet" smartFilterId="smartFilterBar3"
+											useOnlyOneSolidToolbar="true" useExportToExcel="true" useVariantManagement="true" useTablePersonalisation="true" tableType="Table"
+											header="Histórico de Solicitações Realizadas" showRowCount="true" showFullScreenButton="true"
+											requestAtLeastFields="CodAviso,Fornecedor,Nfe,Serie,Ebeln"
+											initiallyVisibleFields="AvisoEntrega,Bukrs,Branch,Nfnum,Volume,Quantidade,Aceite,Data,Hora,Login" beforeRebindTable="atualizaTabela"
+											class="sapUiResponsiveContentPadding" persistencyKey="SmartTablePKey">
+											<m:Table growing="true" growingThreshold="100" mode="None" id="table" enableBusyIndicator="true" busyIndicatorDelay="100">
+												<m:columns>
+													<Column width="12em">
+														<customData>
+															<core:CustomData key="p13nData" value='\{"columnKey": "CodAviso","leadingProperty": "CodAviso"}'/>
+														</customData>
+														<Text text="Consulta (Cód. Aviso):"/>
+													</Column>
+													<Column >
+														<customData>
+															<core:CustomData key="p13nData" value='\{"columnKey": "Data","leadingProperty": "Data", "columnIndex": 4}'/>
+														</customData>
+														<Text text="{/#HistoricoConfCega/Data/@sap:label}"/>
+													</Column>
+													<Column >
+														<customData>
+															<core:CustomData key="p13nData" value='\{"columnKey": "DtCriacao","leadingProperty": "DtCriacao", "columnIndex": 4}'/>
+														</customData>
+														<Text text="{/#HistoricoConfCega/DtCriacao/@sap:label}"/>
+													</Column>
+												</m:columns>
+												<m:items>
+													<m:ColumnListItem type="Navigation" press=".onHistoricoListItemPress">
+														<m:cells>
+															<!--<m:Link text="{AvisoEntrega}" target="_blank" href="vide0301.votorantim.grupo:8003/sap/bc/gui/sap/its/webgui?~transaction=VL33n%20LIKP-VBELN=1001976025&~okcode=/00" press="onPress2"  />-->
+															<Link text="{CodAviso}" id="__link0"
+																href="http://vide0301.votorantim.grupo:8003/sap/bc/gui/sap/its/webgui?~transaction=VL33n LIKP-VBELN={CodAviso}&amp;~okcode=/00"/>
+															<Text text="{ path: 'Data', type: 'sap.ui.model.odata.type.DateTime', formatOptions: { pattern: 'dd/MM/yyyy' } }"/>
+															<Text text="{ path: 'DtCriacao', type: 'sap.ui.model.odata.type.DateTime', formatOptions: { pattern: 'dd/MM/yyyy' } }"/>
+														</m:cells>
+													</m:ColumnListItem>
+												</m:items>
+											</m:Table>
+											<smartTable:layoutData>
+												<m:FlexItemData growFactor="1" baseSize="0%"/>
+											</smartTable:layoutData>
+										</smartTable:SmartTable>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+				</IconTabFilter>
+				<IconTabFilter key="4" id="Filter05" text="Reimp. de Etiquetas" icon="sap-icon://print" tooltip="Reimp. Etiquetas" design="Horizontal"
+					textDirection="RTL">
+					<VBox class="sapUiSmallMargin">
+						<RadioButtonGroup id="modoImpressaoRBG" valueState="Warning" select=".onImpressaoRBGChange" selectedIndex="0">
+							<buttons>
+								<RadioButton id="RB4-1" text="Reimprimir recebimento"/>
+								<RadioButton id="RB4-2" text="Impressão manual"/>
+							</buttons>
+						</RadioButtonGroup>
+					</VBox>
+					<f:Form class="editableForm" editable="true">
+						<f:layout>
+							<f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0"
+								emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="true"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer >
+								<f:formElements>
+									<f:FormElement>
+										<f:label>
+											<Label text="Impressora" design="Bold"/>
+										</f:label>
+										<f:fields>
+											<Select forceSelection="true" selectedKey="{impressaoModel>/param/Name}" showSecondaryValues="true"
+												items="{ path: '/ImpressoraSet', sorter : { path : 'Name' }}">
+												<core:ListItem key="{Name}" text="{Pastandort}" additionalText="{Name}"/>
+											</Select>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+							<f:FormContainer visible="{= ${impressaoModel>/modo} === 0}">
+								<f:formElements>
+									<f:FormElement>
+										<f:label>
+											<Label text="Aviso de Entrega" design="Bold"/>
+										</f:label>
+										<f:fields>
+											<Input value="{impressaoModel>/param/CodAviso}"/>
+										</f:fields>
+									</f:FormElement>
+									<!--<f:FormElement>
+										<f:label>
+											<Label text="Quantidade" design="Bold"/>
+										</f:label>
+										<f:fields>
+											<Input value="{impressaoModel>/param/0_Qtd}" />
+										</f:fields>
+									</f:FormElement>-->
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<!--<f:Form visible="{= ${impressaoModel>/modo} === 1}">-->
+					<!--<f:FormContainer visible="{= ${impressaoModel>/modo} === 1}">-->
+					<!--	<f:formElements>-->
+					<!--		<f:FormElement>-->
+					<!--			<f:label>-->
+					<!--				<Label text="Material" design="Bold"/>-->
+					<!--			</f:label>-->
+					<!--			<f:fields>-->
+					<!--				<Input value="{impressaoModel>/param/Matnr}"/>-->
+					<!--			</f:fields>-->
+					<!--		</f:FormElement>-->
+					<!--		<f:FormElement>-->
+					<!--			<f:label>-->
+					<!--				<Label text="Quantidade" design="Bold"/>-->
+					<!--			</f:label>-->
+					<!--			<f:fields>-->
+					<!--				<Input value="{impressaoModel>/param/Qtd}"/>-->
+					<!--			</f:fields>-->
+					<!--		</f:FormElement>-->
+					<!--	</f:formElements>-->
+					<!--</f:FormContainer>-->
+					<!--<f:FormContainer visible="true">-->
+					<!--	<f:formElements>-->
+					<!--		<f:FormElement>-->
+					<!--			<f:label>-->
+					<!--				<Label text="Quantidade" id="idLfimgL" design="Bold"/>-->
+					<!--			</f:label>-->
+					<!--			<f:fields>-->
+					<!--				<Input value="{impressaoModel>/param/Qtd}" id="idLfimg" editable="false" placeholder=""/>-->
+					<!--			</f:fields>-->
+					<!--		</f:FormElement>-->
+					<!--	</f:formElements>-->
+					<content>
+						<Table id="ins" visible="{= ${impressaoModel>/modo} === 1}" items="{/Products}">
+							<headerToolbar>
+								<Toolbar>
+									<Button icon="sap-icon://add" text="Adicionar Material" press="addRow"/>
+								</Toolbar>
+							</headerToolbar>
+							<columns>
+								<Column width="50px"/>
+								<Column>
+									<Text text="Material"/>
+								</Column>
+								<Column>
+									<Text text="Quantidade"/>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem>
+									<cells>
+										<Button icon="sap-icon://delete" press="deleteRow" type="Reject"/>
+										<Input  value="{Matnr}" />
+										<Input  value="{Quantidade}" />
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+					</content>
+					<!--	</f:FormContainer>-->
+					<!--</f:Form>-->
+					<f:Form class="editableForm" editable="true">
+						<f:formContainers>
+							<f:FormContainer>
+								<f:formElements>
+									<f:FormElement id="form4" visible="true">
+										<!--<smartTable:SmartTable demandPopin="true" id="smartTable5" entitySet="ZET_CBMM_CF_CEGA_ETIQUETASet" smartFilterId="smartFilterBar5"-->
+										<!--	useOnlyOneSolidToolbar="true" useExportToExcel="true" useVariantManagement="true" useTablePersonalisation="true" tableType="Table"-->
+										<!--	header="Materiais para Impressão" showRowCount="true" showFullScreenButton="true" onChange="onPress" initiallyVisibleFields="Matnr"-->
+										<!--	enableAutoBinding="true" beforeRebindTable="atualizaTabela" class="sapUiResponsiveContentPadding" persistencyKey="SmartTablePKey">-->
+										<!--	<m:Table mode="MultiSelect" id="table5" enableBusyIndicator="true" busyIndicatorDelay="100">-->
+										<!--		<m:columns>-->
+										<!--			<Column width="12em">-->
+										<!--				<Text text="Enviar p/ Impressão"/>-->
+										<!--			</Column>-->
+										<!--		</m:columns>-->
+										<!--		<m:items>-->
+										<!--			<m:ColumnListItem type="Navigation">-->
+										<!--				<m:cells>-->
+										<!--					<m:Link text="{Matnr}" href="{ProductPicUrl}" press="onPress"/>-->
+										<!--				</m:cells>-->
+										<!--			</m:ColumnListItem>-->
+										<!--		</m:items>-->
+										<!--	</m:Table>-->
+										<!--	<smartTable:layoutData>-->
+										<!--		<m:FlexItemData growFactor="1" baseSize="0%"/>-->
+										<!--	</smartTable:layoutData>-->
+										<!--</smartTable:SmartTable>-->
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+				</IconTabFilter>
+			</items>
+		</IconTabBar>
+		<footer>
+			<Toolbar>
+				<!--<ToolbarSpacer/>-->
+				<!--<Button text="Ajustar Conf. Cega" id="btnaju" press="onaju" icon="sap-icon://edit"/>-->
+				<!--<Button visible="{= ${WorklistView>/selectedTab} === '1' ? true : false }" text="Registrar EM" id="btnReg" press=".onReg" icon="sap-icon://request"/>-->
+				<!--<Button visible="{= ${WorklistView>/selectedTab} === '1' ? true : false }" text="{i18n>btn_efet_cont_ceg}" press=".onContCegPress" icon="sap-icon://request"/>-->
+				<!--<Button visible="{= ${WorklistView>/selectedTab} === '1' ? true : false }" text="Gerar EM" id="btnGerar" press=".onGerar" icon="sap-icon://generate-shortcut"/>-->
+				<Button visible="{= ${WorklistView>/selectedTab} === '2' }" text="Aceite" id="btnAceite" press=".onBtnAceitePress" icon="sap-icon://task"/>
+				<Button visible="{= ${WorklistView>/selectedTab} === '4' }" text="Imprimir Etiqueta" id="btnPrint" press=".onPrint" icon="sap-icon://print"/>
+			</Toolbar>
+		</footer>
+	</Page>
+</mvc:View>

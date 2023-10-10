@@ -1,0 +1,141 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.ui.layout.form"
+	controllerName="Y5GL_EC_CSC.Y5GL_EC_CSC.controller.FORMACAO_DETAIL" xmlns:html="http://www.w3.org/1999/xhtml">
+	<App id="idApp">
+		<pages>
+			<Page title="Title" id="idPage">
+				<customHeader>
+					<Bar id="idBarMaster">
+						<contentLeft>
+							<Button icon="sap-icon://nav-back" id="idB_navback" press="onVoltar" text="Voltar"/>
+						</contentLeft>
+						<contentMiddle>
+							<Title text="Formação Educacional" titleStyle="H3" id="idTitleMeuCadastro"/>
+						</contentMiddle>
+						<!--<contentRight>-->
+						<!--	<Button icon="sap-icon://home" id="idteste" press="onBackMaster"/>-->
+						<!--</contentRight>-->
+					</Bar>
+				</customHeader>
+				<content>
+					<HBox width="100%" height="1000%" id="idGif" class="Loading" busyIndicatorSize="Auto" backgroundDesign="Solid">
+						<Image src="imagens/voto_load_white.gif" width="100%" class="footer_img" id="idimg" backgroundSize="100%"/>
+					</HBox>
+					<Input id="idTipo" value="{Status}" visible="false"/>
+					<OverflowToolbar id="idBar1">
+						<Title text="" level="H1" id="idTitleDep"/>
+					</OverflowToolbar>
+					<f:Form class="editableForm" editable="true" id="FUNSEJEM" visible="true">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_FUNSEJEM" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+								emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer">
+								<f:formElements>
+									<f:FormElement label="Tipo Estabelecimento de Ensino" id="FormElementEstEnsino">
+										<f:fields>
+											<ComboBox id="IdEstEnsino" selectedKey="{Slart}" value="{SlartText}" required="true" placeholder="Estabelecimento de Ensino"
+												items="{/ZET_GLHR_FORMACAOSet}" editable="{path:'SlartText', formatter:'.formatEditable'}">
+												<core:Item key="{Slart}" text="{Stext}" id="idKeyEstEnsino"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Formação" id="FormElementFormaca">
+										<f:fields>
+											<ComboBox id="IdFormacao" selectedKey="{Ausbi}" value="{AusbiTxt}" required="true" placeholder="Estabelecimento de Ensino"
+												items="{/ZET_GLHR_COMBO_FORMACAOSet}" editable="{path:'AusbiTxt', formatter:'.formatEditable'}" change="onChangeIdFormacao">
+												<core:Item key="{Ausbi}" text="{Atext}" id="idKeyFormacao"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Instituição" id="FormElementInstituicao">
+										<f:fields>
+											<Input value="{Insti}" id="IdInstituicao" placeholder="Instituição" required="true" maxLength="80"
+												editable="{path:'Insti', formatter:'.formatEditable'}"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Pais" id="FormElementPais">
+										<f:fields>
+											<ComboBox id="IdPais" selectedKey="{Sland}" value="{SlandText}" required="true" placeholder="Pais"
+												items="{/ZET_GLHR_COMBO_PAISNASCIMENTOSet}" editable="{path:'SlandText', formatter:'.formatEditable'}">
+												<core:Item key="{Land1}" text="{Landx50}" id="idKeyPais"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Certificado" id="FormElementCertificado">
+										<f:fields>
+											<ComboBox id="IdCertificado" selectedKey="{Slabs}" value="{SlabsText}" required="true" placeholder="Certificado"
+												items="{/ZET_GLHR_SIM_NAOSet}" editable="{path:'Slabs', formatter:'.formatEditable'}">
+												<core:Item key="{Id}" text="{DescId}" id="idKeyCertificado"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Duração" id="FormElementDucacao">
+										<f:fields>
+											<Input value="{Anzkl}" id="IdDuracao" placeholder="Duração" required="true" maxLength="3"
+												editable="{path:'Slart', formatter:'.formatEditable'}"/>
+											<ComboBox id="IdTpDuracao" selectedKey="{Anzeh}" value="{AnzehText}" required="true" placeholder="Tipo de Duração"
+												items="{/ZET_GLHR_TP_DURACAOSet}" editable="{path:'Slart', formatter:'.formatEditable'}">
+												<core:Item key="{Zeinh}" text="{Etext}" id="idKeyTpDuracao"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Denominação do Curso" id="FormElementDenominacao">
+										<f:fields>
+											<Input value="{Ksbez}" id="IdDenCurso" placeholder="Denominação do curso" required="true" maxLength="25"
+												editable="{path:'Slart', formatter:'.formatEditable'}"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Data fim da formação" id="FormElementDtFimForm">
+										<f:fields>
+											<Input value="{ZenddaForm}" id="IdDtFimForm" placeholder="Data Fim formação" required="true" type="Date"
+												editable="{path:'ZenddaForm', formatter:'.formatEditable'}"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement id="fe_IdDenCursoTESTE">
+										<f:fields>
+											<Input value="{ZenddaForm}" id="IdDenCursoTESTE" placeholder="Denominação do curso" required="true" maxLength="25" visible="false"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Anexos: Inserir aqui sua documentação" id="FormElementDtFimForm2">
+										<f:fields>
+											<UploadCollection id="UploadCollection" multiple="false" change="onChange" fileDeleted="onDeleteSelectedItems"
+												beforeUploadStarts="onBeforeUploadStarts" uploadComplete="onuploadComplete"
+												items="{ path: '/ZET_GLRH_UPLOADSet', filters:[ {path: 'Infty', operator: 'EQ', value1:'0022'}, {path: 'Subty', operator: 'EQ', value1:'0006'}]}"
+												modelContextChange="onmodelContextChange" mode="SingleSelectMaster" uploadButtonInvisible="false"
+												uploadUrl="/sap/opu/odata/sap/ZGWGLRH_MEU_CADASTRO_SRV/ZET_GLHR_UPFILESet"
+												noDataDescription="Acione o botão (+) para adicionar uma nova documentação." noDataText="Anexos" numberOfAttachmentsText="Anexos">
+												<toolbar>
+													<OverflowToolbar id="myId" visible="true">
+														<Title id="attachmentTitle"/>
+														<ToolbarSpacer id="idToolbarSpacer"/>
+														<SearchField width="10rem" search="onSearch" enabled="false" visible="false" id="idSearchField"/>
+														<Button id="deleteSelectedButton" text="Delete" press="onDeleteSelectedItems" enabled="false" visible="false" type="Transparent"/>
+														<ToggleButton id="selectAllButton" text="Select all" press="onSelectAllPress" enabled="false" visible="false" type="Transparent"/>
+														<UploadCollectionToolbarPlaceholder id="IdUploadCollectionToolbar"/>
+													</OverflowToolbar>
+												</toolbar>
+												<items>
+													<UploadCollectionItem documentId="{DocId}" fileName="{Filename}" mimeType="{Mimetype}"
+														url="/sap/opu/odata/sap/ZGWGLRH_MEU_CADASTRO_SRV/ZET_GLHR_UPFILESet('{Pernr}${Subty}${Favor}')/$value" enableEdit="false"
+														visibleEdit="false" deletePress="onFileDelete" selected="true"/>
+												</items>
+											</UploadCollection>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+				</content>
+				<footer>
+					<Toolbar id="idOverTollbar" design="Solid">
+						<ToolbarSpacer id="idToolbarSpacerD"/>
+						<Button press="onAprovar" text="Aprovar" icon="sap-icon://accept" id="idAprovar" tooltip="Aprovar" iconFirst="true" visible="true"/>
+						<Button press="onReprovar" text="Reprovar" icon="sap-icon://decline" id="idReporvar" tooltip="Reprovar" iconFirst="true" visible="true"/>
+					</Toolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

@@ -1,0 +1,8 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core"
+	controllerName="ZPUI_BCMM_COND.ZPUI_BCMM_COND.controller.Cond">
+	<SelectDialog title="Condições" class="sapUiPopupWithPadding" items="{/ZET_CBMM_CF_VEICONDSet}" search="_handleValueHelpCond"
+		confirm="_handleValueHelpClose" cancel="_handleValueHelpClose" 
+		modelContextChange="_onModelContextChangeCond">
+		<StandardListItem iconDensityAware="false" iconInset="false" title="{Kschl}" description="{Descricao}"/>
+	</SelectDialog>
+</core:FragmentDefinition>

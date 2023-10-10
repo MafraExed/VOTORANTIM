@@ -1,0 +1,174 @@
+<mvc:View controllerName="votorantim.corp.clocov2planmanagement.controller.DetailTable"
+    xmlns="sap.m"
+    xmlns:semantic="sap.f.semantic"
+    xmlns:core="sap.ui.core"
+    xmlns:table="sap.ui.table" class="sapUiSizeCompact"
+    xmlns:dnd="sap.ui.core.dnd" id="idDetailView"
+    xmlns:custdata="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+    xmlns:mvc="sap.ui.core.mvc">
+
+    <semantic:SemanticPage id="detailPage" preserveHeaderStateOnScroll="true" toggleHeaderOnTitleClick="false" busy="{detailView>/busy}" headerPinnable="false" class="detailView" showFooter="false" busyIndicatorDelay="{detailView>/delay}">
+        <semantic:titleHeading>
+            <HBox alignItems="Center" justifyContent="SpaceBetween">
+                <Button type="Transparent" tooltip="trocar modelo" icon="sap-icon://nav-back" press="goToMainPage"/>
+                <VBox class="sapUiTinyMarginBegin">
+                    <Title  text="{parts: [
+                            {path: 'Profile'},
+                            {path: 'detailView>/profileText'}
+                        ]}" level="H1"/>
+			        <ObjectStatus class="sapUiSmallMarginEnd" title=""	  text="{= ${detailView>/isTemplate} ? 'Modelo de Tarefas' : 'Plano de Tarefas' }"	state="{= ${detailView>/isTemplate} ? 'None' : 'Success' }"	inverted="true" />
+                </VBox>
+
+            </HBox>
+        </semantic:titleHeading>
+
+		<semantic:titleContent>
+		</semantic:titleContent>
+
+        <semantic:titleCustomIconActions>
+            <OverflowToolbarButton type="Transparent" text="trocar modelo" press="goToMainPage" id="tabBtChangeProfile"/>
+        </semantic:titleCustomIconActions>
+
+        <semantic:headerContent>
+            <OverflowToolbar style="Clear">
+                <Button icon="sap-icon://tree" tooltip="Visão Hierarquia"  press="onViewModeChange"/>
+                <Button icon="sap-icon://table-view"  type="Emphasized" tooltip="Visão de Tabela"/>
+                <SearchField search="filterTable" placeholder="{i18n>detailSearchTasks}" width="20%" />
+                <MenuButton visible="{= ${detailView>/isTemplate}}" text="{i18n>detailMassOperations}" enabled="{detailView>/hasSelectedItems}">
+                    <menu>
+                        <Menu>
+                            <MenuItem text="{i18n>detailEditTask}" press="onPressChangeTaskMass"/>
+                            <MenuItem text="Editar Configurações de Alerta" press="onPressChangeAlertConfigMass" />
+                            <MenuItem text="Editar Configurações de Aprovação" press="onPressChangeApprovalMass"/>
+                            <MenuItem text="Excluir Tarefas" press="onPressDeleteSelection"/>
+                            <!-- <MenuItem text="{i18n>detailAddDependent}" enabled="false" press="onPress" />
+                            <MenuItem text="{i18n>detailRemoveDependent}" enabled="false" press="onPress" /> -->
+                        </Menu>
+                    </menu>
+                </MenuButton>
+                <!-- <MenuButton text="{i18n>detailCreate}" enabled="false">
+                    <menu>
+                        <Menu>
+                            <MenuItem text="{i18n>detailNewFolder}" enabled="false" icon="sap-icon://folder-blank" press="onCreateFolder"/>
+                            <MenuItem text="{i18n>detailNewTask}" enabled="false" icon="sap-icon://activity-items" press="onPress" />
+                            <MenuItem text="{i18n>detailDelete}" enabled="false" icon="sap-icon://delete" press="onPress" />
+                        </Menu>
+                    </menu>
+                </MenuButton>
+                <MenuButton text="{i18n>appEdit}" enabled="false">
+                    <menu>
+                        <Menu>
+                            <MenuItem text="{i18n>detailCopy}" icon="sap-icon://copy" press=""/>
+                            <MenuItem text="{i18n>detailCut}" icon="sap-icon://scissors" press="" enabled="{= ${detailView>/clipboardData}.length > 0}"/>
+                            <MenuItem text="{i18n>detailPaste}" icon="sap-icon://paste" press=""/>
+                        </Menu>
+                    </menu>
+                </MenuButton> -->
+                <Button text="Criar Plano de tarefas" visible="{= ${detailView>/isTemplate}}" type="Emphasized" press="onPressCreateTaskPlan"/>
+                <Button text="Alterar Status do Plano de Tarefas" visible="{= !${detailView>/isTemplate}}" press="onPressChangeStatusPlan"/>
+                <Button text="Excluir Plano de Tarefas" visible="{= !${detailView>/isTemplate}}" press="onPressDeletePlan"/>
+                <Button icon="sap-icon://expand-group" press="onExpand" />
+                <Button press="onCollapse" icon="sap-icon://collapse-group"/>
+                <ToolbarSpacer visible="{= !${detailView>/isTemplate}}"/>
+                <Button visible="{= !${detailView>/isTemplate}}" class="sapUiSmallMarginEnd" text="Dados do Plano" press="onPressOpenPlanHeader" />
+                <ObjectStatus visible="{= !${detailView>/isTemplate}}" class="sapUiSmallMarginEnd" title="Data Base" text="{path: 'Data_fixada', formatter:'.formatter.convertFromSapDate'}" />
+                <ObjectStatus visible="{= !${detailView>/isTemplate}}" class="sapUiSmallMarginEnd" title="Status"	  text="{path: 'Status', formatter:'.formatter.getStatusText'}"	state="{path: 'Status', formatter:'.formatter.getStatusState'}"	icon="sap-icon://sys-enter-2" />
+                 <ToolbarSpacer visible="{= ${detailView>/isTemplate}}"/>
+                <Button tooltip="{= ${detailView>/isTemplate} ? 'Configurações do Modelo' : 'Configurações do Plano' }" class="sapUiSmallMarginEnd" icon="sap-icon://settings" press="onPressOpenSettings"/>
+                <!-- <Button text="{i18n>detailCopy}" enabled="{detailView>/hasSelectedItems}" press="onCopy"/>
+                <Button text="{i18n>detailCut}" enabled="{detailView>/hasSelectedItems}" press="onCut"/>
+                <Button text="{i18n>detailPaste}" id="paste" enabled="false" press="onPaste"/> -->
+                <!-- <ToolbarSpacer/>
+                <Button icon="sap-icon://expand-group" press="onExpand" />
+                <Button press="onCollapse" icon="sap-icon://collapse-group"/> -->
+            </OverflowToolbar>
+        </semantic:headerContent>
+
+        <semantic:content>
+
+            <table:Table rowActionCount="1" id="tableTemplate" selectionMode="MultiToggle" rowSelectionChange="onSelectChange" visibleRowCountMode="Auto" rows="{
+            path:'table>/data', sorter: [{ path: 'Caminho', descending: 'false' }]}" filter="onFilterTable">
+
+                <table:rowActionTemplate>
+                    <table:RowAction >
+                        <table:RowActionItem type="Navigation" visible="{= ${detailView>/isTemplate}}" press="goToTask(${table>})" />
+                    </table:RowAction >
+                </table:rowActionTemplate>
+
+                <!-- <table:dragDropConfig>
+                    <dnd:DragInfo groupName="moveToTabDep" sourceAggregation="rows" dragStart="onDragStart" />
+                </table:dragDropConfig> -->
+
+                <table:columns>
+                    <table:Column width="26px">
+                        <table:template>
+                            <core:Icon class="sapUiSmallMarginEnd" src="{= ${table>Kind} === '2' ? 'sap-icon://person-placeholder' : ${table>Kind} === '3' ? 'sap-icon://notes' : ${table>Kind} === '4' ? 'sap-icon://media-play' : 'sap-icon://question-mark'}"/>
+                        </table:template>
+                    </table:Column>
+                    <table:Column width="auto" sortProperty="Description" filterProperty="Description">
+                        <Label text="{i18n>detailTasks}" />
+                        <table:template>
+                            <Label text="{table>Description}" />
+                        </table:template>
+                    </table:Column>
+                    <table:Column width="100px" sortProperty="Empresa" hAlign="Center" filterProperty="Empresa">
+                        <Label text="Empresa" />
+                        <table:template>
+                            <Label text="{table>Empresa}" />
+                        </table:template>
+                    </table:Column>
+                    <table:Column width="70px" hAlign="Center" sortProperty="Coe" filterProperty="Coe" >
+                        <Label text="Coe" />
+                        <table:template>
+                            <Label text="{= ${table>Coe} ? 'Sim' : 'Não' }" />
+                        </table:template>
+                    </table:Column>
+                    <table:Column width="130px" sortProperty="User_respons" filterProperty="User_respons">
+                        <Label text="{i18n>detailResponsible}" />
+                        <table:template>
+                            <Label text="{table>User_respons}" wrapping="false" />
+                        </table:template>
+                    </table:Column>
+                    <table:Column width="130px" sortProperty="User_respons_exec" filterProperty="User_respons_exec">
+                        <Label text="{i18n>detailRespExec}" />
+                        <table:template>
+                            <Label text="{table>User_respons_exec}" wrapping="false" />
+                        </table:template>
+                    </table:Column>
+                    <table:Column width="130px" sortProperty="Departamento" filterProperty="Departamento">
+                        <Label text="Área/Departamento" />
+                        <table:template>
+                            <Label text="{table>Departamento}" wrapping="false" />
+                        </table:template>
+                    </table:Column>
+                    <table:Column width="70px" hAlign="Center" sortProperty="CaminhoCritico" filterProperty="CaminhoCritico">
+                        <Label text="Crítico" />
+                        <table:template>
+                            <core:Icon src="{= ${table>CaminhoCritico} !== '' ? 'sap-icon://accept' : '' }"/>
+                        </table:template>
+                    </table:Column>
+                    <table:Column  sortProperty="Caminho" filterProperty="Caminho">
+                        <Label text="{i18n>taskPath}" />
+                        <table:template>
+                            <Label text="{table>Caminho}" />
+                        </table:template>
+                    </table:Column>
+                </table:columns>
+            </table:Table>
+
+        </semantic:content>
+
+        <semantic:footerMainAction>
+            <semantic:FooterMainAction text="{i18n>appSave}" press="onSaveDetailChanges"/>
+        </semantic:footerMainAction>
+
+        <semantic:footerCustomActions>
+            <Button text="Descartar" press="onPressRejectChanges"></Button>
+        </semantic:footerCustomActions>
+
+
+
+
+    </semantic:SemanticPage>
+
+</mvc:View>

@@ -1,0 +1,176 @@
+<mvc:View 
+		controllerName="monitorPortocel.controller.ListaViagens"
+		xmlns="sap.ui.table" 
+		xmlns:core="sap.ui.core"
+		xmlns:mvc="sap.ui.core.mvc"
+		xmlns:m="sap.m"
+		xmlns:html="http://www.w3.org/1999/xhtml">
+	<m:Page
+			title="Detalhes do Ciclo"
+			showNavButton="true"
+			navButtonPress="onNavBack">
+		<m:content>
+			<m:Panel
+					expandable="true"
+					expanded="true"
+					headerText="Cabeçalho"
+					width="auto"
+					class="sapUiResponsiveMargin">
+			    <m:ObjectHeader
+			    		binding="{/results/0}"
+			    		id="cabViagem"
+			    		responsive="true"
+			    		title="{NomeMotorista}"
+			    		condensed="true"
+			    		number="{TempoTotMin}"
+			    		numberUnit="Minutos"
+			    		backgroundDesign="Transparent">
+			        <m:statuses>
+			            <m:ObjectStatus id="statusViagemGeral" text="Processando" state="Warning"/>
+			        </m:statuses>
+			        <m:attributes>
+			            <m:ObjectAttribute
+			            	title="{i18n>OC/Item}"
+			            	text="{OcItem}"/>
+			            <m:ObjectAttribute
+			            	title="{i18n>viagem}"
+			            	text="{ViagemRet}"/>
+			            <m:ObjectAttribute
+			            	title="{i18n>Remessa}"
+			            	text="{Remessa}"/>
+			            <m:ObjectAttribute 
+			            	title="{i18n>NFe-Serie}"
+			            	text="{NfSerie}"/>
+			            <m:ObjectAttribute
+			            	title="Usuário Motorista"
+			            	text="{UsuarioMot}"/>
+			            <m:ObjectAttribute
+			            	title="Composição"
+			            	text="{Composicao}"/>
+			            <m:ObjectAttribute
+			            	title="Placa Cavalo"
+			            	text="{PlcCavalo}"/>
+			            <m:ObjectAttribute
+			            	title="Placa Carreta 1"
+			            	text="{PlcCarr1}"/>
+			            <m:ObjectAttribute
+			            	title="Placa Carreta 2"
+			            	text="{PlcCarr2}"/>
+			        </m:attributes>
+			    </m:ObjectHeader>
+			</m:Panel>
+		    <Table 
+		    		id="tabelaCiclo"
+		    		alternateRowColors="true"
+		    		selectionMode="None"
+		    		rows="{/results}"
+		    		visibleRowCount="7"
+					showColumnVisibilityMenu="true"
+					enableColumnFreeze="true"
+					enableCellFilter="true">
+				<rowSettingsTemplate>
+					<RowSettings highlight="{Status}" highlightText="{StatusText}"/>
+				</rowSettingsTemplate>
+				<columns>
+					<Column width="10rem" sortProperty="StatusText" filterProperty="StatusText">
+						<m:Label text="Status" tooltip="Status"/>
+						<template>
+							<m:Text text="{StatusText}" wrapping="false"/>
+						</template>
+					</Column>
+					<Column width="6rem" sortProperty="Etapa" filterProperty="Etapa">
+						<m:Label text="Cod.Etapa" tooltip="Cod.Etapa"/>
+						<template>
+							<m:Text text="{Etapa}" wrapping="false"/>
+						</template>
+					</Column>
+					<Column width="17rem" sortProperty="DescrEtapa" filterProperty="DescrEtapa">
+						<m:Label text="Descr.Etapa" tooltip="Descr.Etapa"/>
+						<template>
+							<m:Text text="{DescrEtapa}" tooltip="{DescrEtapa}" wrapping="false"/>
+						</template>
+					</Column>
+					<Column width="7rem" sortProperty="DtInicio">
+						<m:Label text="Data Inicio" tooltip="Data Início"/>
+						<template>
+							<m:Text text="{DtInicio}" wrapping="false"/>
+						</template>
+					</Column>
+					<Column width="7rem" sortProperty="HrInicio">
+						<m:Label text="Hora Início" tooltip="Hora Início"/>
+						<template>
+							<m:Text text="{HrInicio}" wrapping="false"/>
+						</template>
+					</Column>
+					<Column width="7rem" sortProperty="DtFim">
+						<m:Label text="Data Fim" tooltip="Data Fim"/>
+						<template>
+							<m:Text text="{DtFim}" wrapping="false"/>
+						</template>
+					</Column>
+					<Column width="7rem" sortProperty="HrFim">
+						<m:Label text="Hora Fim" tooltip="Hora Fim"/>
+						<template>
+							<m:Text text="{HrFim}" wrapping="false"/>
+						</template>
+					</Column>
+					<Column width="7rem" sortProperty="TempoMin">
+						<m:Label text="Tempo (Min.)" tooltip="Tempo (Min.)"/>
+						<template>
+							<m:Text text="{TempoMin}" wrapping="false"/>
+						</template>
+					</Column>
+					<Column width="7rem" sortProperty="MetaEtapa">
+						<m:Label text="Meta Etapa" tooltip="Meta Etapa"/>
+						<template>
+							<m:Text text="{MetaEtapa}" wrapping="false"/>
+						</template>
+					</Column>
+					<Column width="7rem" sortProperty="DataSist" visible="false">
+						<m:Label text="Dt.Sistema" tooltip="Dt.Sistema"/>
+						<template>
+							<m:Text text="{DataSist}" wrapping="false"/>
+						</template>
+					</Column>						
+					<Column width="7rem" sortProperty="HoraSist" visible="false">
+						<m:Label text="Hora Sistema" tooltip="Hora Sistema"/>
+						<template>
+							<m:Text text="{HoraSist}" wrapping="false"/>
+						</template>
+					</Column>
+					<Column width="7rem" sortProperty="UsUltMod" visible="false" filterProperty="UsUltMod">
+						<m:Label text="Usuário Ult.Mod" tooltip="Usuário Ult.Mod"/>
+						<template>
+							<m:Text text="{UsUltMod}" wrapping="false"/>
+						</template>
+					</Column>
+					<Column width="7rem" sortProperty="DtUltMod" visible="false">
+						<m:Label text="Data Ult.Mod" tooltip="Data Ult.Mod"/>
+						<template>
+							<m:Text text="{DtUltMod}" wrapping="false"/>
+						</template>
+					</Column>
+					<Column width="7rem" sortProperty="HrUltMod" visible="false">
+						<m:Label text="Hora Ult.Mod" tooltip="Hora Ult.Mod"/>
+						<template>
+							<m:Text text="{HrUltMod}" wrapping="false"/>
+						</template>
+					</Column>
+				</columns>
+				<footer>
+					<m:Toolbar>
+						<m:Label text="Linhas:" labelFor="rowCountMode"/>
+						<m:SegmentedButton id="rowCountMode" selectedKey="{/visibleRowCountMode}">
+							<m:items>
+								<m:SegmentedButtonItem icon="sap-icon://locked" key="Fixed" tooltip="Fixo" press="onSetRowCount"/>
+								<m:SegmentedButtonItem icon="sap-icon://restart" key="Auto" tooltip="Automático" press="onSetRowCount"/>
+							</m:items>
+						</m:SegmentedButton>
+						<m:ToolbarSeparator/>
+						<m:Button icon="sap-icon://excel-attachment" tooltip="Exportar Excel" press="onExportTabelaCiclo"/>
+					</m:Toolbar>
+				</footer>
+			</Table>
+		</m:content>
+	</m:Page>
+</mvc:View>

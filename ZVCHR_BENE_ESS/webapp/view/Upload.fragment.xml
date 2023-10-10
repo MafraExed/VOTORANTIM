@@ -1,0 +1,33 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:lab="openui5.camera" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core"
+	xmlns:u="sap.ui.unified">
+	<Dialog title="Anexos" beforeClose="beforeClose" afterOpen="openfile">
+		<content>
+			<!--<u:FileUploader id="fileUploader" name="myFileUpload" uploadUrl="/sap/opu/odata/sap/ZGWVCHR_LIST_DEPENDENTES_SRV/ZET_VCRH_ARQU_UI5Set" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"/>-->
+			<!--<Button text="Enviar" press="handleUploadPress"/>-->
+			<UploadCollection id="UploadCollection" multiple="false" change="onChange" fileDeleted="onFileDeleted"
+				beforeUploadStarts="onBeforeUploadStarts" uploadComplete="onuploadComplete"
+				items="{ path: '/ZET_VCRH_ARQU_UI5Set', templateShareable: true }" mode="SingleSelectMaster"
+				uploadUrl="/sap/opu/odata/sap/ZGWVCHR_LIST_DEPENDENTES_SRV/ZET_VCRH_ARQU_UI5Set">
+				<toolbar>
+				
+					<OverflowToolbar id="myId" visible="false">
+						<Title id="attachmentTitle"/>
+						<ToolbarSpacer/>
+						<SearchField width="10rem" search="onSearch" enabled="false" visible="false"/>
+						<Button id="deleteSelectedButton" text="Delete" press="onDeleteSelectedItems" enabled="false" visible="false" type="Transparent"/>
+						<ToggleButton id="selectAllButton" text="Select all" press="onSelectAllPress" enabled="false" visible="false" type="Transparent"/>
+						<UploadCollectionToolbarPlaceholder/>
+					</OverflowToolbar>
+				</toolbar>
+				<items>
+					<UploadCollectionItem documentId="{DocId}" fileName="{Filename}" mimeType="{Mimetype}"
+						url="/sap/opu/odata/sap/ZGWVCHR_LIST_DEPENDENTES_SRV/ZET_VCRH_ARQU_UI5Set(Pernr='{Pernr}',Subty='{Subty}',Favor='{Favor}')/$value"
+						enableEdit="false" visibleEdit="false" deletePress="onFileDelete" visibleDelete="false" visible="false"/>
+				</items>
+			</UploadCollection>
+		</content>
+		<endButton>
+			<Button id="btnClose" text="Fechar" enabled="true" press="closeDialog"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

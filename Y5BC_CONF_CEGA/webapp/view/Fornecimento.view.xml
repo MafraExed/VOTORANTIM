@@ -1,0 +1,120 @@
+<mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.f.semantic" xmlns:footerbar="sap.ushell.ui.footerbar"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:smartFilterBar="sap.ui.comp.smartfilterbar" xmlns:m="sap.m"
+	xmlns:sv="sap.ui.comp.smartvariants" xmlns:smartTable="sap.ui.comp.smarttable" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core"
+	xmlns:l="controls" xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	controllerName="Y5BC_CONF_CEGA.Y5BC_CONF_CEGA.controller.Fornecimento">
+	<Text text="{AvisoEntrega}" id="IdAvisoEntrega" visible="false"/>
+	<Page showHeader="false">
+		<content>
+			<Panel >
+				<content>
+					<ObjectHeader title="{i18n>avis_receb_header} {AvisoEntrega}" introActive="false" titleActive="false" intro="{Fornecedor} ({Lifnr})">
+						<attributes>
+							<ObjectAttribute title="{/#ZET_CBEWM_FORNECIMENTOCB/Nfnum/@sap:label}" text="{Nfnum}"/>
+							<ObjectAttribute title="{/#ZET_CBEWM_FORNECIMENTOCB/Series/@sap:label}" text="{Series}"/>
+							<ObjectAttribute title="{/#ZET_CBEWM_FORNECIMENTOCB/Recdat/@sap:label}"
+								text="{ path: 'Recdat', type: 'sap.ui.model.odata.type.DateTime', formatOptions: { pattern: 'dd/MM/yyyy' } }"/>
+							<ObjectAttribute title="{/#ZET_CBEWM_FORNECIMENTOCB/XmlChaveNfe/@sap:label}" text="{XmlChaveNfe}"/>
+						</attributes>
+						<!--<statuses>-->
+						<!--	<ObjectStatus state="{= ${ContagemRealizada} === 'X' ? 'Success' : 'Error' }"-->
+						<!--		text="Contagem: {= ${ContagemRealizada} === 'X' ? 'Realizada' : 'Pendente' }"/>-->
+						<!--	<ObjectStatus state="{= ${EntrMercRealizada} === 'X' ? 'Success' : 'Error' }"-->
+						<!--		text="E.M.: {= ${EntrMercRealizada} === 'X' ? 'Realizada' : 'Pendente' }"/>-->
+						<!--</statuses>-->
+					</ObjectHeader>
+				</content>
+			</Panel>
+			<f:SimpleForm editable="true">
+				<f:content>
+					<Label text="Impressora" design="Bold"/>
+					<Select id="imp" forceSelection="true" selectedKey="{impressaoModel>/param/Name}" showSecondaryValues="true"
+						items="{ path: '/ZET_CBEWM_IMPRESSORASet', sorter : { path : 'Name' }}">
+						<core:ListItem key="{Name}" text="{Pastandort}" additionalText="{Name}"/>
+					</Select>
+				</f:content>
+			</f:SimpleForm>
+			<Panel>
+				<content>
+					<Table id="fornecimentoItemTable" items="{ path: 'ToIt', templateShareable: false, sorter : { path : 'Ebelp' }}"
+						noDataText="{i18n>nodata_forn_items}" class="sapUiResponsivePadding" headerText="Itens">
+						<items>
+							<ColumnListItem>
+								<cells>
+									<Text text="{Ebeln}"/>
+									<Text text="{Ebelp}"/>
+									<ObjectIdentifier title="{Matnr}" text="{Maktx}"/>
+									<Text text="{Meins}"/>
+									<Text text="{Knttp}"/>
+									<!-- <Input value="{path: '{Quantidade}',type:'sap.ui.model.type.Float', formatOptions: { minFractionDigits: 3} }" editable="{= ${Contado} === 'X' ? false : true }"/>-->
+									<Input value="{Quantidade}" editable="{= ${Contado} === 'X' ? false : true }"/>
+									<!--<Input value="" type="Number" />-->
+									<Input value="1" type="Number"/>
+								</cells>
+							</ColumnListItem>
+						</items>
+						<columns>
+							<Column >
+								<header>
+									<Label text="{/#ZET_CBEWM_FORNECIMENTOIT/Ebeln/@sap:label}"/>
+								</header>
+							</Column>
+							<Column >
+								<header>
+									<Label text="{/#ZET_CBEWM_FORNECIMENTOIT/Ebelp/@sap:label}"/>
+								</header>
+							</Column>
+							<Column >
+								<header>
+									<Label text="{/#ZET_CBEWM_FORNECIMENTOIT/Matnr/@sap:label}"/>
+								</header>
+							</Column>
+							<Column >
+								<header>
+									<Label text="{/#ZET_CBEWM_FORNECIMENTOIT/Meins/@sap:label}"/>
+								</header>
+							</Column>
+							<Column >
+								<header>
+									<Label text="{/#ZET_CBEWM_FORNECIMENTOIT/Knttp/@sap:label}"/>
+								</header>
+							</Column>
+							<Column >
+								<header>
+									<Label text="{i18n>head_qty}"/>
+								</header>
+							</Column>
+							<Column >
+								<header>
+									<Label text="{i18n>head_vol}"/>
+								</header>
+							</Column>
+							<!--<Column visible="{= ${EntrMercRealizada} === 'X' ? false : true}">-->
+							<!--	<header>-->
+							<!--		<Label text="{i18n>head_qty}"/>-->
+							<!--	</header>-->
+							<!--</Column>-->
+							<!--<Column visible="{= ${EntrMercRealizada} === 'X' ? false : true}">-->
+							<!--	<header>-->
+							<!--		<Label text="{i18n>head_vol}"/>-->
+							<!--	</header>-->
+							<!--</Column>-->
+						</columns>
+					</Table>
+				</content>
+			</Panel>
+		</content>
+		<footer>
+			<Toolbar>
+				<Button icon="sap-icon://message-popup" text="{/messagesLength}" type="Emphasized" press=".handleMessagePopoverPress"/>
+				<ToolbarSpacer></ToolbarSpacer>
+				<Button id="btnRealizarContagem" type="Accept"
+					text="{= ${ContagemRealizada} !== 'X' ? ${i18n>realiz_cont_cega} : ${i18n>realiz_recont_cega} }"
+					icon="{= ${ContagemRealizada} !== 'X' ? 'sap-icon://display' : 'sap-icon://synchronize' }" press=".onContagemCegaPress"/>
+				<!--<Button type="Accept" text="{= ${ContagemRealizada} !== 'X' ? ${i18n>realiz_cont_cega} : ${i18n>realiz_recont_cega} }"-->
+				<!--	icon="{= ${ContagemRealizada} !== 'X' ? 'sap-icon://display' : 'sap-icon://synchronize' }"-->
+				<!--	visible="{= ${EntrMercRealizada} === 'X' ? false : true}" press=".onContagemCegaPress"/>-->
+			</Toolbar>
+		</footer>
+	</Page>
+</mvc:View>

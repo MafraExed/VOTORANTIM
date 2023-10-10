@@ -1,0 +1,35 @@
+{
+	"fileName": "id_1521913878062_133_propertyChange",
+	"fileType": "change",
+	"changeType": "propertyChange",
+	"reference": "ZFBC_GERALRISCO.Component",
+	"packageName": "$TMP",
+	"content": {
+		"property": "useExportToExcel",
+		"newValue": true
+	},
+	"selector": {
+		"id": "ZFBC_GERALRISCO::sap.suite.ui.generic.template.ListReport.view.ListReport::GeralRiscos--listReport",
+		"type": "sap.ui.comp.smarttable.SmartTable",
+		"idIsLocal": false
+	},
+	"layer": "CUSTOMER_BASE",
+	"texts": {},
+	"namespace": "apps/ZFBC_GERALRISCO/changes/",
+	"creation": "2018-03-24T17:51:21.824Z",
+	"originalLanguage": "PT",
+	"conditions": {},
+	"context": "",
+	"support": {
+		"generator": "Change.createInitialFileContent",
+		"service": "",
+		"user": "",
+		"sapui5Version": "1.52.9"
+	},
+	"dependentSelector": {},
+	"validAppVersions": {
+		"creation": "1.0.0",
+		"from": "1.0.0",
+		"to": "1.0.0"
+	}
+}

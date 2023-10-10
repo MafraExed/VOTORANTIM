@@ -1,0 +1,44 @@
+{
+  "welcomeFile": "/index.html",
+  "routes": [
+    {
+      "path": "/resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/resources",
+        "version": "1.52.11"
+      },
+      "description": "SAPUI5 Resources"
+    },
+    {
+      "path": "/test-resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/test-resources",
+        "version": "1.52.11"
+      },
+      "description": "SAPUI5 Test Resources"
+    },
+    {
+      "path": "/sap/opu/odata",
+      "target": {
+        "type": "destination",
+        "name": "SAPFIORI_DEL",
+        "entryPath": "/sap/opu/odata"
+      },
+      "description": "FIORI FI1 DEL"
+    },
+    {
+      "path": "/sap/bc/ui5_ui5",
+      "target": {
+        "type": "destination",
+        "name": "SAPFIORI_DEL",
+        "entryPath": "/sap/bc/ui5_ui5"
+      },
+      "description": "FIORI FI1 DEL"
+    }
+  ],
+  "sendWelcomeFileRedirect": true
+}

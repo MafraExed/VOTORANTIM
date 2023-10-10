@@ -1,0 +1,6 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog title="Processos" class="sapUiPopupWithPadding" items="{/ZET_GLHR_PROCESSOSet}" search="onSearchProcesso"
+		confirm="ConfirmaProcesso" cancel="_handleValueHelpClose">
+		<StandardListItem iconDensityAware="false" iconInset="false" title="{DescricaoApp}"/>
+	</SelectDialog>
+</core:FragmentDefinition>

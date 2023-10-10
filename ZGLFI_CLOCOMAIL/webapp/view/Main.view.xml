@@ -1,0 +1,203 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:m="sap.m" xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	controllerName="ClocoEmailSetup.controller.Main" xmlns:core="sap.ui.core" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:l="sap.ui.layout" height="100%" class="sapUiSizeCompact">
+	<l:Splitter>
+		<m:VBox height="100%" backgroundDesign="Solid">
+			<m:VBox alignItems="Center" class="sapUiTinyMarginTopBottom">  
+				<m:HBox width="90%" justifyContent="Center" alignItems="Center" class="tree_menu_modelo">
+					<m:Label text="Modelo:" class="tree_menu_key_label"/>
+					<m:Select id="idInputModelo" change="onNovoModelo" class="sapUiTinyMarginBegin inputSelect" items="{ path: 'Planos>/' }">
+						<core:Item key="{Planos>Instance}" text="{Planos>Profile}"/>
+					</m:Select>
+					<m:Select id="idInputPeriodo" visible="false" change="onNovoPeriodo" class="sapUiTinyMarginBegin inputSelect" items="{ path: 'Periodos>/' }">
+						<core:Item key="{Periodos>Instance}" text="{Periodos>Data}" />
+					</m:Select>
+				</m:HBox>
+				<m:HBox width="90%" justifyContent="Center" alignItems="Center" class="tree_menu_options">
+					<m:CheckBox id="idCheckboxModelo" text="Aplicar regra ao Modelo" selected="true" class="tree_menu_key_label1" enabled="false"/>
+					<m:ToggleButton id="idExecMassa" text="Visão por Tarefas" press="onPress" class="sapUiSmallMarginBegin" enabled="false"/>
+				</m:HBox>
+			</m:VBox>
+			<m:Tree id="Tree" items="{path : 'HierarquiaPastas>/'}" visible="true" mode="MultiSelect" selectionChange="onTreeSelect">
+				<m:StandardTreeItem selected="{HierarquiaPastas>selected}" type="{= ${HierarquiaPastas>Item} === 'X' ? ${HierarquiaPastas>contemRegra} === 'X' ? 'Navigation' : 'Active' : 'Inactive' }" press="onPressTree" title="{HierarquiaPastas>Description}" app:key="{HierarquiaPastas>NodeID}" >
+					<m:customData>
+					</m:customData>
+				</m:StandardTreeItem>
+				<m:layoutData><l:SplitterLayoutData size="30%"/></m:layoutData>
+			</m:Tree>
+		</m:VBox>
+		
+		<m:NavContainer
+			id="navCon"	width="100%" height="100%"	class="navContainerControl">
+			<m:Page id="p1" showHeader="false">
+				<m:VBox width="100%" height="100%" justifyContent="Center" alignItems="Center" >
+					<m:HBox width="75%" height="100%" justifyContent="Center" alignItems="Center" wrap="Wrap">
+						<m:Label text="Selecionar uma tarefa de um Modelo ou Plano de Tarefas"  class="labelIdle" wrapping="true"/>
+					</m:HBox>
+				</m:VBox>	
+			</m:Page>
+			<m:Page id="p2" showHeader="false">
+				<m:VBox height="100%" backgroundDesign="Solid">
+					<m:VBox height="55%" backgroundDesign="Solid">
+						<m:IconTabBar 
+							id="idIconTabBar"
+							expanded="{device>/isNoPhone}"
+							expandable="false">
+							<m:items>
+								<m:IconTabFilter text="Lembrete" id="lembrete">
+									<m:VBox>
+										<m:HBox alignItems="Center">
+											<m:Switch id="idSwitchLembrete" state="false" customTextOn=" " customTextOff=" " change="onChangeSwitchLb" tooltip="Objetivo: enviar e-mail de lembrete antes do início planejado da tarefa"/>
+											<core:Icon	src="sap-icon://sys-help" class="sapUiTinyMarginBegin" tooltip="Objetivo: enviar e-mail de lembrete antes do início planejado da tarefa"/>
+										</m:HBox>
+										<m:HBox alignItems="Center">
+											<m:Label text="Agendamento em Horas" labelFor="lembreteAgendHoras" width="180px"/>
+											<m:TimePicker	id="lembreteAgendHoras" value="00:15"	valueFormat="HH:mm"	displayFormat="HH:mm"	placeholder="Entrar Hora/Minuto" width="200px" enabled="false"/>
+											<core:Icon	src="sap-icon://sys-help" class="sapUiTinyMarginBegin" tooltip="Neste campo pode ser definido quanto tempo antes do horário previsto para início da tarefa o responsável pela execução receberá o e-mail de lembrete" />
+										</m:HBox>
+										<m:HBox alignItems="Center">
+											<m:Label text="Endereço do Email" labelFor="lembreteEmails" width="180px"/>
+											<m:Input id="lembreteEmails"	type="Email" width="200px" enabled="false"/>
+											<core:Icon	src="sap-icon://sys-help" class="sapUiTinyMarginBegin" tooltip="Por padrão, o programa sempre enviará e-mail para o responsável pela execução (conforme login SAP atribuído na criação da tarefa). Aqui você pode entrar com endereço de e-mail adicional ao do executor"/>
+										</m:HBox>
+										<m:HBox alignItems="Center">
+											<m:Label text="Assunto" labelFor="lembreteAssunto" width="180px"/>
+											<m:Input id="lembreteAssunto"	  width="200px" enabled="false"/>
+											<core:Icon	src="sap-icon://sys-help" class="sapUiTinyMarginBegin" tooltip="O programa envia e-mail utilizando um texto padrão no campo de “Assunto”. O texto padrão é composto pela palavra “Fechamento” + a descrição da tarefa a ser executada. Este campo pode ser utilizado para substituir o texto padrão do assunto"/>
+										</m:HBox>
+										<m:HBox alignItems="Center">
+											<m:Label text="Texto" labelFor="lembreteTexto1" width="180px"/>
+											<m:Input id="lembreteTexto1"	width="200px" enabled="false"/>
+											<core:Icon	src="sap-icon://sys-help" class="sapUiTinyMarginBegin" tooltip="O programa envia e-mail utilizando um texto padrão no corpo do e-mail, indicando a tarefa e a ação a serem adotadas. Além do texto padrão enviado pelo programa no corpo do e-mail, você dispõe de mais 2 campos de texto (de 255 caracteres cada) para acrescentar informações que considere necessário"/>
+										</m:HBox>
+										<m:HBox alignItems="Center">
+											<m:Label text="Texto" labelFor="lembreteTexto2" width="180px"/>
+											<m:Input id="lembreteTexto2"	width="200px" enabled="false"/>
+											<core:Icon	src="sap-icon://sys-help" class="sapUiTinyMarginBegin" tooltip="O programa envia e-mail utilizando um texto padrão no corpo do e-mail, indicando a tarefa e a ação a serem adotadas. Além do texto padrão enviado pelo programa no corpo do e-mail, você dispõe de mais 2 campos de texto (de 255 caracteres cada) para acrescentar informações que considere necessário"/>
+										</m:HBox>
+									</m:VBox>
+								</m:IconTabFilter>
+								<m:IconTabFilter text="Atividade Não Iniciada" id="n_inic">
+									<m:VBox>
+										<m:HBox alignItems="Center">
+											<m:Switch id="idSwitchNI" state="false" customTextOn=" " customTextOff=" " change="onChangeSwitchNI" tooltip="Objetivo: enviar alerta para o usuário responsável pela tarefa quando o início planejado da execução estiver em atraso"/>
+											<core:Icon	src="sap-icon://sys-help" class="sapUiTinyMarginBegin" tooltip="Objetivo: enviar alerta para o usuário responsável pela tarefa quando o início planejado da execução estiver em atraso"/>
+										</m:HBox>
+										<m:HBox alignItems="Center">
+											<m:Label text="Quantidade máxima E-mails" labelFor="qtdeNIEmails" width="180px"/>
+											<m:Input id="qtdeNIEmails" width="200px" enabled="false" maxLength="1" />
+											<core:Icon	src="sap-icon://sys-help" class="sapUiTinyMarginBegin" tooltip="Este campo poderá ser utilizado para configurar a quantidade máxima de e-mails de alerta que os usuários indicados irão receber enquanto a execução da atividade em atraso não for iniciada" />
+										</m:HBox>
+										<m:HBox alignItems="Center">
+											<m:Label text="Intervalo de Envio" labelFor="AtvdNIintervalo" width="180px"/>
+											<m:TimePicker	id="AtvdNIintervalo" value="00:15"	valueFormat="HH:mm"	displayFormat="HH:mm"	placeholder="Entrar Hora/Minuto" width="200px" enabled="false"/>
+											<core:Icon	src="sap-icon://sys-help" class="sapUiTinyMarginBegin" tooltip="Complemento da configuração anterior (quantidade máxima de e-mails). Este campo é utilizado para definir qual o intervalo de envio para cada e-mail"/>
+										</m:HBox>
+										<m:HBox alignItems="Center">
+											<m:Label text="Endereço do Email" labelFor="atvdNIEmails" width="180px"/>
+											<m:Input id="atvdNIEmails"	type="Email" width="200px" enabled="false"/>
+											<core:Icon	src="sap-icon://sys-help" class="sapUiTinyMarginBegin" tooltip="Por padrão, o programa sempre enviará e-mail para o responsável pela execução (conforme login SAP atribuído na criação da tarefa). Aqui você pode entrar com endereço de e-mail adicional ao do executor"/>
+										</m:HBox>
+										<m:HBox alignItems="Center">
+											<m:Label text="Assunto" labelFor="atvdNIAssunto" width="180px"/>
+											<m:Input id="atvdNIAssunto"	  width="200px" enabled="false"/>
+											<core:Icon	src="sap-icon://sys-help" class="sapUiTinyMarginBegin" tooltip="O programa envia e-mail utilizando um texto padrão no campo de “Assunto”. O texto padrão é composto pela palavra “Fechamento” + a descrição da tarefa a ser executada. Este campo pode ser utilizado para substituir o texto padrão do assunto"/>
+										</m:HBox>
+										<m:HBox alignItems="Center">
+											<m:Label text="Texto" labelFor="atvdNITexto1" width="180px"/>
+											<m:Input id="atvdNITexto1"	width="200px" enabled="false"/>
+											<core:Icon	src="sap-icon://sys-help" class="sapUiTinyMarginBegin" tooltip="O programa envia e-mail utilizando um texto padrão no corpo do e-mail, indicando a tarefa e a ação a serem adotadas. Além do texto padrão enviado pelo programa no corpo do e-mail, você dispõe de mais 2 campos de texto (de 255 caracteres cada) para acrescentar informações que considere necessário"/>
+										</m:HBox>
+										<m:HBox alignItems="Center">
+											<m:Label text="Texto" labelFor="atvdNITexto2" width="180px"/>
+											<m:Input id="atvdNITexto2"	width="200px" enabled="false"/>
+											<core:Icon	src="sap-icon://sys-help" class="sapUiTinyMarginBegin" tooltip="O programa envia e-mail utilizando um texto padrão no corpo do e-mail, indicando a tarefa e a ação a serem adotadas. Além do texto padrão enviado pelo programa no corpo do e-mail, você dispõe de mais 2 campos de texto (de 255 caracteres cada) para acrescentar informações que considere necessário"/>
+										</m:HBox>
+									</m:VBox>
+								</m:IconTabFilter>
+								<m:IconTabFilter text="Atividade Não Encerrada" id="n_enc">
+									<m:VBox>
+										<m:HBox alignItems="Center">
+											<m:Switch id="idSwitchNE" state="false" customTextOn=" " customTextOff=" " change="onChangeSwitchNE" />
+											<core:Icon	src="sap-icon://sys-help" class="sapUiTinyMarginBegin" tooltip="Objetivo: enviar alerta para o usuário responsável pela tarefa quando a conclusão da execução estiver em atraso em comparação ao prazo planejado."/>
+										</m:HBox>
+										<m:HBox alignItems="Center">
+											<m:Label text="Quantidade máxima E-mails" labelFor="qtdeNEEmails" width="180px"/>
+											<m:Input id="qtdeNEEmails" width="200px" enabled="false" maxLength="1" />
+											<core:Icon	src="sap-icon://sys-help" class="sapUiTinyMarginBegin" tooltip="Este campo poderá ser utilizado para configurar a quantidade máxima de e-mails de alerta que os usuários indicados irão receber enquanto a execução da atividade em atraso não for iniciada" />
+										</m:HBox>
+										<m:HBox alignItems="Center">
+											<m:Label text="Intervalo de Envio" labelFor="AtvdNEintervalo" width="180px"/>
+											<m:TimePicker	id="AtvdNEintervalo" value="00:15"	valueFormat="HH:mm"	displayFormat="HH:mm"	placeholder="Entrar Hora/Minuto" width="200px" enabled="false"/>
+											<core:Icon	src="sap-icon://sys-help" class="sapUiTinyMarginBegin" tooltip="Complemento da configuração anterior (quantidade máxima de e-mails). Este campo é utilizado para definir qual o intervalo de envio para cada e-mail"/>
+										</m:HBox>
+										<m:HBox alignItems="Center">
+											<m:Label text="Endereço do Email" labelFor="atvdNEEmails" width="180px"/>
+											<m:Input id="atvdNEEmails"	type="Email" width="200px" enabled="false"/>
+											<core:Icon	src="sap-icon://sys-help" class="sapUiTinyMarginBegin" tooltip="Por padrão, o programa sempre enviará e-mail para o responsável pela execução (conforme login SAP atribuído na criação da tarefa). Aqui você pode entrar com endereço de e-mail adicional ao do executor"/>
+										</m:HBox>
+										<m:HBox alignItems="Center">
+											<m:Label text="Assunto" labelFor="atvdNEAssunto" width="180px"/>
+											<m:Input id="atvdNEAssunto"	  width="200px" enabled="false"/>
+											<core:Icon	src="sap-icon://sys-help" class="sapUiTinyMarginBegin" tooltip="O programa envia e-mail utilizando um texto padrão no campo de “Assunto”. O texto padrão é composto pela palavra “Fechamento” + a descrição da tarefa a ser executada. Este campo pode ser utilizado para substituir o texto padrão do assunto"/>
+										</m:HBox>
+										<m:HBox alignItems="Center">
+											<m:Label text="Texto" labelFor="atvdNETexto1" width="180px"/>
+											<m:Input id="atvdNETexto1"	width="200px" enabled="false"/>
+											<core:Icon	src="sap-icon://sys-help" class="sapUiTinyMarginBegin" tooltip="O programa envia e-mail utilizando um texto padrão no corpo do e-mail, indicando a tarefa e a ação a serem adotadas. Além do texto padrão enviado pelo programa no corpo do e-mail, você dispõe de mais 2 campos de texto (de 255 caracteres cada) para acrescentar informações que considere necessário"/>
+										</m:HBox>
+										<m:HBox alignItems="Center">
+											<m:Label text="Texto" labelFor="atvdNETexto2" width="180px"/>
+											<m:Input id="atvdNETexto2"	width="200px" enabled="false"/>
+											<core:Icon	src="sap-icon://sys-help" class="sapUiTinyMarginBegin" tooltip="O programa envia e-mail utilizando um texto padrão no corpo do e-mail, indicando a tarefa e a ação a serem adotadas. Além do texto padrão enviado pelo programa no corpo do e-mail, você dispõe de mais 2 campos de texto (de 255 caracteres cada) para acrescentar informações que considere necessário"/>
+										</m:HBox>
+									</m:VBox>
+								</m:IconTabFilter>
+								<m:IconTabFilter text="Atividade Disponível" id="disponivel">
+									<m:VBox>
+										<m:HBox alignItems="Center">
+											<m:Switch id="idSwitchDI" state="false" customTextOn=" " customTextOff=" " change="onChangeSwitchDI"/>
+											<core:Icon	src="sap-icon://sys-help" class="sapUiTinyMarginBegin" tooltip="Objetivo: enviar aviso para o usuário responsável pela execução de uma tarefa quando uma atividade precedente estiver concluída (válido para as tarefas configuradas com a relação de dependência)." />
+										</m:HBox>
+										<m:HBox alignItems="Center">
+											<m:Label text="Endereço do Email" labelFor="atvdDIEmails" width="180px"/>
+											<m:Input id="atvdDIEmails"	type="Email" width="200px" enabled="false"/>
+											<core:Icon	src="sap-icon://sys-help" class="sapUiTinyMarginBegin" tooltip="Por padrão, o programa sempre enviará e-mail para o responsável pela execução (conforme login SAP atribuído na criação da tarefa). Aqui você pode entrar com endereço de e-mail adicional ao do executor."/>
+										</m:HBox>
+										<m:HBox alignItems="Center">
+											<m:Label text="Assunto" labelFor="atvdDIAssunto" width="180px"/>
+											<m:Input id="atvdDIAssunto"	  width="200px" enabled="false"/>
+											<core:Icon	src="sap-icon://sys-help" class="sapUiTinyMarginBegin" tooltip="O programa envia e-mail utilizando um texto padrão no campo de “Assunto”. O texto padrão é composto pela palavra “Fechamento” + a descrição da tarefa a ser executada. Este campo pode ser utilizado para substituir o texto padrão do assunto." />
+										</m:HBox>
+										<m:HBox alignItems="Center">
+											<m:Label text="Texto" labelFor="atvdDITexto1" width="180px"/>
+											<m:Input id="atvdDITexto1"	width="200px" enabled="false"/>
+											<core:Icon	src="sap-icon://sys-help" class="sapUiTinyMarginBegin" tooltip="O programa envia e-mail utilizando um texto padrão no corpo do e-mail, indicando a tarefa e a ação a serem adotadas. Além do texto padrão enviado pelo programa no corpo do e-mail, você dispõe de mais 2 campos de texto (de 255 caracteres cada) para acrescentar informações que considere necessário" />
+										</m:HBox>
+										<m:HBox alignItems="Center">
+											<m:Label text="Texto" labelFor="atvdDITexto2" width="180px"/>
+											<m:Input id="atvdDITexto2"	width="200px" enabled="false"/>
+											<core:Icon	src="sap-icon://sys-help" class="sapUiTinyMarginBegin" tooltip="O programa envia e-mail utilizando um texto padrão no corpo do e-mail, indicando a tarefa e a ação a serem adotadas. Além do texto padrão enviado pelo programa no corpo do e-mail, você dispõe de mais 2 campos de texto (de 255 caracteres cada) para acrescentar informações que considere necessário" />
+										</m:HBox>
+									</m:VBox>
+								</m:IconTabFilter>
+							</m:items>
+						</m:IconTabBar>
+					</m:VBox>
+					<m:HBox width="100%" justifyContent="Center" alignItems="Start" class="sapUiSmallMarginTop" >
+						<m:Button text="Gravar regra"  type="Accept" class="button_regra" press="onPressGravarRegra"/>
+						<m:Button text="Excluir regra" type="Reject" class="button_regra sapUiSmallMarginBegin" press="onPressExcluirRegra"/>
+					</m:HBox>
+				</m:VBox>
+			</m:Page>
+		
+		</m:NavContainer>
+		
+		
+	</l:Splitter>
+	<m:HBox id="tooltipCont" class="tooltip_container">
+		<m:HBox width="150px" >
+			<m:Label text="teste teste teste" wrapping="true" />
+		</m:HBox>
+	</m:HBox>
+	
+</mvc:View>

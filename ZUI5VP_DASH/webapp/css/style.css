@@ -1,0 +1,25 @@
+/* Enter your custom styles here */
+
+.space {
+    margin-right: 10px;
+}
+
+.spaceleft{
+    margin-left: 10px;
+}
+
+.spaceTop {
+    margin-top: 45px;
+}
+
+.antigo{
+    background: #fff2f2 !important;
+}
+
+.antigo:hover{
+    background: #ffcccc !important;
+}
+
+.marginright {
+    margin-right: 15px;
+}

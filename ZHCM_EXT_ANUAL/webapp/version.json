@@ -1,0 +1,8 @@
+{ "application" : "hcm.mypaystubs",
+  "version" : "1.8.41",
+  "buildNumber" : "13",
+  "buildId" : "2016-11-02_16-49-38",
+  "branch" : "origin/rel-1.8",
+  "revision" : "c60c2f3e03878683b49d6da1eeee773a3a1cbb5f",
+  "GitURL" : ""
+}

@@ -1,0 +1,1 @@
+sap.ui.define(["./BaseController"],function(e){"use strict";return e.extend("y5jsintegv3.controller.NotFound",{onLinkPressed:function(){this.getRouter().navTo("worklist")}})});

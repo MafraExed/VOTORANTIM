@@ -1,0 +1,112 @@
+<mvc:View controllerName="Y5VC_CCRM_EV_OM.controller.EvOM" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic"
+	xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:core="sap.ui.core" xmlns:viz="sap.viz.ui5.controls" xmlns:layout="sap.ui.layout"
+	xmlns:fb="sap.ui.comp.filterbar" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" xmlns:viz.data="sap.viz.ui5.data">
+	<semantic:FullscreenPage id="page" semanticRuleSet="Optimized" title="{i18n>evOMViewTitle}">
+		<semantic:content>
+			<layout:FixFlex id="chartFixFlex" minFlexSize="250">
+				<layout:fixContent>
+					<fb:FilterBar reset="onReset" search="onSearch" showGoOnFB="false" showRestoreButton="false" showFilterConfiguration="false">
+						<fb:filterItems>
+							<fb:FilterItem name="Regional" label="Regional" >
+								<fb:control>
+									<MultiComboBox id="regionalId" selectionChange="onFilterChange" width="500px"	items="{ path: 'regioesSet>/regioes', sorter: { path: 'regiao' } }">
+										<core:Item key="{regioesSet>regiao}" text="{regioesSet>regiao}"/>
+									</MultiComboBox>
+								</fb:control>
+							</fb:FilterItem>
+							<fb:FilterItem name="Unidade" label="Unidade">
+								<fb:control>
+									<MultiComboBox id="siglaId" selectionChange="onFilterChange" width="500px"	items="{ path: 'siglasSet>/siglas', sorter: { path: 'sigla' } }">
+										<core:Item key="{siglasSet>sigla}" text="{siglasSet>sigla}"/>
+									</MultiComboBox>
+								</fb:control>
+							</fb:FilterItem>
+							<fb:FilterItem name="Periodo" label="Periodo" labelTooltip="Tooltip Example">
+								<fb:control>
+									<MultiComboBox id="periodoId" selectionChange="onFilterChange" width="500px"	items="{ path: 'filter>/periodo', sorter: { path: 'text' } }">
+										<core:Item key="{filter>value}" text="{filter>text}"/>
+									</MultiComboBox>
+								</fb:control>
+							</fb:FilterItem>
+							<fb:FilterItem name="Tipo de Custo" label="Tipo de custo" labelTooltip="Tooltip Example">
+								<fb:control>
+									<MultiComboBox id="tipoCustoId" selectionChange="onFilterChange" width="500px"	items="{ path: 'filter>/tipo_custo', sorter: { path: 'text' } }">
+										<core:Item key="{filter>value}" text="{filter>text}"/>
+									</MultiComboBox>
+								</fb:control>
+							</fb:FilterItem>
+							<fb:FilterItem name="GP/Recorrente" label="GP/Recorrente" labelTooltip="Tooltip Example">
+								<fb:control>
+									<MultiComboBox id="gpRecorrenteId" selectionChange="onFilterChange" width="500px"	items="{ path: 'filter>/gp_recorrente', sorter: { path: 'text' } }">
+										<core:Item key="{filter>value}" text="{filter>text}"/>
+									</MultiComboBox>
+								</fb:control>
+							</fb:FilterItem>
+							<fb:FilterItem name="Mat/Ser" label="Mat/Ser" labelTooltip="Tooltip Example">
+								<fb:control>
+									<MultiComboBox id="matSerId" selectionChange="onFilterChange" width="500px"	items="{ path: 'filter>/mat_ser', sorter: { path: 'text' } }">
+										<core:Item key="{filter>value}" text="{filter>text}"/>
+									</MultiComboBox>
+								</fb:control>
+							</fb:FilterItem>
+							<fb:FilterItem name="Abertura" label="Abertura" labelTooltip="Tooltip Example"
+							change="onFilterChange">
+								<fb:control>
+									<Select id="aberturaId" forceSelection="true" items="{ path: 'filter>/abertura' }" change="onFilterChange">
+										<core:Item key="{filter>value}" text="{filter>text}"/>
+									</Select>
+								</fb:control>
+							</fb:FilterItem>
+							<fb:FilterItem name="Tipo" label="Tipo" labelTooltip="Tooltip Example">
+								<fb:control>
+									<Select id="tipoId" forceSelection="true" items="{ path: 'filter>/tipo' }" change="onFilterChange">
+										<core:Item key="{filter>value}" text="{filter>text}"/>
+									</Select>
+								</fb:control>
+							</fb:FilterItem>
+							<fb:FilterItem name="Ano" label="Ano" labelTooltip="Tooltip Example">
+								<fb:control>
+									<DatePicker id="anoId" placeholder="YYYY" change="onFilterChange" displayFormat="YYYY" valueFormat="YYYY" class="sapUiSmallMarginBottom"/>
+								</fb:control>
+							</fb:FilterItem>
+							<fb:FilterItem name="DataRef" label="Data Referência" labelTooltip="Tooltip Example">
+								<fb:control>
+									<DateRangeSelection id="dataRefId" placeholder="YYYY/WW - YYYY/WW" change="onFilterChange" displayFormat="dd/MM/YYYY" valueFormat="YYYYww" class="sapUiSmallMarginBottom"
+										minDate="{}" maxDate="{}"/>
+								</fb:control>
+							</fb:FilterItem>
+						</fb:filterItems>
+					</fb:FilterBar>
+				</layout:fixContent>
+				<layout:flexContent>
+					<viz:Popover id="idPopOver"/>
+					<viz:VizFrame id="idVizFrame" uiConfig="{applicationSet:'fiori'}" height="100%" width="100%" vizType="line">
+						<viz:dataset>
+							<viz.data:FlattenedDataset data="{evolOMSet>/evolOM}">
+								<viz.data:dimensions>
+									<viz.data:DimensionDefinition name="DataRef" value="{path: 'evolOMSet>DataRef'}"/>
+								</viz.data:dimensions>
+								<viz.data:measures>
+									<viz.data:MeasureDefinition name="Valor" value="{evolOMSet>Valor}"/>
+								</viz.data:measures>
+							</viz.data:FlattenedDataset>
+						</viz:dataset>
+						<viz:feeds>
+							<viz.feeds:FeedItem id="valueAxisFeed" uid="valueAxis" type="Measure" values="Valor"/>
+							<viz.feeds:FeedItem id="categoryAxisFeed" uid="categoryAxis" type="Dimension" values="DataRef"/>
+						</viz:feeds>
+					</viz:VizFrame>
+				</layout:flexContent>
+			</layout:FixFlex>
+		</semantic:content>
+		<semantic:sendEmailAction>
+			<semantic:SendEmailAction id="shareEmail" press="onShareEmailPress"/>
+		</semantic:sendEmailAction>
+		<semantic:shareInJamAction>
+			<semantic:ShareInJamAction id="shareInJam" visible="{FLP>/isShareInJamActive}" press="onShareInJamPress"/>
+		</semantic:shareInJamAction>
+		<semantic:saveAsTileAction>
+			<footerbar:AddBookmarkButton id="shareTile" title="{evOMView>/saveAsTileTitle}"/>
+		</semantic:saveAsTileAction>
+	</semantic:FullscreenPage>
+</mvc:View>

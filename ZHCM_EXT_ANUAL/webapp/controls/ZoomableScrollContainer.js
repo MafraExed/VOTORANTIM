@@ -1,0 +1,7 @@
+/*
+ * Copyright (C) 2009-2014 SAP SE or an SAP affiliate company. All rights reserved
+ */
+jQuery.sap.declare("hcm.mypaystubs.controls.ZoomableScrollContainer");sap.m.ScrollContainer.extend("hcm.mypaystubs.controls.ZoomableScrollContainer",{metadata:{publicMethods:[],library:"sap.m",properties:{"zoomable":{type:"boolean",group:"Misc",defaultValue:true},"initialScale":{type:"float",group:"Misc",defaultValue:1},"minScale":{type:"float",group:"Misc",defaultValue:1},"maxScale":{type:"float",group:"Misc",defaultValue:4}},events:{}}});
+hcm.mypaystubs.controls.ZoomableScrollContainer.prototype.init=function(){sap.m.ScrollContainer.prototype.init.apply(this);};
+hcm.mypaystubs.controls.ZoomableScrollContainer.prototype.onAfterRendering=function(){var c=this.getScrollDelegate().onAfterRendering;var s=this.getInitialScale();var m=this.getMinScale();var M=this.getMaxScale();var z=this.getZoomable();this.getScrollDelegate().onAfterRendering=function(){c.call(this);if(this._scroller){this._scroller.scale=s;if(this._scroller.options){this._scroller.options.zoom=z;this._scroller.options.zoomMin=m;this._scroller.options.zoomMax=M;this._scroller.options.onZoom=function(e){};this._scroller.options.onZoomStart=function(e){};}if(this._scroller.zoom){this._scroller.zoom(0,0,s);}}};};
+hcm.mypaystubs.controls.ZoomableScrollContainer.prototype.resetContent=function(){this.$().append(this.getContent()[0].$());this.getScrollDelegate()._scroller.refresh();};

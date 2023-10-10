@@ -1,0 +1,14 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog
+		title="Diretoria / Unidade Organizacional"
+		class="sapUiPopupWithPadding"
+		items="{filter>/OrganizacaoSet}"
+		search="_handleOrganizacaoSHSearch"
+		confirm="_handleOrganizacaoSHClose"
+		cancel="_handleOrganizacaoSHClose">
+		<StandardListItem
+			title="{filter>Organizacao}"/>
+	</SelectDialog>
+</core:FragmentDefinition>

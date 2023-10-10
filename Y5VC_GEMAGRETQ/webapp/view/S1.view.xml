@@ -1,0 +1,53 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:layout="sap.ui.layout" xmlns="sap.m"
+	xmlns:core="sap.ui.core" controllerName="Workspace.zagrupador.controller.S1" displayBlock="true">
+	<Shell id="shell">
+		<App id="idAppControl">
+			<pages>
+				<Page id="page"
+					title="{i18n>TitlePage} - {path: 'GE>Agrupador', formatter: '.myFormatter.shiftLeadingZeros'} / {i18n>TitleRota} - {path: 'GE>Rota', formatter: '.myFormatter.shiftLeadingZeros'}"
+					showNavButton="false" navButtonPress="onNavBack">
+					<content>
+						<Table noDataText="{i18n>TableNoDataText}" id="tableAgrupador" items="{path : 'GE>ZAT_VCMM_AGRUP_HEADER_TO_AGRUP_ITM'}" showNoData="true"
+							fixedLayout="false" mode="MultiSelect">
+							<!--items="{ path : 'ZAT_VCMM_AGRUP_HEADER_TO_AGRUP_ITM', parameters:{expand : 'ZAT_VCMM_AGRUP_ITM_TO_AGRUP_HEADER'} }" showNoData="true"-->
+							<items>
+								<ColumnListItem type="Active">
+									<cells>
+										<ObjectIdentifier title="{path: 'GE>Nretq', formatter: '.myFormatter.shiftLeadingZeros'}"/>
+										<Label text="{ path: 'GE>Nfenum'}-{path: 'GE>Series'}"/>
+										<ObjectStatus
+											text="{path: 'GE>VolTotal', formatter: '.myFormatter.shiftLeadingZeros'} / {path: 'GE>Vol', formatter: '.myFormatter.shiftLeadingZeros'}"
+											state="{parts:[{path:'GE>VolTotal'},{path:'GE>Vol'}], formatter:'.myFormatter.statusStateVolumeLido'}"/>
+									</cells>
+								</ColumnListItem>
+							</items>
+							<columns>
+								<Column id="column1">
+									<header><Label text="{i18n>ColEtqVol}" id="label7" width="10em"/></header>
+								</Column>
+								<Column id="column2">
+									<header><Label text="{i18n>ColNroNFe}" id="label8" width="10em"/></header>
+								</Column>
+								<Column id="column0" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
+									<header><Label text="{i18n>ColVolume}" id="label5" width="10em"/></header>
+								</Column>
+							</columns>
+						</Table>
+					</content>
+					<footer>
+						<Bar id="bar3">
+							<contentMiddle>
+								<Button xmlns="sap.m" text="{i18n>BtnScanEtiq2}" tooltip="{i18n>BtnScanEtiq2}" icon="sap-icon://bar-code" id="button0" type="Default"
+									press="onPressScan"/>
+								<Button xmlns="sap.m" text="{i18n>BtnFinalizar}" tooltip="{i18n>BtnFinalizar}" id="button3" icon="sap-icon://accept" type="Accept"
+									press="handleSalvar"/>
+								<Button xmlns="sap.m" text="{i18n>BtnCancelarCont}" tooltip="{i18n>BtnCancelarCont}" id="button2" icon="sap-icon://decline" type="Reject"
+									press="handleCancelar"/>
+							</contentMiddle>
+						</Bar>
+					</footer>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>

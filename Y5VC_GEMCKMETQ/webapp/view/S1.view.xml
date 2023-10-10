@@ -1,0 +1,31 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="Workspace.zconferencia_etiquetas.controller.S1"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<App>
+		<Page id="MasterItens" title="{i18n>titleS1_master} {NFHEADERLOC>/nfenum} - {NFHEADERLOC>/series}" class="sapUiStdPage"
+			showNavButton="{device>/system/phone}" navButtonPress="onPressMasterBack">
+			<content>
+				<!--<List id="ShortScanEtqList" headerText="{i18n>titleS1}" items="{ path: 'NFLABELSCAN>/' }">-->
+				<List id="ShortScanEtqList" items="{ path: 'NFLABELSCAN>/' }">
+					<items>
+						<StandardListItem title="{ path: 'NFLABELSCAN>nretq'}" type="Active" description="{NFLABELSCAN>MATNR} - {NFLABELSCAN>MAKTX}"
+							info="{i18n>message_label_correct}" infoState="Success" press="handleMatDescPress" />
+					</items>
+				</List>
+			</content>
+			<footer>
+				<OverflowToolbar id="otbFooter">
+					<ToolbarSpacer/>
+					<OverflowToolbarButton id="CancelButton" text="{i18n>cancel}" icon="sap-icon://sys-cancel" press="onPressCancel" enabled="true"
+						type="Reject"/>
+					<ToolbarSpacer/>
+					<OverflowToolbarButton id="ScanButton" text="{i18n>scan}" icon="sap-icon://bar-code" press="onPressLabelScan" type="Emphasized"/>
+					<ToolbarSpacer/>
+					<OverflowToolbarButton id="AcceptButton" text="{i18n>accept}" icon="sap-icon://accept" press="onPressAccept" enabled="true" type="Accept"/>
+					<ToolbarSpacer/>
+					<OverflowToolbarButton id="BOButton" text="{i18n>divergence}" icon="sap-icon://quality-issue" press="onPressBO"/>
+					<ToolbarSpacer/>
+				</OverflowToolbar>
+			</footer>
+		</Page>
+	</App>
+</mvc:View>

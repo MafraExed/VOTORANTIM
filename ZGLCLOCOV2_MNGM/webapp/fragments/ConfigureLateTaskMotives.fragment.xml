@@ -1,0 +1,35 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:table="sap.ui.table"
+    xmlns:l="sap.ui.layout" class="sapUiSizeCompact"
+	xmlns:grid="sap.ui.layout.cssgrid"
+	xmlns:f="sap.f"
+    xmlns:form="sap.ui.layout.form">
+    <Dialog showHeader="true" title="Configurar Motivos de Atraso" class="sapUiResponsivePadding--content" contentWidth="600px">
+    
+        <HBox alignItems="Center" justifyContent="SpaceBetween" class="sapUiSmallMarginTopBottom">
+            <HBox alignItems="Center">
+                <Label text="Novo Motivo:" wrapping="true" />
+                <Input maxLength="40" id="idInputMotive" class="sapUiSmallMarginBeginEnd"/>
+                <Button  text="Adicionar" class="sapUiSmallMarginBeginEnd" press="onPressAddMotive"/>
+            </HBox>
+            <Button tooltip="Remover Motivos Selecionados" id="idRemoveMotiveButton" icon="sap-icon://delete" enabled="false" press="onPressRemoveMotive"/>
+        </HBox>
+
+        <table:Table id="idMotivesTable" rows="{path : 'motives>/'}" selectionMode="MultiToggle" visibleRowCount="7" rowSelectionChange="onMotiveSelectChange" >
+            <table:columns>
+                <table:Column width="100%">
+                    <Label text="Motivo" />
+                    <table:template>
+                        <Text text="{motives>Motivo}" wrapping="false" />
+                    </table:template>
+                </table:Column>
+            </table:columns>
+        </table:Table>
+
+        <endButton>
+            <Button text="Fechar" press="onCloseAddMotivesDialog"/>
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

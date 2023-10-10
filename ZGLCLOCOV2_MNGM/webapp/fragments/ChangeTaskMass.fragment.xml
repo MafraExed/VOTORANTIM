@@ -1,0 +1,171 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:table="sap.ui.table"
+    xmlns:l="sap.ui.layout" class="sapUiSizeCompact"
+    xmlns:f="sap.ui.layout.form">
+    <Dialog showHeader="true" title="Alteração em Massa de Tarefas">
+        <f:Form editable="true">
+            <f:layout>
+                <f:ResponsiveGridLayout labelSpanXL="6" labelSpanL="6" labelSpanM="6" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="4" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false" />
+            </f:layout>
+            <f:formContainers>
+                <f:FormContainer>
+                    <f:formElements >
+                        <f:FormElement label="{i18n>detailDescription}">
+                            <f:fields>
+                                <Input value="{changeTaskMass>/Description}" maxLength="60"/>
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement label="{i18n>taskCompanyCode}">
+						<f:fields>
+							<Input id="idChangeTaskCompany" change="onDataChanged" value="{
+																		path: 'changeTaskMass>/Empresa',
+																		type : 'sap.ui.model.type.String',
+																		constraints : {
+																		minLength: 1
+																		}
+																	}"  showValueHelp="true" valueHelpRequest="showCompanySearchHelp"/> 
+						</f:fields>
+					</f:FormElement>
+                    <f:FormElement label="Coe">
+						<f:fields>
+							  <Select selectedKey="{changeTaskMass>/updateCoe}">
+                                    <items>
+                                        <core:Item text="" key=""/>
+                                        <core:Item text="{i18n>appYes}" key="YES"/>
+                                        <core:Item text="{i18n>appNo}" key="NO"/>
+                                    </items>
+                                </Select>
+						</f:fields>
+					</f:FormElement>
+                    <f:FormElement label="Área/Departamento">
+						<f:fields>
+							<Input id="idChangeTaskDepartamento" required="false"  value="{changeTaskMass>/Departamento}"  showValueHelp="true" valueHelpRequest="showDepartamentSearchHelp('idChangeTaskDepartamento')"/> 
+						</f:fields>
+					</f:FormElement>
+                        <f:FormElement label="{i18n>detailResponsible}">
+                            <f:fields>
+                                <Input id="idBtnChangeUserResp" value="{changeTaskMass>/User_respons}" showValueHelp="true" valueHelpRequest="showUserSearchHelp"/>
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement label="{i18n>detailResponsibleExec}">
+                            <f:fields>
+                                <Input id="idBtnChangeUserExec" value="{changeTaskMass>/User_respons_exec}" showValueHelp="true" valueHelpRequest="showUserSearchHelp"/>
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement label="{i18n>tasklCriticalPath}">
+                            <f:fields>
+                                <Select selectedKey="{changeTaskMass>/CaminhoCritico}">
+                                    <items>
+                                        <core:Item text="{i18n>appYes}" key="X"/>
+                                        <core:Item text="{i18n>appNo}" key="F"/>
+                                        <core:Item text="" key=""/>
+                                    </items>
+                                </Select>
+                            </f:fields>
+                        </f:FormElement>
+                    </f:formElements >
+                </f:FormContainer>
+
+                <f:FormContainer>
+                    <f:formElements >
+                        <f:FormElement label="{i18n>taskType}">
+                            <f:fields>
+                                <Select id="TypeTaskMass" selectedKey="{changeTaskMass>/Kind}">
+                                    <items>
+                                        <core:Item text="" key=""/>
+                                        <core:Item text="{i18n>TaskTypeJob}" key="0"/>
+                                        <core:Item text="{i18n>TaskTypeTcode}" key="2"/>
+                                        <core:Item text="{i18n>TaskTypeReminder}" key="3"/>
+                                    </items>
+                                </Select>
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement visible="{= ${changeTaskMass>/Kind} === '2'}" label="{i18n>TaskTypeTcode}">
+                            <f:fields>
+                                <Input id="tcodeTaskMass" visible="{= ${changeTaskMass>/Kind} === '2'}" value="{
+                                                                                                                path: 'changeTaskMass>/Transacao',
+                                                                                                                type : 'sap.ui.model.type.String',
+                                                                                                            constraints : {
+                                                                                                                minLength: 1
+                                                                                                            }
+                                                                                                            }" showValueHelp="true" valueHelpRequest="showTcodeSearchHelp"/>
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement visible="{= ${changeTaskMass>/Kind} === '0'}" label="{i18n>TaskTypeProgram}">
+                            <f:fields>
+                                <Input id="jobTaskMass" visible="{= ${changeTaskMass>/Kind} === '0'}" value="{
+                                                                                                                path: 'changeTaskMass>/Programa',
+                                                                                                                type : 'sap.ui.model.type.String',
+                                                                                                                constraints : {
+                                                                                                                minLength: 1
+                                                                                                            }
+                                                                                                            }" showValueHelp="true" valueHelpRequest="showJobSearchHelp" />
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement visible="{= ${changeTaskMass>/Kind} === '0'}" label="{i18n>TaskVariant}">
+                            <f:fields>
+                                <Input id="varTaskMass" visible="{= ${changeTaskMass>/Kind} === '0'}" value="{
+                                                                                                                path: 'changeTaskMass>/Variante',
+                                                                                                                type : 'sap.ui.model.type.String',
+                                                                                                                constraints : {
+                                                                                                                minLength: 1
+                                                                                                            }
+                                                                                                            }" showValueHelp="true" valueHelpRequest="showVarSearchHelp" />
+                            </f:fields>
+                        </f:FormElement>
+
+                    </f:formElements>
+                </f:FormContainer>
+
+                <f:FormContainer >
+                    <f:title>
+                        <core:Title text="Início Planejado" />
+                    </f:title>
+                    <f:formElements>
+                        <f:FormElement >
+                            <f:fields>
+                                <Input type="Number" change="onDataChanged" value="{changeTaskMass>/InicioPlanejadoDias}" description="dias"></Input>
+                                <TimePicker value="{changeTaskMass>/InicioPlanejadoHoras}" valueFormat="HHmmss" displayFormat="HH:mm" maskMode="On" change="onDataChanged" placeholder="Hora" />
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement>
+                            <f:fields>
+                                <Select selectedKey="{changeTaskMass>/InicioPlanAposDataBase}" change="onDataChanged">
+                                    <items>
+                                        <core:Item text="" key="NULL"/>
+                                        <core:Item text="Antes da data base" key=""/>
+                                        <core:Item text="Após a data base" key="X"/>
+                                    </items>
+                                </Select>
+                            </f:fields>
+                        </f:FormElement>
+                    </f:formElements>
+                </f:FormContainer>
+
+                <f:FormContainer >
+                    <f:title>
+                        <core:Title text="Duração Planejada" />
+                    </f:title>
+                    <f:formElements>
+                        <f:FormElement >
+                            <f:fields>
+                                <Input type="Number" change="onDataChanged" value="{changeTaskMass>/DuracaoPlanejadoDias}" description="dias"></Input>
+                                <TimePicker value="{changeTaskMass>/DuracaoPlanejadoHoras}" valueFormat="HHmmss" displayFormat="HH:mm" maskMode="On" change="onDataChanged" title="Hora" placeholder="Hora" />
+                            </f:fields>
+                        </f:FormElement>
+                    </f:formElements>
+                </f:FormContainer>
+            </f:formContainers>
+
+        </f:Form>
+
+        <beginButton>
+            <Button type="Emphasized" text="{i18n>appApply}" press="onChangeTaskMass"/>
+        </beginButton>
+        <endButton>
+            <Button text="{i18n>appCancel}" press="onCloseChangeTasMasskDialog"/>
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

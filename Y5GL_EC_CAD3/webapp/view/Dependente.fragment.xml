@@ -1,0 +1,8 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog title="Selecione o dependente para exclusão" class="sapUiPopupWithPadding"
+		items="{path: '/ZET_GLRH_DEPENDENTESSet', filters: { path: 'Tipo', operator: 'EQ', value1:'E'} }" search="_handleValueHelpKostl"
+		confirm="_Confirme_Dependete" cancel="_handleValueHelpClose" id="idSelectDialog">
+		<StandardListItem icon="sap-icon://company-view" iconDensityAware="false" iconInset="false" title="{Nomecompleto}"
+			description="{Parentesco}" highlight="Information" id="StandardListItem" detailPress="onDetailPress"/>
+	</SelectDialog>
+</core:FragmentDefinition>

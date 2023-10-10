@@ -1,0 +1,23 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog
+		
+		title="Grupos de Compras"
+		class="sapUiPopupWithPadding"
+		items="{/ZET_CBMM_CF_PARAMETSet}"
+		
+		search="_onModelContextChangeGrpCompras"
+		confirm="_handleValueHelpClose"
+		cancel="_handleValueHelpClose"
+		modelContextChange="_onModelContextChangeGrpCompras">
+		
+		<StandardListItem
+			icon="{ProductPicUrl}"
+			iconDensityAware="false"
+			iconInset="false"
+			title="{Valor}"
+			description="{Parametro}" />
+			
+	</SelectDialog>
+</core:FragmentDefinition>

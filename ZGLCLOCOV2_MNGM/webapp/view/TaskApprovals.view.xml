@@ -1,0 +1,57 @@
+<mvc:View controllerName="votorantim.corp.clocov2planmanagement.controller.TaskApprovals"
+	xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:f="sap.f"
+	xmlns:grid="sap.ui.layout.cssgrid"
+    class="sapUiSizeCompact"
+	busyIndicatorDelay="0"
+	xmlns:core="sap.ui.core" id="taskApprovalsView">
+
+<VBox class="sapUiSmallMargin">
+
+	<VBox>
+		<HBox alignItems="Center">
+			<Switch id="idSwitchApproval" state="{approvalHeader>/Active}" change="onChangeActiveApproval" customTextOn=" " customTextOff=" " tooltip=""/>
+			<Label text="{= ${approvalHeader>/Active} ? 'Aprovações habilitadas para essa tarefa' : 'Aprovações desabilitadas para essa tarefa'}" wrapping="true" />
+		</HBox>
+			<Button visible="{approvalHeader>/Active}" tooltip="" type="Transparent" text="Adicionar Aprovador" class="sapUiSmallMarginTopBottom" icon="sap-icon://add" press="onPressAddNewApprover"/>
+	</VBox>
+
+	<f:GridList
+		visible="{approvalHeader>/Active}"
+		id="gridList"
+		headerText=""
+		mode="None"
+		items="{
+			path: 'approvals>/',
+			sorter: {
+				path: 'Level'
+			}
+		}"
+		delete="onDelete"
+		class="sapUiResponsiveContentPadding">
+		<f:customLayout>
+			<grid:GridBasicLayout gridTemplateColumns="repeat(auto-fit, minmax(16rem, 1fr))" gridGap="0.5rem" />
+		</f:customLayout>
+
+		<f:GridListItem
+			press="onPressChangeApprover($event,${approvals>})"
+			highlight="{approvals>highlight}"
+			type="Active">
+			<VBox width="100%" height="100%" alignItems="Center" justifyContent="Center">
+				<HBox class="sapUiSmallMarginTop" width="100%" justifyContent="SpaceBetween" alignItems="Center">
+					<Title class="sapUiSmallMarginBegin" text="Nível {approvals>Level}"/>
+					<Button class="sapUiSmallMarginEnd" tooltip="Remover Aprovador" type="Transparent" text="" icon="sap-icon://delete" press="onPressRemoveApprover($event,${approvals>})"/>
+				</HBox>
+				<Label class="sapUiTinyMarginBottom" text="{approvals>ApproverName}"  />
+				<Label class="sapUiTinyMarginBottom" text="{approvals>UserId}" />
+				<FormattedText class="sapUiTinyMarginBottom" htmlText="{approvals>validText}"/>
+				<FormattedText class="sapUiSmallMarginBottom" htmlText="{approvals>notificationText}"/>
+			</VBox>
+		</f:GridListItem>
+	</f:GridList>
+
+	</VBox>
+
+</mvc:View>

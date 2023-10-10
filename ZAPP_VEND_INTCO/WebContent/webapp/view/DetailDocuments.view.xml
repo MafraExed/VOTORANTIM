@@ -1,0 +1,98 @@
+<mvc:View controllerName="nasa.ui5.vendaIntercompany.controller.DetailDocuments" xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic"
+	xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout">
+
+	<semantic:DetailPage id="pageDetailDocument" 
+						 navButtonPress="onNavBack"
+						 showNavButton="true"
+						 title="{detailDocumentView>/titlePage}"
+						 busy="{detailDocumentView>/busy}" 
+						 busyIndicatorDelay="{detailDocumentView>/delay}">
+
+		<semantic:content>
+
+			<IconTabBar id="documentIconTabBar1" class="sapUiResponsiveContentPadding"
+						select="onHandleIconTabBarSelect" expandable="false">
+				<items>
+					<!-- MENU TABS 1.1 -->
+					<IconTabFilter id="documentIconTabBarFilter1"
+							       key="documentIconTabBarFilter1"
+								   icon="sap-icon://header"
+								   text="{i18n>detailDocumentTextTabFilterBar}"
+								   tooltip="{i18n>detailDocumentTitleTabFilterBar}">
+
+						<core:Fragment fragmentName="nasa.ui5.vendaIntercompany.view.fragments.HeadOvDocument" type="XML"/>
+
+					</IconTabFilter>
+					
+					<!--  MENU TABS 1.2 -->
+					<IconTabFilter id="documentIconTabBarFilter1_2"
+							       key="documentIconTabBarFilter1_2"
+								   icon="sap-icon://header"
+								   text="{i18n>detailDocumentTextTabFilterBar}"
+								   tooltip="{i18n>detailDocumentTitleTabFilterBar}">
+
+						<core:Fragment fragmentName="nasa.ui5.vendaIntercompany.view.fragments.HeadPODocument" type="XML"/>
+
+					</IconTabFilter>
+					
+					<!--  MENU TABS 2 -->
+					<IconTabFilter id="documentIconTabBarFilter2"
+							       key="documentIconTabBarFilter2"
+								   icon="sap-icon://list"
+								   text="{i18n>detailDocumentTextTabFilter2Bar}"
+								   tooltip="{i18n>detailDocumentTitleTabFilter2Bar}">
+
+						<core:Fragment fragmentName="nasa.ui5.vendaIntercompany.view.fragments.ItemDocument" type="XML"/>
+
+					</IconTabFilter>
+
+					<!-- PARCEIROS MENU TABS 3 -->
+<!-- 					<IconTabFilter id="documentIconTabBarFilter3" -->
+<!-- 								   key="documentIconTabBarFilter3" -->
+<!-- 								   icon="sap-icon://customer-and-supplier" -->
+<!-- 								   text="{i18n>detailDocumentTextTabFilter3Bar}" -->
+<!-- 								   tooltip="{i18n>detailDocumentTitleTabFilter3Bar}"> -->
+
+<!-- 						<core:Fragment fragmentName="nasa.ui5.vendaIntercompany.view.fragments.PartnerDocument" type="XML"/> -->
+
+<!-- 					</IconTabFilter> -->
+					
+					<!-- MENU TABS 4 -->
+					<IconTabFilter id="documentIconTabBarFilter4"
+							       key="documentIconTabBarFilter4"
+								   icon="sap-icon://document-text"
+								   text="{i18n>detailDocumentTextTabFilter4Bar}"
+								   tooltip="{i18n>detailDocumentTitleTabFilter4Bar}">
+
+						<core:Fragment fragmentName="nasa.ui5.vendaIntercompany.view.fragments.TextDocument" type="XML"/>
+
+					</IconTabFilter>
+					
+				</items>
+			</IconTabBar>
+
+		</semantic:content>
+		<semantic:customFooterContent>
+			
+			
+			
+			<Button id="precoHead"
+					icon="sap-icon://lead"
+				    press="onHandlePopoverPriceHeader" 
+				    tooltip="{i18n>detailDocumentsTooltipPriceHead}"
+				    visible="false"
+			/>
+
+			<Button  
+					icon="sap-icon://accounting-document-verification"
+					press="onHandleAddDocument" 
+					tooltip="{i18n>detailFlowButtonConfirmDocuments}"
+			/>
+				
+		</semantic:customFooterContent>
+
+	</semantic:DetailPage>
+
+</mvc:View>

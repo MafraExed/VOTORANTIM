@@ -1,0 +1,41 @@
+specVersion: "3.1"
+metadata:
+  name: y5gl_finance.y5gl_finance
+type: application
+framework:
+  name: SAPUI5
+  version: 1.79.0
+  libraries:
+    - name: sap.collaboration
+    - name: sap.f
+    - name: sap.m
+    - name: sap.ui.core
+    - name: sap.ushell
+    - name: sap.ui.layout
+    - name: sap.ui.comp
+    - name: sap.ui.generic.app
+    - name: sap.ui.table
+    - name: themelib_sap_bluecrystal
+    - name: themelib_sap_fiori_3
+server:
+  customMiddleware:
+    - name: fiori-tools-proxy
+      afterMiddleware: compression
+      configuration:
+        ignoreCertError: false
+        backend:
+          - path: /resources/Y5GL_FINANCE/Y5GL_FINANCE/Component
+            destination: ""
+            url: ""
+            pathPrefix: /sap/bc/lrep/flex/data/~S154+Caq8k4BNv3L8oxMQC7nago=~/Y5GL_FINANCE.Y5GL_FINANCE.Component?version=1.0.0
+    - name: fiori-tools-appreload
+      afterMiddleware: compression
+      configuration:
+        port: 35729
+        path: webapp
+        delay: 300
+    - name: fiori-tools-preview
+      afterMiddleware: fiori-tools-appreload
+      configuration:
+        component: Y5GL_FINANCE.Y5GL_FINANCE
+        ui5Theme: sap_fiori_3

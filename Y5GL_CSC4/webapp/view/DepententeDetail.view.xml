@@ -1,0 +1,312 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.ui.layout.form"
+	controllerName="Y5GL_CSC4.Y5GL_CSC4.controller.DepententeDetail" xmlns:html="http://www.w3.org/1999/xhtml">
+	<App id="app">
+		<pages>
+			<Page id="IdPageDetailDep" floatingFooter="true" enableScrolling="true">
+				<customHeader>
+					<Bar id="IdBarDetailDep">
+						<contentLeft>
+							<Button icon="sap-icon://nav-back" id="idB_navback99" press="onVoltar" text="Vuelve"/>
+						</contentLeft>
+						<contentMiddle>
+							<Title text="{Operation} - Dependientes - (Registro - {Pernr}) - Llamado - {Chamado}" titleStyle="H3" id="idTitleDependentes"/>
+						</contentMiddle>
+						<!--<contentRight>-->
+						<!--	<Button icon="sap-icon://home" id="idB_Home" press="onBackMaster"/>-->
+						<!--</contentRight>-->
+					</Bar>
+				</customHeader>
+				<content>
+					<HBox width="100%" height="100%" id="idGif" class="Loading" busyIndicatorSize="Auto" backgroundDesign="Solid">
+						<Image src="imagens/voto_load_white.gif" width="100%" class="footer_img" id="idimg" backgroundSize="100%"/>
+					</HBox>
+					<Input value="{Pernr}" id="IdPernr" visible="false"/>
+					<Input value="{Subty}" id="IdSubty" visible="false"/>
+					<Input value="" id="IdObjps" visible="false"/>
+					<Input value="{Status}" id="idTipo" visible="false"/>
+					<Input value="{Chamado}" id="idChamado" visible="false"/>
+					<Input value="{Operation}" id="idOperacao" visible="false"/>
+					<f:Form id="FormChange480_12120" editable="true">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0"
+								emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="Container">
+								<f:formElements>
+									<f:FormElement visible="false" id="idElemento">
+										<f:fields>
+											<Input value="{Status}" id="IdStatus"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Membro" id="idGrau">
+										<f:fields>
+											<ComboBox id="IdParentesco" selectedKey="{Famsa}" required="true" placeholder="Membro" items="{/ZET_GLRH_COMBO_PARENTESCO_ECSet}"
+												change="onchangeParentesco" editable="true">
+												<core:Item key="{Id}" text="{Value}" id="idKeyParentesco"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Nombre" id="idnome">
+										<f:fields>
+											<Input value="{Favor}" id="IdFavor" placeholder="Nombre" required="true" maxLength="35" editable="true"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Apelido" id="sobrenome">
+										<f:fields>
+											<Input value="{Fanam}" id="IdFanam" placeholder="Apelido" required="false" maxLength="40" editable="true"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Apelido de solteiro" id="apelidoSoltero">
+										<f:fields>
+											<Input value="{Fgbna}" id="IdFgbna" placeholder="Apelido de solteiro" required="true" maxLength="40" editable="true"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Fecha de Nascimiento" id="idnascimento">
+										<f:fields>
+											<Input value="{Fgbdt}" id="IdFgbdt" placeholder="Fecha de Nascimiento" required="true" type="Date" editable="true"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Género" id="idsexo">
+										<f:fields>
+											<ComboBox id="IdSexo" selectedKey="{Sexo}" required="true" placeholder="Género" items="{/ZET_GLRH_COMBO_SEXO_ECSet}" editable="true">
+												<core:Item key="{Id}" text="{Value}" id="ComboSexo"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Estado Civil" id="idestadocivil" visible="false">
+										<f:fields>
+											<ComboBox id="IdZzestciv" selectedKey="{Zzestciv}" required="true" placeholder="Estado Civil" items="{/ZET_GLRH_COMBO_EST_CIVIL_ECSet}" editable="true">
+												<core:Item key="{Id}" text="{Value}" id="idCoreZzestciv"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Dependente de IR" id="idformIr" visible="false">
+										<f:fields>
+											<ComboBox id="IdIR" selectedKey="{path:'Irflg', formatter:'.FormatIrflg'}" required="true" placeholder="Dependente de IR" editable="true"
+												items="{/ZET_GLHR_SIM_NAOSet}">
+												<core:Item key="{Id}" text="{DescId}" id="idCoreIr"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="CPF" id="idCPF" visible="false">
+										<f:fields>
+											<Input id="idCpf" value="{Icnum}" required="true" change="onChangeCPF" placeholder="CPF" editable="true"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Nome da mãe" id="idNomeMae" visible="false">
+										<f:fields>
+											<Input id="idNomedaMae" value="{Mothe}" required="true" placeholder="Nome da Mãe" editable="true"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="incluir en el plan de salud" id="idformplano" visible="{path:'Famsa', formatter:'.FormatPlano'}">
+										<f:fields>
+											<ComboBox id="IdPlano" placeholder="incluir en el plan de salud" selectedKey="{path:'Zplanosaude', formatter:'.FormatIrflg'}"
+												required="true" items="{/ZET_GLHR_SIM_NAOSet}" editable="true">
+												<core:Item key="{Id}" text="{DescId}" id="idCorePlano"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Lugar de nacimiento" id="idElementLugarNacim">
+										<f:fields>
+											<Input id="IdLocNascimento" value="{Fgbot}" placeholder="Lugar de nacimiento" editable="true" maxLength="40"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="País de nacimiento" id="FormPaisNascimento">
+										<f:fields>
+											<ComboBox id="IdPaisNasc" selectedKey="{Fgbld}" required="true" placeholder="País de nacimiento" items="{/ZET_GLHR_COMBO_PAISNASCIMENTOSet}"
+												editable="true">
+												<core:Item key="{Land1}" text="{Landx}" id="idKeyPaisNasc"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Nacionalidad" id="FormElementNacionalidade_Edit">
+										<f:fields>
+											<ComboBox id="IdNacionaliade" selectedKey="{Fanat}" required="true" placeholder="Nacionalidad" items="{/ZET_GLHR_COMBO_PAISNASCIMENTOSet}"
+												editable="true">
+												<core:Item key="{Land1}" text="{Natio}" id="idKeyNacionalidade_Edit"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Tipo de documento" id="idElementId">
+										<f:fields>
+											<ComboBox id="idIdentificacion" selectedKey="{ZzIctyp}" required="false" placeholder="Tipo de documento" editable="true"
+												items="{/ZET_COMBO_TP_DOCUMENTOSet}">
+												<core:Item key="{Ictyp}" text="{Ictxt}" id="idCoreIdentificacion"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Numero de documento" id="idElementZzIcnum">
+										<f:fields>
+											<Input value="{ZzIcnum}" id="idZzIcnum" editable="true" maxLength="30"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Tipo de Via" id="idElemenVia">
+										<f:fields>
+											<ComboBox id="idVia" selectedKey="{ZzTpvia}" required="false" placeholder="Tipo de Via" items="{/ZET_COMBO_SUNAT_T05Set}" editable="true">
+												<core:Item key="{Tipvia}" text="{Tipdes}" id="idCoreVia"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Nombre Via" id="idElementNombreVia">
+										<f:fields>
+											<Input id="idNombreVia" value="{ZzTxvia}" placeholder="Nombre Via" maxLength="20" editable="true"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Numero Via" id="idElementNumeroVia">
+										<f:fields>
+											<Input id="idNumeroVia" value="{ZzNrvia}" placeholder="Numero Via" maxLength="6" editable="true"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Interior" id="idElementInterior">
+										<f:fields>
+											<Input id="idInterior" value="{ZzNrint}" placeholder="Interior" maxLength="4" editable="true"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Tipo Zona" id="idElementTpZona">
+										<f:fields>
+											<ComboBox id="idTpZona" selectedKey="{ZzTpzon}" required="false" placeholder="Tipo Zona" items="{/ZET_COMBO_SUNAT_T06Set}" editable="true">
+												<core:Item key="{Tipzon}" text="{Deszon}" id="idCoreTpZona"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Nro Dpto" id="idElementNro_Dpto">
+										<f:fields>
+											<Input id="idNrodep" value="{ZzNrodep}" placeholder="Nro Dpto" maxLength="5" editable="true"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Nombre zona" id="idElementNombre_zona">
+										<f:fields>
+											<Input id="idZzNomzon" value="{ZzNomzon}" placeholder="Nombre zona" maxLength="20" editable="true"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Referencia" id="idElementReferencia">
+										<f:fields>
+											<Input id="idZzRefer" value="{ZzRefer}" placeholder="Referencia" maxLength="40" editable="true"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Estudiante" id="idElementEstudiante">
+										<f:fields>
+											<ComboBox id="IdZzStudy" selectedKey="{path:'ZzStudy', formatter:'.formatSimNao'}" required="true" placeholder="Estudiante"
+												items="{/ZET_GLHR_SIM_NAOSet}" editable="true">
+												<core:Item key="{Id}" text="{DescId}" id="idZzStudy"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Manzana" id="idElementManzana">
+										<f:fields>
+											<Input id="idManzana" value="{ZzManza}" placeholder="Manzana" maxLength="4" editable="true"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Lote" id="idElementLote">
+										<f:fields>
+											<Input id="idLote" value="{ZzLote}" placeholder="Lote" maxLength="4" editable="true"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Kilómetro" id="idElementKilometro">
+										<f:fields>
+											<Input id="idKilometro" value="{ZzKilom}" placeholder="Kilómetro" maxLength="4" editable="true"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Bloque" id="idElementBloque">
+										<f:fields>
+											<Input id="idBloque" value="{ZzBlock}" placeholder="Bloque" maxLength="4" editable="true"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Etapa" id="idElementEtapa">
+										<f:fields>
+											<Input id="idEtapa" value="{ZzEtapa}" placeholder="Etapa" maxLength="4" editable="true"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Departamento" id="idElementDepartamento">
+										<f:fields>
+											<ComboBox id="idDepartamento" selectedKey="{ZzRegio}" required="false" placeholder="Departamento" items="{/ZET_COMBO_SUNAT_T28Set}"
+												change="onChangeZzregion" editable="true">
+												<core:Item key="{Regio}" text="{Regio} - {Bezei}" id="idCoreDepartamento"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Provincia" id="idElementProvincia">
+										<f:fields>
+											<ComboBox id="idProvincia" selectedKey="{ZzCounc}" required="false" placeholder="Provincia" items="{/ZET_COMBO_SUNAT_T28Set}"
+												editable="true" change="onChangeZzcounc">
+												<core:Item key="{Counc}" text="{Counc} - {Bezei}" id="idCoreProvincia"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Distrito" id="idElementDistrito">
+										<f:fields>
+											<ComboBox id="idDistrito" selectedKey="{ZzCityc}" required="false" placeholder="Distrito" items="{/ZET_COMBO_SUNAT_T28Set}" editable="true"
+												change="onChangeZzcityc">
+												<core:Item key="{Cityc}" text="{Cityc} - {Bezei}" id="idCoreDistrito"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Ubicacion geografica" id="idElementUbigeo">
+										<f:fields>
+											<Input id="idUbigeo" value="{ZzUbigeo}" placeholder="Ubigeo" maxLength="6" editable="true"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement id="idTextIncluir" label="Instruções" visible="false">
+										<Text
+											text="Documentos Obrigatórios para inclusão: \n \n Para Cônjuge: \n Certidão de casamento \n Escritura pública de união estável \n RG e CPF \n \n Para Filhos/Enteado: \n Certidão de Nascimento \n RG acima de 18 anos \n CPF todas as idades \n \n Para abono dos 5 dias entregue a certidão de nascimento/casamento ao gestor, para licença parternidade depositar o certificado de paternidade na urna ou entregar direto ao DHO."
+											class="fundotext" id="TextInclusao_2"/>
+									</f:FormElement>
+									<f:FormElement id="idTextExcluir" label="Instruções" visible="false">
+										<Text
+											text="Documentos Obrigatórios para exclusão: \n \n Para Conjuge: \n Averbação Dissolução de união estável \n Certidão de óbito \n \n Para Filhos/Enteado: \n Certidão de óbito \n Ordem judicial"
+											class="fundotext" id="TextExclusao_2"/>
+									</f:FormElement>
+									<f:FormElement id="idTextEditar" label="Instruções" visible="false">
+										<f:fields>
+											<Text id="idTextEditar_2" text="\n Para edição:\n Anexar comprovante referente a alteração\n" visible="false" class="fundotext"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement id="IdMsg">
+										<f:fields>
+											<MessageStrip text="Aguardando aprovação CSC! {motivo}" type="Warning" showIcon="true" visible="false" id="IdMotivomessage"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement id="IdonAddDoc" label="*Para agregar adjuntos, seleccione el botón (+)">
+										<f:fields>
+											<UploadCollection id="UploadCollection" multiple="false" change="onChange" fileDeleted="onDeleteSelectedItems"
+												beforeUploadStarts="onBeforeUploadStarts" uploadComplete="onuploadComplete" items="{ path: '/ZET_GLRH_UPLOADSet', templateShareable: true }"
+												modelContextChange="onmodelListContextChange" mode="SingleSelectMaster" uploadButtonInvisible="true"
+												uploadUrl="/sap/opu/odata/sap/ZGWGLRH_MEU_CADASTRO_SRV/ZET_GLHR_UPFILESet"
+												noDataDescription="*Para agregar adjuntos, seleccione el botón (+)" noDataText="Esperando nuevas cargas"
+												numberOfAttachmentsText="Archivos adjuntos">
+												<toolbar>
+													<OverflowToolbar id="myId" visible="true">
+														<Title id="attachmentTitle"/>
+														<ToolbarSpacer id="idToolbarSpacer"/>
+														<SearchField width="10rem" search="onSearch" enabled="false" visible="false" id="idSearchField"/>
+														<Button id="deleteSelectedButton" text="Delete" press="onDeleteSelectedItems" enabled="false" visible="false" type="Transparent"/>
+														<ToggleButton id="selectAllButton" text="Select all" press="onSelectAllPress" enabled="false" visible="false" type="Transparent"/>
+														<UploadCollectionToolbarPlaceholder id="IdUploadCollectionToolbar"/>
+													</OverflowToolbar>
+												</toolbar>
+												<items>
+													<UploadCollectionItem documentId="{DocId}" fileName="{Filename}" mimeType="{Mimetype}"
+														url="/sap/opu/odata/sap/ZGWGLRH_MEU_CADASTRO_SRV/ZET_GLHR_UPFILESet('{Pernr}${Infty}${Subty}$$${Tipo}${Favor}$${Icnum}${Dependentes}${Objps}${DocId}')/$value"
+														enableEdit="false" visibleEdit="false" deletePress="onFileDelete" selected="true"/>
+												</items>
+											</UploadCollection>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+				</content>
+				<footer>
+					<Toolbar id="idOverTollbar" design="Transparent">
+						<ToolbarSpacer id="idToolbarSpacerD"/>
+						<Button press="onSave" text="Aprobar" icon="sap-icon://accept" id="idAprova" tooltip="Aprobar" visible="true" iconFirst="true" type="Accept"/>
+						<Button press="Reprova" text="Desaprobar" icon="sap-icon://decline" id="idReprova" tooltip="Desaprobar" visible="true" iconFirst="true"
+							type="Reject"/>
+					</Toolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

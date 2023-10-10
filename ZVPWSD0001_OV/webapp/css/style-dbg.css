@@ -1,0 +1,29 @@
+/* Enter your custom styles here */
+
+
+/* 
+.sapUiTheme-sap_bluecrystal {
+font-family: Candara, Calibri, Segoe, "Segoe UI", sans-serif, Arial,  Optima!important;
+}
+
+.sapUiBody, .sapMLabel, .sapMList, .sapMFormattedText, .sapMCustomListItem, .sapMHtmlText {
+
+    font-family: sans-serif, Calibri, "Segoe UI", Segoe , Arial, Candara, Optima !important;
+}*/
+
+.cust {
+    border: none !important;
+}
+
+.sapMLIB {
+    border: none;
+}
+/*
+[id$=__data10] .sapMTB-Transparent-CTX.sapMTB {
+    display: none;
+}
+
+.sapMTB-Transparent-CTX.sapMTB {
+    display: none;
+}
+*/

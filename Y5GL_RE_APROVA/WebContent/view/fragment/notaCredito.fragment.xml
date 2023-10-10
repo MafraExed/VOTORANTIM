@@ -1,0 +1,17 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+	<Dialog title="{i18n>NOTACREDITO}" type="Message" state="Warning">
+		<!-- contentWidth="96%" contentHeight="96%" stretchOnPhone="true" -->
+		<content>
+			<Vbox>
+				<Text text="{i18n>CRIARNOTACREDITO}?" />
+			</Vbox>				
+		</content>
+		<beginButton>
+			<Button text="{i18n>CONFIRM}" press="onConfirmNotaCredito"/>
+		</beginButton>
+		<endButton>
+			<Button text="{i18n>CANCEL}" press="onCloseNotaCredito" />
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

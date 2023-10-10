@@ -1,0 +1,1 @@
+sap.ui.define(["./BaseController"],function(e){"use strict";return e.extend("Y5VC_PAINEL_NE2.Y5VC_PAINEL_NE2.controller.NotFound",{onLinkPressed:function(){this.getRouter().navTo("worklist")}})});

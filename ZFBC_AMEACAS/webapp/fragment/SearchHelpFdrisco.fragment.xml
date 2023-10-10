@@ -1,0 +1,14 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog
+		title="Responsável"
+		class="sapUiPopupWithPadding"
+		items="{filter>/FdriscoSet}"
+		search="_handleFdriscoSHSearch"
+		confirm="_handleFdriscoSHClose"
+		cancel="_handleFdriscoSHClose">
+		<StandardListItem
+			title="{filter>Fdrisco}"/>
+	</SelectDialog>
+</core:FragmentDefinition>

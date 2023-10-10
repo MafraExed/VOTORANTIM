@@ -1,0 +1,86 @@
+<mvc:View controllerName="FibriaStatusViagem.controller.App" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc"
+	displayBlock="true"  xmlns="sap.m" xmlns:layout="sap.ui.layout" xmlns:chart="sap.chart" xmlns:data="sap.chart.data" xmlns:f="sap.f" xmlns:form="sap.ui.layout.form" xmlns:viz="sap.viz.ui5.controls" xmlns:vizFeeds="sap.viz.ui5.controls.common.feeds" xmlns:vizData="sap.viz.ui5.data">
+	<App>
+		<pages>
+			<Page showHeader="true" showFooter="true" showNavButton="true" navButtonPress="_onPageNavButtonPress">
+				<content>
+					<layout:BlockLayout background="Default" visible="true">
+		                <layout:content>
+		                    <layout:BlockLayoutRow scrollable="false">
+		                        <layout:content>
+		                            <layout:BlockLayoutCell class="carouselBlock" width="50%" title="Etapa Atual" titleAlignment="Center" titleLevel="Auto">
+		                                <layout:content>
+		                                    <Carousel id="stagesCarousel" width="100%" loop="false" showPageIndicator="true" pageIndicatorPlacement="Bottom" visible="true" class="sapUiContentPadding tripStateCarousel">
+		                                        <pages>
+		                                        	<FlexBox class="stageFlexBox" direction="Column">
+		                                        		<Title level="H1" text="{currentStage>/DescricaoEtapa}" textAlign="Center" ></Title>
+		                                        		<FlexBox class="stageValues">
+		                                        			<Text class="stageValue stageValueDesc"  text="Início: "></Text>
+		                                        			<Text class="stageValue stageValueContent" text="{currentStage>/HoraInicio}"></Text>
+		                                        		</FlexBox>
+		                                        		<FlexBox class="stageValues">
+		                                        			<Text class="stageValue stageValueDesc"  text="Término: "></Text>
+		                                        			<Text class="stageValue stageValueContent" text="Não Finalizada"></Text>
+		                                        		</FlexBox>
+		                                        		<FlexBox class="stageValues">
+		                                        			<Text class="stageValue stageValueDesc"  text="Duração: "></Text>
+		                                        			<Text id="stageDuration" class="stageValue stageValueContent" text="{currentStageDuration>/}"></Text>
+		                                        		</FlexBox>
+		                                        		<FlexBox class="stageValues">
+		                                        			<Text class="stageValue stageValueDesc"  text="Nota Fiscal: "></Text>
+		                                        			<Text id="tripNF" class="stageValue stageValueContent" text="Não Gerada" ></Text>
+		                                        		</FlexBox>
+		                                        		
+					                                    <Button id="nextStageButton" class="nextStageButton" press="_onNextStageButtonPress" text="{currentStage>/DescAcao2}" type="Default" iconFirst="true" width="100%" enabled="true" visible="true" iconDensityAware="false"/>
+		                                        	</FlexBox>
+		                                        </pages>
+		                                    </Carousel>
+		                                </layout:content>
+		                            </layout:BlockLayoutCell>
+		                            <layout:BlockLayoutCell class="chartBlock" width="50%" title="Detalhes da Viagem" titleAlignment="Center" titleLevel="Auto">
+		                                <layout:content>
+		                                    <Text id="generalDuration" class="timerText" text="Tempo em Viagem: {generalDuration>/}" textAlign="center" width="100%" maxLines="1" wrapping="false" textDirection="Inherit" visible="true"/>
+		                                    <Text class="stageText" text="Etapa" textAlign="center" width="100%"></Text>
+		                                    <viz:VizFrame selectData="_onDonutChartSelectValue" xmlns="sap.viz" id="idDonutChart" vizType="donut"  width="100%" height="400px" vizProperties="{plotArea: {},title:{ text:'Etapas'}, interaction: {selectability: {mode:'single'}}}">
+												<viz:dataset>
+													<vizData:FlattenedDataset data="{stagesList>/}">
+														<vizData:dimensions>
+															<vizData:DimensionDefinition name="Etapa" value="{stagesList>DescricaoEtapa}"/>
+														</vizData:dimensions>
+														<vizData:measures>
+															<vizData:MeasureDefinition name="Porcentagem" value="{stagesList>Porcentagem}"/>
+														</vizData:measures>
+													</vizData:FlattenedDataset>
+												</viz:dataset>
+												<viz:feeds>
+													<vizFeeds:FeedItem uid="size" type="Measure" values='Porcentagem'/>
+													<vizFeeds:FeedItem uid="color" type="Dimension" values="Etapa"/>
+												</viz:feeds>
+											</viz:VizFrame>
+											 <Button text="ETAPA NÃO PROGRAMADA" class="unscheduledStageButton" press="_onUnscheduledStageButtonPress" type="Default" iconFirst="true" width="100%" enabled="true" visible="true" iconDensityAware="false"/>
+		                                </layout:content>
+		                            </layout:BlockLayoutCell>
+		                        </layout:content>
+		                    </layout:BlockLayoutRow>
+		                </layout:content>
+		            </layout:BlockLayout>
+				</content>
+				<footer>
+		            <OverflowToolbar width="100%" height="auto" design="Auto" enabled="true" visible="true">
+		                <content>
+		                    <!--<ToolbarSpacer width=""/>-->
+		                    <!--<Button text="Próxima Etapa" type="Emphasized" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>-->
+		                    <!--<ToolbarSpacer width=""/>-->
+		                    <!--<ToolbarSpacer width=""/>-->
+		                </content>
+		            </OverflowToolbar>
+		        </footer>
+		        <headerContent>
+                    <Text text="Trocar {changeTruck>/}" class="selectComposition"></Text>
+                    <Text text="{currentDriver>/Nome}" ></Text>
+                    <Button class="avatarIcon" icon="sap-icon://person-placeholder" press="_onProfileButtonPress" ></Button>
+				</headerContent>	
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

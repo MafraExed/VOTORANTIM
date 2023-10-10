@@ -1,0 +1,89 @@
+<mvc:View controllerName="vsa.y5gl_mv_portal.view.Master"
+	xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns="sap.m"
+	xmlns:semantic="sap.m.semantic">
+	<semantic:MasterPage id="page" title="{masterView>/title}"
+		navButtonPress="onNavBack" showNavButton="true">
+		<semantic:subHeader>
+			<Bar id="headerBar">
+				<contentMiddle>
+					<SearchField id="searchField" showRefreshButton="{= !${device>/support/touch} }"
+						tooltip="{i18n>masterSearchTooltip}" width="100%" search="onSearch"></SearchField>
+				</contentMiddle>
+			</Bar>
+		</semantic:subHeader>
+		<semantic:multiSelectAction>
+			<semantic:MultiSelectAction id="btnMulti"
+				press="onMultiSelectPress" visible="{global>/aprovacao}" />
+		</semantic:multiSelectAction>
+		<semantic:content>
+			<PullToRefresh id="pullToRefresh" visible="{device>/support/touch}"
+				refresh="onRefresh" />
+			<!-- For client side filtering add this to the items attribute: parameters: 
+				{operationMode: 'Client'}}" -->
+			<List id="listMaster" items="{}" busyIndicatorDelay="{masterView>/delay}"
+				noDataText="{masterView>/noDataText}"
+				mode="{= ${device>/system/phone} ? 'None' : 'SingleSelectMaster'}"
+				growing="true" growingScrollToLoad="false" growingThreshold="100"
+				updateFinished="onUpdateFinished" selectionChange="onSelectionChange">
+				<infoToolbar>
+					<Toolbar active="true" id="filterBar"
+						visible="{masterView>/isFilterBarVisible}" press="onOpenViewSettings">
+						<Title id="filterBarLabel" text="{masterView>/filterBarLabel}" />
+					</Toolbar>
+				</infoToolbar>
+				<items>
+					<ObjectListItem
+						type="{= ${device>/system/phone} ? 'Active' : 'Inactive'}" press="onSelectionChange"
+						intro="{Processo}" title="{Nomeidmovi}"
+						number="{ path: 'Valor', formatter: '.formatter.currencyExternal' }"
+						numberUnit="{Waers}">
+						<attributes>
+							<ObjectAttribute title=""
+								text="{ path: 'Erdat', formatter: '.formatter.dateExternal' }" />
+							<ObjectAttribute
+								title="{ path: 'Bukrs', formatter: '.formatter.empresaLabel' }"
+								text="{Diasexpirar}" />
+							<ObjectAttribute
+								title="{ path: 'Diasexpirar', formatter: '.formatter.diasexpirarLabel' }"
+								text="{Diasexpirar}" />
+							<ObjectAttribute
+								title="{ path: 'Totaldias', formatter: '.formatter.totaldiasLabel' }"
+								text="{Totaldias}" />
+							<ObjectAttribute
+								title="{ path: 'Diasaprova', formatter: '.formatter.diasaprovaLabel' }"
+								text="{Diasaprova}" />
+							<ObjectAttribute title="{i18n>Creator}"
+								text="{Nomecolabor}" visible="{= ${Nomecolabor}.length > 0 }" active="{= ${EMailColab}.length > 0 }" press="onUserPress" tooltip="{Nomecolabor}"/>								
+						</attributes>
+						<firstStatus>
+							<ObjectStatus
+								text="{path: 'Status', formatter: '.formatter.statusText' }"
+								state="{path: 'Status', formatter: '.formatter.statusState' }"
+								icon="{path: 'Status', formatter: '.formatter.statusIcon' }" />
+						</firstStatus>
+					</ObjectListItem>
+				</items>
+			</List>
+		</semantic:content>
+		<semantic:filter>
+			<semantic:FilterAction press="onSemanticFilterPress"/>
+		</semantic:filter>
+		<semantic:customFooterContent>
+			<Button press="onMultipleDesAction" icon="sap-icon://multiselect-none"
+				tooltip="{i18n>UNSELECTALL}" visible="{= ${global>/multiSelec} &amp;&amp; ${global>/multi} }" />				
+			<Button id="btnNavMul" press="onMultipleAction" icon="sap-icon://multiselect-all"
+				tooltip="{i18n>SELECTALL}" visible="{= ${global>/multiSelec} &amp;&amp; ${global>/multi} }" />
+			<Button id="btnAdmSel" press="onAdmSel" icon="sap-icon://user-settings"
+				tooltip="{i18n>SELAPPROVER}" visible="false" />
+		</semantic:customFooterContent>
+
+		<!-- <semantic:sort> <semantic:SortSelect id="sort" selectedKey="{masterView>/sortBy}" 
+			change="onSort"> <core:Item id="masterSort1" key="Name1" text="{i18n>masterSort1}"/> 
+			<core:Item id="masterSort2" key="Valor" text="{i18n>masterSort2}"/> </semantic:SortSelect> 
+			</semantic:sort> <semantic:filter> <semantic:FilterAction id="filter" press="onOpenViewSettings"/> 
+			</semantic:filter> <semantic:group> <semantic:GroupSelect id="group" selectedKey="{masterView>/groupBy}" 
+			change="onGroup"> <core:Item id="masterGroupNone" key="None" text="{i18n>masterGroupNone}"/> 
+			<core:Item id="masterGroup1" key="Valor" text="{i18n>masterGroup1}"/> </semantic:GroupSelect> 
+			</semantic:group> -->
+	</semantic:MasterPage>
+</mvc:View>

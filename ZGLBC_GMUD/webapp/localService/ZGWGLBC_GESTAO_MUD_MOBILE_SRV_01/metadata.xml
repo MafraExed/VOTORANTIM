@@ -1,0 +1,30 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZGWGLBC_GESTAO_MUD_MOBILE_SRV_01" xml:lang="pt"
+			sap:schema-version="1">
+			<EntityType Name="ETY_DadosGerais" sap:content-version="1">
+				<Key><PropertyRef Name="Mudanca"/><PropertyRef Name="Request"/><PropertyRef Name="DataCriacao"/></Key><Property Name="Mudanca" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Request" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="DataCriacao" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Descricao" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Status" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Ciclo" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Categoria" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="TipoDocOrigem" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="DocumentoOrigem" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><NavigationProperty Name="dadosGerais" Relationship="ZGWGLBC_GESTAO_MUD_MOBILE_SRV_01.A_dadosGerais" FromRole="FromRole_A_dadosGerais"
+					ToRole="ToRole_A_dadosGerais"/></EntityType>
+			<Association Name="A_dadosGerais" sap:content-version="1"><End Type="ZGWGLBC_GESTAO_MUD_MOBILE_SRV_01.ETY_DadosGerais" Multiplicity="1" Role="FromRole_A_dadosGerais"/><End Type="ZGWGLBC_GESTAO_MUD_MOBILE_SRV_01.ETY_DadosGerais" Multiplicity="*" Role="ToRole_A_dadosGerais"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_A_dadosGerais"><PropertyRef Name="DataCriacao"/><PropertyRef Name="Request"/><PropertyRef Name="Mudanca"/></Principal>
+					<Dependent Role="ToRole_A_dadosGerais"><PropertyRef Name="DataCriacao"/><PropertyRef Name="Request"/><PropertyRef Name="Mudanca"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<EntityContainer Name="ZGWGLBC_GESTAO_MUD_MOBILE_SRV_01_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx"><EntitySet Name="ETS_DadosGerais" EntityType="ZGWGLBC_GESTAO_MUD_MOBILE_SRV_01.ETY_DadosGerais" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+				<AssociationSet Name="AS_dadosGerais" Association="ZGWGLBC_GESTAO_MUD_MOBILE_SRV_01.A_dadosGerais" sap:creatable="false"
+					sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="ETS_DadosGerais" Role="FromRole_A_dadosGerais"/><End EntitySet="ETS_DadosGerais" Role="ToRole_A_dadosGerais"/></AssociationSet>
+			</EntityContainer><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/ZGWGLBC_GESTAO_MUD_MOBILE_SRV_01/$metadata"/><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/ZGWGLBC_GESTAO_MUD_MOBILE_SRV_01/$metadata"/></Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

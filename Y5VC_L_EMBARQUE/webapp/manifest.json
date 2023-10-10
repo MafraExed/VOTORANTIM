@@ -1,0 +1,162 @@
+{
+    "_version": "1.12.0",
+    "sap.app": {
+        "id": "workspace.zleituraembarque",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "sourceTemplate": {
+            "id": "servicecatalog.connectivityComponentForManifest",
+            "version": "1.38.11",
+            "toolsId": "0c1de8ad-0606-47a2-a9a8-be7ed4851127"
+        },
+        "dataSources": {
+            "ZGWVCMM_GESTAO_ESTOQUE_SRV": {
+                "uri": "/sap/opu/odata/sap/ZGWVCMM_GESTAO_ESTOQUE_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/metadata.xml",
+                    "annotations": []
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": false,
+        "rootView": {
+            "viewName": "workspace.zleituraembarque.view.ListaEmbarque",
+            "type": "XML",
+            "id": ""
+        },
+        "dependencies": {
+            "minUI5Version": "1.50.0",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.ui.layout": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "workspace.zleituraembarque.i18n.i18n"
+                }
+            },
+            "": {
+                "type": "sap.ui.model.odata.v2.ODataModel",
+                "settings": {
+                    "loadMetadataAsync": false,
+                    "json": true,
+                    "bJSON": true,
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "useBatch": true,
+                    "refreshAfterChange": false,
+                    "disableHeadRequestForToken": true
+                },
+                "dataSource": "ZGWVCMM_GESTAO_ESTOQUE_SRV",
+                "preload": false
+            },
+            "@i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "uri": "i18n/i18n.properties"
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "workspace.zleituraembarque.view",
+                "controlAggregation": "pages",
+                "controlId": "idAppControl",
+                "clearControlAggregation": false,
+                "transition": "fade"
+            },
+            "routes": [
+                {
+                    "name": "ListaEmbarque",
+                    "pattern": "",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "ListaEmbarque"
+                    ]
+                },
+                {
+                    "pattern": "",
+                    "name": "default",
+                    "target": [
+                        "ListaEmbarque"
+                    ]
+                },
+                {
+                    "name": "Leitura",
+                    "pattern": "Leitura/{embarque}",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "Leitura"
+                    ]
+                }
+            ],
+            "targets": {
+                "ListaEmbarque": {
+                    "viewType": "XML",
+                    "viewName": "ListaEmbarque",
+                    "viewId": "ListaEmbarque",
+                    "controlId": "idAppControl",
+                    "viewPath": "workspace.zleituraembarque.view",
+                    "viewLevel": 1
+                },
+                "Leitura": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewName": "Leitura",
+                    "viewLevel": 2,
+                    "viewId": "Leitura",
+                    "controlId": "idAppControl",
+                    "viewPath": "workspace.zleituraembarque.view"
+                }
+            }
+        }
+    },
+    "sap.platform.abap": {
+        "uri": "/sap/bc/ui5_ui5/sap/y5vc_l_embarque/",
+        "_version": "1.1.0"
+    }
+}

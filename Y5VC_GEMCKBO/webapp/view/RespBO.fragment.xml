@@ -1,0 +1,8 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog id="selectDialogRespBo" noDataText="{i18n>NotFound}" title="{i18n>title_Column_Itens_current_processor}"
+		class="sapUiPopupWithPadding" items="{GE>/ZET_VCMM_RESP_BOSet}" search="_handleProcAtualValueHelpSearch"
+		confirm="_handleProcAtualValueHelpClose" cancel="_handleProcAtualValueHelpClose">
+		<StandardListItem iconDensityAware="false" iconInset="false" activeIcon="sap-icon://accept" title="{GE>RespBo}" description="{GE>Name}"
+			info="{GE>TpRespBoDesc}" infoState="Success"/>
+	</SelectDialog>
+</core:FragmentDefinition>

@@ -1,0 +1,383 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css?family=Roboto:100');
+
+.header__title {
+	font-family: 'Nunito', sans-serif;
+	font-size:20px;
+	color:white;
+	margin-left:10%;
+}
+
+.header__buscar {
+	font-family: 'Nunito', sans-serif;
+	font-size:1.6em;
+	font-weight:bold;
+	color:white;
+}
+
+.sapMInputBaseInner {
+	text-align: center;
+    font-family: 'Nunito', sans-serif;
+    font-weight: bold;
+    color: #265e96;
+}
+
+.header__buscar__border {
+	background-color:#0073aa; 
+	border:1px solid #0073aa;
+	border-radius:7px;
+	padding:5px;
+}
+
+
+
+#__title0, #__header0, #__xmlview1--dynamicPageId-content {
+	background: #dddddd;
+}
+
+.sapFDynamicPageContentFitContainer {
+	background: #dddddd !important;
+}
+
+#__xmlview1--listNfe-listUl {
+	background: #dddddd !important;
+}
+
+.search__panel__mobile__searchButton {
+	font-size:40px;
+}
+
+.header__label {
+	font-family: 'Nunito', sans-serif;
+	color: #265e96;
+	font-size:1em;
+}
+
+.NfeList__mobile__active {
+	opacity:1;
+	transition: opacity 0.3s linear;
+}
+
+.item__list {
+	padding-bottom:100px;
+}
+
+.item {
+	
+	border-radius:7px;
+	box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+}
+
+.item__header {
+	background-color:#41a3f4;
+	border-radius:7px 7px 0px 0px;
+}
+
+.item__body {
+	background-color:white;
+	padding-left:15px;
+	padding-bottom:4px;
+}
+
+.item__footer {
+	background-color:#ddd337;
+	border-radius:0px 0px 7px 7px;
+}
+
+.item__label__mudanca {
+	padding-left:10px;
+	font-size:1.5em;
+	color:white;
+	font-family: 'Nunito', sans-serif;
+}
+
+.item__label__tipomudanca {
+	font-size:1.2em;
+	color:white;
+	font-family: 'Nunito', sans-serif;
+}
+
+.item__label__descmudanca {
+	color:navy;
+	font-size:1.2em;
+	font-family: 'Nunito', sans-serif;
+	padding-top:3px;
+	padding-bottom:3px;
+}
+
+.item__label__titulos {
+	color:black;
+	font-weight:bold;
+	font-family: 'Nunito', sans-serif;
+}
+
+.item__label__valores {
+	color:black;
+	font-family: 'Roboto', sans-serif;
+}
+
+.item__label__status {
+	color:black;
+	font-weight:bold;
+	padding:3px;
+	font-family: 'Nunito', sans-serif;
+	font-size:1em;
+}
+
+.sapMSubHeader-CTX {
+	background-color:#ddd337 !important;
+}
+
+.detalhe__header__desc {
+	font-family: 'Roboto', sans-serif;
+	font-size:1.4em;
+	color:white;
+}
+
+.detalhe__header__desc__status bdi {
+	font-weight:bold;
+	font-family: 'Nunito', sans-serif;
+	font-size:1.2em;
+	color:black;
+}
+
+.detalhe__header {
+	padding-top:10px;
+	padding-bottom:10px;
+	background-color:#265e96;
+}
+
+.detalhe__btnEdit span {
+	height:"50px" !important;
+}
+
+.detalhe__item__titulo {
+	font-family: 'Nanum Gothic', sans-serif;
+	font-size:15px;
+	font-weight:bold	;
+	color:grey;
+}
+
+.detalhe__item__valor {
+	font-family: 'Roboto', sans-serif;
+	font-size:14px;
+	color:black;
+}
+
+.detalhe__item__categoria {
+	border:1px solid black;
+	padding: 5px;
+	border-radius:4px;
+}
+
+.detalhe__item__status {
+	color:white;
+	font-family: 'Roboto', sans-serif;
+	font-size:1.2em;
+}
+
+.detalhe__item__status__bck {
+	background-color:#686868;
+	border-radius:7px;
+	padding:5px;
+}
+
+.detalhe__item__categoria__label {
+	font-family: 'Nunito', sans-serif;
+	font-weight:bold;
+	color:Black;
+}
+
+.detalhe__transportes {
+	margin-top:7px;
+	margin-bottom:7px;
+}
+
+.detalhe__request__titulo {
+	font-family: 'Nunito', sans-serif;
+	font-weight:bold;
+	font-size:1.1em;
+	color:grey;
+}
+
+.detalhe__request__tipo {
+	font-family: 'Roboto', sans-serif;
+	font-size:12px;
+	color:#41a3f4;
+}
+
+.request__coluna__label {
+	font-family: 'Nunito', sans-serif !important;
+	font-weight:bold !important;
+}
+
+.request__cell__label {
+	font-family: 'Nunito', sans-serif;
+}
+
+.popup__disable {
+	display:none;
+}
+
+.botao__acoes {
+	position:absolute;
+	left:5%;
+	height:13%;
+	width:90%;
+	bottom:10px;
+	background-color:#0073aa;
+	box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.75);
+	border-radius:  7px;
+}
+
+.botao__acoes__label {
+	font-size:2.5em;
+	color:white;
+	font-family: 'Nunito', sans-serif;
+}
+
+.popover__status {
+	position:absolute;
+	left:0;
+	bottom: 0;
+	height:100%;
+	background-color:transparent;
+	overflow: scroll;
+	width:100%;
+	z-index:10;
+}
+
+.popover__black {
+	background-color:black;
+	opacity:0.7;
+	position:absolute;
+	left:0;
+	bottom: 0;
+	height:100%;
+	transition:opacity 0.5s;
+	width:100%;
+	z-index:5;
+}
+
+.popover__status__items {
+	border:2px solid #265e96;
+	padding: 5px;
+	border-radius:20px;
+	background-color:white;
+}
+
+.poppover__status__label {
+	font-size:1.5em;
+	color:#265e96;
+	font-family: 'Nunito', sans-serif;
+}
+
+.popover__status__items__canc {
+	border-radius:50%;
+	background-color:white;
+	padding:5px;
+}
+
+.resultado__label__sucesso {
+	font-size:2.5em;
+	color:green;
+	font-family: 'Roboto', sans-serif;
+}
+
+.loading {
+	background-color:transparent;
+	opacity:1;
+	position:absolute;
+	left:0;
+	bottom: 0;
+	height:100%;
+	width:100%;
+	z-index:7;
+}
+
+.loadingBlack {
+	background-color:black;
+	opacity:0.7;
+	position:absolute;
+	left:0;
+	bottom: 0;
+	height:100%;
+	width:100%;
+	z-index:6;
+}
+
+.loading__icon {
+	opacity:1;
+}
+
+footer {
+	position:absolute;
+	left:0;
+	bottom:0;
+	height:10%;
+	width:100%;
+	background-color:#265e96;
+	background: linear-gradient(to bottom, #1e5799 36%,#003e82 100%);
+}
+
+.footer_img {
+	object-fit: fill;
+}
+
+.sapFDynamicPageTitle {
+	background-color:#265e96 !important;
+	background: linear-gradient(to bottom, #1e5799 36%,#003e82 100%) !important;
+}
+
+.sapMTitle span {
+	color:#265e96;
+	font-size:25px;
+}
+
+
+
+.sapMPageHeader::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    top: 0;
+    border-top: 0 solid #009de0;
+    z-index: 7;
+}
+
+.sapMPanelHdr {
+	font-size:1.4em;
+	color:#41a3f4;
+}
+
+.List__Acoes .sapMBtnInner {
+	background:transparent;
+	border:0;
+	font-family: 'Nunito', sans-serif;
+	font-size:1.4em;
+	color:black;
+
+} 
+
+.List__Acoes span {
+	word-wrap: break-word;
+	white-space: normal;
+}
+
+.sapMDialog {
+	z-index:100 !important;
+}
+
+.dialog__text {
+	font-size:1.6em;
+	padding:10px;
+}
+
+.sapFDynamicPageTitleContent-CTX {
+	width:100% !important;
+	margin-top:5px;
+}
+
+.mainDesk__warning {
+	font-size:1.5em;
+}

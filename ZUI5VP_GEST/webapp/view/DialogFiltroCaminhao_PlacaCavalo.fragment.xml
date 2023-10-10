@@ -1,0 +1,17 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Dialog busyIndicatorDelay="1" horizontalScrolling="false" state="None" stretch="false" title="Escolha a Placa do Cavalo" type="Standard" verticalScrolling="true">
+		<content>
+			<HBox class="sapUiTinyMargin parent">
+				<SearchField search="onSearchPlacaCavalo"/>
+			</HBox>
+			<List class="sapUiSmallMarginBegin" items="{path: 'placaCavalo>/'}" itemPress="onSelecionarPlacaCavalo">
+				<items>
+					<StandardListItem class="sapUiSmallMarginEnd" type="Active" title="{placaCavalo>PlcCavalo}" visible="{placaCavalo>visible}"/>
+				</items>
+			</List>
+		</content>
+		<beginButton>
+			<Button text="Cancelar" type="Reject" press="onClosePlacaCavalo" />
+		</beginButton>
+	</Dialog>
+</core:FragmentDefinition>

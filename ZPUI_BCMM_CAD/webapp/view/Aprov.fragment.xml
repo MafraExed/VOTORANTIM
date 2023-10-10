@@ -1,0 +1,25 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	controllerName="CADASTROAPROVADORES.CADASTROAPROVADOR.controller.add">
+	<SelectDialog
+		
+		title="Aprovador"
+		class="sapUiPopupWithPadding"
+		items="{/ZET_CBMM_CF_APROVADORSet}"
+		
+		search="_handleValueHelpAprovador"
+		confirm="_handleValueHelpClose"
+		cancel="_handleValueHelpClose">
+		
+		<StandardListItem
+			icon="{ProductPicUrl}"
+			iconDensityAware="false"
+			iconInset="false"
+			title="{User}"
+			description="{NameText}"
+			 />
+		
+			
+	</SelectDialog>
+</core:FragmentDefinition>

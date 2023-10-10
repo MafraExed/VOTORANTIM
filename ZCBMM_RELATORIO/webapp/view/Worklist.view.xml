@@ -1,0 +1,239 @@
+<mvc:View controllerName="ZCBMM_RELATORIO.ZCBMM_RELATORIO.controller.Worklist" xmlns="sap.suite.ui.microchart" xmlns:m="sap.m"
+	xmlns:mvc="sap.ui.core.mvc" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:stmicro="sap.ui.comp.smartmicrochart">
+	<m:Page floatingFooter="true" enableScrolling="true" showHeader="false">
+		<m:VBox>
+			<m:ObjectHeader title="Relatorios - Portal de solicitações de frete" intro="Preencha data inicial e data final" id="idheader0"
+				icon="sap-icon://multiple-bar-chart" iconActive="true" responsive="true"/>
+		</m:VBox>
+		<f:Form class="editableForm" editable="true">
+			<f:layout>
+				<f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0"
+					emptySpanM="0" emptySpanS="0" columnsXL="4" columnsL="4" columnsM="4" singleContainerFullSize="true"/>
+			</f:layout>
+			<f:formContainers>
+				<f:FormContainer>
+					<f:formElements>
+						<f:FormElement>
+							<f:fields>
+								<m:DatePicker id="IdDtIni" editable="true" valueFormat="yyyy-M-dd" displayFormat="dd/MM/yyyy"/>
+							</f:fields>
+							<f:label>
+								<m:Label text="Data Inicial" design="Bold"/>
+							</f:label>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+				<f:FormContainer>
+					<f:formElements>
+						<f:FormElement>
+							<f:fields>
+								<m:DatePicker id="IdDtFim" editable="true" valueFormat="yyyy-M-dd" displayFormat="dd/MM/yyyy"/>
+							</f:fields>
+							<f:label>
+								<m:Label text="Data Final" design="Bold"/>
+							</f:label>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+				<f:FormContainer>
+					<f:formElements>
+						<f:FormElement>
+							<m:Button text="Iniciar" icon="sap-icon://add-filter" type="Default" enabled="true" visible="true" iconDensityAware="false" press="Iniciar"
+								tooltip="Incluir Solicitações"/>
+							<m:Button text="Exp. Base" icon="sap-icon://excel-attachment" type="Default" enabled="true" visible="true" iconDensityAware="false"
+								press="press" tooltip="Exportar Base" id="ExpBase"/>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+			</f:formContainers>
+		</f:Form>
+		<f:Form class="editableForm" editable="true">
+			<f:layout>
+				<f:ResponsiveGridLayout labelSpanXL="5" labelSpanL="5" labelSpanM="5" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0"
+					emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="true"/>
+			</f:layout>
+			<f:formContainers>
+				<f:FormContainer>
+					<f:formElements>
+						<f:FormElement>
+							<m:GenericTile id="objectSavings" header="Saving/Periodo" frameType="TwoByOne" press="press">
+								<m:tileContent>
+									<m:TileContent unit="R$" footer="Total de Saving">
+										<m:content>
+											<m:NumericContent valueColor="Good" indicator="Up" animateTextChange="true" id="IdSaving" truncateValueTo="8" width="100%"/>
+										</m:content>
+									</m:TileContent>
+								</m:tileContent>
+							</m:GenericTile>
+							<m:GenericTile id="objectSla" header="SLA - Portal de Frete" subheader="Solicitações" frameType="TwoByOne" press="press">
+								<m:tileContent>
+									<m:TileContent footer="Atendidas">
+										<m:content>
+											<ComparisonMicroChart>
+												<data>
+													<ComparisonMicroChartData title="No Prazo" value="" color="Good" id="IdSlaFPrazo"/>
+													<ComparisonMicroChartData title="Com Atraso" value="" color="Error" id="IdSlaFAtrazo"/>
+												</data>
+											</ComparisonMicroChart>
+										</m:content>
+									</m:TileContent>
+								</m:tileContent>
+								<m:tileContent>
+									<m:TileContent footer="Em Aberto">
+										<m:content>
+											<ComparisonMicroChart>
+												<data>
+													<ComparisonMicroChartData title="No Prazo" value="" color="Good" id="IdSlaAPrazo"/>
+													<ComparisonMicroChartData title="Com Atraso" value="" color="Error" id="IdSlaAAtrazo"/>
+												</data>
+											</ComparisonMicroChart>
+										</m:content>
+									</m:TileContent>
+								</m:tileContent>
+							</m:GenericTile>
+							<m:GenericTile press="press" header="Performance de negociações" frameType="TwoByOne" id="objectPerformance">
+								<m:tileContent>
+									<m:TileContent footer="Positivas">
+										<m:content>
+											<RadialMicroChart percentage="" valueColor="Good" id="IdPerfPositivas"/>
+										</m:content>
+									</m:TileContent>
+									<m:TileContent footer="Negativas">
+										<m:content>
+											<RadialMicroChart percentage="" valueColor="Error" id="IdPerfNegativas"/>
+										</m:content>
+									</m:TileContent>
+								</m:tileContent>
+							</m:GenericTile>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+			</f:formContainers>
+		</f:Form>
+		<f:Form class="editableForm" editable="true">
+			<f:layout>
+				<f:ResponsiveGridLayout labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0"
+					emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="3" columnsM="3" singleContainerFullSize="true"/>
+			</f:layout>
+			<f:formContainers>
+				<f:FormContainer>
+					<f:formElements>
+						<f:FormElement>
+							<m:GenericTile id="objectCarteira" header="Carteira" frameType="TwoByOne" press="press">
+								<m:tileContent>
+									<m:TileContent>
+										<m:content>
+											<ColumnMicroChart >
+												<columns>
+													<ColumnMicroChartData id="IdModMro" label="MRO" color="Critical"/>
+													<ColumnMicroChartData id="IdModInsumo" label="Insumos" color="Error"/>
+													<ColumnMicroChartData id="IdModPa" label="Produto Acabado" color="Good"/>
+													<ColumnMicroChartData id="IdModServico" label="Serviço" color="Neutral"/>
+												</columns>
+											</ColumnMicroChart>
+										</m:content>
+									</m:TileContent>
+								</m:tileContent>
+							</m:GenericTile>
+							<m:GenericTile id="objectModalidade" header="Modalidades" frameType="TwoByOne" press="press">
+								<m:tileContent>
+									<m:TileContent>
+										<m:content>
+											<ColumnMicroChart>
+												<columns>
+													<ColumnMicroChartData id="IdTpSolSpot" label="Spot" color="Critical"/>
+													<ColumnMicroChartData id="IdTpSolContratos" label="Contratos" color="Error"/>
+													<ColumnMicroChartData id="IdTpSolTabela" label="Manutenção de Tabela" color="Good"/>
+													<ColumnMicroChartData id="IdTpPc" label="Pedido de Compras" color="Neutral"/>
+												</columns>
+											</ColumnMicroChart>
+										</m:content>
+									</m:TileContent>
+								</m:tileContent>
+							</m:GenericTile>
+							<m:GenericTile id="objectSolicitacao" header="Solicitações" frameType="TwoByOne" press="press">
+								<m:tileContent>
+									<m:TileContent>
+										<m:content>
+											<ColumnMicroChart>
+												<columns>
+													<ColumnMicroChartData id="IdMSolicAberto" label="Em Aberto" color="Critical"/>
+													<ColumnMicroChartData id="IdMSolicAtraso" label="Em Atraso" color="Error"/>
+													<ColumnMicroChartData id="IdMSolicConc" label="Concluidas" color="Good"/>
+												</columns>
+											</ColumnMicroChart>
+										</m:content>
+									</m:TileContent>
+								</m:tileContent>
+							</m:GenericTile>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+			</f:formContainers>
+		</f:Form>
+		<f:Form>
+			<f:layout>
+				<f:ResponsiveGridLayout labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0"
+					emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="3" columnsM="3" singleContainerFullSize="true"/>
+			</f:layout>
+			<f:formContainers>
+				<f:FormContainer>
+					<f:formElements>
+						<f:FormElement>
+							<core:Icon src="sap-icon://circle-task-2" color="Critical"/>
+							<m:Text text="MRO" id="TextMRO"/>
+						</f:FormElement>
+						<f:FormElement>
+							<core:Icon src="sap-icon://circle-task-2" color="Negative"/>
+							<m:Text text="Insumos" id="TextInsumos"/>
+						</f:FormElement>
+						<f:FormElement>
+							<core:Icon src="sap-icon://circle-task-2" color="Positive"/>
+							<m:Text text="Produto Acabado" id="TextPA"/>
+						</f:FormElement>
+						<f:FormElement>
+							<core:Icon src="sap-icon://circle-task-2" color="Neutral"/>
+							<m:Text text="Serviço" id="TextServico"/>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+				<f:FormContainer>
+					<f:formElements>
+						<f:FormElement>
+							<core:Icon src="sap-icon://circle-task-2" color="Critical"/>
+							<m:Text text="Spot" id="TextSpot"/>
+						</f:FormElement>
+						<f:FormElement>
+							<core:Icon src="sap-icon://circle-task-2" color="Negative"/>
+							<m:Text text="Contratos" id="TextContratos"/>
+						</f:FormElement>
+						<f:FormElement>
+							<core:Icon src="sap-icon://circle-task-2" color="Positive"/>
+							<m:Text text="Manutenção de Tabela" id="TextManut"/>
+						</f:FormElement>
+						<f:FormElement>
+							<core:Icon src="sap-icon://circle-task-2" color="Neutral"/>
+							<m:Text text="Pedido de Compras" id="TextPC"/>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+				<f:FormContainer>
+					<f:formElements>
+						<f:FormElement>
+							<core:Icon src="sap-icon://circle-task-2" color="Critical"/>
+							<m:Text text="Em Aberto" id="TextAberto"/>
+						</f:FormElement>
+						<f:FormElement>
+							<core:Icon src="sap-icon://circle-task-2" color="Negative"/>
+							<m:Text text="Em Atraso" id="TextAtraso"/>
+						</f:FormElement>
+						<f:FormElement>
+							<core:Icon src="sap-icon://circle-task-2" color="Positive"/>
+							<m:Text text="Concluidas" id="TextConc"/>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+			</f:formContainers>
+		</f:Form>
+	</m:Page>
+</mvc:View>

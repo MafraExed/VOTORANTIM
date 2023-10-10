@@ -1,0 +1,93 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns="sap.suite.ui.commons" xmlns:m="sap.m" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:viz.data="sap.viz.ui5.data" xmlns:viz="sap.viz.ui5.controls" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+	xmlns:f="sap.ui.layout.form" xmlns:sv="sap.ui.comp.smartvariants" xmlns:smartTable="sap.ui.comp.smarttable" xmlns:layout="sap.ui.layout"
+	controllerName="ZCBMM_RELATORIO.ZCBMM_RELATORIO.controller.ExpBase" xmlns:table="sap.ui.table">
+	<m:Page floatingFooter="true" enableScrolling="true" showHeader="false">
+		<f:Form class="editableForm" editable="true" visible="false">
+			<f:layout>
+				<f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0"
+					emptySpanM="0" emptySpanS="0" columnsXL="4" columnsL="4" columnsM="4" singleContainerFullSize="true"/>
+			</f:layout>
+			<f:formContainers>
+				<f:FormContainer>
+					<f:formElements>
+						<f:FormElement>
+							<f:fields>
+								<m:DatePicker id="IdDtIni" editable="false" valueFormat="yyyy-MM-dd" displayFormat="dd/MM/yyyy" value="{DtInic}"/>
+							</f:fields>
+							<f:label>
+								<m:Label text="Data Inicial" design="Bold"/>
+							</f:label>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+				<f:FormContainer>
+					<f:formElements>
+						<f:FormElement>
+							<f:fields>
+								<m:DatePicker id="IdDtFim" editable="false" valueFormat="yyyy-MM-dd" displayFormat="dd/MM/yyyy" value="{DtFim}"/>
+							</f:fields>
+							<f:label>
+								<m:Label text="Data Final" design="Bold"/>
+							</f:label>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+			</f:formContainers>
+		</f:Form>
+		<m:IconTabBar select="onSelectIconTab">
+			<m:items>
+				<m:IconTabFilter icon="sap-icon://tools-opportunity" text="Cabeçalho" key="0">
+					<f:Form class="editableForm" editable="true">
+						<f:layout>
+							<f:ResponsiveGridLayout labelSpanXL="2" labelSpanL="2" labelSpanM="2" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0"
+								emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer>
+								<f:formElements>
+									<f:FormElement>
+										<smartTable:SmartTable id="smartTable" entitySet="ZET_CBLE_CF_FRETESet" useOnlyOneSolidToolbar="false" useExportToExcel="true"
+											useVariantManagement="false" useTablePersonalisation="false" tableType="Table" header="Solicitações" showRowCount="true"
+											beforeExport="VerificaExcel" beforeRebindTable="onbeforeRebindTable"
+											initiallyVisibleFields="Bukrs,Werkso,IdSolicitacao,Carteira,Modalidade,Prioridade,Finalidade,GrpCompras,DT_INIC,Emailsol,Atraso,Usuario,Descstatus,DtCriacaoc,Kostl,Observacao,DT_FIM"
+											showFullScreenButton="true" enableAutoBinding="false" editable="false" dataReceived="AfterUpdate2">
+											<table:Table selectionMode="Multi" id="table2" enableBusyIndicator="true" busyIndicatorDelay="100" enableCellFilter="false"
+												rowSelectionChange="CountCheck" enableColumnFreeze="true" enableColumnReordering="true">
+											</table:Table>
+										</smartTable:SmartTable>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+				</m:IconTabFilter>
+				<m:IconTabFilter icon="sap-icon://mirrored-task-circle-2" text="Resultados" key="1">
+					<f:Form class="editableForm" editable="true">
+						<f:layout>
+							<f:ResponsiveGridLayout labelSpanXL="2" labelSpanL="2" labelSpanM="2" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0"
+								emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer>
+								<f:formElements>
+									<f:FormElement>
+										<smartTable:SmartTable id="smartTable2" entitySet="ZET_CBLE_CF_CONDSet" useOnlyOneSolidToolbar="false" useExportToExcel="true"
+											useVariantManagement="false" useTablePersonalisation="false" tableType="Table" header="Condições" showRowCount="true"
+											beforeExport="VerificaExcel" beforeRebindTable="onbeforeRebindTable"
+											initiallyVisibleFields="Bukrs,Werkso,Idsolicitacao,Idrota,Tdlnr,Vhilm,Kschl,QtdEscala,AproTec,DataBase,Descricao,Desctransp,DT_FIM,DtFimTransp,DT_INIC,DtInicTransp,FreteNegoc,FretePedag,HabQuali,Inco1,Justif,Maktx,Matnr,Moeda,Montante,Nomecond,Orcamento,OrcBaseline,Pedagio,Performance,PrazoPag,Route,RouteD,Saving,Sugerir,Tco,TcoOrc,UmEscala,VarPrecos,Vencedor,Vigencia,VlrNegoc,VlrProp,VlrTotDc,Volume,Werks"
+											showFullScreenButton="true" enableAutoBinding="false" editable="false" dataReceived="AfterUpdate">
+											<table:Table selectionMode="Multi" id="table1" enableBusyIndicator="true" busyIndicatorDelay="100" enableCellFilter="false"
+												rowSelectionChange="CountCheck" enableColumnFreeze="true" enableColumnReordering="true">
+											</table:Table>
+										</smartTable:SmartTable>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+				</m:IconTabFilter>
+			</m:items>
+		</m:IconTabBar>
+	</m:Page>
+</mvc:View>

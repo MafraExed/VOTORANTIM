@@ -1,0 +1,13 @@
+<mvc:View
+	controllerName="y5fb.ui5.Dashboard.controller.App"
+	xmlns:mvc="sap.ui.core.mvc"
+	displayBlock="true"
+	xmlns="sap.m">
+	<!--  	
+		 backgroundImage="startpage.png"
+		 backgroundOpacity="0.3"
+	 -->
+	<App id="idAppControl"
+		 busy="{appView>/busy}"
+		 busyIndicatorDelay="{appView>/delay}"/>
+</mvc:View>

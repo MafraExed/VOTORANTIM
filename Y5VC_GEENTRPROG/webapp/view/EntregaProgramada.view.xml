@@ -1,0 +1,157 @@
+<mvc:View controllerName="workspace.zmonitor_entprog.controller.EntregaProgramada" xmlns:html="http://www.w3.org/1999/xhtml"
+	displayBlock="true" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m" xmlns:f="sap.f"
+	xmlns:fb="sap.ui.comp.filterbar" xmlns:vm="sap.ui.comp.variants">
+	<App id="idAppControl">
+		<pages>
+			<f:DynamicPage id="dynamicPageId" headerExpanded="true" class="sapUiSizeCozi" showFooter="true">
+				<!-- DynamicPage Title -->
+				<f:title>
+					<f:DynamicPageTitle>
+						<f:heading>
+							<Title text="{i18n>TitlePage}"/>
+						</f:heading>
+					</f:DynamicPageTitle>
+				</f:title>
+				<!-- DynamicPage Header -->
+				<f:header>
+					<f:DynamicPageHeader pinnable="true">
+						<f:content>
+							<fb:FilterBar id="filterbar" reset="onReset" search="_onSearch" useToolbar="false" showGoOnFB="true">
+								<fb:filterGroupItems >
+									<fb:FilterGroupItem label="{i18n>TooltipSelect}" name="ipCatPkg" groupName="gpFilter01" visibleInFilterBar="true">
+										<fb:control>
+											<Select id="idSelCatPkg" forceSelection="true">
+												<core:Item key="03" text="{i18n>TxtSelectOrdem}"/>
+												<core:Item key="02" text="{i18n>TxtSelectReserva}"/>
+											</Select>
+										</fb:control>
+									</fb:FilterGroupItem>
+									<fb:FilterGroupItem label="{i18n>SearchDocumento}" name="MiDocPkg" groupName="gpFilter01" visibleInFilterBar="true">
+										<fb:control>
+											<MultiInput id="idMultiInputLabelNumber" showValueHelp="false" enableMultiLineMode="true" type="Number"></MultiInput>
+										</fb:control>
+									</fb:FilterGroupItem>
+									<fb:FilterGroupItem label="{i18n>Werks}" name="MiWerks" groupName="gpFilter01" visibleInFilterBar="true">
+										<fb:control>
+											<MultiInput id="idMultiInputWerks" showValueHelp="false" enableMultiLineMode="true" type="Number"></MultiInput>
+										</fb:control>
+									</fb:FilterGroupItem>
+									<fb:FilterGroupItem label="{i18n>UnloadPoint}" name="IPUnPoint" groupName="gpFilter01" visibleInFilterBar="true">
+										<fb:control>
+											<!--<Input id="idIPUnloadPoint" showValueHelp="false"></Input>-->
+											<ComboBox id="idIPUnloadPoint" showSecondaryValues="true" items="{ path: 'GE>/ZET_VCMM_PDE_IHSet' }">
+												<core:ListItem key="{GE>PontoDescarga}" text="{GE>PontoDescarga}"/>
+											</ComboBox>
+										</fb:control>
+									</fb:FilterGroupItem>
+									<fb:FilterGroupItem label="{i18n>RequirementDateFrom}" name="IPReqDateFrom" groupName="gpFilter01" visibleInFilterBar="true">
+										<fb:control>
+											<DatePicker id="idDPRequirementDateFrom" valueFormat="dd-MM-yyyy" placeholder="{i18n>placeholder_date}"/>
+										</fb:control>
+									</fb:FilterGroupItem>
+									<fb:FilterGroupItem label="{i18n>RequirementDateTo}" name="IPReqDateTo" groupName="gpFilter01" visibleInFilterBar="true">
+										<fb:control>
+											<DatePicker id="idDPRequirementDateTo" valueFormat="dd-MM-yyyy" placeholder="{i18n>placeholder_date}"/>
+										</fb:control>
+									</fb:FilterGroupItem>
+									<fb:FilterGroupItem label="{i18n>StockLevel}" name="ipStk" groupName="gpFilter01" visibleInFilterBar="true">
+										<fb:control>
+											<Select id="idSelStLevel" forceSelection="true">
+												<core:Item key="01" text="{i18n>TxtSelectBalance}"/>
+												<core:Item key="02" text="{i18n>TxtSelectBalanceNo}"/>
+												<core:Item key="03" text="{i18n>TxtSelectBalanceAldd}"/>
+											</Select>
+										</fb:control>
+									</fb:FilterGroupItem>
+								</fb:filterGroupItems>
+							</fb:FilterBar>
+						</f:content>
+					</f:DynamicPageHeader>
+				</f:header>
+				<!-- DynamicPage Content -->
+				<f:content>
+					<Table noDataText="{i18n>data_not_found}" id="idTablePicking" showNoData="true" fixedLayout="false" mode="MultiSelect"
+						items="{ path: 'GE>/ZET_VCMM_ENTR_PROGSet', sorter:{ path: 'Docpkg'}}" growingThreshold="100" growingScrollToLoad="true"
+						busyIndicatorDelay="0" updateFinished="onUpdateFinished">
+						<headerToolbar>
+							<OverflowToolbar width="auto" height="auto" design="Transparent" visible="true" enabled="true">
+								<Title text="{i18n>txt_title_documents}" level="H2" id="title_total_pkg"/>
+								<content>
+									<ToolbarSpacer width=""/>
+									<Button tooltip="View Sort Settings" icon="sap-icon://sort" press="_onSort"/>
+								</content>
+							</OverflowToolbar>
+						</headerToolbar>
+						<columns>
+							<Column id="column7">
+								<Label text="{i18n>ColDocumento}" id="label7" width="auto"/>
+							</Column>
+							<Column id="column8">
+								<Label text="{i18n>ColItem}" id="label8" width="auto"/>
+							</Column>
+							<Column id="idColAufnr" demandPopin="true" minScreenWidth="Large" popinDisplay="Inline" visible="{viewProperties>/bHideColumn}">
+								<Label text="{i18n>ColAufnr}" id="idLblAufnr" width="auto"/>
+							</Column>
+							<Column id="column9" demandPopin="true" minScreenWidth="Large" popinDisplay="Inline">
+								<Label text="{i18n>ColCentro}" id="label9" width="auto"/>
+							</Column>
+							<Column id="column10" demandPopin="true" minScreenWidth="Large" popinDisplay="Inline">
+								<Label text="{i18n>ColMaterial}" id="label10" width="auto"/>
+							</Column>
+							<Column id="column11" demandPopin="true" minScreenWidth="Large" popinDisplay="Inline">
+								<Label text="{i18n>ColQtdePicking}" id="label11" width="auto"/>
+							</Column>
+							<Column id="column12" demandPopin="true" minScreenWidth="Large" popinDisplay="Inline">
+								<Label text="{i18n>ColQtdeDocumento}" id="label12" width="auto"/>
+							</Column>
+							<Column id="column14" demandPopin="true" minScreenWidth="Large" popinDisplay="Inline">
+								<Label text="{i18n>ColQtdeEstoque}" id="label14" width="auto"/>
+							</Column>
+							<Column id="column13" demandPopin="true" minScreenWidth="Large" popinDisplay="Inline">
+								<Label text="{i18n>ColUnidadeMedida}" id="label13" width="auto"/>
+							</Column>
+							<Column id="column15" demandPopin="true" minScreenWidth="Large" popinDisplay="Inline">
+								<Label text="{i18n>ColLocation}" id="label15" width="auto"/>
+							</Column>
+							<Column id="idColBdter" demandPopin="true" minScreenWidth="Large" popinDisplay="Inline" visible="{viewProperties>/bHideColumn}">
+								<Label text="{i18n>ColBdter}" id="idLblBdter" width="auto"/>
+							</Column>
+							<Column id="idColAblad" demandPopin="true" minScreenWidth="Large" popinDisplay="Inline" visible="{viewProperties>/bHideColumn}">
+								<Label text="{i18n>UnloadPoint}" width="auto"/>
+							</Column>
+						</columns>
+						<items >
+							<!--<ColumnListItem type="Active" id="tableitem2" selected="{GE>IndSelecao}">-->
+							<ColumnListItem >
+								<cells>
+									<Text text="{path: 'GE>Docpkg', type : 'sap.ui.model.odata.type.String', constraints: { isDigitSequence : true, maxLength : 10 }}"
+										id="text9" width="auto"/>
+									<Text text="{path: 'GE>Itmpkg', type : 'sap.ui.model.odata.type.String', constraints: { isDigitSequence : true, maxLength : 6 }}"
+										id="text10" width="auto"/>
+									<Text text="{GE>Aufnr}" id="idTxtAufnr" width="auto"/>
+									<Text text="{GE>Werks}" id="text11" width="auto"/>
+									<ObjectIdentifier title="{GE>Maktx}" text="{GE>Matnr}"/>
+									<Input value="{GE>QtdPicking}" type="Number" id="QtdePicking" width="100px" editable="{Editavel}"/>
+									<Text text="{GE>QtdOriginal}" id="text14" width="auto"/>
+									<Text text="{GE>QtdDisponivel}" id="text16" width="auto"/>
+									<Text text="{GE>MeinsExt}" id="text15" width="auto"/>
+									<Text text="{path: 'GE>Lgpbe', type : 'sap.ui.model.odata.type.String', constraints: { isDigitSequence : true, maxLength : 10 }}"
+										width="auto"/>
+									<Text text="{ path: 'GE>Bdter' , type:'sap.ui.model.type.Date', formatOptions: {style: 'short', UTC:true} }" id="idTxtBdter" width="auto"/>
+									<Text text="{GE>Ablad}" width="auto"/>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</f:content>
+				<!-- DynamicPage Footer -->
+				<f:footer>
+					<OverflowToolbar>
+						<ToolbarSpacer/>
+						<Button type="Accept" text="{i18n>BtnSalvar}" press="handleSalvar"/>
+					</OverflowToolbar>
+				</f:footer>
+			</f:DynamicPage>
+		</pages>
+	</App>
+</mvc:View>

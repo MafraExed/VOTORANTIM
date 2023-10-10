@@ -1,0 +1,95 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="FibriaStatusViagem.controller.DialogCompositionFilters" xmlns="sap.m" xmlns:form="sap.ui.layout.form"  xmlns:core="sap.ui.core">
+    <Dialog class="compositionFilter" horizontalScrolling="true" showHeader="true" state="None" stretch="false" title="Filtros" type="Standard" verticalScrolling="true">
+        <content>
+            <form:Form width="100%" editable="true" visible="true">
+                <form:formContainers>
+                    <form:FormContainer visible="true">
+                        <form:formElements>
+                            <form:FormElement visible="false">
+                                <form:label>
+                                    <Label text="Centro (Obrigatório)" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                </form:label>
+                                <form:fields>
+                                    <Input id="centerInput" type="Text" showValueHelp="true" value="3070" enabled="false" visible="true" width="auto" valueHelpOnly="false" maxLength="0" valueHelpRequest="_onInputValueHelpRequest"/>
+                                </form:fields>
+                            </form:FormElement>
+                            <form:FormElement visible="false">
+                                <form:label>
+                                    <Label text="Código da Composição" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                </form:label>
+                                <form:fields>
+                                    <Input id="compositionInput" showSuggestion="true" type="Text" showValueHelp="true" enabled="true" visible="true" width="auto" valueHelpOnly="false" maxLength="0" suggestionItems="{composition>/}" valueHelpRequest="_onInputValueHelpRequest">
+	                                    <suggestionItems>
+											<core:Item text="{composition>Composicao}" />
+										</suggestionItems>
+									</Input>	
+                                </form:fields>
+                            </form:FormElement>
+                            <form:FormElement visible="true">
+                                <form:label>
+                                    <Label text="Placa do Cavalo" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                </form:label>
+                                <form:fields>
+                                    <Input id="truckInput" showSuggestion="true" type="Text" showValueHelp="true" enabled="true" visible="true" width="auto" valueHelpOnly="false" maxLength="0" suggestionItems="{truck>/}" valueHelpRequest="_onInputValueHelpRequest">
+	                                    <suggestionItems>
+											<core:Item text="{truck>PlcCavalo}" />
+										</suggestionItems>
+									</Input>	
+                                </form:fields>
+                            </form:FormElement>
+                            <form:FormElement visible="true">
+                                <form:label>
+                                    <Label text="Placa da Carreta 1" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                </form:label>
+                                <form:fields>
+                                	<Input id="carreta1Input"     showSuggestion="true" type="Text" showValueHelp="true" enabled="true" visible="true" width="auto" valueHelpOnly="false" maxLength="0" suggestionItems="{carreta1>/}" valueHelpRequest="_onInputValueHelpRequest">
+	                                    <suggestionItems>
+											<core:Item text="{carreta1>PlcCarro1}" />
+										</suggestionItems>
+									</Input>
+                                </form:fields>
+                            </form:FormElement>
+                            <form:FormElement visible="true">
+                                <form:label>
+                                    <Label text="Placa da Carreta 2" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                </form:label>
+                                <form:fields>
+                                    <Input id="carreta2Input" showSuggestion="true" type="Text" showValueHelp="true" enabled="true" visible="true" width="auto" valueHelpOnly="false" maxLength="0" suggestionItems="{carreta2>/}" valueHelpRequest="_onInputValueHelpRequest">
+	                                    <suggestionItems>
+											<core:Item text="{carreta2>PlcCarro2}" />
+										</suggestionItems>
+									</Input>
+                                </form:fields>
+                            </form:FormElement>
+                        </form:formElements>
+                        <form:title/>
+                    </form:FormContainer>
+                </form:formContainers>
+                <form:layout>
+                    <form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
+                </form:layout>
+            </form:Form>
+        	<Button text="Confirmar" class="buttonConfirmCode" type="Default" iconFirst="true" width="100%" enabled="true" visible="true" iconDensityAware="false" press="_onConfirmCodeButtonPress"/>
+        </content>
+        <beginButton/>
+        <buttons/>
+        <customHeader>
+		<Bar>
+		<contentLeft>
+		
+		</contentLeft>
+		
+		<contentMiddle>
+		<Text text = "Filtros"></Text>
+		</contentMiddle>
+		
+		<contentRight>
+		<Button type="Transparent" icon="sap-icon://decline" press="_onCloseDialogButtonPress"></Button>
+		</contentRight>		
+		</Bar>
+		</customHeader>
+        <endButton/>
+        <subHeader/>
+        
+    </Dialog>
+</mvc:View>

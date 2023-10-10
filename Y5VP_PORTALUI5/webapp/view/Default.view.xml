@@ -1,0 +1,56 @@
+<mvc:View controllerName="fibria.y5vp_portalui5.controller.Default" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc"
+	displayBlock="false" xmlns="sap.m">
+	<App>
+		<pages>
+			<Page showHeader="false">
+				<content>
+					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>OV}" subheader="OV" press="onPressOv">
+						<TileContent unit="" footer="">
+							<NumericContent value="{path: 'ViewOv>/isCount'}" icon="sap-icon://sales-order" truncateValueTo="6"/>
+						</TileContent>
+					</GenericTile>
+					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>LP}" subheader="LP" press="onPressLp">
+						<TileContent unit="" footer="">
+							<NumericContent value="{path: 'ViewLp>/isCount'}" icon="sap-icon://sales-quote" truncateValueTo="6"/>
+						</TileContent>
+					</GenericTile>
+					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>FI}" subheader="FI" press="onPressFi">
+						<TileContent unit="" footer="">
+							<NumericContent value="{path: 'ViewFi>/isCount'}" icon="sap-icon://collections-insight" truncateValueTo="6"/>
+						</TileContent>
+					</GenericTile>
+					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>PO}" subheader="PO" press="onPressPo">
+						<TileContent unit="" footer="">
+							<NumericContent value="{path: 'ViewPo>/isCount'}" icon="sap-icon://wallet" truncateValueTo="6"/>
+						</TileContent>
+					</GenericTile>
+					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>RC}" subheader="RC" press="onPressRc">
+						<TileContent unit="" footer="">
+							<NumericContent value="{path: 'ViewRc>/isCount'}" icon="sap-icon://supplier" truncateValueTo="6"/>
+						</TileContent>
+					</GenericTile>
+					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>SR}" subheader="SR" press="onPressSr">
+						<TileContent unit="" footer="">
+							<NumericContent value="{path: 'ViewSr>/isCount'}" icon="sap-icon://crm-service-manager" truncateValueTo="6"/>
+						</TileContent>
+					</GenericTile>
+					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>IV}" subheader="IV" press="onPressIv">
+						<TileContent unit="" footer="">
+							<NumericContent value="{path: 'ViewIv>/isCount'}" icon="sap-icon://inventory" truncateValueTo="6"/>
+						</TileContent>
+					</GenericTile>
+					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="SISB" subheader="{i18n>SI}" press="onPressSisb">
+						<TileContent unit="" footer="">
+							<NumericContent value="{path: 'ViewSisb>/isCount'}" icon="sap-icon://line-charts" truncateValueTo="6"/>
+						</TileContent>
+					</GenericTile>
+						<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>DL}" subheader="{i18n>US}" press="onPressDele">
+						<TileContent unit="" footer="">
+							<NumericContent value="{path: 'ViewDele>/isCount'}" icon="" truncateValueTo="6"/>
+						</TileContent>
+					</GenericTile>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

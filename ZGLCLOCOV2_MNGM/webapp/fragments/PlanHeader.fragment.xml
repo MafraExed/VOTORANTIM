@@ -1,0 +1,92 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:table="sap.ui.table"
+    xmlns:l="sap.ui.layout" class="sapUiSizeCompact"
+    xmlns:f="sap.ui.layout.form">
+    <Dialog showHeader="true" title="Detalhes do Plano de Tarefas">
+        <f:Form editable="true">
+            <f:layout>
+                <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="4" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false" />
+            </f:layout>
+            <f:formContainers>
+                <f:FormContainer>
+                    <f:formElements >
+
+                        <f:FormElement label="Plano de Tarefas">
+                            <f:fields>
+                                <Input value="{ path: 'Profile' }" editable="false" />
+                            </f:fields>
+                        </f:FormElement>
+
+                        <f:FormElement label="Data Base">
+                            <f:fields>
+                                <Input value="{ path: 'Data_fixada', formatter:'.formatter.convertFromSapDate' }"  editable="false"/> 
+                            </f:fields>
+					    </f:FormElement>
+
+                        <f:FormElement label="Tipo de Encerramento">
+                            <f:fields>
+                                <Input value="{ path: 'TipoEncerramento', formatter:'.formatter.getClosingType' }" editable="false"/> 
+                            </f:fields>
+                        </f:FormElement>
+
+                        <f:FormElement label="Período Contábil">
+                            <f:fields>
+                                <Input value="{ path: 'Periodo' }" editable="false"/>
+                            </f:fields>
+                        </f:FormElement>
+                        
+                        <f:FormElement label="Calendário de Fábrica">
+                            <f:fields>
+                                <Input value="{ path: 'Calendario' }" editable="false"/>
+                            </f:fields>
+                        </f:FormElement>
+
+                    </f:formElements>
+                </f:FormContainer>
+
+                <f:FormContainer>
+                    <f:formElements >
+
+                        <f:FormElement label="Hierarquia Encerramento">
+                            <f:fields>
+                                <Input value="{ path: 'HierarqEnc' }" editable="false"/>
+                            </f:fields>
+                        </f:FormElement>
+
+                        <f:FormElement label="Descrição">
+                            <f:fields>
+                                <Input value="{ path: 'Descricao' }" editable="false"/>
+                            </f:fields>
+                        </f:FormElement>
+                        
+                        <f:FormElement label="Exercício">
+                            <f:fields>
+                                <Input value="{ path: 'Exercicio' }" editable="false"/>
+                            </f:fields>
+                        </f:FormElement>
+
+                        <f:FormElement label="Status">
+                            <f:fields>
+                                <Input value="{ path: 'Status', formatter:'.formatter.getStatusText' }" editable="false"/>
+                            </f:fields>
+                        </f:FormElement>
+
+                        <f:FormElement label="Responsável PE">
+                            <f:fields>
+                                <Input value="{ path: 'RespPE' }" editable="false"/>
+                            </f:fields>
+                        </f:FormElement>
+
+                    </f:formElements>
+                </f:FormContainer>
+            </f:formContainers>
+
+        </f:Form>
+
+        <endButton>
+            <Button text="Fechar" press="onClosePlanHeaderDialog"/>
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,5 @@
+"use strict";
+/*!
+ * SiGC - GestiÃ³n de Compras
+ * (c) Copyright 2022 Innova Internacional S.A.S.
+ */sap.ui.define(["sap/ui/base/Object"],function(t){return t.extend("com.innova.sigc.model.process.Process",{constructor:function t(i){this.tipoDoc=i.tipoDoc;this.titProc=i.titProc;this.bukrs=i.bukrs;this.ekorg=i.ekorg;this.ernam=i.ernam;this.ernamDesc=i.ernamDesc;this.adSmtpadr=i.adSmtpadr;this.ekgrp=i.ekgrp;this.limOferta=i.limOferta;this.contProv=i.contProv;this.condNegoc=i.condNegoc;this.dzterm=i.dzterm;this.dztermDesc=i.dztermDesc;this.oferParc=i.oferParc;this.estaLic=i.estaLic;this.valRfi=i.valRfi;this.numRfi=i.numRfi;this.pregResp=i.pregResp;this.limPreg=i.limPreg;this.respTecnico=i.respTecnico;this.respJuridico=i.respJuridico;this.waers=i.waers;this.infoOferentes=i.infoOferentes;this.infoInterno=i.infoInterno;this.fechaCrea=i.fechaCrea;this.limRecep=i.limRecep;this.estaRfi=i.estaRfi;this.solicitante=i.solicitante;this.conversionCurrency=i.conversionCurrency;this.conversionDate=i.conversionDate;this.templateInvitation=i.templateInvitation;this.catProc=i.catProc;this.tipoProc=i.tipoProc}})});

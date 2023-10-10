@@ -1,0 +1,151 @@
+{
+    "_version": "1.8.0",
+    "sap.app": {
+        "id": "workspace.zmonit_embarque.zmonit_embarque",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "dataSources": {
+            "GE": {
+                "uri": "/sap/opu/odata/sap/ZGWVCMM_GESTAO_ESTOQUE_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/metadata.xml",
+                    "annotations": [
+                        "localAnnotations"
+                    ]
+                }
+            },
+            "remoteAnnotations": {
+                "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZGWVCMM_GESTAO_ESTOQUE_EXT_ANNO',Version='0001')/$value/",
+                "type": "ODataAnnotation",
+                "settings": {
+                    "localUri": "annotations/annotationGE.xml"
+                }
+            },
+            "localAnnotations": {
+                "uri": "annotations/annotationGE.xml",
+                "type": "ODataAnnotation",
+                "settings": {
+                    "localUri": "annotations/annotationGE.xml"
+                }
+            }
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "sourceTemplate": {
+            "id": "ui5template.basicSAPUI5ApplicationProject",
+            "version": "1.38.11",
+            "toolsId": "3be9caa6-402a-458d-b0d1-2765d8a856c1"
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": false
+        },
+        "supportedThemes": [
+            "sap_hcb",
+            "sap_belize"
+        ]
+    },
+    "sap.ui5": {
+        "rootView": {
+            "viewName": "workspace.zmonit_embarque.zmonit_embarque.view.ListaEmbarque",
+            "type": "XML"
+        },
+        "dependencies": {
+            "minUI5Version": "1.30.0",
+            "libs": {
+                "sap.ui.layout": {},
+                "sap.ui.core": {},
+                "sap.m": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "workspace.zmonit_embarque.zmonit_embarque.i18n.i18n"
+                }
+            },
+            "": {
+                "type": "sap.ui.model.odata.v2.ODataModel",
+                "settings": {
+                    "loadMetadataAsync": false,
+                    "json": true,
+                    "bJSON": true,
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "useBatch": true,
+                    "refreshAfterChange": false,
+                    "disableHeadRequestForToken": true,
+                    "operationMode": "Server",
+                    "synchronizationMode": "None"
+                },
+                "dataSource": "GE",
+                "preload": true
+            },
+            "@i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "uri": "i18n/i18n.properties"
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "workspace.zmonit_embarque.zmonit_embarque.view",
+                "controlAggregation": "pages",
+                "controlId": "idAppControl",
+                "clearControlAggregation": false
+            },
+            "routes": [
+                {
+                    "name": "TargetListaEmbarque",
+                    "pattern": "RouteListaEmbarque",
+                    "target": [
+                        "TargetListaEmbarque"
+                    ]
+                }
+            ],
+            "targets": {
+                "TargetListaEmbarque": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewName": "ListaEmbarque"
+                }
+            }
+        }
+    },
+    "sap.platform.abap": {
+        "uri": "/sap/bc/ui5_ui5/sap/y5vc_gemembarq/",
+        "_version": "1.1.0"
+    }
+}

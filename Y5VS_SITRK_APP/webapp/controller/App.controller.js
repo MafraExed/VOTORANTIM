@@ -1,0 +1,1 @@
+"use strict";sap.ui.define(["./BaseController","sap/ui/model/json/JSONModel"],function(e,n){return e.extend("com.innova.sitrack.controller.App",{onInit:function e(){this.setModel(new n({busy:false,delay:0,resetProcessForm:true}),"appView")}})});

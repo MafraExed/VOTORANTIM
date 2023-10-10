@@ -1,0 +1,94 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns="sap.suite.ui.commons" xmlns:m="sap.m" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:viz.data="sap.viz.ui5.data" xmlns:viz="sap.viz.ui5.controls" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+	controllerName="ZCBMM_RELATORIO.ZCBMM_RELATORIO.controller.ObjectModalidade">
+	<ChartContainer id="idChartContainerModalidade" title="{i18n>modalidadeTitle}" showFullScreen="true" autoAdjustHeight="true" showLegend="true"
+		class="ChartContainerHeader" showPersonalization="false" contentChange="attachContentChange">
+		<dimensionSelectors>
+			<m:Button id='naviButtonModalidade' type="Back" press="navButtonPress" visible="{device>/isPhone}"/>
+			<m:Select selectedKey="Column" change="onChangeChart">
+				<m:items>
+					<core:Item text="Barra" key="Bar"/>
+					<core:Item text="Linha" key="Line"/>
+					<core:Item text="Coluna" key="Column"/>
+				</m:items>
+			</m:Select>
+		</dimensionSelectors>
+		<content>
+			<ChartContainerContent icon="sap-icon://horizontal-bar-chart">
+				<content>
+					<viz:Popover id="idPopOverModalidade"></viz:Popover>
+					<viz:VizFrame id="idoVizFrameModalidade" vizType='column' uiConfig="{applicationSet:'fiori'}"
+						vizProperties="{
+			                plotArea: {
+			                  dataPointStyle: {
+			                	rules: [
+			                		{
+			                			dataContext: {Modalidade: 'CONTRATAÇÃO SPOT'},
+										properties: {
+											color: '#e78c07'
+										},
+										displayName: 'Spot',
+										dataName: {
+											Modalidade: 'Modalidade'
+										}
+			                		},{
+			                			dataContext: {Modalidade: 'CONTRATOS'},
+										properties: {
+											color: '#bb0000'
+										},
+										displayName: 'Contratos',
+										dataName: {
+											Modalidade: 'Modalidade'
+										}
+			                		},{
+			                			dataContext: {Modalidade: 'MANUTENÇÃO DE TABELA'},
+										properties: {
+											color: '#2b7c2b'
+										},
+										displayName: 'Mant. Tabela',
+										dataName: {
+											Modalidade: 'Modalidade'
+										}
+			                		},{
+			                			dataContext: {Modalidade: 'PEDIDO DE COMPRAS'},
+										properties: {
+											color: '#848f94'
+										},
+										displayName: 'Pedido de Compras',
+										dataName: {
+											Modalidade: 'Modalidade'
+										}
+			                		}
+			                	]
+			                  }
+			                },
+			                legend: {
+			                  title: {
+			                    visible: false
+			                  }
+			                },
+			                title: {
+			                  visible: true,
+			                  text: 'Relatório Modalidade'
+			                }
+			              }">
+						<viz:dataset>
+							<viz.data:FlattenedDataset data="{/ZET_CBMM_CF_MODALIDADESet}">
+								<viz.data:dimensions>
+									<viz.data:DimensionDefinition name="Modalidade" value="{Modalidade}"/>
+								</viz.data:dimensions>
+								<viz.data:measures>
+									<viz.data:MeasureDefinition name="Valor" value="{Valor}"/>
+								</viz.data:measures>
+							</viz.data:FlattenedDataset>
+						</viz:dataset>
+						<viz:feeds>
+							<viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Valor"/>
+							<viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="Modalidade"/>
+						</viz:feeds>
+					</viz:VizFrame>
+				</content>
+			</ChartContainerContent>
+		</content>
+	</ChartContainer>
+</mvc:View>

@@ -1,0 +1,1 @@
+sap.ui.define(["cba/hr/sdvCalibracaoSF/controller/CalibrationSessions.controller"],function(o){"use strict";QUnit.module("CalibrationSessions Controller");QUnit.test("I should test the CalibrationSessions controller",function(n){var t=new o;t.onInit();n.ok(t)})});

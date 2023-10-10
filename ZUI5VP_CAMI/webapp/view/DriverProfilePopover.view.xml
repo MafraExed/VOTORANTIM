@@ -1,0 +1,52 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="FibriaStatusViagem.controller.DriverProfilePopover" xmlns="sap.m"  xmlns:form="sap.ui.layout.form">
+    <Popover contentHeight="230px" contentWidth="360px" horizontalScrolling="false" modal="false" offsetX="0" offsetY="0" placement="Bottom" showHeader="true" title="" verticalScrolling="false" visible="true">
+        <content>
+			<FlexBox class="stageFlexBox" direction="Column">
+	    		<FlexBox class="stageValues" height="0.1rem">
+	    			<Text class="stageValue stageValueDesc"  text="CPF: "></Text>
+	    			<Text class="stageValue stageValueContent" text="{driverInfo>/Cpf}"></Text>
+	    		</FlexBox>
+	    		<FlexBox class="stageValues" height="0.1rem">
+	    			<Text class="stageValue stageValueDesc"  text="CNH: "></Text>
+	    			<Text class="stageValue stageValueContent" text="{driverInfo>/Cnh}"></Text>
+	    		</FlexBox>
+	    		<FlexBox class="stageValues" height="0.1rem">
+	    			<Text class="stageValue stageValueDesc"  text="Composição: "></Text>
+	    			<Text class="stageValue stageValueContent" text="{driverInfo>/Composicao}"></Text>
+	    		</FlexBox>
+	    		<FlexBox class="stageValues" height="0.1rem">
+	    			<Text class="stageValue stageValueDesc"  text="Cavalo: "></Text>
+	    			<Text class="stageValue stageValueContent" text="{driverInfo>/Cavalo}" ></Text>
+	    		</FlexBox>
+	    		<FlexBox class="stageValues" height="0.1rem">
+	    			<Text class="stageValue stageValueDesc"  text="Carreta 1: "></Text>
+	    			<Text class="stageValue stageValueContent" text="{driverInfo>/Carreta1}" ></Text>
+	    		</FlexBox>
+	    		<FlexBox class="stageValues" height="0.1rem">
+	    			<Text class="stageValue stageValueDesc"  text="Carreta 2: "></Text>
+	    			<Text class="stageValue stageValueContent" text="{driverInfo>/Carreta2}" ></Text>
+	    		</FlexBox>
+	    	</FlexBox>
+        </content>
+        <beginButton/>
+        <customHeader>
+		<Bar>
+		<contentLeft>
+		
+		</contentLeft>
+		
+		<contentMiddle>
+		<Text text = "{driverInfo>/Nome}"></Text>
+		</contentMiddle>
+		
+		<contentRight>
+		<Button type="Transparent" icon="sap-icon://decline" press="_onClosePopoverButtonPress"></Button>
+		</contentRight>		
+		</Bar>
+		</customHeader>
+        <endButton/>
+        <footer>
+        </footer>
+        <subHeader/>
+    </Popover>
+</mvc:View>

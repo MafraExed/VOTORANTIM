@@ -1,0 +1,119 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:table="sap.ui.table"
+	xmlns:l="sap.ui.layout"
+	width="800px"
+	xmlns:f="sap.ui.layout.form">
+    <Dialog contentHeight="600px" showHeader="false" contentWidth="800px"  id="dialogNewTemplate">
+    	<Page
+		showHeader="true"
+		enableScrolling="true"
+		showNavButton="false" >
+		<headerContent>
+			<Title class="sapUiSmallMarginBegin" level="H1" text="Selecionar Dependente" />
+				<ToolbarSpacer/>
+		<OverflowToolbar id="otbFoter">
+			<SegmentedButton selectedKey="tree" selectionChange="onViewModeChangeSelectDependent">
+				<items>
+					<SegmentedButtonItem icon="sap-icon://tree" key="tree" />
+					<SegmentedButtonItem icon="sap-icon://table-view" key="table"/>
+				</items>
+			</SegmentedButton>
+				<ToolbarSpacer/>
+			<HBox ><SearchField placeholder="Buscar Tarefas"/></HBox>
+			</OverflowToolbar>
+		</headerContent>
+        <content>
+
+		<Tree visible="{= ${taskView>/dependentDialog/display} === 'tree'}"
+			class="add-dependent"
+			id="Tree"
+		 	items="{path: 'tree>/'}"
+		 	mode="MultiSelect">
+			<!-- <headerToolbar> -->
+                <!-- <OverflowToolbar>
+                    <content>
+                        <Title text="Nodes" level="H2" />
+                        <ToolbarSpacer />
+                        <Select
+                            selectedKey="MultiSelect"
+                            change="handleSelectChange">
+                            <items>
+                                <core:Item key="None" text="No Selection" />
+                                <core:Item key="SingleSelect" text="Single Selection" />
+                                <core:Item key="SingleSelectLeft" text="Single Selection Left" />
+                                <core:Item key="SingleSelectMaster" text="Single Selection (Master)" />
+                                <core:Item key="MultiSelect" text="Multi Selection" />
+                            </items>
+                        </Select>
+                    </content>
+                </OverflowToolbar> -->
+            <!-- </headerToolbar> -->
+		    <StandardTreeItem id="xx" title="{tree>name}" >
+				<customData>
+					<core:CustomData key="istask" value="{tree>type}" writeToDom="true" />
+				</customData>
+			</StandardTreeItem>
+		</Tree>
+
+		<Table id="tableTemplate" visible="{= ${taskView>/dependentDialog/display} === 'table'}" selectionChange="onSelectChange" mode="MultiSelect" items="{tableTemplates>/}">
+                    <headerToolbar>
+                        <OverflowToolbar>
+                            <Title text="Tarefas" level="H2"/>
+                        </OverflowToolbar>
+                    </headerToolbar>
+                    <columns>
+                        <Column width="30%">
+                            <Text text="Tarefa" />
+                        </Column>
+                        <Column width="50%">
+                            <Text text="Caminho" />
+                        </Column>
+                        <Column width="20%">
+                            <Text text="Responsável" />
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem vAlign="Middle" >
+                            <cells>
+                                <Text text="{tableTemplates>task}" />
+                                <Text text="{tableTemplates>path}" />
+                                <Text text="{tableTemplates>responsible}" />
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+
+	   <!-- <table:TreeTable id="TreeTemplate" rowActionCount="1" rows="{path:'tree>/', parameters: {arrayNames:['nodes']}}" visible="{= ${detailView>/viewMode} === 'tree'}" selectionMode="MultiToggle" enableSelectAll="false" rowSelectionChange="onSelectChange" visibleRowCountMode="Auto" ariaLabelledBy="title">
+
+                    <table:columns>
+                        <table:Column width="100%">
+                            <Label text=""/>
+                            <table:template>
+                                <HBox>
+                                    <core:Icon class="sapUiSmallMarginEnd" src="{tree>icon}">
+                                    </core:Icon>
+                                    <Label text="{tree>name}" wrapping="false" design="{= ${tree>type} === 'task' ? 'Bold' : 'Standard'}" />
+                                </HBox>
+                            </table:template>
+                        </table:Column>
+                    </table:columns>
+                </table:TreeTable> -->
+    		</content>
+		<footer>
+			<OverflowToolbar id="otbFooter">
+				<ToolbarSpacer/>
+				<Button type="Emphasized" text="Aplicar" press="onApplyeDependentDialog">
+					<layoutData><OverflowToolbarLayoutData priority="NeverOverflow" /></layoutData>
+				</Button>
+				<Button  text="Cancelar" press="onCloseDependentDialog">
+					<layoutData><OverflowToolbarLayoutData priority="NeverOverflow" /></layoutData>
+				</Button>
+			</OverflowToolbar>
+		</footer>
+
+	</Page>
+    </Dialog>
+</core:FragmentDefinition>

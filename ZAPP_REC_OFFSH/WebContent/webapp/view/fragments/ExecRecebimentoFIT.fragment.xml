@@ -1,0 +1,84 @@
+<core:FragmentDefinition
+  xmlns="sap.m"
+  xmlns:f="sap.ui.layout.form"
+  xmlns:layout="sap.ui.layout"
+  xmlns:core="sap.ui.core">
+  <Dialog
+	    title='{i18n>detailViewRecebFIT}'
+	    type='Message'
+	    draggable="true"
+	    stretchOnPhone="true"
+	    contentWidth="55%">
+    <content>
+      <VBox 
+      		class="sapUiSmallMargin">
+        <f:Form 
+        		id="FormToolbar"
+          		editable="true"
+          		riaLabelledBy="Title1">
+          <f:layout>
+            <f:ResponsiveGridLayout 
+            		labelSpanXL="4"
+					labelSpanL="3"
+					labelSpanM="4"
+					labelSpanS="12"
+					adjustLabelSpan="false"
+					emptySpanXL="0"
+					emptySpanL="4"
+					emptySpanM="0"
+					emptySpanS="0"
+					columnsXL="2"
+					columnsL="1"
+					columnsM="1"
+					singleContainerFullSize="false" />
+          </f:layout>
+          <f:formContainers>
+            <f:FormContainer>
+              <f:formElements>
+
+				<f:FormElement  
+						id="recebFITFormElementDtdoc" 
+						label="{i18n>recebFITTitleDtdoc}">
+                  <f:fields>
+                    <DatePicker
+							id="recebFITFieldDtdoc"
+							required="true"
+							dateValue="{execReceb>/Dtdoc}"
+							displayFormat="{i18n>formatDate}"
+							class="sapUiSmallMarginBottom"/>
+                  </f:fields>
+                </f:FormElement>
+                
+                <f:FormElement
+                		id="recebFITFormElementDtLanc" 
+                		label="{i18n>recebFITTitleDtLanc}">
+                  <f:fields>
+                    <DatePicker
+							id="recebFITFieldDtLanc"
+							required="true"
+							dateValue="{execReceb>/DtLanc}"
+							displayFormat="{i18n>formatDate}"
+							class="sapUiSmallMarginBottom"/>
+                  </f:fields>
+                </f:FormElement>
+
+              </f:formElements>
+            </f:FormContainer>
+          </f:formContainers>
+        </f:Form>
+      </VBox>
+    </content>
+    
+    <buttons>
+	    <Button 
+	    		tooltip="Salvar" 
+	    		icon="sap-icon://save" 
+	    		press="onHanleSaveRecebFIT" />
+	    <Button 
+	    		tooltip="Cancelar"  
+	    		icon="sap-icon://sys-cancel" 
+	    		press="onHanleCloseRecebFIT" />
+    </buttons>
+    
+  </Dialog>
+</core:FragmentDefinition>

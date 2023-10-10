@@ -1,0 +1,63 @@
+<mvc:View controllerName="vsa.y5gl_si_portal.view.Detail"
+	xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic"
+	xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+	<semantic:DetailPage id="page" navButtonPress="onNavBack"
+		showNavButton="{device>/system/phone}" title="{i18n>detailTitle}"
+		busy="{detailView>/busy}" busyIndicatorDelay="{detailView>/delay}">
+		<semantic:content>
+
+			<ObjectHeader responsive="true" fullScreenOptimized="false"
+				id="objectHeader" intro="{Posnr}" title="{Nomebukrssolic}"
+						number="{ path: 'Valor', formatter: '.formatter.currencyExternal' }"
+						numberUnit="{Waers}">
+				<attributes>	
+				
+					<ObjectAttribute title="{i18n>EMPRESA}"
+						text="{BukrsResp}" />	
+				
+					<ObjectAttribute title="{i18n>USUARIO}"
+						text="{Userid}" />
+
+					<ObjectAttribute title="{i18n>CREATEDAT}"
+						text="{ path: 'Erdat', formatter: '.formatter.dateExternal' }" />
+				</attributes>
+			</ObjectHeader>
+
+			<IconTabBar id="iconTabBar" expanded="false" class="sapUiContentPadding" />
+			<!-- backgroundDesign="Transparent" headerBackgroundDesign="Transparent" 
+				/> -->
+
+			<f:SimpleForm id="frDetail" editable="false"
+				layout="ResponsiveGridLayout" adjustLabelSpan="false" labelSpanXL="4"
+				labelSpanL="4" labelSpanM="4" labelSpanS="4" emptySpanXL="0"
+				emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2"
+				columnsM="2" columnsS="2" />
+
+		</semantic:content>
+
+		<semantic:customFooterContent>
+
+			<Toolbar>
+
+				<Button id="messagePopoverBtn" icon="sap-icon://message-popup"
+					type="Emphasized" visible="false" press="handleMessagePopoverPress" />
+
+				<ToolbarSpacer />
+
+				<ToolbarSeparator />
+
+				<Text text="{global>/submensagem}" visible="{= !${global>/aprovacao} }" />
+				<Button press="onApprove" icon="sap-icon://accept" tooltip="{i18n>APPROVE}"
+					visible="{global>/aprovacao}" type="Accept" text="{i18n>APPROVE}"/>
+				<Button press="onApprove_W" icon="sap-icon://approvals"
+					tooltip="{i18n>APPROVEWQUESTION}" type="Accept" visible="{global>/aprovacao}" />
+				<Button press="onReject" icon="sap-icon://decline" tooltip="{i18n>REJECT}"
+					visible="{global>/aprovacao}" type="Reject" text="{i18n>REJECT}"/>
+				<Button press="onInterruption" icon="{global>/intIcon}"
+					tooltip="{i18n>INTERRUPT}" type="Emphasized" visible="{global>/intVisible}" />		
+			</Toolbar>
+
+		</semantic:customFooterContent>
+
+	</semantic:DetailPage>
+</mvc:View>

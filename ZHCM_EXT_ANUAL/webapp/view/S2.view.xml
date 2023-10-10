@@ -1,0 +1,42 @@
+<!--
+
+    Copyright (C) 2009-2014 SAP SE or an SAP affiliate company. All rights reserved
+
+-->
+<core:View 
+	xmlns:core="sap.ui.core"
+	xmlns="sap.m" 
+	controllerName="hcm.mypaystubs.view.S2">
+	<Page id="PAYSLIP_MASTER_PAGE" title="{i18n>DISPLAY_NAME_LIST}"> 
+		<core:ExtensionPoint name="extS2Header"></core:ExtensionPoint>
+		<content>
+			<List id="list" 
+				threshold="15" 
+				growingThreshold="15" 
+				growing="true" 
+				noDataText="{i18n>NO_PAYSLIP}" 
+				mode="{device>/listMode}" 
+				select="_handleSelect">
+				<ObjectListItem title="{parts: [{path: 'PayrollType'},{path: 'Period'},{path: 'BonusDate'}], formatter:'hcm.mypaystubs.utils.Formatter.monthFormatterMaster'}" 
+								showMarkers="false" 
+								markFlagged="false" 
+								markFavorite="false" 
+								intro="{PayrollDescription}" 
+								numberUnit="{Currency}" 
+								number="{ path:'Amount', formatter:'hcm.mypaystubs.utils.Formatter.amountFormatter' }" 
+								counter="0" 
+								press="_handleItemPress" 
+								type="{device>/listItemType}" >
+					<attributes>
+						<ObjectAttribute id="PAYROLL_TYPE_TEXT" text="{path: 'Reason'}" />
+						<ObjectAttribute id="PAYROLL_PERIOD" text="{path:'StartDate', type:'sap.ui.model.type.Date', formatOptions: { style:'medium', UTC: true}} - 
+						                                           {path:'EndDate',   type:'sap.ui.model.type.Date', formatOptions: { style:'medium', UTC: true}}"
+						                                     visible="{= ${PayrollType}  === 'A' || ${PayrollType}  === 'C' ? false : true }" />
+	              		<!-- extension added to add fields in list item -->	
+	                	<core:ExtensionPoint name="extS2ListItem"></core:ExtensionPoint>
+	            	</attributes>
+	            </ObjectListItem>
+			</List>
+		</content>
+	</Page>
+</core:View>

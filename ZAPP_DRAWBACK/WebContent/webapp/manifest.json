@@ -1,0 +1,135 @@
+{
+    "_version": "1.4.0",
+    "sap.app": {
+        "id": "nasa.ui5.controleDrawback",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/sap/ZGWFBSD_NASA_DRAWBACK_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/metadata.xml"
+                }
+            }
+        },
+        "sourceTemplate": {
+            "id": "@sap/ux-app-migrator:freestyle",
+            "version": "1.11.1",
+            "toolsId": "e5ef1dce-f8a9-4ceb-a260-6d52b025ee0c"
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "sap-icon://detail-view",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        },
+        "supportedThemes": [
+            "sap_hcb",
+            "sap_bluecrystal",
+            "sap_belize"
+        ]
+    },
+    "sap.ui5": {
+        "rootView": {
+            "viewName": "nasa.ui5.controleDrawback.view.App",
+            "type": "XML",
+            "id": "app"
+        },
+        "dependencies": {
+            "minUI5Version": "1.42.0",
+            "libs": {
+                "sap.ui.core": {
+                    "minVersion": "1.42.0"
+                },
+                "sap.m": {
+                    "minVersion": "1.42.0"
+                },
+                "sap.ushell": {
+                    "minVersion": "1.42.0"
+                },
+                "sap.collaboration": {
+                    "minVersion": "1.42",
+                    "lazy": true
+                }
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "nasa.ui5.controleDrawback.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true
+            }
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "viewPath": "nasa.ui5.controleDrawback.view",
+                "controlId": "idAppControl",
+                "controlAggregation": "pages",
+                "bypassed": {
+                    "target": [
+                        "notFound"
+                    ]
+                },
+                "async": true
+            },
+            "routes": [
+                {
+                    "pattern": "",
+                    "name": "main",
+                    "target": [
+                        "TObject",
+                        "TMain"
+                    ]
+                },
+                {
+                    "pattern": "ZET_FBSD_ACSet{Acnum}",
+                    "name": "object",
+                    "target": [
+                        "TMain",
+                        "TObject"
+                    ]
+                }
+            ],
+            "targets": {
+                "TMain": {
+                    "viewName": "Main",
+                    "viewLevel": 1,
+                    "viewId": "Id_Main"
+                },
+                "TObject": {
+                    "viewName": "Object",
+                    "viewId": "ID_object",
+                    "viewLevel": 2
+                }
+            }
+        }
+    }
+}

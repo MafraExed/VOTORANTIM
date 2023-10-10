@@ -1,0 +1,93 @@
+<core:View xmlns:core="sap.ui.core" xmlns:m="sap.m" xmlns="sap.f" xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+	xmlns:smartTable="sap.ui.comp.smarttable" xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	xmlns:sv="sap.ui.comp.smartvariants" xmlns:nav="sap.ui.comp.navpopover" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" xmlns:table="sap.ui.table"
+	xmlns:shellfooter="sap.ushell.ui.footerbar" http-equiv="cache-control" content="no-cache"
+	controllerName="ZCBMM_SOLICITACAO_FRETE.ZCBMM_SOLICITACAO_FRETE.controller.Worklist" height="100%" width="100%">
+	<m:Page enableScrolling="true" title="CONTRATAÇÃO DE FRETE">
+		<m:VBox fitContainer="true">
+			<DynamicPage id="synamicPage">
+				<header>
+					<DynamicPageHeader>
+						<content>
+							<smartFilterBar:SmartFilterBar id="smartFilterBar" smartVariant="__SVM01" useToolbar="false" entityType="ZET_CBMM_CF_FRETE"
+								considerSelectionVariants="true" persistencyKey="SmartTablePKey" assignedFiltersChanged="onAssignedFiltersChanged">
+								<smartFilterBar:controlConfiguration>
+									<smartFilterBar:ControlConfiguration key="WerksO" id="idWerks" index="0" label="Pagador do serviço" groupId="_BASIC" width="auto"
+										visibleInAdvancedArea="false"></smartFilterBar:ControlConfiguration>
+									<smartFilterBar:ControlConfiguration key="Carteira" id="idCarteira" index="1" label="Carteira" groupId="_BASIC" width="auto"
+										visibleInAdvancedArea="false">
+										<smartFilterBar:customControl>
+											<m:Select forceSelection="false" id="foo"
+												items="{ path: '/ZET_CBMM_CF_PARAMETSet', filters: { path: 'Parametro', operator: 'EQ', value1: 'CARTEIRA'}, groupHeaderFactory: '.createGroupHeader' }">
+												<core:Item key="{Valor}" text="{Valor}"/>
+											</m:Select>
+										</smartFilterBar:customControl>
+									</smartFilterBar:ControlConfiguration>
+									<smartFilterBar:ControlConfiguration key="Modalidade" id="idModalidade" index="2" label="Modalidade" groupId="_BASIC" width="auto"
+										visibleInAdvancedArea="false">
+										<smartFilterBar:customControl>
+											<m:Select forceSelection="false" id="foo1"
+												items="{ path: '/ZET_CBMM_CF_PARAMETSet', filters: { path: 'Parametro', operator: 'EQ', value1: 'MODALIDADE'}, groupHeaderFactory: '.createGroupHeader' }">
+												<core:Item key="{Valor}" text="{Valor}"/>
+											</m:Select>
+										</smartFilterBar:customControl>
+									</smartFilterBar:ControlConfiguration>
+									<smartFilterBar:ControlConfiguration key="Prioridade" id="idPrioridade" index="3" label="Prioridade" groupId="_BASIC" width="auto"
+										visibleInAdvancedArea="false">
+										<smartFilterBar:customControl>
+											<m:Select forceSelection="false" id="foo2"
+												items="{ path: '/ZET_CBMM_CF_PARAMETSet', filters: { path: 'Parametro', operator: 'EQ', value1: 'PRIORIDADE'}, groupHeaderFactory: '.createGroupHeader' }">
+												<core:Item key="{Valor}" text="{Valor}"/>
+											</m:Select>
+										</smartFilterBar:customControl>
+									</smartFilterBar:ControlConfiguration>
+									<smartFilterBar:ControlConfiguration key="Finalidade" id="idFinalidade" index="4" label="Finalidade" groupId="_BASIC" width="auto"
+										visibleInAdvancedArea="false">
+										<smartFilterBar:customControl>
+											<m:Select forceSelection="false" id="foo3"
+												items="{ path: '/ZET_CBMM_CF_PARAMETSet', filters: { path: 'Parametro', operator: 'EQ', value1: 'FINALIDADE'}, groupHeaderFactory: '.createGroupHeader' }">
+												<core:Item key="{Valor}" text="{Valor}"/>
+											</m:Select>
+										</smartFilterBar:customControl>
+									</smartFilterBar:ControlConfiguration>
+									<smartFilterBar:ControlConfiguration key="IdSolicitacao" id="IdIdSolicitacao" index="5" label="IdSolicitacao" groupId="_BASIC" width="auto"
+										visibleInAdvancedArea="false"></smartFilterBar:ControlConfiguration>
+								</smartFilterBar:controlConfiguration>
+								<!-- layout data used to make the table growing but the filter bar fixed -->
+								<smartFilterBar:layoutData>
+									<m:FlexItemData shrinkFactor="0"/>
+								</smartFilterBar:layoutData>
+							</smartFilterBar:SmartFilterBar>
+						</content>
+					</DynamicPageHeader>
+				</header>
+				<content>
+					<smartTable:SmartTable id="smartTable" entitySet="ZET_CBMM_CF_FRETESet" smartFilterId="smartFilterBar" tableType="Table"
+						useExportToExcel="true" useVariantManagement="false" useTablePersonalisation="true" header="Histórico de solicitações realizadas"
+						showRowCount="true" persistencyKey="SmartTableRefApp_Explored" enableAutoBinding="true" app:useSmartField="true"
+						class="sapUiResponsiveContentPadding" showFullScreenButton="true"
+						initiallyVisibleFields="IdSolicitacao,WerksO,Carteira,Modalidade,Prioridade,Finalidade,Descstatus,DtCriacaoc,Atraso"
+						beforeRebindTable="onbeforeRebindTable">
+						<smartTable:customToolbar>
+							<m:Toolbar>
+								<m:Button text="Incluir" type="Default" icon="sap-icon://add" iconFirst="true" width="auto" enabled="true" visible="true"
+									iconDensityAware="false" press="onAdd" tooltip="Incluir Solicitações"/>
+								<m:Button text="Excluir" type="Default" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"
+									press="OnDelete" tooltip="Excluir Solicitações Selecionadas" icon="sap-icon://delete"/>
+							</m:Toolbar>
+						</smartTable:customToolbar>
+						<m:Table mode="MultiSelect" id="table" enableBusyIndicator="true" busyIndicatorDelay="100">
+							<m:items>
+								<m:ColumnListItem type="Navigation" press="onPress"/>
+							</m:items>
+						</m:Table>
+						<smartTable:layoutData>
+							<m:FlexItemData growFactor="1" baseSize="0%"/>
+						</smartTable:layoutData>
+					</smartTable:SmartTable>
+				</content>
+			</DynamicPage>
+		</m:VBox>
+	</m:Page>
+</core:View>

@@ -1,0 +1,153 @@
+<mvc:View controllerName="votorantim.corp.clocov2planmanagement.controller.Detail"
+    xmlns="sap.m"
+    xmlns:semantic="sap.f.semantic"
+    xmlns:core="sap.ui.core"
+    xmlns:table="sap.ui.table" class="sapUiSizeCompact"
+    xmlns:dnd="sap.ui.core.dnd" id="idDetailView"
+    xmlns:custdata="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+    xmlns:mvc="sap.ui.core.mvc">
+
+    <semantic:SemanticPage id="detailPage" toggleHeaderOnTitleClick="false" preserveHeaderStateOnScroll="true" busy="{detailView>/busy}" headerPinnable="false" class="detailView" showFooter="false" busyIndicatorDelay="0">
+        <semantic:titleHeading>
+          
+            <HBox alignItems="Center" justifyContent="SpaceBetween">
+                <Button type="Transparent" tooltip="trocar modelo" icon="sap-icon://nav-back" press="goToMainPage"/>
+                <VBox class="sapUiTinyMarginBegin">
+                    <Title  text="{parts: [
+                            {path: 'Profile'},
+                            {path: 'detailView>/profileText'}
+                        ]}" level="H1"/>
+			        <ObjectStatus class="sapUiSmallMarginEnd" title=""	  text="{= ${detailView>/isTemplate} ? 'Modelo de Tarefas' : 'Plano de Tarefas' }"	state="{= ${detailView>/isTemplate} ? 'None' : 'Success' }"	inverted="true" />
+                </VBox>
+
+            </HBox>
+
+        </semantic:titleHeading>
+
+        <semantic:titleCustomIconActions>
+            <OverflowToolbarButton type="Transparent" text="trocar modelo" press="goToMainPage" id="btChangeProfile"/>
+        </semantic:titleCustomIconActions>
+
+        <semantic:headerContent>
+            <OverflowToolbar style="Clear">
+                <Button icon="sap-icon://tree" type="Emphasized" tooltip="Visão Hierarquia"/>
+                <Button icon="sap-icon://table-view" press="onViewModeChange" tooltip="Visão de Tabela"/>
+                <!-- <SearchField search="filterTable" placeholder="{i18n>detailSearchTasks}" width="20%" /> -->
+                <MenuButton visible="{= ${detailView>/isTemplate}}" text="{i18n>detailMassOperations}" enabled="{detailView>/hasSelectedItems}">
+                    <menu>
+                        <Menu>
+                            <MenuItem text="{i18n>detailEditTask}" press="onPressChangeTaskMass"/>
+                            <MenuItem text="{i18n>detailEditFolder}" press="onPressChangeFolderMass"/>
+                            <MenuItem text="Editar Configurações de Alerta" press="onPressChangeAlertConfigMass"/>
+                            <MenuItem text="Editar Configurações de Aprovação" press="onPressChangeApprovalMass"/>
+                            <MenuItem text="Excluir Pastas/Tarefas" press="onPressDeleteSelection"/>
+                            <!-- <MenuItem text="{i18n>detailAddDependent}" enabled="false" press="onPress" />
+                            <MenuItem text="{i18n>detailRemoveDependent}" enabled="false" press="onPress" /> -->
+                        </Menu>
+                    </menu>
+                </MenuButton>
+                <!-- <MenuButton text="{i18n>detailCreate}" enabled="false">
+                    <menu>
+                        <Menu>
+                            <MenuItem text="{i18n>detailNewFolder}" enabled="false" icon="sap-icon://folder-blank" press="onCreateFolder"/>
+                            <MenuItem text="{i18n>detailNewTask}" enabled="false" icon="sap-icon://activity-items" press="onPress" />
+                            <MenuItem text="{i18n>detailDelete}" enabled="false" icon="sap-icon://delete" press="onPress" />
+                        </Menu>
+                    </menu>
+                </MenuButton> -->
+                <!-- <MenuButton text="{i18n>appEdit}" enabled="false">
+                    <menu>
+                        <Menu>
+                            <MenuItem text="{i18n>detailCopy}" icon="sap-icon://copy" press=""/>
+                            <MenuItem text="{i18n>detailCut}" icon="sap-icon://scissors" press="" enabled="{= ${detailView>/clipboardData}.length > 0}"/>
+                            <MenuItem text="{i18n>detailPaste}" icon="sap-icon://paste" press=""/>
+                        </Menu>
+                    </menu>
+                </MenuButton> -->
+                <Button text="Criar Plano de tarefas" visible="{= ${detailView>/isTemplate}}" type="Emphasized" press="onPressCreateTaskPlan"/>
+                <Button text="Alterar Status do Plano de Tarefas" visible="{= !${detailView>/isTemplate}}"  press="onPressChangeStatusPlan"/>
+                <Button text="Excluir Plano de Tarefas" visible="{= !${detailView>/isTemplate}}" press="onPressDeletePlan"/>
+                <Button icon="sap-icon://expand-group" press="onExpand" />
+                <Button press="onCollapse" icon="sap-icon://collapse-group"/>
+                <ToolbarSpacer visible="{= !${detailView>/isTemplate}}"/>
+                <Button visible="{= !${detailView>/isTemplate}}" class="sapUiSmallMarginEnd" text="Dados do Plano" press="onPressOpenPlanHeader" />
+                <ObjectStatus visible="{= !${detailView>/isTemplate}}" class="sapUiSmallMarginEnd"	title="Data Base" text="{path: 'Data_fixada', formatter:'.formatter.convertFromSapDate'}" />
+                <ObjectStatus visible="{= !${detailView>/isTemplate}}" class="sapUiSmallMarginEnd" title="Status"	  text="{path: 'Status', formatter:'.formatter.getStatusText'}"	state="{path: 'Status', formatter:'.formatter.getStatusState'}"	icon="sap-icon://sys-enter-2" />
+                <ToolbarSpacer visible="{= ${detailView>/isTemplate}}"/>
+                <Button tooltip="{= ${detailView>/isTemplate} ? 'Configurações do Modelo' : 'Configurações do Plano' }" class="sapUiSmallMarginEnd" icon="sap-icon://settings" press="onPressOpenSettings"/>
+            </OverflowToolbar>
+        </semantic:headerContent>
+
+        <semantic:content>
+
+            <table:TreeTable id="TreeTemplate" rowActionCount="1" rows="{path:'tree>/data', parameters: {arrayNames:['nodes']}}" selectionMode="MultiToggle" enableSelectAll="true" rowSelectionChange="onSelectChange" visibleRowCountMode="Auto" ariaLabelledBy="title">
+
+                <table:rowSettingsTemplate>
+                    <table:RowSettings highlight="{tree>highlight}" highlightText="{tree>highlight}"/>
+                </table:rowSettingsTemplate>
+
+                <table:rowActionTemplate>
+                    <table:RowAction >
+                        <table:RowActionItem type="Navigation" visible="{= ${detailView>/isTemplate}}" press="goToTask" />
+                    </table:RowAction >
+                </table:rowActionTemplate>
+
+                <table:dragDropConfig>
+                    <dnd:DragInfo enabled="{= ${detailView>/isTemplate}}" groupName="moveToTabDep" sourceAggregation="rows" dragStart="onDragDepStart" />
+                    <dnd:DragDropInfo enabled="{= ${detailView>/isTemplate}}" sourceAggregation="rows" dropPosition="On" targetAggregation="rows" dragStart="onDragStart" drop="onDrop"/>
+                </table:dragDropConfig>
+
+                <table:columns>
+                    <table:Column width="60%">
+                        <table:template>
+                            <HBox>
+                                <core:Icon class="sapUiSmallMarginEnd" src="{tree>Icon}" color="{tree>Color}"/>
+                                <Label text="{tree>register/Description}" wrapping="false" />
+                            </HBox>
+                        </table:template>
+                    </table:Column>
+                    <table:Column width="40%">
+                        <Label text="Responsável Execução"/>
+                        <table:template>
+                            <Text text="{tree>register/User_respons_exec}" wrapping="false" />
+                        </table:template>
+                    </table:Column>
+                </table:columns>
+
+                <table:contextMenu>
+                    <Menu id="menuTreetab">
+                        <MenuItem enabled="{= ${detailView>/isTemplate}}" text="{i18n>detailDisplay}" custdata:rowkey="{tree>}" press="goToTaskMenu(${tree>})"/>
+                        <MenuItem enabled="{= ${detailView>/isTemplate}}" text="{i18n>detailNewFolder}" startsSection="true" custdata:rowkey="{tree>}" press="openCreateFolderDialog(${tree>})"/>
+                        <MenuItem enabled="{= ${detailView>/isTemplate}}" text="{i18n>detailNewTask}" custdata:rowkey="{tree>}" press="openCreateTaskDialog"/>
+                        <MenuItem enabled="{= ${detailView>/isTemplate}}" text="{i18n>detailCopy}" custdata:rowkey="{tree>}" press="onCopyByMenuContext"/>
+                        <MenuItem enabled="{= ${detailView>/isTemplate}}" text="{i18n>detailCut}" custdata:rowkey="{tree>}" press="onCutByMenuContext"/>
+                        <MenuItem enabled="{= ${detailView>/isTemplate}}" text="{i18n>detailPaste}" custdata:rowkey="{tree>}" press="onPasteByMenuContext"/>
+                        <MenuItem enabled="{= ${detailView>/isTemplate}}" text="{i18n>detailDelete}" custdata:rowkey="{tree>}" press="menuDeleteNode"/>
+                    </Menu>
+                </table:contextMenu>
+            </table:TreeTable>
+
+        </semantic:content>
+
+        <!-- <semantic:closeAction>
+            <semantic:CloseAction id="closeColumn" press=".onCloseDetailPress"/>
+        </semantic:closeAction> -->
+
+        <!-- <semantic:fullScreenAction>
+            <semantic:FullScreenAction id="enterFullScreen" visible="{= !${device>/system/phone} &amp;&amp; !${appView>/actionButtonsInfo/midColumn/fullScreen}}" press=".toggleFullScreen"/>
+        </semantic:fullScreenAction>
+        <semantic:exitFullScreenAction>
+            <semantic:ExitFullScreenAction id="exitFullScreen" visible="{= !${device>/system/phone} &amp;&amp; ${appView>/actionButtonsInfo/midColumn/fullScreen}}" press=".toggleFullScreen"/>
+        </semantic:exitFullScreenAction> -->
+
+        <semantic:footerMainAction>
+            <semantic:FooterMainAction text="{i18n>appSave}" press="onSaveDetailChanges"/>
+        </semantic:footerMainAction>
+
+        <semantic:footerCustomActions>
+            <Button text="Descartar" press="onPressRejectChanges"></Button>
+        </semantic:footerCustomActions>
+
+    </semantic:SemanticPage>
+
+</mvc:View>

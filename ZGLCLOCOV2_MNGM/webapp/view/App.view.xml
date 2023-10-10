@@ -1,0 +1,19 @@
+<mvc:View
+    controllerName="votorantim.corp.clocov2planmanagement.controller.App"
+   displayBlock="true"
+    height="100%"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    class="sapUiSizeCompact"
+    xmlns:mvc="sap.ui.core.mvc">
+    <App
+        id="app"
+        busy="{appView>/busy}"
+        busyIndicatorDelay="{appView>/delay}">
+        <f:FlexibleColumnLayout
+            id="layout"
+            layout="{appView>/layout}"
+            backgroundDesign="Translucent">
+        </f:FlexibleColumnLayout>
+    </App>
+</mvc:View>

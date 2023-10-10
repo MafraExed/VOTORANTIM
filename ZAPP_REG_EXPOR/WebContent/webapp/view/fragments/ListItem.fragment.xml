@@ -1,0 +1,129 @@
+<core:FragmentDefinition xmlns="sap.m" 
+						 xmlns:mvc="sap.ui.core.mvc" 
+						 xmlns:semantic="sap.m.semantic" 
+						 xmlns:core="sap.ui.core" 
+						 xmlns:l="sap.ui.layout" 
+						 xmlns:footerbar="sap.ushell.ui.footerbar">
+	<Panel width="auto">
+		<headerToolbar>
+			<Toolbar>
+				<Title id="tableHeader" text="{detailView>/itemListTableTitle}" />
+				<ToolbarSpacer />
+				<Button id="ListItemFullButton" 
+						icon="sap-icon://full-screen" 
+						visible="{= ${device>/system/phone} === false}" 
+						press="onFullScreenPage" /> </Toolbar>
+		</headerToolbar>
+		<content>
+			<Table id="shipDetailTable" 
+				   items="{ShipmentDetailToItems}" 
+				   mode="MultiSelect" 
+				   FixedLayout="true" 
+				   updateFinished="onHandleTableLoad" 
+				   selectionChange="onHandleSelectionChange" 
+				   growing="true" 
+				   growingThreshold="3" 
+				   growingScrollToLoad="true">
+				<columns>
+					<Column width="1.2rem" 
+							hAlign="Center" 
+							minScreenWidth="Tablet" 
+							demandPopin="true">
+						
+						<Text text="St." tooltip="{i18n>detailTitleTableProblema}" />
+					</Column>
+					
+					<Column width="3rem">
+						<Text text="{i18n>detailTitleTableItem}" />
+					</Column>
+					
+					<Column width="4rem">
+						<Text text="{i18n>detailTitleTablePortoDestino}" />
+					</Column>
+					
+					<Column width="5rem">
+						<Text text="{i18n>detailTitleTableInco1}" />
+					</Column>
+					
+					<Column width="4rem">
+						<Text text="{i18n>detailTitleTableZterm}" />
+					</Column>
+					
+					<Column width="4.5rem" demandPopin="true">
+						<Text text="{i18n>detailTitleTableMaterial}" />
+					</Column>
+					
+					<Column width="4rem" minScreenWidth="Tablet" demandPopin="true">
+						<Text text="{i18n>detailTitleTablePeso}" /> 
+					</Column>
+					
+					<Column width="4rem" minScreenWidth="Tablet" demandPopin="true">
+						<Text text="{i18n>detailTitleTableVolumn}" /> 
+					</Column>
+					
+										
+					<Column width="6rem" minScreenWidth="Tablet" demandPopin="true">
+						<Text text="{i18n>detailTitleTableDocref}" />
+					</Column>
+					
+					<Column width="3rem">
+						<Text text="{i18n>detailTitleTableDocrefItem}" />
+					</Column>
+					
+					<Column width="12rem">
+						<Text text="{i18n>detailTitleTableMarks}" /> 
+					</Column>
+				</columns>
+				
+				<items>
+					<ColumnListItem highlight="{path: 'Stprocess', formatter: '.formatter.mudarStatusHighLigth'}">
+						<cells>
+							<ObjectStatus state="{path: 'Stalert', formatter: '.formatter.mudarStateProblema'}" 
+										  icon="{path: 'Stalert', formatter: '.formatter.mudarIconProblema'}" 
+										  tooltip="{StalertDsc}" /> 
+						</cells>
+						
+						<cells>
+							<Text text="{ShpmtIt}" /> </cells>
+						<cells>
+							<ObjectNumber number="{Ptdst}" unit="{PtdstDsc}" emphasized="false" /> 
+						</cells>
+						
+						<cells>
+							<Text text="{Inco1}" /> </cells>
+						<cells>
+							<Text text="{Zterm}" /> </cells>
+						<cells>
+							<ObjectNumber number="{Matnr}" unit="{MatnrDsc}" emphasized="false" /> 
+						</cells>
+						
+						<cells>
+							<ObjectNumber number="{path: 'Weight', formatter:'.formatter.formatNumberBrazil'}" unit="{Unit}" emphasized="false" /> 
+						</cells>
+						
+						<cells>
+							
+							<ObjectNumber number="{path : 'Volumn', formatter:'.formatter.formatNumberBrazil', type : 'sap.ui.model.odata.type.String', 
+													constraints: { isDigitSequence : true, maxLength : 10 }}"
+										  unit="UN"
+										  emphasized="false"/> 
+						</cells>
+											
+						<cells>
+							<Text text="{Docref}" /> 
+						</cells>
+						
+						<cells>
+							<Text text="{DocrefItem}" /> 
+						</cells>
+						
+						<cells>
+							<Text text="{Marks}" /> 
+						</cells>
+						
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+	</Panel>
+</core:FragmentDefinition>

@@ -1,0 +1,11 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+		controllerName="viewcontroller.home" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page id="home" 
+			title="{Titulo}">
+				<content></content>
+				<footer >
+					<Bar id="homeBar">
+					</Bar>
+				</footer>
+			</Page>
+</core:View>

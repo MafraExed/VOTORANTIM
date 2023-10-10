@@ -1,0 +1,85 @@
+<mvc:View controllerName="votorantim.corp.clocov2planmanagement.controller.Task"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.uxap"
+	xmlns:layout="sap.ui.layout" class="sapUiSizeCompact" id="idTask" busyIndicatorDelay="0"
+	xmlns:sections="votorantim.corp.clocov2planmanagement.objectPageSections"
+	xmlns:m="sap.m">
+
+	<ObjectPageLayout id="ObjectPageTask" showFooter="{= ${taskView>/hasChanges}}" upperCaseAnchorBar="false">
+		<headerTitle>
+			<ObjectPageHeader objectTitle="{DescTarefa}">
+				<actions>
+					<ObjectPageHeaderActionButton icon="sap-icon://full-screen" tooltip="{i18n>taskFullScreen}" press=".toggleFullScreen"/>
+					<ObjectPageHeaderActionButton icon="sap-icon://decline" tooltip="{i18n>taskCloseTask}" press=".onCloseDetailPress"/>
+				</actions>
+				<breadcrumbs>
+					<m:Breadcrumbs id="idBreadcumb"/>
+				</breadcrumbs>
+			</ObjectPageHeader>
+		</headerTitle>
+
+		<sections>
+			<ObjectPageSection titleUppercase="false" title="{i18n>taskTabTaskDetail}">
+				<subSections>
+					<ObjectPageSubSection titleUppercase="false">
+						<blocks>
+							<sections:TaskDetail id="taskDetail"/>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+
+			<ObjectPageSection titleUppercase="false" title="{i18n>taskTabDependent}">
+				<subSections>
+					<ObjectPageSubSection>
+						<blocks>
+							<sections:TaskDependent/>
+						</blocks>
+					</ObjectPageSubSection>
+
+				</subSections>
+			</ObjectPageSection>
+
+			<ObjectPageSection titleUppercase="false" title="{i18n>taskAttachment}">
+				<subSections>
+					<ObjectPageSubSection >
+						<blocks>
+							<sections:TaskAttachments/>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+
+			<ObjectPageSection titleUppercase="false" title="Configuração de Alerta">
+				<subSections>
+					<ObjectPageSubSection >
+						<blocks>
+							<sections:TaskAlertConfig/>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+
+			<ObjectPageSection titleUppercase="false" title="Aprovações">
+				<subSections>
+					<ObjectPageSubSection >
+						<blocks>
+							<sections:TaskApprovals id="taskApprovals" />
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+
+		</sections>
+
+		<footer>
+			<m:OverflowToolbar id="otb1">
+				<m:Button text="Sugerir Alterações em Massa" press="onPressSuggestMassChanges" visible="{taskView>/suggestMassChanges}"/>
+				<m:ToolbarSpacer/>
+				<m:Button text="{i18n>appSave}" press="onPressSaveTask" type="Emphasized"/>
+				<m:Button text="Descartar" press="onPressRejectChanges"></m:Button>
+			</m:OverflowToolbar>
+		</footer>
+
+	</ObjectPageLayout>
+</mvc:View>

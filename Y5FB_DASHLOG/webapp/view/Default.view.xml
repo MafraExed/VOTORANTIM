@@ -1,0 +1,266 @@
+<mvc:View controllerName="portal.y5fb_dashlog.controller.Default" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc"
+	displayBlock="true" xmlns="sap.m" xmlns:f="sap.f" xmlns:layout="sap.ui.layout" height="100%" xmlns:t="sap.ui.table">
+	<f:DynamicPage id="dynamicPageId" class="sapUiSizeCompact" xmlns:c="sap.suite.ui.microchart">
+		<!-- DynamicPage Title -->
+		<f:title>
+			<f:DynamicPageTitle id="synamicPage" preserveHeaderStateOnScroll="true">
+				<f:heading>
+					<Title text="Log de aprovação"/>
+				</f:heading>
+				<!--	<f:expandedContent>
+					<Label text="This is a subheading"/>
+				</f:expandedContent>
+				<f:snappedContent>
+					<Label text="This is a subheading"/>
+				</f:snappedContent>
+				<f:content>
+					<Image src="../test-resources/sap/f/images/KPI.png" tooltip="This is just a placeholder, not a real KPI control."/>
+					<Image src="../test-resources/sap/f/images/KPI.png" tooltip="This is just a placeholder, not a real KPI control."/>
+					<Image src="../test-resources/sap/f/images/KPI.png" tooltip="This is just a placeholder, not a real KPI control."/>
+					<Image src="../test-resources/sap/f/images/KPI.png" tooltip="This is just a placeholder, not a real KPI control."/>
+					<Image src="../test-resources/sap/f/images/KPI.png" tooltip="This is just a placeholder, not a real KPI control."/>
+					<Image src="../test-resources/sap/f/images/KPI.png" tooltip="This is just a placeholder, not a real KPI control."/>
+					<Image src="../test-resources/sap/f/images/KPI.png" tooltip="This is just a placeholder, not a real KPI control."/>
+				</f:content>-->
+			</f:DynamicPageTitle>
+		</f:title>
+		<!-- DynamicPage Header -->
+		<f:header>
+			<f:DynamicPageHeader pinnable="false">
+				<f:content>
+					<FlexBox alignItems="Start" justifyContent="SpaceBetween">
+						<items>
+							<Panel backgroundDesign="Transparent">
+								<content>
+									<layout:HorizontalLayout allowWrapping="true">
+											<Panel backgroundDesign="Transparent" class="sapUiNoContentPadding">
+											<content>
+												<layout:HorizontalLayout allowWrapping="true">
+												<!--	<layout:VerticalLayout class="sapUiMediumMarginEnd">
+														<ObjectAttribute title="Location" text="Warehouse A"/>
+													</layout:VerticalLayout>-->
+													<layout:VerticalLayout >
+														<ObjectStatus text="Total de registros: {path: 'KpiTotal>/total' }"/>
+													    <ObjectStatus text="Total de usuários: {path: 'KpiStatistic>/length' }"/>
+													</layout:VerticalLayout>
+												</layout:HorizontalLayout>
+											</content>
+										</Panel>
+										<HeaderContainer id="headerContainer" width="37%" showDividers="false">
+											<!-- Example with bar without value showing N/A -->
+											<FlexBox width="20rem" height="10rem" alignItems="Center" class="sapUiSmallMargin">
+												<items>
+													<c:InteractiveLineChart selectionChanged="selectionChanged" selectionEnabled="false" press="press" displayedPoints="{path: 'KpiTotal>/length' }">
+														<c:points>
+															<c:InteractiveLineChartPoint value="{path: 'SD>/Total' }" label="{path: 'SD>/Tipodoc' }" selected="false" />
+															<c:InteractiveLineChartPoint value="{path: 'LP>/Total' }" label="{path: 'LP>/Tipodoc' }"/>
+															<c:InteractiveLineChartPoint value="{path: 'FI>/Total' }" label="{path: 'FI>/Tipodoc' }"/>
+															<c:InteractiveLineChartPoint value="{path: 'RC>/Total' }" label="{path: 'RC>/Tipodoc' }"/>
+															<c:InteractiveLineChartPoint value="{path: 'SR>/Total' }" label="{path: 'SR>/Tipodoc' }"/>
+															<c:InteractiveLineChartPoint value="{path: 'PO>/Total' }" label="{path: 'PO>/Tipodoc' }"/>
+															<c:InteractiveLineChartPoint value="{path: 'PR>/Total' }" label="{path: 'PR>/Tipodoc' }"/>
+															<c:InteractiveLineChartPoint value="{path: 'CT>/Total' }" label="{path: 'CT>/Tipodoc' }"/>
+															<c:InteractiveLineChartPoint value="{path: 'IV>/Total' }" label="{path: 'IV>/Tipodoc' }"/>
+															<c:InteractiveLineChartPoint value="{path: 'SI>/Total' }" label="{path: 'SI>/Tipodoc' }"/>
+														</c:points>
+													</c:InteractiveLineChart>
+												</items>
+											</FlexBox>
+											<FlexBox width="12rem" height="10rem" alignItems="Center" class="sapUiSmallMargin">
+												<items >
+													<c:InteractiveBarChart selectionChanged="selectionChanged" press="press" displayedBars="4" selectionEnabled="false">
+														<c:bars>
+															<c:InteractiveBarChartBar label="Total {path: 'SD>/Tipodoc' }" value="{path: 'SD>/Total' }" />
+															<c:InteractiveBarChartBar label="Aprv.lote" value="{path: 'SD>/Lote' }"/>
+															<c:InteractiveBarChartBar label="Aprv.ind." value="{path: 'SD>/Aprovacao' }"/>
+															<c:InteractiveBarChartBar label="Rejeição" value="{path: 'SD>/Rejeicao' }"/>
+														</c:bars>
+													</c:InteractiveBarChart>
+												</items>
+											</FlexBox>
+											<FlexBox width="12rem" height="10rem" alignItems="Center" class="sapUiSmallMargin">
+												<items>
+													<c:InteractiveBarChart selectionChanged="selectionChanged" press="press" displayedBars="4" selectionEnabled="false">
+														<c:bars>
+															<c:InteractiveBarChartBar label="Total {path: 'LP>/Tipodoc' }" value="{path: 'LP>/Total' }"/>
+															<c:InteractiveBarChartBar label="Aprv.lote" value="{path: 'LP>/Lote' }"/>
+															<c:InteractiveBarChartBar label="Aprv.ind." value="{path: 'LP>/Aprovacao' }"/>
+															<c:InteractiveBarChartBar label="Rejeição" value="{path: 'LP>/Rejeicao' }"/>
+														</c:bars>
+													</c:InteractiveBarChart>
+												</items>
+											</FlexBox>
+											<FlexBox width="12rem" height="10rem" alignItems="Center" class="sapUiSmallMargin">
+												<items>
+													<c:InteractiveBarChart selectionChanged="selectionChanged" press="press" displayedBars="4" selectionEnabled="false">
+														<c:bars>
+															<c:InteractiveBarChartBar label="Total {path: 'FI>/Tipodoc' }" value="{path: 'FI>/Total' }"/>
+															<c:InteractiveBarChartBar label="Aprv.lote" value="{path: 'FI>/Lote' }"/>
+															<c:InteractiveBarChartBar label="Aprv.ind." value="{path: 'FI>/Aprovacao' }"/>
+															<c:InteractiveBarChartBar label="Rejeição" value="{path: 'FI>/Rejeicao' }"/>
+														</c:bars>
+													</c:InteractiveBarChart>
+												</items>
+											</FlexBox>
+											<FlexBox width="12rem" height="10rem" alignItems="Center" class="sapUiSmallMargin">
+												<items>
+													<c:InteractiveBarChart selectionChanged="selectionChanged" press="press" displayedBars="4" selectionEnabled="false">
+														<c:bars>
+															<c:InteractiveBarChartBar label="Total {path: 'RC>/Tipodoc' }" value="{path: 'RC>/Total' }"/>
+															<c:InteractiveBarChartBar label="Aprv.lote" value="{path: 'RC>/Lote' }"/>
+															<c:InteractiveBarChartBar label="Aprv.ind." value="{path: 'RC>/Aprovacao' }"/>
+															<c:InteractiveBarChartBar label="Rejeição" value="{path: 'RC>/Rejeicao' }"/>
+														</c:bars>
+													</c:InteractiveBarChart>
+												</items>
+											</FlexBox>
+											<FlexBox width="12rem" height="10rem" alignItems="Center" class="sapUiSmallMargin">
+												<items>
+													<c:InteractiveBarChart selectionChanged="selectionChanged" press="press" displayedBars="4" selectionEnabled="false">
+														<c:bars>
+															<c:InteractiveBarChartBar label="Total {path: 'SR>/Tipodoc' }" value="{path: 'SR>/Total' }"/>
+															<c:InteractiveBarChartBar label="Aprv.lote" value="{path: 'SR>/Lote' }"/>
+															<c:InteractiveBarChartBar label="Aprv.ind." value="{path: 'SR>/Aprovacao' }"/>
+															<c:InteractiveBarChartBar label="Rejeição" value="{path: 'SR>/Rejeicao' }"/>
+														</c:bars>
+													</c:InteractiveBarChart>
+												</items>
+											</FlexBox>
+											<FlexBox width="12rem" height="10rem" alignItems="Center" class="sapUiSmallMargin">
+												<items>
+													<c:InteractiveBarChart selectionChanged="selectionChanged" press="press" displayedBars="4" selectionEnabled="false">
+														<c:bars>
+															<c:InteractiveBarChartBar label="Total {path: 'PO>/Tipodoc' }" value="{path: 'PO>/Total' }"/>
+															<c:InteractiveBarChartBar label="Aprv.lote" value="{path: 'PO>/Lote' }"/>
+															<c:InteractiveBarChartBar label="Aprv.ind." value="{path: 'PO>/Aprovacao' }"/>
+															<c:InteractiveBarChartBar label="Rejeição" value="{path: 'PO>/Rejeicao' }"/>
+														</c:bars>
+													</c:InteractiveBarChart>
+												</items>
+											</FlexBox>
+											<FlexBox width="12rem" height="10rem" alignItems="Center" class="sapUiSmallMargin">
+												<items>
+													<c:InteractiveBarChart selectionChanged="selectionChanged" press="press" displayedBars="4" selectionEnabled="false">
+														<c:bars>
+															<c:InteractiveBarChartBar label="Total {path: 'PR>/Tipodoc' }" value="{path: 'PR>/Total' }"/>
+															<c:InteractiveBarChartBar label="Aprv.lote" value="{path: 'PR>/Lote' }"/>
+															<c:InteractiveBarChartBar label="Aprv.ind." value="{path: 'PR>/Aprovacao' }"/>
+															<c:InteractiveBarChartBar label="Rejeição" value="{path: 'PR>/Rejeicao' }"/>
+														</c:bars>
+													</c:InteractiveBarChart>
+												</items>
+											</FlexBox>
+											<FlexBox width="12rem" height="10rem" alignItems="Center" class="sapUiSmallMargin">
+												<items>
+													<c:InteractiveBarChart selectionChanged="selectionChanged" press="press" displayedBars="4" selectionEnabled="false">
+														<c:bars>
+															<c:InteractiveBarChartBar label="Total {path: 'CT>/Tipodoc' }" value="{path: 'CT>/Total' }"/>
+															<c:InteractiveBarChartBar label="Aprv.lote" value="{path: 'CT>/Lote' }"/>
+															<c:InteractiveBarChartBar label="Aprv.ind." value="{path: 'CT>/Aprovacao' }"/>
+															<c:InteractiveBarChartBar label="Rejeição" value="{path: 'CT>/Rejeicao' }"/>
+														</c:bars>
+													</c:InteractiveBarChart>
+												</items>
+											</FlexBox>
+											<FlexBox width="12rem" height="10rem" alignItems="Center" class="sapUiSmallMargin">
+												<items>
+													<c:InteractiveBarChart selectionChanged="selectionChanged" press="press" displayedBars="4" selectionEnabled="false">
+														<c:bars>
+															<c:InteractiveBarChartBar label="Total {path: 'IV>/Tipodoc' }" value="{path: 'IV>/Total' }"/>
+															<c:InteractiveBarChartBar label="Aprv.lote" value="{path: 'IV>/Lote' }"/>
+															<c:InteractiveBarChartBar label="Aprv.ind." value="{path: 'IV>/Aprovacao' }"/>
+															<c:InteractiveBarChartBar label="Rejeição" value="{path: 'IV>/Rejeicao' }"/>
+														</c:bars>
+													</c:InteractiveBarChart>
+												</items>
+											</FlexBox>
+											<FlexBox width="12rem" height="10rem" alignItems="Center" class="sapUiSmallMargin">
+												<items>
+													<c:InteractiveBarChart selectionChanged="selectionChanged" press="press" displayedBars="4" selectionEnabled="false">
+														<c:bars>
+															<c:InteractiveBarChartBar label="Total {path: 'SI>/Tipodoc' }" value="{path: 'SI>/Total' }"/>
+															<c:InteractiveBarChartBar label="Aprv.lote" value="{path: 'SI>/Lote' }"/>
+															<c:InteractiveBarChartBar label="Aprv.ind." value="{path: 'SI>/Aprovacao' }"/>
+															<c:InteractiveBarChartBar label="Rejeição" value="{path: 'SI>/Rejeicao' }"/>
+														</c:bars>
+													</c:InteractiveBarChart>
+												</items>
+											</FlexBox>
+										</HeaderContainer>
+									</layout:HorizontalLayout>
+								</content>
+							</Panel>
+						</items>
+					</FlexBox>
+				</f:content>
+			</f:DynamicPageHeader>
+		</f:header>
+		<f:content>
+			<!-- sorter: {path:'Userlib', group: true} visibleRowCount="10" selectionMode="Single" enableCellFilter="true" -->
+			<t:Table id="table" enableGrouping="false" rows="{ViewLog>/rows}" ariaLabelledBy="title" selectionMode="Single" visibleRowCount="10"
+				enableCellFilter="true" enableColumnReordering="true">
+				<t:toolbar>
+					<Toolbar>
+						<Title id="title" text="Logs ({path: 'ViewLog>/length' })"></Title>
+						<ToolbarSpacer/>
+						<Button icon="sap-icon://download-from-cloud" tooltip="Download Excel" press="onDownload"/>
+						<!--	<Button icon="sap-icon://sort" tooltip="Sort Categories" press="sortCategories"/>
+						<Button icon="sap-icon://decline" tooltip="Clear all sortings" press="clearAllSortings"/> 
+						-->
+						<Button icon="sap-icon://reset" tooltip="Reset" press="clearAllFilters"/>
+					</Toolbar>
+				</t:toolbar>
+				<t:columns>
+					<t:Column width="11rem" sortProperty="Userlib" filterProperty="Userlib" visible="true">
+						<Label text="Usuário"/>
+						<t:template>
+							<Text text="{path:'ViewLog>Userlib'}"/>
+						</t:template>
+					</t:Column>
+					<t:Column id="Tipodoc" width="5rem" filterProperty="Tipodoc" grouped="false" sortProperty="Tipodoc">
+						<Label text="Tipo.Doc"/>
+						<t:template >
+							<Text text="{path:'ViewLog>Tipodoc'}"/>
+						</t:template>
+					</t:Column>
+					<t:Column id="Timestamp" width="11rem" filterProperty="Timestamp" sortProperty="Timestamp" grouped="false">
+						<Label text="Dt.ult.Ação"/>
+						<t:template>
+							<Text
+								text="{path:'ViewLog>Timestamp', type: 'sap.ui.model.type.DateTime', formatOptions: { pattern: 'dd/MM/yyyy HH:mm:ss', strictParsing: true , UTC: true } }"/>
+						</t:template>
+					</t:Column>
+					<t:Column width="8rem" hAlign="End">
+						<Label text="Qtd"/>
+						<t:template>
+							<Label text="{ path: 'ViewLog>Qtd', type: 'sap.ui.model.type.Integer' }"/>
+						</t:template>
+					</t:Column>
+					<t:Column width="9rem" sortProperty="Firstdate">
+						<Label text="1º Aprovação"/>
+						<t:template>
+							<Text
+								text="{path:'ViewLog>Firstdate', type: 'sap.ui.model.type.DateTime', formatOptions: { pattern: 'dd/MM/yyyy', strictParsing: true , UTC: true } }"/>
+						</t:template>
+					</t:Column>
+					<t:Column width="14rem">
+						<Label text="Tipo Ação"/>
+						<t:template>
+							<Text text="{path:'ViewLog>DescAction'}" wrapping="true"/>
+						</t:template>
+					</t:Column>
+					<t:Column width="8rem">
+						<Label text="Notificação"/>
+						<t:template>
+							<Switch state="{path:'ViewLog>Push'}" change="onPush">
+								<layoutData>
+									<FlexItemData growFactor="1"/>
+								</layoutData>
+							</Switch>
+						</t:template>
+					</t:Column>
+				</t:columns>
+			</t:Table>
+		</f:content>
+	</f:DynamicPage>
+</mvc:View>

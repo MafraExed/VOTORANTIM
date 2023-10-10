@@ -1,0 +1,140 @@
+<core:View xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:uxap="sap.uxap" xmlns:smartForm="sap.ui.comp.smartform"
+	xmlns:smartFilterBar="sap.ui.comp.smartfilterbar" xmlns:smartField="sap.ui.comp.smartfield" xmlns:smartTable="sap.ui.comp.smarttable"
+	xmlns:f="sap.ui.layout.form" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" xmlns:m="sap.m" xmlns:table="sap.ui.table"
+	http-equiv="cache-control" content="no-cache" controllerName="CADASTROAPROVADORES.CADASTROAPROVADOR.controller.Worklist"
+	class="sapUiSizeCompact" height="100%" beforeRendering="onBeforeRendering">
+	<Page floatingFooter="true" enableScrolling="true" showHeader="false">
+		<VBox>
+			<ObjectHeader title="Manutenção de cadastros e parâmetros" id="idheader0" icon="sap-icon://request" iconActive="false" responsive="true"/>
+			<IconTabBar id="iconTabBar" class="sapUiResponsiveContentPadding" selectedKey="Tab" modelContextChange="onChangeContext"
+				select="onSelectFilter">
+				<items>
+					<IconTabFilter key="1" id="Filter02" text="Aprovadores" icon="sap-icon://customer-financial-fact-sheet" visible="true"
+						tooltip="Cadastro de Aprovadores">
+						<smartFilterBar:SmartFilterBar id="smartFilterBar1" persistencyKey="SmartTablePKey" useToolbar="false"
+							assignedFiltersChanged="onAssignedFiltersChanged" entitySet="ZET_CBMM_CF_APROVSet" visible="true">
+							<smartFilterBar:controlConfiguration>
+								<smartFilterBar:ControlConfiguration key="Carteira" id="idCarteira" index="0" label="Carteira" groupId="_BASIC" width="auto"
+									visibleInAdvancedArea="true"/>
+								<smartFilterBar:ControlConfiguration key="Aprovador" id="idAprov" index="2" label="Aprovador" groupId="_BASIC" width="auto"
+									visibleInAdvancedArea="true"/>
+							</smartFilterBar:controlConfiguration>
+							<!--layout data used to make the table growing but the filter bar fixed -->
+							<smartFilterBar:layoutData>
+								<m:FlexItemData shrinkFactor="0"/>
+							</smartFilterBar:layoutData>
+						</smartFilterBar:SmartFilterBar>
+						<f:Form class="editableForm" editable="true">
+							<f:layout>
+								<f:ResponsiveGridLayout labelSpanXL="5" labelSpanL="5" labelSpanM="5" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0"
+									emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="3" columnsM="3" singleContainerFullSize="true"/>
+							</f:layout>
+							<f:formContainers>
+								<f:FormContainer>
+									<f:formElements>
+										<f:FormElement id="form1" visible="true">
+											<smartTable:SmartTable id="smartTable1" entitySet="ZET_CBMM_CF_APROVSet" smartFilterId="smartFilterBar1" useExportToExcel="true"
+												useVariantManagement="true" useTablePersonalisation="true" tableType="Table" showRowCount="true" showFullScreenButton="true"
+												initiallyVisibleFields="Carteira,Aprovador" enableAutoBinding="true" beforeRebindTable="onbeforeRebindTable"
+												class="sapUiResponsiveContentPadding" persistencyKey="SmartTablePKey">
+												<m:Table mode="MultiSelect" id="table1" enableBusyIndicator="true" busyIndicatorDelay="100"/>
+												<smartTable:layoutData>
+													<m:FlexItemData growFactor="1" baseSize="0%"/>
+												</smartTable:layoutData>
+											</smartTable:SmartTable>
+										</f:FormElement>
+									</f:formElements>
+								</f:FormContainer>
+							</f:formContainers>
+						</f:Form>
+					</IconTabFilter>
+					<IconTabFilter key="2" id="Filter03" text="Parâmetros" icon="sap-icon://newspaper" tooltip="Parâmetros">
+						<smartFilterBar:SmartFilterBar id="smartFilterBar2" persistencyKey="SmartTablePKey" useToolbar="false"
+							assignedFiltersChanged="onAssignedFiltersChanged" entitySet="ZET_CBMM_CF_PARAMETSet" visible="true">
+							<smartFilterBar:controlConfiguration>
+								<smartFilterBar:ControlConfiguration key="Parametro" id="idParametro" index="0" label="Parâmetro" groupId="_BASIC" width="auto"
+									visibleInAdvancedArea="true"/>
+							</smartFilterBar:controlConfiguration>
+							<!-- layout data used to make the table growing but the filter bar fixed -->
+							<smartFilterBar:layoutData>
+								<m:FlexItemData shrinkFactor="0"/>
+							</smartFilterBar:layoutData>
+						</smartFilterBar:SmartFilterBar>
+						<f:Form class="editableForm" editable="true">
+							<f:layout>
+								<f:ResponsiveGridLayout labelSpanXL="5" labelSpanL="5" labelSpanM="5" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0"
+									emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="3" columnsM="3" singleContainerFullSize="true"/>
+							</f:layout>
+							<f:formContainers>
+								<f:FormContainer>
+									<f:formElements>
+										<f:FormElement id="form2" visible="true">
+											<smartTable:SmartTable id="smartTable2" entitySet="ZET_CBMM_CF_PARAMETSet" smartFilterId="smartFilterBar2" useExportToExcel="true"
+												useVariantManagement="true" useTablePersonalisation="true" tableType="Table" showRowCount="true" showFullScreenButton="true"
+												initiallyVisibleFields="Parametro,Valor" enableAutoBinding="true" beforeRebindTable="onbeforeRebindTable"
+												class="sapUiResponsiveContentPadding" persistencyKey="SmartTablePKey">
+												<m:Table mode="MultiSelect" id="table2" enableBusyIndicator="true" busyIndicatorDelay="100"/>
+												<smartTable:layoutData>
+													<m:FlexItemData growFactor="1" baseSize="0%"/>
+												</smartTable:layoutData>
+											</smartTable:SmartTable>
+										</f:FormElement>
+									</f:formElements>
+								</f:FormContainer>
+							</f:formContainers>
+						</f:Form>
+					</IconTabFilter>
+					<IconTabFilter key="3" id="Filter04" text="Comprador" icon="sap-icon://newspaper" tooltip="Grupo Comprador x Aprovadores">
+						<smartFilterBar:SmartFilterBar id="smartFilterBar3" persistencyKey="SmartTablePKey" useToolbar="false"
+							assignedFiltersChanged="onAssignedFiltersChanged" entitySet="ZET_CBMM_CF_EKGRPSet" visible="true">
+							<smartFilterBar:controlConfiguration>
+								<smartFilterBar:ControlConfiguration key="Ekgrp" id="idEkgrp" index="0" label="Grupo Comprador" groupId="_BASIC" width="auto"
+									visibleInAdvancedArea="true"/>
+							</smartFilterBar:controlConfiguration>
+							<!-- layout data used to make the table growing but the filter bar fixed -->
+							<smartFilterBar:layoutData>
+								<m:FlexItemData shrinkFactor="0"/>
+							</smartFilterBar:layoutData>
+						</smartFilterBar:SmartFilterBar>
+						<f:Form class="editableForm" editable="true">
+							<f:layout>
+								<f:ResponsiveGridLayout labelSpanXL="5" labelSpanL="5" labelSpanM="5" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0"
+									emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="3" columnsM="3" singleContainerFullSize="true"/>
+							</f:layout>
+							<f:formContainers>
+								<f:FormContainer>
+									<f:formElements>
+										<f:FormElement id="form3" visible="true">
+											<smartTable:SmartTable id="smartTable3" entitySet="ZET_CBMM_CF_EKGRPSet" smartFilterId="smartFilterBar3" useExportToExcel="true"
+												useVariantManagement="true" useTablePersonalisation="true" tableType="Table" showRowCount="true" showFullScreenButton="true"
+												initiallyVisibleFields="Ekgrp,Aprov,EnvioEmail" enableAutoBinding="true" beforeRebindTable="onbeforeRebindTable"
+												class="sapUiResponsiveContentPadding" persistencyKey="SmartTablePKey">
+												<m:Table mode="MultiSelect" id="table3" enableBusyIndicator="true" busyIndicatorDelay="100"/>
+												<smartTable:layoutData>
+													<m:FlexItemData growFactor="1" baseSize="0%"/>
+												</smartTable:layoutData>
+											</smartTable:SmartTable>
+										</f:FormElement>
+									</f:formElements>
+								</f:FormContainer>
+							</f:formContainers>
+						</f:Form>
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+		</VBox>
+		<footer>
+			<Toolbar>
+				<Button id="BtnSave" text="Salvar" type="Default" iconFirst="true" width="auto" enabled="true" visible="false" iconDensityAware="false"
+					press="OnSave" tooltip="Salvar alterações" icon="sap-icon://save"/>
+				<Button id="BtnCanc" text="Cancelar" type="Transparent" icon="sap-icon://cancel" iconFirst="true" width="auto" enabled="true"
+					visible="false" iconDensityAware="false" press="onCanc" tooltip="Cancelar modificações"/>
+				<Button id="BtnInclu" text="Incluir" type="Transparent" icon="sap-icon://add" iconFirst="true" width="auto" enabled="true" visible="true"
+					iconDensityAware="false" press="onAdd" tooltip="Incluir Processos"/>
+				<Button id="BtnExclu" text="Excluir" type="Default" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"
+					press="OnDelete" tooltip="Excluir Processos Selecionados" icon="sap-icon://delete"/>
+			</Toolbar>
+		</footer>
+	</Page>
+</core:View>

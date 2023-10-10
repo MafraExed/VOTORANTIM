@@ -1,0 +1,134 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.ui.layout.form"
+	controllerName="Y5GL_CADASTRO.Y5GL_CADASTRO.controller.ENDERECO" xmlns:html="http://www.w3.org/1999/xhtml">
+	<App id="idAppEndereco">
+		<pages>
+			<Page title="Endereco" id="idPageDocumentos">
+				<customHeader>
+					<Bar id="idBarMasterDadosPessoais">
+						<contentLeft>
+							<Button icon="sap-icon://nav-back" id="idB_navback" press="onVoltar"/>
+						</contentLeft>
+						<contentMiddle>
+							<Title text="EndereÃ§o" titleStyle="H3" id="idTitleDependentes"/>
+						</contentMiddle>
+						<contentRight>
+							<Button icon="sap-icon://home" id="idteste" press="onBackMaster"/>
+						</contentRight>
+					</Bar>
+				</customHeader>
+				<content>
+					<OverflowToolbar id="idBar1">
+						<Title text="" level="H1" id="idTitleDep"/>
+					</OverflowToolbar>
+					<f:Form class="editableForm" editable="true" id="FUNSEJEM" visible="true">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_FUNSEJEM" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+								emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer">
+								<f:formElements>
+									<f:FormElement label="Tipo de Endereco" id="FormElementTipoDeEdenreco">
+										<f:fields>
+											<ComboBox id="IdTipoEnd" selectedKey="{TipoEnd}" required="true" placeholder="Tipo de EndereÃ§o" items="">
+												<core:Item key="{Id}" text="{Value}" id="idKeyTipoEnd"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Codigo Postal" id="FormElementCodigoPostal">
+										<f:fields>
+											<Input value="{CEP}" id="IdCEP" placeholder="CEP" required="true" maxLength="25"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Rua" id="FormElementRua">
+										<f:fields>
+											<Input value="{Rua}" id="IdRua" placeholder="Rua" required="true" maxLength="25"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Numero" id="FormElementNumero">
+										<f:fields>
+											<Input value="{Numero}" id="IdNumero" placeholder="Numero" required="true" maxLength="25"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Complemento" id="FormElementComplemento">
+										<f:fields>
+											<Input value="{Complemento}" id="IdComplemento" placeholder="Complemento" required="true" maxLength="25"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Bairo" id="FormElementBairro">
+										<f:fields>
+											<Input value="{Bairro}" id="IdBairro" placeholder="Bairro" required="true" maxLength="25"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Cidade" id="FormElementCidade">
+										<f:fields>
+											<Input value="{Cidade}" id="IdCidade" placeholder="Cidade" required="true" maxLength="25"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="UF" id="FormElementUF">
+										<f:fields>
+											<Input value="{UF}" id="IdUF" placeholder="UF" required="true" maxLength="25"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="CÃ³digo do Municipio" id="FormElementCodMunicipio">
+										<f:fields>
+											<Input value="{CodMunicipio}" id="IdCodMunicipio" placeholder="Codigo Municipio" required="true" maxLength="25"/>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<f:Form class="editableForm" editable="true" id="UPLOAD" visible="true">
+						<f:layout>
+							<f:ResponsiveGridLayout id="idResp_UPLOAD" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+								emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer_UPLOAD">
+								<f:formElements>
+									<f:FormElement label="*Para adicionar Anexos selecione o botÃ£o (+) " id="IdonAddDoc">
+										<f:fields>
+											<UploadCollection id="UploadCollection" multiple="false" change="onChange" fileDeleted="onFileDeleted"
+												beforeUploadStarts="onBeforeUploadStarts" uploadComplete="onuploadComplete" items="{ path: '/ZET_GLRH_UPLOADSet', templateShareable: true }"
+												modelContextChange="onmodelContextChange" mode="SingleSelectMaster"
+												uploadUrl="/sap/opu/odata/sap/ZGWGLRH_MEU_CADASTRO_SRV/ZET_GLHR_UPFILESet"
+												noDataDescription="Para adicionar/alterar Anexos selecione o botÃ£o ( + )" noDataText="Aguardando novos Carregamentos"
+												numberOfAttachmentsText="Anexos">
+												<toolbar>
+													<OverflowToolbar id="myId" visible="true">
+														<Title id="attachmentTitle"/>
+														<ToolbarSpacer id="idToolbarSpacer"/>
+														<SearchField width="10rem" search="onSearch" enabled="false" visible="false" id="idSearchField"/>
+														<Button id="deleteSelectedButton" text="Delete" press="onDeleteSelectedItems" enabled="false" visible="false" type="Transparent"/>
+														<ToggleButton id="selectAllButton" text="Select all" press="onSelectAllPress" enabled="false" visible="false" type="Transparent"/>
+														<UploadCollectionToolbarPlaceholder id="IdUploadCollectionToolbar"/>
+													</OverflowToolbar>
+												</toolbar>
+												<items>
+													<UploadCollectionItem documentId="{DocId}" fileName="{Filename}" mimeType="{Mimetype}"
+														url="/sap/opu/odata/sap/ZGWGLRH_MEU_CADASTRO_SRV/ZET_GLHR_UPFILESet('{Pernr}${Subty}${Favor}')/$value" enableEdit="false"
+														visibleEdit="false" deletePress="onFileDelete" selected="true" id="idUploadCollectionItem"/>
+												</items>
+											</UploadCollection>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+				</content>
+				<footer>
+					<Toolbar id="idOverTollbar" style="Clear" design="Solid">
+						<Button press="onSave" icon="sap-icon://save" id="IdSalvarDetailDep" tooltip="Salvar"/>
+						<Button press="onCancel" icon="sap-icon://cancel" id="IdCancelarDetailDep" tooltip="Cancelar"/>
+						<Button press="onEdit" icon="sap-icon://edit" id="IdEditDetailDep" tooltip="Editar" visible="false"/>
+						<ToolbarSpacer id="idToolbarSpacerD"/>
+						<Button press="onCancelaAprovacao" icon="sap-icon://decline" id="IdCancelaAprov" tooltip="Cancelar envio para AprovaÃ§Ã£o" iconFirst="false"/>
+						<Button press="onAprovar" icon="sap-icon://feeder-arrow" id="IdEnviarDetailDep" tooltip="Enviar para AprovaÃ§Ã£o" iconFirst="false"/>
+					</Toolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

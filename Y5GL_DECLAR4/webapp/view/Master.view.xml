@@ -1,0 +1,27 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml"
+	controllerName="Y5GL_DECLAR4.Y5GL_DECLAR4.controller.Master" displayBlock="true">
+	<App id="app" pages="{/ZET_GLHR_DECLARACOES}">
+		<pages>
+			<Page id="idPageMaster">
+				<customHeader>
+					<Bar id="idBarMaster">
+						<contentMiddle>
+							<core:Icon src="sap-icon://home" id="icon"/>
+							<Link text="Página Inicial" href="#Shell-home" id="Pagina"/>
+						</contentMiddle>
+					</Bar>
+				</customHeader>
+				<content>
+					<List id="list" items="{ path: '/ZET_GLHR_DECLARACOES'}" noDataText="{masterView>/noDataText}" 
+						selectionChange="onSelectionChange">
+						<items>
+							<ObjectListItem title="{TpDesc}" type="Active" press="onSelectionChange" icon="{path:'TpDesc', formatter:'.formatterIcon'}" highlight="Information"
+								fieldGroupIds="" iconDensityAware="true"></ObjectListItem>
+						</items>
+					</List>
+					<Button text="Voltar" width="100%" id="__button0" type="Back" press="NA" visible="false"/>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

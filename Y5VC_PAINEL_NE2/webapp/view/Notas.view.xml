@@ -1,0 +1,54 @@
+<mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.f.semantic" xmlns:footerbar="sap.ushell.ui.footerbar"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:m="sap.m" xmlns:la="sap.ui.layout" xmlns:sv="sap.ui.comp.smartvariants"
+	xmlns:table="sap.ui.table" xmlns:smartTable="sap.ui.comp.smarttable" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core"
+	xmlns:l="controls" xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	controllerName="Y5VC_PAINEL_NE2.Y5VC_PAINEL_NE2.controller.Notas">
+	<Page id="id_pagNotas" showHeader="false" showSubHeader="false">
+		<f:Form editable="true" id="form_item">
+			<f:layout>
+				<f:ResponsiveGridLayout labelSpanXL="5" labelSpanL="5" labelSpanM="5" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0"
+					emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="3" columnsM="3" singleContainerFullSize="true"/>
+			</f:layout>
+			<f:formContainers>
+				<f:FormContainer>
+					<f:formElements>
+						<f:FormElement id="form9" visible="true">
+							<smartTable:SmartTable demandPopin="true" id="ItNotas" entitySet="ZET_VCFI_NOTASSet" useExportToExcel="true" enableCustomFilter="false"
+								useVariantManagement="true" useTablePersonalisation="true" header="Notas" showRowCount="true" showFullScreenButton="false"
+								enableAutoBinding="false" requestAtLeastFields="Fikrs,NotaId,GjahrNota,Kunnr,Belnr,Bukrs,Gjahr,Buzei,Knkli"
+								initiallyVisibleFields="NotaId,GjahrNota,FormaContato,CodResult,CodResultD,ContatoCli,EMailCli,FoneCli,ExecutadoPor,DtContato,HrContato"
+								beforeRebindTable="NotasBeforeRebindTable" persistencyKey="SmartTablePKey4">
+								<smartTable:customData>
+									<core:CustomData key="dateFormatSettings" value="\{&quot;UTC&quot;:true\}"/>
+								</smartTable:customData>
+								<smartTable:customToolbar id="CustBar" class="stickyToolbar">
+									<OverflowToolbar design="Transparent">
+										<ToolbarSpacer/>
+										<Button id="VisuNotas" text="Visualizar Notas" press="VisualizarNotas" type="Ghost"/>
+										
+									</OverflowToolbar>
+								</smartTable:customToolbar>
+								<table:Table selectionMode="MultiToggle" id="table4" enableCellFilter="true" enableColumnFreeze="true" threshold="9999"
+									enableCustomFilter="true" visibleRowCount="16">
+									<table:Column width="100px">
+										<m:Label text="Anexos"/>
+										<table:template>
+											<m:Link text="{QtdeAnexos}" press="AnexosVisu"/>
+										</table:template>
+										<table:customData>
+											<core:CustomData key="p13nData"
+												value="\{&quot;columnKey&quot;: &quot;QtdeAnexos&quot;, &quot;leadingProperty&quot;: &quot;QtdeAnexos&quot;}"/>
+										</table:customData>
+									</table:Column>
+								</table:Table>
+								<smartTable:layoutData>
+									<FlexItemData growFactor="1" baseSize="0%"/>
+								</smartTable:layoutData>
+							</smartTable:SmartTable>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+			</f:formContainers>
+		</f:Form>
+	</Page>
+</mvc:View>

@@ -1,0 +1,1 @@
+sap.ui.define(["sap/ui/core/mvc/Controller"],function(o){"use strict";return o.extend("FechamentoContabil.controller.ConfiguracaoMonitor",{onNavPress:function(o){var n=sap.ui.core.UIComponent.getRouterFor(this);n.navTo("monitor")}})});

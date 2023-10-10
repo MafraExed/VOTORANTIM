@@ -1,0 +1,117 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="com.sap.dashboardappDashboardApp.controller.LocalEstoque" xmlns:m="sap.m"
+	xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout">
+	<m:Page id="pageLocalEstoque" showHeader="true" title="{i18n>localizacaoEstoque}" showFooter="true" showNavButton="true" navButtonPress="onNavBack">
+		<m:content>
+			<m:Bar design="Auto">
+				<m:contentLeft>
+					<m:HBox alignItems="Stretch" direction="Row" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div"
+						visible="true" displayInline="false">
+						<m:items>
+							<m:Text text="" width="10px" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+							<core:Icon src="sap-icon://date-time" size="26px" color="#000080" height="30px" width="30px"/>
+							<m:Text text="" width="10px" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+							<m:Title id="dataTopo" text="" titleStyle="Auto" width="auto" textAlign="Begin" visible="true"/>
+						</m:items>
+						<m:layoutData/>
+					</m:HBox>
+				</m:contentLeft>
+				<m:contentMiddle></m:contentMiddle>
+				<m:contentRight>
+					<layout:HorizontalLayout>
+						<m:Title class="space" text="{i18n>material}" titleStyle="Auto" width="auto" textAlign="Begin" visible="true"/>
+						<m:Title id="material" text=" " titleStyle="Auto" width="auto" textAlign="Begin" visible="true"/>
+					</layout:HorizontalLayout>
+				</m:contentRight>
+			</m:Bar>
+			<m:Panel height="auto" width="100%" headerText="" expandable="false" expanded="true" expandAnimation="true" backgroundDesign="Solid">
+				<m:content>
+					<layout:Grid defaultIndent="L2 M1 S0" defaultSpan="L8 M8 S12" position="Left" width="100%" containerQuery="false" hSpacing="1" vSpacing="1">
+						<layout:content>
+							<m:VBox alignItems="Stretch" direction="Column" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div"
+								visible="true" displayInline="false">
+								<m:items>
+									<m:HBox alignItems="Center" direction="Row" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div"
+										visible="true" displayInline="false">
+										<m:items>
+											<core:Icon src="sap-icon://map-3" size="36px" color="#000080" height="48px" width="48px" backgroundColor="" visible="true"/>
+											<m:VBox alignItems="Center" direction="ColumnReverse" fitContainer="true" width="100%" renderType="Div" visible="true" height="auto">
+												<m:items>
+													<m:VBox alignItems="End" direction="ColumnReverse" fitContainer="false" width="auto" height="auto" justifyContent="End" renderType="Div"
+														visible="true" displayInline="false">
+														<m:items>
+															<layout:HorizontalLayout>
+																<m:Title class="space" text="{i18n>iconEstoque}: " titleStyle="H3" width="auto" textAlign="Center" visible="true"/>
+																<m:Title id="estoque" text="" titleStyle="H3" width="auto" textAlign="Center" visible="true"/>
+															</layout:HorizontalLayout>
+														</m:items>
+														<m:layoutData/>
+													</m:VBox>
+												</m:items>
+												<m:layoutData/>
+											</m:VBox>
+										</m:items>
+										<m:layoutData/>
+									</m:HBox>
+									<m:SearchField placeholder="{i18n>localizar}" showSearchButton="true" visible="true" liveChange="onSearchLiveChange" width="auto"/>
+									<m:Table id="tableLocalizacao" width="100%" noDataText="Buscando dados" mode="None" showSeparators="All" growing="true"
+										growingThreshold="10" growingScrollToLoad="true" visible="{device>/system/desktop}" items="{/}">
+										<m:infoToolbar>
+											<m:Toolbar width="100%" height="auto" design="Auto" visible="false" enabled="true">
+												<m:content>
+													<m:Label text="Label" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit"/>
+												</m:content>
+											</m:Toolbar>
+										</m:infoToolbar>
+										<m:headerToolbar/>
+										<m:columns>
+											<m:Column width="auto" hAlign="Center" vAlign="Middle" minScreenWidth="Phone" demandPopin="true" popinDisplay="Inline"
+												mergeDuplicates="false">
+												<m:header>
+													<m:Title text="{i18n>localizacao}" titleStyle="H4" width="auto" textAlign="Begin" visible="true"/>
+												</m:header>
+												<m:footer/>
+											</m:Column>
+											<m:Column width="auto" hAlign="Center" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline"
+												mergeDuplicates="false">
+												<m:header>
+													<m:Title text="{i18n>saldo}" titleStyle="H4" width="auto" textAlign="Begin" visible="true"/>
+												</m:header>
+												<m:footer/>
+											</m:Column>
+										</m:columns>
+										<m:items>
+											<m:ColumnListItem type="Inactive">
+												<m:cells>
+													<m:Title text="{localizacao}" titleStyle="H5" width="auto" textAlign="Begin" visible="true"/>
+													<m:Title text="{saldo}" titleStyle="H5" width="auto" textAlign="Begin" visible="true"/>
+												</m:cells>
+											</m:ColumnListItem>
+										</m:items>
+									</m:Table>
+									<m:List id="listLocalizacao" width="100%" headerText="" footerText="" backgroundDesign="Solid" showSeparators="Inner" growing="true"
+										growingThreshold="20" growingScrollToLoad="true" visible="{device>/system/phone}" items="{ path : '/' }">
+										<m:items>
+											<m:StandardListItem icon="sap-icon://Chart-Tree-Map" title="{localizacao}" description="{i18n>saldo}: {saldo}" type="Inactive"
+												selected="false"/>
+										</m:items>
+									</m:List>
+								</m:items>
+								<m:layoutData/>
+							</m:VBox>
+						</layout:content>
+					</layout:Grid>
+				</m:content>
+			</m:Panel>
+		</m:content>
+		<m:footer>
+			<m:Bar design="Auto">
+				<m:contentLeft/>
+				<m:contentMiddle/>
+				<m:contentRight/>
+			</m:Bar>
+		</m:footer>
+		<m:headerContent></m:headerContent>
+		<m:subHeader/>
+		<m:customHeader/>
+	</m:Page>
+</mvc:View>

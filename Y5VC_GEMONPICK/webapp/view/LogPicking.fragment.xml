@@ -1,0 +1,77 @@
+<core:FragmentDefinition  xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Dialog id="idDialogTableLog" title="{i18n>TitleLogDialog}" stretch="true">
+		<Table id="idTbTableLog" width="auto" noDataText="{i18n>txt_data_not_found}" showSeparators="All" growing="false"
+			items="{path: 'GE>/ZET_VCMM_PICKING_LOGSet'}" fixedLayout="false">
+			<columns>
+				<Column hAlign="Center" vAlign="Middle">
+					<Text text="{i18n>lbl_status}"/>
+				</Column>
+				<Column >
+					<Text text="{i18n>lbl_idpkg}"/>
+				</Column>
+				<Column >
+					<Text text="{i18n>lbl_docpkg}"/>
+				</Column>
+				<Column >
+					<Text text="{i18n>lbl_itmpkg}"/>
+				</Column>
+				<Column >
+					<Text text="{i18n>lbl_matnr}"/>
+				</Column>
+				<Column >
+					<Text text="{i18n>lbl_credat}"/>
+				</Column>
+				<Column >
+					<Text text="{i18n>lbl_cretim}"/>
+				</Column>
+				<Column >
+					<Text text="{i18n>lbl_message}"/>
+				</Column>
+				<Column >
+					<Text text="{i18n>lbl_messageid}"/>
+				</Column>
+				<Column >
+					<Text text="{i18n>lbl_messageno}"/>
+				</Column>
+				
+			</columns>
+			<items>
+				<ColumnListItem >
+					<cells>
+						<core:Icon src="{GE>StatusIcon}" color="{GE>StatusColor}" tooltip="{i18n>tooltip_status}"/>
+					</cells>
+					<cells>
+						<Text text="{GE>Idpkg}" width="auto"/>
+					</cells>
+					<cells>
+						<Text text="{GE>Docpkg}" width="auto"/>
+					</cells>
+					<cells>
+						<Text text="{GE>Itmpkg}" width="auto"/>
+					</cells>
+					<cells>
+						<Text text="{GE>Matnr}" width="auto"/>
+					</cells>
+					<cells>
+						<Text text="{path: 'GE>Datum', type:'sap.ui.model.type.Date', formatOptions: {style: 'short', UTC:true}}"/>
+					</cells>
+					<cells>
+						<Text text="{path: 'GE>Uzeit', type: 'sap.ui.model.odata.type.Time', formatOptions: { pattern : 'HH:mm:ss'}}"/>
+					</cells>
+					<cells>
+						<Text text="{GE>Message}" width="auto"/>
+					</cells>
+					<cells>
+						<Text text="{GE>Msgid}" width="auto"/>
+					</cells>
+					<cells>
+						<Text text="{GE>Msgno}" width="auto"/>
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+		<beginButton>
+			<Button text="{i18n>txt_btn_close}" press="_onCloseLogDialog" type="Emphasized"/>
+		</beginButton>
+	</Dialog>
+</core:FragmentDefinition>

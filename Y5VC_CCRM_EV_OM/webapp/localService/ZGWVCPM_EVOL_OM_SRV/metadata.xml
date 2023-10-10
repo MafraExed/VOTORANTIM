@@ -1,0 +1,51 @@
+<edmx:Edmx
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+    xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+    xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZGWVCPM_EVOL_OM_SRV" xml:lang="pt" sap:schema-version="1">
+            <EntityType Name="ZET_VCPM_SearchHelp" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Regional"/>
+                    <PropertyRef Name="Sigla"/>
+                </Key>
+                <Property Name="Regional" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Regional Sigla"/>
+                <Property Name="Sigla" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Sigla da Filial"/>
+            </EntityType>
+            <EntityType Name="ZET_VCPM_Evol_OM" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Abertura"/>
+                    <PropertyRef Name="Regional"/>
+                    <PropertyRef Name="Sigla"/>
+                    <PropertyRef Name="Periodo"/>
+                    <PropertyRef Name="TipoClasseCusto"/>
+                    <PropertyRef Name="TipoAtividade"/>
+                    <PropertyRef Name="TipoCusto"/>
+                    <PropertyRef Name="Ano"/>
+                    <PropertyRef Name="Visao"/>
+                    <PropertyRef Name="DataRef"/>
+                </Key>
+                <Property Name="Abertura" Type="Edm.String" Nullable="false" MaxLength="20"/>
+                <Property Name="Regional" Type="Edm.String" Nullable="false" MaxLength="4"/>
+                <Property Name="Sigla" Type="Edm.String" Nullable="false" MaxLength="20"/>
+                <Property Name="Periodo" Type="Edm.String" Nullable="false" MaxLength="1"/>
+                <Property Name="TipoClasseCusto" Type="Edm.String" Nullable="false" MaxLength="9"/>
+                <Property Name="TipoAtividade" Type="Edm.String" Nullable="false" MaxLength="3"/>
+                <Property Name="TipoCusto" Type="Edm.String" Nullable="false" MaxLength="1"/>
+                <Property Name="Ano" Type="Edm.String" Nullable="false" MaxLength="4"/>
+                <Property Name="Visao" Type="Edm.String" Nullable="false" MaxLength="7"/>
+                <Property Name="DataRef" Type="Edm.String" Nullable="false" MaxLength="6"/>
+                <Property Name="Valor" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3"/>
+            </EntityType>
+            <EntityContainer Name="ZGWVCPM_EVOL_OM_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="ZET_VCPM_SearchHelpSet" EntityType="ZGWVCPM_EVOL_OM_SRV.ZET_VCPM_SearchHelp" sap:content-version="1"/>
+                <EntitySet Name="ZET_VCPM_Evol_OMSet" EntityType="ZGWVCPM_EVOL_OM_SRV.ZET_VCPM_Evol_OM" sap:content-version="1"/>
+            </EntityContainer>
+            <atom:link
+                xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/ZGWVCPM_EVOL_OM_SRV/$metadata"/>
+                <atom:link
+                    xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/ZGWVCPM_EVOL_OM_SRV/$metadata"/>
+                </Schema>
+            </edmx:DataServices>
+        </edmx:Edmx>

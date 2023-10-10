@@ -1,0 +1,182 @@
+{
+    "_version": "1.12.0",
+    "sap.app": {
+        "id": "Y5GL_RECIBOS4.Y5GL_RECIBOS4",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "resources": "resources.json",
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/sap/ZGWGLRH_MEU_CADASTRO_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/metadata.xml"
+                }
+            }
+        },
+        "sourceTemplate": {
+            "id": "sap.ui.ui5-template-plugin.2masterdetail",
+            "version": "1.67.0",
+            "toolsId": "2bdf98d0-2470-42ba-830a-7a945e3f345b"
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "sap-icon://detail-view",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "rootView": {
+            "viewName": "Y5GL_RECIBOS4.Y5GL_RECIBOS4.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "app"
+        },
+        "dependencies": {
+            "minUI5Version": "1.52",
+            "libs": {
+                "sap.collaboration": {
+                    "lazy": true
+                },
+                "sap.f": {},
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.ushell": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "Y5GL_RECIBOS4.Y5GL_RECIBOS4.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true
+            }
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.f.routing.Router",
+                "viewType": "XML",
+                "viewPath": "Y5GL_RECIBOS4.Y5GL_RECIBOS4.view",
+                "controlId": "layout",
+                "controlAggregation": "beginColumnPages",
+                "bypassed": {
+                    "target": "notFound"
+                },
+                "async": true
+            },
+            "routes": [
+                {
+                    "pattern": "",
+                    "name": "master",
+                    "target": "master"
+                },
+                {
+                    "pattern": "object/{Zparam}/{Zdesc}/",
+                    "name": "object",
+                    "target": [
+                        "master",
+                        "object"
+                    ]
+                },
+                {
+                    "name": "admto_15",
+                    "pattern": "admto_15/{Periodo}/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "master",
+                        "admto_15"
+                    ]
+                },
+                {
+                    "name": "Pagto_Mensal",
+                    "pattern": "Pagto_Mensal/{Periodo}/{Tipo}/{Check}/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "master",
+                        "Pagto_Mensal"
+                    ]
+                }
+            ],
+            "targets": {
+                "master": {
+                    "viewName": "Master",
+                    "viewLevel": 1,
+                    "viewId": "master"
+                },
+                "object": {
+                    "viewName": "Detail",
+                    "viewId": "detail",
+                    "viewLevel": 1,
+                    "controlAggregation": "midColumnPages"
+                },
+                "detailObjectNotFound": {
+                    "viewName": "DetailObjectNotFound",
+                    "viewId": "detailObjectNotFound",
+                    "controlAggregation": "midColumnPages"
+                },
+                "notFound": {
+                    "viewName": "NotFound",
+                    "viewId": "notFound"
+                },
+                "admto_15": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewName": "admto_15",
+                    "title": "Adiantamento Quizenal",
+                    "viewId": "admto_15",
+                    "viewLevel": 2,
+                    "controlAggregation": "midColumnPages"
+                },
+                "Pagto_Mensal": {
+                    "viewType": "XML",
+                    "viewName": "Pagto_Mensal",
+                    "title": "Pagamento Mensal",
+                    "viewId": "Pagto_Mensal",
+                    "viewLevel": 2,
+                    "controlAggregation": "midColumnPages"
+                }
+            }
+        },
+        "flexEnabled": true,
+        "resources": {
+            "css": [
+                {
+                    "uri": "./css/style.css",
+                    "id": ""
+                }
+            ]
+        }
+    },
+    "sap.platform.abap": {
+        "uri": "/sap/bc/ui5_ui5/sap/y5gl_recibos4",
+        "_version": "1.1.0"
+    }
+}

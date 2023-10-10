@@ -1,0 +1,69 @@
+/* Para Gif - Inicio */
+
+.Loading {
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.footer_img{
+	position: relative;
+    left: 25%;
+    right: 25%;
+}
+
+.LoadingFalse {
+    display: none;
+}
+
+
+.pintalinha{
+    background-color: rgba(209, 226, 243, 0.23);
+}
+
+
+
+/* Para Gif - Fim */
+#backBtn {
+    visibility: hidden;
+}
+
+.sapUshellShellHeadItm>span {
+    visibility: hidden;
+}
+
+/* Tamanho do number da lista - Inicio */
+.sapMObjectNumberText{
+	font-size:1.00rem;
+	line-height: 37px;
+} 
+
+.sapMObjLNumberDiv .sapMObjectNumber .sapMObjectNumberText {
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 1.00rem;
+    font-weight: normal;
+}
+/* Tamanho do number da lista - Fim */ 
+
+.sapUiSizeCompact .sapUiTableCell .sapMLabel,
+.sapUiSizeCondensed .sapUiTableCell .sapMLabel,
+.sapUiSizeCompact .sapUiTableColCell>.sapMLabel,
+.sapUiSizeCondensed .sapUiTableColCell>.sapMLabel {
+    font-weight: normal;
+    font-size: 0.7rem;
+}
+
+.sapMTextMaxLine {
+    font-variant: small-caps;
+    font-size: medium;
+    padding-top: 10px;
+}
+
+.sapMTextNoWrap {
+    text-overflow: ellipsis;
+    word-wrap: normal;
+}
+
+@media only screen and (max-width: 600px) {
+    .sapMText {
+        font-size: x-small;
+    }
+}

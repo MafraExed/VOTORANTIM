@@ -1,0 +1,162 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout" xmlns:footerbar="sap.ushell.ui.footerbar">
+		
+	<Panel width="auto">
+
+	 	<Toolbar>
+			<Title text="{i18n>RemessasEmbarqueTitle}" level="H4" titleStyle="H4"/>
+		</Toolbar> 	
+		
+		<content>
+			<Table id="RemessasEmbarqueTable" 
+				   mode="MultiSelect"
+				   items="{ShipmentDetailToDeliveryExport}" 
+				   fixedLayout="true"
+				   updateFinished="onHandleTableLoad"
+				   visibleRowCount="5"
+			       growing="true"
+				   growingThreshold="3"
+				   growingScrollToLoad="true">
+				   						
+				<columns>
+					<Column width="3rem">			
+						<Text text="{i18n>RemessasEmbarqueColumnTableStatusPicking}" />
+					</Column>					
+					
+					<Column width="2.5rem">			
+						<Text text="{i18n>RemessasEmbarqueColumnTableStatusWM}" />
+					</Column>					
+					
+					<Column width="2.5rem">			
+						<Text text="{i18n>RemessasEmbarqueColumnTableStatusSM}" />
+					</Column>	
+								
+					<Column width="6rem">			
+						<Text text="{i18n>RemessasEmbarqueColumnTableOrdemVenda}" />
+					</Column>					
+					
+					<Column width="4rem">			
+						<Text text="{i18n>RemessasEmbarqueColumnTableItemVenda}" />
+					</Column>					
+				
+					<Column width="6rem">			
+						<Text text="{i18n>RemessasEmbarqueColumnTableRemessa}" />
+					</Column>	
+									
+					<Column width="5rem">			
+						<Text text="{i18n>RemessasEmbarqueColumnTableRecebedor}" />
+					</Column>															
+					
+					<Column width="4.5rem">			
+						<Text text="{i18n>RemessasEmbarqueColumnTableMaterial}" />
+					</Column>					
+					
+					<Column width="5rem">
+						<Text text="{i18n>RemessasEmbarqueColumnTableQuantidade}" />
+					</Column>
+					
+					<Column width="6rem">
+						<Text text="{i18n>RemessasEmbarqueColumnTableLocal}" />
+					</Column>
+					
+					<Column width="3.5rem">
+						<Text text="{i18n>RemessasEmbarqueColumnTableDeposito}" />
+					</Column>
+					
+					<Column width="8rem">
+						<Text text="{i18n>RemessasEmbarqueColumnTableItinerario}" />
+					</Column>
+					
+					<Column width="6rem">
+						<Text text="{i18n>RemessasEmbarqueColumnTableTransporte}" />
+					</Column>
+					
+					<Column width="6rem">
+						<Text text="{i18n>RemessasEmbarqueColumnTableNota}" />
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem highlight="{path: 'Stprocess', formatter: '.formatter.setHighlight'}">
+						<cells>
+							<ObjectStatus 
+								state="{path: 'Kostk', formatter: '.formatter.mudarStatusState'}"
+								icon="{path: 'Kostk', formatter: '.formatter.mudarStatusIcon'}"
+								tooltip="{Kostk}"/>
+						</cells>					
+						<cells>
+							<ObjectStatus 
+								state="{path: 'Lvstk', formatter: '.formatter.mudarStatusState'}"
+								icon="{path: 'Lvstk', formatter: '.formatter.mudarStatusIcon'}"
+								tooltip="{Lvstk}"/>
+						</cells>					
+						<cells>
+							<ObjectStatus 
+								state="{path: 'Statsm', formatter: '.formatter.mudarStatusState'}"
+								icon="{path: 'Statsm', formatter: '.formatter.mudarStatusIcon'}"
+								tooltip="{Statsm}"/>
+
+						</cells>
+						
+						<cells>
+							<Text text="{VbelnVa}" />
+						</cells>
+						<cells>
+							<Text text="{PosnrVa}" />
+						</cells>
+						<cells>
+							<Text text="{VbelnVl}" />
+						</cells>
+									
+						<cells>
+							<ObjectNumber
+									number="{Kunwe}"
+									unit="{KunweDsc}" 
+									tooltip="{KunweDsc}" 
+									emphasized="false"/>
+						</cells>					
+						<cells>
+							<ObjectNumber number="{Matnr}" unit="{MatnrDsc}" emphasized="false"/>
+						</cells>
+						<cells>
+							<ObjectNumber
+									number="{
+												path: 'Lfimg',formatter:'.formatter.formatNumberBrazil'
+											}"
+									unit="{Vrkme}"
+									toooltip="{Vrkme}"
+									emphasized="false" />
+						</cells>
+						<cells>
+
+							<ObjectNumber
+										number="{Vstel}"
+										unit="{VstelDsc}" 
+										tooltip="{VstelDsc}" 
+										emphasized="false"/>
+	
+						</cells>
+						<cells>
+							<Text text="{Lgort}" />
+						</cells>
+						<cells>
+						
+							<ObjectNumber
+										number="{Route}"
+										unit="{RouteDsc}" 
+										tooltip="{RouteDsc}" 
+										emphasized="false"/>
+						
+						</cells>
+						<cells>
+							<Text text="{Tknum}" />
+						</cells>
+						<cells>
+							<Text text="{Mtsnr}" />
+						</cells>								
+					</ColumnListItem>
+				</items>	
+			</Table>
+		</content>
+	</Panel>
+</core:FragmentDefinition>

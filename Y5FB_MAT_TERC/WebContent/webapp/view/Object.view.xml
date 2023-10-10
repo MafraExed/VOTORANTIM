@@ -1,0 +1,41 @@
+<mvc:View controllerName="y5fb.ui5.Dashboard.controller.Object"
+	xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic"
+	xmlns:core="sap.ui.core">
+
+	<Page title="{i18n>objTitle}" showNavButton="true" navButtonPress="onNavBack">
+
+		<core:Fragment fragmentName="y5fb.ui5.Dashboard.view.fragments.ObjectHeader"
+			type="XML" />
+				
+		<IconTabBar id="idIconTabBarMulti" expanded="{device>/isNoPhone}"
+			select="onHandleIconTabBarSelect" class="sapUiResponsiveContentPadding"
+			expandable="false" selectedKey = "dados">
+			<items>
+				<IconTabFilter id="filter1" icon="sap-icon://filter-analytics"
+					tooltip="{i18n>objTabBar1}" design="Horizontal" text="{i18n>objTabBar1}">
+
+					<core:Fragment fragmentName="y5fb.ui5.Dashboard.view.fragments.Object_GraphVlr" type="XML" />
+
+				</IconTabFilter>
+
+				<IconTabFilter id="filter2" icon="sap-icon://donut-chart"
+					tooltip="{i18n>objTabBar2}" design="Horizontal" text="{i18n>objTabBar2}">
+				
+					<core:Fragment fragmentName="y5fb.ui5.Dashboard.view.fragments.Object_GraphQtd" type="XML" /> 
+
+				</IconTabFilter>
+				
+					<IconTabFilter id="filter3" key="dados" icon="sap-icon://chart-table-view"
+					tooltip="{i18n>objTabBar3}" design="Horizontal" text="{i18n>objTabBar3}">
+
+					<core:Fragment fragmentName="y5fb.ui5.Dashboard.view.fragments.Object_Table" type="XML" />
+				
+
+				</IconTabFilter>
+			</items>
+		</IconTabBar>
+
+
+	</Page>
+
+</mvc:View>

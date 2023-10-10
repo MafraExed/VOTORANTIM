@@ -1,0 +1,221 @@
+{
+    "name": "Fiori Progressive Web App",
+    "short_name": "FIORI - PWA",
+    "description": "Progressive Web App that lists games submitted to the A-Frame category in the js13kGames 2017 competition.",
+    "icons": [
+        {
+            "src": "images/icons/icon-192x192.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "images/icons/icon-512x512.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ],
+    "start_url": "index.html",
+    "display": "standalone",
+    "background_color": "#3367D6",
+    "theme_color": "#3367D6",
+    "_version": "1.1.0",
+    "sap.app": {
+        "_version": "1.1.0",
+        "id": "Charm",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "ach": "ach",
+        "sourceTemplate": {
+            "id": "servicecatalog.connectivityComponentForManifest",
+            "version": "0.0.0",
+            "toolsId": "3d21f4c3-6ce4-49ce-9901-78b192c1cd8d"
+        },
+        "dataSources": {
+            "ZGWGLBC_GESTAO_MUD_MOBILE_SRV_01": {
+                "uri": "/sap/opu/odata/sap/ZGWGLBC_GESTAO_MUD_MOBILE_SRV_01/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/ZGWGLBC_GESTAO_MUD_MOBILE_SRV_01/metadata.xml"
+                }
+            },
+            "ZGWGLBC_CHARM_UTILS_SRV": {
+                "uri": "/sap/opu/odata/sap/ZGWGLBC_CHARM_UTILS_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/ZGWGLBC_CHARM_UTILS_SRV/metadata.xml"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "_version": "1.1.0",
+        "technology": "UI5",
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        },
+        "supportedThemes": [
+            "sap_hcb",
+            "sap_bluecrystal"
+        ]
+    },
+    "sap.ui5": {
+        "_version": "1.1.0",
+        "rootView": {
+            "viewName": "Charm.view.App",
+            "type": "XML"
+        },
+        "dependencies": {
+            "minUI5Version": "1.30.0",
+            "libs": {
+                "sap.ui.core": {
+                    "minVersion": "1.38.1"
+                },
+                "sap.m": {
+                    "minVersion": "1.38.1"
+                },
+                "sap.f": {
+                    "minVersion": "1.38.1"
+                }
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "Charm.i18n.i18n"
+                }
+            },
+            "": {
+                "type": "sap.ui.model.odata.v2.ODataModel",
+                "settings": {
+                    "defaultOperationMode": "Server",
+                    "defaultBindingMode": "OneWay",
+                    "defaultCountMode": "Request"
+                },
+                "dataSource": "ZGWGLBC_GESTAO_MUD_MOBILE_SRV_01",
+                "preload": true
+            },
+            "Request": {
+                "type": "sap.ui.model.odata.v2.ODataModel",
+                "settings": {
+                    "defaultOperationMode": "Server",
+                    "defaultBindingMode": "OneWay",
+                    "defaultCountMode": "Request"
+                },
+                "dataSource": "ZGWGLBC_CHARM_UTILS_SRV",
+                "preload": true
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "Charm.view",
+                "controlAggregation": "pages",
+                "controlId": "app"
+            },
+            "routes": [
+                {
+                    "name": "Main",
+                    "pattern": "",
+                    "target": [
+                        "TargetMain"
+                    ],
+                    "greedy": false
+                },
+                {
+                    "name": "Detalhe",
+                    "pattern": "det/{mudanca}",
+                    "target": [
+                        "TargetDetalhe"
+                    ],
+                    "greedy": false
+                },
+                {
+                    "name": "Request",
+                    "pattern": "{mudanca}sist/{sistema}/req/{request}",
+                    "target": [
+                        "TargetRequest"
+                    ],
+                    "greedy": false
+                },
+                {
+                    "name": "Resultado",
+                    "pattern": "res",
+                    "target": [
+                        "Resultado"
+                    ],
+                    "greedy": false
+                },
+                {
+                    "name": "MainDesk",
+                    "pattern": "res",
+                    "target": [
+                        "Resultado"
+                    ],
+                    "greedy": false
+                }
+            ],
+            "targets": {
+                "TargetMain": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "viewName": "Main",
+                    "async": true,
+                    "viewPath": "Charm.view"
+                },
+                "App": {
+                    "viewType": "XML",
+                    "viewName": "App"
+                },
+                "TargetDetalhe": {
+                    "viewType": "XML",
+                    "viewName": "Detalhe"
+                },
+                "TargetRequest": {
+                    "viewType": "XML",
+                    "viewName": "Requests"
+                },
+                "Resultado": {
+                    "transition": "show",
+                    "viewType": "XML",
+                    "viewName": "Resultado"
+                },
+                "MainDesk": {
+                    "viewType": "XML",
+                    "viewName": "MainDesk"
+                }
+            }
+        }
+    },
+    "sap.platform.hcp": {
+        "uri": "",
+        "_version": "1.1.0"
+    },
+    "sap.platform.abap": {
+        "uri": "/sap/bc/ui5_ui5/sap/zglbc_gmud/",
+        "_version": "1.1.0"
+    }
+}

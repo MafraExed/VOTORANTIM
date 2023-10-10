@@ -1,0 +1,140 @@
+<mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.f.semantic" xmlns:footerbar="sap.ushell.ui.footerbar"
+	xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core"
+	controllerName="Y5GL_FERI_SOLI.Y5GL_FERI_SOLI.controller.Detail">
+	<App id="app">
+		<pages>
+			<Page title="Férias Programação" backgroundDesign="Solid">
+				<customHeader>
+					<Bar design="Header">
+						<contentLeft>
+							<Label/>
+							<Label xmlns="sap.m" text="{LabelTitulo}" design="Bold" textAlign="Left"/>
+						</contentLeft>
+						<contentRight>
+							<Button text="" press="onVoltar" icon="sap-icon://home"/>
+						</contentRight>
+					</Bar>
+				</customHeader>
+				<content>
+					<f:Form id="FormChange480_12120" editable="true">
+						<f:layout>
+							<f:ResponsiveGridLayout labelSpanXL="2" labelSpanL="2" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0"
+								emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer>
+								<f:formElements>
+									<f:FormElement>
+										<FlexBox alignItems="Start" justifyContent="SpaceBetween">
+											<items>
+												<core:Icon src="sap-icon://suitcase" size="50px"/>
+												<Text/>
+												<Text/>
+												<Text/>
+												<Text/>
+												<Text/>
+												<Text/>
+												<Text/>
+												<Text/>
+												<Text/>
+												<Text/>
+												<Text/>
+												<Text/>
+												<Text/>
+												<Text/>
+												<Text/>
+												<Text/>
+												<Text/>
+												<Text/>
+												<Text/>
+												<Text/>
+												<Text/>
+												<ObjectStatus xmlns="sap.m" text="{LabelStatus}" id="LblStatus" textDirection="RTL" state="{path: 'LabelStatus', formatter:'.FormatStatus'}"/>
+												<Label/>
+											</items>
+										</FlexBox>
+									</f:FormElement>
+									<f:FormElement>
+										<f:fields>
+											<VBox>
+												<Label/>
+												<Label xmlns="sap.m" text="{LabelLimite}" textAlign="Left"/>
+												<Label xmlns="sap.m" text="{LabelConc}" textAlign="Left"/>
+												<Label xmlns="sap.m" text="{LabelDireito}" textAlign="Left"/>
+												<Text/>
+											</VBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement>
+										<!--primeiro-->
+										<VBox>
+											<f:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout" columnsL="1"
+												backgroundDesign="Solid" visible="true" id="Form1">
+												<Input value="{Index}" type="Number" id="IdIndex" visible="false"/>
+												<Input value="{Pernr}" type="Number" id="IdPernr" visible="false"/>
+												<core:Title text="1° Período"/>
+												<Input value="" id="Per1" visible="false"/>
+												<Label text="Início das Férias"/>
+												<Input value="{Inicio1}" dateFormat="DD-MM-YYYY" id="IdInicio1" change="validaData" placeholder="Data de Início de Férias" textAlign="Left"
+													required="true" editable="{path: 'Inicio1', formatter:'.FormatEditable'}" type="Date" liveChange="somardatafirst" maxLength="10"/>
+												<Label text="Dias de Gozo"/>
+												<Input value="{DiasGozo1}" editable="{path: 'DiasGozo1', formatter:'.FormatEditable'}" maxLength="2" required="true" id="first_diasgozo" change="somardatafirst" liveChange="validacaracter"/>
+												<Label text="Fim das Férias"/>
+												<Input value="{Fim1}" id="IdFim1" dateFormat="DD-MM-YYYY" maxLength="10" textAlign="Left" placeholder="Data de Início de Férias"
+													editable="false" type="Date"/>
+												<ObjectStatus text="{StatusTxt1}" id="first_status" title="Status" icon="sap-icon://order-status" textDirection="LTR"
+													state="{path: 'StatusTxt1', formatter:'.FormatStatus'}"/>
+												<VBox>
+													<CheckBox id="first_abono" editable="{path: 'DiasGozo1', formatter:'.FormatEditable'}" selected="{ path: 'EnableAbono1', formatter: '.FormatChecked' }" text="Abono" textAlign="Left" select="setabono"/>
+													<CheckBox id="first_13" editable="{path: 'DiasGozo1', formatter:'.FormatEditable'}" text="Sol. 1ª Parc. 13º" textAlign="Left" selected="{ path: 'Enable131', formatter: '.FormatChecked2' }"/>
+												</VBox>
+											</f:SimpleForm>
+											<!--segundo-->
+											<f:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout" columnsL="1"
+												backgroundDesign="Solid" visible="true" id="Form2">
+												<core:Title text="2° Período"/>
+												<Input value="" id="Per2" visible="false"/>
+												<Label text="Início das Férias"/>
+												<Input value="{Inicio2}" dateFormat="DD-MM-YYYY" editable="{path: 'Inicio2', formatter:'.FormatEditable'}" maxLength="10" type="Date" required="true" id="IdInicio2"
+													liveChange="somardatasecon"/>
+												<Label text="Dias de Gozo"/>
+												<Input value="{DiasGozo2}" maxLength="2" required="true" dateFormat="" editable="{path: 'DiasGozo2', formatter:'.FormatEditable'}" id="secon_diasgozo" change="somardatasecon" liveChange="validasecon"/>
+												<Label text="Fim das Férias"/>
+												<Input value="{Fim2}" dateFormat="DD-MM-YYYY" editable="false" maxLength="10" type="Date" required="true" id="IdFim2"/>
+												<ObjectStatus text="{StatusTxt2}" title="Status" icon="sap-icon://order-status" textDirection="LTR"
+													state="{path: 'StatusTxt2', formatter:'.FormatStatus'}" id="secon_status"/>
+											</f:SimpleForm>
+											<!--terceiro-->
+											<f:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout" columnsL="1"
+												backgroundDesign="Solid" visible="true" id="Form3">
+												<core:Title text="3° Período"/>
+												<Input value="" id="Per3" visible="false"/>
+												<Label text="Início das Férias"/>
+												<Input value="{Inicio3}" dateFormat="DD-MM-YYYY" editable="{path: 'Inicio3', formatter:'.FormatEditable'}" maxLength="10" type="Date" required="true" id="IdInicio3"
+													liveChange="somardatathird"/>
+												<Label text="Dias de Gozo"/>
+												<Input value="{DiasGozo3}" maxLength="2" editable="{path: 'DiasGozo3', formatter:'.FormatEditable'}" required="true" dateFormat="" valueHelpOnly="true" id="third_diasgozo" change="somardatathirddd" liveChange="validathird"/>
+												<Label text="Fim das Férias"/>
+												<Input value="{Fim3}" dateFormat="DD-MM-YYYY" editable="false" maxLength="10" type="Date" required="true" id="IdFim3"/>
+												<ObjectStatus text="{StatusTxt3}" title="Status" icon="sap-icon://order-status" textDirection="LTR"
+													state="{path: 'StatusTxt3', formatter:'.FormatStatus'}" id="third_status"/>
+											</f:SimpleForm>
+										</VBox>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+				</content>
+				<footer>
+					<Toolbar design="Transparent">
+						<Button text="" press="onCancel" activeIcon="sap-icon://decline" icon="sap-icon://delete"/>
+						<ToolbarSpacer/>
+						<Button text="" press="onVoltar" activeIcon="sap-icon://undo" icon="sap-icon://undo"/>
+						<Button text="" press="onSave" activeIcon="sap-icon://accept" icon="sap-icon://save"/>
+					</Toolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

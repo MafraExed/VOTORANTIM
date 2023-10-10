@@ -1,0 +1,194 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="fibriembarque.controller.UnitDetail" xmlns:uxap="sap.uxap" xmlns:m="sap.m">
+	<m:Page title="{i18n>unitTitle}" showHeader="true" showFooter="true" showNavButton="true" navButtonPress="_onNavPress">
+		<m:content>
+			<uxap:ObjectPageLayout showTitleInHeaderContent="true" showHeaderContent="true" showAnchorBar="true" showFooter="true"
+				subSectionLayout="TitleOnTop">
+				<uxap:headerContent>
+					<m:VBox alignItems="Stretch" direction="Column" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div"
+						visible="true" displayInline="false">
+						<m:items>
+							<!--<m:Title text="{i18n>unitCode}:" titleStyle="H3" width="auto" textAlign="Begin" visible="true"/>-->
+							<!--<m:Title text="{/code}" titleStyle="H3" width="auto" textAlign="Begin" visible="true"/>-->
+							<!--<m:Title text="{/Unit}" titleStyle="H3" width="auto" textAlign="Begin" visible="true"/>-->
+							<m:ObjectStatus text="{/Stringresul}" state="{/State}"/>
+						</m:items>
+						<m:layoutData/>
+					</m:VBox>
+				</uxap:headerContent>
+				<!--Square -->
+				<uxap:headerTitle>
+					<uxap:ObjectPageHeader objectImageURI="sap-icon://product" objectTitle="Unit. {/Unit}" objectSubtitle="" headerDesign="Light"
+						objectImageShape="Circle" isObjectIconAlwaysVisible="false" isObjectTitleAlwaysVisible="false" isObjectSubtitleAlwaysVisible="false"
+						isActionAreaAlwaysVisible="true">
+						<uxap:actions/>
+						<uxap:breadCrumbsLinks/>
+						<uxap:navigationBar/>
+					</uxap:ObjectPageHeader>
+				</uxap:headerTitle>
+				<uxap:sections id="unit">
+					<uxap:ObjectPageSection id="descricao" showTitle="true" title="{i18n>unitDescriptionDescription}:" titleUppercase="false" visible="true">
+						<uxap:subSections>
+							<uxap:ObjectPageSubSection title="{i18n>unitDescriptionDescription}" mode="Expanded">
+								<uxap:blocks>
+									<m:VBox alignItems="Stretch" direction="Column" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div"
+										visible="true" displayInline="false">
+										<m:items>
+											<m:HBox alignItems="Stretch" direction="Row" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div"
+												visible="true" displayInline="false">
+												<m:items>
+													<m:Title text="{i18n>unitProduct}:" titleStyle="H3" width="auto" textAlign="Begin" visible="true"/>
+													<m:Text text="" width="10px" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+													<!--<m:Title text="{/produto}" titleStyle="H3" width="auto" textAlign="Begin" visible="true"/>-->
+													<m:Title text="{/Produto}" titleStyle="H3" width="auto" textAlign="Begin" visible="true"/>
+												</m:items>
+												<m:layoutData/>
+											</m:HBox>
+											<m:HBox alignItems="Stretch" direction="Row" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div"
+												visible="true" displayInline="false">
+												<m:items>
+													<m:Title text="{i18n>unitDescription}:" titleStyle="H3" width="auto" textAlign="Begin" visible="true"/>
+													<m:Text text="" width="10px" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+													<!--<m:Title text="{/produto}" titleStyle="H3" width="auto" textAlign="Begin" visible="true"/>-->
+													<m:Title text="{/Descricaoproduto}" titleStyle="H3" width="auto" textAlign="Begin" visible="true"/>
+												</m:items>
+												<m:layoutData/>
+											</m:HBox>
+											<!--<m:HBox alignItems="Stretch" direction="Row" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div"-->
+											<!--	visible="true" displayInline="false">-->
+											<!--	<m:items>-->
+											<!--		<m:Title text="{i18n>unitProvider}:" titleStyle="H3" width="auto" textAlign="Begin" visible="true"/>-->
+											<!--		<m:Text text="" width="10px" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>-->
+											<!--<m:Title text="{/Fornecedor}" titleStyle="H3" width="auto" textAlign="Begin" visible="true"/>-->
+											<!--		<m:Title text="{/Fornecedor}" titleStyle="H3" width="auto" textAlign="Begin" visible="true"/>-->
+											<!--	</m:items>-->
+											<!--	<m:layoutData/>-->
+											<!--</m:HBox>-->
+											<m:HBox alignItems="Stretch" direction="Row" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div"
+												visible="true" displayInline="false">
+												<m:items>
+													<m:Title text="{i18n>unitWeight}:" titleStyle="H3" width="auto" textAlign="Begin" visible="true"/>
+													<m:Text text="" width="10px" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+													<!--<m:Title text="{/Peso}" titleStyle="H3" width="auto" textAlign="Begin" visible="true"/>-->
+													<m:Title text="{/Saldo}" titleStyle="H3" width="auto" textAlign="Begin" visible="true"/>
+												</m:items>
+												<m:layoutData/>
+											</m:HBox>
+										</m:items>
+										<m:layoutData/>
+									</m:VBox>
+								</uxap:blocks>
+								<uxap:moreBlocks/>
+								<uxap:actions/>
+							</uxap:ObjectPageSubSection>
+						</uxap:subSections>
+						<uxap:customAnchorBarButton>
+							<!--<m:Button text="" type="Default" icon="sap-icon://phone" iconFirst="true" width="auto" enabled="true" visible="true"-->
+							<!--	iconDensityAware="false" />-->
+							<!--<m:Button icon="sap-icon://phone"></m:Button>-->
+						</uxap:customAnchorBarButton>
+					</uxap:ObjectPageSection>
+					<!--<uxap:ObjectPageSection id="localizacaoatual" showTitle="true" title="{i18n>unitLocation}" titleUppercase="false" visible="true">-->
+					<!--	<uxap:subSections>-->
+					<!--		<uxap:ObjectPageSubSection title="{i18n>unitLocation}" mode="Expanded">-->
+					<!--			<uxap:blocks>-->
+					<!--				<m:VBox alignItems="Stretch" direction="Column" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div"-->
+					<!--					visible="true" displayInline="false">-->
+					<!--					<m:items>-->
+					<!--						<m:HBox alignItems="Stretch" direction="Row" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div"-->
+					<!--							visible="true" displayInline="false">-->
+					<!--							<m:items>-->
+					<!--								<m:Title text="{i18n>unitCurrentLocation}:" titleStyle="H3" width="auto" textAlign="Begin" visible="true"/>-->
+					<!--								<m:Text text="" width="10px" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>-->
+					<!--<m:Title text="{/LocalizacaoAtual}" titleStyle="H3" width="auto" textAlign="Begin" visible="true"/>-->
+					<!--								<m:Title text="{/Localizaatual}" titleStyle="H3" width="auto" textAlign="Begin" visible="true"/>-->
+					<!--							</m:items>-->
+					<!--							<m:layoutData/>-->
+					<!--						</m:HBox>-->
+					<!--						<m:HBox alignItems="Stretch" direction="Row" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div"-->
+					<!--							visible="true" displayInline="false">-->
+					<!--							<m:items>-->
+					<!--								<m:Title text="{i18n>unitShippingDate}:" titleStyle="H3" width="auto" textAlign="Begin" visible="true"/>-->
+					<!--								<m:Text text="" width="10px" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>-->
+					<!--<m:Title text="{/DataTransporte}" titleStyle="H3" width="auto" textAlign="Begin" visible="true"/>-->
+					<!--								<m:Title text="{/Datamodificaatual}" titleStyle="H3" width="auto" textAlign="Begin" visible="true"/>-->
+					<!--							</m:items>-->
+					<!--							<m:layoutData/>-->
+					<!--						</m:HBox>-->
+					<!--						<m:HBox alignItems="Stretch" direction="Row" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div"-->
+					<!--							visible="true" displayInline="false">-->
+					<!--							<m:items>-->
+					<!--								<m:Title text="{i18n>unitShippingTime}:" titleStyle="H3" width="auto" textAlign="Begin" visible="true"/>-->
+					<!--								<m:Text text="" width="10px" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>-->
+					<!--								<m:Title text="{/Horamodificaatual}" titleStyle="H3" width="auto" textAlign="Begin" visible="true"/>-->
+					<!--							</m:items>-->
+					<!--							<m:layoutData/>-->
+					<!--						</m:HBox>-->
+					<!--					</m:items>-->
+					<!--					<m:layoutData/>-->
+					<!--				</m:VBox>-->
+					<!--			</uxap:blocks>-->
+					<!--			<uxap:moreBlocks/>-->
+					<!--			<uxap:actions/>-->
+					<!--		</uxap:ObjectPageSubSection>-->
+					<!--	</uxap:subSections>-->
+					<!--	<uxap:customAnchorBarButton/>-->
+					<!--</uxap:ObjectPageSection>-->
+					<uxap:ObjectPageSection id="localizacaoant" showTitle="true" title="{i18n>unitLastLocation}" titleUppercase="false" visible="true">
+						<uxap:subSections>
+							<uxap:ObjectPageSubSection title="{i18n>unitLastLocation}" mode="Expanded">
+								<uxap:blocks>
+									<m:VBox alignItems="Stretch" direction="Column" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div"
+										visible="true" displayInline="false">
+										<m:items>
+											<m:HBox alignItems="Stretch" direction="Row" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div"
+												visible="true" displayInline="false">
+												<m:items>
+													<m:Title text="{i18n>unitLastLocation}:" titleStyle="H3" width="auto" textAlign="Begin" visible="true"/>
+													<m:Text text="" width="10px" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+													<!--<m:Title text="{/LocalizacaoAtual}" titleStyle="H3" width="auto" textAlign="Begin" visible="true"/>-->
+													<m:Title text="{/Localizaant}" titleStyle="H3" width="auto" textAlign="Begin" visible="true"/>
+												</m:items>
+												<m:layoutData/>
+											</m:HBox>
+											<m:HBox alignItems="Stretch" direction="Row" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div"
+												visible="true" displayInline="false">
+												<m:items>
+													<m:Title text="{i18n>unitModificationDate}:" titleStyle="H3" width="auto" textAlign="Begin" visible="true"/>
+													<m:Text text="" width="10px" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+													<!--<m:Title text="{/HoraTransporte}" titleStyle="H3" width="auto" textAlign="Begin" visible="true"/>-->
+													<m:Title text="{/Datamodificaant}" titleStyle="H3" width="auto" textAlign="Begin" visible="true"/>
+												</m:items>
+												<m:layoutData/>
+											</m:HBox>
+											<m:HBox alignItems="Stretch" direction="Row" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div"
+												visible="true" displayInline="false">
+												<m:items>
+													<m:Title text="{i18n>unitModificationHour}:" titleStyle="H3" width="auto" textAlign="Begin" visible="true"/>
+													<m:Text text="" width="10px" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+													<!--<m:Title text="{/HoraTransporte}" titleStyle="H3" width="auto" textAlign="Begin" visible="true"/>-->
+													<m:Title text="{/Horamodificaant}" titleStyle="H3" width="auto" textAlign="Begin" visible="true"/>
+												</m:items>
+												<m:layoutData/>
+											</m:HBox>
+										</m:items>
+										<m:layoutData/>
+									</m:VBox>
+								</uxap:blocks>
+								<uxap:moreBlocks/>
+								<uxap:actions/>
+							</uxap:ObjectPageSubSection>
+						</uxap:subSections>
+						<uxap:customAnchorBarButton/>
+					</uxap:ObjectPageSection>
+				</uxap:sections>
+			</uxap:ObjectPageLayout>
+		</m:content>
+		<m:footer>
+			<m:Bar design="Auto">
+				<m:contentRight>
+					<!--<m:Button text="" type="Back" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onButtonPress22"/>-->
+				</m:contentRight>
+			</m:Bar>
+		</m:footer>
+	</m:Page>
+</mvc:View>

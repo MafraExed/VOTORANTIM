@@ -1,0 +1,94 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns="sap.suite.ui.commons" xmlns:m="sap.m" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:viz.data="sap.viz.ui5.data" xmlns:viz="sap.viz.ui5.controls" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+	controllerName="ZCBMM_RELATORIO.ZCBMM_RELATORIO.controller.ObjectCarteira">
+	<ChartContainer id="idChartContainerCarteira" title="vizChart" showFullScreen="true" autoAdjustHeight="true" showLegend="true"
+		class="ChartContainerHeader" showPersonalization="false" contentChange="attachContentChange">
+		<dimensionSelectors>
+			<m:Button id='naviButtonCarteira' type="Back" press="navButtonPress" visible="{device>/isPhone}"/>
+			<m:Select selectedKey="Column" change="onChangeChart">
+				<m:items>
+					<core:Item text="Barra" key="Bar"/>
+					<core:Item text="Linha" key="Line"/>
+					<core:Item text="Coluna" key="Column"/>
+				</m:items>
+			</m:Select>
+		</dimensionSelectors>
+		<content>
+			<ChartContainerContent icon="sap-icon://horizontal-bar-chart">
+				<content>
+					<viz:Popover id="idPopOverCarteira"></viz:Popover>
+					<viz:VizFrame id="idoVizFrameCarteira" vizType='column' uiConfig="{applicationSet:'fiori'}"
+						vizProperties="{
+			                plotArea: {
+			                  dataPointStyle: {
+			                	rules: [
+			                		{
+			                			dataContext: {Contrato: 'MRO'},
+										properties: {
+											color: '#e78c07'
+										},
+										displayName: 'MRO',
+										dataName: {
+											Contrato: 'Contrato'
+										}
+			                		},{
+			                			dataContext: {Contrato: 'INSUMO'},
+										properties: {
+											color: '#bb0000'
+										},
+										displayName: 'Insumos',
+										dataName: {
+											Contrato: 'Contrato'
+										}
+			                		},{
+			                			dataContext: {Contrato: 'PRODUTO ACABADO'},
+										properties: {
+											color: '#2b7c2b'
+										},
+										displayName: 'Produto Acabado',
+										dataName: {
+											Contrato: 'Contrato'
+										}
+			                		},{
+			                			dataContext: {Contrato: 'SERVIÇOS'},
+										properties: {
+											color: '#848f94'
+										},
+										displayName: 'Serviços',
+										dataName: {
+											Contrato: 'Contrato'
+										}
+			                		}
+			                	]
+			                  }
+			                },
+			                legend: {
+			                  title: {
+			                    visible: false
+			                  }
+			                },
+			                title: {
+			                  visible: true,
+			                  text: 'Relatório Carteira'
+			                }
+			              }">
+						<viz:dataset>
+							<viz.data:FlattenedDataset data="{/ZET_CBMM_CF_CARTEIRASet}">
+								<viz.data:dimensions>
+									<viz.data:DimensionDefinition name="Contrato" value="{Contrato}"/>
+								</viz.data:dimensions>
+								<viz.data:measures>
+									<viz.data:MeasureDefinition name="Valor" value="{Valor}"/>
+								</viz.data:measures>
+							</viz.data:FlattenedDataset>
+						</viz:dataset>
+						<viz:feeds>
+							<viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Valor"/>
+							<viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="Contrato"/>
+						</viz:feeds>
+					</viz:VizFrame>
+				</content>
+			</ChartContainerContent>
+		</content>
+	</ChartContainer>
+</mvc:View>

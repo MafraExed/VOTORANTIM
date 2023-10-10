@@ -1,0 +1,197 @@
+<mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.f.semantic" xmlns:footerbar="sap.ushell.ui.footerbar"
+	xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core"
+	controllerName="Y5GL_DELEG_FERI.Y5GL_DELEG_FERI.controller.DetalheFerias">
+	<App id="app">
+		<pages>
+			<Page title="Férias Programação" backgroundDesign="Solid" id="idPage">
+				<customHeader>
+					<Bar id="idBarMaster">
+						<contentLeft>
+							<Button icon="sap-icon://nav-back" id="idB_navback" press="onVoltar" text="Voltar"/>
+						</contentLeft>
+						<contentMiddle>
+							<Title text="{LabelTitulo}" titleStyle="H3" id="idTitleDependentes"/>
+						</contentMiddle>
+					</Bar>
+				</customHeader>
+				<ObjectHeader icon="{path:'LabelTitulo', formatter:'.formatterIcon'}" iconDensityAware="false" title="{Nome}">
+					<attributes>
+						<ObjectAttribute text="{LabelAqui}"/>
+						<ObjectAttribute text="{LabelConc}"/>
+						<ObjectAttribute text="{LabelDireito}"/>
+						<ObjectAttribute text="{LabelLimite}"/>
+					</attributes>
+				</ObjectHeader>
+				<content>
+					<HBox width="100%" height="1000%" id="idGif" class="Loading" busyIndicatorSize="Auto" backgroundDesign="Solid">
+						<Image src="imagens/voto_load_white.gif" width="100%" class="footer_img" id="idimg" backgroundSize="100%"/>
+					</HBox>
+						<f:Form id="Form1" editable="true" title="1° Período">
+							<f:layout>
+								<f:ResponsiveGridLayout labelSpanXL="2" labelSpanL="2" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0"
+									emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false"/>
+							</f:layout>
+							<f:formContainers>
+								<f:FormContainer>
+									<f:formElements>
+										<f:FormElement>
+											<FlexBox height="100%" alignItems="Start" justifyContent="End">
+												<items>
+													<Button press="onAltera1" activeIcon="sap-icon://edit" icon="sap-icon://edit" visible="{path: 'StatusTxt1', formatter:'.FormatAlterar'}"
+														text="Alterar" type="Transparent" id="Altera1"/>
+													<Button press="onAprova" activeIcon="sap-icon://accept" icon="sap-icon://accept" visible="{path: 'StatusTxt1', formatter:'.FormatAprovar'}"
+														text="Aprovar" type="Transparent" id="Aprova1"/>
+													<Button press="onReprova" activeIcon="sap-icon://decline" icon="sap-icon://decline" text="Reprovar" type="Transparent" id="Reprova1"
+														visible="{path: 'StatusTxt1', formatter:'.FormatVisible'}"/>
+												</items>
+											</FlexBox>
+										</f:FormElement>
+										<f:FormElement label="Início de Férias">
+											<Input value="{Inicio1}" dateFormat="DD-MM-YYYY" id="IdInicio1" change="validaData" placeholder="Data de Início de Férias" textAlign="Left"
+												required="true" editable="{path: 'StatusTxt1', formatter:'.FormatEditable'}" type="Date" liveChange="somardatafirst" maxLength="10"/>
+										</f:FormElement>
+										<f:FormElement label="Dias de Gozo">
+											<Input value="{path: 'DiasGozo1', formatter:'.FormatValue'}" editable="{path: 'StatusTxt1', formatter:'.FormatEditable'}" maxLength="2"
+												required="true" id="first_diasgozo" change="validaData" liveChange="somardatafirst"/>
+										</f:FormElement>
+										<f:FormElement label="Fim das Férias">
+											<Input value="{Fim1}" id="IdFim1" dateFormat="DD-MM-YYYY" maxLength="10" textAlign="Left" placeholder="Data de Início de Férias"
+												editable="false" type="Date"/>
+										</f:FormElement>
+										<f:FormElement>
+											<ObjectStatus text="{StatusTxt1}" id="first_status" title="Status" icon="sap-icon://order-status" textDirection="LTR"
+												state="{path: 'StatusTxt1', formatter:'.FormatStatus'}"/>
+											<Text text=""/>
+											<Button press="onDownload" activeIcon="sap-icon://pdf-attachment" icon="sap-icon://pdf-attachment" width="100%"
+												visible="{path: 'StatusTxt1', formatter:'.FormatPDF'}" text="Download do Aviso" type="Transparent" id="Download1"/>
+										</f:FormElement>
+										<f:FormElement>
+											<FlexBox height="100%" alignItems="Start" justifyContent="End">
+												<items>
+													<CheckBox id="first_13_1" editable="{path: 'StatusTxt1', formatter:'.FormatEditable'}" text="Sol. 1ª Parc. 13º" textAlign="Initial"
+														selected="{ path: 'SolParc131', formatter: '.FormatChecked2' }"/>
+												</items>
+											</FlexBox>
+										</f:FormElement>
+										<f:FormElement>
+											<FlexBox height="100%" alignItems="Start" justifyContent="End">
+												<items>
+													<CheckBox id="first_abono" editable="{path: 'StatusTxt1', formatter:'.FormatEditable'}"
+														selected="{ path: 'EnableAbono1', formatter: '.FormatChecked' }" text="Abono" textAlign="Initial" select="setabono"/>
+												</items>
+											</FlexBox>
+										</f:FormElement>
+									</f:formElements>
+								</f:FormContainer>
+							</f:formContainers>
+						</f:Form>
+						<f:Form id="Form2" editable="true" title="2° Período">
+							<f:layout>
+								<f:ResponsiveGridLayout labelSpanXL="2" labelSpanL="2" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0"
+									emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false"/>
+							</f:layout>
+							<f:formContainers>
+								<f:FormContainer>
+									<f:formElements>
+										<f:FormElement>
+											<FlexBox height="100%" alignItems="Start" justifyContent="End">
+												<items>
+													<Button press="onAltera2" activeIcon="sap-icon://edit" icon="sap-icon://edit" visible="{path: 'StatusTxt2', formatter:'.FormatAlterar'}"
+														text="Alterar" type="Transparent" id="Altera2"/>
+													<Button press="onAprova" activeIcon="sap-icon://accept" icon="sap-icon://accept" visible="{path: 'StatusTxt2', formatter:'.FormatAprovar'}"
+														text="Aprovar" type="Transparent" id="Aprova2"/>
+													<Button press="onReprova" activeIcon="sap-icon://decline" icon="sap-icon://decline" text="Reprovar" type="Transparent" id="Reprova2"
+														visible="{path: 'StatusTxt2', formatter:'.FormatVisible'}"/>
+												</items>
+											</FlexBox>
+										</f:FormElement>
+										<f:FormElement label="Início de Férias">
+											<Input value="{Inicio2}" dateFormat="DD-MM-YYYY" editable="{path: 'StatusTxt2', formatter:'.FormatEditable'}" maxLength="10" type="Date"
+												required="true" id="IdInicio2" liveChange="somardatasecon"/>
+										</f:FormElement>
+										<f:FormElement label="Dias de Gozo">
+											<Input value="{path: 'DiasGozo2', formatter:'.FormatValue'}" maxLength="2" required="true"
+												editable="{path: 'StatusTxt2', formatter:'.FormatEditable'}" id="secon_diasgozo" change="somardatasecon" liveChange="validasecon"/>
+										</f:FormElement>
+										<f:FormElement label="Fim das Férias">
+											<Input value="{Fim2}" dateFormat="DD-MM-YYYY" editable="false" maxLength="10" type="Date" required="true" id="IdFim2"/>
+										</f:FormElement>
+										<f:FormElement>
+											<ObjectStatus text="{StatusTxt2}" title="Status" icon="sap-icon://order-status" textDirection="LTR"
+												state="{path: 'StatusTxt2', formatter:'.FormatStatus'}" id="secon_status"/>
+											<Text text=""/>
+											<Button press="onDownload2" activeIcon="sap-icon://pdf-attachment" icon="sap-icon://pdf-attachment" width="100%"
+												visible="{path: 'StatusTxt2', formatter:'.FormatPDF'}" text="Download do Aviso" type="Transparent" id="Download2"/>
+										</f:FormElement>
+										<f:FormElement>
+											<FlexBox height="100%" alignItems="Start" justifyContent="End">
+												<items>
+													<CheckBox id="first_13_2" editable="{path: 'StatusTxt2', formatter:'.FormatEditable'}" text="Sol. 1ª Parc. 13º" textAlign="Left"
+														selected="{ path: 'SolParc132', formatter: '.FormatChecked2' }"/>
+												</items>
+											</FlexBox>
+										</f:FormElement>
+									</f:formElements>
+								</f:FormContainer>
+							</f:formContainers>
+						</f:Form>
+						<f:Form id="Form3" editable="true" title="3° Período">
+							<f:layout>
+								<f:ResponsiveGridLayout labelSpanXL="2" labelSpanL="2" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0"
+									emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false"/>
+							</f:layout>
+							<f:formContainers>
+								<f:FormContainer>
+									<f:formElements>
+										<f:FormElement>
+											<FlexBox height="100%" alignItems="Start" justifyContent="End">
+												<items>
+													<Button press="onAltera3" activeIcon="sap-icon://edit" icon="sap-icon://edit" visible="{path: 'StatusTxt3', formatter:'.FormatAlterar'}"
+														text="Alterar" type="Transparent" id="Altera3"/>
+													<Button press="onAprova" activeIcon="sap-icon://accept" icon="sap-icon://accept" visible="{path: 'StatusTxt3', formatter:'.FormatAprovar'}"
+														text="Aprovar" type="Transparent" id="Aprova3"/>
+													<Button press="onReprova" activeIcon="sap-icon://decline" icon="sap-icon://decline" text="Reprovar" type="Transparent" id="Reprova3"
+														visible="{path: 'StatusTxt3', formatter:'.FormatVisible'}"/>
+												</items>
+											</FlexBox>
+										</f:FormElement>
+										<f:FormElement label="Início de Férias">
+											<Input value="{Inicio3}" dateFormat="DD-MM-YYYY" editable="{path: 'StatusTxt3', formatter:'.FormatEditable'}" maxLength="10" type="Date"
+												required="true" id="IdInicio3" liveChange="somardatathird"/>
+										</f:FormElement>
+										<f:FormElement label="Dias de Gozo">
+											<Input value="{path: 'DiasGozo3', formatter:'.FormatValue'}" maxLength="2" editable="{path: 'StatusTxt3', formatter:'.FormatEditable'}"
+												required="true" valueHelpOnly="true" id="third_diasgozo" change="somardatathirddd" liveChange="validathird"/>
+										</f:FormElement>
+										<f:FormElement label="Fim das Férias">
+											<Input value="{Fim3}" dateFormat="DD-MM-YYYY" editable="false" maxLength="10" type="Date" required="true" id="IdFim3"/>
+										</f:FormElement>
+										<f:FormElement>
+											<ObjectStatus text="{StatusTxt3}" title="Status" icon="sap-icon://order-status" textDirection="LTR"
+												state="{path: 'StatusTxt3', formatter:'.FormatStatus'}" id="third_status"/>
+											<Text text=""/>
+											<Button press="onDownload3" activeIcon="sap-icon://pdf-attachment" icon="sap-icon://pdf-attachment" width="100%"
+												visible="{path: 'StatusTxt3', formatter:'.FormatPDF'}" text="Download do Aviso" type="Transparent" id="Download3"/>
+										</f:FormElement>
+										<f:FormElement>
+											<FlexBox height="100%" alignItems="Start" justifyContent="End">
+												<items>
+													<CheckBox id="first_13_3" editable="{path: 'StatusTxt3', formatter:'.FormatEditable'}" text="Sol. 1ª Parc. 13º" textAlign="Left"
+														selected="{ path: 'SolParc133', formatter: '.FormatChecked2' }"/>
+												</items>
+											</FlexBox>
+										</f:FormElement>
+									</f:formElements>
+								</f:FormContainer>
+							</f:formContainers>
+						</f:Form>
+				</content>
+				<footer>
+					<Toolbar design="Transparent">
+						<ToolbarSpacer/>
+					</Toolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

@@ -1,0 +1,180 @@
+{
+    "_version": "1.9.0",
+    "sap.app": {
+        "id": "ZCBMM_MAILTRAN.ZCBMM_MAILTRAN",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/sap/ZGWCBMM_CONTRATACAO_FRETE_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/metadata.xml"
+                }
+            }
+        },
+        "sourceTemplate": {
+            "id": "sap.ui.ui5-template-plugin.2masterdetail",
+            "version": "1.52.7",
+            "toolsId": "1d7df825-1165-4fa2-832f-0c50e246218a"
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "sap-icon://detail-view",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "rootView": {
+            "viewName": "ZCBMM_MAILTRAN.ZCBMM_MAILTRAN.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "app"
+        },
+        "dependencies": {
+            "minUI5Version": "1.42.0",
+            "libs": {
+                "sap.ui.core": {},
+                "sap.m": {},
+                "sap.ushell": {},
+                "sap.collaboration": {
+                    "lazy": true
+                }
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "ZCBMM_MAILTRAN.ZCBMM_MAILTRAN.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true
+            }
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "viewPath": "ZCBMM_MAILTRAN.ZCBMM_MAILTRAN.view",
+                "controlId": "idAppControl",
+                "controlAggregation": "detailPages",
+                "bypassed": {
+                    "target": [
+                        "master",
+                        "notFound"
+                    ]
+                },
+                "async": true
+            },
+            "routes": [
+                {
+                    "pattern": "",
+                    "name": "master",
+                    "target": [
+                        "object",
+                        "master"
+                    ]
+                },
+                {
+                    "pattern": "ZET_CBMM_CF_FRETESet/{Bukrs}/{IdSolicitacao}/{WerksO}",
+                    "name": "object",
+                    "target": [
+                        "master",
+                        "object"
+                    ]
+                },
+                {
+                    "name": "Veiculo",
+                    "pattern": "Veiculo/{WerksO}/{IdSolicitacao}/{IdRota}/{Bukrs}/{NrTransp}/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "object",
+                        "Veiculo"
+                    ]
+                },
+                {
+                    "name": "BackTo",
+                    "pattern": "BackTo/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "object",
+                        "BackTo"
+                    ]
+                }
+            ],
+            "targets": {
+                "master": {
+                    "viewName": "Master",
+                    "viewLevel": 1,
+                    "viewId": "master",
+                    "controlAggregation": "masterPages"
+                },
+                "object": {
+                    "viewName": "Detail",
+                    "viewId": "detail",
+                    "viewLevel": 2
+                },
+                "detailObjectNotFound": {
+                    "viewName": "DetailObjectNotFound",
+                    "viewId": "detailObjectNotFound"
+                },
+                "detailNoObjectsAvailable": {
+                    "viewName": "DetailNoObjectsAvailable",
+                    "viewId": "detailNoObjectsAvailable"
+                },
+                "notFound": {
+                    "viewName": "NotFound",
+                    "viewId": "notFound"
+                },
+                "Veiculo": {
+                    "viewType": "XML",
+                    "transition": "flip",
+                    "clearAggregation": true,
+                    "viewName": "Veiculo",
+                    "title": "Veiculo",
+                    "viewId": "Veiculo",
+                    "viewLevel": 3
+                },
+                "BackTo": {
+                    "viewType": "XML",
+                    "transition": "flip",
+                    "clearAggregation": true,
+                    "viewName": "Detail",
+                    "viewId": "BackTo",
+                    "title": "BackTo",
+                    "viewLevel": 2
+                }
+            }
+        }
+    },
+    "sap.platform.abap": {
+        "uri": "/sap/bc/ui5_ui5/sap/zcbmm_mailtran",
+        "_version": "1.1.0"
+    }
+}

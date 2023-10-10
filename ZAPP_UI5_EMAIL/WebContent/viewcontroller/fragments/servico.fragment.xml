@@ -1,0 +1,58 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core">
+	<VBox class="sapUiSmallMargin">
+		<f:SimpleForm
+			editable="false"
+			layout="ResponsiveGridLayout"
+			title="Dados"
+			labelSpanXL="3"
+			labelSpanL="3"
+			labelSpanM="3"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			emptySpanXL="4"
+			emptySpanL="4"
+			emptySpanM="4"
+			emptySpanS="0"
+			columnsXL="1"
+			columnsL="1"
+			columnsM="1"
+			singleContainerFullSize="false" >
+			<f:content>
+				<Label text="Obra" design="Bold"/>
+				<Text text="{Obra}" />
+				<Label text="Endereço" design="Bold"/>
+				<Text text="{Endereco}" />
+				<Label text="Contrato" design="Bold"/>
+				<Text text="{Contrato}" />
+				<Label text="Programação" design="Bold"/>
+				<Text text="{Programacao}" />
+				<Label text="Pedido CMD" design="Bold"/>
+				<Text text="{PedidoCmd}" />
+				<Label text="Tiquete" design="Bold"/>
+				<Text text="{Tiquete}" />
+				<Label text="Remessa" design="Bold"/>
+				<Text text="{Remessa}" />
+				<Label text="Data de remessa" design="Bold"/>
+				<Text text="{DataRemessa}" />
+				<Label text="Hora de remessa" design="Bold"/>
+				<Text text="{HoraRemessa}" />
+				<Label text="Tipo de serviço" design="Bold"/>
+				<Text text="{TipoServico}" />
+				<Label text="ID do item" design="Bold"/>
+				<Text text="{IdItem}" />
+				<Label text="Código do produto" design="Bold"/>
+				<Text text="{CodProd}" />
+				<Label text="Descrição do item" design="Bold"/>
+				<Text text="{DescItem}" />
+				<Label text="Quantidade" design="Bold"/>
+				<Text text="{Quant}" />
+				<Label text="Motivo" design="Bold"/>
+				<Text text="{Motivo}" />
+			</f:content>
+		</f:SimpleForm>
+	</VBox>
+</core:FragmentDefinition>

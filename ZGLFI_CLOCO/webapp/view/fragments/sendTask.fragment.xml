@@ -1,0 +1,49 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	busy="true"
+	busyIndicatorDelay="0">
+	<Dialog showHeader="true" contentWidth="600px" title="Compartilhar Tarefa" class="sapUiContentPadding" type="Standard">
+		<content >
+			<HBox>
+				<VBox width="100%" wrap="Wrap" id="sendtaskRickTextContainer">
+					<VBox width="100%">
+						<HBox width="100%" alignItems="Center" justifyContent="SpaceBetween">
+							<Label text="Compartilhar via:" labelFor="shareTaskshareBy"/>
+							<Select id="shareTaskshareBy" selectedKey="{shareTask>/type}">
+								<items>
+									<core:Item text="Mensagem Teams" key="teams"/>
+									<core:Item text="E-Mail" key="email" />
+								</items>
+							</Select>
+						</HBox>
+
+						<MultiInput required="true" placeholder="E-mails" id="sendTaskInputEmail" showSuggestion="true" suggestionItemSelected="emailSugestionSelected" busyIndicatorDelay="0" showValueHelp="false" maxLength="500">
+							<suggestionColumns>
+								<Column hAlign="Begin" popinDisplay="Inline" demandPopin="true">
+									<Label text="Name"/>
+								</Column>
+								<Column hAlign="Center" popinDisplay="Inline" demandPopin="true" minScreenWidth="Tablet">
+									<Label text="E-mail"/>
+								</Column>
+							</suggestionColumns>
+						</MultiInput>
+						<Input required="true" value="{shareTask>/subject}" visible="{= ${shareTask>/type} === 'email'}" placeholder="Assunto" maxLength="40"/>
+						<TextArea width="100%" value="{shareTask>/text}" id="shareTaskText" placeholder="Texto" maxLength="{= ${shareTask>/type} === 'teams' ? 500 : 2000 }" rows="5" liveChange="onChangeShareText"/>
+					</VBox>
+					<!-- <TextArea id="txtEmailMensagem" rows="5" cols="50" height="100%"/> -->
+
+				</VBox>
+
+			</HBox>
+		</content>
+		<beginButton>
+		<Button text="Enviar" type="Emphasized" press="onSendTaskDialog" enabled="true"/>
+		</beginButton>
+		<endButton>
+			<Button text="Cancelar" press="onSendTaskDialogClose"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>
+

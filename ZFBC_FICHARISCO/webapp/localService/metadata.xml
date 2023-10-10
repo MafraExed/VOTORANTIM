@@ -1,0 +1,150 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZFBC_GRC_RISK_REPORT_SRV" xml:lang="pt" sap:schema-version="1">
+            <EntityType Name="Risco" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Objid" />
+                </Key>
+                <Property Name="Plvar" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Var.planej." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="Otype" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Tipo de objeto" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="Objid" Type="Edm.String" Nullable="false" MaxLength="8" sap:label="ID objeto" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="Begda" Type="Edm.DateTime" Nullable="false" Precision="7" sap:label="Data do início" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="Endda" Type="Edm.DateTime" Nullable="false" Precision="7" sap:label="Data do fim" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="Istat" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Status do plano" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="Histo" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Reg.histórico" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="Short" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="Abrev.objeto" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="Stext" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Denominação" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="Realo" Type="Edm.String" Nullable="false" MaxLength="45" sap:label="IDObj.ampl." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <NavigationProperty Name="ToRiscoDetalhe" Relationship="ZFBC_GRC_RISK_REPORT_SRV.RiscoToRiscoDetalhe" FromRole="FromRole_RiscoToRiscoDetalhe" ToRole="ToRole_RiscoToRiscoDetalhe" />
+            </EntityType>
+            <EntityType Name="RiscoDono" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Objid" />
+                </Key>
+                <Property Name="Objid" Type="Edm.String" Nullable="false" MaxLength="8" sap:label="ID objeto" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="Username" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="Nome do usuário" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="Fullnname" Type="Edm.String" Nullable="false" MaxLength="80" sap:label="Nome completo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+            </EntityType>
+            <EntityType Name="RiscoImpacto" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Objid" />
+                </Key>
+                <Property Name="Objid" Type="Edm.String" Nullable="false" MaxLength="8" sap:label="ID objeto" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="ImpactLevelTx" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Descrição" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="ImpCatgTx" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Ctg.impactos" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+            </EntityType>
+            <EntityType Name="RiscoMedida" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Objid" />
+                </Key>
+                <Property Name="Objid" Type="Edm.String" Nullable="false" MaxLength="8" sap:label="ID objeto" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="Title" Type="Edm.String" Nullable="false" MaxLength="80" sap:label="Título medida" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="RespType" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Tp.medida" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="WfProcessor" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="Responsável" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="Fullname" Type="Edm.String" Nullable="false" MaxLength="80" sap:label="Nome completo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="EffectiveTo" Type="Edm.DateTime" Nullable="false" Precision="7" sap:label="Data do início" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="EffectiveFrom" Type="Edm.DateTime" Nullable="false" Precision="7" sap:label="Data do fim" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="RespEffectLvl" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Nível de efetividade" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="RespEffectTxt" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="Descrição eficácia" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+            </EntityType>
+            <EntityType Name="RiscoDetalhe" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Objid" />
+                </Key>
+                <Property Name="Objid" Type="Edm.String" Nullable="false" MaxLength="8" sap:label="ID objeto" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="ECausaprincipal2" Type="Edm.String" Nullable="false" sap:label="Comentário" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="EDescription1a" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Denominação" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="EDescription1b" Type="Edm.String" Nullable="false" sap:label="Comentário" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="RespEffectTxt" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="Descrição eficácia" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="ERevisaoAnalise" Type="Edm.String" Nullable="false" sap:label="Comentário" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="EProbLevel" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Nível probab." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="EImpactLevel" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Nív.impacto" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="EMotive3" Type="Edm.String" Nullable="false" sap:label="Comentário" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="ENimpacto14" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Txt.nível impacto" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="ENivelimpacto" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Txt.nível impacto" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="ENivelprobabilidade" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Probabilidade" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="ENivelrisco" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Nível de risco" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="ERmcausa12" Type="Edm.String" Nullable="false" sap:label="Comentário" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="ERmcrisis15" Type="Edm.String" Nullable="false" sap:label="Comentário" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="ERmefeito13" Type="Edm.String" Nullable="false" sap:label="Comentário" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="EZarea5" Type="Edm.String" Nullable="false" sap:label="Comentário" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <NavigationProperty Name="ToRiscoMedida" Relationship="ZFBC_GRC_RISK_REPORT_SRV.RiscoDetalheToRiscoMedida" FromRole="FromRole_RiscoDetalheToRiscoMedida" ToRole="ToRole_RiscoDetalheToRiscoMedida" />
+                <NavigationProperty Name="ToRiscoImpactos" Relationship="ZFBC_GRC_RISK_REPORT_SRV.RiscoDetalheToRiscoImpactos" FromRole="FromRole_RiscoDetalheToRiscoImpactos" ToRole="ToRole_RiscoDetalheToRiscoImpactos" />
+                <NavigationProperty Name="ToRiscoDonos" Relationship="ZFBC_GRC_RISK_REPORT_SRV.RiscoDetalheToRiscoDonos" FromRole="FromRole_RiscoDetalheToRiscoDonos" ToRole="ToRole_RiscoDetalheToRiscoDonos" />
+            </EntityType>
+            <Association Name="RiscoDetalheToRiscoImpactos" sap:content-version="1">
+                <End Type="ZFBC_GRC_RISK_REPORT_SRV.RiscoDetalhe" Multiplicity="1" Role="FromRole_RiscoDetalheToRiscoImpactos" />
+                <End Type="ZFBC_GRC_RISK_REPORT_SRV.RiscoImpacto" Multiplicity="*" Role="ToRole_RiscoDetalheToRiscoImpactos" />
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_RiscoDetalheToRiscoImpactos">
+                        <PropertyRef Name="Objid" />
+                    </Principal>
+                    <Dependent Role="ToRole_RiscoDetalheToRiscoImpactos">
+                        <PropertyRef Name="Objid" />
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="RiscoDetalheToRiscoDonos" sap:content-version="1">
+                <End Type="ZFBC_GRC_RISK_REPORT_SRV.RiscoDetalhe" Multiplicity="1" Role="FromRole_RiscoDetalheToRiscoDonos" />
+                <End Type="ZFBC_GRC_RISK_REPORT_SRV.RiscoDono" Multiplicity="*" Role="ToRole_RiscoDetalheToRiscoDonos" />
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_RiscoDetalheToRiscoDonos">
+                        <PropertyRef Name="Objid" />
+                    </Principal>
+                    <Dependent Role="ToRole_RiscoDetalheToRiscoDonos">
+                        <PropertyRef Name="Objid" />
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="RiscoDetalheToRiscoMedida" sap:content-version="1">
+                <End Type="ZFBC_GRC_RISK_REPORT_SRV.RiscoDetalhe" Multiplicity="1" Role="FromRole_RiscoDetalheToRiscoMedida" />
+                <End Type="ZFBC_GRC_RISK_REPORT_SRV.RiscoMedida" Multiplicity="0..1" Role="ToRole_RiscoDetalheToRiscoMedida" />
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_RiscoDetalheToRiscoMedida">
+                        <PropertyRef Name="Objid" />
+                    </Principal>
+                    <Dependent Role="ToRole_RiscoDetalheToRiscoMedida">
+                        <PropertyRef Name="Objid" />
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="RiscoToRiscoDetalhe" sap:content-version="1">
+                <End Type="ZFBC_GRC_RISK_REPORT_SRV.Risco" Multiplicity="1" Role="FromRole_RiscoToRiscoDetalhe" />
+                <End Type="ZFBC_GRC_RISK_REPORT_SRV.RiscoDetalhe" Multiplicity="1" Role="ToRole_RiscoToRiscoDetalhe" />
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_RiscoToRiscoDetalhe">
+                        <PropertyRef Name="Objid" />
+                    </Principal>
+                    <Dependent Role="ToRole_RiscoToRiscoDetalhe">
+                        <PropertyRef Name="Objid" />
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="ZFBC_GRC_RISK_REPORT_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="Riscos" EntityType="ZFBC_GRC_RISK_REPORT_SRV.Risco" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1" />
+                <EntitySet Name="RiscoDonos" EntityType="ZFBC_GRC_RISK_REPORT_SRV.RiscoDono" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1" />
+                <EntitySet Name="RiscoImpactos" EntityType="ZFBC_GRC_RISK_REPORT_SRV.RiscoImpacto" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1" />
+                <EntitySet Name="RiscoMedidas" EntityType="ZFBC_GRC_RISK_REPORT_SRV.RiscoMedida" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1" />
+                <EntitySet Name="RiscoDetalhes" EntityType="ZFBC_GRC_RISK_REPORT_SRV.RiscoDetalhe" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1" />
+                <AssociationSet Name="RiscoDetalheToRiscoMedida" Association="ZFBC_GRC_RISK_REPORT_SRV.RiscoDetalheToRiscoMedida" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="RiscoDetalhes" Role="FromRole_RiscoDetalheToRiscoMedida" />
+                    <End EntitySet="RiscoMedidas" Role="ToRole_RiscoDetalheToRiscoMedida" />
+                </AssociationSet>
+                <AssociationSet Name="RiscoDetalheToRiscoImpactos" Association="ZFBC_GRC_RISK_REPORT_SRV.RiscoDetalheToRiscoImpactos" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="RiscoDetalhes" Role="FromRole_RiscoDetalheToRiscoImpactos" />
+                    <End EntitySet="RiscoImpactos" Role="ToRole_RiscoDetalheToRiscoImpactos" />
+                </AssociationSet>
+                <AssociationSet Name="RiscoToRiscoDetalhe" Association="ZFBC_GRC_RISK_REPORT_SRV.RiscoToRiscoDetalhe" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Riscos" Role="FromRole_RiscoToRiscoDetalhe" />
+                    <End EntitySet="RiscoDetalhes" Role="ToRole_RiscoToRiscoDetalhe" />
+                </AssociationSet>
+                <AssociationSet Name="RiscoDetalheToRiscoDonos" Association="ZFBC_GRC_RISK_REPORT_SRV.RiscoDetalheToRiscoDonos" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="RiscoDetalhes" Role="FromRole_RiscoDetalheToRiscoDonos" />
+                    <End EntitySet="RiscoDonos" Role="ToRole_RiscoDetalheToRiscoDonos" />
+                </AssociationSet>
+            </EntityContainer>
+            <atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/ZFBC_GRC_RISK_REPORT_SRV/$metadata" />
+            <atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/ZFBC_GRC_RISK_REPORT_SRV/$metadata" />
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

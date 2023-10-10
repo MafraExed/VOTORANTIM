@@ -1,0 +1,145 @@
+{
+    "_version": "1.8.0",
+    "sap.app": {
+        "id": "Workspace.zimprimir_etiqueta",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "sourceTemplate": {
+            "id": "servicecatalog.connectivityComponentForManifest",
+            "version": "0.0.0",
+            "toolsId": "bf4b0c32-03e4-4c2a-a1b7-afc7e365ece4"
+        },
+        "dataSources": {
+            "ZGWVCMM_GESTAO_ESTOQUE_SRV": {
+                "uri": "/sap/opu/odata/sap/ZGWVCMM_GESTAO_ESTOQUE_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/metadata.xml",
+                    "annotations": []
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        },
+        "supportedThemes": [
+            "sap_hcb",
+            "sap_belize"
+        ]
+    },
+    "sap.ui5": {
+        "rootView": {
+            "viewName": "Workspace.zimprimir_etiqueta.view.S0",
+            "type": "XML"
+        },
+        "dependencies": {
+            "minUI5Version": "1.50.0",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.ui.layout": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "Workspace.zimprimir_etiqueta.i18n.i18n"
+                }
+            },
+            "NFHEADER": {
+                "type": "sap.ui.model.odata.v2.ODataModel",
+                "settings": {
+                    "loadMetadataAsync": false,
+                    "json": true,
+                    "bJSON": true,
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "useBatch": true,
+                    "refreshAfterChange": false,
+                    "disableHeadRequestForToken": true
+                },
+                "dataSource": "ZGWVCMM_GESTAO_ESTOQUE_SRV"
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "Workspace.zimprimir_etiqueta.view",
+                "controlAggregation": "pages",
+                "controlId": "EntraNfe",
+                "clearControlAggregation": false
+            },
+            "routes": [
+                {
+                    "name": "inicio",
+                    "pattern": "",
+                    "target": [
+                        "S0"
+                    ]
+                },
+                {
+                    "name": "visao_itens",
+                    "pattern": "S1/{chvNfe}",
+                    "target": [
+                        "S1"
+                    ]
+                }
+            ],
+            "targets": {
+                "S0": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "controlAggregation": "pages",
+                    "viewName": "S0",
+                    "viewLevel": 1
+                },
+                "S1": {
+                    "viewType": "XML",
+                    "viewName": "S1",
+                    "transition": "slide",
+                    "controlAggregation": "pages",
+                    "viewId": "PageS1",
+                    "viewLevel": 1
+                }
+            }
+        }
+    },
+    "sap.platform.abap": {
+        "uri": "/sap/bc/ui5_ui5/sap/y5vc_gemimpetq/",
+        "_version": "1.1.0"
+    }
+}

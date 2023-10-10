@@ -1,0 +1,36 @@
+<mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.f.semantic" xmlns:footerbar="sap.ushell.ui.footerbar"
+	xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core"
+	controllerName="Y5GL_DELE_FERI2.Y5GL_DELE_FERI2.controller.Detail">
+	<App id="app">
+		<pages>
+			<Page title="Períodos" backgroundDesign="Solid">
+				<customHeader>
+					<Bar>
+						<contentLeft>
+							<Label/>
+							<!--items--><Label text="{Nome}" design="Bold"/>
+							<Button text="Voltar" type="Back" press="onVoltar"/>
+						</contentLeft>
+					</Bar>
+				</customHeader>
+				<content>
+					<List id="list" items="{ path: '/ZET_GLHR_PERIODOS'}" noDataText="{masterView>/noDataText}" itemPress="onSelectionChange"
+						selectionChange="onSelectionChange">
+						<items>
+							<ObjectListItem title="{LabelTitulo}" type="Navigation" press="onSelectionChange" icon="{path:'LabelTitulo', formatter:'.formatterIcon'}"
+								highlight="Information" fieldGroupIds="" number="{Limite}" numberState="Success">
+								<attributes>
+									<ObjectAttribute text="{LabelPeriodo}"/>
+								</attributes>
+								<firstStatus>
+									<ObjectStatus text="{Status}" id="__status1" state="Warning"/>
+								</firstStatus>
+							</ObjectListItem>
+						</items>
+					</List>
+					<Button text="Voltar" width="100%" id="__button0" type="Back" press="NA" visible="false"/>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

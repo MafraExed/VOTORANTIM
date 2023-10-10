@@ -1,0 +1,48 @@
+<edmx:Edmx
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+    xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+    xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZGWVCPM_RESERVAS_SRV" xml:lang="pt" sap:schema-version="1">
+            <EntityType Name="ZET_VCPM_SearchHelp" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Regional"/>
+                    <PropertyRef Name="Sigla"/>
+                    <PropertyRef Name="Revisao"/>
+                </Key>
+                <Property Name="Regional" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Regional Sigla"/>
+                <Property Name="Sigla" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Sigla da Filial"/>
+                <Property Name="Revisao" Type="Edm.String" Nullable="false" MaxLength="8" sap:label="Revisão"/>
+            </EntityType>
+            <EntityType Name="ZET_VCPM_Reservas" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Regional"/>
+                    <PropertyRef Name="Sigla"/>
+                    <PropertyRef Name="Revisao"/>
+                    <PropertyRef Name="Analise"/>
+                    <PropertyRef Name="MesRef"/>
+                    <PropertyRef Name="StatRes"/>
+                    <PropertyRef Name="StatAtend"/>
+                </Key>
+                <Property Name="Regional" Type="Edm.String" Nullable="false" MaxLength="4"/>
+                <Property Name="Sigla" Type="Edm.String" Nullable="false" MaxLength="20"/>
+                <Property Name="Revisao" Type="Edm.String" Nullable="false" MaxLength="8"/>
+                <Property Name="Analise" Type="Edm.String" Nullable="false" MaxLength="12"/>
+                <Property Name="MesRef" Type="Edm.String" Nullable="false" MaxLength="7"/>
+                <Property Name="StatRes" Type="Edm.String" Nullable="false" MaxLength="15"/>
+                <Property Name="StatAtend" Type="Edm.String" Nullable="false" MaxLength="15"/>
+                <Property Name="Valor" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3"/>
+                <Property Name="Contador" Type="Edm.Int32" Nullable="false"/>
+            </EntityType>
+            <EntityContainer Name="ZGWVCPM_RESERVAS_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="ZET_VCPM_SearchHelpSet" EntityType="ZGWVCPM_RESERVAS_SRV.ZET_VCPM_SearchHelp" sap:content-version="1"/>
+                <EntitySet Name="ZET_VCPM_ReservasSet" EntityType="ZGWVCPM_RESERVAS_SRV.ZET_VCPM_Reservas" sap:content-version="1"/>
+            </EntityContainer>
+            <atom:link
+                xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/ZGWVCPM_RESERVAS_SRV/$metadata"/>
+                <atom:link
+                    xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/ZGWVCPM_RESERVAS_SRV/$metadata"/>
+                </Schema>
+            </edmx:DataServices>
+        </edmx:Edmx>

@@ -1,0 +1,163 @@
+{
+    "_version": "1.9.0",
+    "sap.app": {
+        "id": "Y5GL_DHO_FORM2.Y5GL_DHO_FORM2",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/sap/ZGWGLRH_DHO_FORMULARIOS_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/metadata.xml"
+                }
+            }
+        },
+        "sourceTemplate": {
+            "id": "sap.ui.ui5-template-plugin.2masterdetail",
+            "version": "1.52.7",
+            "toolsId": "f58f83ef-14be-41ef-8154-c8ecb2885501"
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "sap-icon://detail-view",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "rootView": {
+            "viewName": "Y5GL_DHO_FORM2.Y5GL_DHO_FORM2.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "app"
+        },
+        "dependencies": {
+            "minUI5Version": "1.42.0",
+            "libs": {
+                "sap.collaboration": {
+                    "minVersion": ""
+                },
+                "sap.f": {
+                    "minVersion": ""
+                },
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.ushell": {
+                    "minVersion": ""
+                }
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "Y5GL_DHO_FORM2.Y5GL_DHO_FORM2.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true
+            }
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "viewPath": "Y5GL_DHO_FORM2.Y5GL_DHO_FORM2.view",
+                "controlId": "idAppControl",
+                "controlAggregation": "detailPages",
+                "bypassed": {
+                    "target": [
+                        "master",
+                        "notFound"
+                    ]
+                },
+                "async": true
+            },
+            "routes": [
+                {
+                    "pattern": "",
+                    "name": "master",
+                    "target": [
+                        "object",
+                        "master"
+                    ]
+                },
+                {
+                    "pattern": "ZET_GLHR_FORMULARIOS_BENEFICIOSSet/{Infty}/{Subty}/",
+                    "name": "object",
+                    "target": [
+                        "master",
+                        "object"
+                    ]
+                },
+                {
+                    "name": "Detalhe",
+                    "pattern": "Detalhe/{Infty}/{Subty}/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "master",
+                        "Detalhe"
+                    ]
+                }
+            ],
+            "targets": {
+                "master": {
+                    "viewName": "Master",
+                    "viewLevel": 1,
+                    "viewId": "master",
+                    "controlAggregation": "masterPages"
+                },
+                "object": {
+                    "viewName": "Detail",
+                    "viewId": "detail",
+                    "viewLevel": 2
+                },
+                "detailObjectNotFound": {
+                    "viewName": "DetailObjectNotFound",
+                    "viewId": "detailObjectNotFound"
+                },
+                "detailNoObjectsAvailable": {
+                    "viewName": "DetailNoObjectsAvailable",
+                    "viewId": "detailNoObjectsAvailable"
+                },
+                "notFound": {
+                    "viewName": "NotFound",
+                    "viewId": "notFound"
+                },
+                "Detalhe": {
+                    "viewType": "XML",
+                    "viewName": "Detalhe",
+                    "viewId": "Subtipo",
+                    "viewLevel": 3
+                }
+            }
+        }
+    },
+    "sap.platform.abap": {
+        "uri": "/sap/bc/ui5_ui5/sap/y5gl_dho_form2/webapp",
+        "_version": "1.1.0"
+    }
+}

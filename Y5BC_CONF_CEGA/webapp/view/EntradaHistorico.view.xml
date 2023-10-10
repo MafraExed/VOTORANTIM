@@ -1,0 +1,101 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	controllerName="Y5BC_CONF_CEGA.Y5BC_CONF_CEGA.controller.EntradaHistorico" xmlns:html="http://www.w3.org/1999/xhtml">
+	<App>
+		<pages>
+			<Page title="Histórico">
+				<content>
+					<Panel >
+						<content>
+							<ObjectHeader title="{i18n>avis_receb_header} {CodAviso}" introActive="true" titleActive="true"
+								intro="{/#ZET_CBEWM_HIST_CONF_CEGACB/Fornecedor/@sap:label}: {Fornecedor}">
+								<attributes>
+									<ObjectAttribute title="{/#ZET_CBEWM_HIST_CONF_CEGACB/Nfe/@sap:label}" text="{Nfe}"/>
+									<ObjectAttribute title="{/#ZET_CBEWM_HIST_CONF_CEGACB/Serie/@sap:label}" text="{Serie}"/>
+									<ObjectAttribute title="{/#ZET_CBEWM_HIST_CONF_CEGACB/Ebeln/@sap:label}" text="{Ebeln}"/>
+								</attributes>
+								<!--<statuses>-->
+								<!--	<ObjectStatus state="{= ${ContagemRealizada} === 'X' ? 'Success' : 'Error' }"-->
+								<!--		text="Contagem: {= ${ContagemRealizada} === 'X' ? 'Realizada' : 'Pendente' }"/>-->
+								<!--	<ObjectStatus state="{= ${EntrMercRealizada} === 'X' ? 'Success' : 'Error' }"-->
+								<!--		text="E.M.: {= ${EntrMercRealizada} === 'X' ? 'Realizada' : 'Pendente' }"/>-->
+								<!--</statuses>-->
+							</ObjectHeader>
+						</content>
+					</Panel>
+					<Image src="{ToFoto/0/$value}"></Image>
+					<VBox fitContainer="true">
+						<Panel>
+							<content>
+								<Table id="HistoricoConfCegaItemTable" items="{ path: 'ToIt', sorter : { path : 'Ebelp' }}" class="sapUiResponsivePadding"
+									headerText="Itens">
+									<items>
+										<ColumnListItem>
+											<cells>
+												<Text text="{Ebelp}"/>
+												<ObjectIdentifier title="{Matnr}" text="{Maktx}"/>
+												<Text text="{Aceite}"/>
+												<!--<Text text="{EfetuaEm}"/>-->
+												<Text text="{Nome}"/>
+												<Text text="{Matricula}"/>
+												<Text text="{Volume}"/>
+												<Text text="{Quantidade}"/>
+											</cells>
+										</ColumnListItem>
+									</items>
+									<columns>
+										<Column >
+											<header>
+												<Label text="{/#ZET_CBEWM_HIST_CONF_CEGA/Ebelp/@sap:label}"/>
+											</header>
+										</Column>
+										<Column >
+											<header>
+												<Label text="{/#ZET_CBEWM_HIST_CONF_CEGA/Matnr/@sap:label}"/>
+											</header>
+										</Column>
+										<Column >
+											<header>
+												<Label text="{/#ZET_CBEWM_HIST_CONF_CEGA/Aceite/@sap:label}"/>
+											</header>
+										</Column>
+										<!--<Column >-->
+										<!--	<header>-->
+										<!--		<Label text="{/#ZET_CBEWM_HIST_CONF_CEGA/EfetuaEm/@sap:label}"/>-->
+										<!--	</header>-->
+										<!--</Column>-->
+										<Column >
+											<header>
+												<Label text="{/#ZET_CBEWM_HIST_CONF_CEGA/Nome/@sap:label}"/>
+											</header>
+										</Column>
+										<Column >
+											<header>
+												<Label text="{/#ZET_CBEWM_HIST_CONF_CEGA/Matricula/@sap:label}"/>
+											</header>
+										</Column>
+										<Column >
+											<header>
+												<Label text="{/#ZET_CBEWM_HIST_CONF_CEGA/Volume/@sap:label}"/>
+											</header>
+										</Column>
+										<Column >
+											<header>
+												<Label text="{/#ZET_CBEWM_HIST_CONF_CEGA/Quantidade/@sap:label}"/>
+											</header>
+										</Column>
+									</columns>
+								</Table>
+							</content>
+						</Panel>
+					</VBox>
+				</content>
+				<footer>
+					<!--<Toolbar>-->
+					<!--	<ToolbarSpacer/>-->
+					<!--	<Button text="{i18n>foto_aprovador}" type="Emphasized" icon="sap-icon://picture" press=".onFotoPress"></Button>-->
+					<!--</Toolbar>-->
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

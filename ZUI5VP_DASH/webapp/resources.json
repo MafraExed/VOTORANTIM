@@ -1,0 +1,106 @@
+{
+    "resources": [
+        {
+            "name": ".user.project.json"
+        },
+        {
+            "name": "index.html"
+        },
+        {
+            "name": "controller/Terminal.controller.js"
+        },
+        {
+            "name": "controller/App.controller.js"
+        },
+        {
+            "name": "controller/Simular.controller.js"
+        },
+        {
+            "name": "controller/EstoqueMensal.controller.js"
+        },
+        {
+            "name": "controller/View1.controller.js"
+        },
+        {
+            "name": "controller/Detail.controller.js"
+        },
+        {
+            "name": "controller/Navio.controller.js"
+        },
+        {
+            "name": "controller/Master.controller.js"
+        },
+        {
+            "name": "controller/LineUp.controller.js"
+        },
+        {
+            "name": "controller/LocalEstoque.controller.js"
+        },
+        {
+            "name": "Component.js"
+        },
+        {
+            "name": "localService/metadata.xml"
+        },
+        {
+            "name": "i18n/i18n.properties",
+            "raw": "i18n/i18n.properties"
+        },
+        {
+            "name": "neo-app.json"
+        },
+        {
+            "name": ".project.json"
+        },
+        {
+            "name": "view/Master.view.xml"
+        },
+        {
+            "name": "view/Detail.view.xml"
+        },
+        {
+            "name": "view/Navio.view.xml"
+        },
+        {
+            "name": "view/LocalEstoque.view.xml"
+        },
+        {
+            "name": "view/View1.view.xml"
+        },
+        {
+            "name": "view/Terminal.view.xml"
+        },
+        {
+            "name": "view/LineUp.view.xml"
+        },
+        {
+            "name": "view/Simular.view.xml"
+        },
+        {
+            "name": "view/App.view.xml"
+        },
+        {
+            "name": "view/EstoqueMensal.view.xml"
+        },
+        {
+            "name": "extended_runnable_file.html"
+        },
+        {
+            "name": "resources.json",
+            "merged": true
+        },
+        {
+            "name": "Component-preload.js",
+            "merged": true
+        },
+        {
+            "name": "manifest.json"
+        },
+        {
+            "name": "css/style.css"
+        },
+        {
+            "name": "model/models.js"
+        }
+    ]
+}

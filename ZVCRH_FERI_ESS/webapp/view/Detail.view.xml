@@ -1,0 +1,170 @@
+<mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.f.semantic" xmlns:footerbar="sap.ushell.ui.footerbar"
+	xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core"
+	controllerName="ZVCRH_VISAO_FERIAS.ZVCRH_VISAO_FERIAS.controller.Detail">
+	<App id="app">
+		<pages>
+			<Page title="Férias Programação" backgroundDesign="Solid">
+				<customHeader>
+					<Bar design="Header">
+						<contentLeft>
+							<Label/>
+							<Label xmlns="sap.m" text="{LabelTitulo}" design="Bold" textAlign="Left"/>
+						</contentLeft>
+						<contentRight>
+							<Button text="" press="onVoltar" icon="sap-icon://home"/>
+						</contentRight>
+					</Bar>
+				</customHeader>
+				<content>
+					<f:Form id="FormChange480_12120" editable="true">
+						<f:layout>
+							<f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0"
+								emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer>
+								<f:formElements>
+									<f:FormElement>
+										<FlexBox alignItems="Start" justifyContent="SpaceBetween">
+											<items>
+												<core:Icon src="sap-icon://suitcase" size="50px"/>
+												<Text/>
+												<Text/>
+												<Text/>
+												<Text/>
+												<Text/>
+												<Text/>
+												<Text/>
+												<Text/>
+												<Text/>
+												<Text/>
+												<Text/>
+												<Text/>
+												<Text/>
+												<Text/>
+												<Text/>
+												<Text/>
+												<Text/>
+												<Text/>
+												<Text/>
+												<Text/>
+												<Text/>
+												<ObjectStatus xmlns="sap.m" text="{LabelStatus}" textDirection="RTL"
+													state="{= ${LabelStatus} === 'Em Programação' ? 'Success' : 'Warning' }"/>
+												<Label/>
+											</items>
+										</FlexBox>
+									</f:FormElement>
+									<f:FormElement>
+										<f:fields>
+											<VBox>
+												<Label/>
+												<Label xmlns="sap.m" text="{LabelLimite}" textAlign="Left"/>
+												<Label xmlns="sap.m" text="{LabelConc}" textAlign="Left"/>
+												<Label xmlns="sap.m" text="{LabelDireito}" textAlign="Left"/>
+											</VBox>
+										</f:fields>
+										<Toolbar width="100%" id="__toolbar1" visible="false">
+											<Button xmlns="sap.m" text="Salvar" press="onSave" width="100px" id="__button1" type="Transparent" activeIcon="sap-icon://save"
+												icon="sap-icon://save"/>
+											<Button xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml"
+												xmlns:sap.ui.layout.form="sap.ui.layout.form" type="Transparent" text="Cancelar" press="onCancel" width="115px" id="__button1_copy"
+												activeIcon="sap-icon://delete" icon="sap-icon://delete" textDirection="LTR"/>
+											<Button xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml"
+												xmlns:sap.ui.layout.form="sap.ui.layout.form" type="Transparent" text="Voltar" width="115px" id="__button1_copy2"
+												activeIcon="sap-icon://sys-back" icon="sap-icon://sys-back" textDirection="LTR" press="onVoltar"/>
+										</Toolbar>
+										<!--primeiro-->
+										<f:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout" columnsL="1"
+											backgroundDesign="Solid" visible="false" id="Form1">
+											<core:Title text="1° Período"/>
+											<Label text="Início das Férias"/>
+											<Input value="{Inicio1}" id="IdInicio1" placeholder="Data de Início de Férias" textAlign="Left" required="true" editable="true" type="Date"
+												liveChange="somardatafirst"/>
+											<Label text="Dias de Gozo"/>
+											<Input value="{DiasGozo1}" maxLength="10" type="Number" required="true" id="first_diasgozo" change="somardatafirst"
+												liveChange="somardatafirst"/>
+											<Label text="Fim das Férias"/>
+											<Input value="{Fim1}" id="IdFim1" placeholder="Data de Início de Férias" editable="false" type="Date"/>
+											<ObjectStatus text="{StatusTxt1}" id="first_status" title="Status" icon="sap-icon://order-status" textDirection="LTR"
+												state="{= ${StatusTxt1} === 'Em aprovação' ? 'Warning' : ${StatusTxt2} === 'Em aberto' ? 'Error' : 'Success' }"/>
+											<CheckBox id="first_abono" selected="{ path: 'EnableAbono1', formatter: '.FormatChecked' }" text="Abono" textAlign="Left" select="setabono"/>
+											<CheckBox id="first_13" text="Sol. 1ª Parc. 13º" textAlign="Left" selected="{ path: 'Enable131', formatter: '.FormatChecked2' }"/>
+										</f:SimpleForm>
+										<f:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout" columnsL="1"
+											backgroundDesign="Solid" visible="false" id="Form2">
+											<!--segundo-->
+											<core:Title text="2° Período"/>
+											<Label text="Início das Férias"/>
+											<Input value="{Inicio2}" dateFormat="dd-MM-YYYY" editable="true" maxLength="10" type="Date" required="true" id="IdInicio2"
+												liveChange="somardatasecon"/>
+											<Label text="Dias de Gozo"/>
+											<Input value="{DiasGozo2}" maxLength="3" type="Number" required="true" dateFormat="" id="secon_diasgozo" change="somardatasecon"/>
+											<Label text="Fim das Férias"/>
+											<Input value="{Fim2}" dateFormat="dd-MM-YYYY" editable="false" maxLength="10" type="Date" required="true" id="IdFim2"/>
+											<ObjectStatus text="{StatusTxt2}" title="Status" icon="sap-icon://order-status" textDirection="LTR"
+												state="{= ${StatusTxt2} === 'Em aprovação' ? 'Warning' : ${StatusTxt2} === 'Em aberto' ? 'Error' : 'Success'}" id="secon_status"/>
+										</f:SimpleForm>
+										<f:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout" columnsL="1"
+											backgroundDesign="Solid" visible="false" id="Form3">
+											<!--terceiro-->
+											<core:Title text="3° Período"/>
+											<Label text="Início das Férias"/>
+											<Input value="{Inicio3}" dateFormat="dd-MM-YYYY" editable="true" maxLength="10" type="Date" required="true" id="IdInicio3"
+												liveChange="somardatathird"/>
+											<Label text="Dias de Gozo"/>
+											<Input value="{DiasGozo3}" maxLength="2" type="Number" required="true" dateFormat="" valueHelpOnly="true" id="third_diasgozo"
+												change="somardatathird"/>
+											<Label text="Fim das Férias"/>
+											<Input value="{Fim3}" dateFormat="dd-MM-YYYY" editable="false" maxLength="10" type="Date" required="true" id="IdFim3"/>
+											<ObjectStatus text="{StatusTxt3}" title="Status" icon="sap-icon://order-status" textDirection="LTR"
+												state="{= ${StatusTxt3} === 'Em aprovação' ? 'Warning' : ${StatusTxt2} === 'Em aberto' ? 'Error' : 'Success'}" id="third_status"/>
+										</f:SimpleForm>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+				</content>
+				<IconTabBar expanded="false" id="idIconTabBar" select="handleIconTabBarSelect" class="sapUiResponsiveContentPadding"
+					headerBackgroundDesign="Transparent" applyContentPadding="true" >
+					<items>
+						<IconTabSeparator/>
+						<IconTabSeparator/>
+						<IconTabSeparator/>
+						<IconTabSeparator/>
+						<IconTabFilter icon="sap-icon://collapse-group"
+							iconColor="{= ${StatusTxt1} === 'Em aprovação' ? 'Critical' : ${StatusTxt1} === 'Em aberto' ? 'Negative' : 'Positive'}" design="Vertical"
+							text="1º Período" key="1"/>
+						<IconTabSeparator/>
+						<IconTabSeparator/>
+						<IconTabSeparator/>
+						<IconTabSeparator/>
+						<IconTabFilter icon="sap-icon://collapse-group"
+							iconColor="{= ${StatusTxt2} === 'Em aprovação' ? 'Critical' : ${StatusTxt2} === 'Em aberto' ? 'Negative' : 'Positive'}" design="Vertical"
+							text="2º Período" key="2"/>
+						<IconTabSeparator/>
+						<IconTabSeparator/>
+						<IconTabSeparator/>
+						<IconTabSeparator/>
+						<IconTabFilter icon="sap-icon://collapse-group"
+							iconColor="{= ${StatusTxt3} === 'Em aprovação' ? 'Critical' : ${StatusTxt3} === 'Em aberto' ? 'Negative' : 'Positive'}" design="Vertical"
+							text="3º Período" key="3"/>
+						<IconTabSeparator/>
+						<IconTabSeparator/>
+						<IconTabSeparator/>
+						<IconTabSeparator/>
+					</items>
+				</IconTabBar>
+				<footer>
+					<Toolbar style="Clear" design="Transparent">
+						<Button text="" press="onCancel" activeIcon="sap-icon://decline" icon="sap-icon://delete"/>
+						<ToolbarSpacer/>
+						<Button text="" press="onVoltar" activeIcon="sap-icon://undo" icon="sap-icon://undo"/>
+						<Button text="" press="onSave" activeIcon="sap-icon://accept" icon="sap-icon://accept"/>
+					</Toolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

@@ -1,0 +1,20 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Dialog busyIndicatorDelay="1" horizontalScrolling="false" state="None" stretch="false" title="Filtro por Material" type="Standard" verticalScrolling="true">
+		<content>
+			<HBox class="sapUiTinyMargin parent">
+				<SearchField search="onSearch"/>
+			</HBox>
+			<List class="sapUiSmallMarginBegin" items="{path: 'filtroMaterial>/'}" itemPress="onSelecionarMaterial">
+				<items>
+					<StandardListItem class="sapUiSmallMarginEnd" type="Active" title="{filtroMaterial>DescMaterial}" description="Cód. {filtroMaterial>Material}" info="{filtroMaterial>MatSelected}" infoState="Success"/>
+				</items>
+			</List>
+		</content>
+		<beginButton>
+			<Button text="Cancelar" type="Reject" press="onCloseMaterial"/>
+		</beginButton>
+		<endButton>
+			<Button text="Aplicar" type="Accept" press="onApplyFilterMaterial" />
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

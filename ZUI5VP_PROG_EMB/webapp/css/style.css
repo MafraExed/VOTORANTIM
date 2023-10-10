@@ -1,0 +1,62 @@
+/* Enter your custom styles here */
+
+.daniloImagem {
+    max-width: 100px;
+    border-radius: 50%;
+}
+
+.daniloMagimHorizontal {
+    margin: 10px;
+}
+
+.upContent > .sapUxAPObjectPageHeaderIdentifier > .sapUxAPObjectPageHeaderIdentifierActionsForce{
+	margin-top: -18px !important;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.daniloIcon {
+    height: 90px;
+}
+
+.margin {
+    padding-top: 30px;
+}
+
+.marginTop {
+    margin-top: -10px;
+    margin-bottom: -10px;
+}
+
+.margimRight {
+    margin-right: -10px;
+}
+
+.margimLeft {
+    margin-left: -10px;
+}
+
+.margimBotton {
+    margin-bottom: -20px;
+}
+
+.margimCut {
+    margin-right: -30px;
+}
+
+.styleTest{
+	background: rgb(230, 255, 230) !important;
+}
+
+.backProgress {
+   background: #eff4f9
+}
+.margimTopProgress{
+	margin-top: -20px;
+}
+
+.unitsDialogButtons{
+	height: 100px;
+}

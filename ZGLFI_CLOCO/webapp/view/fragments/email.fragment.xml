@@ -1,0 +1,26 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+	<Dialog title="Questionar Status" type="Message" state="Warning">
+		<content>
+			<f:SimpleForm>
+				<f:content>
+					<Label text="E-mail" labelFor="txtEmail"/>
+					<MultiInput id="inputEmail" showValueHelp="false"/>
+					<Label text="Mensagem"/>
+					<TextArea id="txtEmailMensagem" width="100%" rows="5" cols="200" height="100%"/>
+					<Label text="Anexo(s)"/>
+					<HBox id="imgAnexoBox" justifyContent="Start">
+						<Image id="imgAnexo" width="128px"/>
+						<BusyIndicator id="imgAnexoBusy" class="sapUiSmallMarginTop"/>
+					</HBox>
+				</f:content>
+			</f:SimpleForm>
+		</content>
+		<beginButton>
+			<Button text="Enviar" press="onConfirmQuestion" enabled="true"/>
+		</beginButton>
+		<endButton>
+			<Button text="Cancelar" press="onCloseDialogEmail"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>
+

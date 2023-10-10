@@ -1,0 +1,7 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog title="Valor" class="sapUiPopupWithPadding"
+		items="{path: '/ZET_GLHR_COMBO_VALORSet', filters: { path: 'IBeneficio', operator: 'EQ', value1:'PREVIDENCIA_PRIVADA'}}" search="onSearch"
+		confirm="onConfirmMunicipio" cancel="_handleValueHelpClose">
+		<StandardListItem iconDensityAware="false" iconInset="false" title="{Ltext}" description="{Bplan}"/>
+	</SelectDialog>
+</core:FragmentDefinition>

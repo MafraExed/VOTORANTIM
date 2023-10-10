@@ -1,0 +1,36 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Dialog busyIndicatorDelay="1" horizontalScrolling="false" state="None" stretch="false" title="Filtro por Etapa" type="Standard" verticalScrolling="true">
+		<content>
+			<ScrollContainer>
+				<HBox class="sapUiSmallMargin">
+					<VBox class="sapUiSmallMarginEnd">
+						<Label text="Centro Origem"/>
+						<Input width="12.5rem" showValueHelp="true" valueHelpRequest="onFilterByCentroOrigem"/>
+					</VBox>
+					<VBox class="sapUiSmallMarginEnd">
+						<Label text="Destino"/>
+						<Input width="15rem" showValueHelp="true" valueHelpRequest="onFilterByDestino" enabled="true"/>
+					</VBox>
+				</HBox>
+			</ScrollContainer>
+			<List noDataText="Selecione Origem e Destino" width="600px" headerText="Lista de Etapas" class="sapUiSmallMarginBegin" items="{path: 'filtroEtapa>/'}">
+				<items>
+					<ObjectListItem press="onEtapaSelecionada" class="sapUiSmallMarginEnd" title="Etapa: {filtroEtapa>Etapa}" type="Active">
+						<firstStatus>
+							<ObjectStatus text="{filtroEtapa>EtapaSelected}" state="Success"/>
+						</firstStatus>
+						<attributes>
+							<ObjectAttribute title="Descrição" text="{filtroEtapa>DescricaoEtapa}"/>
+						</attributes>
+					</ObjectListItem>
+				</items>
+			</List>
+		</content>
+		<beginButton>
+			<Button text="Cancelar" type="Reject" press="onClose"/>
+		</beginButton>
+		<endButton>
+			<Button text="Aplicar" type="Accept" press="onApplyFilter"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

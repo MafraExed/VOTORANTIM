@@ -1,0 +1,61 @@
+<core:FragmentDefinition xmlns:l="sap.ui.layout" xmlns:u="sap.ui.unified" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Dialog id="idDialogTableLog" title="{i18n>LogTitle}" stretch="true">
+		<Table id="idTbTableLog" width="auto" noDataText="{i18n>errorDataNotFound}" showSeparators="All" growing="true" growingThreshold="20"
+			growingScrollToLoad="true" items="{path:'NFHEADER>/ZET_VCMM_GRECLOGSet'}" fixedLayout="false">
+			<columns>
+				<Column hAlign="Center" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+					<header>
+						<Text text="{i18n>TypeHeader}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+					</header>
+					<footer/>
+				</Column>
+				<Column hAlign="Center" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+					<header>
+						<Text text="{i18n>ChvnfeHeader}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+					</header>
+					<footer/>
+				</Column>
+				<Column hAlign="Center" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+					<header>
+						<Text text="{i18n>DateHeader}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+					</header>
+					<footer/>
+				</Column>
+				<Column hAlign="Center" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+					<header>
+						<Text text="{i18n>TimeHeader}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+					</header>
+					<footer/>
+				</Column>
+				<Column hAlign="Center" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+					<header>
+						<Text text="{i18n>MessageHeader}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+					</header>
+					<footer/>
+				</Column>
+			</columns>
+			<items>
+				<ColumnListItem type="Active" counter="1">
+					<cells>
+						<core:Icon src="{NFHEADER>Icon}" color="{NFHEADER>Color}"/>
+					</cells>
+					<cells>
+						<Text text="{NFHEADER>Chvnfe}" width="auto" maxLines="1" textAlign="Center"/>
+					</cells>
+					<cells>
+						<Text text="{path: 'NFHEADER>Datum', type:'sap.ui.model.type.Date', formatOptions: {style: 'short'}}"  />
+					</cells>
+					<cells>
+						<Text text="{path: 'NFHEADER>Time', type: 'sap.ui.model.odata.type.Time', formatOptions: { pattern : 'HH:mm:ss'}}" textAlign="Center"/>
+					</cells>
+					<cells>
+						<Text text="{NFHEADER>Message}" width="auto"  textAlign="Center" maxLines="1" />
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+		<beginButton>
+			<Button text="{i18n>dialogCloseButtonText}" press="_onCloseLogGR" type="Emphasized"/>
+		</beginButton>
+	</Dialog>
+</core:FragmentDefinition>

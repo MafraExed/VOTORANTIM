@@ -1,0 +1,32 @@
+specVersion: "3.1"
+metadata:
+  name: y5gl_bem_estar.y5gl_bem_estar
+type: application
+server:
+  customMiddleware:
+    - name: fiori-tools-proxy
+      afterMiddleware: compression
+      configuration:
+        ignoreCertError: false
+        backend:
+          - path: /resources/Y5GL_BEM_ESTAR/Y5GL_BEM_ESTAR/Component
+            destination: ""
+            url: ""
+            pathPrefix: /sap/bc/lrep/flex/data/~PXfFBjmM6t+7cmHpvlOGHGngY3I=~/Y5GL_BEM_ESTAR.Y5GL_BEM_ESTAR.Component?version=1.0.0
+        ui5:
+          path:
+            - /resources
+            - /test-resources
+          url: https://ui5.sap.com
+          version: 1.71.4
+    - name: fiori-tools-appreload
+      afterMiddleware: compression
+      configuration:
+        port: 35729
+        path: webapp
+        delay: 300
+    - name: fiori-tools-preview
+      afterMiddleware: fiori-tools-appreload
+      configuration:
+        component: Y5GL_BEM_ESTAR.Y5GL_BEM_ESTAR
+        ui5Theme: sap_fiori_3

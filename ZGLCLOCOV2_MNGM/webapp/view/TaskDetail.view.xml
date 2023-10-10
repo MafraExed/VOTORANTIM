@@ -1,0 +1,249 @@
+<mvc:View controllerName="votorantim.corp.clocov2planmanagement.controller.TaskDetail"
+	xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:f="sap.ui.layout.form" class="sapUiSizeCompact"
+	xmlns:core="sap.ui.core">
+
+	<f:Form editable="true">
+		<f:title>
+			<core:Title text="{i18n>taskBasicDetails}" level="H3" />
+		</f:title>
+		<f:layout>
+			<f:ResponsiveGridLayout labelSpanXL="1" labelSpanL="1" labelSpanM="1" labelSpanS="1" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="2" columnsM="2" singleContainerFullSize="false" />
+		</f:layout>
+		<f:formContainers>
+			<f:FormContainer>
+				<f:formElements>
+					<f:FormElement label="{i18n>taskName}">
+						<f:fields>
+							<Input id="taskDetailDesc" value="{
+                                                        path : 'DescTarefa',
+                                                        type : 'sap.ui.model.type.String',
+                                                        constraints : {
+                                                            minLength: 1
+                                                        }}" change="onDataChanged" required="true" maxLength="60"/>
+						</f:fields>
+					</f:FormElement>
+					<f:FormElement label="{i18n>taskCompanyCode}">
+						<f:fields>
+							<Input id="idCompanyTask" required="true" change="onDataChanged" value="{
+																		path: 'Empresa',
+																		type : 'sap.ui.model.type.String',
+																		constraints : {
+																		minLength: 1
+																		}
+																	}"  showValueHelp="true" valueHelpRequest="showCompanySearchHelp"/> 
+							<CheckBox text="{i18n>taskCoe}" select="onDataChanged" selected="{Coe}" textAlign="Center" id="idTaskDetailCoe"/>
+						</f:fields>
+					</f:FormElement>
+					<f:FormElement label="Cód. ANA (opcional)" visible="{Coe}">
+						<f:fields>
+							<Input id="idCodAna" required="false" change="onDataChanged" maxLength="20" value="{path: 'Ana'}"  /> 
+						</f:fields>
+					</f:FormElement>
+					<f:FormElement label="Área/Departamento">
+						<f:fields>
+							<Input id="idAreaTask" required="false" change="onDataChanged" value="{
+																		path: 'Departamento',
+																		type : 'sap.ui.model.type.String',
+																		constraints : {
+																		minLength: 1
+																		}
+																	}"  showValueHelp="true" valueHelpRequest="showDepartamentSearchHelp('idAreaTask')"/> 
+						</f:fields>
+					</f:FormElement>
+					<f:FormElement label="{i18n>taskResp}">
+						<f:fields>
+							<Input value="{Resp}" id="idBtnResp" change="onDataChanged" showValueHelp="true" valueHelpRequest="showUserSearchHelp"/>
+						</f:fields>
+					</f:FormElement>
+					<f:FormElement label="{i18n>taskRespExec}">
+						<f:fields>
+							<Input value="{
+											path : 'RespExec',
+											type : 'sap.ui.model.type.String',
+											constraints : {
+												minLength: 1
+											}}" id="idBtnRespExec" required="true" change="onDataChanged" showValueHelp="true" valueHelpRequest="showUserSearchHelp"/>
+						</f:fields>
+					</f:FormElement>
+					<f:FormElement label="{i18n>taskType}">
+						<f:fields>
+							<Select selectedKey="{TipoTarefa}" id="taskDetailType" change="onDataChanged">
+								<items>
+									<core:Item text="{i18n>TaskTypeJob}" key="0"/>
+									<core:Item text="{i18n>TaskTypeTcode}" key="2"/>
+									<core:Item text="{i18n>TaskTypeReminder}" key="3"/>
+								</items>
+							</Select>
+						</f:fields>
+					</f:FormElement>
+					<f:FormElement visible="{= ${TipoTarefa} === '2'}" label="{i18n>TaskTypeTcode}">
+						<f:fields>
+							<Input id="tcodeTaskDetail" visible="{= ${TipoTarefa} === '2'}" change="onDataChanged" value="{
+																															path : 'Transacao',
+																															type : 'sap.ui.model.type.String',
+																															constraints : {
+																																minLength: 1
+																															}}" showValueHelp="true" valueHelpRequest="showTcodeSearchHelp" />
+						</f:fields>
+					</f:FormElement>
+					<f:FormElement visible="{= ${TipoTarefa} === '0'}" label="{i18n>TaskTypeProgram}">
+						<f:fields>
+							<Input id="jobTaskDetail" visible="{= ${TipoTarefa} === '0'}" change="onDataChanged" value="{
+																														path : 'NomePrograma',
+																														type : 'sap.ui.model.type.String',
+																														constraints : {
+																															minLength: 1
+																														}}" showValueHelp="true" valueHelpRequest="showJobSearchHelp"/>
+						</f:fields>
+					</f:FormElement>
+					<f:FormElement visible="{= ${TipoTarefa} === '0'}" label="{i18n>TaskVariant}">
+						<f:fields>
+							<Input visible="{= ${TipoTarefa} === '0'}" change="onDataChanged" value="{
+																										path : 'VariantePrograma',
+																										type : 'sap.ui.model.type.String',
+																										constraints : {
+																											minLength: 1
+																										}}" id="varTaskDetail" showValueHelp="true" valueHelpRequest="showVarSearchHelp" />
+						</f:fields>
+					</f:FormElement>
+					<f:FormElement label="{i18n>tasklCriticalPath}">
+						<f:fields>
+							<Select selectedKey="{CaminhoCritico}" change="onDataChanged">
+								<items>
+									<core:Item text="{i18n>appYes}" key="X"/>
+									<core:Item text="{i18n>appNo}" key=""/>
+								</items>
+							</Select>
+						</f:fields>
+					</f:FormElement>
+				</f:formElements>
+			</f:FormContainer>
+		</f:formContainers>
+	</f:Form>
+
+	<f:Form editable="true">
+		<f:title>
+			<core:Title text="{i18n>taskPlanning}" />
+		</f:title>
+		<f:layout>
+			<f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="3" labelSpanM="4" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="4" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="1" columnsM="1" singleContainerFullSize="false" />
+		</f:layout>
+		<f:formContainers>
+
+			<f:FormContainer >
+				<f:title>
+					<core:Title text="Início Planejado" />
+				</f:title>
+				<f:formElements>
+					<f:FormElement >
+						<f:fields>
+							<Input type="Number" change="onDataChanged" value="{
+																				path : 'InicioPlanejadoDias',
+																				type : 'sap.ui.model.type.String',
+																				constraints : {
+																					minLength: 1
+																				}}" id="taskDetailPlanDias" required="true" description="dia(s)"></Input>
+							<TimePicker value="{
+												path : 'InicioPlanejadoHoras',
+												type : 'sap.ui.model.type.String',
+												constraints : {
+													minLength: 1
+												}}" valueFormat="HHmmss" required="true" id="taskDetailPlanHoras" displayFormat="HH:mm" maskMode="On" change="onDataChanged" placeholder="Hora" />
+						</f:fields>
+					</f:FormElement>
+					<f:FormElement>
+						<f:fields>
+							<Select selectedKey="{InicioPlanAposDataBase}" change="onDataChanged">
+								<items>
+									<core:Item text="Antes da data base" key=""/>
+									<core:Item text="Após a data base" key="X"/>
+								</items>
+							</Select>
+						</f:fields>
+					</f:FormElement>
+				</f:formElements>
+			</f:FormContainer>
+
+			<f:FormContainer >
+				<f:title>
+					<core:Title text="Duração Planejada" />
+				</f:title>
+				<f:formElements>
+					<f:FormElement >
+						<f:fields>
+							<Input type="Number" change="onDataChanged" value="{DuracaoPlanejadoDias}" description="dia(s)"></Input>
+							<TimePicker value="{
+												path : 'DuracaoPlanejadoHoras',
+												type : 'sap.ui.model.type.String',
+												constraints : {
+													minLength: 1
+												}}" id="taskDetailPlanDuracHoras" required="true" valueFormat="HHmmss" displayFormat="HH:mm" maskMode="On" change="onDataChanged" title="Hora" placeholder="Hora" />
+						</f:fields>
+					</f:FormElement>
+				</f:formElements>
+			</f:FormContainer>
+
+			<f:FormContainer >
+				<f:title>
+					<core:Title text="Fim Planejado" />
+				</f:title>
+				<f:formElements>
+					<f:FormElement label="Dia">
+						<f:fields>
+							<Text text="{parts: [{path: 'FimPlanejadoDias'},{path: 'FimPlanAposDataBase'}], formatter:'.formatter.getEndPlanText'} ">
+								<layoutData>
+									<l:GridData span="XL1 L2 M2 S4" />
+								</layoutData>
+							</Text>
+						</f:fields>
+						<f:fields>
+
+							<core:Icon class="sapUiSmallMarginEnd" tooltip="Data base representa o primeiro dia de fechamento. É o D0." src="sap-icon://sys-help" size="18px" useIconTooltip="true"/>
+						</f:fields>
+
+					</f:FormElement>
+					<f:FormElement label="Hora">
+						<f:fields>
+							<Text text="{FimPlanejadoHoras}"/>
+						</f:fields>
+					</f:FormElement>
+				</f:formElements>
+			</f:FormContainer>
+			 <f:FormContainer>
+			 		<f:title>
+						<core:Title text="Utilização da Tarefa" />
+					</f:title>
+                    <f:formElements >
+                        <f:FormElement label="{i18n>detailTaskMonth}">
+                            <f:fields>
+                                <Switch state="{EncerramentoMes}" customTextOn=" " customTextOff=" " change="onDataChanged"/>
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement label="{i18n>detailTask3Month}">
+                            <f:fields>
+                                <Switch state="{EncerramentoTri}" customTextOn=" " customTextOff=" " change="onDataChanged"/>
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement label="{i18n>detailTaskYear}">
+                            <f:fields>
+                                <Switch state="{EncerramentoAno}" customTextOn=" " customTextOff=" " change="onDataChanged"/>
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement label="{i18n>detailTaskSpecial}">
+                            <f:fields>
+                                <Switch state="{EncerramentoEspec}" customTextOn=" " customTextOff=" " change="onDataChanged"/>
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement label="{i18n>detailTaskUser}">
+                            <f:fields>
+                                <Switch state="{EncerramentoUsuario}" customTextOn=" " customTextOff=" " change="onDataChanged"/>
+                            </f:fields>
+                        </f:FormElement>
+                    </f:formElements>
+                </f:FormContainer>
+		</f:formContainers>
+	</f:Form>
+</mvc:View>

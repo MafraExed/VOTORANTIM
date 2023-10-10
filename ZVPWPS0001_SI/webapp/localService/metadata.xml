@@ -1,0 +1,253 @@
+<edmx:Edmx
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+    xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+    xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZGWFBSISB_PORTAL_SRV" xml:lang="pt" sap:schema-version="1">
+            <EntityType Name="Sisb" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Numprocesso"/>
+                </Key>
+                <Property Name="Bukrs" Type="Edm.String" MaxLength="4" sap:label="Empresa" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Numprocesso" Type="Edm.String" Nullable="false" MaxLength="18" sap:label="Processo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Descricao" Type="Edm.String" MaxLength="100" sap:label="Descrição do projeto" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="NameBukrs" Type="Edm.String" MaxLength="30" sap:label="Nome Empresa" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Werks" Type="Edm.String" MaxLength="4" sap:label="Centro" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="WerksName" Type="Edm.String" MaxLength="30" sap:label="Nome Centro" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DataCriacao" Type="Edm.DateTime" Precision="7" sap:label="Data de Criação" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TpRegistro" Type="Edm.String" MaxLength="3" sap:label="Tipo de Registro" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Usnam" Type="Edm.String" MaxLength="12" sap:label="Solicitante" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="NameText" Type="Edm.String" MaxLength="80" sap:label="Nome Solicitante" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Valor" Type="Edm.Decimal" Precision="14" Scale="3" sap:label="Valor" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Moeda" Type="Edm.String" MaxLength="5" sap:label="Moeda" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="currency-code"/>
+                <NavigationProperty Name="ToCm" Relationship="ZGWFBSISB_PORTAL_SRV.Assoc_Sisb_Cm" FromRole="FromRole_Assoc_Sisb_Cm" ToRole="ToRole_Assoc_Sisb_Cm"/>
+                <NavigationProperty Name="ToDetalhe" Relationship="ZGWFBSISB_PORTAL_SRV.Assoc_Sisb_De" FromRole="FromRole_Assoc_Sisb_De" ToRole="ToRole_Assoc_Sisb_De"/>
+                <NavigationProperty Name="ToLog" Relationship="ZGWFBSISB_PORTAL_SRV.Assoc_Sisb_Log" FromRole="FromRole_Assoc_Sisb_Log" ToRole="ToRole_Assoc_Sisb_Log"/>
+                <NavigationProperty Name="ToRota" Relationship="ZGWFBSISB_PORTAL_SRV.Assoc_Sisb_Rota" FromRole="FromRole_Assoc_Sisb_Rota" ToRole="ToRole_Assoc_Sisb_Rota"/>
+                <NavigationProperty Name="ToPdf" Relationship="ZGWFBSISB_PORTAL_SRV.Assoc_Sisb_Pdf" FromRole="FromRole_Assoc_Sisb_Pdf" ToRole="ToRole_Assoc_Sisb_Pdf"/>
+                <NavigationProperty Name="ToDetalheNew" Relationship="ZGWFBSISB_PORTAL_SRV.Assoc_Sisb_DeNew" FromRole="FromRole_Assoc_Sisb_DeNew" ToRole="ToRole_Assoc_Sisb_DeNew"/>
+            </EntityType>
+            <EntityType Name="Grupo" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Usrlib"/>
+                </Key>
+                <Property Name="Usrlib" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="Usuário" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Nome" Type="Edm.String" sap:label="Nome" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Documento" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Documento" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Recebido" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Recebido" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Return" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Type"/>
+                    <PropertyRef Name="Message"/>
+                </Key>
+                <Property Name="Type" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Tipo do erro" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Message" Type="Edm.String" Nullable="false" MaxLength="100" sap:label="Mensagem" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="Comentario" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Documento"/>
+                    <PropertyRef Name="Nome"/>
+                    <PropertyRef Name="Texto"/>
+                </Key>
+                <Property Name="DocSisb" Type="Edm.String" Nullable="false" MaxLength="18" sap:label="Doc" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Documento" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Documento" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Nome" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="Nome" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Datahora" Type="Edm.String" MaxLength="50" sap:label="DataHora" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Texto" Type="Edm.String" Nullable="false" MaxLength="255" sap:label="Texto" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Detalhe" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Documento"/>
+                    <PropertyRef Name="Nome"/>
+                    <PropertyRef Name="Texto"/>
+                </Key>
+                <Property Name="DocSisb" Type="Edm.String" Nullable="false" MaxLength="18" sap:label="Documento" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Documento" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Documento" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Nome" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="Nome" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Datahora" Type="Edm.String" MaxLength="50" sap:label="Datahora" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Texto" Type="Edm.String" Nullable="false" MaxLength="255" sap:label="Texto" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Rota" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Usrlib"/>
+                    <PropertyRef Name="Recebido"/>
+                </Key>
+                <Property Name="Documento" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Documento" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Usrlib" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="Nome do usuário" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Grupo" Type="Edm.String" MaxLength="1" sap:label="Caractere 1" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Nome" Type="Edm.String" MaxLength="80" sap:label="Nome completo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Status" Type="Edm.String" MaxLength="1" sap:label="Flag" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Recebido" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Recebido em:" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Liberado" Type="Edm.String" MaxLength="20" sap:label="Liberado em:" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="ToGrupo" Relationship="ZGWFBSISB_PORTAL_SRV.Assoc_Rota_Grupo" FromRole="FromRole_Assoc_Rota_Grupo" ToRole="ToRole_Assoc_Rota_Grupo"/>
+            </EntityType>
+            <EntityType Name="Log" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Docnumber"/>
+                    <PropertyRef Name="Timestamp"/>
+                </Key>
+                <Property Name="Docnumber" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="char20" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Timestamp" Type="Edm.DateTime" Nullable="false" Precision="0" sap:label="Registro hora" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Userlib" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="Nome do usuário" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ReleaseDate" Type="Edm.DateTime" Precision="7" sap:label="Autor.desde" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ReleaseTime" Type="Edm.Time" Precision="0" sap:label="Entrado às" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MsgType" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Tipo mensagem" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Type" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Campo de caracteres do comprimento 10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Description" Type="Edm.String" Nullable="false" MaxLength="256" sap:label="char256" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Title" Type="Edm.String" Nullable="false" MaxLength="256" sap:label="char256" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Subtitle" Type="Edm.String" Nullable="false" MaxLength="256" sap:label="char256" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="SetPdf" m:HasStream="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Numprocesso"/>
+                </Key>
+                <Property Name="Numprocesso" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Documento" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Url" Type="Edm.String" Nullable="false" sap:label="Tipo de conteúdo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="DetalheNew" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Numprocesso"/>
+                </Key>
+                <Property Name="Numprocesso" Type="Edm.String" Nullable="false" MaxLength="18" sap:label="Processo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Context" Type="Edm.String" Nullable="false" sap:label="Context" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <Association Name="Assoc_Rota_Grupo" sap:content-version="1">
+                <End Type="ZGWFBSISB_PORTAL_SRV.Rota" Multiplicity="1" Role="FromRole_Assoc_Rota_Grupo"/>
+                <End Type="ZGWFBSISB_PORTAL_SRV.Grupo" Multiplicity="*" Role="ToRole_Assoc_Rota_Grupo"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_Assoc_Rota_Grupo">
+                        <PropertyRef Name="Usrlib"/>
+                        <PropertyRef Name="Recebido"/>
+                    </Principal>
+                    <Dependent Role="ToRole_Assoc_Rota_Grupo">
+                        <PropertyRef Name="Usrlib"/>
+                        <PropertyRef Name="Recebido"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="Assoc_Sisb_De" sap:content-version="1">
+                <End Type="ZGWFBSISB_PORTAL_SRV.Sisb" Multiplicity="1" Role="FromRole_Assoc_Sisb_De"/>
+                <End Type="ZGWFBSISB_PORTAL_SRV.Detalhe" Multiplicity="*" Role="ToRole_Assoc_Sisb_De"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_Assoc_Sisb_De">
+                        <PropertyRef Name="Numprocesso"/>
+                    </Principal>
+                    <Dependent Role="ToRole_Assoc_Sisb_De">
+                        <PropertyRef Name="DocSisb"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="Assoc_Sisb_Log" sap:content-version="1">
+                <End Type="ZGWFBSISB_PORTAL_SRV.Sisb" Multiplicity="1" Role="FromRole_Assoc_Sisb_Log"/>
+                <End Type="ZGWFBSISB_PORTAL_SRV.Log" Multiplicity="*" Role="ToRole_Assoc_Sisb_Log"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_Assoc_Sisb_Log">
+                        <PropertyRef Name="Numprocesso"/>
+                    </Principal>
+                    <Dependent Role="ToRole_Assoc_Sisb_Log">
+                        <PropertyRef Name="Docnumber"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="Assoc_Sisb_Rota" sap:content-version="1">
+                <End Type="ZGWFBSISB_PORTAL_SRV.Sisb" Multiplicity="1" Role="FromRole_Assoc_Sisb_Rota"/>
+                <End Type="ZGWFBSISB_PORTAL_SRV.Rota" Multiplicity="*" Role="ToRole_Assoc_Sisb_Rota"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_Assoc_Sisb_Rota">
+                        <PropertyRef Name="Numprocesso"/>
+                    </Principal>
+                    <Dependent Role="ToRole_Assoc_Sisb_Rota">
+                        <PropertyRef Name="Documento"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="Assoc_Sisb_Pdf" sap:content-version="1">
+                <End Type="ZGWFBSISB_PORTAL_SRV.Sisb" Multiplicity="1" Role="FromRole_Assoc_Sisb_Pdf"/>
+                <End Type="ZGWFBSISB_PORTAL_SRV.SetPdf" Multiplicity="1" Role="ToRole_Assoc_Sisb_Pdf"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_Assoc_Sisb_Pdf">
+                        <PropertyRef Name="Numprocesso"/>
+                    </Principal>
+                    <Dependent Role="ToRole_Assoc_Sisb_Pdf">
+                        <PropertyRef Name="Numprocesso"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="Assoc_Sisb_DeNew" sap:content-version="1">
+                <End Type="ZGWFBSISB_PORTAL_SRV.Sisb" Multiplicity="1" Role="FromRole_Assoc_Sisb_DeNew"/>
+                <End Type="ZGWFBSISB_PORTAL_SRV.DetalheNew" Multiplicity="*" Role="ToRole_Assoc_Sisb_DeNew"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_Assoc_Sisb_DeNew">
+                        <PropertyRef Name="Numprocesso"/>
+                    </Principal>
+                    <Dependent Role="ToRole_Assoc_Sisb_DeNew">
+                        <PropertyRef Name="Numprocesso"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="Assoc_Sisb_Cm" sap:content-version="1">
+                <End Type="ZGWFBSISB_PORTAL_SRV.Sisb" Multiplicity="1" Role="FromRole_Assoc_Sisb_Cm"/>
+                <End Type="ZGWFBSISB_PORTAL_SRV.Comentario" Multiplicity="*" Role="ToRole_Assoc_Sisb_Cm"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_Assoc_Sisb_Cm">
+                        <PropertyRef Name="Numprocesso"/>
+                    </Principal>
+                    <Dependent Role="ToRole_Assoc_Sisb_Cm">
+                        <PropertyRef Name="DocSisb"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="ZGWFBSISB_PORTAL_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="Sisbs" EntityType="ZGWFBSISB_PORTAL_SRV.Sisb" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="Grupos" EntityType="ZGWFBSISB_PORTAL_SRV.Grupo" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ReturnCollection" EntityType="ZGWFBSISB_PORTAL_SRV.Return" sap:content-version="1"/>
+                <EntitySet Name="Comentarios" EntityType="ZGWFBSISB_PORTAL_SRV.Comentario" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="Detalhes" EntityType="ZGWFBSISB_PORTAL_SRV.Detalhe" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="Rotas" EntityType="ZGWFBSISB_PORTAL_SRV.Rota" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="Logs" EntityType="ZGWFBSISB_PORTAL_SRV.Log" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="SetPdfSet" EntityType="ZGWFBSISB_PORTAL_SRV.SetPdf" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="DetalheNewSet" EntityType="ZGWFBSISB_PORTAL_SRV.DetalheNew" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <AssociationSet Name="Assoc_Sisb_DeNewSet" Association="ZGWFBSISB_PORTAL_SRV.Assoc_Sisb_DeNew" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Sisbs" Role="FromRole_Assoc_Sisb_DeNew"/>
+                    <End EntitySet="DetalheNewSet" Role="ToRole_Assoc_Sisb_DeNew"/>
+                </AssociationSet>
+                <AssociationSet Name="Assoc_Sisb_CmSet" Association="ZGWFBSISB_PORTAL_SRV.Assoc_Sisb_Cm" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Sisbs" Role="FromRole_Assoc_Sisb_Cm"/>
+                    <End EntitySet="Comentarios" Role="ToRole_Assoc_Sisb_Cm"/>
+                </AssociationSet>
+                <AssociationSet Name="Assoc_Sisb_RotaSet" Association="ZGWFBSISB_PORTAL_SRV.Assoc_Sisb_Rota" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Sisbs" Role="FromRole_Assoc_Sisb_Rota"/>
+                    <End EntitySet="Rotas" Role="ToRole_Assoc_Sisb_Rota"/>
+                </AssociationSet>
+                <AssociationSet Name="Assoc_Rota_GrupoSet" Association="ZGWFBSISB_PORTAL_SRV.Assoc_Rota_Grupo" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Rotas" Role="FromRole_Assoc_Rota_Grupo"/>
+                    <End EntitySet="Grupos" Role="ToRole_Assoc_Rota_Grupo"/>
+                </AssociationSet>
+                <AssociationSet Name="Assoc_Sisb_DeSet" Association="ZGWFBSISB_PORTAL_SRV.Assoc_Sisb_De" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Sisbs" Role="FromRole_Assoc_Sisb_De"/>
+                    <End EntitySet="Detalhes" Role="ToRole_Assoc_Sisb_De"/>
+                </AssociationSet>
+                <AssociationSet Name="Assoc_Sisb_LogSet" Association="ZGWFBSISB_PORTAL_SRV.Assoc_Sisb_Log" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Sisbs" Role="FromRole_Assoc_Sisb_Log"/>
+                    <End EntitySet="Logs" Role="ToRole_Assoc_Sisb_Log"/>
+                </AssociationSet>
+                <AssociationSet Name="Assoc_Sisb_PdfSet" Association="ZGWFBSISB_PORTAL_SRV.Assoc_Sisb_Pdf" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Sisbs" Role="FromRole_Assoc_Sisb_Pdf"/>
+                    <End EntitySet="SetPdfSet" Role="ToRole_Assoc_Sisb_Pdf"/>
+                </AssociationSet>
+                <FunctionImport Name="OnFuncAction" ReturnType="ZGWFBSISB_PORTAL_SRV.Return" EntitySet="ReturnCollection" m:HttpMethod="POST" sap:action-for="ZGWFBSISB_PORTAL_SRV.Sisb">
+                    <Parameter Name="Action" Type="Edm.String" Mode="In" MaxLength="1"/>
+                    <Parameter Name="Coment" Type="Edm.String" Mode="In" MaxLength="255"/>
+                    <Parameter Name="Documento" Type="Edm.String" Mode="In"/>
+                    <Parameter Name="Userid" Type="Edm.String" Mode="In" MaxLength="12"/>
+                </FunctionImport>
+            </EntityContainer>
+            <atom:link
+                xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/ZGWFBSISB_PORTAL_SRV/$metadata"/>
+                <atom:link
+                    xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/ZGWFBSISB_PORTAL_SRV/$metadata"/>
+                </Schema>
+            </edmx:DataServices>
+        </edmx:Edmx>

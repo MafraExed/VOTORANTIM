@@ -1,0 +1,40 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:table="sap.ui.table"
+    xmlns:l="sap.ui.layout" class="sapUiSizeCompact"
+    xmlns:f="sap.ui.layout.form">
+    <Dialog showHeader="true" title="Alterar Status do Plano">
+        <f:Form editable="true">
+            <f:layout>
+                <f:ResponsiveGridLayout labelSpanXL="6" labelSpanL="6" labelSpanM="6" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="4" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false" />
+            </f:layout>
+            <f:formContainers>
+                <f:FormContainer>
+                    <f:formElements >
+                        <f:FormElement label="Novo Status">
+                            <f:fields>
+                                <Select selectedKey="{Status}">
+                                    <items>
+                                        <core:Item text="Não Liberado" key=""/>
+                                        <core:Item text="Liberado" key="X"/>
+                                        <core:Item text="Ativo" key="A"/>
+                                        <core:Item text="Concluído" key="F"/>
+                                    </items>
+                                </Select>
+                            </f:fields>
+                        </f:FormElement>
+                    </f:formElements>
+                </f:FormContainer>
+            </f:formContainers>
+
+        </f:Form>
+
+        <beginButton>
+            <Button type="Emphasized" text="{i18n>appApply}" press="ChangeStatusPlan"/>
+        </beginButton>
+        <endButton>
+            <Button text="{i18n>appCancel}" press="onCloseChangeStatusPlanDialog"/>
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

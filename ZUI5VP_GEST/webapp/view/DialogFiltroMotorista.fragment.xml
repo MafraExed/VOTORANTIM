@@ -1,0 +1,20 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Dialog busyIndicatorDelay="1" horizontalScrolling="false" state="None" stretch="false" title="Filtro por Motorista" type="Standard" verticalScrolling="true">
+		<content>
+			<HBox class="sapUiTinyMargin parent">
+				<SearchField search="onSearch"/>
+			</HBox>
+			<List class="sapUiSmallMarginBegin" items="{path: 'filtroMotorista>/'}" itemPress="onSelecionar">
+				<items>
+					<StandardListItem class="sapUiSmallMarginEnd" type="Active" title="{filtroMotorista>Nome}" info="{filtroMotorista>MotSelected}" infoState="Success"/>
+				</items>
+			</List>
+		</content>
+		<beginButton>
+			<Button text="Cancelar" type="Reject" press="onClose"/>
+		</beginButton>
+		<endButton>
+			<Button text="Aplicar" type="Accept" press="onApply" />
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

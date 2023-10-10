@@ -1,0 +1,5 @@
+"use strict";
+/*!
+ * SiGC - GestiÃ³n de Compras
+ * (c) Copyright 2022 Innova Internacional S.A.S.
+ */sap.ui.define(["sap/m/upload/UploadSetItem","sap/m/ObjectAttribute"],function(e,t){return{sharedUse:function a(i,o){return new e(i+Math.floor(Math.random()*(1-4999))+4999,{fileName:o.getProperty("originalname"),mediaType:o.getProperty("mimetype"),url:"./upload",uploadState:sap.m.UploadState.Complete,visibleEdit:false,openPressed:this.onDownloadAttachment.bind(this),removePressed:this.onRemoveAttachment.bind(this),attributes:[new t({title:"{i18n>0146}",text:"{processModel>createAt}",active:false})]})},internalUse:function a(i,o){return new e(i+Math.floor(Math.random()*(9999-5e3))+5e3,{fileName:o.getProperty("originalname"),mediaType:o.getProperty("mimetype"),url:"./upload",uploadState:sap.m.UploadState.Complete,visibleEdit:false,openPressed:this.onDownloadAttachment.bind(this),removePressed:this.onRemoveAttachment.bind(this),attributes:[new t({title:"{i18n>0146}",text:"{processModel>createAt}",active:false})]})}}});

@@ -1,0 +1,134 @@
+<mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.f.semantic" xmlns:footerbar="sap.ushell.ui.footerbar"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:m="sap.m" xmlns:la="sap.ui.layout" xmlns:sv="sap.ui.comp.smartvariants"
+	xmlns:smartTable="sap.ui.comp.smarttable" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:l="controls"
+	xmlns:table="sap.ui.table" xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	controllerName="Y5VC_PAINEL_NE2.Y5VC_PAINEL_NE2.controller.EditarContatos">
+	<Page id="id_pagContatos" showHeader="false" showSubHeader="false">
+		<f:Form editable="true" id="Form">
+			<f:layout>
+				<f:ResponsiveGridLayout labelSpanXL="5" labelSpanL="5" labelSpanM="5" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0"
+					emptySpanM="0" emptySpanS="0" columnsXL="4" columnsL="4" columnsM="4" singleContainerFullSize="true"/>
+			</f:layout>
+			<f:formContainers>
+				<f:FormContainer>
+					<f:formElements>
+						<f:FormElement id="IDformel" label="Tipo de Contato" class="classform10">
+							<Select id="idSel2" selectedKey="">
+								<core:Item key="mobile" text="mobile"/>
+								<core:Item key="phone" text="phone"/>
+								<core:Item key="email" text="email"/>
+							</Select>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+				<f:FormContainer>
+					<f:formElements>
+						<f:FormElement label="Dado do contato">
+							<Input id="idContat2" editable="true"/>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+				<f:FormContainer>
+					<f:formElements>
+						<f:FormElement label="Nº prior contato">
+							<Input id="idPrior2" editable="true"/>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+				<f:FormContainer>
+					<f:formElements>
+						<f:FormElement label="Tag 1">
+							<Input id="IdTag2" editable="true"/>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+			</f:formContainers>
+		</f:Form>
+		<f:Form editable="true">
+			<f:layout>
+				<f:ResponsiveGridLayout labelSpanXL="5" labelSpanL="5" labelSpanM="5" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0"
+					emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="3" columnsM="3" singleContainerFullSize="true"/>
+			</f:layout>
+			<f:formContainers>
+				<f:FormContainer>
+					<f:formElements>
+						<f:FormElement>
+							<smartTable:SmartTable id="smartTableCont" entitySet="ZET_VCFI_CONTATO_CLISet" useExportToExcel="false" ignoreFromPersonalisation="NivelDet,Stcd1,Stcd2,Kkber,Fikrs,PosnrCt"
+								useVariantManagement="true" useTablePersonalisation="true" dataReceived="AfterUpdate" tableType="ResponsiveTable" header="Dados de contato"
+								showRowCount="true" showFullScreenButton="true" showVariantManagement="true"
+								initiallyVisibleFields="Kunnr,ContTyp,Contat,Prior,Tag" requestAtLeastFields="Kunnr,PosnrCt,ContTyp,Contat,Prior,Tag,Fikrs"
+								enableAutoBinding="true" class="sapUiResponsiveContentPadding" persistencyKey="SmartTablePKey24" beforeRebindTable="BeforeTable">
+								<smartTable:customToolbar id="idCustBar" class="stickyToolbar">
+									<OverflowToolbar design="Transparent">
+										<Button id="idInsert" text="Inserir" press="Inserir" type="Ghost"/>
+										<Button id="IdRemover" text="Remover" press="Remover" type="Ghost"/>
+										<Button id="BtnSave" text="Gravar modificações" type="Ghost" press="OnSave" icon="sap-icon://save"/>
+										<ToolbarSpacer/>
+									</OverflowToolbar>
+								</smartTable:customToolbar>
+								<table:Table selectionMode="MultiToggle" id="tableCont" enableBusyIndicator="true" busyIndicatorDelay="100" visibleRowCount="20"
+									enableCellFilter="false">
+									<table:Column >
+										<m:Label text="Cliente"/>
+										<table:template>
+											<m:Text text="{Kunnr}" id="idKunnr"/>
+										</table:template>
+										<table:customData>
+											<core:CustomData key="p13nData"
+												value="\{&quot;columnKey&quot;: &quot;Kunnr&quot;, &quot;columnIndex&quot;:&quot;0&quot;, &quot;leadingProperty&quot;: &quot;Kunnr&quot;}"/>
+										</table:customData>
+									</table:Column>
+									<table:Column >
+										<m:Label text="Tipo de Contato"/>
+										<table:template>
+											<!--<m:Text text="{ContTyp}" id="idSel"/>-->
+											<Select id="idSel" selectedKey="{ContTyp}">
+												<core:Item key="phone" text="phone"/>
+												<core:Item key="mobile" text="mobile"/>
+												<core:Item key="email" text="email"/>
+											</Select>
+										</table:template>
+										<table:customData>
+											<core:CustomData key="p13nData"
+												value="\{&quot;columnKey&quot;: &quot;ContTyp&quot;, &quot;columnIndex&quot;:&quot;1&quot;, &quot;leadingProperty&quot;: &quot;ContTyp&quot;}"/>
+										</table:customData>
+									</table:Column>
+									<table:Column >
+										<m:Label text="Dado do contato"/>
+										<table:template>
+											<m:Input value="{Contat}" id="idContat" editable="true"/>
+										</table:template>
+										<table:customData>
+											<core:CustomData key="p13nData"
+												value="\{&quot;columnKey&quot;: &quot;Contat&quot;, &quot;columnIndex&quot;:&quot;2&quot;, &quot;leadingProperty&quot;: &quot;Contat&quot;}"/>
+										</table:customData>
+									</table:Column>
+									<table:Column >
+										<m:Label text="Nº prior contato"/>
+										<table:template>
+											<m:Input value="{Prior}" id="idPrior" editable="true"/>
+										</table:template>
+										<table:customData>
+											<core:CustomData key="p13nData"
+												value="\{&quot;columnKey&quot;: &quot;Prior&quot;, &quot;columnIndex&quot;:&quot;3&quot;, &quot;leadingProperty&quot;: &quot;Prior&quot;}"/>
+										</table:customData>
+									</table:Column>
+									<table:Column >
+										<m:Label text="Tag 1"/>
+										<table:template>
+											<m:Input value="{Tag}" id="IdTag" editable="true"/>
+										</table:template>
+										<table:customData>
+											<core:CustomData key="p13nData"
+												value="\{&quot;columnKey&quot;: &quot;Tag&quot;, &quot;columnIndex&quot;:&quot;4&quot;, &quot;leadingProperty&quot;: &quot;Tag&quot;}"/>
+										</table:customData>
+									</table:Column>
+								</table:Table>
+							</smartTable:SmartTable>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+			</f:formContainers>
+		</f:Form>
+	</Page>
+</mvc:View>

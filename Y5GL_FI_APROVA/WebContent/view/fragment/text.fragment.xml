@@ -1,0 +1,13 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<Dialog title="{i18n>PopupComment}" class="sapUiPopupWithPadding">
+		<content>	
+			<Text text="{PopupView>/Text}" renderWhitespace="true"
+				   wrapping="true"/>				
+		</content>
+		<endButton>
+			<Button text="{i18n>CANCEL}" press="onCloseDialog" />
+		</endButton>		
+	</Dialog>
+</core:FragmentDefinition>

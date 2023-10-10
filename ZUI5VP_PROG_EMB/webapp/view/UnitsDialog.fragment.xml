@@ -1,0 +1,76 @@
+<core:FragmentDefinition 
+		xmlns="sap.m"
+		xmlns:core="sap.ui.core"
+		xmlns:mvc="sap.ui.core.mvc">
+	<Dialog 
+			id="unitsDialog"
+			title="Unidades Embarcadas"
+			showHeader="true">
+		<Table
+				id="unitsDialogTable"
+				inset="false"
+				mode="Delete"
+				items="{
+					path: 'UnitsEmbarcadasViagem>/',
+					sorter: {
+						path: 'HoraCarr'
+					}}">
+			<headerToolbar>
+				<Toolbar>
+					<content>
+						<ToolbarSpacer/>
+						<Button id="unitsDialogOpenVoyage"
+							icon="sap-icon://restart"
+							press="onUnitsDialogOpenVoyage"
+							tooltip="{i18n>unitsDialogOpenVoyageTt}"
+							visible="true"/>
+						<Button id="unitsDialogUnloadUnits"
+							icon="sap-icon://outbox"
+							press="onUnitsDialogUnloadUnits"
+							tooltip="{i18n>unitsDialogUnloadUnitsTt}"
+							visible="true"/>
+						<Button id="unitsDialogCloseVoyage"
+							icon="sap-icon://exit-full-screen"
+							press="onUnitsDialogOpenVoyage"
+							tooltip="{i18n>unitsDialogCloseVoyageTt}"
+							visible="true"/>
+					</content>
+				</Toolbar>
+			</headerToolbar>
+			<columns>
+				<Column
+					width="12em">
+					<Text text="{i18n>unitCode}" />
+				</Column>
+				<Column
+					minScreenWidth="Tablet"
+					demandPopin="true">
+					<Text text="{i18n>title}" />
+				</Column>
+				<Column
+					hAlign="End"
+					minScreenWidth="Tablet"
+					demandPopin="true">
+					<Text text="{i18n>nomeRespEmbarque}" />
+				</Column>
+			</columns>
+			<items>
+				<ColumnListItem>
+					<cells>
+						<ObjectIdentifier
+							title="{UnitsEmbarcadasViagem>Unit}"
+							text="{UnitsEmbarcadasViagem>Produto}"/>
+						<Text
+							text="{UnitsEmbarcadasViagem>DataCarr} - {UnitsEmbarcadasViagem>HoraCarr}" />
+						<ObjectIdentifier
+							title="{UnitsEmbarcadasViagem>NomeOperador}"
+							text="{UnitsEmbarcadasViagem>UserId}" />
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+		<endButton>
+	  	<Button id="unitsDialogCloseBtn" text="{i18n>unitsDialogClose}" press="onUnitsDialogCloseBtnPress"/>
+	  </endButton>
+	</Dialog>
+</core:FragmentDefinition>

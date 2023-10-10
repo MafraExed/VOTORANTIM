@@ -1,0 +1,11 @@
+/* Enter your custom styles here */
+@import url('https://fonts.googleapis.com/css?family=Orbitron&display=swap');
+
+.sapMBar {
+	background:navy !important;
+}
+
+.sapMBar span {
+	color:white !important;
+	font-size:22px;
+}

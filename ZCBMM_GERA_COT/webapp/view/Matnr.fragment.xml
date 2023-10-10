@@ -1,0 +1,22 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog
+		
+		title="Material"
+		class="sapUiPopupWithPadding"
+		items="{/ZET_CBMM_CF_MATNRSet}"
+		search="_handleValueHelpMatnr"
+		confirm="_Confirme_Matnr"
+		cancel="_handleValueHelpClose"
+		>
+		
+		<StandardListItem
+			icon="{ProductPicUrl}"
+			iconDensityAware="false"
+			iconInset="false"
+			title="{Matnr}"
+			description="{Maktx}" />
+			
+	</SelectDialog>
+</core:FragmentDefinition>

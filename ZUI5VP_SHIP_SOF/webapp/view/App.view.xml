@@ -1,0 +1,10 @@
+<View
+		displayBlock="true"
+		busy="{appView>/busy}"
+		busyIndicatorDelay="{appView>/delay}"
+		xmlns="sap.f"
+		xmlns:mvc="sap.ui.core.mvc"
+		controllerName="br.com.suzano.ZUI5VP_SHIP_SOF.controller.App"
+		height="100%">
+	<FlexibleColumnLayout id="idBoardingControl" stateChange="onStateChanged" layout="{/layout}" backgroundDesign="Solid"/>
+</View>

@@ -1,0 +1,122 @@
+<mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.f.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" controllerName="Y5GL_REC_FERI.Y5GL_REC_FERI.controller.Detail">
+	<App id="app">
+		<pages>
+			<Page title="Férias Programação" backgroundDesign="Solid">
+				<customHeader>
+					<Bar design="Header">
+						<contentLeft>
+							<Label/>
+							<Label xmlns="sap.m" text="Recesso Escolar" design="Bold" textAlign="Left"/>
+						</contentLeft>
+						<contentRight>
+							<Button text="" press="onVoltar" icon="sap-icon://home"/>
+						</contentRight>
+					</Bar>
+				</customHeader>
+				<content>
+					<f:Form id="FormChange480_12120" editable="true">
+						<f:layout>
+							<f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer>
+								<f:formElements>
+									<f:FormElement>
+										<FlexBox alignItems="Start" justifyContent="SpaceBetween">
+											<items>
+												<core:Icon src="sap-icon://my-view" color="#346187" size="50px"/>
+												<Text/>
+												<Text/>
+												<Text/>
+												<Text/>
+												<Text/>
+												<Text/>
+												<Text/>
+												<Text/>
+												<Text/>
+												<Text/>
+												<Text/>
+												<Text/>
+												<Text/>
+												<Text/>
+												<Text/>
+												<Text/>
+												<Text/>
+												<Text/>
+												<Text/>
+												<Text/>
+												<Text/>
+												<ObjectStatus xmlns="sap.m" text="{LabelStatus}" id="IdLabelStatus" textDirection="RTL" state="{path: 'LabelStatus', formatter:'.FormatStatus'}"/>
+												<Label/>
+											</items>
+										</FlexBox>
+									</f:FormElement>
+									<f:FormElement>
+										<f:fields>
+											<VBox>
+												<Label/>
+												<Label xmlns="sap.m" text="{LabelAqui}" textAlign="Left"/>
+												<Label xmlns="sap.m" text="{LabelConc}" textAlign="Left"/>
+												<Label xmlns="sap.m" text="{LabelDireito}" textAlign="Left"/>
+												<Label xmlns="sap.m" text="{LabelLimite}" textAlign="Left"/>
+												<Text/>
+											</VBox>
+										</f:fields>
+										</f:FormElement>
+									<f:FormElement>
+										<!--primeiro-->
+										<f:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout" columnsL="2" backgroundDesign="Solid" visible="true" id="Form1">
+											<VBox>
+											<Input value="" id="Per1" visible="false"/>
+											<FlexBox alignItems="Center" justifyContent="SpaceBetween" renderType="Bare" alignContent="Start">
+											<Label text="Data de início do recesso" width="100%"/>
+											</FlexBox>
+											<FlexBox alignItems="Center" justifyContent="SpaceBetween" renderType="Bare" alignContent="Start">
+											<Input value="{Inicio1}" editable="{path: 'Inicio1', formatter:'.FormatEditable'}" dateFormat="DD-MM-YYYY" id="IdInicio1" placeholder="Data de Início de Férias" textAlign="Left" required="true" type="Date" liveChange="somardatafirst"/>
+											</FlexBox>
+											<FlexBox alignItems="Center"  justifyContent="SpaceBetween" renderType="Bare" alignContent="Start">
+											<Label text="Dias de Gozo"/>
+											</FlexBox>
+											<FlexBox alignItems="Center" justifyContent="SpaceBetween" renderType="Bare" alignContent="Start">
+											<Input value="{DiasGozo1}" editable="{path: 'DiasGozo1', formatter:'.FormatEditable'}" required="true" id="first_diasgozo" change="somardatafirst" liveChange="validacaracter" />
+											</FlexBox>
+											<FlexBox alignItems="Center" justifyContent="SpaceBetween" renderType="Bare" alignContent="Start">
+											<Label text="Data de fim do recesso"/>
+											</FlexBox>
+											<FlexBox alignItems="Center" justifyContent="SpaceBetween" renderType="Bare" alignContent="Start">
+											<Input value="{Fim1}" id="IdFim1" dateFormat="DD-MM-YYYY" maxLength="10" placeholder="Data de Início de Recesso" editable="false" type="Date" />
+											</FlexBox>
+										<FlexBox alignItems="Start" justifyContent="SpaceBetween">
+											<items>
+												<Label/>
+											</items>
+										</FlexBox>
+											<FlexBox alignItems="Center" justifyContent="SpaceBetween" renderType="Bare" alignContent="Start">
+											<ObjectStatus text="{StatusTxt1}" id="first_status" title="Status" icon="sap-icon://order-status" textDirection="LTR" state="{path: 'StatusTxt1', formatter:'.FormatStatus'}"/>
+											<Input value="{Index}" type="Number" id="IdIndex" visible="false"/>
+											<Input value="{Pernr}" type="Number" id="IdPernr" visible="false"/>
+											<Input value="RE" id="first_13" visible="false"/>
+											</FlexBox>
+											</VBox>
+										</f:SimpleForm>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+				</content>
+				<footer>
+					<Toolbar design="Transparent">
+						<HBox width="100%" height="100%" id="idGif" class="Loading">
+							<Image src="" width="80px" backgroundPosition="left" class="footer_img" id="idimg"/>
+						</HBox>
+						<ToolbarSpacer/>
+						<Button text="" press="onVoltar" activeIcon="sap-icon://undo" visible="false" icon="sap-icon://undo"/>
+						<Button text="" press="onCancel" activeIcon="sap-icon://decline" icon="sap-icon://delete"/>
+						<Button text="" press="onSave" activeIcon="sap-icon://accept" icon="sap-icon://save"/>
+					</Toolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

@@ -1,0 +1,16 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog
+		noDataText="Nenhum registro encontrado"
+		title="Selecione MêsRef"
+		search="handleSearch"
+		confirm="handleClose"
+		items="{path: '/reservas'}" >
+		<StandardListItem
+			title="{MesRef}"
+			iconDensityAware="false"
+			iconInset="false"
+			type="Active" />
+	</SelectDialog>
+</core:FragmentDefinition>

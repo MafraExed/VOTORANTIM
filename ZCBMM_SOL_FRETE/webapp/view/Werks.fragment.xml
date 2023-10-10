@@ -1,0 +1,22 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog
+		
+		title="Centros"
+		class="sapUiPopupWithPadding"
+		items="{/ZET_CBMM_CF_WERKSSet}"
+		search="_handleValueHelpWerks"
+		confirm="_Confirme_werks"
+		cancel="_handleValueHelpClose"
+		>
+		
+		<StandardListItem
+			icon="{ProductPicUrl}"
+			iconDensityAware="false"
+			iconInset="false"
+			title="{Werks}"
+			description="{Name1}" />
+			
+	</SelectDialog>
+</core:FragmentDefinition>

@@ -1,0 +1,309 @@
+{
+    "_version": "1.9.0",
+    "sap.app": {
+        "id": "ZCBMM_RELATORIO.ZCBMM_RELATORIO",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/sap/ZGWCBMM_RELATORIO_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/metadata.xml",
+                    "annotations": [
+                        "annotation1"
+                    ]
+                }
+            },
+            "ZGWCBMM_RELATORIO_SRV": {
+                "uri": "/sap/opu/odata/sap/ZGWCBMM_RELATORIO_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/metadata.xml"
+                }
+            },
+            "ZGWCBMM_CONTRATACAO_FRETE_SRV": {
+                "uri": "/sap/opu/odata/sap/ZGWCBMM_CONTRATACAO_FRETE_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/ZGWCBMM_CONTRATACAO_FRETE_SRV/metadata.xml"
+                }
+            },
+            "annotation_sample": {
+                "uri": "../annotation_sample.xml",
+                "type": "ODataAnnotation",
+                "settings": {
+                    "localUri": "../annotation_sample.xml"
+                }
+            },
+            "": {
+                "uri": "",
+                "type": "ODataAnnotation",
+                "settings": {
+                    "localUri": ""
+                }
+            },
+            "annotation1": {
+                "uri": "annotation.xml",
+                "type": "ODataAnnotation",
+                "settings": {
+                    "localUri": "annotation.xml"
+                }
+            }
+        },
+        "sourceTemplate": {
+            "id": "servicecatalog.connectivityComponent",
+            "version": "0.0.0",
+            "toolsId": "29be3ef6-8072-4f82-ae42-42174f0da468"
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "sap-icon://task",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "rootView": {
+            "viewName": "ZCBMM_RELATORIO.ZCBMM_RELATORIO.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "app"
+        },
+        "dependencies": {
+            "minUI5Version": "1.38.0",
+            "libs": {
+                "sap.ui.core": {},
+                "sap.m": {},
+                "sap.f": {},
+                "sap.ushell": {},
+                "sap.collaboration": {
+                    "lazy": true
+                },
+                "sap.suite.ui.microchart": {
+                    "minVersion": ""
+                },
+                "sap.ui.comp": {
+                    "minVersion": ""
+                }
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "ZCBMM_RELATORIO.ZCBMM_RELATORIO.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "settings": {
+                    "useBatch": false
+                }
+            },
+            "@i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "uri": "i18n/i18n.properties"
+            },
+            "relatorio": {
+                "type": "sap.ui.model.odata.v2.ODataModel",
+                "settings": {
+                    "defaultOperationMode": "Server",
+                    "defaultBindingMode": "OneWay",
+                    "defaultCountMode": "Request"
+                },
+                "dataSource": "ZGWCBMM_CONTRATACAO_FRETE_SRV",
+                "preload": true
+            }
+        },
+        "services": {
+            "ShellUIService": {
+                "factoryName": "sap.ushell.ui5service.ShellUIService",
+                "lazy": false,
+                "settings": {
+                    "setTitle": "auto"
+                }
+            }
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "viewPath": "ZCBMM_RELATORIO.ZCBMM_RELATORIO.view",
+                "controlId": "app",
+                "controlAggregation": "pages",
+                "bypassed": {
+                    "target": [
+                        "notFound"
+                    ]
+                },
+                "async": true
+            },
+            "routes": [
+                {
+                    "pattern": "",
+                    "name": "worklist",
+                    "target": [
+                        "worklist"
+                    ]
+                },
+                {
+                    "pattern": "Savings/{DtInic}/{DtFim}/",
+                    "name": "objectSavings",
+                    "target": [
+                        "objectSavings"
+                    ]
+                },
+                {
+                    "pattern": "SLA/{DtInic}/{DtFim}/",
+                    "name": "objectSla",
+                    "target": [
+                        "objectSla"
+                    ]
+                },
+                {
+                    "name": "objectPerformance",
+                    "pattern": "Performance/{DtInic}/{DtFim}/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "objectPerformance"
+                    ]
+                },
+                {
+                    "name": "objectCarteira",
+                    "pattern": "Carteira/{DtInic}/{DtFim}/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "objectCarteira"
+                    ]
+                },
+                {
+                    "name": "objectModalidade",
+                    "pattern": "Modalidade/{DtInic}/{DtFim}/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "objectModalidade"
+                    ]
+                },
+                {
+                    "name": "objectSolicitacao",
+                    "pattern": "Solicitacao/{DtInic}/{DtFim}/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "objectSolicitacao"
+                    ]
+                },
+                {
+                    "name": "ExpBase",
+                    "pattern": "ExpBase/{DtInic}/{DtFim}/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "ExpBase"
+                    ]
+                }
+            ],
+            "targets": {
+                "worklist": {
+                    "viewName": "Worklist",
+                    "viewId": "worklist",
+                    "viewLevel": 1,
+                    "title": "{i18n>worklistViewTitle}"
+                },
+                "objectSavings": {
+                    "viewName": "ObjectSavings",
+                    "viewId": "objectSavings",
+                    "viewLevel": 2,
+                    "title": "{i18n>objectSavings}"
+                },
+                "objectSla": {
+                    "viewName": "ObjectSLA",
+                    "viewId": "objectSla",
+                    "viewLevel": 2,
+                    "title": "{i18n>objectSla}"
+                },
+                "objectNotFound": {
+                    "viewName": "ObjectNotFound",
+                    "viewId": "objectNotFound"
+                },
+                "notFound": {
+                    "viewName": "NotFound",
+                    "viewId": "notFound"
+                },
+                "objectPerformance": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearAggregation": true,
+                    "viewName": "ObjectPerformance",
+                    "viewId": "objectPerformance",
+                    "viewLevel": 2,
+                    "title": "{i18n>objectPerformance}"
+                },
+                "objectCarteira": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearAggregation": true,
+                    "title": "{i18n>objectCarteira}",
+                    "viewName": "ObjectCarteira",
+                    "viewId": "objectCarteira",
+                    "viewLevel": 2
+                },
+                "objectModalidade": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearAggregation": true,
+                    "viewName": "ObjectModalidade",
+                    "title": "{i18n>objectModalidade}",
+                    "viewId": "objectModalidade",
+                    "viewLevel": 2
+                },
+                "objectSolicitacao": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearAggregation": true,
+                    "viewName": "ObjectSolicitacao",
+                    "title": "{i18n>objectSolicitacao}",
+                    "viewId": "objectSolicitacao",
+                    "viewLevel": 2
+                },
+                "ExpBase": {
+                    "viewType": "XML",
+                    "viewName": "ExpBase",
+                    "viewLevel": 2,
+                    "viewId": "ExpBase",
+                    "title": "{i18n>ExpBase}"
+                }
+            }
+        }
+    },
+    "sap.platform.abap": {
+        "uri": "/sap/bc/ui5_ui5/sap/zcbmm_relatorio",
+        "_version": "1.1.0"
+    }
+}

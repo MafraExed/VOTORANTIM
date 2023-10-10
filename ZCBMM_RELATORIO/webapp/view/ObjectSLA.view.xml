@@ -1,0 +1,24 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns="sap.suite.ui.commons" xmlns:m="sap.m" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:viz="sap.viz.ui5.controls" controllerName="ZCBMM_RELATORIO.ZCBMM_RELATORIO.controller.ObjectSLA">
+	<ChartContainer id="idChartContainerSla" title="{i18n>slaTitle}" showFullScreen="true" autoAdjustHeight="true" showLegend="true"
+		class="ChartContainerHeader" showPersonalization="false" contentChange="attachContentChange">
+		<dimensionSelectors>
+			<m:Button id='naviButtonSla' type="Back" press="navButtonPress" visible="{device>/isPhone}"/>
+			<m:Select selectedKey="Column" change="onChangeChart">
+				<m:items>
+					<core:Item text="Barra" key="Bar"/>
+					<core:Item text="Linha" key="Line"/>
+					<core:Item text="Coluna" key="Column"/>
+				</m:items>
+			</m:Select>
+		</dimensionSelectors>
+		<content>
+			<ChartContainerContent icon="sap-icon://horizontal-bar-chart">
+				<content>
+					<viz:Popover id="idPopOverSla"></viz:Popover>
+					<viz:VizFrame id="idoVizFrameSla" uiConfig="{applicationSet:'fiori'}"></viz:VizFrame>
+				</content>
+			</ChartContainerContent>
+		</content>
+	</ChartContainer>
+</mvc:View>

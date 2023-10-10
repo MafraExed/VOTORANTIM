@@ -1,0 +1,86 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout" xmlns:footerbar="sap.ushell.ui.footerbar">
+
+	<Panel width="auto">
+		<headerToolbar>
+			<Toolbar>
+				<Title id="dadosTransporteTitle" text="{i18n>dadosTransporteTitle}"/>
+			</Toolbar>
+		</headerToolbar>   	
+		<content>		
+			<Table id="dadosTransporteTable" 
+				  items="{ShipmentDetailToTransportData}" 
+				  fixedLayout="true"
+				  updateFinished="onHandleTableLoad"
+				  visibleRowCount="10"
+				  growing="true"
+				  growingThreshold="3"
+				  growingScrollToLoad="true">
+				<columns>
+					<Column width="5rem">
+						<Text text="{i18n>dadosTransporteColumnTipo}" />
+					</Column>
+					<Column width="5rem">
+						<Text text="{i18n>dadosTransporteColumnTransporte}" />
+					</Column>
+					<Column width="5rem">			
+						<Text text="{i18n>dadosTransporteColumnNrPlaca}" />
+					</Column>
+					<Column width="5rem">
+						<Text text="{i18n>dadosTransporteColumnNrLacre}" />
+					</Column>
+					<Column width="5rem">
+						<Text text="{i18n>dadosTransporteColumnLocal}" />
+					</Column>
+					<Column width="5rem">
+						<Text text="{i18n>dadosTransporteColumnAgente}" />
+					</Column>
+					<Column width="5rem">
+						<Text text="{i18n>dadosTransporteColumnTipoExpedicao}" />
+					</Column>
+<!-- 					<Column width="5rem"> -->
+<!-- 						<Text text="{i18n>dadosTransporteColumnTipoTrans}" /> -->
+<!-- 					</Column> -->
+					<Column width="7rem">
+						<Text text="{i18n>dadosTransporteColumnStatus}" />
+					</Column>									
+				</columns>
+				<items> 			
+					<ColumnListItem>
+						<cells>
+							<Text text="{Shtyp}" />
+						</cells>
+						<cells>
+							<Text text="{Tknum}" />
+						</cells>
+						<cells>
+							<Text text="{Signi}" />
+						</cells>
+						<cells>
+							<Text text="{Tpbez}" />
+						</cells>
+						
+						<cells>
+							<ObjectNumber number="{Tplst}" unit="{TplstTxt}" emphasized="false" tooltip="{TplstTxt}"/>						
+						</cells>
+						<cells>
+							<ObjectNumber number="{Tdlnr}" unit="{TdlnrTxt}" emphasized="false" tooltip="{TdlnrTxt}"/>						
+						</cells>
+						<cells>
+							<ObjectNumber number="{Vsart}" unit="{VsartTxt}" emphasized="false" tooltip="{VsartTxt}"/>						
+						</cells>
+<!-- 						<cells> -->
+<!-- 							<ObjectNumber number="{Bfart}" unit="{BfartTxt}" emphasized="false"/>						 -->
+<!-- 						</cells> -->
+						<cells>
+							<ObjectNumber number="{Sttrg}" unit="{SttrgTxt}" emphasized="false" tooltip="{SttrgTxt}"/>						
+						</cells>	
+						
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+	</Panel>
+
+</core:FragmentDefinition>

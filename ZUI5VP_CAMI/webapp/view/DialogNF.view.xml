@@ -1,0 +1,26 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="FibriaStatusViagem.controller.DialogNF" xmlns="sap.m">
+    <Dialog horizontalScrolling="true" showHeader="true" state="Success" stretch="false" title="" type="Standard" verticalScrolling="true">
+        <content>
+        	<Text text="Nota fiscal n° {NF>/} gerada com sucesso" textAlign="Center" width="100%"></Text>
+        </content>
+        <beginButton/>
+        <buttons/>
+        <customHeader>
+		<Bar>
+		<contentLeft>
+		
+		</contentLeft>
+		
+		<contentMiddle>
+		<Text text = "Nota Fiscal"></Text>
+		</contentMiddle>
+		
+		<contentRight>
+		<Button type="Transparent" icon="sap-icon://decline" press="_onCloseDialogButtonPress"></Button>
+		</contentRight>		
+		</Bar>
+		</customHeader>
+        <endButton/>
+        <subHeader/>
+    </Dialog>
+</mvc:View>

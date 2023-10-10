@@ -1,0 +1,145 @@
+{
+    "resources": [
+        {
+            "name": ".che/project.json"
+        },
+        {
+            "name": ".gitignore"
+        },
+        {
+            "name": ".project.json"
+        },
+        {
+            "name": ".user.project.json"
+        },
+        {
+            "name": "Component-preload.js",
+            "merged": true
+        },
+        {
+            "name": "Component.js"
+        },
+        {
+            "name": "Gruntfile.js"
+        },
+        {
+            "name": "WebServices/conections.js"
+        },
+        {
+            "name": "controller/App.controller.js"
+        },
+        {
+            "name": "controller/DialogCompositionFilters.controller.js"
+        },
+        {
+            "name": "controller/DialogFrozenTrip.controller.js"
+        },
+        {
+            "name": "controller/DialogLastTrip.controller.js"
+        },
+        {
+            "name": "controller/DialogNF.controller.js"
+        },
+        {
+            "name": "controller/DialogSelectTrip.controller.js"
+        },
+        {
+            "name": "controller/DialogUnscheduledStage.controller.js"
+        },
+        {
+            "name": "controller/DialogValueHelp.controller.js"
+        },
+        {
+            "name": "controller/DriverProfilePopover.controller.js"
+        },
+        {
+            "name": "controller/OriginDestinationDialog.controller.js"
+        },
+        {
+            "name": "controller/SelectTruckPopover.controller.js"
+        },
+        {
+            "name": "controller/TripCodePopover.controller.js"
+        },
+        {
+            "name": "controller/utilities.js"
+        },
+        {
+            "name": "css/style.css"
+        },
+        {
+            "name": "dist"
+        },
+        {
+            "name": "i18n/i18n.properties",
+            "raw": "i18n/i18n.properties"
+        },
+        {
+            "name": "index.html"
+        },
+        {
+            "name": "localService/metadata.xml"
+        },
+        {
+            "name": "manifest.json"
+        },
+        {
+            "name": "model/models.js"
+        },
+        {
+            "name": "neo-app.json"
+        },
+        {
+            "name": "node_modules"
+        },
+        {
+            "name": "package-lock.json"
+        },
+        {
+            "name": "package.json"
+        },
+        {
+            "name": "resources.json",
+            "merged": true
+        },
+        {
+            "name": "sap-ui-cachebuster-info.json"
+        },
+        {
+            "name": "view/App.view.xml"
+        },
+        {
+            "name": "view/DialogCompositionFilters.view.xml"
+        },
+        {
+            "name": "view/DialogFrozenTrip.view.xml"
+        },
+        {
+            "name": "view/DialogLastTrip.view.xml"
+        },
+        {
+            "name": "view/DialogNF.view.xml"
+        },
+        {
+            "name": "view/DialogSelectTrip.view.xml"
+        },
+        {
+            "name": "view/DialogUnscheduledStage.view.xml"
+        },
+        {
+            "name": "view/DialogValueHelp.view.xml"
+        },
+        {
+            "name": "view/DriverProfilePopover.view.xml"
+        },
+        {
+            "name": "view/OriginDestinationDialog.view.xml"
+        },
+        {
+            "name": "view/SelectTruckPopover.view.xml"
+        },
+        {
+            "name": "view/TripCodePopover.view.xml"
+        }
+    ]
+}

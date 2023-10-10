@@ -1,0 +1,49 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="FibriaStatusViagem.controller.DialogFrozenTrip" xmlns="sap.m">
+    <Dialog horizontalScrolling="true" showHeader="true" state="None" stretch="false" title="" type="Standard" verticalScrolling="true">
+        <content>
+	            <Carousel id="stagesCarousel" width="100%" loop="false" showPageIndicator="true" pageIndicatorPlacement="Bottom" visible="true" class="sapUiContentPadding tripStateCarousel">
+	                <pages>
+	                	<FlexBox class="stageFlexBox" direction="Column">
+	                		<Title level="H1" text="{frozenState>/stageText}" textAlign="Center" ></Title>
+	                		<FlexBox class="stageValues">
+	                			<Text class="stageValue stageValueDesc"  text="Início: "></Text>
+	                			<Text class="stageValue stageValueContent" text="{frozenState>/formatedHours}"></Text>
+	                		</FlexBox>
+	                		<FlexBox class="stageValues">
+	                			<Text class="stageValue stageValueDesc"  text="Término: "></Text>
+	                			<Text class="stageValue stageValueContent" text="Não Finalizada"></Text>
+	                		</FlexBox>
+	                		<FlexBox class="stageValues">
+	                			<Text class="stageValue stageValueDesc"  text="Descrição: "></Text>
+	                			<Text class="stageValue stageValueContent" text="{frozenState>/stageDescription}"></Text>
+	                		</FlexBox>
+	                		<FlexBox class="stageValues">
+	                			<Text class="stageValue stageValueDesc"  text="Duração: "></Text>
+	                			<Text class="stageValue stageValueContent" text="{frozenStageDuration>/}"></Text>
+	                		</FlexBox>
+	                		
+	                        <Button id="nextStageButton" class=" resumeTrip nextStageButton" press="_onContinueTripButtonPress" text="Retomar Viagem" type="Default" iconFirst="true" width="100%" enabled="true" visible="true" iconDensityAware="false"/>
+	                	</FlexBox>
+	                </pages>
+	            </Carousel>
+        </content>
+        <beginButton/>
+        <buttons/>
+        <customHeader>
+		<Bar>
+		<contentLeft>
+		
+		</contentLeft>
+		
+		<contentMiddle>
+		<Text text = "Viagem Parada"></Text>
+		</contentMiddle>
+		
+		<contentRight>
+		</contentRight>		
+		</Bar>
+		</customHeader>
+        <endButton/>
+        <subHeader/>
+    </Dialog>
+</mvc:View>

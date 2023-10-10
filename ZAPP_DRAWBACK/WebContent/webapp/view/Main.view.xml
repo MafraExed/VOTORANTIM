@@ -1,0 +1,40 @@
+<mvc:View controllerName="nasa.ui5.controleDrawback.controller.Main"
+	xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic"
+	xmlns:core="sap.ui.core">
+
+	<semantic:FullscreenPage id="page"
+		navButtonPress="onNavBack" showNavButton="true" title="{i18n>mainTitle}">
+
+		<semantic:content>
+
+			<IconTabBar id="iconTabBar"  expandable="false"
+				class="sapUiResponsiveContentPadding">
+				<items>
+
+					<IconTabFilter id="filter1" icon="sap-icon://database"
+						tooltip="{i18n>mainTabBar}" design="Horizontal" text="{i18n>mainTabBar} ">
+
+						<core:Fragment fragmentName="nasa.ui5.controleDrawback.view.fragments.MainAc"
+							type="XML" />
+					</IconTabFilter>
+
+				</items>
+			</IconTabBar>
+
+		</semantic:content>
+		<PullToRefresh
+				id="pullToRefresh"
+				visible="{device>/support/touch}"
+				refresh="onRefresh"/>	
+
+
+		<semantic:customFooterContent>
+			<Button id="mainBtnNew" text="" icon="sap-icon://add-document" visible="false"
+				tooltip="{i18n>mainCreateBtnTip}" press="onCreateAc" />
+			
+			
+						
+		</semantic:customFooterContent>
+	</semantic:FullscreenPage>
+
+</mvc:View>

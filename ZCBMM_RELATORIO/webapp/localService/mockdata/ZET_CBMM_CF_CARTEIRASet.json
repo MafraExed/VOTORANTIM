@@ -1,0 +1,101 @@
+[{
+	"DtInic": "/Date(1478465095000)/",
+	"DtFim": "/Date(1494107095000)/",
+	"IdSolicitacao": 3836,
+	"Contrato": "Contrato 1",
+	"Valor": 1,
+	"__metadata": {
+		"uri": "ZET_CBMM_CF_CARTEIRASet(DtInic=datetime'2016-11-06T20%3A44%3A55',IdSolicitacao=3836)",
+		"type": "ZGWCBMM_RELATORIO_SRV.ZET_CBMM_CF_CARTEIRA"
+	}
+}, {
+	"DtInic": "/Date(1008708295000)/",
+	"DtFim": "/Date(1497217495000)/",
+	"IdSolicitacao": 3108,
+	"Contrato": "Contrato 2",
+	"Valor": 1,
+	"__metadata": {
+		"uri": "ZET_CBMM_CF_CARTEIRASet(DtInic=datetime'2001-12-18T20%3A44%3A55',IdSolicitacao=3108)",
+		"type": "ZGWCBMM_RELATORIO_SRV.ZET_CBMM_CF_CARTEIRA"
+	}
+}, {
+	"DtInic": "/Date(978986695000)/",
+	"DtFim": "/Date(1529963095000)/",
+	"IdSolicitacao": 3397,
+	"Contrato": "Contrato 3",
+	"Valor": 1,
+	"__metadata": {
+		"uri": "ZET_CBMM_CF_CARTEIRASet(DtInic=datetime'2001-01-08T20%3A44%3A55',IdSolicitacao=3397)",
+		"type": "ZGWCBMM_RELATORIO_SRV.ZET_CBMM_CF_CARTEIRA"
+	}
+}, {
+	"DtInic": "/Date(1243374295000)/",
+	"DtFim": "/Date(1511815495000)/",
+	"IdSolicitacao": 866,
+	"Contrato": "Contrato 1",
+	"Valor": 1,
+	"__metadata": {
+		"uri": "ZET_CBMM_CF_CARTEIRASet(DtInic=datetime'2009-05-26T21%3A44%3A55',IdSolicitacao=866)",
+		"type": "ZGWCBMM_RELATORIO_SRV.ZET_CBMM_CF_CARTEIRA"
+	}
+}, {
+	"DtInic": "/Date(1522273495000)/",
+	"DtFim": "/Date(1351025095000)/",
+	"IdSolicitacao": 1315,
+	"Contrato": "Contrato 1",
+	"Valor": 1,
+	"__metadata": {
+		"uri": "ZET_CBMM_CF_CARTEIRASet(DtInic=datetime'2018-03-28T21%3A44%3A55',IdSolicitacao=1315)",
+		"type": "ZGWCBMM_RELATORIO_SRV.ZET_CBMM_CF_CARTEIRA"
+	}
+}, {
+	"DtInic": "/Date(1355172295000)/",
+	"DtFim": "/Date(1256503495000)/",
+	"IdSolicitacao": 5390,
+	"Contrato": "Contrato 1",
+	"Valor": 1,
+	"__metadata": {
+		"uri": "ZET_CBMM_CF_CARTEIRASet(DtInic=datetime'2012-12-10T20%3A44%3A55',IdSolicitacao=5390)",
+		"type": "ZGWCBMM_RELATORIO_SRV.ZET_CBMM_CF_CARTEIRA"
+	}
+}, {
+	"DtInic": "/Date(1561844695000)/",
+	"DtFim": "/Date(1138481095000)/",
+	"IdSolicitacao": 3645,
+	"Contrato": "Contrato 1",
+	"Valor": 1,
+	"__metadata": {
+		"uri": "ZET_CBMM_CF_CARTEIRASet(DtInic=datetime'2019-06-29T21%3A44%3A55',IdSolicitacao=3645)",
+		"type": "ZGWCBMM_RELATORIO_SRV.ZET_CBMM_CF_CARTEIRA"
+	}
+}, {
+	"DtInic": "/Date(1489873495000)/",
+	"DtFim": "/Date(1420317895000)/",
+	"IdSolicitacao": 4331,
+	"Contrato": "Contrato 1",
+	"Valor": 1,
+	"__metadata": {
+		"uri": "ZET_CBMM_CF_CARTEIRASet(DtInic=datetime'2017-03-18T21%3A44%3A55',IdSolicitacao=4331)",
+		"type": "ZGWCBMM_RELATORIO_SRV.ZET_CBMM_CF_CARTEIRA"
+	}
+}, {
+	"DtInic": "/Date(1454532295000)/",
+	"DtFim": "/Date(1120859095000)/",
+	"IdSolicitacao": 6698,
+	"Contrato": "Contrato 9",
+	"Valor": 1,
+	"__metadata": {
+		"uri": "ZET_CBMM_CF_CARTEIRASet(DtInic=datetime'2016-02-03T20%3A44%3A55',IdSolicitacao=6698)",
+		"type": "ZGWCBMM_RELATORIO_SRV.ZET_CBMM_CF_CARTEIRA"
+	}
+}, {
+	"DtInic": "/Date(1433454295000)/",
+	"DtFim": "/Date(1240782295000)/",
+	"IdSolicitacao": 4481,
+	"Contrato": "Contrato 10",
+	"Valor": 1,
+	"__metadata": {
+		"uri": "ZET_CBMM_CF_CARTEIRASet(DtInic=datetime'2015-06-04T21%3A44%3A55',IdSolicitacao=4481)",
+		"type": "ZGWCBMM_RELATORIO_SRV.ZET_CBMM_CF_CARTEIRA"
+	}
+}]

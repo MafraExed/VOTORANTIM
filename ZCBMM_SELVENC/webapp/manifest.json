@@ -1,0 +1,274 @@
+{
+    "_version": "1.9.0",
+    "sap.app": {
+        "id": "ZCBMM_SEL_VENCEDOR.ZCBMM_SEL_VENCEDOR",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/sap/ZGWCBMM_CONTRATACAO_FRETE_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/metadata.xml"
+                }
+            }
+        },
+        "sourceTemplate": {
+            "id": "sap.ui.ui5-template-plugin.2masterdetail",
+            "version": "1.52.7",
+            "toolsId": "cb6a52a7-6214-4f0f-9548-424800dd05a9"
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "sap-icon://detail-view",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "rootView": {
+            "viewName": "ZCBMM_SEL_VENCEDOR.ZCBMM_SEL_VENCEDOR.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "app"
+        },
+        "dependencies": {
+            "minUI5Version": "1.42.0",
+            "libs": {
+                "sap.ui.core": {},
+                "sap.m": {},
+                "sap.ushell": {},
+                "sap.collaboration": {
+                    "lazy": true
+                }
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "ZCBMM_SEL_VENCEDOR.ZCBMM_SEL_VENCEDOR.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true
+            }
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "viewPath": "ZCBMM_SEL_VENCEDOR.ZCBMM_SEL_VENCEDOR.view",
+                "controlId": "idAppControl",
+                "controlAggregation": "detailPages",
+                "bypassed": {
+                    "target": [
+                        "master",
+                        "notFound"
+                    ]
+                },
+                "async": true
+            },
+            "routes": [
+                {
+                    "pattern": "",
+                    "name": "master",
+                    "target": [
+                        "object",
+                        "master"
+                    ]
+                },
+                {
+                    "pattern": "ZET_CBMM_CF_TRANSPSet/{Bukrs}/{IdSolicitacao}/{WerksO}/",
+                    "name": "object",
+                    "target": [
+                        "master",
+                        "object"
+                    ],
+                    "titleTarget": ""
+                },
+                {
+                    "name": "Back",
+                    "pattern": "Back/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "Back"
+                    ]
+                },
+                {
+                    "name": "Information",
+                    "pattern": "Information/{Bukrs}/{WerksO}/{IdSolicitacao}/{IdRota}/{Carteira}/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "object",
+                        "Information"
+                    ]
+                },
+                {
+                    "name": "BackTo",
+                    "pattern": "BackTo/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "BackTo"
+                    ]
+                },
+                {
+                    "name": "Veiculo",
+                    "pattern": "Veiculo/{WerksO}/{IdSolicitacao}/{IdRota}/{Bukrs}/{NrTransp}/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "Information",
+                        "Veiculo"
+                    ]
+                },
+                {
+                    "name": "Backend",
+                    "pattern": "Backend/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "Backend"
+                    ]
+                },
+                {
+                    "name": "Mapa",
+                    "pattern": "Mapa/{Bukrs}/{WerksO}/{IdSolicitacao}/{IdRota}/{NrTransp}/{TpVeiculo}/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "Veiculo",
+                        "Mapa"
+                    ]
+                },
+                {
+                    "name": "masterRefresh",
+                    "pattern": "masterRefresh/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "object",
+                        "master"
+                    ]
+                }
+            ],
+            "targets": {
+                "master": {
+                    "viewName": "Master",
+                    "viewLevel": 1,
+                    "viewId": "master",
+                    "controlAggregation": "masterPages",
+                    "transition": "slide"
+                },
+                "object": {
+                    "viewName": "Detail",
+                    "viewId": "detail",
+                    "viewLevel": 2
+                },
+                "detailObjectNotFound": {
+                    "viewName": "DetailObjectNotFound",
+                    "viewId": "detailObjectNotFound"
+                },
+                "detailNoObjectsAvailable": {
+                    "viewName": "DetailNoObjectsAvailable",
+                    "viewId": "detailNoObjectsAvailable"
+                },
+                "notFound": {
+                    "viewName": "NotFound",
+                    "viewId": "notFound"
+                },
+                "Information": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearAggregation": true,
+                    "viewName": "Information",
+                    "title": "Information",
+                    "viewId": "Information",
+                    "viewLevel": 3
+                },
+                "Veiculo": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearAggregation": true,
+                    "viewName": "Veiculo",
+                    "title": "Veiculo",
+                    "viewId": "Veiculo",
+                    "viewLevel": 4
+                },
+                "Mapa": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearAggregation": true,
+                    "viewName": "Mapa",
+                    "title": "Mapa",
+                    "viewId": "Mapa",
+                    "viewLevel": 5
+                },
+                "Back": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearAggregation": true,
+                    "viewName": "Detail",
+                    "viewId": "Back",
+                    "viewLevel": 1,
+                    "title": "Solicitações"
+                },
+                "BackTo": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearAggregation": true,
+                    "viewName": "Information",
+                    "title": "Informações de Rota",
+                    "viewId": "Back",
+                    "viewLevel": 2
+                },
+                "Backend": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearAggregation": true,
+                    "viewName": "Veiculo",
+                    "title": "Veiculo",
+                    "viewLevel": 2,
+                    "viewId": "Back"
+                },
+                "masterRefresh": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewName": "Master",
+                    "viewId": "master",
+                    "viewLevel": 1,
+                    "controlAggregation": "masterPages"
+                }
+            }
+        }
+    },
+    "sap.platform.abap": {
+        "uri": "/sap/bc/ui5_ui5/sap/zcbmm_selvenc",
+        "_version": "1.1.0"
+    }
+}

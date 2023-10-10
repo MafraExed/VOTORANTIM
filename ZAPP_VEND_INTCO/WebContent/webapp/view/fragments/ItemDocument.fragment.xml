@@ -1,0 +1,230 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:f="sap.ui.layout.form"
+	xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout" xmlns:footerbar="sap.ushell.ui.footerbar">
+
+	<f:SimpleForm 
+			id="ItemOvSimpleForm"
+			layout="ResponsiveGridLayout"
+			editable="true">
+			
+		<f:content>		
+		
+			<Panel width="auto">
+			<headerToolbar>
+				<Toolbar id="ItemOvTitle1">
+					<Title text="{i18n>detailDocumentTitleTabFilterBarItem}" level="H4" titleStyle="H4"/>
+					<ToolbarSpacer />
+					<Button 
+						id="detailDocumentItemsButtonEdit" 
+						icon="sap-icon://edit" 
+						tooltip="{i18n>detailDocumentsTooltipButtonEdit}" 
+						press="onChangeMode"/>
+				</Toolbar>
+			</headerToolbar>
+			
+			<content>	
+				   <Table id="itemOvTable" 
+						  items="{dataDocument>/dataItens}" 
+						  mode="None"
+						  growing="true"
+					      growingThreshold="3"
+					      growingScrollToLoad="true">
+					   
+					<columns>
+						<Column width="5rem" 
+								hAlign="Left">
+							<Text text="{i18n>detailDocumentsTitlePrice}" />
+						</Column>
+						
+						<Column  width="5rem">
+							<Text text="{i18n>detailDocumentsTitleItmNumber}" />
+						</Column>
+						
+						<Column  width="5rem">
+							<Text text="{i18n>detailDocumentsTitleOrdem}" />
+						</Column>
+						
+						<Column  width="4rem">
+							<Text text="{i18n>detailDocumentsTitleItemOrdem}" />
+						</Column>	
+						
+						
+						<Column  width="5rem">
+							<Text text="{i18n>detailDocumentsTitlePed}" />
+						</Column>
+						
+						<Column  width="6rem">
+							<Text text="{i18n>detailDocumentsTitleItemPed}" />
+						</Column>						
+												
+						<Column width="5rem">
+							<Text text="{i18n>detailDocumentsTitleMatnr}" />
+						</Column>
+						
+						<Column width="8rem"
+								minScreenWidth="Tablet"
+								demandPopin="true" 
+								hAlign="Left">
+							<Text 
+								text="{i18n>detailDocumentsTitleWeight}" />
+						</Column>
+						
+						<Column width="10rem"
+								hAlign="Left"
+								minScreenWidth="Tablet"
+								demandPopin="true">
+							<Text text="{i18n>detailDocumentsTitleWerks}" />
+						</Column>
+					
+						<Column width="10rem"
+								hAlign="Left"
+								minScreenWidth="Tablet"
+								demandPopin="true">
+							<Text text="{i18n>detailDocumentsTitleLgort}" />
+						</Column>
+				
+						<Column width="14rem"
+								hAlign="Left"
+								minScreenWidth="Tablet"
+								demandPopin="true">
+							<Text text="{i18n>detailDocumentsTitleRoute}" />
+						</Column>
+				
+						<Column width="14rem"
+								hAlign="Left"
+								minScreenWidth="Tablet"
+								demandPopin="true">
+							<Text text="{i18n>detailDocumentsTitlePortdestcli}" />
+						</Column>
+												
+<!-- 						<Column  width="8rem"> -->
+<!-- 							<Text text="{i18n>detailDocumentsTitleClassif}" /> -->
+<!-- 						</Column> -->
+					
+<!-- 						<Column width="6rem" -->
+<!-- 								hAlign="Left" -->
+<!-- 								minScreenWidth="Tablet" -->
+<!-- 								demandPopin="true"> -->
+<!-- 							<Text  -->
+<!-- 								text="{i18n>detailDocumentsTitleDteta}" /> -->
+<!-- 						</Column> -->
+						
+					
+					</columns>
+					<items>
+						<ColumnListItem>
+							<cells>
+								<Button 
+								       icon="sap-icon://lead"
+									   press="onHandlePopoverPrice" 
+									   tooltip="{i18n>detailDocumentsTooltipPrice}"/>
+							</cells>
+							<cells>
+								<Text text="{dataDocument>ItmNumber}" />
+							</cells>
+							
+							<cells>
+								<Text text="{dataDocument>VbelnVa}" />
+							</cells>
+							
+							<cells>
+								<Text text="{dataDocument>PosnrVa}" />
+							</cells>
+							
+							
+							<cells>
+								<Text text="{dataDocument>VbelnVa}" />
+							</cells>
+							
+							<cells>
+								<Text text="{dataDocument>PosnrVa}" />
+							</cells>
+							
+							
+							<cells>
+								<ObjectNumber
+										number="{dataDocument>Matnr}"
+										unit="{dataDocument>MatnrDsc}"
+										emphasized="false"/>
+							</cells>
+				
+							<cells>
+								<ObjectNumber
+											 number="{path: 'dataDocument>Weight',formatter:'.formatter.formatNumberBrazil'}"
+											 unit="{dataDocument>Unit}" 
+											 emphasized="false"/>
+							</cells>
+							<cells>
+								<VBox>
+									<Input id="ovWerks"
+										   editable="{detailDocumentView>/editFields2}"
+										   width="8rem"
+										   value="{dataDocument>Werks}"
+										   showValueHelp="true" 
+						                   valueHelpRequest="onHandleF4Werks"
+						                   submit="onHandleSubmitWerks"/>
+
+						             <Text text="{dataDocument>WerksDsc}" align="Begin"/>
+						        </VBox>
+							</cells>
+					
+							<cells>
+								<VBox>
+									<Input id="ovLgort"
+										   editable="{detailDocumentView>/editFields2}"
+										   value="{dataDocument>Lgort}"/>
+									<Text text="{dataDocument>LgortDsc}" />
+								</VBox>
+							</cells>
+							
+							<cells>
+								<VBox>
+									<Input id="ovRoute"
+										   editable="{detailDocumentView>/editFields2}"
+										   value="{dataDocument>Route}"
+										   showValueHelp="true" 
+						                   valueHelpRequest="onHandleF4Route"
+						                   submit="onHandleSubmitRoute"/>
+						             <Text text="{dataDocument>RouteDsc}" />
+						        </VBox>
+							</cells>
+						
+							<cells>
+								<VBox>
+									<Input
+										   editable="{detailDocumentView>/editFields}"
+										   value="{dataDocument>Portdestcli}"
+										   showValueHelp="true" 
+						                   valueHelpRequest="onHandleF4Portdestcli"
+						                   submit="onHandleSubmitPortdestcli"/>
+						             <Text text="{dataDocument>PortdestcliDsc}" />
+					            </VBox>
+							</cells>
+				
+<!-- 							<cells> -->
+<!-- 								<VBox >  -->
+							
+<!-- 								 <Input editable="{detailDocumentView>/editFields}" -->
+<!-- 										   value="{dataDocument>Classificacao}"/> -->
+<!-- 								</VBox> -->
+<!-- 							</cells> -->
+							
+				
+<!-- 							<cells> -->
+<!-- 							<Text -->
+<!-- 								text="{path: 'dataDocument>Dteta', type: 'sap.ui.model.type.Date',  -->
+<!-- 											 		formatOptions: {pattern: 'dd.MM.yyyy',  -->
+<!-- 												 					strictParsing: true ,  -->
+<!-- 												 					UTC: true}}"/> -->
+<!-- 							</cells> -->
+						
+						</ColumnListItem>
+					</items>
+				</Table>
+		
+			</content>
+		</Panel>
+		
+		</f:content>
+	</f:SimpleForm>
+</core:FragmentDefinition>

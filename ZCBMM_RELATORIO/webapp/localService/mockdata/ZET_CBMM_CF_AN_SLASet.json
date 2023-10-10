@@ -1,0 +1,111 @@
+[{
+	"DtInic": "/Date(1093815899000)/",
+	"Situacao": "Atendidas",
+	"DtFim": "/Date(1048369499000)/",
+	"IdSolicitacao": 5538,
+	"Status": "No prazo",
+	"Valor": 12,
+	"__metadata": {
+		"uri": "ZET_CBMM_CF_AN_SLASet(DtInic=datetime'2004-08-29T21%3A44%3A59',IdSolicitacao=5538)",
+		"type": "ZGWCBMM_RELATORIO_SRV.ZET_CBMM_CF_AN_SLA"
+	}
+}, {
+	"DtInic": "/Date(1386276299000)/",
+	"Situacao": "Atendidas",
+	"DtFim": "/Date(1543178699000)/",
+	"IdSolicitacao": 7663,
+	"Status": "Atrasadas",
+	"Valor": 11,
+	"__metadata": {
+		"uri": "ZET_CBMM_CF_AN_SLASet(DtInic=datetime'2013-12-05T20%3A44%3A59',IdSolicitacao=7663)",
+		"type": "ZGWCBMM_RELATORIO_SRV.ZET_CBMM_CF_AN_SLA"
+	}
+}, {
+	"DtInic": "/Date(1086990299000)/",
+	"Situacao": "Atendidas",
+	"DtFim": "/Date(980282699000)/",
+	"IdSolicitacao": 2363,
+	"Status": "No prazo",
+	"Valor": 123,
+	"__metadata": {
+		"uri": "ZET_CBMM_CF_AN_SLASet(DtInic=datetime'2004-06-11T21%3A44%3A59',IdSolicitacao=2363)",
+		"type": "ZGWCBMM_RELATORIO_SRV.ZET_CBMM_CF_AN_SLA"
+	}
+}, {
+	"DtInic": "/Date(1026769499000)/",
+	"Situacao": "Atendidas",
+	"DtFim": "/Date(1348004699000)/",
+	"IdSolicitacao": 6149,
+	"Status": "No prazo",
+	"Valor": 13,
+	"__metadata": {
+		"uri": "ZET_CBMM_CF_AN_SLASet(DtInic=datetime'2002-07-15T21%3A44%3A59',IdSolicitacao=6149)",
+		"type": "ZGWCBMM_RELATORIO_SRV.ZET_CBMM_CF_AN_SLA"
+	}
+}, {
+	"DtInic": "/Date(1496007899000)/",
+	"Situacao": "Em Aberto",
+	"DtFim": "/Date(1103575499000)/",
+	"IdSolicitacao": 202,
+	"Status": "No prazo",
+	"Valor": 14,
+	"__metadata": {
+		"uri": "ZET_CBMM_CF_AN_SLASet(DtInic=datetime'2017-05-28T21%3A44%3A59',IdSolicitacao=202)",
+		"type": "ZGWCBMM_RELATORIO_SRV.ZET_CBMM_CF_AN_SLA"
+	}
+}, {
+	"DtInic": "/Date(1133037899000)/",
+	"Situacao": "Em Aberto",
+	"DtFim": "/Date(1238363099000)/",
+	"IdSolicitacao": 8153,
+	"Status": "No prazo",
+	"Valor": 15,
+	"__metadata": {
+		"uri": "ZET_CBMM_CF_AN_SLASet(DtInic=datetime'2005-11-26T20%3A44%3A59',IdSolicitacao=8153)",
+		"type": "ZGWCBMM_RELATORIO_SRV.ZET_CBMM_CF_AN_SLA"
+	}
+}, {
+	"DtInic": "/Date(1478810699000)/",
+	"Situacao": "Em Aberto",
+	"DtFim": "/Date(1337204699000)/",
+	"IdSolicitacao": 543,
+	"Status": "No prazo",
+	"Valor": 16,
+	"__metadata": {
+		"uri": "ZET_CBMM_CF_AN_SLASet(DtInic=datetime'2016-11-10T20%3A44%3A59',IdSolicitacao=543)",
+		"type": "ZGWCBMM_RELATORIO_SRV.ZET_CBMM_CF_AN_SLA"
+	}
+}, {
+	"DtInic": "/Date(1571521499000)/",
+	"Situacao": "Em Aberto",
+	"DtFim": "/Date(1555883099000)/",
+	"IdSolicitacao": 3332,
+	"Status": "Atrasadas",
+	"Valor": 16,
+	"__metadata": {
+		"uri": "ZET_CBMM_CF_AN_SLASet(DtInic=datetime'2019-10-19T21%3A44%3A59',IdSolicitacao=3332)",
+		"type": "ZGWCBMM_RELATORIO_SRV.ZET_CBMM_CF_AN_SLA"
+	}
+}, {
+	"DtInic": "/Date(1362087899000)/",
+	"Situacao": "Em Aberto",
+	"DtFim": "/Date(1382561099000)/",
+	"IdSolicitacao": 8926,
+	"Status": "Atrasadas",
+	"Valor": 17,
+	"__metadata": {
+		"uri": "ZET_CBMM_CF_AN_SLASet(DtInic=datetime'2013-02-28T21%3A44%3A59',IdSolicitacao=8926)",
+		"type": "ZGWCBMM_RELATORIO_SRV.ZET_CBMM_CF_AN_SLA"
+	}
+}, {
+	"DtInic": "/Date(1142718299000)/",
+	"Situacao": "Em Aberto",
+	"DtFim": "/Date(1120686299000)/",
+	"IdSolicitacao": 9850,
+	"Status": "Atrasadas",
+	"Valor": 18,
+	"__metadata": {
+		"uri": "ZET_CBMM_CF_AN_SLASet(DtInic=datetime'2006-03-18T21%3A44%3A59',IdSolicitacao=9850)",
+		"type": "ZGWCBMM_RELATORIO_SRV.ZET_CBMM_CF_AN_SLA"
+	}
+}]

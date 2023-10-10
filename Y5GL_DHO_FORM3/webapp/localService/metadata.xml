@@ -1,0 +1,22 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZGWGLRH_DHO_FORMULARIOS_SRV" xml:lang="pt" sap:schema-version="1">
+			<EntityType Name="ZET_GLHR_FORMULARIOS_BENEFICIOS" sap:content-version="1">
+				<Key><PropertyRef Name="Beneficio"/></Key><Property Name="Beneficio" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="char20" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Infty" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false"
+					sap:label="Área def.imprecisam., evtlm.utiliz.p/níveis Support Package" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="DescInfotipo" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="Comentário"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="ZET_GLHR_FORMULARIOS_SUBTIPOS" sap:content-version="1">
+				<Key><PropertyRef Name="Infty"/><PropertyRef Name="Subty"/></Key><Property Name="Infty" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false"
+					sap:label="Área def.imprecisam., evtlm.utiliz.p/níveis Support Package" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="Subty" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false"
+					sap:label="Área def.imprecisam., evtlm.utiliz.p/níveis Support Package" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="DescSubtipo" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="Comentário"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityContainer Name="ZGWGLRH_DHO_FORMULARIOS_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx"><EntitySet Name="ZET_GLHR_FORMULARIOS_BENEFICIOSSet" EntityType="ZGWGLRH_DHO_FORMULARIOS_SRV.ZET_GLHR_FORMULARIOS_BENEFICIOS"
+				sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="ZET_GLHR_FORMULARIOS_SUBTIPOSSet" EntityType="ZGWGLRH_DHO_FORMULARIOS_SRV.ZET_GLHR_FORMULARIOS_SUBTIPOS"
+				sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/></EntityContainer><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/ZGWGLRH_DHO_FORMULARIOS_SRV/$metadata"/><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/ZGWGLRH_DHO_FORMULARIOS_SRV/$metadata"/></Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

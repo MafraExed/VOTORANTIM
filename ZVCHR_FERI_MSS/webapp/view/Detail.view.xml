@@ -1,0 +1,38 @@
+<mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.f.semantic" xmlns:footerbar="sap.ushell.ui.footerbar"
+	xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core"
+	controllerName="ZVCRH_FERIAS_GESTOR.ZVCRH_FERIAS_GESTOR.controller.Detail">
+	<App id="app">
+		<pages>
+			<Page title="Cockpit Período Férias" backgroundDesign="Solid">
+					<customHeader>
+					<Bar>
+						<contentMiddle>
+							<!--items-->
+							<Button text="Voltar" type="Back" press="onVoltar"/>
+						
+						</contentMiddle>
+					</Bar>
+				</customHeader>
+				<content>
+					<Input value="{Pernr}" id="IdPernr" visible="false" editable="false"/>
+					<Input value="{Begda}" id="IdBegda" visible="false" editable="false"/>
+					<List id="list"
+						items="{ path: '/ZET_VCHR_MSS_DETALHE',filters: { path: 'Msg', operator: 'EQ', value1: ''}, sorter: { path: 'Pernr', descending: false }, groupHeaderFactory: '.createGroupHeader' }"
+						noDataText="{masterView>/noDataText}" selectionChange="onSelectionChange">
+						<items>
+							<ObjectListItem type="Navigation" press="onSelectionChange" title="{Labelferias}" intro="Matrícula: {Pernr} - {Nome}"  icon="sap-icon://notes"
+								highlight="Information">
+								<firstStatus>
+									<ObjectStatus text="{Status}" id="__status1" state="Warning"/>
+								</firstStatus>
+								<attributes>
+									<ObjectAttribute text="{Labelperiodo}" id="__status2"/>
+								</attributes>
+							</ObjectListItem>
+						</items>
+					</List>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

@@ -1,0 +1,54 @@
+<mvc:View 
+	xmlns="sap.m" 
+	xmlns:mvc="sap.ui.core.mvc" 
+	xmlns:semantic="sap.m.semantic" 
+	xmlns:footerbar="sap.ushell.ui.footerbar" 
+	xmlns:data="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" 
+	controllerName="fibria.com.controller.Worklist">
+	<semantic:FullscreenPage id="pageWorklist" title="{i18n>worklistViewTitle}" semanticRuleSet="Optimized" showFooter="false">
+		<semantic:content>
+			<Table id="table" width="auto" class="sapUiResponsiveMargin" items="{path:'/Riscos', sorter: {path:'Stext', descending: false}}" noDataText="{worklistView>/tableNoDataText}" busyIndicatorDelay="{worklistView>/tableBusyDelay}" growing="true" growingScrollToLoad="true" updateFinished="onUpdateFinished">
+				<headerToolbar>
+					<Toolbar>
+						<Title id="tableHeader" text="{worklistView>/worklistTableTitle}"/>
+						<ToolbarSpacer/>
+						<SearchField id="searchField" tooltip="{i18n>worklistSearchTooltip}" search="onSearch" width="auto">
+						</SearchField>
+						<Button text="Ordenar" tooltip="Ordenar" icon="sap-icon://drop-down-list" press="handleViewSettingsDialogButtonPressed"/>
+					</Toolbar>
+				</headerToolbar>
+				<columns>
+					<!--<Column id="colCodigoRisco">-->
+					<!--	<Text text="{i18n>colCodigoRiscoTitle}" id="txtCodigoRisco"/>-->
+					<!--</Column>-->
+					<Column id="colNomeRisco" width="30%">
+						<Text text="{i18n>colNomeRiscoTitle}" id="txtNomeRisco"/>
+					</Column>
+					<Column id="colCategoria" width="30%">
+						<Text text="{i18n>colCategoriaTitle}" id="txtCategoria"/>
+					</Column>
+					<Column id="colDiretoria" width="25%">
+						<Text text="{i18n>colDiretoriaTitle}" id="txtDiretoria"/>
+					</Column>
+					<Column id="colNivelRisco">
+						<Text text="{i18n>colNivelRiscoTitle}" id="txtNivelRisco"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem type="Navigation" press="onPress">
+						<cells>
+							<!--<ObjectIdentifier title="{RiskId}"/>-->
+							<ObjectIdentifier title="{Stext}"/>
+							<ObjectAttribute text="{RiskCategoryTxt}"/>
+							<ObjectAttribute text="{OrgunitTxt}"/>
+							<ObjectAttribute text="{RiskLabel}"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</semantic:content>
+		<semantic:printAction>
+			<semantic:PrintAction press="onPrintWorklist" data:targetId="table" id="__buttonWorklist"/>
+		</semantic:printAction>
+	</semantic:FullscreenPage>
+</mvc:View>

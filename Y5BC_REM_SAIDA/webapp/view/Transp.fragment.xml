@@ -1,0 +1,7 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core"
+	controllerName="ZCBLE_PR_REM_SAIDA.ZCBLE_PR_REM_SAIDA.controller.Worklist">
+	<SelectDialog title="Transportadora" class="sapUiPopupWithPadding" items="{/ZET_CBLE_PR_TRANSP_HSet}" search="_handleValueHelpTransp"
+		confirm="_handleValueHelpClose" cancel="_handleValueHelpClose" >
+		<StandardListItem iconDensityAware="false" iconInset="false" title="{Lifnr}" description="{Name1}"/>
+	</SelectDialog>
+</core:FragmentDefinition>

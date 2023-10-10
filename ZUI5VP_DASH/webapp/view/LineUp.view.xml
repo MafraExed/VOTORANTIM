@@ -1,0 +1,41 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="com.sap.dashboardappDashboardApp.controller.LineUp" xmlns:m="sap.m">
+	<m:Page showHeader="true" title="Navios" showFooter="true" showNavButton="true" navButtonPress="onNavBack">
+		<m:content>
+			<m:Panel height="auto" width="100%" headerText="" expandable="false" expanded="true" expandAnimation="false" backgroundDesign="Solid">
+				<m:content>
+					<m:Panel id="panel" height="auto" width="100%" headerText="Navios do mês de Setembro" expandable="false" expanded="true"
+						expandAnimation="true" backgroundDesign="Solid">
+						<m:content>
+							<!--<m:StandardTile title="Saga Fortune" number="9.420" numberUnit="Toneladas" info="04/09/2017" infoState="Success" icon="sap-icon://product"/>-->
+							<!--<m:StandardTile title="Kiwi Arrow" number="10.289" numberUnit="Toneladas" info="09/09/2017" infoState="Warning" icon="sap-icon://product" press="_onStandardTilePress"/>-->
+							<!--<m:StandardTile title="Penguim Arrow" number="13.492" numberUnit="Toneladas" info="14/09/2017" infoState="Error" icon="sap-icon://product"/>-->
+							<!--<m:StandardTile title="Halophyla" number="13.991" numberUnit="Toneladas" info="18/09/2017" infoState="Warning" icon="sap-icon://product"/>-->
+							<!--<m:StandardTile title="Ray Of Light" number="9.240" numberUnit="Toneladas" info="24/09/2017" infoState="Warning" icon="sap-icon://product"/>-->
+						</m:content>
+					</m:Panel>
+					<!--<m:Bar design="Footer">-->
+					<!--	<m:contentLeft>-->
+					<!--		<m:ObjectStatus title="" text="Já carregado" state="Success"/>-->
+					<!--	</m:contentLeft>-->
+					<!--	<m:contentMiddle>-->
+					<!--		<m:ObjectStatus title="" text="Carregando" state="Error"/>-->
+					<!--	</m:contentMiddle>-->
+					<!--	<m:contentRight>-->
+					<!--		<m:ObjectStatus text="Planejado" state="Warning"/>-->
+					<!--	</m:contentRight>-->
+					<!--</m:Bar>-->
+				</m:content>
+			</m:Panel>
+		</m:content>
+		<m:footer>
+			<m:Bar design="Auto">
+				<m:contentLeft/>
+				<m:contentMiddle/>
+				<m:contentRight/>
+			</m:Bar>
+		</m:footer>
+		<m:headerContent/>
+		<m:subHeader/>
+		<m:customHeader/>
+	</m:Page>
+</mvc:View>

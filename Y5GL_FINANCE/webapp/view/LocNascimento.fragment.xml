@@ -1,0 +1,6 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog title="Selecione o local de nascimento" class="sapUiPopupWithPadding" items="{/ZET_GLHR_COMBO_MUNICIPIOSet}" search="onSearchMunicipio"
+		confirm="onConfirmDocumento" cancel="_handleValueHelpClose">
+		<StandardListItem iconDensityAware="false" iconInset="false" title="{Zmunicipio}" icon="sap-icon://add-folder"/>
+	</SelectDialog>
+</core:FragmentDefinition>

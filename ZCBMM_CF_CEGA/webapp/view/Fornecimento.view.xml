@@ -1,0 +1,116 @@
+<mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.f.semantic" xmlns:footerbar="sap.ushell.ui.footerbar"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:smartFilterBar="sap.ui.comp.smartfilterbar" xmlns:m="sap.m"
+	xmlns:sv="sap.ui.comp.smartvariants" xmlns:smartTable="sap.ui.comp.smarttable" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core"
+	xmlns:l="controls" xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	controllerName="ZCBMM_CF_CEGA.ZCBMM_CF_CEGA.controller.Fornecimento">
+	<Page  showHeader="false">
+		<content>
+			<!--<VBox>
+				
+			</VBox>-->
+			<Panel >
+				<content>
+					<ObjectHeader title="{i18n>avis_receb_header} {AvisoEntrega}" introActive="true" titleActive="true" intro="{Fornecedor} ({Lifnr})">
+						<attributes>
+							<ObjectAttribute title="{/#FornecimentoCB/Nfnum/@sap:label}" text="{Nfnum}"/>
+							<ObjectAttribute title="{/#FornecimentoCB/Series/@sap:label}" text="{Series}"/>
+							<ObjectAttribute title="{/#FornecimentoCB/Recdat/@sap:label}"
+							text="{ path: 'Recdat', type: 'sap.ui.model.odata.type.DateTime', formatOptions: { pattern: 'dd/MM/yyyy' } }"/>
+							<ObjectAttribute title="{/#FornecimentoCB/XmlChaveNfe/@sap:label}" text="{XmlChaveNfe}"/>
+						</attributes>
+						<statuses>
+							<ObjectStatus state="{= ${ContagemRealizada} === 'X' ? 'Success' : 'Error' }"
+								text="Contagem: {= ${ContagemRealizada} === 'X' ? 'Realizada' : 'Pendente' }"/>
+							<ObjectStatus state="{= ${EntrMercRealizada} === 'X' ? 'Success' : 'Error' }"
+								text="E.M.: {= ${EntrMercRealizada} === 'X' ? 'Realizada' : 'Pendente' }"/>
+						</statuses>
+					</ObjectHeader>
+				</content>
+			</Panel>
+			<f:SimpleForm editable="true" MaxContainerCols="5">
+				<f:content>
+			<Label text="Impressora" design="Bold"/>
+			<Select id="imp" forceSelection="true" selectedKey="{impressaoModel>/param/Name}" showSecondaryValues="true"
+				items="{ path: '/ImpressoraSet', sorter : { path : 'Name' }}">
+				<core:ListItem key="{Name}" text="{Pastandort}" additionalText="{Name}"/>
+			</Select>
+			</f:content>
+			</f:SimpleForm>
+			
+			<Panel>
+				<content>
+					<Table id="fornecimentoItemTable" items="{ path: 'ToIt', templateShareable: false, sorter : { path : 'Ebelp' }}" noDataText="{i18n>nodata_forn_items}" class="sapUiResponsivePadding" headerText="Itens">
+						
+						<items>
+							<ColumnListItem>
+								<cells>
+									<Text text="{Ebeln}"/>
+									<Text text="{Ebelp}"/>
+									<ObjectIdentifier title="{Matnr}" text="{Maktx}"/>
+									<Text text="{Meins}"/>
+									<Input value="{path: '{Quantidade}',type:'sap.ui.model.type.Currency', formatOptions: {	minFractionDigits: 3} }" />	
+									<!--<Input value="" type="Number" />-->
+									<Input value="1" type="Number"  />
+								</cells>
+							</ColumnListItem>
+						</items>
+						<columns>
+							<Column >
+								<header>
+									<Label text="{/#FornecimentoIT/Ebeln/@sap:label}"/>
+								</header>
+							</Column>
+							<Column >
+								<header>
+									<Label text="{/#FornecimentoIT/Ebelp/@sap:label}"/>
+								</header>
+							</Column>
+							<Column >
+								<header>
+									<Label text="{/#FornecimentoIT/Matnr/@sap:label}"/>
+								</header>
+							</Column>
+							<Column >
+								<header>
+									<Label text="{/#FornecimentoIT/Meins/@sap:label}"/>
+								</header>
+							</Column>
+							<Column visible="{= ${EntrMercRealizada} === 'X' ? false : true}">
+								<header>
+									<Label text="{i18n>head_qty}"/>
+								</header>
+							</Column>
+							<Column visible="{= ${EntrMercRealizada} === 'X' ? false : true}">
+								<header>
+									<Label text="{i18n>head_vol}"/>
+								</header>
+							</Column>
+						</columns>
+					</Table>
+					<!--<List items="{msgModel>/}">-->
+					<!--	<items>-->
+					<!--		<StandardListItem title="{msgModel>type} {msgModel>title}"></StandardListItem>-->
+					<!--	</items>-->
+					<!--</List>-->
+				</content>
+			</Panel>
+		</content>
+		<footer>
+			<Toolbar>
+								<Button icon="sap-icon://message-popup" text="{/messagesLength}" type="Emphasized"
+						press=".handleMessagePopoverPress"/>
+				<ToolbarSpacer></ToolbarSpacer>
+				<Button type="Accept" text="{= ${ContagemRealizada} !== 'X' ? ${i18n>realiz_cont_cega} : ${i18n>realiz_recont_cega} }" 
+				icon="{= ${ContagemRealizada} !== 'X' ? 'sap-icon://display' : 'sap-icon://synchronize' }" 
+				visible="{= ${EntrMercRealizada} === 'X' ? false : true}"
+				press=".onContagemCegaPress"/>
+				
+				
+				<!-- à definir  -->
+				<!--<Button type="Emphasized" text="Registrar E.M."
+					visible="{= ${EntrMercRealizada} === 'X' ? false : true}"
+					enabled="{= ${ContagemRealizada} === 'X' &amp;&amp; ${EntrMercRealizada} !== 'X' ? true : false }" press=".onRegistrarEMPress"/>-->
+			</Toolbar>
+		</footer>
+	</Page>
+</mvc:View>

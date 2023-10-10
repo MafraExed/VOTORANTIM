@@ -1,0 +1,86 @@
+<mvc:View controllerName="nasa.ui5.planejamentoEmbarque.controller.Detail" xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic"
+	xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout">
+
+	<semantic:DetailPage id="page" 
+						 navButtonPress="onNavBack"
+						 showNavButton="true" 
+						 title="{i18n>detailTitle}"
+						 busy="{detailView>/busy}" 
+						 busyIndicatorDelay="{detailView>/delay}">
+						 
+		<semantic:customHeaderContent>
+			<Button id="ListItemFullButton" 
+								icon="sap-icon://full-screen" 
+								visible="{= ${device>/system/phone} === false}"
+								press="onFullScreenPage" />
+
+		</semantic:customHeaderContent>				 
+			<semantic:content>
+
+				<ObjectHeader id="objectHeader" 
+					  title="{Dcrnv} {Nvoyg} "
+					  markFlagged="true"
+					  showMarkers="{path:'StShipplanHeader/Stdline', formatter:'.formatter.formatVisibleMarker'}"	
+					  number="{path: 'StShipplanHeader/Dteta',type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'dd.MM.yyyy', strictParsing: true , UTC: true}}"
+					  numberUnit="ETA">
+		
+				<attributes>
+			    
+					<ObjectAttribute
+						title="{i18n>detailTitlePtorg}" 
+						text="{StShipplanHeader/Ptorg}"/>
+						
+<!-- 						   | -->
+<!-- 							 {i18n>detailTitleVolume}: {path : 'StShipplanHeader/Volume',  formatter:'.formatter.formatNumberBrazil',	type : 'sap.ui.model.odata.type.String', constraints: {isDigitSequence : true, maxLength : 10}} Units" />	 -->
+       
+          			</attributes>	
+						
+				<statuses>
+					<ObjectStatus class="sapUiSmallMarginBottom"
+					text="{path: 'StShipplanHeader/Status',formatter:'.formatter.mudarTexto'}" 
+					state="{path: 'StShipplanHeader/Status', formatter: '.formatter.mudarStatus'}"
+					icon="{path: 'StShipplanHeader/Status', formatter: '.formatter.mudarIcon'}" />	
+				</statuses> 
+
+				<additionalNumbers> 
+
+				<ObjectNumber id="idoobjNumber" 
+					 		  number="{parts: [{path:'StShipplanHeader/Peso'}], formatter:'.formatter.formatNumberBrazil'}"
+					 		  tooltip="Peso"
+					 		  state="{path: 'StShipplanHeader/Status', formatter: '.formatter.mudarStatus2'}"
+					 		  unit="{StShipplanHeader/Unit}"/>
+
+				</additionalNumbers>
+				</ObjectHeader>		
+							
+<!-- 	/HEADER -->
+<!-- 		TABBAR -->		
+				
+			<IconTabBar id="iconTabBar" class="sapUiResponsiveContentPadding" expandable="false" >
+				<items>
+					<!--  MENU TABS 1 -->
+					<IconTabFilter id="iconTabBarFilter1" 
+								   icon="sap-icon://activities"
+								   tooltip="{i18n>detailTitleTabFilterBar}">
+
+						<core:Fragment fragmentName="nasa.ui5.planejamentoEmbarque.view.fragments.ListItem" type="XML"/>
+
+					</IconTabFilter>
+
+				</items>
+			</IconTabBar>
+
+		</semantic:content>
+		<semantic:customFooterContent>
+			<Button  
+					icon="sap-icon://add-document"
+					press="onNewEmbarque" 
+					tooltip="{i18n>detailbButtonNew}">
+			</Button>
+		</semantic:customFooterContent>
+
+	</semantic:DetailPage>
+
+</mvc:View>

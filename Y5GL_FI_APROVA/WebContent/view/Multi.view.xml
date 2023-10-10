@@ -1,0 +1,27 @@
+<mvc:View controllerName="vsa.y5gl_fi_portal.view.Multi" xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic">
+	<semantic:DetailPage id="page" navButtonPress="onNavBack"
+		showNavButton="{device>/system/phone}" title="{i18n>detailTitle}"
+		busy="{detailView>/busy}" busyIndicatorDelay="{detailView>/delay}">
+		<semantic:content>
+			<ScrollContainer width="100%" horizontal="true"
+				vertical="true" focusable="true">
+				<Table class="sapUiSmallMargin" xmlns="sap.ui.table" id="tbMulti"
+					title="Items" selectionMode="None" editable="false"
+					visibleRowCount="20" updateFinished="onUpdateFinished">
+					<columns>
+						<Column>
+						</Column>
+					</columns>
+				</Table>
+			</ScrollContainer>
+		</semantic:content>
+
+		<semantic:customFooterContent>
+			<Button press="onApprove" icon="sap-icon://accept" tooltip="{i18n>APPROVE}" type="Accept" text="{i18n>APPROVE}"/>
+		    <Button press="onReject" icon="sap-icon://decline" tooltip="{i18n>REJECT}"
+			    	visible="{= ${global>/aprovacao} &amp;&amp; ${global>/massvApprv} }" type="Reject" text="{i18n>REJECT}"/>								
+		</semantic:customFooterContent>
+
+	</semantic:DetailPage>
+</mvc:View>

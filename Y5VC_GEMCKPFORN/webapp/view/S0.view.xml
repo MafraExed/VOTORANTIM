@@ -1,0 +1,98 @@
+<mvc:View controllerName="Workspace.zcockpit_fornecedor.controller.S0" xmlns:mvc="sap.ui.core.mvc" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:f="sap.f" displayBlock="true" xmlns="sap.m" xmlns:variants="sap.ui.comp.variants" xmlns:filterbar="sap.ui.comp.filterbar"
+	xmlns:core="sap.ui.core" height="100%">
+	<f:DynamicPage id="dynamicPageId" headerExpanded="true" toggleHeaderOnTitleClick="true">
+		<f:title>
+			<f:DynamicPageTitle>
+				<f:heading>
+					<Title text="{i18n>title} - {POITEMSLOC>/0/name1}"/>
+					<!--<variants:VariantManagement standardItemText="{i18n>title}" />-->
+				</f:heading>
+				<f:actions>
+					<!--<ToolbarSpacer/>-->
+					<!--<Button text="{i18n>label_reset_filter}" press="onResetFilter"/>-->
+				</f:actions>
+			</f:DynamicPageTitle>
+		</f:title>
+		<f:header>
+			<f:DynamicPageHeader pinnable="true">
+				<f:content>
+					<filterbar:FilterBar id="filterbar" useToolbar="false" showGoOnFB="false">
+						<filterbar:filterGroupItems>
+							<filterbar:FilterGroupItem visibleInFilterBar="true" groupName="G1" groupTitle="{i18n>label_group}" name="A" label="{i18n>label_orders}"
+								labelTooltip="{i18n>label_group}">
+								<filterbar:control>
+									<ComboBox id="s0Po" change="onSelectChange" items="{ path: 'POITEMSLOC>/' }">
+										<core:Item key="{POITEMSLOC>ebeln}" text="{POITEMSLOC>ebeln}"/>
+									</ComboBox>
+								</filterbar:control>
+							</filterbar:FilterGroupItem>
+							<filterbar:FilterGroupItem visibleInFilterBar="true" groupName="G1" groupTitle="{i18n>label_group}" name="B" label="{i18n>label_date}"
+								labelTooltip="{i18n>label_group}">
+								<filterbar:control>
+									<Label labelFor="DP1"/>
+									<DatePicker id="DP1" displayFormat="short" change="handleChange" class="sapUiSmallMarginBottom"/>
+								</filterbar:control>
+							</filterbar:FilterGroupItem>
+						</filterbar:filterGroupItems>
+					</filterbar:FilterBar>
+				</f:content>
+			</f:DynamicPageHeader>
+		</f:header>
+		<f:content>
+			<Table id="idPoTable" mode="MultiSelect" inset="false" items="{ path: 'POITEMSLOC>/' }">
+				<!--class="sapFDynamicPageAlignContent" width="auto">-->
+				<headerToolbar>
+					<OverflowToolbar id="idPoTableSubheader">
+						<Title text="{i18n>label_title_table}" level="H3"/>
+						<ToolbarSpacer/>
+						<Button id="printButton" text="{i18n>label_print_labels}" type="Transparent" press="onSendPrint" icon="sap-icon://print"/>
+						<Button id="resetFilterButton" text="{i18n>label_reset_filter}" type="Transparent" press="onResetFilter" icon="sap-icon://clear-filter"/>
+					</OverflowToolbar>
+				</headerToolbar>
+				<columns>
+					<Column minScreenWidth="Tablet" demandPopin="true" vAlign="Middle">
+						<Text text="{i18n>label_po}"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" vAlign="Middle">
+						<Text text="{i18n>label_item}"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" vAlign="Middle">
+						<Text text="{i18n>label_material}"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" vAlign="Middle">
+						<Text text="{i18n>label_mat_description}"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" vAlign="Middle">
+						<Text text="{i18n>label_qtd_etq}"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" vAlign="Middle">
+						<Text text="{i18n>label_qtd_material}"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" vAlign="Middle">
+						<Text text="{i18n>label_mat_unit}"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<ObjectIdentifier title="{POITEMSLOC>ebeln}" text="{ path: 'POITEMSLOC>qtdEtqImp', formatter: '.formatter.statusInfoStateConverter'}"/>
+							<!--<Text text="{POITEMSLOC>ebeln}"/>-->
+							<Text text="{POITEMSLOC>ebelp}"/>
+							<Text text="{POITEMSLOC>matnr}"/>
+							<Text text="{POITEMSLOC>maktx}"/>
+							<Input id="qtd_etq" placeholder="{i18n>label_qtd_etq_placeholder}" type="Number" change="onInputChangeEtq"
+								value="{ path: 'POITEMSLOC>qtdEtq', formatter: '.formatter.shiftLeadingZeros'}"
+								enabled="{ path: 'POITEMSLOC>qtdEtqImp', formatter: '.formatter.statusConverter'}"/>
+							<!--value="{ path: 'POITEMSLOC>qtdEtq', formatter: '.formatter.shiftLeadingZeros'}" -->
+							<Input id="qtd_material" placeholder="{i18n>label_qtd_material_placeholder}" type="Number" change="onInputChangeMat"
+								value="{ path: 'POITEMSLOC>qtdMat', formatter: '.formatter.shiftLeadingZeros'}"
+								enabled="{ path: 'POITEMSLOC>qtdEtqImp', formatter: '.formatter.statusConverter'}"/>
+							<Text text="{POITEMSLOC>meins}"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</f:content>
+	</f:DynamicPage>
+</mvc:View>

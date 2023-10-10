@@ -1,0 +1,5 @@
+"use strict";function ownKeys(e,r){var t=Object.keys(e);if(Object.getOwnPropertySymbols){var n=Object.getOwnPropertySymbols(e);r&&(n=n.filter(function(r){return Object.getOwnPropertyDescriptor(e,r).enumerable})),t.push.apply(t,n)}return t}function _objectSpread(e){for(var r=1;r<arguments.length;r++){var t=null!=arguments[r]?arguments[r]:{};r%2?ownKeys(Object(t),!0).forEach(function(r){_defineProperty(e,r,t[r])}):Object.getOwnPropertyDescriptors?Object.defineProperties(e,Object.getOwnPropertyDescriptors(t)):ownKeys(Object(t)).forEach(function(r){Object.defineProperty(e,r,Object.getOwnPropertyDescriptor(t,r))})}return e}function _defineProperty(e,r,t){if(r in e){Object.defineProperty(e,r,{value:t,enumerable:true,configurable:true,writable:true})}else{e[r]=t}return e}
+/*!
+ * SiTrack - Seguimiento de compras
+ * (c) Copyright 2022 Innova Internacional S.A.S.
+ */sap.ui.define(["./convertStringToJson"],function(e){return function(r){return r.filter(function(e){var r=e.Name;return r!=="IV_FUNCNAME"}).reduce(function(r,t){var n=t.Name,o=t.Value;return _objectSpread(_objectSpread({},r),{},_defineProperty({},"".concat(n),e(o)))},{})}});

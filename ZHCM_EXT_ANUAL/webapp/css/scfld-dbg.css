@@ -1,0 +1,4 @@
+.payslipPdf {
+				height: 95% !important;                              /* fallback */
+                height: calc(100% - 13.5rem) !important;
+}

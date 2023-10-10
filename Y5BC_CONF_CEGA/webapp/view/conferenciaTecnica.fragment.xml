@@ -1,0 +1,22 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+	<Dialog title="Conferência técnica" type="Standard" showHeader="false">
+		<content>
+			<f:SimpleForm id="FormConferencia" title="">
+				<f:content>
+					<Label text="Conferente técnico"/>
+					<Input id="InputConferente" required="true"/>
+					<Label text="Matrícula"/>
+					<Input id="InputMatricula" required="true"/>
+					<Label text="Observação"/>
+					<Input id="InputObs" required="true"/>
+				</f:content>
+			</f:SimpleForm>
+		</content>
+		<beginButton>
+			<Button text="Confirmar" type="Accept" press="onBtnConfTecnicaConfirmPress"/>
+		</beginButton>
+		<endButton>
+			<Button text="Cancelar" type="Reject" press="onBtnConfTecnicaClosePress"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

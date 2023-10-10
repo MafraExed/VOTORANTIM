@@ -1,0 +1,717 @@
+<edmx:Edmx
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+    xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+    xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZGWCBMM_CONTRATACAO_FRETE_SRV" xml:lang="pt" sap:schema-version="1">
+            <EntityType Name="Subscription" sap:semantics="subscriptions" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" Nullable="false" MaxLength="32" sap:label="Sub. ID" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+                <Property Name="user" Type="Edm.String" MaxLength="12" m:FC_TargetPath="SyndicationAuthorName" m:FC_KeepInContent="false" sap:label="Nome do usuário" sap:creatable="false" sap:filterable="false"/>
+                <Property Name="updated" Type="Edm.DateTime" Precision="0" m:FC_TargetPath="SyndicationUpdated" m:FC_KeepInContent="false" sap:label="Registro hora" sap:creatable="false" sap:filterable="false"/>
+                <Property Name="title" Type="Edm.String" MaxLength="255" m:FC_TargetPath="SyndicationTitle" m:FC_KeepInContent="false" sap:label="Title" sap:filterable="false"/>
+                <Property Name="deliveryAddress" Type="Edm.String" sap:label="Delivery Address" sap:filterable="false"/>
+                <Property Name="persistNotifications" Type="Edm.Boolean" sap:label="Persist Notification" sap:filterable="false"/>
+                <Property Name="collection" Type="Edm.String" MaxLength="40" sap:label="Collection" sap:filterable="false"/>
+                <Property Name="filter" Type="Edm.String" sap:label="Filter" sap:filterable="false"/>
+                <Property Name="select" Type="Edm.String" MaxLength="255" sap:label="Select" sap:filterable="false"/>
+                <Property Name="changeType" Type="Edm.String" MaxLength="30" sap:label="Change Type"/>
+            </EntityType>
+            <EntityType Name="Notification" sap:semantics="notifications" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" Nullable="false" MaxLength="32" sap:label="Notification ID"/>
+                <Property Name="collection" Type="Edm.String" MaxLength="40" sap:label="Collection"/>
+                <Property Name="title" Type="Edm.String" m:FC_TargetPath="SyndicationTitle" m:FC_KeepInContent="false" sap:label="Notif. Text"/>
+                <Property Name="updated" Type="Edm.DateTime" Precision="0" m:FC_TargetPath="SyndicationUpdated" m:FC_KeepInContent="false" sap:label="Registro hora"/>
+                <Property Name="changeType" Type="Edm.String" MaxLength="30" sap:label="Change Type"/>
+                <Property Name="entriesOfInterest" Type="Edm.Int32" sap:label="No. of Entries"/>
+                <Property Name="recipient" Type="Edm.String" MaxLength="112" sap:label="Recipient" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
+            <EntityType Name="ZET_CBMM_CF_WERKS" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Bukrs"/>
+                    <PropertyRef Name="Werks"/>
+                </Key>
+                <Property Name="Bukrs" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Empresa" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Endereco" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Endereço" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Munic" Type="Edm.String" Nullable="false" MaxLength="25" sap:label="Municipio" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Cnpj" Type="Edm.String" Nullable="false" MaxLength="16" sap:label="CNPJ" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Uf" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Estado" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Name1" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Nome 1" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Werks" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Centro" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZET_CBMM_CF_VEICULO" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Bukrs"/>
+                    <PropertyRef Name="WerksO"/>
+                    <PropertyRef Name="IdSolicitacao"/>
+                    <PropertyRef Name="IdRota"/>
+                    <PropertyRef Name="NrTransp"/>
+                    <PropertyRef Name="TpVeiculo"/>
+                </Key>
+                <Property Name="Bukrs" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Empresa"/>
+                <Property Name="Route" Type="Edm.String" Nullable="false" MaxLength="6" sap:label="Itinerário real"/>
+                <Property Name="WerksO" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Centro"/>
+                <Property Name="IdSolicitacao" Type="Edm.Int32" Nullable="false" sap:label="Id Solicitação"/>
+                <Property Name="IdRota" Type="Edm.Int32" Nullable="false" sap:label="Id Rota"/>
+                <Property Name="NrTransp" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Fornec.serviços"/>
+                <Property Name="TpVeiculo" Type="Edm.String" Nullable="false" MaxLength="25" sap:label="Tipo Veículo"/>
+                <Property Name="Vencedor" Type="Edm.String" MaxLength="1" sap:label="Vencedor"/>
+                <Property Name="Performance" Type="Edm.String" MaxLength="50" sap:label="Performance"/>
+                <Property Name="Maktx" Type="Edm.String" MaxLength="40" sap:label="Descrição Veículo"/>
+                <Property Name="Objeto" Type="Edm.String" MaxLength="70" sap:label="Objeto"/>
+                <Property Name="Empresa" Type="Edm.String" MaxLength="4" sap:label="Empresa"/>
+                <Property Name="VlrTotDc" Type="Edm.Int32" sap:label="Valor Total"/>
+                <Property Name="Alcada" Type="Edm.String" MaxLength="30" sap:label="Alçada"/>
+                <Property Name="Vigencia" Type="Edm.String" MaxLength="10" sap:label="Vigência"/>
+                <Property Name="Volume" Type="Edm.Int32" sap:label="Volume"/>
+                <Property Name="DataBase" Type="Edm.String" MaxLength="10" sap:label="Data Base"/>
+                <Property Name="AtPreco" Type="Edm.String" MaxLength="30" sap:label="At Preço"/>
+                <Property Name="PrazoPag" Type="Edm.String" MaxLength="10" sap:label="Prazo Pagamento"/>
+                <Property Name="Incoterm" Type="Edm.String" MaxLength="10" sap:label="Incoterm"/>
+                <Property Name="Cadastro" Type="Edm.String" MaxLength="10" sap:label="Cadastro"/>
+                <Property Name="CamRede" Type="Edm.String" MaxLength="60" sap:label="Cam Rede"/>
+                <Property Name="Negociacao" Type="Edm.String" MaxLength="30" sap:label="Negociação"/>
+                <Property Name="FreteNegoc" Type="Edm.Int32" sap:label="Frete Negoc"/>
+                <Property Name="FretePedag" Type="Edm.Int32" sap:label="Frete Pedag"/>
+                <Property Name="OrcBaseline" Type="Edm.Int32" sap:label="Orc Baseline"/>
+                <Property Name="VarPrecos" Type="Edm.Int32" sap:label="Var Preços"/>
+                <Property Name="Saving" Type="Edm.Int32" sap:label="Saving"/>
+                <Property Name="Orcamento" Type="Edm.Int32" sap:label="Orçamento"/>
+                <Property Name="Tco" Type="Edm.Int32" sap:label="Tco"/>
+                <Property Name="AproTec" Type="Edm.String" MaxLength="1" sap:label="Apro Tec"/>
+                <Property Name="HabQuali" Type="Edm.String" MaxLength="1" sap:label="Hab Quali"/>
+                <Property Name="VlrNegoc" Type="Edm.Int32" sap:label="Valor Negoc"/>
+                <Property Name="VlrProp" Type="Edm.Int32" sap:label="Valor Prop"/>
+                <Property Name="Pedagio" Type="Edm.Int32" sap:label="Pedágio"/>
+            </EntityType>
+            <EntityType Name="ZET_CBMM_CF_ZONE1" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Zone1"/>
+                </Key>
+                <Property Name="Zone1" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Zona transporte" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Vtext" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Char" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZET_CBMM_CF_VEIC_H" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Matnr"/>
+                </Key>
+                <Property Name="Matnr" Type="Edm.String" Nullable="false" MaxLength="18" sap:label="Material"/>
+                <Property Name="Maktx" Type="Edm.String" MaxLength="40" sap:label="Denominação"/>
+            </EntityType>
+            <EntityType Name="ZET_CBMM_CF_PEDIDO" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Werkso"/>
+                    <PropertyRef Name="IdSolicitacao"/>
+                    <PropertyRef Name="NrItem"/>
+                    <PropertyRef Name="NrRequisicao"/>
+                </Key>
+                <Property Name="Fornecedor" Type="Edm.String" MaxLength="10" sap:label="Fornecedor"/>
+                <Property Name="Tipo" Type="Edm.String" MaxLength="1" sap:label="Caractere 1"/>
+                <Property Name="Werkso" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Centro"/>
+                <Property Name="IdSolicitacao" Type="Edm.Int32" Nullable="false" sap:label="Nº"/>
+                <Property Name="Modalidade" Type="Edm.String" MaxLength="70" sap:label="char70"/>
+                <Property Name="NrItem" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Item RC"/>
+                <Property Name="Prioridade" Type="Edm.String" MaxLength="70" sap:label="char70"/>
+                <Property Name="Finalidade" Type="Edm.String" MaxLength="70" sap:label="char70"/>
+                <Property Name="Carteira" Type="Edm.String" MaxLength="70" sap:label="char70"/>
+                <Property Name="NrRequisicao" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="ReqC"/>
+                <Property Name="GrpCompras" Type="Edm.String" MaxLength="3" sap:label="Grp.compradores"/>
+                <Property Name="NrTransp" Type="Edm.String" MaxLength="10" sap:label="Nº transporte"/>
+                <Property Name="DtPedido" Type="Edm.String" MaxLength="10" sap:label="Campo de caracteres do comprimento 10"/>
+                <Property Name="VlPedido" Type="Edm.Decimal" Precision="12" Scale="3" sap:label="Preço líquido"/>
+            </EntityType>
+            <EntityType Name="ZET_CBMM_CF_ROUTE" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Zone1"/>
+                    <PropertyRef Name="Zone2"/>
+                </Key>
+                <Property Name="Zone1" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Zona de partida"/>
+                <Property Name="Zone2" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Zona transporte"/>
+                <Property Name="Route" Type="Edm.String" MaxLength="6" sap:label="Itinerário real"/>
+            </EntityType>
+            <EntityType Name="ZET_CBMM_CF_RELATORIO" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="DtInic"/>
+                    <PropertyRef Name="DtFim"/>
+                    <PropertyRef Name="Usuario"/>
+                </Key>
+                <Property Name="DtInic" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Campo de caracteres do comprimento 10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="QtPositiva" Type="Edm.Int32" Nullable="false" sap:label="Nº" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TpSolPc" Type="Edm.Int32" Nullable="false" sap:label="Nº" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="QtNegativa" Type="Edm.Int32" Nullable="false" sap:label="Nº" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DtFim" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Campo de caracteres do comprimento 10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="QtSolicit" Type="Edm.Int32" Nullable="false" sap:label="Nº" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Saving" Type="Edm.Int32" Nullable="false" sap:label="Nº" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SlaFPrazo" Type="Edm.Int32" Nullable="false" sap:label="Nº" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SlaFAtrazo" Type="Edm.Int32" Nullable="false" sap:label="Nº" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SlaAPrazo" Type="Edm.Int32" Nullable="false" sap:label="Nº" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SlaAAtrazo" Type="Edm.Int32" Nullable="false" sap:label="Nº" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PerfPositivas" Type="Edm.Int32" Nullable="false" sap:label="Nº" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PerfNegativas" Type="Edm.Int32" Nullable="false" sap:label="Nº" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ModMro" Type="Edm.Int32" Nullable="false" sap:label="Nº" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ModInsumo" Type="Edm.Int32" Nullable="false" sap:label="Nº" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ModPa" Type="Edm.Int32" Nullable="false" sap:label="Nº" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ModServico" Type="Edm.Int32" Nullable="false" sap:label="Nº" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TpSolSpot" Type="Edm.Int32" Nullable="false" sap:label="Nº" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TpSolPerene" Type="Edm.Int32" Nullable="false" sap:label="Nº" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TpSolServico" Type="Edm.Int32" Nullable="false" sap:label="Nº" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Usuario" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Char" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MSolicAberto" Type="Edm.Int32" Nullable="false" sap:label="Nº" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MSolicAtraso" Type="Edm.Int32" Nullable="false" sap:label="Nº" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MSolicRecusa" Type="Edm.Int32" Nullable="false" sap:label="Nº" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MSolicConc" Type="Edm.Int32" Nullable="false" sap:label="Nº" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZET_CBMM_CF_CEGA" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Bukrs"/>
+                    <PropertyRef Name="Branch"/>
+                    <PropertyRef Name="Nfnum"/>
+                </Key>
+                <Property Name="Bukrs" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Empresa"/>
+                <Property Name="Branch" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Loc.negócios"/>
+                <Property Name="Nfnum" Type="Edm.String" Nullable="false" MaxLength="9" sap:label="N° Nota Fiscal"/>
+                <Property Name="AvisoEntrega" Type="Edm.String" MaxLength="10" sap:label="Aviso de Entrega"/>
+                <Property Name="Volume" Type="Edm.String" MaxLength="15" sap:label="Vol."/>
+                <Property Name="Quantidade" Type="Edm.String" MaxLength="5" sap:label="Quantidade"/>
+                <Property Name="Aceite" Type="Edm.String" MaxLength="1" sap:label="Aceite"/>
+                <Property Name="Data" Type="Edm.DateTime" Precision="7" sap:label="Data"/>
+                <Property Name="Hora" Type="Edm.Time" Precision="0" sap:label="Hora"/>
+                <Property Name="Login" Type="Edm.String" MaxLength="12" sap:label="Nome do usuário"/>
+            </EntityType>
+            <EntityType Name="ZET_CBMM_CF_CEGA_ETIQUETA" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Lfimg"/>
+                    <PropertyRef Name="Matnr"/>
+                </Key>
+                <Property Name="Lfimg" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Campo de caracteres do comprimento 10"/>
+                <Property Name="Matnr" Type="Edm.String" Nullable="false" MaxLength="18" sap:label="Material"/>
+                <Property Name="Tipo" Type="Edm.String" MaxLength="1" sap:label="Caractere 1"/>
+                <Property Name="AvisoEntrega" Type="Edm.String" MaxLength="10" sap:label="Fornecimento"/>
+            </EntityType>
+            <EntityType Name="ZET_CBMM_CF_EKGRP" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Ekgrp"/>
+                </Key>
+                <Property Name="Ekgrp" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Grp.compradores"/>
+                <Property Name="Aprov" Type="Edm.String" MaxLength="12" sap:label="Aprovador"/>
+                <Property Name="EnvioEmail" Type="Edm.String" MaxLength="1" sap:label="Envio email"/>
+                <Property Name="Email" Type="Edm.String" MaxLength="241" sap:label="Email"/>
+            </EntityType>
+            <EntityType Name="ZET_CBMM_CF_VEICOND" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Bukrs"/>
+                    <PropertyRef Name="Idrota"/>
+                    <PropertyRef Name="Idsolicitacao"/>
+                    <PropertyRef Name="Kschl"/>
+                    <PropertyRef Name="Nrtransp"/>
+                    <PropertyRef Name="QtdEscala"/>
+                    <PropertyRef Name="Tpveiculo"/>
+                    <PropertyRef Name="Werkso"/>
+                </Key>
+                <Property Name="Bukrs" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Empresa"/>
+                <Property Name="Idrota" Type="Edm.Int32" Nullable="false" sap:label="ID Rota"/>
+                <Property Name="Idsolicitacao" Type="Edm.Int32" Nullable="false" sap:label="ID Solicitação"/>
+                <Property Name="Kschl" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Condição"/>
+                <Property Name="Nrtransp" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Transp."/>
+                <Property Name="QtdEscala" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Qtd.escala"/>
+                <Property Name="Tpveiculo" Type="Edm.String" Nullable="false" MaxLength="25" sap:label="Veiculo"/>
+                <Property Name="Werkso" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Centro"/>
+                <Property Name="Desctransp" Type="Edm.String" MaxLength="35" sap:label="Transportadora"/>
+                <Property Name="Sugerir" Type="Edm.String" MaxLength="1" sap:label="Flag"/>
+                <Property Name="Nomecond" Type="Edm.String" MaxLength="20" sap:label="Denominação"/>
+                <Property Name="Maktx" Type="Edm.String" MaxLength="40" sap:label="Material"/>
+                <Property Name="Descricao" Type="Edm.String" MaxLength="255" sap:label="Descr."/>
+                <Property Name="Objeto" Type="Edm.String" MaxLength="70" sap:label="Objeto"/>
+                <Property Name="DataFim" Type="Edm.String" MaxLength="10" sap:label="Data Fim"/>
+                <Property Name="Empresa" Type="Edm.String" MaxLength="4" sap:label="Empresa"/>
+                <Property Name="DataInicio" Type="Edm.String" MaxLength="10" sap:label="Data Início"/>
+                <Property Name="VlrTotDc" Type="Edm.Int32" sap:label="Valor Total"/>
+                <Property Name="Alcada" Type="Edm.String" MaxLength="30" sap:label="Alcada"/>
+                <Property Name="Vigencia" Type="Edm.String" MaxLength="10" sap:label="Vigencia"/>
+                <Property Name="Incoterm" Type="Edm.String" MaxLength="10" sap:label="Incoterm"/>
+                <Property Name="Volume" Type="Edm.Int32" sap:label="Volume"/>
+                <Property Name="DataBase" Type="Edm.String" MaxLength="10" sap:label="Data Base"/>
+                <Property Name="AtPreco" Type="Edm.String" MaxLength="30" sap:label="At Preco"/>
+                <Property Name="Moeda" Type="Edm.String" MaxLength="3" sap:label="Moeda"/>
+                <Property Name="Montante" Type="Edm.String" MaxLength="20" sap:label="Montante"/>
+                <Property Name="PrazoPag" Type="Edm.String" MaxLength="10" sap:label="Prazo de Pagamento"/>
+                <Property Name="Cadastro" Type="Edm.String" MaxLength="10" sap:label="Cadastro"/>
+                <Property Name="Negociacao" Type="Edm.String" MaxLength="30" sap:label="Negociação"/>
+                <Property Name="CamRede" Type="Edm.String" MaxLength="60" sap:label="CamRede"/>
+                <Property Name="FreteNegoc" Type="Edm.Int32" sap:label="Frete Negociado"/>
+                <Property Name="FretePedag" Type="Edm.Int32" sap:label="Frete Pedag"/>
+                <Property Name="Intinerario" Type="Edm.String" MaxLength="6" sap:label="Itinerário"/>
+                <Property Name="IntDescr" Type="Edm.String" MaxLength="40" sap:label="Itinerário"/>
+                <Property Name="OrcBaseline" Type="Edm.Int32" sap:label="Orc Base Line"/>
+                <Property Name="Performance" Type="Edm.String" MaxLength="50" sap:label="Perfomance"/>
+                <Property Name="UmEscala" Type="Edm.String" MaxLength="3" sap:label="UM" sap:semantics="unit-of-measure"/>
+                <Property Name="VarPrecos" Type="Edm.Int32" sap:label="Var Precos"/>
+                <Property Name="Saving" Type="Edm.Int32" sap:label="Saving"/>
+                <Property Name="Orcamento" Type="Edm.String" MaxLength="50" sap:label="Orçamento"/>
+                <Property Name="Tco" Type="Edm.Int32" sap:label="TCO"/>
+                <Property Name="AproTec" Type="Edm.String" MaxLength="1" sap:label="Aprovado Tecnic"/>
+                <Property Name="HabQuali" Type="Edm.String" MaxLength="1" sap:label="Hab Quali"/>
+                <Property Name="VlrNegoc" Type="Edm.Int32" sap:label="Valor Negociado"/>
+                <Property Name="VlrProp" Type="Edm.Int32" sap:label="Valor Proprosto"/>
+                <Property Name="Pedagio" Type="Edm.Int32" sap:label="Pedagio"/>
+                <Property Name="Vencedor" Type="Edm.String" MaxLength="1" sap:label="Vencedor"/>
+            </EntityType>
+            <EntityType Name="ZET_CBMM_CF_CART" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Carteira"/>
+                </Key>
+                <Property Name="Carteira" Type="Edm.String" Nullable="false" MaxLength="70" sap:label="Carteira"/>
+            </EntityType>
+            <EntityType Name="ZET_CBMM_CF_CONDITION" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Kschl"/>
+                </Key>
+                <Property Name="Kschl" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Campo de caracteres do comprimento 10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZET_CBMM_CF_KOSTL" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Kostl"/>
+                </Key>
+                <Property Name="Kostl" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Centro custo"/>
+                <Property Name="Ktext" Type="Edm.String" MaxLength="20" sap:label="char20"/>
+            </EntityType>
+            <EntityType Name="ZET_CBMM_CF_APROV" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Carteira"/>
+                </Key>
+                <Property Name="Carteira" Type="Edm.String" Nullable="false" MaxLength="70" sap:label="Carteira"/>
+                <Property Name="Aprovador" Type="Edm.String" MaxLength="12" sap:label="Aprovador"/>
+                <Property Name="Email" Type="Edm.String" MaxLength="241" sap:label="Endereço e-mail"/>
+            </EntityType>
+            <EntityType Name="ZET_CBMM_CF_PARAMET" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Parametro"/>
+                    <PropertyRef Name="Valor"/>
+                </Key>
+                <Property Name="Descricao" Type="Edm.String" MaxLength="70" sap:label="char70"/>
+                <Property Name="Parametro" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Parâmetro"/>
+                <Property Name="Valor" Type="Edm.String" Nullable="false" MaxLength="70" sap:label="Valor"/>
+            </EntityType>
+            <EntityType Name="ZET_CBMM_CF_FRETE" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Bukrs"/>
+                    <PropertyRef Name="WerksO"/>
+                    <PropertyRef Name="IdSolicitacao"/>
+                </Key>
+                <Property Name="Atraso" Type="Edm.String" MaxLength="1" sap:label="Atraso"/>
+                <Property Name="Observacao" Type="Edm.String" MaxLength="40" sap:label="OBSERVACAO"/>
+                <Property Name="Kostl" Type="Edm.String" MaxLength="10" sap:label="Centro custo"/>
+                <Property Name="DtCriacaoc" Type="Edm.String" MaxLength="10" sap:label="Data de Criação"/>
+                <Property Name="DtCriacao" Type="Edm.DateTime" Precision="7" sap:label="Data Criação"/>
+                <Property Name="Descstatus" Type="Edm.String" MaxLength="40" sap:label="Status"/>
+                <Property Name="Usuario" Type="Edm.String" MaxLength="40" sap:label="Usuario"/>
+                <Property Name="Bukrs" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Empresa"/>
+                <Property Name="WerksO" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Centro"/>
+                <Property Name="IdSolicitacao" Type="Edm.Int32" Nullable="false" sap:label="Id da solicitação"/>
+                <Property Name="Emailsol" Type="Edm.String" MaxLength="50" sap:label="Comentário"/>
+                <Property Name="Status" Type="Edm.String" MaxLength="70" sap:label="Status"/>
+                <Property Name="Carteira" Type="Edm.String" MaxLength="70" sap:label="Carteira"/>
+                <Property Name="Modalidade" Type="Edm.String" MaxLength="70" sap:label="Modalidade"/>
+                <Property Name="Prioridade" Type="Edm.String" MaxLength="70" sap:label="Prioridade"/>
+                <Property Name="Finalidade" Type="Edm.String" MaxLength="70" sap:label="Finalidade"/>
+                <Property Name="GrpCompras" Type="Edm.String" MaxLength="3" sap:label="Grupo de Compras"/>
+                <Property Name="DtInic" Type="Edm.String" MaxLength="10" sap:label="Data Inicio"/>
+            </EntityType>
+            <EntityType Name="ZET_CBMM_CF_ROTA" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Bukrs"/>
+                    <PropertyRef Name="WerksO"/>
+                    <PropertyRef Name="IdSolicitacao"/>
+                    <PropertyRef Name="IdRota"/>
+                </Key>
+                <Property Name="Bukrs" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Empresa"/>
+                <Property Name="Observ" Type="Edm.String" MaxLength="1024" sap:label="Cadeia"/>
+                <Property Name="Route" Type="Edm.String" MaxLength="6" sap:label="Itinerário real"/>
+                <Property Name="WerksO" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Centro Origem"/>
+                <Property Name="IdSolicitacao" Type="Edm.Int32" Nullable="false" sap:label="ID Solicitacao"/>
+                <Property Name="IdRota" Type="Edm.Int32" Nullable="false" sap:label="ID Rota"/>
+                <Property Name="WerksoDescr" Type="Edm.String" MaxLength="60" sap:label="Descrição do Centro"/>
+                <Property Name="AdrnrO" Type="Edm.String" MaxLength="30" sap:label="Endereco do Centro"/>
+                <Property Name="CnpjO" Type="Edm.String" MaxLength="16" sap:label="CNPJ do Centro"/>
+                <Property Name="ContatoO" Type="Edm.String" MaxLength="40" sap:label="Contato do Centro"/>
+                <Property Name="EmailO" Type="Edm.String" MaxLength="40" sap:label="Email do Centro"/>
+                <Property Name="TelefoneO" Type="Edm.String" MaxLength="40" sap:label="Telefone do Centro"/>
+                <Property Name="MunicO" Type="Edm.String" MaxLength="25" sap:label="Municipio"/>
+                <Property Name="UfO" Type="Edm.String" MaxLength="3" sap:label="Estado"/>
+                <Property Name="Zone1O" Type="Edm.String" MaxLength="20" sap:label="Zona transporte"/>
+                <Property Name="Escopo" Type="Edm.String" MaxLength="60" sap:label="Denominação do caminho e do file no front end"/>
+                <Property Name="WerksD" Type="Edm.String" MaxLength="4" sap:label="Centro Destino"/>
+                <Property Name="WerksdDescr" Type="Edm.String" MaxLength="60" sap:label="Descrição do Centro Destino"/>
+                <Property Name="AdrnrD" Type="Edm.String" MaxLength="30" sap:label="Endereço do Centro"/>
+                <Property Name="CnpjD" Type="Edm.String" MaxLength="16" sap:label="CNPJ do Centro"/>
+                <Property Name="ContatoD" Type="Edm.String" MaxLength="40" sap:label="Contato"/>
+                <Property Name="EmailD" Type="Edm.String" MaxLength="40" sap:label="Email"/>
+                <Property Name="TelefoneD" Type="Edm.String" MaxLength="40" sap:label="Telefone"/>
+                <Property Name="MunicD" Type="Edm.String" MaxLength="25" sap:label="Municipio"/>
+                <Property Name="UfD" Type="Edm.String" MaxLength="3" sap:label="Estado"/>
+                <Property Name="Zone1D" Type="Edm.String" MaxLength="20" sap:label="Zona transporte"/>
+                <Property Name="DescMaterial" Type="Edm.String" MaxLength="70" sap:label="Descrição do Material"/>
+                <Property Name="Perigoso" Type="Edm.String" MaxLength="70" sap:label="Perigoso"/>
+                <Property Name="CodOnu" Type="Edm.Int32" sap:label="Codigo ONU"/>
+                <Property Name="PesoUnit" Type="Edm.Int32" sap:label="Peso Unitario"/>
+                <Property Name="MengeUnit" Type="Edm.Int32" sap:label="Quantidade Unitaria"/>
+                <Property Name="PesoTotal" Type="Edm.Int32" sap:label="Peso Total"/>
+                <Property Name="Altura" Type="Edm.Int32" sap:label="Altura"/>
+                <Property Name="Largura" Type="Edm.Int32" sap:label="Largura"/>
+                <Property Name="Compr" Type="Edm.Int32" sap:label="Comprimento"/>
+                <Property Name="TpEmbalagem" Type="Edm.String" MaxLength="70" sap:label="Tipo de Embalagem"/>
+                <Property Name="TpCarreg" Type="Edm.String" MaxLength="70" sap:label="Tipo de Carregamento"/>
+                <Property Name="TpVeiculo" Type="Edm.String" MaxLength="70" sap:label="Tipo de Veiculo"/>
+                <Property Name="AlturaEmb" Type="Edm.Int32" sap:label="Altura Embalagem"/>
+                <Property Name="LarguraEmb" Type="Edm.Int32" sap:label="Largura da Embalagem"/>
+                <Property Name="ComprEmb" Type="Edm.Int32" sap:label="Comprimento da Embalagem"/>
+                <Property Name="VolumEmb" Type="Edm.Int32" sap:label="Volume da Embalagem"/>
+                <Property Name="DtInicTransp" Type="Edm.String" MaxLength="10" sap:label="Data Inicio de Transporte"/>
+                <Property Name="DtFimTransp" Type="Edm.String" MaxLength="10" sap:label="Data Fim de Transporte"/>
+                <Property Name="VlrTon" Type="Edm.Int32" sap:label="Valor por Tonelada"/>
+                <Property Name="RotCarreg" Type="Edm.String" MaxLength="70" sap:label="Rotina de Carregamento"/>
+                <Property Name="HrCargaInic" Type="Edm.String" MaxLength="5" sap:label="Hr Carga Inicial"/>
+                <Property Name="HrCargaFim" Type="Edm.String" MaxLength="5" sap:label="Hr Carga Final"/>
+                <Property Name="HrDescInic" Type="Edm.String" MaxLength="5" sap:label="Hr descarga Inicial"/>
+                <Property Name="HrDescFim" Type="Edm.String" MaxLength="5" sap:label="Hr descarga Final"/>
+                <Property Name="ComprReboq" Type="Edm.Int32" sap:label="Comprimento do Reboque"/>
+            </EntityType>
+            <EntityType Name="ZET_CBMM_CF_APROVADOR" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="User"/>
+                </Key>
+                <Property Name="User" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="Usuário" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="NameText" Type="Edm.String" Nullable="false" MaxLength="80" sap:label="Nome completo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZET_CBMM_CF_TRANSP" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Bukrs"/>
+                    <PropertyRef Name="WerksO"/>
+                    <PropertyRef Name="IdSolicitacao"/>
+                    <PropertyRef Name="IdRota"/>
+                    <PropertyRef Name="NrTransp"/>
+                </Key>
+                <Property Name="Bukrs" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Empresa"/>
+                <Property Name="WerksO" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Centro"/>
+                <Property Name="IdSolicitacao" Type="Edm.Int32" Nullable="false" sap:label="Nº Solicitação"/>
+                <Property Name="IdRota" Type="Edm.Int32" Nullable="false" sap:label="Nº Rota"/>
+                <Property Name="NrTransp" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Transportadora"/>
+                <Property Name="Name1" Type="Edm.String" MaxLength="35" sap:label="Descrição"/>
+                <Property Name="Localidade" Type="Edm.String" MaxLength="35" sap:label="Localidade"/>
+            </EntityType>
+            <EntityType Name="ZET_CBMM_CF_TRANSP_H" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Lifnr"/>
+                </Key>
+                <Property Name="Lifnr" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Fornecedor" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="35" sap:label="Nome" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
+            <EntityType Name="ZET_CBMM_CF_UPLOAD" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="WerksO"/>
+                    <PropertyRef Name="Bukrs"/>
+                    <PropertyRef Name="IdSolicitacao"/>
+                    <PropertyRef Name="IdRota"/>
+                    <PropertyRef Name="DocId"/>
+                </Key>
+                <Property Name="WerksO" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Centro" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Bukrs" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Empresa"/>
+                <Property Name="IdSolicitacao" Type="Edm.Int32" Nullable="false" sap:label="Nº"/>
+                <Property Name="IdRota" Type="Edm.Int32" Nullable="false" sap:label="Nº"/>
+                <Property Name="DocId" Type="Edm.Int32" Nullable="false" sap:label="Campo de caracteres do comprimento 10"/>
+                <Property Name="Filename" Type="Edm.String" MaxLength="60" sap:label="Denominação do caminho e do file no front end"/>
+                <Property Name="Mimetype" Type="Edm.String" sap:label="Anexo tipo MIME"/>
+                <Property Name="Value" Type="Edm.Binary" sap:label="VALUE"/>
+                <Property Name="Url" Type="Edm.String" sap:label="URL de objeto"/>
+                <Property Name="Documentart" Type="Edm.String" MaxLength="10" sap:label="Campo de caracteres do comprimento 10"/>
+                <Property Name="DtCriacao" Type="Edm.String" MaxLength="10" sap:label="Campo de caracteres do comprimento 10"/>
+                <Property Name="Autor" Type="Edm.String" MaxLength="12" sap:label="Nome do usuário"/>
+            </EntityType>
+            <EntityType Name="ZET_CBMM_CF_UPFILE" m:HasStream="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="DocName"/>
+                </Key>
+                <Property Name="DocName" Type="Edm.String" Nullable="false" MaxLength="50" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="ZET_CBMM_CF_CONDPAG_H" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Zterm"/>
+                </Key>
+                <Property Name="Zterm" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Cond.pgto." sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Vtext" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Denominação" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
+            <EntityType Name="ZET_CBMM_CF_EMAIL" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Titulo"/>
+                </Key>
+                <Property Name="Titulo" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="TITULO"/>
+                <Property Name="Destinatario" Type="Edm.String" MaxLength="1215" sap:label="SAPoffice: nome do destinatário de documento (também ext.)"/>
+                <Property Name="Corpo" Type="Edm.String" MaxLength="5000" sap:label="CORPO DO E-MAIL"/>
+            </EntityType>
+            <EntityType Name="ZET_CBMM_CF_EBAN" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Banfn"/>
+                    <PropertyRef Name="Bnfpo"/>
+                </Key>
+                <Property Name="Banfn" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="ReqC" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Frgkz" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Cód.liberação" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Bnfpo" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Item RC" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Werks" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Centro" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Rlwrt" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:label="ValTotal lib." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZET_CBMM_CF_ACEITE" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Reserva"/>
+                    <PropertyRef Name="Item"/>
+                </Key>
+                <Property Name="Reserva" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Reserva"/>
+                <Property Name="Item" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Item"/>
+                <Property Name="Data" Type="Edm.String" MaxLength="10" sap:label="Data"/>
+                <Property Name="Hora" Type="Edm.Time" Precision="0" sap:label="Hora"/>
+                <Property Name="StatusReserva" Type="Edm.String" MaxLength="1" sap:label="Status da Reserva"/>
+                <Property Name="Eliminado" Type="Edm.String" MaxLength="1" sap:label="Eliminado"/>
+                <Property Name="RegFinal" Type="Edm.String" MaxLength="1" sap:label="RegFinal"/>
+                <Property Name="Material" Type="Edm.String" MaxLength="18" sap:label="Material"/>
+                <Property Name="Centro" Type="Edm.String" MaxLength="4" sap:label="Centro"/>
+                <Property Name="QtdNecessaria" Type="Edm.Decimal" Precision="13" Scale="3" sap:label="QtdNecessaria"/>
+                <Property Name="QtdRetReserva" Type="Edm.Decimal" Precision="13" Scale="3" sap:label="QtdRetReserva"/>
+                <Property Name="QtdAceite" Type="Edm.Decimal" Precision="13" Scale="3" sap:label="QtdAceite"/>
+                <Property Name="Login" Type="Edm.String" MaxLength="12" sap:label="Login"/>
+                <Property Name="DtNecessidade" Type="Edm.String" MaxLength="10" sap:label="DtNecessidade"/>
+                <Property Name="Matricula" Type="Edm.String" MaxLength="8" sap:label="Matricula"/>
+            </EntityType>
+            <EntityType Name="ZET_CBMM_CF_UPLD" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Bukrs"/>
+                    <PropertyRef Name="WerksO"/>
+                    <PropertyRef Name="IdSolicitacao"/>
+                    <PropertyRef Name="IdRota"/>
+                    <PropertyRef Name="Value"/>
+                    <PropertyRef Name="DocId"/>
+                </Key>
+                <Property Name="Bukrs" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Empresa"/>
+                <Property Name="WerksO" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Centro" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IdSolicitacao" Type="Edm.Int32" Nullable="false" sap:label="Campo compr.10"/>
+                <Property Name="IdRota" Type="Edm.Int32" Nullable="false" sap:label="Nº"/>
+                <Property Name="Value" Type="Edm.Binary" Nullable="false" sap:label="VALUE"/>
+                <Property Name="DocId" Type="Edm.Int32" Nullable="false" sap:label="Nº"/>
+                <Property Name="Url" Type="Edm.String" sap:label="URL de objeto"/>
+                <Property Name="Documentart" Type="Edm.String" MaxLength="10" sap:label="Campo de caracteres do comprimento 10"/>
+                <Property Name="Filename" Type="Edm.String" MaxLength="255" sap:label="Nome do Arquivo"/>
+                <Property Name="DtCriacao" Type="Edm.String" MaxLength="10" sap:label="Campo de caracteres do comprimento 10"/>
+                <Property Name="Mimetype" Type="Edm.String" MaxLength="255" sap:label="Mimetype"/>
+                <Property Name="Autor" Type="Edm.String" MaxLength="12" sap:label="Nome do usuário"/>
+            </EntityType>
+            <EntityType Name="ZET_CBMM_CF_RELGFRET" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Kozgf"/>
+                    <PropertyRef Name="Knumh"/>
+                </Key>
+                <Property Name="Datab" Type="Edm.String" MaxLength="10" sap:label="Data vencimento De"/>
+                <Property Name="Kosrt" Type="Edm.String" MaxLength="30" sap:label="Contrato"/>
+                <Property Name="Kbetr" Type="Edm.String" MaxLength="15" sap:label="Valor"/>
+                <Property Name="Kotabnr" Type="Edm.String" MaxLength="4" sap:label="Tabela de Preço"/>
+                <Property Name="Status" Type="Edm.String" MaxLength="1" sap:label="Status"/>
+                <Property Name="Kozgf" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Condição de Frete"/>
+                <Property Name="Datbi" Type="Edm.String" MaxLength="10" sap:label="Data vencimento Até"/>
+                <Property Name="Tdlnr" Type="Edm.String" MaxLength="50" sap:label="Transportadora"/>
+                <Property Name="Route" Type="Edm.String" MaxLength="50" sap:label="Itinerário"/>
+                <Property Name="Vhilm" Type="Edm.String" MaxLength="20" sap:label="Tipo de veículo"/>
+                <Property Name="Kschl" Type="Edm.String" MaxLength="10" sap:label="Condição de frete"/>
+                <Property Name="Knumh" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Knumh" sap:filterable="false"/>
+                <Property Name="Knumv" Type="Edm.String" MaxLength="10" sap:label="Campo de caracteres do comprimento 10" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZET_CBMM_CF_CEGA_ACEITE" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="AvisoEntrega"/>
+                    <PropertyRef Name="Data"/>
+                    <PropertyRef Name="Branch"/>
+                    <PropertyRef Name="Nfnum"/>
+                </Key>
+                <Property Name="AvisoEntrega" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Cod. Aviso Entrega"/>
+                <Property Name="Matnr" Type="Edm.String" MaxLength="18" sap:label="Material"/>
+                <Property Name="Bukrs" Type="Edm.String" MaxLength="4" sap:label="Empresa"/>
+                <Property Name="QuantAceite" Type="Edm.String" MaxLength="5" sap:label="Quantidade Aceite"/>
+                <Property Name="Data" Type="Edm.DateTime" Nullable="false" Precision="7" sap:label="Data"/>
+                <Property Name="Volume" Type="Edm.String" MaxLength="15" sap:label="Vol."/>
+                <Property Name="Branch" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Loc.negócios"/>
+                <Property Name="Quantidade" Type="Edm.String" MaxLength="5" sap:label="Quantidade volumes"/>
+                <Property Name="Aceite" Type="Edm.String" MaxLength="1" sap:label="Aceite"/>
+                <Property Name="Nfnum" Type="Edm.String" Nullable="false" MaxLength="9" sap:label="Pedido"/>
+                <Property Name="Login" Type="Edm.String" MaxLength="12" sap:label="Usuario"/>
+                <Property Name="Pernr" Type="Edm.String" MaxLength="8" sap:label="Matricula"/>
+            </EntityType>
+            <EntityType Name="ZET_CBMM_CF_AN_SLA" sap:semantics="aggregate" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="DtInic"/>
+                    <PropertyRef Name="DtFim"/>
+                    <PropertyRef Name="Status"/>
+                </Key>
+                <Property Name="DtInic" Type="Edm.String" Nullable="false" MaxLength="10" sap:aggregation-role="dimension"/>
+                <Property Name="DtFim" Type="Edm.String" Nullable="false" MaxLength="10" sap:aggregation-role="dimension"/>
+                <Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="30" sap:aggregation-role="dimension"/>
+                <Property Name="Valor" Type="Edm.Int32" sap:aggregation-role="measure" sap:label="Nº"/>
+            </EntityType>
+            <EntityType Name="ZET_CBMM_CF_CEGA_ACT" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Fornecedor"/>
+                    <PropertyRef Name="Serie"/>
+                    <PropertyRef Name="Nfnum"/>
+                    <PropertyRef Name="Matnr"/>
+                    <PropertyRef Name="AvisoEntrega"/>
+                </Key>
+                <Property Name="Ebelp" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Item" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="QuantAceite" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Quantidade volumes" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Fornecedor" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Fornecedor" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Serie" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Séries" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Nfnum" Type="Edm.String" Nullable="false" MaxLength="9" sap:label="Pedido" sap:filterable="false"/>
+                <Property Name="Matnr" Type="Edm.String" Nullable="false" MaxLength="18" sap:label="Material" sap:filterable="false"/>
+                <Property Name="Login" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="Nome do Usuário" sap:filterable="false"/>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:label="Nº pessoal" sap:filterable="false"/>
+                <Property Name="Data" Type="Edm.DateTime" Precision="7" sap:label="Data" sap:filterable="false"/>
+                <Property Name="Branch" Type="Edm.String" MaxLength="4" sap:label="Centro" sap:filterable="false"/>
+                <Property Name="Bukrs" Type="Edm.String" MaxLength="4" sap:label="Empresa" sap:filterable="false"/>
+                <Property Name="Volume" Type="Edm.String" MaxLength="15" sap:label="Volume" sap:filterable="false"/>
+                <Property Name="Quantidade" Type="Edm.String" MaxLength="5" sap:label="Quantidade volumes" sap:filterable="false"/>
+                <Property Name="DtCriacao" Type="Edm.DateTime" Precision="7" sap:label="Data de Criação" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Ebeln" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Doc.compras" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="AvisoEntrega" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Cód. Aviso Entrega"/>
+                <Property Name="Aceite" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Aceite"/>
+            </EntityType>
+            <EntityType Name="ZET_CBMM_CF_CONF_CEGA" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Subit"/>
+                    <PropertyRef Name="Fornecedor"/>
+                    <PropertyRef Name="Nfe"/>
+                    <PropertyRef Name="Serie"/>
+                    <PropertyRef Name="Matnr"/>
+                </Key>
+                <Property Name="Ebeln" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Doc.compras" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Subit" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Subitem NF" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CodAviso" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Cód. Aviso"/>
+                <Property Name="Volume" Type="Edm.Decimal" Nullable="false" Precision="15" Scale="3" sap:label="Volume" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ebelp" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Item" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Fornecedor" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Fornecedor"/>
+                <Property Name="Quantidade" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:label="Qtd.remessa" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Nfe" Type="Edm.String" Nullable="false" MaxLength="9" sap:label="Nota Fiscal"/>
+                <Property Name="Serie" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="N° Série"/>
+                <Property Name="Bukrs" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Empresa" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Data" Type="Edm.DateTime" Precision="7" sap:label="Data" sap:filterable="false"/>
+                <Property Name="DtCriacao" Type="Edm.DateTime" Precision="7" sap:display-format="Date" sap:label="Data atual" sap:filterable="false"/>
+                <Property Name="DtRecebimento" Type="Edm.DateTime" Precision="7" sap:display-format="Date" sap:label="Data do recebimento"/>
+                <Property Name="Aceite" Type="Edm.String" MaxLength="1" sap:label="Aceite" sap:filterable="false"/>
+                <Property Name="DescForn" Type="Edm.String" MaxLength="30" sap:label="Desc. Fornecedor" sap:filterable="false"/>
+                <Property Name="EfetuaEm" Type="Edm.String" MaxLength="1" sap:label="Efetua EM" sap:filterable="false"/>
+                <Property Name="Login" Type="Edm.String" MaxLength="20" sap:label="Login" sap:filterable="false"/>
+                <Property Name="Matnr" Type="Edm.String" Nullable="false" MaxLength="18" sap:label="Material" sap:filterable="false"/>
+                <Property Name="Matricula" Type="Edm.String" MaxLength="8" sap:label="Nº pessoal" sap:filterable="false"/>
+                <Property Name="XmlChaveNfe" Type="Edm.String" Nullable="false" MaxLength="44" sap:label="Chave de acesso"/>
+                <Property Name="Hora" Type="Edm.Time" Precision="0" sap:label="Hora" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZET_CBMM_CF_SAVINGS" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="DtInic"/>
+                    <PropertyRef Name="DtFim"/>
+                </Key>
+                <Property Name="DtVencedor" Type="Edm.String" MaxLength="10" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DtInic" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DtFim" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Valor" Type="Edm.Int32" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
+            <EntityType Name="ZET_CBMM_CF_RELGFRE2" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Kozgf"/>
+                    <PropertyRef Name="Knumh"/>
+                </Key>
+                <Property Name="Kozgf" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Campo de caracteres do comprimento 10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Datbi" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Campo de caracteres do comprimento 10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Tdlnr" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Campo de caracteres do comprimento 10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Route" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Campo de caracteres do comprimento 10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Vhilm" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Campo de caracteres do comprimento 10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Kschl" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Campo de caracteres do comprimento 10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Knumh" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Campo de caracteres do comprimento 10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Knumv" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Campo de caracteres do comprimento 10" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Datab" Type="Edm.String" Nullable="false" MaxLength="15" sap:label="char15" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Caractere 1" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Kotabnr" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Área def.imprecisam., evtlm.utiliz.p/níveis Support Package" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Kbetr" Type="Edm.String" Nullable="false" MaxLength="15" sap:label="char15" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZET_CBMM_CF_TRANSPMC" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Tdlnr"/>
+                </Key>
+                <Property Name="Name1" Type="Edm.String" MaxLength="50" sap:label="Comentário"/>
+                <Property Name="Tdlnr" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="char20"/>
+            </EntityType>
+            <EntityType Name="ZET_CBMM_CF_RELGFRECOUNT" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Kozgf"/>
+                    <PropertyRef Name="Status"/>
+                    <PropertyRef Name="Count"/>
+                </Key>
+                <Property Name="Kozgf" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Área def.imprecisam., evtlm.utiliz.p/níveis Support Package"/>
+                <Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Caractere 1"/>
+                <Property Name="Count" Type="Edm.String" Nullable="false" MaxLength="100" sap:label="Caractere 100"/>
+            </EntityType>
+            <EntityContainer Name="ZGWCBMM_CONTRATACAO_FRETE_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="SubscriptionCollection" EntityType="ZGWCBMM_CONTRATACAO_FRETE_SRV.Subscription" sap:content-version="1"/>
+                <EntitySet Name="NotificationCollection" EntityType="ZGWCBMM_CONTRATACAO_FRETE_SRV.Notification" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ZET_CBMM_CF_WERKSSet" EntityType="ZGWCBMM_CONTRATACAO_FRETE_SRV.ZET_CBMM_CF_WERKS" sap:searchable="true" sap:requires-filter="true" sap:content-version="1"/>
+                <EntitySet Name="ZET_CBMM_CF_VEICULOSet" EntityType="ZGWCBMM_CONTRATACAO_FRETE_SRV.ZET_CBMM_CF_VEICULO" sap:searchable="true" sap:requires-filter="true" sap:content-version="1"/>
+                <EntitySet Name="ZET_CBMM_CF_ZONE1Set" EntityType="ZGWCBMM_CONTRATACAO_FRETE_SRV.ZET_CBMM_CF_ZONE1" sap:searchable="true" sap:requires-filter="true" sap:content-version="1"/>
+                <EntitySet Name="ZET_CBMM_CF_VEIC_HSet" EntityType="ZGWCBMM_CONTRATACAO_FRETE_SRV.ZET_CBMM_CF_VEIC_H" sap:searchable="true" sap:requires-filter="true" sap:content-version="1"/>
+                <EntitySet Name="ZET_CBMM_CF_PEDIDOSet" EntityType="ZGWCBMM_CONTRATACAO_FRETE_SRV.ZET_CBMM_CF_PEDIDO" sap:searchable="true" sap:requires-filter="true" sap:content-version="1"/>
+                <EntitySet Name="ZET_CBMM_CF_ROUTESet" EntityType="ZGWCBMM_CONTRATACAO_FRETE_SRV.ZET_CBMM_CF_ROUTE" sap:searchable="true" sap:requires-filter="true" sap:content-version="1"/>
+                <EntitySet Name="ZET_CBMM_CF_RELATORIOSet" EntityType="ZGWCBMM_CONTRATACAO_FRETE_SRV.ZET_CBMM_CF_RELATORIO" sap:searchable="true" sap:requires-filter="true" sap:content-version="1"/>
+                <EntitySet Name="ZET_CBMM_CF_CEGA001Set" EntityType="ZGWCBMM_CONTRATACAO_FRETE_SRV.ZET_CBMM_CF_CEGA" sap:searchable="true" sap:requires-filter="true" sap:content-version="1"/>
+                <EntitySet Name="ZET_CBMM_CF_CEGA_ETIQUETASet" EntityType="ZGWCBMM_CONTRATACAO_FRETE_SRV.ZET_CBMM_CF_CEGA_ETIQUETA" sap:searchable="true" sap:requires-filter="true" sap:content-version="1"/>
+                <EntitySet Name="ZET_CBMM_CF_EKGRPSet" EntityType="ZGWCBMM_CONTRATACAO_FRETE_SRV.ZET_CBMM_CF_EKGRP" sap:searchable="true" sap:requires-filter="true" sap:content-version="1"/>
+                <EntitySet Name="ZET_CBMM_CF_VEICONDSet" EntityType="ZGWCBMM_CONTRATACAO_FRETE_SRV.ZET_CBMM_CF_VEICOND" sap:searchable="true" sap:requires-filter="true" sap:content-version="1"/>
+                <EntitySet Name="ZET_CBMM_CF_CARTSet" EntityType="ZGWCBMM_CONTRATACAO_FRETE_SRV.ZET_CBMM_CF_CART" sap:searchable="true" sap:pageable="false" sap:requires-filter="true" sap:content-version="1"/>
+                <EntitySet Name="ZET_CBMM_CF_CONDITIONSet" EntityType="ZGWCBMM_CONTRATACAO_FRETE_SRV.ZET_CBMM_CF_CONDITION" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ZET_CBMM_CF_KOSTLSet" EntityType="ZGWCBMM_CONTRATACAO_FRETE_SRV.ZET_CBMM_CF_KOSTL" sap:searchable="true" sap:requires-filter="true" sap:content-version="1"/>
+                <EntitySet Name="ZET_CBMM_CF_APROVSet" EntityType="ZGWCBMM_CONTRATACAO_FRETE_SRV.ZET_CBMM_CF_APROV" sap:searchable="true" sap:requires-filter="true" sap:content-version="1"/>
+                <EntitySet Name="ZET_CBMM_CF_PARAMETSet" EntityType="ZGWCBMM_CONTRATACAO_FRETE_SRV.ZET_CBMM_CF_PARAMET" sap:searchable="true" sap:requires-filter="true" sap:content-version="1"/>
+                <EntitySet Name="ZET_CBMM_CF_FRETESet" EntityType="ZGWCBMM_CONTRATACAO_FRETE_SRV.ZET_CBMM_CF_FRETE" sap:searchable="true" sap:requires-filter="true" sap:content-version="1"/>
+                <EntitySet Name="ZET_CBMM_CF_ROTASet" EntityType="ZGWCBMM_CONTRATACAO_FRETE_SRV.ZET_CBMM_CF_ROTA" sap:searchable="true" sap:requires-filter="true" sap:content-version="1"/>
+                <EntitySet Name="ZET_CBMM_CF_APROVADORSet" EntityType="ZGWCBMM_CONTRATACAO_FRETE_SRV.ZET_CBMM_CF_APROVADOR" sap:searchable="true" sap:requires-filter="true" sap:content-version="1"/>
+                <EntitySet Name="ZET_CBMM_CF_TRANSPSet" EntityType="ZGWCBMM_CONTRATACAO_FRETE_SRV.ZET_CBMM_CF_TRANSP" sap:searchable="true" sap:requires-filter="true" sap:content-version="1"/>
+                <EntitySet Name="ZET_CBMM_CF_TRANSP_HSet" EntityType="ZGWCBMM_CONTRATACAO_FRETE_SRV.ZET_CBMM_CF_TRANSP_H" sap:searchable="true" sap:requires-filter="true" sap:content-version="1"/>
+                <EntitySet Name="ZET_CBMM_CF_UPLOADSet" EntityType="ZGWCBMM_CONTRATACAO_FRETE_SRV.ZET_CBMM_CF_UPLOAD" sap:searchable="true" sap:requires-filter="true" sap:content-version="1"/>
+                <EntitySet Name="ZET_CBMM_CF_UPFILESet" EntityType="ZGWCBMM_CONTRATACAO_FRETE_SRV.ZET_CBMM_CF_UPFILE" sap:searchable="true" sap:requires-filter="true" sap:content-version="1"/>
+                <EntitySet Name="ZET_CBMM_CF_CONDPAG_HSet" EntityType="ZGWCBMM_CONTRATACAO_FRETE_SRV.ZET_CBMM_CF_CONDPAG_H" sap:searchable="true" sap:requires-filter="true" sap:content-version="1"/>
+                <EntitySet Name="ZET_CBMM_CF_EMAILSet" EntityType="ZGWCBMM_CONTRATACAO_FRETE_SRV.ZET_CBMM_CF_EMAIL" sap:searchable="true" sap:requires-filter="true" sap:content-version="1"/>
+                <EntitySet Name="ZET_CBMM_CF_EBANSet" EntityType="ZGWCBMM_CONTRATACAO_FRETE_SRV.ZET_CBMM_CF_EBAN" sap:searchable="true" sap:requires-filter="true" sap:content-version="1"/>
+                <EntitySet Name="ZET_CBMM_CF_ACEITESet" EntityType="ZGWCBMM_CONTRATACAO_FRETE_SRV.ZET_CBMM_CF_ACEITE" sap:searchable="true" sap:requires-filter="true" sap:content-version="1"/>
+                <EntitySet Name="ZET_CBMM_CF_UPLDSet" EntityType="ZGWCBMM_CONTRATACAO_FRETE_SRV.ZET_CBMM_CF_UPLD" sap:searchable="true" sap:requires-filter="true" sap:content-version="1"/>
+                <EntitySet Name="ZET_CBMM_CF_RELGFRETSet" EntityType="ZGWCBMM_CONTRATACAO_FRETE_SRV.ZET_CBMM_CF_RELGFRET" sap:searchable="true" sap:requires-filter="true" sap:content-version="1"/>
+                <EntitySet Name="ZET_CBMM_CF_CEGA_ACEITESet" EntityType="ZGWCBMM_CONTRATACAO_FRETE_SRV.ZET_CBMM_CF_CEGA_ACEITE" sap:searchable="true" sap:requires-filter="true" sap:content-version="1"/>
+                <EntitySet Name="ZET_CBMM_CF_AN_SLASet" EntityType="ZGWCBMM_CONTRATACAO_FRETE_SRV.ZET_CBMM_CF_AN_SLA" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZET_CBMM_CF_CEGA_ACTSet" EntityType="ZGWCBMM_CONTRATACAO_FRETE_SRV.ZET_CBMM_CF_CEGA_ACT" sap:searchable="true" sap:requires-filter="true" sap:content-version="1"/>
+                <EntitySet Name="ZET_CBMM_CF_CONF_CEGASet" EntityType="ZGWCBMM_CONTRATACAO_FRETE_SRV.ZET_CBMM_CF_CONF_CEGA" sap:searchable="true" sap:requires-filter="true" sap:content-version="1"/>
+                <EntitySet Name="ZET_CBMM_CF_SAVINGSSet" EntityType="ZGWCBMM_CONTRATACAO_FRETE_SRV.ZET_CBMM_CF_SAVINGS" sap:searchable="true" sap:requires-filter="true" sap:content-version="1"/>
+                <EntitySet Name="ZET_CBMM_CF_RELGFRE2Set" EntityType="ZGWCBMM_CONTRATACAO_FRETE_SRV.ZET_CBMM_CF_RELGFRE2" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ZET_CBMM_CF_TRANSPMCSet" EntityType="ZGWCBMM_CONTRATACAO_FRETE_SRV.ZET_CBMM_CF_TRANSPMC" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ZET_CBMM_CF_RELGFRECOUNTSet" EntityType="ZGWCBMM_CONTRATACAO_FRETE_SRV.ZET_CBMM_CF_RELGFRECOUNT" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <FunctionImport Name="ContagemCega" ReturnType="ZGWCBMM_CONTRATACAO_FRETE_SRV.ZET_CBMM_CF_CONF_CEGA" EntitySet="ZET_CBMM_CF_CONF_CEGASet" m:HttpMethod="POST" sap:action-for="ZGWCBMM_CONTRATACAO_FRETE_SRV.ZET_CBMM_CF_CONF_CEGA">
+                    <Parameter Name="Volume" Type="Edm.Decimal" Mode="In" Precision="3" Scale="3"/>
+                    <Parameter Name="Serie" Type="Edm.String" Mode="In" MaxLength="3"/>
+                    <Parameter Name="Quantidade" Type="Edm.Decimal" Mode="In" Precision="3" Scale="3"/>
+                    <Parameter Name="Nfe" Type="Edm.String" Mode="In" MaxLength="9"/>
+                    <Parameter Name="Matnr" Type="Edm.String" Mode="In" MaxLength="18"/>
+                    <Parameter Name="Fornecedor" Type="Edm.String" Mode="In" MaxLength="10"/>
+                </FunctionImport>
+            </EntityContainer>
+            <atom:link
+                xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/ZGWCBMM_CONTRATACAO_FRETE_SRV/$metadata"/>
+                <atom:link
+                    xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/ZGWCBMM_CONTRATACAO_FRETE_SRV/$metadata"/>
+                </Schema>
+            </edmx:DataServices>
+        </edmx:Edmx>

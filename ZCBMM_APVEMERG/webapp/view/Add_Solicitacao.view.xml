@@ -1,0 +1,134 @@
+<core:View xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:uxap="sap.uxap" xmlns:smartForm="sap.ui.comp.smartform"
+	xmlns:smartField="sap.ui.comp.smartfield" xmlns:smartTable="sap.ui.comp.smarttable" xmlns:f="sap.ui.layout.form"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	http-equiv="cache-control" content="no-cache" controllerName="ZCBMM_APVEMERG.ZCBMM_APVEMERG.controller.Add_Solicitacao"
+	class="sapUiSizeCompact" height="100%" xmlns:m="sap.m" xmlns:table="sap.ui.table">
+	<Page floatingFooter="true" enableScrolling="true" showHeader="false">
+		<VBox>
+			<ObjectHeader title="Portal de solicitação de contratação de frete" intro="Detalhes" id="idheader0" icon="sap-icon://request"
+				iconActive="false" responsive="true"/>
+		</VBox>
+		<f:Form class="editableForm" editable="true">
+			<f:layout>
+				<f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0"
+					emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="3" columnsM="3" singleContainerFullSize="true"/>
+			</f:layout>
+			<f:formContainers>
+				<f:FormContainer>
+					<f:formElements>
+						<f:FormElement>
+							<f:fields>
+								<Input value="{WerksO}" id="IdWerks" editable="true" valueHelpRequest="onHelpWerks" showValueHelp="true" change="onChangeWerks"/>
+							</f:fields>
+							<f:label>
+								<Label text="Centro" design="Bold"/>
+							</f:label>
+						</f:FormElement>
+						<f:FormElement>
+							<f:fields>
+								<Input value="{IdSolicitacao}" id="IdIdSolicitacao" editable="false"/>
+							</f:fields>
+							<f:label>
+								<Label text="Id da solicitação" design="Bold"/>
+							</f:label>
+						</f:FormElement>
+						<f:FormElement>
+							<f:fields>
+								<Input value="{Carteira}" id="IdCarteira" editable="true" valueHelpRequest="onHelpCarteira" showValueHelp="true" change="onChangeCarteira"/>
+							</f:fields>
+							<f:label>
+								<Label text="Carteira" design="Bold"/>
+							</f:label>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+				<f:FormContainer>
+					<f:formElements>
+						<f:FormElement>
+							<f:fields>
+								<Input value="{Prioridade}" id="IdPrioridade" editable="true" valueHelpRequest="onHelpPrioridade" showValueHelp="true" change="onChangePrioridade"/>
+							</f:fields>
+							<f:label>
+								<Label text="Prioridade" design="Bold"/>
+							</f:label>
+						</f:FormElement>
+						<f:FormElement>
+							<f:fields>
+								<Input value="{Modalidade}" id="IdModalidade" editable="true" valueHelpRequest="onHelpModalidade" showValueHelp="true" change="onChangeModalidade"/>
+							</f:fields>
+							<f:label>
+								<Label text="Modalidade" design="Bold"/>
+							</f:label>
+						</f:FormElement>
+						<f:FormElement>
+							<f:fields>
+								<Input value="{Finalidade}" id="IdFinalidade" editable="true" valueHelpRequest="onHelpFinalidade" showValueHelp="true" change="onChangeFinalidade"/>
+							</f:fields>
+							<f:label>
+								<Label text="Finalidade" design="Bold"/>
+							</f:label>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+				<f:FormContainer>
+					<f:formElements>
+						<f:FormElement>
+							<f:fields>
+								<Input value="{GrpCompras}" id="IdGrpCompras" editable="true" valueHelpRequest="onHelpGrupoDeCompras" showValueHelp="true" change="onChangeGrpCompras"/>
+							</f:fields>
+							<f:label>
+								<Label text="Grp. de Compras" design="Bold"/>
+							</f:label>
+						</f:FormElement>
+						<f:FormElement>
+							<f:fields>
+								<Input value="{DtInic}" id="IdDtInic" editable="true" type="Date"/>
+							</f:fields>
+							<f:label>
+								<Label text="Dt Incio Operação" design="Bold"/>
+							</f:label>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+			</f:formContainers>
+		</f:Form>
+		<f:Form class="editableForm" editable="true">
+			<f:layout>
+				<f:ResponsiveGridLayout labelSpanXL="5" labelSpanL="5" labelSpanM="5" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0"
+					emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="3" columnsM="3" singleContainerFullSize="true"/>
+			</f:layout>
+			<f:formContainers>
+				<f:FormContainer>
+					<f:formElements>
+						<f:FormElement>
+							<smartTable:SmartTable id="smartTable" entitySet="ZET_CBMM_CF_ROTASet" smartFilterId="smartFilterBar" useOnlyOneSolidToolbar="true"
+								useExportToExcel="true" useVariantManagement="true" useTablePersonalisation="true" tableType="Table" header="Rotas Envolvidas" showRowCount="true"
+								showFullScreenButton="true" initiallyVisibleFields="IdSolicitacao,IdRota,WerksO,WerksD" enableAutoBinding="true"
+								beforeRebindTable="onbeforeRebindTable" class="sapUiResponsiveContentPadding" persistencyKey="SmartTablePKey">
+								<m:Table mode="MultiSelect" id="table" enableBusyIndicator="true" busyIndicatorDelay="100">
+									<m:columns/>
+									<m:items>
+										<m:ColumnListItem type="Navigation" press="onPress"/>
+									</m:items>
+								</m:Table>
+								<smartTable:layoutData>
+									<m:FlexItemData growFactor="1" baseSize="0%"/>
+								</smartTable:layoutData>
+							</smartTable:SmartTable>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+			</f:formContainers>
+		</f:Form>
+		<footer>
+			<Toolbar>
+				<Button text="Voltar" icon="sap-icon://undo" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"
+					press="onBack" tooltip="Voltar" id="B_Voltar"/>
+				<Button text="Salvar " icon="sap-icon://save" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"
+					press="onSalvar" tooltip="Voltar" id="B_Salvar"/>
+				<Button text="Incluir Rotas" icon="sap-icon://map" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"
+					press="onincluir" tooltip="Liberar" id="B_Incluir"/>
+			</Toolbar>
+		</footer>
+	</Page>
+</core:View>

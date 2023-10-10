@@ -1,0 +1,65 @@
+<core:FragmentDefinition 
+	xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core" 
+	xmlns="sap.m">
+	<VBox id="idVBox2">
+		<items>
+			<FacetFilter id="idFacetFilter"
+				 		 type="Light"
+						 showPersonalization="true" 
+						 showReset="true" 
+						 liveSearch="false"
+						 confirm="onHandleConfirm"
+						 reset="onHandleFacetFilterReset">
+				<lists>
+					<!-- Navio -->
+					<FacetFilterList
+						title="{i18n>FilterTitleNavio}"
+						key="Dcrnv"
+						multiSelect="true"
+						items="{/ZET_FBSD_SearchVesselSet}">
+						<items>
+							<FacetFilterItem text="{Name1}" key="{Dcrnv}"/> 
+						</items>
+					</FacetFilterList>
+
+
+					<!-- Porto Origem -->
+					<FacetFilterList 
+						title="{i18n>FilterTitlePtorg}"
+						key="Ptorg"  
+						multiSelect="true" 
+						items="{/ZET_FBSD_SearchOriginPortSet}">
+						<items>
+							<FacetFilterItem text="{Ptorg} {Name1}" key="{Ptorg}"  />
+						</items>
+					</FacetFilterList>
+
+					<!-- Status -->
+					<FacetFilterList 
+						title="{i18n>FilterTitleStatus}" 
+						key="masterView>Status"
+						multiSelect="false" 
+						items="{path: 'masterView>/statusFilter'}">
+						<items>
+							<FacetFilterItem text="{path:'masterView>Status', formatter: '.formatter.mudarTexto'}"
+											 key="{masterView>Status}" />
+						</items>
+					</FacetFilterList>
+					
+					<!-- Responsável -->
+					<FacetFilterList 
+						title="{i18n>FilterTitleResponsavel}"
+						key="Responsavel"					
+						multiSelect="true" 
+						items="{/ZET_FBSD_SearchUserSet}">
+						<items>
+							<FacetFilterItem text="{Userr}" key="{Userr}" />
+						</items>
+					</FacetFilterList>
+			
+				</lists>
+			</FacetFilter>
+		</items>
+	</VBox>
+</core:FragmentDefinition>

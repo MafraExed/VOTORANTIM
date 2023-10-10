@@ -1,0 +1,154 @@
+{
+    "_version": "1.5.0",
+    "sap.app": {
+        "id": "monitorPortocel",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "sourceTemplate": {
+            "id": "servicecatalog.connectivityComponent",
+            "version": "0.0.0",
+            "toolsId": "657673b5-a53f-4c3b-8f40-4edd537a92ec"
+        },
+        "dataSources": {
+            "ZGWVPWM_GESTAO_CAMINHOES_SRV": {
+                "uri": "/sap/opu/odata/sap/ZGWVPWM_GESTAO_CAMINHOES_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/ZGWVPWM_GESTAO_CAMINHOES_SRV/metadata.xml"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        },
+        "supportedThemes": [
+            "sap_hcb",
+            "sap_belize"
+        ]
+    },
+    "sap.ui5": {
+        "rootView": {
+            "viewName": "monitorPortocel.view.App",
+            "type": "XML"
+        },
+        "dependencies": {
+            "minUI5Version": "1.30.0",
+            "libs": {
+                "sap.collaboration": {},
+                "sap.m": {},
+                "sap.ui.comp": {},
+                "sap.ui.core": {},
+                "sap.ui.layout": {},
+                "sap.ui.table": {
+                    "minVersion": ""
+                },
+                "sap.ushell": {},
+                "sap.uxap": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "monitorPortocel.i18n.i18n"
+                }
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewPath": "monitorPortocel.view",
+                "viewType": "XML",
+                "controlId": "app",
+                "controlAggregation": "pages"
+            },
+            "routes": [
+                {
+                    "pattern": "",
+                    "name": "mapa",
+                    "target": "mapa"
+                },
+                {
+                    "pattern": "Graficos",
+                    "name": "grafico",
+                    "target": "grafico"
+                },
+                {
+                    "pattern": "TempoMedio",
+                    "name": "tempomedio",
+                    "target": "tempomedio"
+                },
+                {
+                    "pattern": "DetalhesMeta",
+                    "name": "detalhesmeta",
+                    "target": "detalhesmeta"
+                },
+                {
+                    "pattern": "ListaViagens",
+                    "name": "listaviagens",
+                    "target": "listaviagens"
+                }
+            ],
+            "targets": {
+                "mapa": {
+                    "viewName": "Mapa",
+                    "viewLevel": 1
+                },
+                "grafico": {
+                    "viewName": "Grafico",
+                    "viewLevel": 2
+                },
+                "tempomedio": {
+                    "viewName": "TempoPermanencia",
+                    "viewLevel": 2
+                },
+                "detalhesmeta": {
+                    "viewName": "DetalhesMeta",
+                    "viewLevel": 3
+                },
+                "listaviagens": {
+                    "viewName": "ListaViagens",
+                    "viewLevel": 3
+                }
+            }
+        }
+    },
+    "sap.platform.abap": {
+        "uri": "/sap/bc/ui5_ui5/sap/zui5vp_gest",
+        "_version": "1.1.0"
+    },
+    "sap.platform.hcp": {
+        "uri": "",
+        "_version": "1.1.0"
+    }
+}

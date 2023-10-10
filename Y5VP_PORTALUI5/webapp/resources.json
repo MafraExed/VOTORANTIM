@@ -1,0 +1,170 @@
+{
+    "resources": [
+        {
+            "name": "Component-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "Component-preload.js",
+            "merged": true
+        },
+        {
+            "name": "Component.js"
+        },
+        {
+            "name": "controller/Default-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/Default.controller.js"
+        },
+        {
+            "name": "css/style-dbg.css",
+            "isDebug": true
+        },
+        {
+            "name": "css/style.css"
+        },
+        {
+            "name": "di.code-validation.core_issues.json"
+        },
+        {
+            "name": "i18n/i18n.properties",
+            "raw": "i18n/i18n.properties"
+        },
+        {
+            "name": "i18n/i18n_en.properties",
+            "raw": "i18n/i18n.properties",
+            "locale": "_en"
+        },
+        {
+            "name": "i18n/i18n_pt.properties",
+            "raw": "i18n/i18n.properties",
+            "locale": "_pt"
+        },
+        {
+            "name": "index.html"
+        },
+        {
+            "name": "localService/ZGWFBDELEGACAO_PORTAL_SRV/metadata.xml"
+        },
+        {
+            "name": "localService/ZGWFBFI_PORTAL_SRV/metadata.xml"
+        },
+        {
+            "name": "localService/ZGWFBFS_PORTAL_SRV/metadata.xml"
+        },
+        {
+            "name": "localService/ZGWFBIV_PORTAL_SRV/metadata.xml"
+        },
+        {
+            "name": "localService/ZGWFBLP_PORTAL_SRV/metadata.xml"
+        },
+        {
+            "name": "localService/ZGWFBPO_PORTAL_SRV/metadata.xml"
+        },
+        {
+            "name": "localService/ZGWFBRC_PORTAL_SRV/metadata.xml"
+        },
+        {
+            "name": "localService/ZGWFBSISB_PORTAL_SRV/metadata.xml"
+        },
+        {
+            "name": "localService/metadata.xml"
+        },
+        {
+            "name": "manifest.json"
+        },
+        {
+            "name": "model/models-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "model/models.js"
+        },
+        {
+            "name": "neo-app.json"
+        },
+        {
+            "name": "tmp/Component-preload.js",
+            "merged": true
+        },
+        {
+            "name": "tmp/Component.js"
+        },
+        {
+            "name": "tmp/controller/Default.controller.js"
+        },
+        {
+            "name": "tmp/css/style.css"
+        },
+        {
+            "name": "tmp/i18n/i18n.properties",
+            "raw": "i18n/i18n.properties"
+        },
+        {
+            "name": "tmp/i18n/i18n_en.properties",
+            "raw": "i18n/i18n.properties",
+            "locale": "_en"
+        },
+        {
+            "name": "tmp/i18n/i18n_pt.properties",
+            "raw": "i18n/i18n.properties",
+            "locale": "_pt"
+        },
+        {
+            "name": "tmp/index.html"
+        },
+        {
+            "name": "tmp/localService/ZGWFBDELEGACAO_PORTAL_SRV/metadata.xml"
+        },
+        {
+            "name": "tmp/localService/ZGWFBFI_PORTAL_SRV/metadata.xml"
+        },
+        {
+            "name": "tmp/localService/ZGWFBFS_PORTAL_SRV/metadata.xml"
+        },
+        {
+            "name": "tmp/localService/ZGWFBIV_PORTAL_SRV/metadata.xml"
+        },
+        {
+            "name": "tmp/localService/ZGWFBLP_PORTAL_SRV/metadata.xml"
+        },
+        {
+            "name": "tmp/localService/ZGWFBPO_PORTAL_SRV/metadata.xml"
+        },
+        {
+            "name": "tmp/localService/ZGWFBRC_PORTAL_SRV/metadata.xml"
+        },
+        {
+            "name": "tmp/localService/ZGWFBSISB_PORTAL_SRV/metadata.xml"
+        },
+        {
+            "name": "tmp/localService/metadata.xml"
+        },
+        {
+            "name": "tmp/manifest.json"
+        },
+        {
+            "name": "tmp/model/models.js"
+        },
+        {
+            "name": "tmp/view/Default.view.xml"
+        },
+        {
+            "name": "tmp-dbg/Component.js"
+        },
+        {
+            "name": "tmp-dbg/controller/Default.controller.js"
+        },
+        {
+            "name": "tmp-dbg/css/style.css"
+        },
+        {
+            "name": "tmp-dbg/model/models.js"
+        },
+        {
+            "name": "view/Default.view.xml"
+        }
+    ]
+}

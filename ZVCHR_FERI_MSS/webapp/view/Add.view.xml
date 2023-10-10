@@ -1,0 +1,96 @@
+<mvc:View controllerName="ZVCRH_FERIAS_GESTOR.ZVCRH_FERIAS_GESTOR.controller.Add" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:semantic="sap.f.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core">
+	<App id="app">
+		<pages>
+			<Page title="Adicionar Dependetes / Benefícios" backgroundDesign="Solid">
+				<content>
+					<Input value="{Pernr}" id="IdPernr" visible="false"/>
+					<Input value="{Subty}" id="IdSubty" visible="false"/>
+					<Input value="{Objps}" id="IdObjps" visible="false"/>
+					<f:Form id="FormChange480_12120" editable="true">
+						<f:layout>
+							<f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0"
+								emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer>
+								<f:formElements>
+									<f:FormElement visible="false">
+										<f:fields>
+											<Input value="{Status}" id="IdStatus"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Grau de Parentesco">
+										<f:fields>
+											<ComboBox value="{Parentesco}" id="IdParentesco" selectedKey=" " required="true" placeholder="Selecione o grau de parentesco"
+												items="{/ZET_VCRH_COMBO_PARENTESCOSet}">
+													<core:Item key="{Id}" text="{Value}" />
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Nome">
+										<f:fields>
+											<Input value="{Favor}" id="IdFavor" placeholder="Preencha com o 1° Nome" required="true"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Sobrenome">
+										<f:fields>
+											<Input value="{Fanam}" id="IdFanam" placeholder="Preencha com o Sobrenome" required="true"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Data de Nascimento">
+										<f:fields>
+											<Input value="{Fgbdt}" id="IdFgbdt" placeholder="Preencha com data de nascimento" required="true" type="Date"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Sexo">
+										<f:fields>
+											<ComboBox value="{Sexo}" id="IdSexo" selectedKey=" " required="true" placeholder="Selecione o Sexo"
+												items="{/ZET_VCRH_COMBO_SEXOSet}">
+													<core:Item key="{Id}" text="{Value}" />
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Estado Civil">
+										<f:fields>
+											<ComboBox value="{Zzestciv}" id="IdZzestciv" selectedKey=" " required="true" placeholder="Selecione o estado civil"
+												items="{/ZET_VCRH_COMBO_EST_CIVILSet}">
+													<core:Item key="{Id}" text="{Value}" />
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Anexos: Inserir aqui sua documentação" id="IdonAddDoc">
+										<f:fields>
+											<Button press="onAddDoc" text="Adicionar Documento"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Anexos" id="IdonDoc">
+										<f:fields>
+											<Button press="onDoc" text="Documento.pdf"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement id="IdMsg">
+										<f:fields>
+											<MessageStrip text="Aguardando aprovação CSV!" showIcon="true" showCloseButton="true" type="Error"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement id="IdonEnviar">
+										<f:fields>
+											<Button press="onEnviar" text="Enviar" type="Emphasized"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement id="IdonVoltar">
+										<f:fields>
+											<Button press="onVoltar" text="Voltar" type="Emphasized"/>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

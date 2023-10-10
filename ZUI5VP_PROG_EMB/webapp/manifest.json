@@ -1,0 +1,169 @@
+{
+    "_version": "1.5.0",
+    "sap.app": {
+        "id": "fibriembarque",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "sourceTemplate": {
+            "id": "servicecatalog.connectivityComponent",
+            "version": "0.0.0",
+            "toolsId": "17e252d9-93c8-4aa6-a46f-9d8d4ed878c5"
+        },
+        "dataSources": {
+            "ZGWVPWM_PROGRAMACAO_EMBARQUE_SRV": {
+                "uri": "/sap/opu/odata/sap/ZGWVPWM_PROGRAMACAO_EMBARQUE_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/metadata.xml"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        },
+        "supportedThemes": [
+            "sap_hcb",
+            "sap_belize"
+        ]
+    },
+    "sap.ui5": {
+        "rootView": {
+            "viewName": "fibriembarque.view.App",
+            "type": "XML"
+        },
+        "dependencies": {
+            "minUI5Version": "1.30.0",
+            "libs": {
+                "sap.collaboration": {},
+                "sap.m": {},
+                "sap.ui.comp": {},
+                "sap.ui.core": {},
+                "sap.ui.layout": {},
+                "sap.ushell": {},
+                "sap.uxap": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "fibriembarque.i18n.i18n"
+                }
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewPath": "fibriembarque.view",
+                "viewType": "XML"
+            },
+            "routes": [
+                {
+                    "name": "master",
+                    "pattern": "",
+                    "target": [
+                        "master"
+                    ]
+                },
+                {
+                    "name": "porao",
+                    "pattern": "master",
+                    "target": [
+                        "master",
+                        "porao"
+                    ]
+                },
+                {
+                    "name": "unit",
+                    "pattern": "master/unit",
+                    "target": [
+                        "master",
+                        "unit"
+                    ]
+                },
+                {
+                    "name": "carregamento",
+                    "pattern": "master/porao/carregamento/{oc}/{itemoc}",
+                    "target": [
+                        "master",
+                        "carregamento"
+                    ]
+                },
+                {
+                    "name": "ordem",
+                    "pattern": "master/ordem",
+                    "target": [
+                        "master",
+                        "ordem"
+                    ]
+                }
+            ],
+            "targets": {
+                "master": {
+                    "viewName": "Master",
+                    "controlId": "split",
+                    "controlAggregation": "masterPages",
+                    "viewLevel": 0
+                },
+                "porao": {
+                    "viewName": "Porao",
+                    "controlId": "split",
+                    "controlAggregation": "detailPages",
+                    "viewLevel": 2
+                },
+                "ordem": {
+                    "viewName": "Ordem",
+                    "controlId": "split",
+                    "controlAggregation": "detailPages",
+                    "viewLevel": 1
+                },
+                "unit": {
+                    "viewName": "UnitDetail",
+                    "controlId": "split",
+                    "controlAggregation": "detailPages",
+                    "viewLevel": 3
+                },
+                "carregamento": {
+                    "viewName": "CarregamentoDetail",
+                    "controlId": "app",
+                    "controlAggregation": "pages",
+                    "viewLevel": 4
+                }
+            }
+        }
+    },
+    "sap.platform.abap": {
+        "uri": "/sap/bc/ui5_ui5/sap/zui5vp_prog_emb",
+        "_version": "1.1.0"
+    }
+}

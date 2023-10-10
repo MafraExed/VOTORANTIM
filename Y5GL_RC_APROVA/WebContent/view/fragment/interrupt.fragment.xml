@@ -1,0 +1,24 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+	<Dialog title="{i18n>INTERRUPT}" type="Message" state="Warning">
+		<!-- contentWidth="96%" contentHeight="96%" stretchOnPhone="true" -->
+		<content>
+			<Vbox>
+				<Text text="{i18n>INTERRUPTPO} {Ovkey} ?" />
+				<Text text="{i18n>SLA}" />
+				<f:SimpleForm>
+					<f:content>
+						<TextArea id="taInterrupt" width="100%" rows="4" cols="20" height="100%"
+							value="{Coment}" liveChange="onLiveIButtonConfirm"/>
+					</f:content>
+				</f:SimpleForm>
+			</Vbox>				
+		</content>
+		<beginButton>
+			<Button text="{i18n>CONFIRM}" press="onConfirmInterruption" enabled="false"/>
+		</beginButton>
+		<endButton>
+			<Button text="{i18n>CANCEL}" press="onCloseDialog" />
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

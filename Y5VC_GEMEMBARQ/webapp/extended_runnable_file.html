@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>zmonit_embarque</title>
+		<script id="sap-ui-bootstrap" src="../../resources/sap-ui-core.js" data-sap-ui-theme="sap_belize" data-sap-ui-resourceroots="{&quot;workspace.zmonit_embarque.zmonit_embarque&quot;: &quot;./&quot;}" data-sap-ui-compatversion="edge" data-sap-ui-preload="async" data-sap-ui-libs="sap.m">
+		</script>
+	
+<script>
+var bRunWithMock = true;
+var sRunWithMock = jQuery.sap.getUriParameters().get('run-with-mock');
+if (sRunWithMock === 'false') {
+bRunWithMock = false;
+}
+if (bRunWithMock) {
+jQuery.sap.require('sap.ui.core.util.MockServer');
+var uri = '/sap/opu/odata/sap/ZGWVCMM_GESTAO_ESTOQUE_SRV/';
+var oMock = new sap.ui.core.util.MockServer({rootUri : uri});
+var _sAppModulePath = "workspace.zmonit_embarque.zmonit_embarque/";
+var sMetadataPath = "localService/metadata.xml";
+var sMetadataUrl = jQuery.sap.getModulePath(_sAppModulePath) + "/" + sMetadataPath;
+oMock.simulate(sMetadataUrl);
+oMock.start();
+	sap.ui.getCore().attachInit(function () {
+		console.log('Running in demo mode with mock data.');
+	});
+new sap.ui.core.util.MockServer({rootUri: "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZGWVCMM_GESTAO_ESTOQUE_EXT_ANNO',Version='0001')/$value/", requests: [{ method: "GET", path: new RegExp(""),
+response: function(oXhr) { 
+jQuery.sap.require("jquery.sap.xml");
+var oAnnotations = jQuery.sap.sjax({ url: jQuery.sap.getModulePath(_sAppModulePath + "annotations/annotationGE.xml".replace(".xml", ""), ".xml"),
+dataType: "xml"}).data;
+oXhr.respondXML(200, {}, jQuery.sap.serializeXML(oAnnotations));
+return true;
+}
+}]
+}).start();
+new sap.ui.core.util.MockServer({rootUri: "annotations/annotationGE.xml", requests: [{ method: "GET", path: new RegExp(""),
+response: function(oXhr) { 
+jQuery.sap.require("jquery.sap.xml");
+var oAnnotations = jQuery.sap.sjax({ url: jQuery.sap.getModulePath(_sAppModulePath + "annotations/annotationGE.xml".replace(".xml", ""), ".xml"),
+dataType: "xml"}).data;
+oXhr.respondXML(200, {}, jQuery.sap.serializeXML(oAnnotations));
+return true;
+}
+}]
+}).start();
+//Fake LREP
+jQuery.sap.require("sap.ui.fl.FakeLrepConnector");
+sap.ui.fl.FakeLrepConnector.enableFakeConnector("fakeLRep.json");
+}
+</script>
+
+
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<script>
+			sap.ui.getCore().attachInit(function() {
+				new sap.m.Shell({
+					app: new sap.ui.core.ComponentContainer({
+						height : "100%",
+						name : "workspace.zmonit_embarque.zmonit_embarque"
+					})
+				}).placeAt("content");
+			});
+		</script>
+	</head>
+	<body class="sapUiBody" id="content">
+	</body>
+</html>

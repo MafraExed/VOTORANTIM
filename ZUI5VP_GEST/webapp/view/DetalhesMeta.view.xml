@@ -1,0 +1,85 @@
+<mvc:View 
+		xmlns:core="sap.ui.core" 
+		xmlns:mvc="sap.ui.core.mvc" 
+		xmlns="sap.m"
+		controllerName="monitorPortocel.controller.DetalhesMeta"
+		xmlns:html="http://www.w3.org/1999/xhtml"
+		xmlns:viz="sap.viz.ui5.controls"
+		xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+		xmlns:viz.data="sap.viz.ui5.data">
+
+	<Page title="Detalhes" showNavButton="true" navButtonPress="onNavBack">
+		<content>
+			<viz:VizFrame id="idVizFrame" height="100%" width="100%" vizType="column" selectData="onSelectMeta" vizProperties="{title:{ text:'Etapas x Metas'}}">
+				<viz:dataset>
+					<viz.data:FlattenedDataset data="{path:'detalhesEtapa>/'}">
+						<viz.data:dimensions>
+							<viz.data:DimensionDefinition name="Descrição Etapas" value="{detalhesEtapa>DescricaoEtapa}"/>
+						</viz.data:dimensions>
+						<viz.data:measures>
+							<viz.data:MeasureDefinition name="Realizado" value="{detalhesEtapa>MediaEtapas}"/>
+							<viz.data:MeasureDefinition name="Meta" value="{detalhesEtapa>Metas}"/>
+						</viz.data:measures>
+					</viz.data:FlattenedDataset>
+				</viz:dataset>
+				<viz:feeds>
+					<viz.feeds:FeedItem id="feedActualValues" uid="valueAxis" type="Measure" values="Realizado"/>
+					<viz.feeds:FeedItem id="feedTargetValues" uid="valueAxis" type="Measure" values="Meta"/>
+					<viz.feeds:FeedItem id="feedCategoryAxis" uid="categoryAxis" type="Dimension" values="Descrição Etapas"/>
+				</viz:feeds>
+			</viz:VizFrame>
+			<ScrollContainer horizontal="true">
+				<Table id="tableViagens" headerText="Viagens da etapa" items="{path:'motoristas>/'}" noDataText="Selecione uma etapa">
+					<columns>
+						<Column id="colunaMotorista" hAlign="Center" vAlign="Middle">
+							<header>
+								<Text text="Motorista"/>
+							</header>
+						</Column>
+						<Column id="colunaOrigem" hAlign="Center" vAlign="Middle">
+							<header>
+								<Text text="Origem"/>
+							</header>
+						</Column>
+						<Column id="colunaDestino" hAlign="Center" vAlign="Middle">
+							<header>
+								<Text text="Destino"/>
+							</header>
+						</Column>
+						<Column id="colunaCod" hAlign="Center" vAlign="Middle">
+							<header>
+								<Text text="Cód. Viagem"/>
+							</header>
+						</Column>
+						<Column id="colunaInicio" hAlign="Center" vAlign="Middle">
+							<header>
+								<Text text="Início"/>
+							</header>
+						</Column>
+						<Column id="colunaFim" hAlign="Center" vAlign="Middle">
+							<header>
+								<Text text="Fim"/>
+							</header>
+						</Column>
+					</columns>
+					<ColumnListItem>
+						<cells>
+							<Text text="{motoristas>NomeMotorista}"/>
+							<Text text="{motoristas>DescricaoOrigem}"/>
+							<Text text="{motoristas>DescricaoDestino}"/>
+							<Text text="{motoristas>Viagem}"/>
+							<VBox>
+								<Text text="{motoristas>formatDataIni}" />
+								<Text text="{motoristas>formatHoraIni}" />
+							</VBox>
+							<VBox>
+								<Text text="{motoristas>formatDataFim}" />
+								<Text text="{motoristas>formatHoraFim}" />
+							</VBox>
+						</cells>
+					</ColumnListItem>
+				</Table>
+			</ScrollContainer>	
+		</content>
+	</Page>
+</mvc:View>

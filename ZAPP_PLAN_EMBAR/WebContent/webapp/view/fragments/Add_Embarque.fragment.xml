@@ -1,0 +1,165 @@
+<core:FragmentDefinition
+  xmlns="sap.m"
+  xmlns:f="sap.ui.layout.form"
+  xmlns:layout="sap.ui.layout"
+  xmlns:core="sap.ui.core">
+  <Dialog
+    title='{i18n>addEmbarqueTitle}'
+    type='Message'
+    draggable="true"
+    stretchOnPhone="true"
+    contentWidth="65%">
+    <content>
+      <VBox class="sapUiSmallMargin">
+        <f:Form id="FormToolbar"
+          editable="true"
+          ariaLabelledBy="Title1">
+          <f:layout>
+            <f:ResponsiveGridLayout 
+            	labelSpanXL="4"
+					labelSpanL="3"
+					labelSpanM="4"
+					labelSpanS="12"
+					adjustLabelSpan="false"
+					emptySpanXL="0"
+					emptySpanL="4"
+					emptySpanM="0"
+					emptySpanS="0"
+					columnsXL="1"
+					columnsL="1"
+					columnsM="1"
+					singleContainerFullSize="false" />
+          </f:layout>
+          <f:formContainers>
+            <f:FormContainer>
+              <f:formElements>
+
+<!--                 <f:FormElement label="{i18n>addEmbarqueTitleDterm}"> -->
+<!--                   <f:fields> -->
+<!--                     <Input -->
+<!--                       id="addEmbarqueFieldDterm" -->
+<!--                       maxLength="6" -->
+<!--                       width="7rem" -->
+<!--                       class="sapUiSmallMarginBottom" -->
+<!--                       required="true" -->
+<!--                       showValueHelp="true"  -->
+<!--                       valueHelpRequest="onHandleF4Terminal" -->
+<!--                       submit="onHandleSubmitTerminal" -->
+<!--                       value="{infoHeadEmbarque>/Dterm}"> -->
+<!--                       <layoutData> -->
+<!--                             <layout:GridData span="L2 M2 S8" /> -->
+<!--                       </layoutData> -->
+<!--                       </Input> -->
+<!--                       <Text id="addEmbarqueFieldDtermDsc"  text="{infoHeadEmbarque>/DescTerm}"></Text> -->
+<!--                   </f:fields> -->
+<!--                 </f:FormElement> -->
+                
+                <f:FormElement label="{i18n>addEmbarqueTitleTpnav}">
+                  <f:fields>
+                  <Select id="addEmbarqueFieldTpnav"
+                  	  width="12rem"
+                      selectedKey="{infoHeadEmbarque>/Tpnav}"
+                      change="onHandleChangeTpnav"
+                      items="{
+                          path: 'detailView>/listTpNav'
+                          }">
+                          <core:Item id="addEmbarqueItemSelectTpnav" key="{detailView>Value}" text="{detailView>Name}" />
+                  </Select>
+                  </f:fields>
+                </f:FormElement>
+                
+                
+                <f:FormElement label="{i18n>addEmbarqueTitleAgent}">
+                  <f:fields>
+                  <Input id="addEmbarqueFieldAgent" 
+                      value="{infoHeadEmbarque>/Agent}"
+                      width="7rem"
+                      required="true"
+                      showValueHelp="true" 
+                      valueHelpRequest="onHandleF4Agent"
+                      submit="onHandleSubmitAgent">
+                      <layoutData>
+                            <layout:GridData span="L2 M2 S8" />
+                      </layoutData>
+                    </Input>
+                    <Text id="addEmbarqueFieldAgentDsc"  text="{infoHeadEmbarque>/AgentDsc}"></Text>
+                  </f:fields>
+                </f:FormElement>
+
+
+                <f:FormElement id="addEmbarqueFormElementBookingnr" label="{i18n>addEmbarqueTitleBookingnr}">
+                  <f:fields>
+                    <Input
+                      id="addEmbarqueFieldBookingnr"
+                      maxLength="10"
+                      width="12rem"
+                      value="{infoHeadEmbarque>/Bookingnr}"/>
+                  </f:fields>
+                </f:FormElement>
+
+				<f:FormElement  id="addEmbarqueFormElementDtdraft" label="{i18n>addEmbarqueTitleDtdraft}">
+                  <f:fields>
+                    <DatePicker
+						id="addEmbarqueFieldDtdraft"
+						width="12rem"
+						placeholder="dd.mm.aaaa"
+						dateValue="{infoHeadEmbarque>/Dtdraft}"
+						displayFormat="{i18n>formatDate}"
+						class="sapUiSmallMarginBottom"/>
+                  </f:fields>
+                </f:FormElement>
+                
+                <f:FormElement label="{i18n>addEmbarqueTitleDrawbacknr}">
+                  <f:fields>
+                    <Input
+                      id="addEmbarqueFieldDrawbacknr"
+                      maxLength="20"
+                      width="12rem"
+                      value="{infoHeadEmbarque>/Drawbacknr}"  />
+                  </f:fields>
+                </f:FormElement>
+                
+                <f:FormElement label="{i18n>addEmbarqueTitleDteta}">
+                  <f:fields>
+                    <DatePicker
+						id="addEmbarqueFieldDteta"
+						placeholder="dd.mm.aaaa"
+						required="true"
+						width="12rem"
+						dateValue="{infoHeadEmbarque>/Dteta}"
+						displayFormat="{i18n>formatDate}"/>
+                  </f:fields>
+                </f:FormElement>
+
+				<f:FormElement label="{i18n>addEmbarqueTitleUser}">
+                  <f:fields>
+                  <Input id="addEmbarqueFieldUserr" 
+                  	     value="{infoHeadEmbarque>/Userr}"
+                          width="12rem"
+                          showValueHelp="true" 
+	                      valueHelpRequest="onHandleF4User"
+	                      submit="onHandleSubmitUser">
+                      <layoutData>
+                            <layout:GridData span="L4 M4 S8" />
+                      </layoutData>
+                    </Input>
+                    <Text id="addEmbarqueFieldUserrDsc" text="{infoHeadEmbarque>/UserrDsc}"></Text> 
+                  </f:fields>
+                </f:FormElement>
+
+
+
+              </f:formElements>
+            </f:FormContainer>
+          </f:formContainers>
+        </f:Form>
+      </VBox>
+    </content>
+    <buttons>
+	    <Button id="addEmbarqueButtonMsg" text="{messagePopOver>/count}" tooltip="{i18n>TooltipMsgBtn}" 
+	    		type="Emphasized" icon="sap-icon://message-popup" press="onHandleMessagePopover"/>
+	    <Button tooltip="Salvar"  icon="sap-icon://save" press="onHanleSaveAddEmbarque" />
+	    <Button tooltip="Cancelar" icon="sap-icon://sys-cancel" press="onHanleCloseAddEmbarque" />
+    </buttons>
+  </Dialog>
+</core:FragmentDefinition>

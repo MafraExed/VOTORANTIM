@@ -1,0 +1,305 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns:m="sap.m" xmlns:comm="sap.suite.ui.commons" xmlns:table="sap.ui.table"
+	xmlns:u="sap.ui.unified" controllerName="FechamentoContabil.controller.Gantt" class="sapUiSizeCompact"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<m:Page id="IdCorpoPagina" showNavButton="false" showHeader="false" backgroundDesign="Solid">
+		<m:content >
+			<m:FlexBox backgroundDesign="Solid" width="100%" alignItems="Center">
+				<m:FlexBox class="plano_descricao_back" alignItems="Center" height="50px">
+					<m:Select id="idInputModelo" change="onNovoModelo" class="sapUiTinyMarginBegin inputKeys" items="{ path: 'Planos>/' }">
+						<core:Item key="{Planos>Instance}" text="{Planos>Profile}"/>
+					</m:Select>
+					<m:Select id="idInputPeriodo" change="onNovoPeriodo" class="sapUiTinyMarginBegin inputKeys" items="{ path: 'Periodos>/' }">
+						<core:Item key="{Periodos>Instance}" text="{Periodos>Data}"/>
+					</m:Select>
+					<m:Label width="350px" id="idLabelDescricao" text="{PlanoSelecionado>/Desc}" textAlign="Begin"
+						class="plano_descricao sapUiSmallMarginBeginEnd"/>
+				</m:FlexBox>
+				<!-- Início - Rodrigo Cano (Iteam) - 25.09.2019 -->
+				<!--<m:FlexBox alignItems="Center" justifyContent="Center" width="100%" height="50px">
+					<core:Icon class="sapUiLargeMarginEnd" id="idSync" src="sap-icon://refresh" color="blue" size="24px" press="onPressSync" visible="true"/>
+					<m:Button text="Expandir tudo" icon="sap-icon://expand-group" press="expandTree" class="sapUiLargeMarginEnd" ></m:Button>
+					<m:Button text="Questionar" tooltip="Questionar status via email" icon="sap-icon://email" press="onQuestionarViaEmailPress"
+						class="sapUiSmallMarginEnd"/>-->
+				<m:FlexBox alignItems="Center" justifyContent="End" width="100%" height="50px">
+					<m:FlexBox alignItems="Center" justifyContent="Start" width="100%" height="50px">
+						<core:Icon class="sapUiMediumMarginBegin" id="idSync" src="sap-icon://refresh" color="blue" size="24px" press="onPressSync" visible="true"/>
+					</m:FlexBox>
+					<m:FlexBox alignItems="Center" justifyContent="End" width="100%" height="50px">
+						<m:Button tooltip="Expandir tudo" icon="sap-icon://expand-group" press="expandTree" class="sapUiSmallMarginEnd"></m:Button>
+						<m:Button tooltip="Questionar status via email" icon="sap-icon://email" press="onQuestionarViaEmailPress" class="sapUiSmallMarginEnd"/>
+						<m:Button tooltip="Tutoriais em vídeo" icon="sap-icon://video" press="openVideoList" class="sapUiSmallMarginEnd"/>
+						<m:Button icon="sap-icon://settings"  tooltip="versão: 3.0" class="sapUiSmallMarginEnd"/>
+					</m:FlexBox>
+					<!-- Fim - Rodrigo Cano (Iteam) - 25.09.2019 -->
+				</m:FlexBox>
+			</m:FlexBox>
+			<m:FlexBox class="sapUiTinyMarginTopBottom" width="100%" backgroundDesign="Solid">
+				<m:HBox id="idHboxPath" width="90%" justifyContent="Start" alignItems="Center">
+					<core:Icon class="sapUiMediumMarginBegin path__icon" size="20px" src="sap-icon://menu" color="white" press="onConfigHierarquia"/>
+				</m:HBox>
+				<m:HBox width="10%" justifyContent="Center"></m:HBox>
+			</m:FlexBox>
+			<!-- INICIO GANTT -->
+			<!--				<GanttChartContainer id="GanttChartContainer" backgroundDesign="Solid"  >
+					<ganttCharts>
+						<GanttChartWithTable -->
+			<table:TreeTable id="ganttView" enableCellFilter="true" firstVisibleRowChanged="closePopups" height="100%" selectionMode="None"
+				visibleRowCountMode="Auto" showColumnVisibilityMenu="true">
+				<table:columns autoResizable="true">
+					<table:Column id="nameColumn" label="Name" width="400px">
+						<table:template>
+							<m:HBox alignContent="Center" alignItems="Center">
+								<!--<core:Icon width="20px" class="sapUiTinyMarginEnd" src="{= ${gantt>TPTAREFA} === 'Transação' ? 'sap-icon://overlay' : '' }" color="green" press="onPressTransacao" size="15px" visible="{= ${gantt>NO_ATIVIDADE} === '' ? false : true}" />-->
+								<m:Button tooltip="Opções" icon="sap-icon://vertical-grip" visible="{= ${gantt>NO_ATIVIDADE} === '' ? false : true}" press="onPressOptions"></m:Button>
+								<m:HBox alignContent="Center" alignItems="Center">
+									<m:customData>
+										<core:CustomData key="mydata" value="{= ${gantt>STATUS} === '' ? 'gantt__hbox' : 'gantt__hbox__atvt' }" writeToDom="true"/>
+									</m:customData>
+									<core:Icon class="sapUiTinyMarginBegin" src="{= ${gantt>STATUS} === '' ? 'sap-icon://folder-blank' : '' }" color="#dbdbdb" size="20px"
+										visible="{= ${gantt>STATUS} === '' ? true : false }"/>
+									<core:Icon class="sapUiTinyMarginBegin" src="{= ${gantt>CRITICO} === '' ? '' : 'sap-icon://error' }" color="orange" press="onPressTarefa"
+										size="20px" visible="{= ${gantt>CRITICO} === '' ? false : true }"/>
+									<m:Button class="gantt__label" type="Transparent" text="{= ${gantt>STATUS} === '' ? ${gantt>DESC_NO} : ${gantt>DESC_TAREFA} }"
+										press="onPressTarefa"/>
+									<m:Label text="{gantt>NO_ATIVIDADE}" visible="false"/>
+								</m:HBox>
+							</m:HBox>
+						</table:template>
+					</table:Column>
+					<table:Column label="Status" width="60px" showFilterMenuEntry="true" filterProperty="STATUS">
+						<table:template>
+							<m:HBox width="100%" justifyContent="Center">
+								<core:Icon src="{gantt>ICON_STATUS}" color="{gantt>COLOR_STATUS}" tooltip="{gantt>STATUS}" size="30px"/>
+							</m:HBox>
+						</table:template>
+					</table:Column>
+					<table:Column width="75px" sortProperty="EMPRESA" filterProperty="EMPRESA">
+						<m:HBox width="100%" justifyContent="Center">
+							<m:Label text="Empresa"/>
+						</m:HBox>
+						<table:template >
+							<m:HBox width="100%" justifyContent="Center">
+								<m:Text text="{gantt>EMPRESA}" wrapping="false" class="gantt__label label_empresa" tooltip="{gantt>EMPRESA}"/>
+							</m:HBox>
+						</table:template>
+					</table:Column>
+					<table:Column label="Tipo Tarefa" width="100px" showFilterMenuEntry="true" filterProperty="TPTAREFA">
+						<table:template>
+							<m:HBox width="100%" justifyContent="Center">
+								<m:Text text="{= ${gantt>STATUS} === '' ? '' : ${gantt>TPTAREFA} }" class="gantt__label"/>
+							</m:HBox>
+						</table:template>
+					</table:Column>
+					<table:Column label="Responsável Exec" width="140px" showFilterMenuEntry="true" filterProperty="RESP_EXEC">
+						<table:template>
+							<m:Label class="sapUiTinyMarginBegin gantt__label" text="{= ${gantt>STATUS} === '' ? '' : ${gantt>RESP_EXEC} }"/>
+						</table:template>
+					</table:Column>
+					<table:Column label="Início Plan." width="165px" showFilterMenuEntry="false" filterProperty="DATA_INICIO_PLAN">
+						<table:template>
+							<m:HBox width="100%" class="gantt__plan__hbox" justifyContent="Center" alignContent="Center" alignItems="Center">
+								<m:DateTimePicker class="gantt__plan__date"
+									value="{= ${gantt>STATUS} === '' ? '' : ${gantt>DATA_INICIO_PLAN} + '-' + ${gantt>HORA_INICIO_PLAN} }" valueFormat="yyyyMMdd-HHmmss"
+									displayFormat="short" visible="{= ${gantt>HORA_INICIO_PLAN} === '' ? false : true }"/>
+							</m:HBox>
+						</table:template>
+					</table:Column>
+					<table:Column label="Fim Plan." width="165px" showFilterMenuEntry="false" filterProperty="DATA_FIM_PLAN">
+						<table:template>
+							<m:HBox width="100%" class="gantt__plan__hbox" justifyContent="Center" alignContent="Center" alignItems="Center">
+								<m:DateTimePicker class="gantt__plan__date" value="{= ${gantt>STATUS} === '' ? '' : ${gantt>DATA_FIM_PLAN} + '-' + ${gantt>HORA_FIM_PLAN}}"
+									valueFormat="yyyyMMdd-HHmmss" displayFormat="short" visible="{= ${gantt>DATA_FIM_PLAN} === '' ? false : true }"/>
+							</m:HBox>
+						</table:template>
+					</table:Column>
+					<table:Column label="Dur. Plan." width="90px" showFilterMenuEntry="false" filterProperty="DURACAO_PLAN">
+						<table:template>
+							<m:HBox width="100%" justifyContent="Center" alignContent="Center" alignItems="Center" height="100%">
+								<m:Text class="gantt__plan" text="{= ${gantt>STATUS} === '' ? '' : ${gantt>DURACAO_PLAN} }"/>
+							</m:HBox>
+						</table:template>
+					</table:Column>
+					<table:Column label="Início" width="165px" showFilterMenuEntry="false" filterProperty="DATA_INICIO">
+						<table:template >
+							<m:HBox width="100%" class="gantt__inic__hbox" justifyContent="Center" alignContent="Center" alignItems="Center">
+								<m:DateTimePicker class="gantt__plan__date"
+									value="{= ${gantt>DATA_INICIO} === '' ? '' : ${gantt>DATA_INICIO} + '-' + ${gantt>HORA_INICIO} }" valueFormat="yyyyMMdd-HHmmss"
+									displayFormat="short" visible="{= ${gantt>DATA_INICIO} === '' ? false : true }"/>
+							</m:HBox>
+						</table:template>
+					</table:Column>
+					<table:Column label="Fim" width="165px" showFilterMenuEntry="false" filterProperty="DATA_FIM">
+						<table:template>
+							<m:HBox width="100%" class="gantt__inic__hbox" justifyContent="Center" alignContent="Center" alignItems="Center">
+								<m:DateTimePicker class="gantt__plan__date" value="{= ${gantt>DATA_FIM} === '' ? '' : ${gantt>DATA_FIM} + '-' + ${gantt>HORA_FIM} }"
+									valueFormat="yyyyMMdd-HHmmss" displayFormat="short" visible="{= ${gantt>DATA_FIM} === '' ? false : true }"/>
+							</m:HBox>
+						</table:template>
+					</table:Column>
+					<table:Column label="Duração" width="90px" showFilterMenuEntry="false" filterProperty="DURACAO">
+						<table:template>
+							<m:HBox width="100%" justifyContent="Center" alignContent="Center" alignItems="Center">
+								<m:Text class="gantt__real gantt__label" text="{= ${gantt>STATUS} === '' ? '' : ${gantt>DURACAO} }"/>
+							</m:HBox>
+						</table:template>
+					</table:Column>
+					<table:Column label="Responsável" width="200px" showFilterMenuEntry="true" filterProperty="RESP">
+						<table:template>
+							<m:Label class="sapUiTinyMarginBegin gantt__label" text="{= ${gantt>STATUS} === '' ? '' : ${gantt>RESP} }"/>
+						</table:template>
+					</table:Column>
+					<table:Column label="Anexo" width="60px" showFilterMenuEntry="true" filterProperty="CONTEM_ANEXO">
+						<table:template>
+							<m:HBox width="100%" justifyContent="Center">
+								<core:Icon src="{= ${gantt>STATUS} === '' ? '' : 'sap-icon://attachment' }" color="{= ${gantt>CONTEM_ANEXO} === 'X' ? 'blue' : 'black' }"
+									press="onConfigAnexo"/>
+							</m:HBox>
+						</table:template>
+					</table:Column>
+				</table:columns>
+			</table:TreeTable>
+			<!--</GanttChartWithTable>
+					</ganttCharts>
+				</GanttChartContainer>-->
+		</m:content>
+	</m:Page>
+	<!-- FINAL GANTT -->
+	<m:VBox id="idMenuHierarquia" class="menu__hierarquia__inativo menu__hierarquia" width="30%" height="85%">
+		<table:TreeTable id="TreeTableBasic" enableSelectAll="false" visibleRowCountMode="Auto" height="100%" ariaLabelledBy="title"
+			minAutoRowCount="13" selectionMode="None" cellClick="onTreeClick"
+			rows="{ path : 'HierarquiaPastas>/', parameters : { countMode: 'Inline', treeAnnotationProperties : { hierarchyLevelFor : 'HierarquiaPastas>HierarchyLevel', hierarchyNodeFor : 'HierarquiaPastas>NodeID', hierarchyParentNodeFor : 'HierarquiaPastas>ParentNodeID', hierarchyDrillStateFor : 'HierarquiaPastas>DrillState' } } }">
+			<table:columns>
+				<table:Column width="100%">
+					<m:HBox width="100%" alignContent="Center" alignItems="Center">
+						<m:Label text="Hierarquia" class="menu__hierarquia__label"/>
+						<m:HBox width="100%" justifyContent="End">
+							<core:Icon src="sap-icon://decline" color="red" class="sapUiSmallMarginEnd" press="onConfigHierarquia" size="25px"/>
+						</m:HBox>
+					</m:HBox>
+					<table:template>
+						<m:HBox>
+							<m:Text text="{HierarquiaPastas>Description}" wrapping="false"/>
+							<m:Text text="{HierarquiaPastas>NodeID}" visible="false"/>
+						</m:HBox>
+					</table:template>
+				</table:Column>
+			</table:columns>
+		</table:TreeTable>
+	</m:VBox>
+	<m:HBox id="idPopupAnexo" class="popup__anexo popup__anexo__inativo" wrap="Wrap">
+		<m:VBox>
+			<m:HBox class="popup__anexo__header__border sapUiTinyPadding" alignItems="Center">
+				<m:HBox justifyContent="Start" width="100%" class="sapUiSmallMarginBegin">
+					<m:Label text="Download/Upload:" class="popup__hierarquia__header__label"/>
+					<m:Label id="idLabelAtividadeDesc"/>
+				</m:HBox>
+				<m:HBox justifyContent="Center" width="30px" class="popup__hierarquia__header__icon" alignItems="Center">
+					<core:Icon src="sap-icon://decline" color="red" press="onConfigAnexo" size="25px"/>
+				</m:HBox>
+			</m:HBox>
+			<m:VBox id="idHboxAnexo" width="100%" justifyContent="Start" wrap="Wrap" class="sapUiSmallMargin">
+				<m:HBox id="idUploaderAnexo">
+					<u:FileUploader id="fileUploader" name="myFileUpload" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"
+						useMultipart="false"/>
+					<m:Button text="Anexar" press="onAnexarArquivo"/>
+				</m:HBox>
+				<m:VBox id="idVBoxAnexos" visible="false">
+					<m:HBox>
+						<m:Label class="sapUiSmallMarginTop" text="Arquivos anexados a esta tarefa:"/>
+						<m:Label id="idLabelAtividadeAnexo" visible="false"/>
+					</m:HBox>
+					<m:SelectList id="selectList" selectionChange="onDownloadItem" width="80%"/>
+				</m:VBox>
+			</m:VBox>
+		</m:VBox>
+	</m:HBox>
+	<m:VBox width="207px" id="popupOptions" class="popup_options popup_disable zpopup" alignItems="Center">
+		<m:HBox width="100%" justifyContent="Center">
+			<m:Button icon="sap-icon://decline" width="13px" class="popup_options_icon_canc sapUiTinyMarginBottom sapUiSmallMarginEnd"
+				press="onPressFechaPopupOptions"/>
+		</m:HBox>
+		<m:Button text="Ir para CLOCO" width="180px" press="onPressTarefa"/>
+		<m:Button text="Executar Tarefa" id="btnExecAtvt" width="180px" press="onPressTransacao"/>
+		<m:Button text="Alterar Status " id="btnAlterarStatus" width="180px" press="onPressOptionsStatus"/>
+		<m:Button text="Incluir Anexo" width="180px" press="onConfigAnexo"/>
+		<m:Button text="Links da Tarefa" width="180px" press="onBtnLinkClick"/>
+	</m:VBox >
+	<m:HBox id="popupStatus" justifyContent="Center" alignItems="Center" class="zpopup popup_options_status popup_disable">
+		<m:VBox>
+			<m:HBox width="100%" justifyContent="Center">
+				<m:Button icon="sap-icon://decline" width="13px" class="popup_options_icon_canc sapUiTinyMarginBottom sapUiSmallMarginEnd"
+					press="onPressFechaPopupOptions"/>
+			</m:HBox>
+			<m:HBox width="190px" alignItems="Center">
+				<m:Input id="inputStatusMotivo" placeholder="Motivo da alteração de status"/>
+			</m:HBox>
+			<m:Button id="idProc" width="190px" text="Em processamento" icon="sap-icon://process" press="pressChangeStatus" class="dropdown_status"/>
+			<m:Button id="idOk" width="190px" text="Concluído sem erros" icon="sap-icon://complete" press="pressChangeStatus"
+				class="popup_options_icon_ok"/>
+			<m:Button id="idAviso" width="190px" text="Concluído com avisos" icon="sap-icon://complete" press="pressChangeStatus"
+				class="popup_options_icon_aviso"/>
+			<m:Button id="idErro" width="190px" text="Concluído com erros" icon="sap-icon://complete" press="pressChangeStatus"
+				class="popup_options_icon_nok"/>
+		</m:VBox>
+	</m:HBox>
+	<!--<m:VBox id="popupNovidades" class="popup_novidades popup_disable zpopup" height="100%" width="100%" backgroundDesign="Solid">
+		<m:Carousel id="carouselProximo" loop="false" width="100%" height="100%">
+			<m:pages >
+				<m:VBox width="100%" height="100%" justifyContent="Center" alignItems="Center">
+					<m:Image id="news1" width="82%" class="novidades_image" src="none"/>
+					<m:HBox width="80%" backgroundDesign="Solid" justifyContent="Center">
+						<m:Button text="Próximo" type="Accept" press="pressNovidadesProximo"/>
+					</m:HBox>
+				</m:VBox>
+				<m:VBox width="100%" height="100%" justifyContent="Start" alignItems="Center">
+					<m:Image id="news2" width="82%" class="novidades_image" src="none"/>
+					<m:HBox width="80%" backgroundDesign="Solid" justifyContent="Center">
+						<m:Button text="Próximo" type="Accept" class="sapUiLargeMarginBegin" press="pressNovidadesProximo"/>
+					</m:HBox>
+				</m:VBox>
+				<m:VBox width="100%" height="100%" justifyContent="Start" alignItems="Center">
+					<m:Image id="news3" width="82%" class="novidades_image" src="none"/>
+					<m:HBox width="80%" backgroundDesign="Solid" justifyContent="Center">
+						<m:Button text="Próximo" type="Accept" class="sapUiLargeMarginBegin" press="pressNovidadesProximo"/>
+					</m:HBox>
+				</m:VBox>
+				<m:VBox width="100%" height="100%" justifyContent="Start" alignItems="Center">
+					<m:Image id="news4" width="82%" class="novidades_image" src="none"/>
+					<m:HBox width="80%" backgroundDesign="Solid" justifyContent="Center">
+						<m:Button text="Próximo" type="Accept" class="sapUiLargeMarginBegin" press="pressNovidadesProximo"/>
+					</m:HBox>
+				</m:VBox>
+				<m:VBox width="100%" height="100%" justifyContent="Start" alignItems="Center">
+					<m:Image id="news5" width="82%" class="novidades_image" src="none"/>
+					<m:HBox width="80%" backgroundDesign="Solid" justifyContent="Center">
+						<m:Button text="Próximo" type="Accept" class="sapUiLargeMarginBegin" press="pressNovidadesProximo"/>
+					</m:HBox>
+				</m:VBox>
+				<m:VBox width="100%" height="100%" justifyContent="Start" alignItems="Center">
+					<m:Image id="news6" width="82%" class="novidades_image" src="none"/>
+					<m:HBox width="80%" backgroundDesign="Solid" justifyContent="Center">
+						<m:Button text="Próximo" type="Accept" class="sapUiLargeMarginBegin" press="pressNovidadesProximo"/>
+					</m:HBox>
+				</m:VBox>
+				<m:VBox width="100%" height="100%" justifyContent="Center" alignItems="Center">
+					<m:Image id="news7" load="novidadesLoaded" width="100%"/>
+					<m:HBox width="98%" backgroundDesign="Solid" justifyContent="End">
+						<m:CheckBox id="idCheckNovidade" text="Não exibir mais essa tela na próxima vez que eu acessar" class="sapUiSmallMarginEnd" selected="false"/>
+						<m:Button text="Entendi" type="Accept" press="pressNovidades"/>
+					</m:HBox>
+				</m:VBox>
+			</m:pages>
+		</m:Carousel>
+	</m:VBox>-->
+	<m:VBox id="popupDependentes" class="popup_dependentes popup_disable zpopup" height="70%" width="80%" backgroundDesign="Solid">
+		<m:HBox width="100%" justifyContent="Center">
+			<m:Button icon="sap-icon://decline" text="Fechar" class="popup_options_icon_canc sapUiTinyMarginTopBottom sapUiTinyMarginBegin"
+				press="onPressFechaPopupOptions"/>
+		</m:HBox>
+		<m:List headerText="Tarefas dependentes ainda não executadas" items="{ path: 'Dependentes>/' }">
+			<m:StandardListItem title="{Dependentes>Desc}" description="{Dependentes>Caminho}" icon="{Dependentes>StatusIcon}"/>
+		</m:List>
+	</m:VBox>
+	<m:HBox id="idHboxModal" class="dialog__modal zpopup popup_disable"/>
+	<!--<m:VBox id="idSplash" backgroundDesign="Solid" class="gantt__splash" busy="true"></m:VBox>-->
+</mvc:View>

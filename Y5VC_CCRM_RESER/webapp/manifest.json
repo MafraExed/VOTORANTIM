@@ -1,0 +1,168 @@
+{
+    "_version": "1.5.0",
+    "sap.app": {
+        "id": "Y5VC_CCRM_RESER",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/sap/ZGWVCPM_RESERVAS_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/metadata.xml"
+                }
+            },
+            "filter": {
+                "uri": "model/filter.json",
+                "type": "JSON"
+            }
+        },
+        "sourceTemplate": {
+            "id": "sap.ui.ui5-template-plugin.1worklist",
+            "version": "1.44.7",
+            "toolsId": "854da6d6-83dd-4cfd-b145-b504e1378434"
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "sap-icon://task",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        },
+        "supportedThemes": [
+            "sap_hcb",
+            "sap_belize"
+        ]
+    },
+    "sap.ui5": {
+        "rootView": {
+            "viewName": "Y5VC_CCRM_RESER.view.App",
+            "type": "XML",
+            "id": "app"
+        },
+        "dependencies": {
+            "minUI5Version": "1.36.0",
+            "libs": {
+                "sap.ui.core": {
+                    "minVersion": "1.36.0"
+                },
+                "sap.m": {
+                    "minVersion": "1.36.0"
+                },
+                "sap.ui.layout": {
+                    "minVersion": "1.36.0"
+                },
+                "sap.ushell": {
+                    "minVersion": "1.36.0"
+                }
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "Y5VC_CCRM_RESER.i18n.i18n"
+                }
+            },
+            "": {
+                "settings": {
+                    "metadataUrlParams": {
+                        "sap-documentation": "heading"
+                    }
+                },
+                "dataSource": "mainService",
+                "preload": false
+            },
+            "filter": {
+                "type": "sap.ui.model.json.JSONModel",
+                "dataSource": "filter"
+            }
+        },
+        "services": {
+            "ShellUIService": {
+                "factoryName": "sap.ushell.ui5service.ShellUIService",
+                "lazy": false,
+                "settings": {
+                    "setHierarchy": "auto",
+                    "setTitle": "auto"
+                }
+            }
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "viewPath": "Y5VC_CCRM_RESER.view",
+                "controlId": "app",
+                "controlAggregation": "pages",
+                "bypassed": {
+                    "target": [
+                        "notFound"
+                    ]
+                },
+                "async": true
+            },
+            "routes": [
+                {
+                    "pattern": "",
+                    "name": "reservas",
+                    "target": [
+                        "reservas"
+                    ]
+                },
+                {
+                    "pattern": "ZET_VCPM_ReservasSet/{objectId}",
+                    "name": "object",
+                    "target": [
+                        "object"
+                    ]
+                }
+            ],
+            "targets": {
+                "reservas": {
+                    "viewName": "Reservas",
+                    "viewId": "reservas",
+                    "viewLevel": 1,
+                    "title": "{i18n>reservasViewTitle}"
+                },
+                "object": {
+                    "viewName": "Object",
+                    "viewId": "object",
+                    "viewLevel": 2,
+                    "title": "{i18n>objectViewTitle}"
+                },
+                "objectNotFound": {
+                    "viewName": "ObjectNotFound",
+                    "viewId": "objectNotFound"
+                },
+                "notFound": {
+                    "viewName": "NotFound",
+                    "viewId": "notFound"
+                }
+            }
+        }
+    },
+    "sap.platform.abap": {
+        "uri": "/sap/bc/ui5_ui5/sap/y5vc_ccrm_reser",
+        "_version": "1.1.0"
+    }
+}

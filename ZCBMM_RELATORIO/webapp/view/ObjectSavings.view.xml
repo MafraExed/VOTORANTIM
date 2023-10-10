@@ -1,0 +1,57 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns="sap.suite.ui.commons" xmlns:m="sap.m" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:viz.data="sap.viz.ui5.data" xmlns:viz="sap.viz.ui5.controls" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+	controllerName="ZCBMM_RELATORIO.ZCBMM_RELATORIO.controller.ObjectSavings">
+	<ChartContainer id="idChartContainerSavings" title="{i18n>savingsTitle}" showFullScreen="true" autoAdjustHeight="true" showLegend="true"
+		class="ChartContainerHeader" showPersonalization="false" contentChange="attachContentChange">
+		<dimensionSelectors>
+			<m:Button id='naviButtonSavings' type="Back" press="navButtonPress" visible="{device>/isPhone}"/>
+			<m:Select selectedKey="Column" change="onChangeChart">
+				<m:items>
+					<core:Item text="Scatter" key="Scatter"/>
+					<core:Item text="Linha" key="Line"/>
+					<core:Item text="Coluna" key="Column"/>
+				</m:items>
+			</m:Select>
+		</dimensionSelectors>
+		<content>
+			<ChartContainerContent icon="sap-icon://horizontal-bar-chart">
+				<content>
+					<viz:Popover id="idPopOverSavings"></viz:Popover>
+					<viz:VizFrame id="idoVizFrameSavings" vizType='timeseries_column' uiConfig="{applicationSet:'fiori'}"
+						vizProperties="{
+			                plotArea: {
+			                  dataLabel: {
+			                    visible: true
+			                  },
+			                  colorPalette: ['#5cbae6', '#b6d957', '#fac364']
+			                },
+			                legend: {
+			                  title: {
+			                    visible: false
+			                  }
+			                },
+			                title: {
+			                  visible: true,
+			                  text: 'Relatório Savings'
+			                }
+			              }">
+						<viz:dataset>
+							<viz.data:FlattenedDataset data="{/ZET_CBMM_CF_SAVINGSSet}">
+								<viz.data:dimensions>
+									<viz.data:DimensionDefinition name="Date" value="{path: 'DtFim'}" dataType="date"/>
+								</viz.data:dimensions>
+								<viz.data:measures>
+									<viz.data:MeasureDefinition name="Valor" value="{Valor}"/>
+								</viz.data:measures>
+							</viz.data:FlattenedDataset>
+						</viz:dataset>
+						<viz:feeds>
+							<viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Valor"/>
+							<viz.feeds:FeedItem uid="timeAxis" type="Dimension" values="Date"/>
+						</viz:feeds>
+					</viz:VizFrame>
+				</content>
+			</ChartContainerContent>
+		</content>
+	</ChartContainer>
+</mvc:View>

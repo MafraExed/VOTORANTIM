@@ -1,0 +1,27 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="FibriaStatusViagem.controller.TripCodePopover" xmlns="sap.m">
+    <Popover contentHeight="140px" contentWidth="auto" horizontalScrolling="false" modal="false" offsetX="0" offsetY="0" placement="Bottom" showHeader="true" title="Adicionar Código de Viagem" verticalScrolling="false" visible="true">
+        <content>
+            <Input placeholder="655321" type="Number" showValueHelp="false" enabled="true" visible="true" width="100%" valueHelpOnly="false" maxLength="0"/>
+            <Button text="Confirmar" class="buttonConfirmCode" type="Emphasized" iconFirst="true" width="100%" enabled="true" visible="true" iconDensityAware="false" press="_onConfirmCodeButtonPress"/>
+        </content>
+        <beginButton/>
+        <customHeader>
+		<Bar>
+		<contentLeft>
+		
+		</contentLeft>
+		
+		<contentMiddle>
+		<Text text = "Adicionar Código de Viagem"></Text>
+		</contentMiddle>
+		
+		<contentRight>
+		<Button type="Transparent" icon="sap-icon://decline" press="_onClosePopoverButtonPress"></Button>
+		</contentRight>		
+		</Bar>
+		</customHeader>
+        <endButton/>
+        <footer/>
+        <subHeader/>
+    </Popover>
+</mvc:View>

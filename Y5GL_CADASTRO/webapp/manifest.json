@@ -1,0 +1,336 @@
+{
+    "_version": "1.12.0",
+    "sap.app": {
+        "id": "Y5GL_CADASTRO.Y5GL_CADASTRO",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "resources": "resources.json",
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/sap/ZGWGLRH_MEU_CADASTRO_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/metadata.xml"
+                }
+            },
+            "ZGWGLRH_MEU_CADASTRO_SRV": {
+                "uri": "/sap/opu/odata/sap/ZGWGLRH_MEU_CADASTRO_SRV/",
+                "type": "OData",
+                "settings": {
+                    "localUri": "localService/ZGWGLRH_MEU_CADASTRO_SRV/metadata.xml"
+                }
+            }
+        },
+        "sourceTemplate": {
+            "id": "servicecatalog.connectivityComponentForManifest",
+            "version": "0.0.0",
+            "toolsId": "6a8736bb-74b9-4852-987d-21ddbb95220a"
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "sap-icon://detail-view",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "rootView": {
+            "viewName": "Y5GL_CADASTRO.Y5GL_CADASTRO.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "app"
+        },
+        "dependencies": {
+            "minUI5Version": "1.50.0",
+            "libs": {
+                "sap.ui.core": {},
+                "sap.m": {},
+                "sap.f": {},
+                "sap.ushell": {},
+                "sap.collaboration": {
+                    "lazy": true
+                }
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "Y5GL_CADASTRO.Y5GL_CADASTRO.i18n.i18n"
+                }
+            },
+            "": {
+                "type": "sap.ui.model.odata.v2.ODataModel",
+                "settings": {
+                    "defaultOperationMode": "Server",
+                    "defaultBindingMode": "OneWay",
+                    "defaultCountMode": "Request",
+                    "useBatch": false
+                },
+                "dataSource": "mainService",
+                "preload": true
+            }
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.f.routing.Router",
+                "viewType": "XML",
+                "viewPath": "Y5GL_CADASTRO.Y5GL_CADASTRO.view",
+                "controlId": "layout",
+                "controlAggregation": "beginColumnPages",
+                "bypassed": {
+                    "target": "notFound"
+                },
+                "async": true
+            },
+            "routes": [
+                {
+                    "pattern": "",
+                    "name": "master",
+                    "target": "master"
+                },
+                {
+                    "pattern": "ZET_GLHR_MEU_CADASTROSet/{objectId}",
+                    "name": "object",
+                    "target": [
+                        "master",
+                        "object"
+                    ]
+                },
+                {
+                    "name": "BENEFICIOS",
+                    "pattern": "BENEFICIOS/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "master",
+                        "BENEFICIOS"
+                    ]
+                },
+                {
+                    "name": "DADOS_PESSOAIS",
+                    "pattern": "DADOS_PESSOAIS/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "master",
+                        "DADOS_PESSOAIS"
+                    ]
+                },
+                {
+                    "name": "DEPENDENTES",
+                    "pattern": "DEPENDENTES/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "master",
+                        "DEPENDENTES"
+                    ]
+                },
+                {
+                    "name": "DOCUMENTOS",
+                    "pattern": "DOCUMENTOS/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "master",
+                        "DOCUMENTOS"
+                    ]
+                },
+                {
+                    "name": "ENDERECO",
+                    "pattern": "ENDERECO/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "master",
+                        "ENDERECO"
+                    ]
+                },
+                {
+                    "name": "DepententeDetail",
+                    "pattern": "DepententeDetail/{Pernr}/{Subty}/{Objps}/{Tipo}/{Favor}/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "master",
+                        "DepententeDetail"
+                    ]
+                },
+                {
+                    "name": "DependentesAdd",
+                    "pattern": "DependenteAdd/{Pernr}/{Subty}/{Objps}/{Tipo}/{Favor}/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "master",
+                        "DepententeDetail"
+                    ]
+                },
+                {
+                    "name": "BENEFICIOS_DETAIL",
+                    "pattern": "BENEFICIOS_DETAIL/{Zparam}/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "master",
+                        "BENEFICIOS_DETAIL"
+                    ]
+                },
+                {
+                    "name": "FORMACAO",
+                    "pattern": "FORMACAO/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "master",
+                        "FORMACAO"
+                    ]
+                },
+                {
+                    "name": "FORMACAO_DETAIL",
+                    "pattern": "FORMACAO_DETAIL/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "master",
+                        "FORMACAO_DETAIL"
+                    ]
+                }
+            ],
+            "targets": {
+                "master": {
+                    "viewName": "Master",
+                    "viewLevel": 1,
+                    "viewId": "master"
+                },
+                "object": {
+                    "viewName": "Detail",
+                    "viewId": "detail",
+                    "viewLevel": 1,
+                    "controlAggregation": "midColumnPages"
+                },
+                "detailObjectNotFound": {
+                    "viewName": "DetailObjectNotFound",
+                    "viewId": "detailObjectNotFound",
+                    "controlAggregation": "midColumnPages"
+                },
+                "notFound": {
+                    "viewName": "NotFound",
+                    "viewId": "notFound"
+                },
+                "BENEFICIOS": {
+                    "viewType": "XML",
+                    "viewName": "BENEFICIOS",
+                    "title": "BenefÃ­cios",
+                    "viewId": "BENEFICIOS",
+                    "viewLevel": 1,
+                    "controlAggregation": "midColumnPages"
+                },
+                "DADOS_PESSOAIS": {
+                    "viewType": "XML",
+                    "viewName": "DADOS_PESSOAIS",
+                    "title": "Dados Pessoais",
+                    "viewId": "DADOS_PESSOAIS",
+                    "viewLevel": 1,
+                    "controlAggregation": "midColumnPages"
+                },
+                "DEPENDENTES": {
+                    "viewType": "XML",
+                    "viewName": "DEPENDENTES",
+                    "title": "Dependentes",
+                    "viewId": "DEPENDENTES",
+                    "viewLevel": 1,
+                    "controlAggregation": "midColumnPages"
+                },
+                "DOCUMENTOS": {
+                    "viewType": "XML",
+                    "viewName": "DOCUMENTOS",
+                    "title": "Documentos",
+                    "viewId": "DOCUMENTOS",
+                    "viewLevel": 1,
+                    "controlAggregation": "midColumnPages"
+                },
+                "ENDERECO": {
+                    "viewType": "XML",
+                    "viewName": "ENDERECO",
+                    "title": "EndereÃ§o",
+                    "viewId": "ENDERECO",
+                    "viewLevel": 1,
+                    "controlAggregation": "midColumnPages"
+                },
+                "DepententeDetail": {
+                    "viewType": "XML",
+                    "viewName": "DepententeDetail",
+                    "title": "Dependente",
+                    "viewId": "DepententeDetail",
+                    "viewLevel": 2,
+                    "controlAggregation": "midColumnPages"
+                },
+                "DependentesAdd": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewName": "DepententeDetail",
+                    "title": "Dependente",
+                    "viewId": "DepententeDetail",
+                    "viewLevel": 2,
+                    "controlAggregation": "midColumnPages"
+                },
+                "BENEFICIOS_DETAIL": {
+                    "viewType": "XML",
+                    "viewName": "BENEFICIOS_DETAIL",
+                    "title": "Beneficios",
+                    "viewId": "BENEFICIOS_DETAIL",
+                    "viewLevel": 2,
+                    "controlAggregation": "midColumnPages"
+                },
+                "FORMACAO": {
+                    "viewType": "XML",
+                    "viewName": "FORMACAO",
+                    "title": "FormaÃ§Ã£o",
+                    "viewId": "FORMACAO",
+                    "viewLevel": 2,
+                    "controlAggregation": "midColumnPages"
+                },
+                "FORMACAO_DETAIL": {
+                    "viewType": "XML",
+                    "viewName": "FORMACAO_DETAIL",
+                    "title": "Formacao",
+                    "viewId": "FORMACAO_DETAIL",
+                    "viewLevel": 2,
+                    "controlAggregation": "midColumnPages"
+                }
+            }
+        },
+        "flexEnabled": true
+    },
+    "sap.platform.abap": {
+        "uri": "/sap/bc/ui5_ui5/sap/y5gl_cadastro/webapp",
+        "_version": "1.1.0"
+    },
+    "sap.platform.hcp": {
+        "uri": "webapp",
+        "_version": "1.1.0"
+    }
+}

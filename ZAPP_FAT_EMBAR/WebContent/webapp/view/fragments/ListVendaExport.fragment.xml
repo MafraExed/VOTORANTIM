@@ -1,0 +1,174 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout" xmlns:footerbar="sap.ushell.ui.footerbar">
+
+	<Panel width="auto">
+		<headerToolbar>
+			<Toolbar>
+				<Title id="tableVendaExport" text="{i18n>itemListTableVendaExportTitle}" />
+				<ToolbarSpacer />
+			<SearchField
+						id="detailFilter"
+						placeholder="{i18n>detailTitleFilterPlaceHolder}"
+						search="onSearch" 
+						width="15rem"/>
+			</Toolbar>
+		</headerToolbar>
+		<content>
+			<Table id="shipDetailVendaExportTable" items="{detailView>/tableVendaExport}"
+				inset="false" FixedLayout="true" growing="true" growingThreshold="3"
+				growingScrollToLoad="true">
+
+				<columns>
+					<Column width="6rem">
+						<Text text="{i18n>detailTitleTableVbelnVl}" />
+					</Column>
+				
+					<Column width="3rem" hAlign="Center">
+						<Text text="{i18n>detailTitleTableTpVenda}" />
+					</Column>
+					<Column width="4rem" minScreenWidth="Tablet" demandPopin="true">
+						<Text text="{i18n>detailTitleTablePortoDestino}" />
+					</Column>
+
+					<Column width="5rem" minScreenWidth="Tablet" demandPopin="true">
+						<Text text="{i18n>detailTitleTableAuart}" />
+					</Column>
+					<Column width="5rem" minScreenWidth="Tablet" demandPopin="true">
+						<Text text="{i18n>detailTitleTableBukrs}" />
+					</Column>
+					<Column width="5rem" minScreenWidth="Tablet" demandPopin="true">
+						<Text text="{i18n>detailTitleTableKunnr}" />
+					</Column>
+					<Column width="3rem" minScreenWidth="Tablet" demandPopin="true">
+						<Text text="{i18n>detailTitleTableZterm}" />
+					</Column>
+					<Column width="6.5rem" minScreenWidth="Tablet" demandPopin="true">
+						<Text text="{i18n>detailTitleTableInco}" />
+					</Column>
+					<Column width="5rem" minScreenWidth="Tablet" 
+						demandPopin="true">
+						<Text text="{i18n>detailTitleTablePeso}" />
+					</Column>
+					
+					<Column width="5rem" minScreenWidth="Tablet" 
+						demandPopin="true">
+						<Text text="{i18n>detailTitleTableVolumn}" />
+					</Column>
+				
+					<Column width="5rem" minScreenWidth="Tablet"
+						demandPopin="true">
+						<Text text="{i18n>detailTitleTablePrsdt}" />
+					</Column>
+					
+					<Column width="9rem" minScreenWidth="Tablet" 
+						demandPopin="true">
+						<Text text="{i18n>detailTitleTableNetwr}" />
+					</Column>
+				
+					<Column width="6rem" minScreenWidth="Tablet" 
+						demandPopin="true">
+						<Text text="{i18n>detailTitleTableVlfrete}" />
+					</Column>
+					<Column width="6rem" minScreenWidth="Tablet"
+						demandPopin="true">
+						<Text text="{i18n>detailTitleTableVlseguro}" />
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem type="Navigation" press="onHandleItemFatura">
+						<cells>
+							<Text text="{detailView>VbelnVa}" />
+						</cells>
+					
+						<cells>
+							<Text
+								text="{path: 'detailView>Tipovenda', formatter: '.formatter.formatTipoVenda'}" />
+						</cells>
+						<cells>
+							<Text text="{detailView>Ptdst}" />
+						</cells>
+
+						<cells>
+							<Text text="{detailView>Auart}" />
+						</cells>
+						<cells>
+							<Text text="{detailView>Bukrs}" />
+						</cells>
+						<cells>
+							<Text text="{detailView>Kunnr}" />
+						</cells>
+						<cells>
+							<Text text="{detailView>Zterm}" />
+						</cells>
+						<cells>
+							<Text text="{detailView>Inco1} {detailView>Inco2}" />
+						</cells>
+						<cells>
+							<ObjectNumber
+								number="{path: 'detailView>Btgew', formatter:'.formatter.formatNumberBrazil'}"
+								unit="{detailView>Unit}" 
+								tooltip="{detailView>Unit}" 
+								emphasized="false"/>
+						</cells>
+						<cells>
+							<ObjectNumber number="{path : 'detailView>Volum', formatter:'.formatter.formatNumberBrazil', type : 'sap.ui.model.odata.type.String', 
+													constraints: { isDigitSequence : true, maxLength : 10 }}"
+										  unit="UN"
+										  emphasized="false"/> 
+							
+						</cells>
+						<cells>
+							<Text
+								text="{path: 'detailView>Prsdt',  
+											 		type: 'sap.ui.model.type.Date', 
+											 		formatOptions: {
+												 						pattern: 'dd.MM.yyyy', 
+												 						strictParsing: true , 
+												 						UTC: true
+											 					    }
+													}" />
+						</cells>
+						<cells>
+							<ObjectNumber 
+								number="{
+												parts:[{path:'detailView>Netwr'},{path:'detailView>Waerk'}],
+												type: 'sap.ui.model.type.Currency',
+												formatOptions: {showMeasure: false}
+											}"
+								unit="{detailView>Waerk}" 
+								tooltip="{detailView>Waerk}" 
+								emphasized="false"/>
+						</cells>
+						<cells>
+							<ObjectNumber 
+								number="{
+												parts:[{path:'detailView>Vlfrete'},{path:'detailView>Waerk'}],
+												type: 'sap.ui.model.type.Currency',
+												formatOptions: {showMeasure: false}
+											}"
+								unit="{detailView>Waerk}" 
+								tooltip="{detailView>Waerk}" 
+								emphasized="false"/>
+						</cells>
+
+						<cells>
+							<ObjectNumber 
+								number="{
+												parts:[{path:'detailView>Vlseguro'},{path:'detailView>Waerk'}],
+												type: 'sap.ui.model.type.Currency',
+												formatOptions: {showMeasure: false}
+											}"
+								unit="{detailView>Waerk}" 
+								tooltip="{detailView>Waerk}" 
+								emphasized="false"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+
+			</Table>
+
+		</content>
+	</Panel>
+
+</core:FragmentDefinition>

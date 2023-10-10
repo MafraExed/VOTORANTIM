@@ -1,0 +1,1 @@
+"use strict";sap.ui.define([],function(){var t={fieldname:function e(r){return r.split(/\s+/).map(function(e){return e.includes("_")?e.split(/_/).map(function(e){return t.firstLetter(e)}).join(""):t.firstLetter(e)}).join()},firstLetter:function t(e){return e&&e.charAt(0).toUpperCase()+e.slice(1).toLowerCase()}};return t});

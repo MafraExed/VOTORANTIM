@@ -1,0 +1,361 @@
+<mvc:View
+	controllerName="zvnmmvimapproval.controller.Detail"
+	xmlns="sap.m"
+	xmlns:semantic="sap.f.semantic"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:tnt="sap.tnt">
+
+	<semantic:SemanticPage
+		id="detailPage"
+		busy="{detailView>/busy}"
+		busyIndicatorDelay="{detailView>/delay}"
+        showFooter="true">
+		<semantic:titleHeading>
+			<Title
+				text="{i18n>invoice} {InvoiceKey}"
+				level="H2"/>
+		</semantic:titleHeading>
+		<semantic:headerContent>
+			<IconTabBar
+				id="idIconTabBar"
+				select=".onFilterSelect"
+				class="sapUiResponsiveContentPadding">
+				<items>
+					<IconTabFilter
+						icon="sap-icon://header"
+						text="Header"
+						key="Ok"
+						design="Horizontal">
+
+						<f:Form id="FormDisplay" editable="false">
+							<f:layout>
+							<f:ResponsiveGridLayout
+								labelSpanXL="4"
+								labelSpanL="4"
+								labelSpanM="12"
+								labelSpanS="12"
+								adjustLabelSpan="false"
+								emptySpanXL="0"
+								emptySpanL="0"
+								emptySpanM="0"
+								emptySpanS="0"
+								columnsXL="2"
+								columnsL="2"
+								columnsM="2"
+								singleContainerFullSize="false" />
+							</f:layout>
+							<f:formContainers>
+								<f:FormContainer title="{i18n>HeaderData}">
+									<f:formElements>
+										<f:FormElement label="{i18n>priceTitle}">
+											<f:fields>
+												<ObjectNumber
+													number="{
+															parts:[{path:'InvoiceAmount'},{path:'InvoiceCurrency'}],
+															type: 'sap.ui.model.type.Currency',
+															formatOptions: {showMeasure: true}
+															}"
+													unit="{ItemCurrency}" />
+											</f:fields>
+										</f:FormElement>
+
+										<f:FormElement label="{i18n>netAmount}">
+											<f:fields>
+												<ObjectNumber
+													number="{
+															parts:[{path:'NetAmount'},{path:'InvoiceCurrency'}],
+															type: 'sap.ui.model.type.Currency',
+															formatOptions: {showMeasure: true}
+															}"
+													unit="{ItemCurrency}" />
+											</f:fields>
+										</f:FormElement>
+
+										<f:FormElement label="{i18n>taxAmount}">
+											<f:fields>
+												<ObjectNumber
+													number="{
+															parts:[{path:'TaxAmount'},{path:'InvoiceCurrency'}],
+															type: 'sap.ui.model.type.Currency',
+															formatOptions: {showMeasure: true}
+															}"
+													unit="{ItemCurrency}" />
+											</f:fields>
+										</f:FormElement>
+
+										<f:FormElement label="{i18n>CompanyCode}">
+											<f:fields>
+												<Text text="{CompanyCode}"/>
+											</f:fields>
+										</f:FormElement>
+										<f:FormElement label="{i18n>Vendor}">
+											<f:fields>
+												<Text text="{VendorCode} / {VendorName}"/> 
+											</f:fields>
+										</f:FormElement>
+										<f:FormElement label="{i18n>VendorInvoice}">
+											<f:fields>
+												<Text text="{ReferenceNumber}"/> 
+											</f:fields>
+										</f:FormElement>										
+										<f:FormElement label="{i18n>PostingDate}">
+											<f:fields>
+												<Text text="{
+													path: 'PostingDate',
+													type: 'sap.ui.model.type.Date',
+													formatOptions: {
+														style: 'medium'
+													}}" />
+											</f:fields>
+										</f:FormElement>										
+										<f:FormElement label="{i18n>DueDate}">
+											<f:fields>
+												<Text text="{
+													path: 'DueDate',
+													type: 'sap.ui.model.type.Date',
+													formatOptions: {
+														style: 'medium'
+													}}" />
+											</f:fields>
+										</f:FormElement>										
+										<f:FormElement label="{i18n>ReceiptDate}">
+											<f:fields>
+												<Text text="{
+													path: 'ReceiptDate',
+													type: 'sap.ui.model.type.Date',
+													formatOptions: {
+														style: 'medium'
+													}}" />
+											</f:fields>
+										</f:FormElement>										
+									</f:formElements>
+								</f:FormContainer>
+							</f:formContainers>
+						</f:Form>
+					</IconTabFilter>
+					<IconTabSeparator />
+					<IconTabFilter
+						icon="sap-icon://begin"
+						text="{i18n>PreviousApprovals}"
+						design="Horizontal"
+						key="Ok">
+							<Table 
+								id="ApprovalItemsList"
+								width="auto"
+								items="{ToApprovalHistory}"
+								noDataText="{i18n>detailLineItemTableNoDataText}"
+								busyIndicatorDelay="{detailView>/lineItemTableDelay}">
+
+								<columns>
+									<Column width="100px">
+										<Text text="{i18n>LogCounter}"/>
+									</Column>
+									<Column width="100px">
+										<Text text="{i18n>ActualAppr}"/>
+									</Column>
+									<Column width="100px">
+										<Text text="{i18n>CompleteDate}"/>
+									</Column>
+									<Column width="100px">
+										<Text text="{i18n>CommentSummary}"/>
+									</Column>
+								</columns>
+								<items>
+									<ColumnListItem>
+										<cells>
+											<ObjectIdentifier
+												title="{LogCounter}"/>
+											<ObjectIdentifier
+												title="{ActualAppr}"/>
+											<ObjectIdentifier
+												title="{CompleteDate}"/>
+											<ObjectIdentifier
+												title="{CommentSummary}"/>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+		</semantic:headerContent>
+		<semantic:content>
+			<ScrollContainer  width="100%" horizontal="true" vertical="true" focusable="true">
+				<Table
+					id="lineItemsList"
+					width="auto"
+					items="{ToItems}"
+					updateFinished=".onListUpdateFinished"
+					noDataText="{i18n>detailLineItemTableNoDataText}"
+					busyIndicatorDelay="{detailView>/lineItemTableDelay}">
+					<headerToolbar>
+						<Toolbar>
+							<Title
+								id="lineItemsTitle"
+								text="{detailView>/lineItemListTitle}"
+								titleStyle="H3"
+								level="H3"/>
+						</Toolbar>
+					</headerToolbar>
+					<columns>
+						<Column width="140px">
+							<Text text="{i18n>detailLineItemTableIDColumn}"/>
+						</Column>
+						<Column width="140px">
+							<Text text="{i18n>material}"/>
+						</Column>
+						<Column width="140px">
+							<Text text="{i18n>itemPrice}"/>
+						</Column>
+						<Column width="140px">
+							<Text text="{i18n>quantity}"/>
+						</Column>
+						<Column width="140px">
+							<Text text="{i18n>PoNumberRef}"/>
+						</Column>
+						<Column width="140px">
+							<Text text="{i18n>DebitCredit}"/>
+						</Column>
+						<Column width="200px">
+							<Text text="{i18n>ItemText}"/>
+						</Column>
+						<Column width="140px">
+							<Text text="{i18n>Plant}"/>
+						</Column>
+						<Column width="140px">
+							<Text text="{i18n>CostCenter}"/>
+						</Column>
+						<Column width="140px">
+							<Text text="{i18n>Order}"/>
+						</Column>
+						<Column width="140px">
+							<Text text="{i18n>WBSElement}"/>
+						</Column>
+						<Column width="140px">
+							<Text text="{i18n>GLAccount}"/>
+						</Column>
+						<Column width="140px">
+							<Text text="{i18n>ProfitCenter}"/>
+						</Column>
+						<Column width="140px">
+							<Text text="{i18n>BusinessArea}"/>
+						</Column>
+						<!--
+						<Column
+							minScreenWidth="Tablet"
+							demandPopin="true"
+							hAlign="End">
+							<Text text="{i18n>detailLineItemTableUnitNumberColumn}"/>
+						</Column>
+						-->
+					</columns>
+					<items>
+						<ColumnListItem>
+							<cells>
+								<ObjectIdentifier
+									title="{ItemNo}"/>
+								
+								<ObjectIdentifier
+									title="{Material}"
+									text="{Description}"/>
+								
+								<ObjectNumber
+									number="{
+											parts:[{path:'ItemPrice'},{path:'ItemCurrency'}],
+											type: 'sap.ui.model.type.Currency',
+											formatOptions: {showMeasure: false}
+											}"
+									unit="{ItemCurrency}" />
+								
+								<ObjectNumber
+									number="{ItemQty}"
+									unit="{Uom}" />
+								
+								<ObjectIdentifier
+									title="{PoNumber}"
+									text="{PoItem}"/>
+
+								<ObjectIdentifier
+									title="{DebitCredit}"/>
+								
+								<ObjectIdentifier
+									title="{ItemText}"/>
+
+								<ObjectIdentifier
+									title="{Plant}"/>
+
+								<ObjectIdentifier
+									title="{CostCenter}"/>
+
+								<ObjectIdentifier
+									title="{Order}"/>
+
+								<ObjectIdentifier
+									title="{WBSElement}"/>
+
+								<ObjectIdentifier
+									title="{GLAccount}"/>
+
+								<ObjectIdentifier
+									title="{ProfitCenter}"/>
+
+								<ObjectIdentifier
+									title="{BusinessArea}"/>
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+			</ScrollContainer>				
+		</semantic:content>
+		<!--Semantic ShareMenu Buttons-->
+		<!--
+		<semantic:sendEmailAction>
+			<semantic:SendEmailAction
+				id="shareEmail"
+				press=".onSendEmailPress"/>
+		</semantic:sendEmailAction>
+		-->
+		
+		<semantic:closeAction>
+			<semantic:CloseAction
+					id="closeColumn"
+					press=".onCloseDetailPress"/>
+		</semantic:closeAction>
+
+		<semantic:fullScreenAction>
+			<semantic:FullScreenAction
+					id="enterFullScreen"
+					visible="{= !${device>/system/phone} &amp;&amp; !${appView>/actionButtonsInfo/midColumn/fullScreen}}"
+					press=".toggleFullScreen"/>
+		</semantic:fullScreenAction>
+		<semantic:exitFullScreenAction>
+			<semantic:ExitFullScreenAction
+					id="exitFullScreen"
+					visible="{= !${device>/system/phone} &amp;&amp; ${appView>/actionButtonsInfo/midColumn/fullScreen}}"
+					press=".toggleFullScreen"/>
+		</semantic:exitFullScreenAction>
+		<semantic:positiveAction>
+			<semantic:PositiveAction press="onApproveButtonPress" text="{i18n>approve}"/>
+		</semantic:positiveAction>
+
+		<semantic:negativeAction>
+			<semantic:NegativeAction press="onRejectButtonPress" text="{i18n>reject}"/>
+		</semantic:negativeAction>		
+		<semantic:footerCustomActions>
+			<!--
+			<Button type="Accept"
+                    text="{i18n>approve}" 
+                    press="onApproveButtonPress" 
+                    ariaDescribedBy="acceptButtonDescription genericButtonDescription"/>
+			<Button type="Reject"  
+					press="onRejectButtonPress"
+					text="{i18n>reject}" />
+			-->
+			<Button icon="sap-icon://attachment-photo"  
+					text="{i18n>displayImage}"
+					press="onDisplayImagePress"/>
+		</semantic:footerCustomActions>
+	</semantic:SemanticPage>
+</mvc:View>

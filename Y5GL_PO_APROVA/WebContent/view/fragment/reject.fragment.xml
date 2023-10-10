@@ -1,0 +1,27 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+	<Dialog title="{i18n>REJECT}" type="Message" state="Error">
+		<content>
+			<Text text="{i18n>REJECTQUESTION} {Ebeln} ?" />
+			<f:SimpleForm>
+				<f:content>
+				</f:content>
+			</f:SimpleForm>
+			<ComboBox xmlns:sap.ui.core="sap.ui.core" items="{RejectionModel>/Items}" id="MotivoJust" width="100%" 
+					  selectedKey="{RejectionModel>/Key}" visible="{RejectionModel>/Visible}" placeholder="{i18n>REJECTPLCH}">
+				<items>
+					<sap.ui.core:ListItem key="{RejectionModel>CodMotivo}" text="{RejectionModel>Descricao}" enabled="true"/>
+				</items>
+			</ComboBox>		
+			<TextArea id="taReject" width="100%" rows="4" cols="20" height="100%"
+				value="{Coment}" placeholder="{i18n>INSERTACOMENT}" liveChange="onLiveButtonConfirm" />				
+		</content>
+		<beginButton>
+			<Button text="{i18n>CONFIRM}" press="onConfirmReject"
+				enabled="false" />
+		</beginButton>
+		<endButton>
+			<Button text="{i18n>CANCEL}" press="onCloseDialog" />
+		</endButton> 
+	</Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,94 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout" xmlns:footerbar="sap.ushell.ui.footerbar">
+
+	<Panel width="auto">
+		<headerToolbar>
+			<Toolbar>
+				<Title id="dadosRemessaTitle" text="{i18n>dadosRemessaTitle}"/>
+			</Toolbar>
+		</headerToolbar>   	
+		<content>		
+			<Table id="dadosRemessaTable" 
+				  items="{ShipmentDetailToDeliveryExport}" 
+				  fixedLayout="true"
+				  updateFinished="onHandleTableLoad"
+				   growing="true"
+				   growingThreshold="3"
+				   growingScrollToLoad="true"
+				   	growingDirection="Downwards"	>
+				<columns>
+					<Column width="6rem">
+						<Text text="{i18n>dadosRemessaColumnTableOrdem}" />
+					</Column>
+					<Column width="3rem">
+						<Text text="{i18n>dadosRemessaColumnTableItemOv}" />
+					</Column>
+					<Column width="5rem">
+						<Text text="{i18n>dadosRemessaColumnTableRemessa}" />
+					</Column>
+					<Column width="9rem">			
+						<Text text="{i18n>dadosRemessaColumnTableRecebedor}" />
+					</Column>
+					<Column width="4.5rem">			
+						<Text text="{i18n>dadosRemessaColumnTableMaterial}" />
+					</Column>
+					<Column width="5rem">
+						<Text text="{i18n>dadosRemessaColumnTableQtde}" />
+					</Column>
+					<Column width="7rem">
+						<Text text="{i18n>dadosRemessaColumnTableLocal}" />
+					</Column>
+					<Column width="5rem">
+						<Text text="{i18n>dadosRemessaColumnTableDeposito}" />
+					</Column>
+					<Column width="7rem">
+						<Text text="{i18n>dadosRemessaColumnTableItinerario}" />
+					</Column>
+					<Column width="8rem">
+						<Text text="{i18n>dadosRemessaColumnTableTransporte}" />
+					</Column>
+				</columns>
+				<items>				
+					<ColumnListItem>
+						<cells>
+							<Text text="{VbelnVa}" />
+						</cells>
+						<cells>
+							<Text text="{PosnrVa}" />
+						</cells>
+						<cells>
+							<Text text="{VbelnVl}" />
+						</cells>
+						<cells>
+							<ObjectNumber number="{Kunwe}" unit="{KunweTxt}"  tooltip="{KunweTxt}" emphasized="false"/>
+						</cells>
+						<cells>
+
+							<ObjectNumber number="{Matnr}" unit="{MatnrDsc}" tooltip="{MatnrDsc}" emphasized="false"/>
+						</cells>
+						<cells>
+							<ObjectNumber
+									number="{path: 'Lfimg',formatter:'.formatter.formatNumberBrazil'}"
+									unit="{Vrkme}" emphasized="false" tooltip="{Vrkme}"/>
+						</cells>
+						<cells>
+
+							<ObjectNumber number="{Vstel}" unit="{VstelDsc}" emphasized="false" tooltip="{VstelDsc}"/>
+						</cells>
+						<cells>
+							<Text text="{Lgort}" />
+						</cells>
+						<cells>
+							<ObjectNumber number="{Route}" unit="{RouteDsc}" emphasized="false" tooltip="{RouteDsc}"/>
+						</cells>
+						<cells>
+							<Text text="{Kzabe}" />
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+	</Panel>
+
+</core:FragmentDefinition>

@@ -1,0 +1,42 @@
+{
+    "_version": "1.0.0",
+    "sap.app": {
+        "_version": "1.0.0",
+        "id": "hcm.mypaystubs",
+        "type": "application",
+        "applicationVersion": {
+            "version": "1.8.41"
+        },
+        "ach": "PA-FIO",
+        "dataSources": {
+            "HCM_MY_PAYSTUBS_SRV": {
+                "uri": "/sap/opu/odata/sap/HCM_MY_PAYSTUBS_SRV/",
+                "settings": {
+                    "localUri": "localService/metadata.xml"
+                },
+                "type": "OData"
+            }
+        },
+        "sourceTemplate": {
+            "id": "@sap/ux-app-migrator:freestyle",
+            "version": "1.11.1",
+            "toolsId": "38fdda82-a432-4892-b1b3-75b6df1bb4b9"
+        }
+    },
+    "sap.ui": {
+        "_version": "1.0.0",
+        "technology": "UI5"
+    },
+    "sap.ui5": {
+        "_version": "1.0.0",
+        "dependencies": {
+            "minUI5Version": "1.28.5",
+            "libs": {
+                "sap.m": {},
+                "sap.me": {},
+                "sap.ca.scfld.md": {}
+            },
+            "components": {}
+        }
+    }
+}

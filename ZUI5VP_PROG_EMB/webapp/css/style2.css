@@ -1,0 +1,105 @@
+
+
+.sapMLIBSelected + .sapMListTblSubRow {
+    background: #e8eff6
+}
+
+
+.sapMLIB.sapMLIBSelected {
+    background: #e8eff6
+}
+
+.sapMPlanCal .sapMListBGTransparent .sapMLIB:not(.sapMLIBActive):not(.sapMLIBSelected):not(:hover),
+.sapMPlanCal .sapMListBGTranslucent .sapMLIB:not(.sapMLIBActive):not(.sapMLIBSelected):not(:hover),
+.sapMPlanCal .sapMListBGSolid .sapMLIB:not(.sapMLIBActive):not(.sapMLIBSelected):not(:hover) {
+    background: transparent
+}
+
+.sapMLIBHoverable.sapMLIBSelected:hover {
+    background: #dde8f1
+}
+
+.sapMP13nColumnsPanel .sapMLIB.sapMLIBSelected,
+.sapMP13nColumnsPanel .sapMLIB.sapMLIBSelected>td {
+    background-color: transparent
+}
+
+html.sap-desktop .sapMP13nColumnsPanel .sapMLIBSelected:not(.sapMLIBActive):not(.sapMALI):hover,
+html.sap-desktop .sapMP13nColumnsPanel .sapMLIBSelected:not(.sapMLIBActive):not(.sapMALI):hover>td {
+    background-color: #f0f0f0
+}
+
+
+.sapMPlanCal:not(.sapMPlanCalSuppressAlternatingRowColors)>.sapMList>table>tbody>tr:nth-child(even):not(.sapMListTblSubRow).sapMLIBSelected,
+.sapMSize0.sapMPlanCal:not(.sapMPlanCalSuppressAlternatingRowColors)>.sapMList>table>tbody>tr:nth-child(4n+3).sapMLIBSelected,
+.sapMSize0.sapMPlanCal:not(.sapMPlanCalSuppressAlternatingRowColors)>.sapMList>table>tbody>tr:nth-child(4n+3).sapMLIBSelected + .sapMListTblSubRow,
+.sapMSize1.sapMPlanCal:not(.sapMPlanCalSuppressAlternatingRowColors)>.sapMList>table>tbody>tr:nth-child(4n+3).sapMLIBSelected,
+.sapMSize1.sapMPlanCal:not(.sapMPlanCalSuppressAlternatingRowColors)>.sapMList>table>tbody>tr:nth-child(4n+3).sapMLIBSelected + .sapMListTblSubRow,
+.sapMPlanCal:not(.sapMPlanCalSuppressAlternatingRowColors)>.sapMList>table>tbody>tr.sapMListTblSubRow:nth-child(4n).sapMLIBSelected {
+    background-color: #e1ebf3
+}
+
+
+.sapMPlanCal:not(.sapMPlanCalSuppressAlternatingRowColors)>.sapMList>table>tbody>tr:nth-child(even):not(.sapMListTblSubRow).sapMLIBSelected.sapMLIBHoverable:hover,
+.sapMSize0.sapMPlanCal:not(.sapMPlanCalSuppressAlternatingRowColors)>.sapMList>table>tbody>tr:nth-child(4n+3).sapMLIBSelected.sapMLIBHoverable:hover,
+.sapMSize0.sapMPlanCal:not(.sapMPlanCalSuppressAlternatingRowColors)>.sapMList>table>tbody>tr:nth-child(4n+3).sapMLIBSelected.sapMLIBHoverable:hover + .sapMListTblSubRow,
+.sapMSize1.sapMPlanCal:not(.sapMPlanCalSuppressAlternatingRowColors)>.sapMList>table>tbody>tr:nth-child(4n+3).sapMLIBSelected.sapMLIBHoverable:hover,
+.sapMSize1.sapMPlanCal:not(.sapMPlanCalSuppressAlternatingRowColors)>.sapMList>table>tbody>tr:nth-child(4n+3).sapMLIBSelected.sapMLIBHoverable:hover + .sapMListTblSubRow,
+.sapMPlanCal:not(.sapMPlanCalSuppressAlternatingRowColors)>.sapMList>table>tbody>tr.sapMListTblSubRow:nth-child(4n).sapMLIBSelected.sapMLIBHoverable:hover {
+    background-color: #d9e6f0
+}
+
+.sapContrast.sapMPlanCal .sapMListBGTransparent .sapMLIB:not(.sapMLIBActive):not(.sapMLIBSelected):not(:hover),
+.sapContrast .sapMPlanCal .sapMListBGTransparent .sapMLIB:not(.sapMLIBActive):not(.sapMLIBSelected):not(:hover) {
+    background: transparent
+}
+
+.sapContrast.sapMPlanCal .sapMListBGTranslucent .sapMLIB:not(.sapMLIBActive):not(.sapMLIBSelected):not(:hover),
+.sapContrast .sapMPlanCal .sapMListBGTranslucent .sapMLIB:not(.sapMLIBActive):not(.sapMLIBSelected):not(:hover) {
+    background: transparent
+}
+
+.sapContrast.sapMPlanCal .sapMListBGSolid .sapMLIB:not(.sapMLIBActive):not(.sapMLIBSelected):not(:hover),
+.sapContrast .sapMPlanCal .sapMListBGSolid .sapMLIB:not(.sapMLIBActive):not(.sapMLIBSelected):not(:hover) {
+    background: transparent
+}
+
+.sapContrast.sapMLIBSelected + .sapMListTblSubRow,
+.sapContrast .sapMLIBSelected + .sapMListTblSubRow {
+    background: #496b8a
+}
+
+.sapContrast.sapMLIBHoverable.sapMLIBSelected:hover + .sapMListTblSubRow,
+.sapContrast .sapMLIBHoverable.sapMLIBSelected:hover + .sapMListTblSubRow {
+    background: #4e7395
+}
+
+.sapContrast.sapMLIB.sapMLIBSelected,
+.sapContrast .sapMLIB.sapMLIBSelected {
+    background: #496b8a
+}
+
+.sapContrast.sapMLIBHoverable.sapMLIBSelected:hover,
+.sapContrast .sapMLIBHoverable.sapMLIBSelected:hover {
+    background: #4e7395
+}
+
+.sapContrast.sapMP13nColumnsPanel .sapMLIB.sapMLIBSelected,
+.sapContrast .sapMP13nColumnsPanel .sapMLIB.sapMLIBSelected {
+    background-color: transparent
+}
+
+.sapContrast.sapMP13nColumnsPanel .sapMLIB.sapMLIBSelected>td,
+.sapContrast .sapMP13nColumnsPanel .sapMLIB.sapMLIBSelected>td {
+    background-color: transparent
+}
+
+html.sap-desktop .sapContrast .sapMP13nColumnsPanel .sapMLIBSelected:not(.sapMLIBActive):not(.sapMALI):hover,
+html.sap-desktop .sapContrast.sapMP13nColumnsPanel .sapMLIBSelected:not(.sapMLIBActive):not(.sapMALI):hover {
+    background-color: #45596a
+}
+
+html.sap-desktop .sapContrast .sapMP13nColumnsPanel .sapMLIBSelected:not(.sapMLIBActive):not(.sapMALI):hover>td,
+html.sap-desktop .sapContrast.sapMP13nColumnsPanel .sapMLIBSelected:not(.sapMLIBActive):not(.sapMALI):hover>td {
+    background-color: #45596a
+}

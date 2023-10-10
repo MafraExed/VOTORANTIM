@@ -1,0 +1,48 @@
+<core:FragmentDefinition xmlns:uxap="sap.uxap"
+	xmlns="sap.m" xmlns:suite="sap.suite.ui.commons" 
+	xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" 
+	xmlns:ui="sap.ui.commons" xmlns:t="sap.ui.table">
+
+	
+
+	<ObjectHeader id="idObjHead" 
+				  title="{TitleHeader}"
+				  iconDensityAware="true"
+				  
+				  numberState="{Infostate}" 
+				  titleLevel="H1">
+		<attributes> 
+			<!-- <ObjectAttribute title="{i18n>objHeaderQtdUnit}"
+							 text="{QtdItensHeader}"/>
+							 
+							 
+			<ObjectAttribute title="{i18n>objHeaderVlr}"
+							 text="{NumberHeader}"/>	
+				 -->			 
+							 
+			<ObjectAttribute text="{DescriptionHeader1}"/>	
+			<ObjectAttribute text="{DescriptionHeader2}"/>	
+			<ObjectAttribute text="{DescriptionHeader3}"/>	
+										
+							 
+		 </attributes>
+		
+		<additionalNumbers>
+			<ObjectNumber number="{NumberHeader}" 
+						  tooltip="{i18n>objHeaderQtd}" 
+						  state="{Infostate}" 
+						  unit="{Numberunit}" />	</additionalNumbers>	
+						  
+		<additionalNumbers>
+			<ObjectNumber number="{QtdItensHeader}" 
+						  tooltip="{i18n>objHeaderQtd}" 
+						  state="Error" 
+						  unit="{i18n>objHeaderQtdUnit}" />	</additionalNumbers>
+						  
+						  
+					  
+	</ObjectHeader>
+	
+
+
+</core:FragmentDefinition>

@@ -1,0 +1,14 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog
+		title="Categoria de Risco"
+		class="sapUiPopupWithPadding"
+		items="{filter>/CatriscoSet}"
+		search="_handleCatriscoSHSearch"
+		confirm="_handleCatriscoSHClose"
+		cancel="_handleCatriscoSHClose">
+		<StandardListItem
+			title="{filter>Catrisco}"/>
+	</SelectDialog>
+</core:FragmentDefinition>

@@ -1,0 +1,55 @@
+<core:FragmentDefinition xmlns="sap.ui.table" xmlns:mvc="sap.ui.core.mvc" xmlns:u="sap.ui.unified" xmlns:core="sap.ui.core" xmlns:m="sap.m" busy="true" busyIndicatorDelay="0">
+    <m:Dialog contentWidth="1000px" title="Histórico de Modificações" showHeader="false" class="sapUiContentPadding" type="Standard">
+        <m:content>
+            <Table rows="{taskLogHistory>/}" title="Histórico de Modificações" selectionMode="None" visibleRowCount="Auto" paste="onPaste">
+                <columns>
+                    <Column width="20%">
+                        <m:Label text="Nome" />
+                        <template>
+                            <m:Text text="{taskLogHistory>NomeUsuario}" wrapping="false" />
+                        </template>
+                    </Column>
+                    <Column width="10%">
+                        <m:Label text="Usuário" />
+                        <template>
+                            <m:Text text="{taskLogHistory>UsuarioSap}" wrapping="false" />
+                        </template>
+                    </Column>
+                    <Column width="12%" hAlign="Center">
+                        <m:Label text="Data" />
+                        <template>
+                            <m:Text text="{ path: 'taskLogHistory>Data', formatter: '.formatter.formatDate' }" wrapping="false" />
+                        </template>
+                    </Column>
+                    <Column width="10%" hAlign="Center">
+                        <m:Label text="Hora" />
+                        <template>
+                            <m:Text text="{ path: 'taskLogHistory>Hora', formatter: '.formatter.formatTimeSeconds' }" wrapping="false" />
+                        </template>
+                    </Column>
+                    <Column width="18%" hAlign="Center">
+                        <m:Label text="Status" />
+                        <template>
+                            <m:ObjectStatus text="{ path: 'taskLogHistory>Status', formatter: '.formatter.getStatusText' }" state="{ path: 'taskLogHistory>Status', formatter: '.formatter.getStatusTaskState' }" />
+                        </template>
+                    </Column>
+                    <Column width="17%" hAlign="Center">
+                        <m:Label text="Motivo" />
+                        <template>
+                            <m:Text text="{ path: 'taskLogHistory>JustificativaCurta'}" wrapping="false" />
+                        </template>
+                    </Column>
+                    <Column width="5%" hAlign="Center">
+                        <m:Label text="" />
+                        <template>
+                            <m:Button icon="sap-icon://display" visible="{= ${taskLogHistory>JustificativaLonga} === '' ? false : true }" press="displayLongReason($event, ${taskLogHistory>JustificativaLonga})" />
+                        </template>
+                    </Column>
+                </columns>
+            </Table>
+        </m:content>
+        <m:endButton>
+            <m:Button text="Fechar" type="Transparent" press="onTaskLogHistorykDialogClose" />
+        </m:endButton>
+    </m:Dialog>
+</core:FragmentDefinition>

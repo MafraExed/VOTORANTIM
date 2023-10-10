@@ -1,0 +1,32 @@
+{
+  "run": [
+    {
+      "filePath": "/Component.js",
+      "previewMode": 1,
+      "dataMode": 1,
+      "workspace": "withoutWorkspace",
+      "ui5ActiveVersion": null,
+      "ui5VerSource": null,
+      "isDefaultVersion": 0,
+      "urlParameters": [
+        {
+          "paramName": "",
+          "paramValue": ""
+        }
+      ],
+      "hashParameter": "",
+      "backendSystem": [
+        {
+          "source": "SAP_GW_HUB",
+          "destinations": "SAP_GW_FI1_DEBUG_DESTINATION"
+        }
+      ],
+      "_metadata": {
+        "id": 3610462,
+        "runnerId": "fiorirunner",
+        "displayName": "Configuration 1",
+        "lastRunTimeStamp": 1544193741505
+      }
+    }
+  ]
+}

@@ -1,0 +1,219 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="com.sap.build.standard.operadorLogisticoCons.controller.Page1" xmlns:f="sap.f"
+	xmlns:variants="sap.ui.comp.variants" xmlns="sap.m" xmlns:filterbar="sap.ui.comp.filterbar" xmlns:core="sap.ui.core"
+	xmlns:u="sap.ui.unified">
+	<f:DynamicPage headerExpanded="true" showFooter="false" class="sapUiSizeCompact" navButtonPress="_onNavBack">
+		<f:title>
+			<f:DynamicPageTitle>
+				<f:heading>
+					<Title text="{i18n>TitleMonitor}"/>
+				</f:heading>
+			</f:DynamicPageTitle>
+		</f:title>
+		<f:header>
+			<f:DynamicPageHeader pinnable="false">
+				<f:content>
+					<filterbar:FilterBar useToolbar="true" showGoOnFB="true" search="_onSearch" persistencyKey="Z_COCKPIT_OP_LOG">
+						<filterbar:filterGroupItems >
+							<filterbar:FilterGroupItem label="Número NF-e" name="ipNfenum" groupName="gpFilter01" visibleInFilterBar="true">
+								<filterbar:control>
+									<MultiInput id="ipnfenum" showSuggestion="false" suggestionItemSelected="_onSuggestionItemSelected" showValueHelp="false"
+										suggestionRows="{NFHEADER>/ZET_VCMM_NFH_IHSet}" maxSuggestionWidth="500px">
+										<core:Item key="{NFHEADER>nfenum}" text="{NFHEADER>nfenum}"/>
+										<suggestionColumns >
+											<Column hAlign="Begin" popinDisplay="Inline" demandPopin="true" width="35px">
+												<Label text="Número NF-e"/>
+											</Column>
+											<Column hAlign="Center" popinDisplay="Inline" demandPopin="true" minScreenWidth="Tablet" width="10px">
+												<Label text="Série"/>
+											</Column>
+											<Column hAlign="Center" popinDisplay="Inline" demandPopin="false" minScreenWidth="Tablet" width="100px">
+												<Label text="Fornecedor"/>
+											</Column>
+										</suggestionColumns>
+										<suggestionRows>
+											<ColumnListItem>
+												<cells>
+													<Label text="{NFHEADER>nfenum}"/>
+													<Label text="{NFHEADER>series}"/>
+													<Label text="{NFHEADER>fornecedorNome}"/>
+												</cells>
+											</ColumnListItem>
+										</suggestionRows>
+									</MultiInput>
+								</filterbar:control>
+							</filterbar:FilterGroupItem>
+							<filterbar:FilterGroupItem label="Fornecedor" name="ipFornecedo2r" groupName="gpFilter01" visibleInFilterBar="true">
+								<filterbar:control>
+									<MultiInput id="ipFornecedor" showValueHelp="false" enableMultiLineMode="true"></MultiInput>
+								</filterbar:control>
+							</filterbar:FilterGroupItem>
+							<filterbar:FilterGroupItem label="Etapa" name="ipStatusNfe" groupName="gpFilter01" visibleInFilterBar="true">
+								<filterbar:control>
+									<MultiComboBox id="ipEtapa" items="{path: 'NFHEADER>/ZET_VCMM_STAGE_IHSet' }">
+										<core:Item key="{NFHEADER>StatusNfe}" text="{NFHEADER>Etapa}"/>
+									</MultiComboBox>
+								</filterbar:control>
+							</filterbar:FilterGroupItem>
+							<filterbar:FilterGroupItem label="Filial" name="fiFilial" groupName="gpFilter01" visibleInFilterBar="true">
+								<filterbar:control>
+									<MultiComboBox id="ipFilial" items="{path: 'NFHEADER>/ZET_VCMM_BRANCH_IHSet', sorter: { path: 'Name'} }">
+										<core:Item key="{NFHEADER>Branch}" text="{NFHEADER>Name}"/>
+									</MultiComboBox>
+								</filterbar:control>
+							</filterbar:FilterGroupItem>
+							<filterbar:FilterGroupItem label="Incoterms" name="ipIncoterms2" groupName="gpFilter01" visibleInFilterBar="true" >
+								<filterbar:control>
+									<MultiComboBox id="ipIncoterms" items="{path: 'NFHEADER>/ZET_VCMM_INCOTERMSSet' }">
+										<core:Item key="{NFHEADER>Incoterms}" text="{NFHEADER>Incoterms}"/>
+									</MultiComboBox>
+								</filterbar:control>
+							</filterbar:FilterGroupItem>
+							<filterbar:FilterGroupItem label="Chave NF-e" name="fiChvNfe" groupName="gpFilter01" visibleInFilterBar="true">
+								<filterbar:control>
+									<MultiInput id="ipchvnfe" showValueHelp="false" enableMultiLineMode="true"></MultiInput>
+								</filterbar:control>
+							</filterbar:FilterGroupItem>
+						</filterbar:filterGroupItems>
+					</filterbar:FilterBar>
+				</f:content>
+			</f:DynamicPageHeader>
+		</f:header>
+		<f:content>
+			<Table id="tbNF" width="auto" noDataText="Dados não encontrados" mode="MultiSelect" showSeparators="All" growing="true"
+				growingThreshold="20" growingScrollToLoad="true" fixedLayout="false" itemPress="_onItemPress" updateFinished="onUpdateFinished">
+				<infoToolbar>
+					<Toolbar width="100%" height="auto" design="Auto" visible="false" enabled="true">
+						<content>
+							<Label text="Label" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+						</content>
+					</Toolbar>
+				</infoToolbar>
+				<headerToolbar>
+					<OverflowToolbar width="auto" height="auto" design="Transparent" visible="true" enabled="true">
+						<Title text="{i18n>txt_title_documents}" level="H2" id="title_total_nf"/>
+						<content>
+							<ToolbarSpacer width=""/>
+							<Button id="idBtnTemplateCubagem" text="{i18n>BtnTemplateCubagem}" tooltip="{i18n>BtnTemplateCubagem}" icon="sap-icon://form"
+								iconFirst="true" visible="{Role>/oplog}" press="_onBtnTemplateCubagem"/>
+							<u:FileUploader id="fileUploader" name="myFileUpload" buttonOnly="true" buttonText="{i18n>UploadManifest}" icon="sap-icon://create-form"
+								uploadOnChange="true" change="handleUploadPress" tooltip="Importar Manifesto" fileType="csv" visible="{Role>/oplog}"
+								typeMissmatch="_onTypeMissmatch"></u:FileUploader>
+							<Button id="idBtnLogGR" text="{i18n>BtnLogErrorGR}" tooltip="{i18n>BtnLogErrorGR}" icon="sap-icon://form" iconFirst="true"
+								visible="{Role>/almox}" press="_onPressLogGR"/>
+							<Button id="idBtnGR" text="{i18n>BtnGR}" tooltip="{i18n>BtnGR}" icon="sap-icon://shipping-status" iconFirst="true" visible="{Role>/almox}"
+								press="_onPressGR"/>
+							<Button id="idBtnPrintVolumes" text="{i18n>BtnPrintVolumes}" tooltip="{i18n>BtnPrintVolumes}" icon="sap-icon://print" iconFirst="true"
+								visible="{Role>/oplog}" press="_onPressPrintVolumes"/>
+							<Button id="idBtnEdit" text="{i18n>BtnEdit}" tooltip="{i18n>BtnEdit}" icon="sap-icon://edit" iconFirst="true" visible="{Role>/oplog}"
+								press="_onPressEdit"/>
+							<Button id="idBtnSave" text="{i18n>BtnSave}" tooltip="{i18n>BtnSave}" icon="sap-icon://save" iconFirst="true" visible="false"
+								press="_onPressSave"/>
+							<Button id="idBtnCancelEdit" text="{i18n>BtnCancelEdit}" tooltip="{i18n>BtnCancelEdit}" icon="sap-icon://cancel" iconFirst="true"
+								visible="false" press="_onPressCancelEdit"/>
+							<Button id="idBtnCompleteNfe" text="{i18n>BtnCompleteNfe}" tooltip="{i18n>BtnCompleteNfe}" icon="sap-icon://bbyd-active-sales"
+								iconFirst="true" visible="{Role>/almox}" press="_onCompleteNfe"/>
+						</content>
+					</OverflowToolbar>
+				</headerToolbar>
+				<columns>
+					<Column width="auto" hAlign="Center" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline"
+						mergeDuplicates="false">
+						<header>
+							<Text text="Status" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+						</header>
+						<footer/>
+					</Column>
+					<Column width="auto" hAlign="Center" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline"
+						mergeDuplicates="false">
+						<header>
+							<Text text="Ação" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+						</header>
+						<footer/>
+					</Column>
+					<Column width="auto" hAlign="Center" vAlign="Middle" minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline"
+						mergeDuplicates="false">
+						<header>
+							<Text text="Incoterms" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+						</header>
+						<footer/>
+					</Column>
+					<Column width="auto" hAlign="Center" vAlign="Middle" minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline"
+						mergeDuplicates="false">
+						<header>
+							<Text text="Etapa" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+						</header>
+						<footer/>
+					</Column>
+					<Column width="auto" hAlign="Center" vAlign="Middle" minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline"
+						mergeDuplicates="false">
+						<header>
+							<Text text="BO Status" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+						</header>
+						<footer/>
+					</Column>
+					<Column width="auto" hAlign="Center" vAlign="Middle" minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline"
+						mergeDuplicates="false">
+						<header>
+							<Text text="Número Nota Fiscal" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+						</header>
+						<footer/>
+					</Column>
+					<Column width="auto" hAlign="Center" vAlign="Middle" minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline"
+						mergeDuplicates="false">
+						<header>
+							<Text text="Série" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+						</header>
+						<footer/>
+					</Column>
+					<Column width="auto" hAlign="Center" vAlign="Middle" minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline"
+						mergeDuplicates="false">
+						<header>
+							<Text text="Fornecedor" width="auto" maxLines="1" wrapping="false" textAlign="Begin" visible="true"/>
+						</header>
+						<footer/>
+					</Column>
+					<Column width="auto" hAlign="Center" vAlign="Middle" minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline"
+						mergeDuplicates="false">
+						<header>
+							<Text text="{i18n>Volumes}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+						</header>
+						<footer/>
+					</Column>
+					<Column width="auto" hAlign="Center" vAlign="Middle" demandPopin="true" minScreenWidth="Desktop" popinDisplay="Inline"
+						mergeDuplicates="false">
+						<header>
+							<Text text="Filial" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+						</header>
+						<footer/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem type="Active" counter="1">
+						<cells>
+							<core:Icon src="{NFHEADER>statusIcon}" color="{NFHEADER>statusColor}" size="24px" height="32px" width="32px"/>
+							<Text text="{NFHEADER>statusNfeDescr}" width="auto" maxLines="1" textAlign="Center" wrapping="true"/>
+							<ObjectStatus text="{NFHEADER>Incoterms}" state="{NFHEADER>IncotermsColor}"/>
+							<Text text="{NFHEADER>etapa}" width="auto" maxLines="2" textAlign="Center" wrapping="true"/>
+							<ObjectStatus text="{NFHEADER>StatusBoDescr}" state="{NFHEADER>StatusBoColor}"/>
+							<Text text="{NFHEADER>nfenum}" width="auto" maxLines="1" textAlign="Center"/>
+							<Text text="{NFHEADER>series}" width="auto" maxLines="1" textAlign="Center"/>
+							<ObjectIdentifier text="{path: 'NFHEADER>fornecedor' }" title="{NFHEADER>fornecedorNome}"/>
+							<Text text="{path: 'NFHEADER>vol', type : 'sap.ui.model.odata.type.String', constraints: { isDigitSequence : true, maxLength : 3}}"
+								width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+							<ObjectIdentifier text="{path: 'NFHEADER>branch' }" title="{NFHEADER>descricaoFilial}"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</f:content>
+		<f:footer>
+			<OverflowToolbar >
+				<content>
+					<ToolbarSpacer/>
+					<Button text="Save" type="Emphasized" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
+					<Button text="Cancel" type="Default" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
+				</content>
+			</OverflowToolbar>
+		</f:footer>
+	</f:DynamicPage>
+</mvc:View>

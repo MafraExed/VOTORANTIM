@@ -1,0 +1,143 @@
+{
+    "_version": "1.12.0",
+    "sap.app": {
+        "id": "Workspace.zagrupador",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "sourceTemplate": {
+            "id": "servicecatalog.connectivityComponentForManifest",
+            "version": "0.0.0",
+            "toolsId": "db9c3d5f-e1f6-4ca4-a112-7ebf3940babb"
+        },
+        "dataSources": {
+            "ZGWVCMM_GESTAO_ESTOQUE_SRV": {
+                "uri": "/sap/opu/odata/sap/ZGWVCMM_GESTAO_ESTOQUE_SRV/",
+                "type": "OData",
+                "settings": {
+                    "localUri": "localService/metadata.xml"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": false,
+        "rootView": {
+            "viewName": "Workspace.zagrupador.view.S0",
+            "type": "XML",
+            "async": true,
+            "id": "S0"
+        },
+        "dependencies": {
+            "minUI5Version": "1.50.0",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.ui.layout": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "Workspace.zagrupador.i18n.i18n"
+                }
+            },
+            "GE": {
+                "type": "sap.ui.model.odata.v2.ODataModel",
+                "settings": {
+                    "defaultOperationMode": "Server",
+                    "defaultBindingMode": "OneWay",
+                    "defaultCountMode": "Request",
+                    "useBatch": true
+                },
+                "dataSource": "ZGWVCMM_GESTAO_ESTOQUE_SRV",
+                "preload": true
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "Workspace.zagrupador.view",
+                "controlAggregation": "pages",
+                "controlId": "app",
+                "clearControlAggregation": false
+            },
+            "routes": [
+                {
+                    "name": "S0",
+                    "pattern": "",
+                    "target": [
+                        "S0"
+                    ]
+                },
+                {
+                    "name": "S1",
+                    "pattern": "S1/{agrupador}",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "S1"
+                    ]
+                }
+            ],
+            "targets": {
+                "S0": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "controlAggregation": "pages",
+                    "viewName": "S0",
+                    "viewLevel": 1,
+                    "viewPath": "Workspace.zagrupador.view"
+                },
+                "S1": {
+                    "viewType": "XML",
+                    "viewName": "S1",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewLevel": 2,
+                    "controlAggregation": "pages",
+                    "viewPath": "Workspace.zagrupador.view"
+                }
+            }
+        }
+    },
+    "sap.platform.abap": {
+        "uri": "/sap/bc/ui5_ui5/sap/y5vc_gemagretq/webapp",
+        "_version": "1.1.0"
+    }
+}

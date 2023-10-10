@@ -1,0 +1,15 @@
+<mvc:View
+		controllerName="y5fb.ui5.Dashboard.controller.BaseController"
+		xmlns:mvc="sap.ui.core.mvc"
+		xmlns="sap.m">
+
+	<MessagePage
+			id="page2"
+			title="NotFound"
+			text="Page NotFound"
+			icon="{sap-icon://product}"
+			description=""
+			showNavButton="{device>/system/phone}"
+			navButtonPress="onNavBack">
+	</MessagePage>
+</mvc:View>

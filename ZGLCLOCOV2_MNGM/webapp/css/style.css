@@ -1,0 +1,15 @@
+/* .detailView .sapMFlexItem {
+    flex: 1 1 auto !important;
+} */
+
+.add-dependent li[data-istask="folder"] .sapMCbMark{
+    visibility: hidden;
+}
+
+.custom-selected_row {
+    background: cyan;
+}
+
+.zpadding {
+    padding: 30px;
+}

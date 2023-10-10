@@ -1,0 +1,143 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns="sap.uxap" xmlns:layout="sap.ui.layout" xmlns:m="sap.m" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:smartFilterBar="sap.ui.comp.smartfilterbar" xmlns:smartTable="sap.ui.comp.smarttable" xmlns:com="sap.suite.ui.commons"
+	xmlns:form="sap.ui.layout.form" controllerName="zvpwfi0001_fi.controller.Page" xmlns:html="http://www.w3.org/1999/xhtml">
+	<m:App>
+		<m:Page id="IdPgOv" showHeader="false" class="sapUiSizeCompact">
+			<ObjectPageLayout id="idPageDetalhes" enableLazyLoading="true" class="sapUiSizeCompact">
+				<headerTitle>
+					<ObjectPageHeader id="headerForTest" objectTitle="{i18n>title}"></ObjectPageHeader>
+				</headerTitle>
+				<headerContent>
+					<layout:VerticalLayout>
+						<m:ObjectStatus title="{i18n>Empresa}" text="{Empresa} - {NomeEmpresa}"/>
+						<m:ObjectStatus title="{i18n>Documento}" text="{Documento}"/>
+						<m:ObjectStatus title="{i18n>Exercicio}" text="{Exercicio}"/>
+						<m:ObjectStatus title="{i18n>Fornecedor}" text="{Fornecedor} - {NomeForn}"/>
+						<m:ObjectStatus title="{i18n>DataVenc}"
+							text="{path:'DataVenc', type: 'sap.ui.model.type.DateTime', formatOptions: { pattern: 'dd/MM/yyyy', strictParsing: true , UTC: true } }"/>
+					</layout:VerticalLayout>
+					<layout:VerticalLayout>
+						<m:ObjectStatus title="{i18n>Solicitante}" text="{NameText}"/>
+						<m:ObjectStatus title="{i18n>C.Custo}" text="{CentroC}"/>
+						<m:ObjectStatus title="{i18n>Tipo}" text="{Tipo} - {Tipo_text}"/>
+					</layout:VerticalLayout>
+					<layout:VerticalLayout>
+						<layout:layoutData>
+							<ObjectPageHeaderLayoutData showSeparatorAfter="false"/>
+						</layout:layoutData>
+						<m:Label text="{i18n>Valor}"/>
+						<m:ObjectNumber class="sapUiSmallMarginBottom"
+							number="{ parts:[{path:'Valor'},{path:'Moeda'}], type: 'sap.ui.model.type.Currency', formatOptions: {showMeasure: false} }" unit="{Moeda}"/>
+					</layout:VerticalLayout>
+				</headerContent>
+				<headerContent>
+					<m:IconTabBar visible="true" selectedKey="Ok" upperCase="false" backgroundDesign="Solid" applyContentPadding="true" expanded="true"
+						expandable="false" select="onSelectChanged">
+						<m:items>
+							<m:IconTabFilter text="{i18n>Detalhes}" icon="sap-icon://hint" tooltip="{i18n>detailTitleTabFilterBar}">
+								<m:content>
+									<m:List headerText="" items="{ToDetalhe}" class="cust">
+										<m:CustomListItem>
+											<layout:VerticalLayout>
+												<m:ObjectStatus title="{Nome}" text="{Texto}"/>
+											</layout:VerticalLayout>
+										</m:CustomListItem>
+									</m:List>
+								</m:content>
+							</m:IconTabFilter>
+							<m:IconTabFilter text="{i18n>Aprovadores}" icon="sap-icon://citizen-connect" tooltip="{i18n>aproTitleTabFilterBar}">
+								<m:content>
+									<smartTable:SmartTable id="IdSmartRota" entitySet="Rotas" tableBindingPath="ToRotas" tableType="ResponsiveTable" useExportToExcel="false"
+										useVariantManagement="false" useTablePersonalisation="false" header="" showRowCount="false" enableAutoBinding="true"
+										persistencyKey="SmartTableAnalytical_Explored" demandPopin="true" editTogglable="false" class="sapUiSizeCompact">
+										<smartTable:customToolbar>
+											<m:Toolbar>
+												<m:ToolbarSpacer/>
+												<m:Button id="BtHistorico" icon="sap-icon://business-card" text="{i18n>BtnHistórico}" press="onHistory" tooltip="{i18n>BtnHistórico}"></m:Button>
+											</m:Toolbar>
+										</smartTable:customToolbar>
+										<m:Table id="IdHeaderSet" growing="true" growingThreshold="10" growingScrollToLoad="true" class="sapUiSizeCompact">
+											<m:columns>
+												<m:Column width="auto" hAlign="Left">
+													<m:customData>
+														<core:CustomData key="p13nData" value='\{"columnKey": "Nome","columnIndex":"0", "leadingProperty": ["Nome", "Grupo"]}'/>
+													</m:customData>
+													<m:Text text="{i18n>Nome}"/>
+												</m:Column>
+											</m:columns>
+											<m:columns>
+												<m:Column width="auto" hAlign="Left">
+													<m:customData>
+														<core:CustomData key="p13nData" value='\{"columnKey": "Status","columnIndex":"1","leadingProperty": "Status"}'/>
+													</m:customData>
+													<m:Text text="{i18n>Status}"/>
+												</m:Column>
+											</m:columns>
+											<m:columns>
+												<m:Column width="auto" hAlign="Left">
+													<m:customData>
+														<core:CustomData key="p13nData" value='\{"columnKey": "Recebido","columnIndex":"2", "leadingProperty": "Recebido"}'/>
+													</m:customData>
+													<m:Text text="{i18n>Recebido}"/>
+												</m:Column>
+											</m:columns>
+											<m:columns>
+												<m:Column width="auto" hAlign="Left">
+													<m:customData>
+														<core:CustomData key="p13nData" value='\{"columnKey": "Liberado","columnIndex":"3", "leadingProperty": "Liberado"}'/>
+													</m:customData>
+													<m:Text text="{i18n>Liberado}"/>
+												</m:Column>
+											</m:columns>
+											<m:items >
+												<m:ColumnListItem id="IdSmartRotaC" vAlign="Middle">
+													<m:cells>
+														<m:ObjectAttribute text="{Nome}" active="{path: 'Grupo', formatter: '.statusG'}" press="handleResponsivePopoverPress"/>
+														<m:ObjectStatus text="{path: 'Status', formatter: '.statusT'}" state="{path: 'Status', formatter: '.statusS'}"
+															icon="{path: 'Status', formatter: '.status'}"/>
+														<m:ObjectStatus text="{Recebido}"/>
+														<m:ObjectStatus text="{Liberado}"/>
+													</m:cells>
+												</m:ColumnListItem>
+											</m:items>
+										</m:Table>
+									</smartTable:SmartTable>
+								</m:content>
+							</m:IconTabFilter>
+						<!--	<m:IconTabFilter text="{i18n>Comentario}" icon="sap-icon://discussion-2" tooltip="{i18n>ComTitleTabFilterBar}">
+								<m:content>
+									<m:List headerText="" items="{ToCm}" class="cust">
+										<m:CustomListItem>
+											<m:FormattedText width="auto" htmlText="{Texto}" id="IdTextCm"/>
+										</m:CustomListItem>
+									</m:List>
+								</m:content>
+							</m:IconTabFilter>-->
+							<m:IconTabFilter text="{i18n>Comentario}" icon="sap-icon://work-history" tooltip="TimeLine">
+								<m:Panel id="idPanel" height="auto">
+									<com:Timeline id="idTimeline" enableDoubleSided="false" enableSocial="false" content="{ToTimeLine}" enableBackendFilter="true"
+										lazyLoading="true" growingThreshold="10" scrollingFadeout="None" showFilterBar="false" enableScroll="false" alignment="right">
+										<com:content>
+											<com:TimelineItem id="idTemplateItem" dateTime="{DataHora}" title="{Titulo}" userNameClickable="true" text="{Texto}" userName="{Nome}"
+												status="Information" icon="sap-icon://post" userPicture=""></com:TimelineItem>
+										</com:content>
+									</com:Timeline>
+								</m:Panel>
+							</m:IconTabFilter>
+						</m:items>
+					</m:IconTabBar>
+				</headerContent>
+			</ObjectPageLayout>
+			<m:footer>
+				<m:Toolbar>
+					<m:ToolbarSpacer/>
+					<m:Button text="{i18n>BtnAprovar}" type="Emphasized" press="onAprovar" tooltip="{i18n>BtnTitleApro}"
+						visible="{path: 'Administrador>/isApro'}"/>
+					<m:Button text="{i18n>BtnRejeitar}" press="onRejeitar" tooltip="{i18n>BtnTitleReje}" visible="{path: 'Administrador>/isApro'}"/>
+					<m:Button id="LogButtonMsg" text="{messagePopOver>/count}" tooltip="{i18n>MsgBtnLogPro}" icon="sap-icon://message-popup"
+						press="onHandleMessagePopover"/>
+				</m:Toolbar>
+			</m:footer>
+		</m:Page>
+	</m:App>
+</mvc:View>

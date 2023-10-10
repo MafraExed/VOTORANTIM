@@ -1,0 +1,111 @@
+.myButtonHeight .sapMBtnInner{
+	height: 120px !important;
+	width: 200px !important;
+	text-align: center !important;
+	display:table-cell !important;
+	vertical-align: middle !important;
+	color: #000000 !important;
+	font-size: 0.9rem !important;
+}
+.myLayoutHeightY {
+	height: 120px !important;
+}
+.myLayoutHeightX {
+	height: 35px !important;
+}
+.styleImpacto {
+	align: center !important;
+}
+.styleProbabilidade {
+	vertical-align: center !important;
+}
+.columnButtonY .sapMBtnInner{
+	background-color: #FFFFFF !important;
+	height: 120px !important;
+	width: 120px !important;
+	display:table-cell !important;
+	vertical-align: middle !important;
+	text-align: right !important;
+	border: none;
+	color: #000000!important;
+	font-size: 0.9rem !important;
+}
+.columnButtonX .sapMBtnInner{
+	background-color: #FFFFFF !important;
+	height: 28px !important;
+	width: 200px !important;
+	display:table-cell !important;
+	vertical-align: bottom !important;
+	border: none;
+	color: #000000 !important;
+	font-size: 0.9rem !important;
+}
+.imageAlignment {
+	align: center !important;
+}
+.backgroundColorVH .sapMBtnInner{
+	background-color: #FF0000 !important;
+}
+.backgroundColorH .sapMBtnInner{
+	background-color: #DE8703 !important;
+}
+.backgroundColorM .sapMBtnInner{
+	background-color: #FFFF00 !important;
+}
+.backgroundColorL .sapMBtnInner{
+	background-color: #00B050 !important;
+}
+.backgroundColorVL .sapMBtnInner{
+	background-color: #92D050 !important;
+}
+.myCustomText {
+  font-weight: bold !important;
+}
+
+.myCustomAlign {
+  text-align: right !important;
+}
+
+.myCustomSize {
+ font-size: 1rem !important;
+}
+
+.columnStyleGreen {
+  background-color: #00B050 !important;
+}
+
+.columnStyleGray {
+  background-color: #d5dadc !important;
+}
+
+.columnTextWhite {
+  color: #FFFFFF !important;
+}
+
+.imageNoMargin {
+  margin-bottom: -3.6px !important;
+}
+
+.noMarginTop {
+  margin-top: -5px !important;
+}
+
+.noMarginLeftRight {
+  margin-Left: -15px !important;
+  margin-Right: -15px !important;
+}
+
+.noMarginCellTop {
+  margin-top: -2.5px !important;
+}
+
+.marginTableIE {
+  margin-top: -1.5px !important;
+}
+
+.marginDefalt {
+  margin-top: 5px !important;
+  margin-bottom: 5px !important;
+  margin-Left: 5px !important;
+  margin-Right: 5px !important;
+}

@@ -1,0 +1,61 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:layout="sap.ui.layout" xmlns="sap.m" xmlns:core="sap.ui.core" controllerName="workspace.zleituraembarque.controller.Leitura" displayBlock="true">
+	<Shell id="shell">
+		<App id="idAppControl">
+			<pages>
+				<Page id="page" title="{i18n>TitlePage} - {path: 'Embarque', formatter: '.myFormatter.shiftLeadingZeros'} / {i18n>TitleRota} - {path: 'Rota'}" showNavButton="false" navButtonPress="onNavBack">
+					<content>
+						<sap.ui.layout.form:Form xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" id="form0">
+							<sap.ui.layout.form:formContainers>
+								<sap.ui.layout.form:FormContainer id="container0" expandable="true">
+									<sap.ui.layout.form:formElements>
+										<sap.ui.layout.form:FormElement label="{i18n>labelTpTransp}" id="element0">
+											<sap.ui.layout.form:fields>
+												<Select id="selectTpTransp" items="{/ZET_VCMM_VHILMSet}" selectedKey="{Vhilm}" change="handleChangeTpTransp">
+													<core:Item key="{Vhilm}" text="{Vhilm}"/>
+												</Select>
+											</sap.ui.layout.form:fields>
+										</sap.ui.layout.form:FormElement>
+									</sap.ui.layout.form:formElements>
+								</sap.ui.layout.form:FormContainer>
+							</sap.ui.layout.form:formContainers>
+							<sap.ui.layout.form:layout>
+								<sap.ui.layout.form:ResponsiveGridLayout id="layout0"/>
+							</sap.ui.layout.form:layout>
+						</sap.ui.layout.form:Form>
+						<Table noDataText="{i18n>TableNoDataText}" id="tableLeitura" items="{ path : 'ZAT_VCMM_EMBARQUE_HEADER_TO_EMBARQUE_ITM', parameters:{expand : 'ZAT_VCMM_EMBARQUE_ITEM_TO_NFHEADER'} }" showNoData="true" fixedLayout="false" mode="MultiSelect">
+							<items>
+								<ColumnListItem type="Active">
+									<cells>
+										<ObjectIdentifier title="{ZAT_VCMM_EMBARQUE_ITEM_TO_NFHEADER/nfenum}-{ZAT_VCMM_EMBARQUE_ITEM_TO_NFHEADER/series}"/>
+										<ObjectStatus text="{path: 'VolLido', formatter: '.myFormatter.shiftLeadingZeros'} / {path: 'ZAT_VCMM_EMBARQUE_ITEM_TO_NFHEADER/vol', formatter: '.myFormatter.shiftLeadingZeros'}" state="{parts:[{path:'VolLido'},{path:'ZAT_VCMM_EMBARQUE_ITEM_TO_NFHEADER/vol'}], formatter:'.myFormatter.statusStateVolumeLido'}"/>
+										<Label text="{ZAT_VCMM_EMBARQUE_ITEM_TO_NFHEADER/fornecedorNome}" wrapping="true"/>
+									</cells>
+								</ColumnListItem>
+							</items>
+							<columns>
+								<Column id="column1">
+									<header><Label text="{i18n>ColNroNFe}" id="label7" width="auto"/></header>
+								</Column>
+								<Column id="column2" hAlign="Center">
+									<header><Label text="{i18n>ColVolume}" id="label8" width="auto"/></header>
+								</Column>
+								<Column id="column0" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
+									<header><Label text="{i18n>ColFornecedor}" id="label5" width="auto"/></header>
+								</Column>
+							</columns>
+						</Table>
+					</content>
+					<footer>
+						<Bar id="bar3">
+							<contentMiddle>
+								<Button xmlns="sap.m" text="{i18n>BtnScanEtiq}" tooltip="{i18n>BtnScanEtiq}" icon="sap-icon://bar-code" id="button0" type="Default" press="onPressScan"/>
+								<Button xmlns="sap.m" text="{i18n>BtnFinalizar}" tooltip="{i18n>BtnFinalizar}" id="button3" icon="sap-icon://accept" type="Accept" press="handleSalvar"/>
+								<Button xmlns="sap.m" text="{i18n>BtnCancelarCont}" tooltip="{i18n>BtnCancelarCont}" id="button2" icon="sap-icon://decline" type="Reject" press="handleCancelar"/>
+							</contentMiddle>
+						</Bar>
+					</footer>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>

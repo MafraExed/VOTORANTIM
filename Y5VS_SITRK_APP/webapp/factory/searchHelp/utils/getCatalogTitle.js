@@ -1,0 +1,1 @@
+"use strict";sap.ui.define([],function(){return function(n){var r=n.SCRTEXT_L,t=n.REPTEXT;return r||t}});

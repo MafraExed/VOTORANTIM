@@ -1,0 +1,12 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" Version="1.0">
+	<edmx:DataServices xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:DataServiceVersion="2.0">
+		<Schema xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"
+			xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://schemas.microsoft.com/ado/2008/09/edm"
+			Namespace="PKG_COCKPIT_INTEGRACAO_EC.OData_TB_COCKPIT_INTEGRACAO_EC">
+			<EntityType Name="TB_COCKPIT_INTEGRACAO_ECType">
+				<Key><PropertyRef Name="GUID"/><PropertyRef Name="CompanyCode"/><PropertyRef Name="Processo"/><PropertyRef Name="IdProcesso"/><PropertyRef Name="Seq"/></Key><Property Name="GUID" Type="Edm.String" Nullable="false" MaxLength="255"/><Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4"/><Property Name="Processo" Type="Edm.String" Nullable="false" MaxLength="30"/><Property Name="IdProcesso" Type="Edm.String" Nullable="false" MaxLength="15"/><Property Name="Seq" Type="Edm.Byte" Nullable="false"/><Property Name="Msg" Type="Edm.String" MaxLength="1000"/><Property Name="MsgStatus" Type="Edm.String" MaxLength="10"/><Property Name="PAYLOAD" Type="Edm.String" MaxLength="2147483647"/><Property Name="Data" Type="Edm.DateTime"/></EntityType>
+			<EntityContainer Name="OData_TB_COCKPIT_INTEGRACAO_EC" m:IsDefaultEntityContainer="true"><EntitySet Name="TB_COCKPIT_INTEGRACAO_EC"
+				EntityType="PKG_COCKPIT_INTEGRACAO_EC.OData_TB_COCKPIT_INTEGRACAO_EC.TB_COCKPIT_INTEGRACAO_ECType"/></EntityContainer>
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

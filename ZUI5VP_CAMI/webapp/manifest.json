@@ -1,0 +1,91 @@
+{
+    "_version": "1.8.0",
+    "sap.app": {
+        "_version": "1.3.0",
+        "id": "FibriaStatusViagem",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "1.2.2"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "sourceTemplate": {
+            "id": "servicecatalog.connectivityComponent",
+            "version": "0.0.0",
+            "toolsId": "5ad57326-c73d-477a-a6b8-4f474ab5018d"
+        },
+        "dataSources": {
+            "ZGWVPWM_GESTAO_CAMINHOES_SRV": {
+                "uri": "/sap/opu/odata/sap/ZGWVPWM_GESTAO_CAMINHOES_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/metadata.xml"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "_version": "1.3.0",
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        },
+        "supportedThemes": [
+            "sap_hcb",
+            "sap_belize"
+        ]
+    },
+    "sap.ui5": {
+        "rootView": {
+            "viewName": "FibriaStatusViagem.view.App",
+            "type": "XML"
+        },
+        "dependencies": {
+            "minUI5Version": "1.50.0",
+            "libs": {
+                "sap.collaboration": {},
+                "sap.m": {},
+                "sap.ui.comp": {},
+                "sap.ui.core": {},
+                "sap.ui.layout": {},
+                "sap.ushell": {},
+                "sap.uxap": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "FibriaStatusViagem.i18n.i18n"
+                }
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        }
+    },
+    "sap.platform.abap": {
+        "uri": "/sap/bc/ui5_ui5/sap/zui5vp_cami",
+        "_version": "1.1.0"
+    }
+}

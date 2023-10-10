@@ -1,0 +1,1 @@
+sap.ui.define(["Y5GL_APROVB/Y5GL_APROVB/controller/BaseController"],function(e){"use strict";return e.extend("Y5GL_APROVB.Y5GL_APROVB.controller.DetailObjectNotFound",{})});

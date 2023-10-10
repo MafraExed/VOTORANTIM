@@ -1,0 +1,32 @@
+<mvc:View controllerName="cba.hr.sdvCalibracaoSF.controller.CalibrationSessions"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+	<Shell id="shell">
+		<App id="app">
+			<VBox>
+				<ObjectHeader id="CalibrationSessionsHeader" title="{i18n>CalibrationSessionTableTitle}" backgroundDesign="Solid" fullScreenOptimized="true"
+					condensed="true"/>
+				<Table id="CalibrationSessionTable" noDataText=" {i18n>CalibrationSessionTableNoDataText}" inset="false" items="{/oDataCalibration}">
+					<columns>
+						<Column width="12em" hAlign="Center">
+							<Text text="{i18n>CalibrationSessionTableColumnId}"/>
+						</Column>
+						<Column hAlign="Left">
+							<Text text="{i18n>CalibrationSessionTableColumnName}"/>
+						</Column>
+						<Column hAlign="Right"/>
+					</columns>
+					<items>
+						<ColumnListItem>
+							<cells>
+								<Text text="{sessionId}"/>
+								<Text text="{sessionName}"/>
+								<Button id="btnExibirSessao" text="{i18n>CalibrationSessionTableBtn}" class="sapUiMediumMarginEnd" type="Emphasized"
+									press="onExibirSessaoPress" app:sessionId="{sessionId}"/>
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+			</VBox>
+		</App>
+	</Shell>
+</mvc:View>

@@ -1,0 +1,276 @@
+{
+    "_version": "1.8.0",
+    "sap.app": {
+        "id": "fibria.y5vp_portalui5",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "sourceTemplate": {
+            "id": "servicecatalog.connectivityComponentForManifest",
+            "version": "0.0.0",
+            "toolsId": "2675324c-8ec6-45f2-a0f2-421305feaee5"
+        },
+        "dataSources": {
+            "ZGWBC_OV_PORTAL_SRV": {
+                "uri": "/sap/opu/odata/sap/ZGWBC_OV_PORTAL_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/metadata.xml"
+                }
+            },
+            "ZGWFBLP_PORTAL_SRV": {
+                "uri": "/sap/opu/odata/sap/ZGWFBLP_PORTAL_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/ZGWFBLP_PORTAL_SRV/metadata.xml"
+                }
+            },
+            "ZGWFBFI_PORTAL_SRV": {
+                "uri": "/sap/opu/odata/sap/ZGWFBFI_PORTAL_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/ZGWFBFI_PORTAL_SRV/metadata.xml"
+                }
+            },
+            "ZGWFBPO_PORTAL_SRV": {
+                "uri": "/sap/opu/odata/sap/ZGWFBPO_PORTAL_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/ZGWFBPO_PORTAL_SRV/metadata.xml"
+                }
+            },
+            "ZGWFBRC_PORTAL_SRV": {
+                "uri": "/sap/opu/odata/sap/ZGWFBRC_PORTAL_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/ZGWFBRC_PORTAL_SRV/metadata.xml"
+                }
+            },
+            "ZGWFBFS_PORTAL_SRV": {
+                "uri": "/sap/opu/odata/sap/ZGWFBFS_PORTAL_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/ZGWFBFS_PORTAL_SRV/metadata.xml"
+                }
+            },
+            "ZGWFBIV_PORTAL_SRV": {
+                "uri": "/sap/opu/odata/sap/ZGWFBIV_PORTAL_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/ZGWFBIV_PORTAL_SRV/metadata.xml"
+                }
+            },
+            "ZGWFBSISB_PORTAL_SRV": {
+                "uri": "/sap/opu/odata/sap/ZGWFBSISB_PORTAL_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/ZGWFBSISB_PORTAL_SRV/metadata.xml"
+                }
+            },
+            "ZGWFBDELEGACAO_PORTAL_SRV": {
+                "uri": "/sap/opu/odata/sap/ZGWFBDELEGACAO_PORTAL_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/ZGWFBDELEGACAO_PORTAL_SRV/metadata.xml"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        },
+        "supportedThemes": [
+            "sap_hcb",
+            "sap_bluecrystal"
+        ]
+    },
+    "sap.ui5": {
+        "rootView": {
+            "viewName": "fibria.y5vp_portalui5.view.Default",
+            "type": "XML"
+        },
+        "dependencies": {
+            "minUI5Version": "1.30.0",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.ui.layout": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "fibria.y5vp_portalui5.i18n.i18n"
+                }
+            },
+            "OV": {
+                "uri": "/sap/opu/odata/sap/ZGWBC_OV_PORTAL_SRV/",
+                "type": "sap.ui.model.odata.v2.ODataModel",
+                "settings": {
+                    "defaultOperationMode": "Server",
+                    "defaultBindingMode": "OneWay",
+                    "defaultCountMode": "Request"
+                },
+                "dataSource": "ZGWBC_OV_PORTAL_SRV",
+                "preload": true
+            },
+            "LP": {
+                "uri": "/sap/opu/odata/sap/ZGWFBLP_PORTAL_SRV/",
+                "type": "sap.ui.model.odata.v2.ODataModel",
+                "settings": {
+                    "defaultOperationMode": "Server",
+                    "defaultBindingMode": "OneWay",
+                    "defaultCountMode": "Request"
+                },
+                "dataSource": "ZGWFBLP_PORTAL_SRV",
+                "preload": true
+            },
+            "FI": {
+                "uri": "/sap/opu/odata/sap/ZGWFBFI_PORTAL_SRV/",
+                "type": "sap.ui.model.odata.v2.ODataModel",
+                "settings": {
+                    "defaultOperationMode": "Server",
+                    "defaultBindingMode": "OneWay",
+                    "defaultCountMode": "Request"
+                },
+                "dataSource": "ZGWFBFI_PORTAL_SRV",
+                "preload": true
+            },
+            "PO": {
+                "uri": "/sap/opu/odata/sap/ZGWFBPO_PORTAL_SRV/",
+                "type": "sap.ui.model.odata.v2.ODataModel",
+                "settings": {
+                    "defaultOperationMode": "Server",
+                    "defaultBindingMode": "OneWay",
+                    "defaultCountMode": "Request"
+                },
+                "dataSource": "ZGWFBPO_PORTAL_SRV",
+                "preload": true
+            },
+            "RC": {
+                "uri": "/sap/opu/odata/sap/ZGWFBRC_PORTAL_SRV/",
+                "type": "sap.ui.model.odata.v2.ODataModel",
+                "settings": {
+                    "defaultOperationMode": "Server",
+                    "defaultBindingMode": "OneWay",
+                    "defaultCountMode": "Request"
+                },
+                "dataSource": "ZGWFBRC_PORTAL_SRV",
+                "preload": true
+            },
+            "SR": {
+                "uri": "/sap/opu/odata/sap/ZGWFBFS_PORTAL_SRV/",
+                "type": "sap.ui.model.odata.v2.ODataModel",
+                "settings": {
+                    "defaultOperationMode": "Server",
+                    "defaultBindingMode": "OneWay",
+                    "defaultCountMode": "Request"
+                },
+                "dataSource": "ZGWFBFS_PORTAL_SRV",
+                "preload": true
+            },
+            "IV": {
+                "uri": "/sap/opu/odata/sap/ZGWFBIV_PORTAL_SRV/",
+                "type": "sap.ui.model.odata.v2.ODataModel",
+                "settings": {
+                    "defaultOperationMode": "Server",
+                    "defaultBindingMode": "OneWay",
+                    "defaultCountMode": "Request"
+                },
+                "dataSource": "ZGWFBIV_PORTAL_SRV",
+                "preload": true
+            },
+            "SISB": {
+                "uri": "/sap/opu/odata/sap/ZGWFBSISB_PORTAL_SRV/",
+                "type": "sap.ui.model.odata.v2.ODataModel",
+                "settings": {
+                    "defaultOperationMode": "Server",
+                    "defaultBindingMode": "OneWay",
+                    "defaultCountMode": "Request"
+                },
+                "dataSource": "ZGWFBSISB_PORTAL_SRV",
+                "preload": true
+            },
+            "DELE": {
+                "uri": "/sap/opu/odata/sap/ZGWFBDELEGACAO_PORTAL_SRV/",
+                "type": "sap.ui.model.odata.v2.ODataModel",
+                "settings": {
+                    "defaultOperationMode": "Server",
+                    "defaultBindingMode": "OneWay",
+                    "defaultCountMode": "Request"
+                },
+                "dataSource": "ZGWFBDELEGACAO_PORTAL_SRV",
+                "preload": true
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "fibria.y5vp_portalui5.view",
+                "controlAggregation": "pages",
+                "controlId": "idAppControl",
+                "clearControlAggregation": false
+            },
+            "routes": [
+                {
+                    "name": "RouteDefault",
+                    "pattern": "RouteDefault",
+                    "target": [
+                        "TargetDefault"
+                    ]
+                }
+            ],
+            "targets": {
+                "TargetDefault": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewName": "Default"
+                }
+            }
+        }
+    },
+    "sap.platform.abap": {
+        "uri": "/sap/bc/ui5_ui5/sap/y5vp_portalui5",
+        "_version": "1.1.0"
+    }
+}

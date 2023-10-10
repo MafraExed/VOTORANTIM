@@ -1,0 +1,1 @@
+sap.ui.define(["sap/ui/test/Opa5","./Common"],function(s,t){"use strict";s.createPageObjects({onTheBrowser:{baseClass:t,actions:{iPressOnTheBackwardsButton:function(){return this.waitFor({success:function(){s.getWindow().history.back()}})},iPressOnTheForwardsButton:function(){return this.waitFor({success:function(){s.getWindow().history.forward()}})}},assertions:{}}})});

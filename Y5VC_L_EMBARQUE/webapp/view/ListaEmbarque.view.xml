@@ -1,0 +1,37 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml"
+	controllerName="workspace.zleituraembarque.controller.ListaEmbarque">
+	<App id="idAppControl">
+		<pages>
+			<Page title="{i18n>title}">
+				<content>
+					<!-- Para buscar somente os iniciados -->
+					<List noDataText="{i18n>NotFound}" id="list0" includeItemInSelection="true" growing="true" growingThreshold="10" growingScrollToLoad="false">
+						<items>
+							<!-- Template -->
+							<StandardListItem type="Navigation" title="{path: 'Embarque', formatter: '.myFormatter.shiftLeadingZeros'} / {i18n>TitleRota} - {path: 'Rota'}"
+								description="{parts:[{path:'Data'},{path:'Hora'}], formatter:'.myFormatter.dateTime'}" id="item0" activeIcon="sap-icon://accept"
+								icon="sap-icon://bus-public-transport" visible="true" press="handleListItemPress"/>
+						</items>
+						<headerToolbar>
+							<Toolbar width="100%" id="toolbar1">
+								<content>
+									<SearchField xmlns="sap.m" search="handleSearch" placeholder="{i18n>SearchFor}" id="field0"/>
+								</content>
+							</Toolbar>
+						</headerToolbar>
+					</List>
+				</content>
+				<footer>
+					<Bar id="bar3">
+						<contentMiddle>
+							<Button xmlns="sap.m" text="{i18n>BtnScanEtiq}" tooltip="{i18n>BtnScanEtiq}" icon="sap-icon://bar-code" id="button0" type="Default"
+								press="handlePressScan" activeIcon="sap-icon://accept"/>
+							<Button xmlns="sap.m" text="{i18n>BtnCriar}" tooltip="{i18n>BtnCriar}" id="button3" icon="sap-icon://create" type="Accept"
+								press="handleCriar" activeIcon="sap-icon://accept"/>
+						</contentMiddle>
+					</Bar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

@@ -1,0 +1,17 @@
+/* Enter your custom styles here
+.sapUiGlobalBackgroundColor, .sapMShellGlobalInnerBackground {
+    background-color: transparent;
+}
+
+.sapMPageBgStandard {
+  background-color: transparent;
+}
+
+.sapUiGlobalBackgroundColor, .sapMShellGlobalInnerBackground, .myCustom {
+   background-color: transparent;
+}
+*/
+
+.sapUshellShell .sapMPageBgStandard {
+  background-color: transparent !important;
+}

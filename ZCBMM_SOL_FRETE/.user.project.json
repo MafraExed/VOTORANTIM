@@ -1,0 +1,27 @@
+{
+  "run": [
+    {
+      "filePath": "/Component.js",
+      "previewMode": 1,
+      "dataMode": 1,
+      "workspace": "withoutWorkspace",
+      "ui5ActiveVersion": null,
+      "ui5VerSource": null,
+      "isDefaultVersion": 0,
+      "urlParameters": [],
+      "hashParameter": "",
+      "backendSystem": [
+        {
+          "source": "SAP_GW_HUB",
+          "destinations": "SAP_GW_HUB"
+        }
+      ],
+      "_metadata": {
+        "id": 1733252,
+        "runnerId": "fiorirunner",
+        "displayName": "Normal",
+        "lastRunTimeStamp": 1543355259477
+      }
+    }
+  ]
+}

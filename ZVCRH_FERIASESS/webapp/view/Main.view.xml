@@ -1,0 +1,15 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml" controllerName="com.sap.votorantim.grupoZHCM_FERIAS_VT.controller.View1">
+	<List noDataText="" id="list" items="{periodo>/results}">
+		<items>
+			<ObjectListItem title="Férias" number="{periodo>Limite}" numberUnit="Data Limite" intro="Período Aquisitivo" activeIcon="sap-icon://accelerated" highlight="Information" icon="sap-icon://accelerated" press="go" detailPress="go" type="Navigation">
+				<attributes>
+					<ObjectAttribute text="Início: {periodo>Begda}"/>
+					<ObjectAttribute text="Fim: {periodo>Endda}" id="__attribute3"/>
+				</attributes>
+				<firstStatus>
+					<ObjectStatus text="{periodo>Status}" id="__status0" state="Warning"/>
+				</firstStatus>
+			</ObjectListItem>
+		</items>
+	</List>
+</mvc:View>

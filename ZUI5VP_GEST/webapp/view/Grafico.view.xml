@@ -1,0 +1,245 @@
+<mvc:View 
+		controllerName="monitorPortocel.controller.Grafico"
+		xmlns="sap.ui.table"
+		xmlns:core="sap.ui.core"
+		xmlns:mvc="sap.ui.core.mvc"
+		xmlns:layout="sap.ui.layout"
+		xmlns:chart="sap.chart"
+		xmlns:data="sap.chart.data"
+		xmlns:fb="sap.ui.comp.filterbar"
+		xmlns:viz="sap.viz.ui5.controls"
+		xmlns:vizFeeds="sap.viz.ui5.controls.common.feeds"
+		xmlns:vizData="sap.viz.ui5.data"
+		xmlns:m="sap.m"
+		xmlns:unified="sap.ui.unified">
+	<m:Page showHeader="true" 
+		  title="Ciclos" 
+		  showFooter="false" 
+		  showNavButton="true" 
+		  navButtonPress="onPressGoMapa">
+		<m:content>
+			<fb:FilterBar reset="onReset" class="tamDataRange" search="onCarregaGrafico" showRestoreButton="true" showClearButton="true">
+				<fb:filterItems>
+					<fb:FilterItem name="A" label="Centro Origem" labelTooltip="Centro Origem" mandatory="true">
+						<fb:control>
+							<m:ComboBox id="cb_CentroOri" class="largeComboBox" selectedKey="3070" items="{path:'centros>/'}" change="onChangeCentro">
+								<m:items>
+									<core:Item key="{centros>Centro}" text="{centros>Descricao}"/>
+								</m:items>
+							</m:ComboBox>
+						</fb:control>
+					</fb:FilterItem>
+					<fb:FilterItem name="B" label="Destino" labelTooltip="Destino" mandatory="true" visibleInFilterBar="true">
+						<fb:control>
+							<m:ComboBox id="cb_Destino" class="largeComboBox" selectedKey="3810/1373" placeholder="Escolha o Destino" items="{path:'destinos>/'}">
+								<m:items>
+									<core:Item key="{destinos>CentroDestino}/{destinos>Deposito}" text="{destinos>DescricaoDeposito}"/>
+								</m:items>
+							</m:ComboBox>
+						</fb:control>
+					</fb:FilterItem>
+					<fb:FilterItem name="C" label="Data" labelTooltip="Data Range" mandatory="false" visibleInFilterBar="true">
+						<fb:control>
+							<m:DateRangeSelection class="largeComboBox" id="dateRange"  dateValue="{path:'dateRange>/dateValueDRS2'}" secondDateValue="{path:'dateRange>/secondDateValueDRS2'}"
+								minDate="{path:'dateRange>/dateMinDRS2'}" maxDate="{path:'dateRange>/dateMaxDRS2'}" change="onDateRangeChange" />
+						</fb:control>
+					</fb:FilterItem>
+				</fb:filterItems>
+			</fb:FilterBar>
+			<m:FlexBox id="flexbox" class="borda sapUiSmallMarginTop" width="100%">
+				<m:VBox 
+						class="borda" 
+						height="100%"
+						width="50%"
+						id="vboxVizMeta" 
+						alignItems="Stretch" 
+						direction="Column"
+						fitContainer="false"
+						justifyContent="Start"
+						renderType="Div"
+						visible="true" 
+						displayInline="false">
+					<viz:VizFrame class="margemMaior" selectData="onSelectMeta" xmlns="sap.viz" vizType="donut" width="calc(100% + 50px)" height="470px"
+						vizProperties="{plotArea: {'colorPalette':['#748CB2','#F47958'], dataLabel:{visible:'true'}}, title:{ text:'Ciclos x Metas'}}">
+						<viz:dataset>
+							<vizData:FlattenedDataset data="{graficoMeta>/}">
+								<vizData:dimensions>
+									<vizData:DimensionDefinition name="Media" value="{graficoMeta>Descricao}"/>
+								</vizData:dimensions>
+								<vizData:measures>
+									<vizData:MeasureDefinition name="Quantidade" value="{graficoMeta>Quantidade}"/>
+								</vizData:measures>
+							</vizData:FlattenedDataset>
+						</viz:dataset>
+						<viz:feeds>
+							<vizFeeds:FeedItem uid="size" type="Measure" values="Quantidade"/>
+							<vizFeeds:FeedItem uid="color" type="Dimension" values="Media"/>
+						</viz:feeds>
+					</viz:VizFrame>
+				</m:VBox>
+				<m:VBox 
+						class="borda" 
+						height="100%"
+						width="50%"
+						id="vboxVizGrafico"
+						alignItems="Stretch"
+						direction="Column"
+						fitContainer="false"
+						justifyContent="Start"
+						renderType="Div"
+						visible="true"
+						displayInline="false">
+					<viz:VizFrame 
+							id="vizFrame2"
+							class="margemMaior"
+							selectData="onSelectedPoint"
+							xmlns="sap.viz"
+							vizType="line"
+							width="calc(100% + 50px)"
+							height="470px"
+							uiConfig="{'applicationSet':'fiori'}"
+							vizProperties="{plotArea: {dataLabel:{visible:'false'}}, title:{ text:'Viagens x Etapas'}, legend:{isScrollable:'true', visible:'false'}}">
+						<viz:dataset>
+							<vizData:FlattenedDataset data="{graficoEtapa>/}">
+								<vizData:dimensions>
+									<vizData:DimensionDefinition name="Etapa" value="{graficoTempoFabrica>DescricaoEtapa}"/>
+								</vizData:dimensions>
+								<vizData:measures>
+									<vizData:MeasureDefinition name="Quantidade" value="{graficoTempoFabrica>Quantidade}"/>
+								</vizData:measures>
+							</vizData:FlattenedDataset>
+						</viz:dataset>
+						<viz:feeds>
+							<vizFeeds:FeedItem visible="false" uid="valueAxis" type="Measure" values="Quantidade"/>
+							<vizFeeds:FeedItem visible="false" uid="categoryAxis" type="Dimension" values="Etapa"/>
+						</viz:feeds>
+					</viz:VizFrame>
+				</m:VBox>
+			</m:FlexBox>
+			<m:ScrollContainer horizontal="true" >
+				<Table 
+						id="tableMotoristas" 
+						rows="{/results}"
+						selectionMode="MultiToggle"
+						selectionBehavior="Row"
+						showColumnVisibilityMenu="true"
+		    			alternateRowColors="true"
+						enableColumnFreeze="true"
+						enableCellFilter="true"
+						ariaLabelledBy="title">
+					<rowSettingsTemplate>
+						<RowSettings highlight="{Status}" highlightText="{StatusText}"/>
+					</rowSettingsTemplate>
+					<columns>
+						<Column width="8rem" sortProperty="StatusText" filterProperty="StatusText">
+							<m:Label text="Status"/>
+							<template>
+								<m:Text text="{StatusText}" wrapping="false" tooltip="{StatusText}"/>
+							</template>
+						</Column>
+						<Column width="14rem" sortProperty="NomeMotorista" filterProperty="NomeMotorista" >
+							<m:Label text="Motorista"/>
+							<template>
+								<m:Text text="{NomeMotorista}" wrapping="false" tooltip="{NomeMotorista}"/>
+							</template>
+						</Column>
+						<Column width="9rem" sortProperty="Composicao" >
+							<m:Label text="Composição/Placa" tooltip="Composição/Placa"/>
+							<template>
+								<m:Text text="{Composicao}" wrapping="false" tooltip="{Composicao}"/>
+							</template>
+						</Column>
+						<Column width="8rem" sortProperty="Des_Origem" visible="false">
+							<m:Label text="Origem"/>
+							<template>
+								<m:Text text="{Des_Origem}" wrapping="false"/>
+							</template>
+						</Column>
+						<Column width="8rem" sortProperty="Des_Destino" visible="false">
+							<m:Label text="Destino"/>
+							<template>
+								<m:Text text="{Des_Destino}" wrapping="false"/>
+							</template>
+						</Column>
+						<Column width="7rem" sortProperty="DtInicio">
+							<m:Label text="Data Início"/>
+							<template>
+								<m:Text text="{DtInicio}" wrapping="false"/>
+							</template>
+						</Column>
+						<Column width="7rem" sortProperty="HrInicio" >
+							<m:Label text="Hora Início"/>
+							<template>
+								<m:Text text="{HrInicio}" wrapping="false"/>
+							</template>
+						</Column>
+						<Column width="7rem" sortProperty="DtFim">
+							<m:Label text="Data Fim"/>
+							<template>
+								<m:Text text="{DtFim}" wrapping="false"/>
+							</template>
+						</Column>
+						<Column width="7rem" sortProperty="HrFim" >
+							<m:Label text="Hora Fim"/>
+							<template>
+								<m:Text text="{HrFim}" wrapping="false"/>
+							</template>
+						</Column>
+						<Column width="7rem" sortProperty="TempoMin">
+							<m:Label text="Tempo (Min.)"/>
+							<template>
+								<m:Text text="{TempoMin}" wrapping="false"/>
+							</template>
+						</Column>
+						<Column width="6rem" sortProperty="MetaMin">
+							<m:Label text="Meta (Min.)"/>
+							<template>
+								<m:Text text="{MetaMin}" wrapping="false"/>
+							</template>
+						</Column>
+						<Column width="8rem" sortProperty="Viagem" visible="false">
+							<m:Label text="ID Viagem"/>
+							<template>
+								<m:Text text="{Viagem}" wrapping="false"/>
+							</template>
+						</Column>
+						<Column width="4rem" sortProperty="Etapa" visible="false">
+							<m:Label text="Cod.Etapa" tooltip="Código da Etapa"/>
+							<template>
+								<m:Text text="{Etapa}" wrapping="false"/>
+							</template>
+						</Column>
+						<Column width="12rem" sortProperty="DescrEtapa" filterProperty="DescrEtapa">
+							<m:Label text="Etapa" tooltip="Etapa"/>
+							<template>
+								<m:Text text="{DescrEtapa}" wrapping="false" tooltip="{DescrEtapa}"/>
+							</template>
+						</Column>
+					</columns>
+					<footer>
+						<m:Toolbar>
+							<m:Label text="Linhas:" labelFor="rowCountMode"/>
+							<m:SegmentedButton id="rowCountMode" selectedKey="{/visibleRowCountMode}">
+								<m:items>
+									<m:SegmentedButtonItem icon="sap-icon://restart" key="Auto" tooltip="Automático" press="onSetRowCount"/>
+									<m:SegmentedButtonItem icon="sap-icon://locked" key="Fixed" tooltip="Fixo" press="onSetRowCount"/>
+								<!--	<m:SegmentedButtonItem icon="sap-icon://resize-vertical" key="Interactive" tooltip="Interativo" press="onSetRowCount"/> -->
+								</m:items>
+							</m:SegmentedButton>
+							<!--<m:Label text="Colunas:" labelFor="columnWidths"/>
+							<m:SegmentedButton id="columnWidths" selectedKey="Static" select="onColumnWidthsChange">
+								<m:items>
+									<m:SegmentedButtonItem icon="sap-icon://color-fill" key="Static" tooltip="Estático"/>
+									<m:SegmentedButtonItem icon="sap-icon://overlay" key="Flexible" tooltip="Flexível"/>
+									<m:SegmentedButtonItem icon="sap-icon://business-objects-mobile" key="Mixed" tooltip="Mix"/>
+								</m:items>
+							</m:SegmentedButton>-->
+							<m:ToolbarSeparator/>
+							<m:Button icon="sap-icon://excel-attachment" tooltip="Exportar Excel" press="onExportTableMotoristas"/>
+						</m:Toolbar>
+					</footer>
+				</Table>
+			</m:ScrollContainer> 
+		</m:content>
+	</m:Page>
+</mvc:View>

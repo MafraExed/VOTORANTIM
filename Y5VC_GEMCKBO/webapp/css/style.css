@@ -1,0 +1,8 @@
+/* Enter your custom styles here */
+
+
+/* ocultar search dos itens da NF */
+
+#__xmlview1--TableSelectDialogID-searchField-F {
+    display: none;
+}

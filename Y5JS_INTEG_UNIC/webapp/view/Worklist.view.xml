@@ -1,0 +1,192 @@
+<mvc:View controllerName="votorantim.Y5JS_INTEGRACAO_UNICO.controller.Worklist" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<App id="idappbeneficios">
+		<pages>
+			<Page id="idPage" enableScrolling="true" showHeader="false">
+				<content>
+					<ObjectHeader title="JS Integração Unico" icon="{path:'', formatter:'.defineIcon'}" class="sapUiResponsivePadding--header" id="ObjectHeader">
+						<statuses>
+							<ObjectStatus text="Versão do APP: 3.5g" state="None" id="ObjectStatus"/>
+							<ObjectStatus text="Email : {EmailOrg}" state="None" id="ObjectStatus0"/>
+							<ObjectStatus text="." state="Success" id="ObjectStatus1"/>
+						</statuses>
+						<ObjectAttribute text="Empresa: {BukrsOrg}" id="ObjectAttribute"/>
+						<ObjectAttribute text="Matricula: {PernrOrg}" id="ObjectAttribute1"/>
+						<ObjectAttribute text="Área RH: {WerksOrg}" id="ObjectAttribute2"/>
+						<ObjectAttribute text="Subárea RH: {BtrtlOrg}" id="ObjectAttribute3"/>
+					</ObjectHeader>
+					<f:Form id="Fomr1" editable="true">
+						<f:layout>
+							<f:ColumnLayout columnsM="1" columnsL="3" columnsXL="3" id="ColumnLayout"/>
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer id="FormContainer">
+								<f:formElements>
+									<f:FormElement id="FormElement">
+										<f:fields>
+											<Text text="Elementos do contrato" id="Text"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Tipo de contrato" id="FormElement1">
+										<f:fields>
+											<ComboBox id="tipoContrato" required="true" placeholder="--SelecioneC--" change="onChangeTipoContrato">
+												<core:Item key="1" text="Estagio" id="key1"/>
+												<core:Item key="2" text="Aprendiz" id="key2"/>
+												<core:Item key="3" text="Determinado" id="key3"/>
+												<core:Item key="4" text="Indeterminado" id="key4"/>
+												<core:Item key="7E" text="Director" id="key5"/>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Data de admissão" id="FormElement2">
+										<f:fields>
+											<DatePicker id="dataAdmissao" change="onChangedtAdmissao" required="true"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement id="FormElement3">
+										<f:fields>
+											<Text text="" id="Text1"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement id="FormElement4">
+										<f:fields>
+											<Text text="Informações Cadastrais" id="Text2"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Data limite para cadastro" id="FormElement5">
+										<f:fields>
+											<DatePicker id="dataLimite" change="onChangedtLimite" required="true"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Nome do candidato" id="FormElement6">
+										<f:fields>
+											<Input value="" id="idNomeCandidato" placeholder="Nome do Candidato" required="true" change="onChangeNomeCandidato"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Email do candidato" id="FormElement7">
+										<f:fields>
+											<Input value="" id="idEmailCandidato" placeholder="Email do candidato" required="true" change="onChangeEmail"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="CPF do candidato" id="FormElement7_1">
+										<f:fields>
+											<MaskInput mask="999.999.999-99" placeholderSymbol="_" placeholder="CPF do candidato" id="idCPFcandidato" required="true" change="onChangeCPF"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Celular do candidato" id="FormElement8">
+										<f:fields>
+											<MaskInput mask="(99)999999999" placeholderSymbol="_" placeholder="Celular do candidato" id="idCelularCandidato" required="true" change="onChangeTelefone"/>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+							<f:FormContainer id="FormContainer3">
+								<f:formElements>
+									<f:FormElement id="FormElement9">
+										<f:fields>
+											<Text text="Atribuição Organizacional" id="Text4"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Posição" id="FormElement10">
+										<f:fields>
+											<Input value="{Plans}" id="idPosicao" placeholder="Posição" required="true" change="onchangePosicao" maxLength="8"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Descrição da Posição" id="FormElement11">
+										<f:fields>
+											<Input value="{Descp}" id="idDescPosicao" placeholder="Descrição da Posição" required="false" editable="false"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Cargo" id="FormElement12">
+										<f:fields>
+											<Input value="{Stell} - {Descc}" id="idCargo" placeholder="Cargo" required="false" editable="false"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Gestor(pb)" id="FormElement13">
+										<f:fields>
+											<Input value="{Pernr} - {Cname}" id="idGestor" placeholder="Gestor" required="false" editable="false"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Unidade Organizacional" id="FormElement14">
+										<f:fields>
+											<Input value="{Orgeh} - {Orgtx}" id="idUnidOrg" placeholder="Unidade Organizacional" required="false" editable="false"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Empresa" id="FormElement15">
+										<f:fields>
+											<Input value="{Bukrs} - {Butxt}" id="idEmpresa" placeholder="Empresa" required="false" editable="false"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Area RH" id="FormElement16">
+										<f:fields>
+											<Input value="{Persa} - {Name1}" id="idAreaRH" placeholder="Area RH" required="false" editable="false"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Subárea RH" id="FormElement17">
+										<f:fields>
+											<Input value="{Btrtl} - {Btext}" id="idsubAreaRH" placeholder="Subárea RH" required="false" editable="false"/>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+							<f:FormContainer id="FormContainer2">
+								<f:formElements>
+									<f:FormElement id="FormElement18">
+										<f:fields>
+											<Text text="" id="Text3"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Grupo Empregado" id="FormElement19">
+										<f:fields>
+											<Input value="{Persg} - {Descgre}" id="idgrupoEmpregado" placeholder="Grupo Empregado" required="false" editable="false"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Subgrupo Empregado" id="FormElement20">
+										<f:fields>
+											<Input value="{Persk} - {Descsgre}" id="idSubGrupo" placeholder="SubGrupo Empregado" required="false" editable="false"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Divisão(pb)" id="FormElement21">
+										<f:fields>
+											<Input value="{Gsber} - {Gtext}" id="idDivisao" placeholder="Divisão" required="false" editable="false"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Área proc. Folha" id="FormElement22">
+										<f:fields>
+											<Input value="{Abkrs} - {Atext}" id="idAreaProcFolha" placeholder="Área proc. Folha" required="false" editable="false"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Centro de custo" id="FormElement23">
+										<f:fields>
+											<Input value="{Kostl} - {Ltext}" id="idCentroCusto" placeholder="Centro de Custo" required="false" editable="false"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="CBO(pb)" id="FormElement24">
+										<f:fields>
+											<Input value="{Cbo} - {Cbode}" id="idCBO" placeholder="CBO" required="false" editable="false"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Relação de Emprego" id="FormElement25">
+										<f:fields>
+											<Input value="{RelEmp} - {DescRel}" id="idRelEmp" placeholder="Relação de emprego" required="false" editable="false"/>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement id="FormElement26">
+										<f:fields>
+											<Button press="onEnviar" text="Enviar" type="Emphasized" id="button" visible="false"/>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+					<Image src="{path:'', formatter:'.defineLoading'}" width="100px" id="idimg" visible="false"/>
+					<Text text="{BukrsOrg}" visible="false" id="Empresa"/>
+					<Text text="{WerksOrg}" visible="false" id="AreaRH"/>
+					<Text text="{BtrtlOrg}" visible="false" id="subAreaRH"/>
+					<Text text="{EmailOrg}" visible="false" id="EmailOrg"/>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

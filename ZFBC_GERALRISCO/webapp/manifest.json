@@ -1,0 +1,136 @@
+{
+    "_version": "1.7.0",
+    "sap.app": {
+        "id": "ZFBC_GERALRISCO",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "tags": {
+            "keywords": []
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/sap/ZFBC_GRC_RISK_REPORT_SRV/",
+                "type": "OData",
+                "settings": {
+                    "localUri": "localService/metadata.xml",
+                    "annotations": [
+                        "annotation"
+                    ]
+                }
+            },
+            "annotation": {
+                "type": "ODataAnnotation",
+                "uri": "annotations/annotation.xml",
+                "settings": {
+                    "localUri": "annotations/annotation.xml"
+                }
+            }
+        },
+        "offline": false,
+        "sourceTemplate": {
+            "id": "ui5template.smartTemplate",
+            "version": "1.40.12",
+            "toolsId": "51d9f2ed-d127-484b-9e1a-8e459a4739b8"
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        },
+        "supportedThemes": [
+            "sap_hcb",
+            "sap_belize"
+        ]
+    },
+    "sap.ui5": {
+        "resources": {
+            "js": [],
+            "css": []
+        },
+        "dependencies": {
+            "minUI5Version": "1.32.1",
+            "libs": {
+                "sap.ui.core": {},
+                "sap.m": {},
+                "sap.ui.comp": {},
+                "sap.uxap": {},
+                "sap.suite.ui.generic.template": {},
+                "sap.ui.layout": {},
+                "sap.ushell": {},
+                "sap.collaboration": {}
+            },
+            "components": {}
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "uri": "i18n/i18n.properties"
+            },
+            "@i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "uri": "i18n/i18n.properties"
+            },
+            "i18n|sap.suite.ui.generic.template.ListReport|GeralRiscos": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "uri": "i18n/ListReport/GeralRiscos/i18n.properties"
+            },
+            "i18n|sap.suite.ui.generic.template.ObjectPage|GeralRiscos": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "uri": "i18n/ObjectPage/GeralRiscos/i18n.properties"
+            },
+            "": {
+                "dataSource": "mainService",
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false
+                }
+            }
+        },
+        "extends": {
+            "extensions": {}
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        }
+    },
+    "sap.ui.generic.app": {
+        "_version": "1.3.0",
+        "pages": {
+            "ListReport|GeralRiscos": {
+                "entitySet": "GeralRiscos",
+                "component": {
+                    "name": "sap.suite.ui.generic.template.ListReport",
+                    "list": true,
+                    "settings": {
+                        "gridTable": true
+                    }
+                }
+            }
+        }
+    },
+    "sap.platform.hcp": {
+        "uri": ""
+    },
+    "sap.platform.abap": {
+        "uri": "/sap/bc/ui5_ui5/sap/zfbc_geralrisco",
+        "_version": "1.1.0"
+    }
+}

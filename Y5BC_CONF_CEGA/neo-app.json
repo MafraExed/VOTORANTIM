@@ -1,0 +1,74 @@
+{
+  "routes": [
+    {
+      "path": "/resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/resources",
+        "version": "1.63.1"
+      },
+      "description": "SAPUI5 Resources"
+    },
+    {
+      "path": "/test-resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/test-resources",
+        "version": "1.63.1"
+      },
+      "description": "SAPUI5 Test Resources"
+    },
+    {
+      "path": "/resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/resources",
+        "version": "1.63.1"
+      },
+      "description": "SAPUI5 Resources"
+    },
+    {
+      "path": "/test-resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/test-resources",
+        "version": "1.63.1"
+      },
+      "description": "SAPUI5 Test Resources"
+    },
+    {
+      "path": "/sap/opu/odata",
+      "target": {
+        "type": "destination",
+        "name": "SAP_GW_HUB",
+        "entryPath": "/sap/opu/odata"
+      },
+      "description": "GW HUB"
+    },
+    {
+      "path": "/sap/bc/ui5_ui5",
+      "target": {
+        "type": "destination",
+        "name": "SAP_GW_HUB",
+        "entryPath": "/sap/bc/ui5_ui5"
+      },
+      "description": "GW HUB"
+    },
+    {
+      "path": "/resources/Y5BC_CONF_CEGA/Y5BC_CONF_CEGA/Component",
+      "target": {
+        "type": "destination",
+        "name": "SAP_GW_HUB",
+        "entryPath": "/sap/bc/lrep/flex/data/~mOK2lTjWqsnbHqSl2hHnrjkpLP0=~/Y5BC_CONF_CEGA.Y5BC_CONF_CEGA.Component?version=1.0.0",
+        "preferLocal": true
+      },
+      "description": "Y5BC_CONF_CEGA/Y5BC_CONF_CEGA/Component Reuse Library"
+    }
+  ],
+  "welcomeFile": "/test/flpSandbox.html",
+  "sendWelcomeFileRedirect": true
+}

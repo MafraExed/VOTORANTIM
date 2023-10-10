@@ -1,0 +1,24 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:lab="openui5.camera" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core"
+	xmlns:u="sap.ui.unified">
+	<Dialog title="Confirmação Aceite" beforeClose="beforeClose" afterClose=".afterDialogClose">
+		<content>
+			<VBox alignItems="Center">
+				<items>
+					<Label text="Login"/>
+					<Input id="inputLogin"/>
+					<Label text="Matricula"/>
+					<Input id="inputMatricula"/>
+					<lab:Camera width="{= ${device>/system/desktop} ? '600px' : '80%'}" height="{= ${device>/system/desktop} ? '350px' : '100%'}"
+						snapshot=".onSnapshot" singleShotMode="true"/>
+				</items>
+				<!-- sap.ui.core.Control -->
+			</VBox>
+		</content>
+		<beginButton>
+			<Button id="btnCanc" text="{i18n>close}" press=".onCancelPress"/>
+		</beginButton>
+		<endButton>
+			<Button id="btnClose" enabled="{= ${aceiteModel>/img} !== '' }" text="{i18n>save}" press=".onAceiteSavePress"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

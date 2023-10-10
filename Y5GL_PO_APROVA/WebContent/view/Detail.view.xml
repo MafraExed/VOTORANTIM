@@ -1,0 +1,78 @@
+<mvc:View controllerName="vsa.y5gl_po_portal.view.Detail"
+	xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic"
+	xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+	<semantic:DetailPage id="page" navButtonPress="onNavBack"
+		showNavButton="{device>/system/phone}" title="{i18n>detailTitle}"
+		busy="{detailView>/busy}" busyIndicatorDelay="{detailView>/delay}">
+		<semantic:content>
+
+			<ObjectHeader responsive="true" fullScreenOptimized="false"
+				id="objectHeader" title="{Name1}"
+				number="{ path: 'Valor', formatter: '.formatter.currencyExternal' }"
+				numberUnit="{Moeda}">
+				<attributes>
+					<ObjectAttribute title="{i18n>CREATEDAT}"
+						text="{ path: 'Aedat', formatter: '.formatter.dateExternal' }" />
+					<ObjectAttribute title="{i18n>POTYPETXT}" text="{Batxt}" />
+				</attributes>
+			</ObjectHeader>
+
+			<IconTabBar id="iconTabBar" expanded="false" class="sapUiContentPadding" />
+			<!-- backgroundDesign="Transparent" headerBackgroundDesign="Transparent" 
+				/> -->
+
+			<f:SimpleForm id="frDetail" editable="false"
+				layout="ResponsiveGridLayout" adjustLabelSpan="false" labelSpanXL="4"
+				labelSpanL="4" labelSpanM="4" labelSpanS="4" emptySpanXL="0"
+				emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2"
+				columnsM="2" columnsS="2" />
+			<ScrollContainer width="100%" horizontal="true"
+				vertical="true" focusable="true">
+				<Table class="sapUiSmallMargin" xmlns="sap.ui.table" id="tbDetail"
+					title="Items" selectionMode="None" editable="false" threshold="10"
+					visibleRowCount="5">
+					<columns>
+						<Column>
+						</Column>
+					</columns>
+				</Table>
+			</ScrollContainer>
+
+		</semantic:content>
+
+		<semantic:customFooterContent>
+
+			<Toolbar>
+			
+				<Button id="messagePopoverBtn" icon="sap-icon://message-popup"
+					type="Emphasized" visible="false"
+					press="handleMessagePopoverPress" />
+					
+				<ToolbarSpacer />
+				
+				<ToolbarSeparator />
+
+				<Text text="{global>/submensagem}" visible="{= !${global>/aprovacao} }" />
+				
+				<Button press="onApprove" tooltip="{i18n>APPROVE}"
+					visible="{global>/aprovacao}" type="Accept" text="{i18n>APPROVE}"/>
+					
+				<Button press="onApprove_W" icon="sap-icon://approvals"
+					tooltip="{i18n>APPROVEWQUESTION}" visible="{global>/aprovacao}" type="Accept"/>
+					
+				<Button press="onReject" tooltip="{i18n>REJECT}"
+					visible="{global>/aprovacao}" type="Reject" text="{i18n>REJECT}"/>
+					
+				<Button press="onQuestion" icon="sap-icon://alert"
+					tooltip="{i18n>QUESTION}" type="Emphasized" visible="{= ${global>/aprovacao} &amp;&amp; !${global>/questDisbl} }" />
+					
+				<Button press="onInterruption" icon="{global>/intIcon}"
+					tooltip="{i18n>INTERRUPT}" type="Emphasized" visible="{global>/intVisible}" />
+
+
+			</Toolbar>
+
+		</semantic:customFooterContent>
+
+	</semantic:DetailPage>
+</mvc:View>

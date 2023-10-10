@@ -1,0 +1,6 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog noDataText="Nenhum vídeo encontrado" title="Escolha um video" confirm="onVideoListClick" search="onVideoSearch"
+		items="{ path: '/VideosCollection' }">
+		<StandardListItem title="{Name}" description="{Description}" info="{File}" icon="{Image}" iconDensityAware="false" iconInset="false"/>
+	</SelectDialog>
+</core:FragmentDefinition>

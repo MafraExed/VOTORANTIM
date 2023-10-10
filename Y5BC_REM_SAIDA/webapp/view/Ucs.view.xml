@@ -1,0 +1,39 @@
+<mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.f.semantic" xmlns:footerbar="sap.ushell.ui.footerbar"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:smartFilterBar="sap.ui.comp.smartfilterbar" xmlns:m="sap.m" content="no-cache"
+	xmlns:sv="sap.ui.comp.smartvariants" xmlns:smartTable="sap.ui.comp.smarttable" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core"
+	xmlns:l="controls" xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" xmlns:table="sap.ui.table"
+	xmlns:variant="sap.ushell.services.Personalization.Variant" controllerName="ZCBLE_PR_REM_SAIDA.ZCBLE_PR_REM_SAIDA.controller.Ucs">
+	<Page title="Page" class="sapUiContentPadding" showHeader="false">
+		<f:SimpleForm editable="true" maxContainerCols="6" singleContainerFullSize="true">
+			<f:content>
+				<Text text="Contador" textAlign="Left"/>
+				<Input id="IdContador" editable="false" textAlign="Left"/>
+				<Text text="OV / PT" textAlign="Left"/>
+				<Input id="IdVbeln" editable="false" textAlign="Left"/>
+				<Text text="Item DivRemessa" textAlign="Left"/>
+				<Input id="IdEtenr" editable="false" textAlign="Left"/>
+			</f:content>
+		</f:SimpleForm>
+		<f:SimpleForm editable="true" maxContainerCols="1" singleContainerFullSize="true">
+			<f:content>
+				<Text text="Parceiro" textAlign="Left"/>
+				<Input id="IdParceiro" editable="false"/>
+				<Text text="Material" textAlign="Left"/>
+				<Input id="IdMatnr" editable="false"/>
+				<Text text="Quantidade" textAlign="Left"/>
+				<Input id="IdQtde" editable="false"/>
+			</f:content>
+		</f:SimpleForm>
+		<Button class="sapUiTinyMarginBottom" icon="sap-icon://course-program" tooltip="Anexar UC's" press="AnexarUCS" text="Anexar UC's"/>
+		<smartTable:SmartTable id="smartTable" entitySet="ZET_CBLE_PR_LISTA_UCSet" useExportToExcel="false" useTablePersonalisation="false"
+			tableType="Table" showRowCount="true" showFullScreenButton="true" initiallyVisibleFields="Uc,QtdeUc" class=" sapUiResponsiveContentPadding"
+			persistencyKey="SmartTablePKey" beforeRebindTable="atualizasmart">
+			<m:Table selectionMode="Multi" id="table1" enableBusyIndicator="true" busyIndicatorDelay="100" growing="true" 
+				enableCellFilter="true" showSeparators="All">
+			</m:Table>
+			<smartTable:layoutData>
+				<m:FlexItemData growFactor="1" baseSize="0%"/>
+			</smartTable:layoutData>
+		</smartTable:SmartTable>
+	</Page>
+</mvc:View>

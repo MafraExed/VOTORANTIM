@@ -1,0 +1,348 @@
+{
+    "_version": "1.9.0",
+    "sap.app": {
+        "id": "ZCBMM_SOLICITACAO_FRETE.ZCBMM_SOLICITACAO_FRETE",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/sap/ZGWCBMM_CONTRATACAO_FRETE_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/metadata.xml"
+                }
+            }
+        },
+        "sourceTemplate": {
+            "id": "sap.ui.ui5-template-plugin.1worklist",
+            "version": "1.52.7",
+            "toolsId": "e4b0d351-9268-4265-8e80-adbd39adba93"
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "sap-icon://task",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "rootView": {
+            "viewName": "ZCBMM_SOLICITACAO_FRETE.ZCBMM_SOLICITACAO_FRETE.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "app"
+        },
+        "dependencies": {
+            "minUI5Version": "1.42.0",
+            "libs": {
+                "sap.ui.core": {},
+                "sap.m": {},
+                "sap.f": {},
+                "sap.ushell": {},
+                "sap.collaboration": {
+                    "lazy": true
+                }
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "ZCBMM_SOLICITACAO_FRETE.ZCBMM_SOLICITACAO_FRETE.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true
+            }
+        },
+        "services": {
+            "ShellUIService": {
+                "factoryName": "sap.ushell.ui5service.ShellUIService",
+                "lazy": false,
+                "settings": {
+                    "setTitle": "auto"
+                }
+            }
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "viewPath": "ZCBMM_SOLICITACAO_FRETE.ZCBMM_SOLICITACAO_FRETE.view",
+                "controlId": "app",
+                "controlAggregation": "pages",
+                "bypassed": {
+                    "target": [
+                        "notFound"
+                    ]
+                },
+                "async": true
+            },
+            "routes": [
+                {
+                    "pattern": "",
+                    "name": "worklist",
+                    "target": [
+                        "worklist"
+                    ]
+                },
+                {
+                    "pattern": "ZET_CBMM_CF_FRETESet/{IdSolicitacao}/{WerksO}/",
+                    "name": "object",
+                    "target": [
+                        "object"
+                    ]
+                },
+                {
+                    "name": "Add_Solicitacao",
+                    "pattern": "Add_Solicitacao/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "Add_Solicitacao"
+                    ]
+                },
+                {
+                    "name": "Back",
+                    "pattern": "Back/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "Back"
+                    ]
+                },
+                {
+                    "name": "Add_Rota",
+                    "pattern": "Add_Rota/{Bukrs}/{Werks}/{IdSolicitacao}/{Carteira}/{Modalidade}/{Prioridade}/{Finalidade}/{GrpCompras}/{DtInic}/{Kostl}/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "Add_Rota"
+                    ]
+                },
+                {
+                    "name": "Detail_Rota",
+                    "pattern": "Detail_Rota/{Bukrs}/{Werks}/{IdSolicitacao}/{Carteira}/{Modalidade}/{Prioridade}/{Finalidade}/{GrpCompras}/{DtInic}/{Status}/{Kostl}/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "Detail_Rota"
+                    ]
+                },
+                {
+                    "name": "BackSol",
+                    "pattern": "BackSol/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "BackSol"
+                    ]
+                },
+                {
+                    "name": "objectRota",
+                    "pattern": "objectRota/{Bukrs}/{WerksO}/{IdSolicitacao}/{IdRota}/{Carteira}/{Modalidade}/{Prioridade}/{Finalidade}/{GrpCompras}/{DtInic}/{Status}",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "objectRota"
+                    ]
+                },
+                {
+                    "name": "BackObjectRota",
+                    "pattern": "BackObjectRota/{Bukrs}/{WerksO}/{IdSolicitacao}/{Carteira}/{Modalidade}/{Prioridade}/{Finalidade}/{GrpCompras}/{DtInic}/{Status}/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "BackObjectRota"
+                    ]
+                },
+                {
+                    "name": "BackAddSol",
+                    "pattern": "BackAddSol/{Bukrs}/{WerksO}/{IdSolicitacao}/{Carteira}/{Modalidade}/{Prioridade}/{Finalidade}/{GrpCompras}/{DtInic}/{Kostl}/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "BackAddSol"
+                    ]
+                },
+                {
+                    "name": "objectRota1",
+                    "pattern": "objectRota1/{Bukrs}/{WerksO}/{IdSolicitacao}/{IdRota}/{Carteira}/{Modalidade}/{Prioridade}/{Finalidade}/{GrpCompras}/{DtInic}/{Status}/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "objectRota1"
+                    ]
+                },
+                {
+                    "name": "BackObject",
+                    "pattern": "BackObject/{Bukrs}/{WerksO}/{IdSolicitacao}/{Carteira}/{Modalidade}/{Prioridade}/{Finalidade}/{GrpCompras}/{DtInic}/{Status}",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "BackObjectRota"
+                    ]
+                },
+                {
+                    "name": "Add_Rota_Copy",
+                    "pattern": "Add_Rota_Copy/{Bukrs}/{Werks}/{IdSolicitacao}/{IdRota}/{Carteira}/{Modalidade}/{Prioridade}/{Finalidade}/{GrpCompras}/{DtInic}/{Kostl}/",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "Add_Rota_Copy"
+                    ]
+                }
+            ],
+            "targets": {
+                "worklist": {
+                    "viewName": "Worklist",
+                    "viewId": "worklist",
+                    "viewLevel": 1,
+                    "title": "Portal de solicitações de frete",
+                    "transition": "slide"
+                },
+                "object": {
+                    "viewName": "Object",
+                    "viewId": "object",
+                    "viewLevel": 2,
+                    "title": "Portal de solicitações de frete",
+                    "transition": "slide"
+                },
+                "objectNotFound": {
+                    "viewName": "ObjectNotFound",
+                    "viewId": "objectNotFound",
+                    "title": "Portal de solicitações de frete"
+                },
+                "notFound": {
+                    "viewName": "NotFound",
+                    "viewId": "notFound",
+                    "title": "Portal de solicitações de frete"
+                },
+                "Add_Solicitacao": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearAggregation": true,
+                    "viewName": "Add_Solicitacao",
+                    "title": "Portal de solicitações de frete",
+                    "viewId": "Add_Solicitacao",
+                    "viewLevel": 2
+                },
+                "Back": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearAggregation": true,
+                    "viewName": "Worklist",
+                    "title": "Portal de solicitações de frete",
+                    "viewId": "Back",
+                    "viewLevel": 1
+                },
+                "Add_Rota": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearAggregation": true,
+                    "viewName": "Add_Rota",
+                    "title": "Portal de solicitações de frete",
+                    "viewId": "Add_Rota",
+                    "viewLevel": 3
+                },
+                "Detail_Rota": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearAggregation": true,
+                    "viewName": "Detail_Rota",
+                    "title": "Portal de solicitações de frete",
+                    "viewId": "Detail_Rota",
+                    "viewLevel": 3
+                },
+                "BackSol": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearAggregation": true,
+                    "viewName": "Object",
+                    "title": "Portal de solicitações de frete",
+                    "viewId": "BackSol",
+                    "viewLevel": 2
+                },
+                "objectRota": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearAggregation": true,
+                    "viewName": "objectRota",
+                    "title": "Portal de solicitações de frete",
+                    "viewId": "objectRota",
+                    "viewLevel": 3
+                },
+                "BackObjectRota": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearAggregation": true,
+                    "viewName": "Object",
+                    "title": "Portal de solicitações de frete",
+                    "viewId": "BackObjectRota",
+                    "viewLevel": 2
+                },
+                "BackAddSol": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearAggregation": true,
+                    "viewName": "Add_Solicitacao",
+                    "title": "Portal de solicitações de frete",
+                    "viewId": "BackAddSol",
+                    "viewLevel": 2
+                },
+                "objectRota1": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearAggregation": true,
+                    "viewName": "objectRota",
+                    "title": "Portal de solicitações de frete",
+                    "viewId": "objectRota1",
+                    "viewLevel": 3
+                },
+                "BackObject": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearAggregation": true,
+                    "viewName": "Object",
+                    "title": "Portal de solicitações de frete",
+                    "viewId": "BackObject",
+                    "viewLevel": 2
+                },
+                "Add_Rota_Copy": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearAggregation": true,
+                    "viewName": "Add_Rota",
+                    "title": "Portal de solicitações de frete",
+                    "viewId": "Add_Rota",
+                    "viewLevel": 3
+                }
+            }
+        }
+    },
+    "sap.platform.abap": {
+        "uri": "/sap/bc/ui5_ui5/sap/zcbmm_sol_frete",
+        "_version": "1.1.0"
+    }
+}

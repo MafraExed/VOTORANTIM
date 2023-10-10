@@ -1,0 +1,141 @@
+<core:View
+		displayBlock="true"
+		controllerName="br.com.suzano.ZUI5VP_SHIP_SOF.controller.Master"
+		height="100%"
+		xmlns:core="sap.ui.core"
+		xmlns="sap.m"
+		xmlns:f="sap.f"
+		xmlns:footerbar="sap.ushell.ui.footerbar"
+		xmlns:form="sap.ui.layout.form"
+		xmlns:sfb="sap.ui.comp.smartfilterbar"
+		xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+		xmlns:fb="sap.ui.comp.filterbar">
+
+	<f:DynamicPage id="dynamicPageId"
+		    busyIndicatorDelay="1"
+			busy="{masterView>/busy}"
+			toggleHeaderOnTitleClick="false">
+
+		<!-- DynamicPage Title -->
+		<f:title>
+			<f:DynamicPageTitle>
+				<f:heading>
+					<Title text="{masterView>/title}"/>
+				</f:heading>
+			</f:DynamicPageTitle>
+		</f:title>
+
+		<!-- DynamicPage Content -->
+		<f:content>
+			<VBox fitContainer="true">
+				<!-- visible="{device>/support/touch}" -->
+				<PullToRefresh
+					id="pullToRefresh"
+					visible="false"
+					refresh="onRefresh" />
+				<fb:FilterBar
+						id="masterFilterBar"
+						reset="onReset" 
+						class="tamDataRange"
+						search="onRefresh"
+						showRestoreButton="false" 
+						showClearButton="false"
+						showFilterConfiguration="false"
+						filterContainerWidth="18rem">
+					<fb:filterItems>
+						<fb:FilterItem 
+								name="rangeDataFilterItem"
+								label="{i18n>Date}"
+								labelTooltip="{i18n>DateTooltip}" 
+								mandatory="true" 
+								visibleInFilterBar="true">
+							<fb:control>
+								<DateRangeSelection 
+									class="largeComboBox"
+									id="dateRange"
+									dateValue="{path:'masterView>/dateValue'}"
+									secondDateValue="{path:'masterView>/secondDateValue'}"
+									change="onDateRangeChange" 
+									width="100%"/>
+							</fb:control>
+						</fb:FilterItem>
+					</fb:filterItems>
+				</fb:FilterBar>
+				<SearchField
+					id="searchField"
+					showSearchButton="true"
+					width="100%"
+					search="onSearch"
+					liveChange="onSearch"
+					visible="{= ${device>/support/touch} }"
+					showRefreshButton="false"/>
+				<List
+						id="travelList"
+						items="{
+							path: '/results',
+							sorter: {
+								path: 'DataCreat',
+								descending: true
+							},
+							groupHeaderFactory: '.createGroupHeader'
+						}"
+						busyIndicatorDelay="{masterView>/delay}"
+						noDataText="{masterView>/noDataText}"
+						mode="{= ${device>/system/phone} ? 'None' : 'SingleSelectMaster'}"
+						growing="true"
+						growingScrollToLoad="true"
+						updateFinished="onUpdateFinished"
+						selectionChange="onSelectionChange">
+					<infoToolbar>
+						<Toolbar
+							active="true"
+							id="filterBar"
+							visible="{masterView>/isFilterBarVisible}"
+							press="onOpenViewSettings">
+							<Title
+								id="filterBarLabel"
+								text="{masterView>/filterBarLabel}" />
+						</Toolbar>
+					</infoToolbar>
+					<items>
+						<ObjectListItem
+								press="onSelectionChange"
+								type="{= ${device>/system/phone} ? 'Active' : 'Inactive'}"
+								intro="{
+									path: 'DataCreat',
+									formatter: '.formatter.dateStringOutputWay'
+								}"
+								icon="sap-icon://BusinessSuiteInAppSymbols/icon-ship"
+								title="{NomeNavio}"
+								highlightText="{StatusText}"
+								number="{
+									path: 'VolPrevisto',
+									formatter: '.formatter.updateIntegerValue'
+								} MT"
+								numberUnit="Gross Time {HrTrabBruto}"> 
+<!--
+/sap/opu/odata/sap/ZGWVPWM_PROGRAMACAO_EMBARQUE_SRV/ZET_VPWM_PICTURESSet('NAVIOICONE.png')/$value
+sap-icon://BusinessSuiteInAppSymbols/icon-vessel
+-->
+							<attributes>
+								<ObjectAttribute text="{ViagemArm} 
+													   {
+															path: 'Centro', 
+															formatter: '.formatter.updateIntegerValue'
+														}" 
+												 active="fale"/>
+								<ObjectAttribute text="{DescrArmador}" active="false"/>
+							</attributes>
+							<firstStatus>
+								<ObjectStatus text="{VolEmbarcado}" state="{Status}" icon="sap-icon://BusinessSuiteInAppSymbols/icon-truck-load-unload"/> <!-- sap-icon://product -->
+							</firstStatus>
+							<secondStatus>
+								<ObjectStatus text="{HrTrabLiquida}" state="{Status}" icon="sap-icon://time-account"/>
+							</secondStatus>
+						</ObjectListItem>
+					</items>
+				</List>
+			</VBox>
+		</f:content>
+	</f:DynamicPage>
+</core:View>

@@ -1,0 +1,1 @@
+"use strict";sap.ui.define([],function(){return function(e){var n=0;if(e&&e.length<=5){n=e.length}else if(e&&e.length>5){n=5}else{n=0}return n}});

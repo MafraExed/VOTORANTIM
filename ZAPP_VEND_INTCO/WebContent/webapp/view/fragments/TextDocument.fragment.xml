@@ -1,0 +1,60 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core">
+		<f:SimpleForm 
+			id="TextDocumentSimpleForm"
+			layout="ResponsiveGridLayout"
+			editable="true">
+			
+			<f:toolbar>
+				<Toolbar id="TextDocumentTitle1">
+					<Title text="{i18n>detailDocumentTitleTabFilterBarText}" level="H4" titleStyle="H4"/>
+					<ToolbarSpacer />
+					<Button 
+						id="detailDocumentTextButtonEdit" 
+						icon="sap-icon://edit" 
+						tooltip="{i18n>detailDocumentsTooltipButtonEdit}" 
+						press="onChangeMode"/>
+				</Toolbar>
+			</f:toolbar>
+			
+			<f:content>		
+			
+			<Table   
+				 id="TextDocumentTableText" 
+			     items="{dataDocument>/textObject}" 
+		         growing="true"
+			     growingThreshold="3"
+			     growingScrollToLoad="true"
+			     mode="None">
+			   
+				<columns>
+					<Column width="8rem">
+						<Text text="{i18n>detailDocumentsTitleTextDsc}" />
+					</Column>
+					<Column width="auto">
+						<Text text="{i18n>detailDocumentsTitleTextLine}" />
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<Text text="{dataDocument>TextDsc}" />
+						</cells>
+						<cells>
+							<Input
+								editable="{detailDocumentView>/editFields}"
+								value="{dataDocument>TextLine}"
+								maxLength="132"
+								width="100%"/>
+						</cells>
+						
+					</ColumnListItem>
+				</items>
+			</Table>
+
+			</f:content>
+		</f:SimpleForm>
+</core:FragmentDefinition>

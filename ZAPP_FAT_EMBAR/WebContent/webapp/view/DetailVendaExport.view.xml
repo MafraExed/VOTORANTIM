@@ -1,0 +1,114 @@
+<mvc:View 
+		controllerName="nasa.ui5.faturamentoEmbarque.controller.DetailVendaExport" 
+		xmlns="sap.m"
+		xmlns:mvc="sap.ui.core.mvc" 
+		xmlns:semantic="sap.m.semantic"
+		xmlns:footerbar="sap.ushell.ui.footerbar" 
+		xmlns:core="sap.ui.core"
+		xmlns:l="sap.ui.layout">
+
+	<semantic:DetailPage 
+						id="pageDetailVendaExport" 
+						navButtonPress="onNavBack"
+						showNavButton="true"  
+						title="{i18n>detailVendaExportTitle}"
+						busy="{detailVendaExportView>/busy}" 
+						busyIndicatorDelay="{detailVendaExportView>/delay}">
+						
+				<semantic:customHeaderContent>
+					<Button id="PageDetailFullButton" 
+										icon="sap-icon://full-screen" 
+										type="Transparent"
+										visible="{= ${device>/system/phone} === false}"
+										press="onFullScreenPage" />
+				</semantic:customHeaderContent>				
+		<semantic:content>
+			
+<!-- 			<ObjectHeader id="objectHeaderVenda" title="{Dcrnv} - {Nvoyg}" -->
+<!-- 						  markFlagged="true" showMarkers="{path:'Stdline', formatter:'.formatter.formatVisibleMarker'}" -->
+<!-- 						  number="{path: 'Dteta',type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'dd.MM.yyyy', strictParsing: true , UTC: true}}" -->
+<!-- 						  numberUnit="ETA"> -->
+
+<!--  				<attributes> -->
+<!-- 					<ObjectAttribute -->
+<!-- 						title="{i18n>detailTitlePtorg}" -->
+<!-- 						text="{Ptorg}"/> -->
+					
+<!-- 					<ObjectAttribute -->
+<!-- 						title="{i18n>detailTitleTableVbelnVl}" -->
+<!-- 						text="{VbelnVa}"/> -->
+<!-- 				</attributes> -->
+				
+<!-- 				<statuses> -->
+<!-- 					<ObjectStatus class="sapUiSmallMarginBottom" -->
+<!-- 						   		  text="{path:  'Status', formatter: '.formatter.mudarTexto'}"  -->
+<!-- 								  state="{path: 'Status', formatter: '.formatter.mudarStatus'}" -->
+<!-- 								  icon="{path:  'Status', formatter: '.formatter.mudarIcon'}" /> -->
+<!-- 				</statuses> -->
+				
+
+<!-- 				<additionalNumbers>  -->
+
+<!-- 				<ObjectNumber id="idoobjNumberExp"  -->
+<!-- 					 		  number="{parts: [{path:'Peso'}], formatter:'.formatter.formatNumberBrazil'}" -->
+<!-- 					 		  tooltip="Peso" -->
+<!-- 					 		  state="{path: 'Status', formatter: '.formatter.mudarStatus2'}" -->
+<!-- 					 		  unit="{Unit}"/> -->
+
+<!-- 				</additionalNumbers> -->
+
+<!-- 			</ObjectHeader>  -->
+
+			<IconTabBar expandable="false"
+						select="onHandleSelectFilterBarVendasExport"	
+						key="tabVendaExport"
+						id="iconVendaExportTabBar" 
+						class="sapUiResponsiveContentPadding">
+				<items>
+					<!--  MENU TABS 1 -->
+					<IconTabFilter 
+							id="iconVendaExportTabBarFilter1" 
+							icon="sap-icon://activities"
+							tooltip="{i18n>detailVendaExportTitle}"
+							>
+						  <core:Fragment 
+								fragmentName="nasa.ui5.faturamentoEmbarque.view.fragments.ListItemVendaExport" 
+								type="XML"/>
+					</IconTabFilter>
+
+				</items>
+			</IconTabBar>
+
+		</semantic:content>
+		<semantic:customFooterContent>
+<!-- 					<Button  -->
+<!-- 					text="update"  -->
+<!-- 					tooltip="Refresh"  -->
+<!-- 	    			type="Success"  -->
+<!-- 	    			icon="sap-icon://basket"  -->
+<!-- 	    			press="onGs"/> -->
+		
+			<Button 
+					id="vendaExportButtonMsg" 
+					text="{messagePopOver>/count}" 
+					tooltip="{i18n>detailItemVendaExportTooltipMsgBtn}" 
+	    			type="Emphasized" 
+	    			icon="sap-icon://message-popup" 
+	    			press="onHandleMessagePopover"/>
+			<Button 
+					
+					icon="sap-icon://sales-order-item"
+					press="onHandleCreateBill" 
+					tooltip="{i18n>detailVendaExportCreateFatura}">
+			</Button>
+<!-- 			<Button  -->
+					
+<!-- 					icon="sap-icon://reset" -->
+<!-- 					press="onNavBack"  -->
+<!-- 					tooltip="{i18n>detailVendaExportCancelFatura}"> -->
+<!-- 			</Button> -->
+		</semantic:customFooterContent>
+
+	</semantic:DetailPage>
+
+</mvc:View>

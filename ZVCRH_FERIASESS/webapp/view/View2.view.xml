@@ -1,0 +1,78 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml" controllerName="com.sap.votorantim.grupoZHCM_FERIAS_VT.controller.View2">
+	<App>
+		<pages>
+			<Page title="Solicitar Férias">
+				<content>
+					<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout" id="__form0">
+						<sap.ui.layout.form:content>
+							<core:Title text="Período" emphasized="true" icon="sap-icon://activity-individual" level="H2"/>
+							<Label text="Período Aquisitivo"/>
+							<Input value="" editable="false" id="per_aqui"/>
+							<Label text="Período Concessivo"/>
+							<Input value="" editable="false" id="per_cons"/>
+						</sap.ui.layout.form:content>
+						<sap.ui.layout.form:content>
+							<core:Title text="Detalhes do período" emphasized="true"/>
+							<Label text="Dias"/>
+							<Input value="" editable="false" id="per_dias"/>
+							<Label text="Status"/>
+							<Input value="" editable="false" id="per_stat"/>
+						</sap.ui.layout.form:content>
+						
+					</sap.ui.layout.form:SimpleForm>
+					<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout" columnsL="1" backgroundDesign="Solid">
+						<sap.ui.layout.form:content>
+							<core:Title text="Programação de Férias" emphasized="true" icon="sap-icon://activity-individual" level="H2"/>
+						</sap.ui.layout.form:content>
+						<Toolbar width="100%" id="__toolbar1">
+							<content>
+								<Button xmlns="sap.m" text="Salvar" width="100px" id="__button1" activeIcon="sap-icon://save" icon="sap-icon://save"/>
+								<Button xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:sap.ui.layout.form="sap.ui.layout.form" text="Cancelar" width="115px" id="__button1_copy" activeIcon="sap-icon://delete" icon="sap-icon://delete" textDirection="LTR"/>
+								<Button xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:sap.ui.layout.form="sap.ui.layout.form" text="Voltar" width="115px" id="__button1_copy2" activeIcon="sap-icon://sys-back" icon="sap-icon://sys-back" textDirection="LTR" press="back"/>
+							</content>
+						</Toolbar>
+					</sap.ui.layout.form:SimpleForm>
+					<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" layout="ResponsiveGridLayout" id="__form2" backgroundDesign="Solid" columnsL="3">
+						<!--primeiro-->
+						<sap.ui.layout.form:content>
+							<core:Title text="1° Período"/>
+							<Label text="Início das Férias"/>
+							<Input value="" dateFormat="dd-MM-YYYY" editable="true" maxLength="10" type="Date" required="true" id="first_ini" liveChange="somardatafirst"/>
+							<Label text="Dias de Gozo"/>
+							<Input value="" maxLength="10" type="Number" required="true" dateFormat="" id="first_diasgozo" liveChange="somardatafirst" change=""/>
+							<Label text="Fim das Férias"/>
+							<Input value="" dateFormat="dd-MM-YYYY" editable="false" maxLength="10" type="Date" required="true" id="first_fim"/>
+							<CheckBox id="first_abono" text="Abono" textAlign="Left" select="setabono"/>
+							<CheckBox id="first_13" text="1ª par. 13° salário" textAlign="Left" />
+							<Label text="Dias Abono"/>
+							<Input value="" editable="false" maxLength="3" type="Number" required="true" id="first_diasaban" liveChange="somardata"/>
+							<ObjectStatus text="Aguardando" id="first_status" title="Status" icon="sap-icon://order-status" textDirection="LTR" state="Success"/>
+						</sap.ui.layout.form:content>
+						<!--primeiro-->
+						<sap.ui.layout.form:content>
+							<core:Title text="2° Período"/>
+							<Label text="Início das Férias"/>
+							<Input value="" dateFormat="dd-MM-YYYY" editable="true" maxLength="10" type="Date" required="true" id="secon_ini" liveChange="somardatasecon"/>
+							<Label text="Dias de Gozo"/>
+							<Input value="" maxLength="3" type="Number" required="true" dateFormat="" liveChange="somardatasecon" change="somardata" id="secon_diasgozo"/>
+							<Label text="Fim das Férias"/>
+							<Input value="" dateFormat="dd-MM-YYYY" editable="false" maxLength="10" type="Date" required="true" id="secon_fim"/>
+							<ObjectStatus text="Aguardando" title="Status" icon="sap-icon://order-status" textDirection="LTR" state="Success" id="secon_status"/>
+						</sap.ui.layout.form:content>
+						<!--primeiro-->
+						<sap.ui.layout.form:content>
+							<core:Title text="3° Período"/>
+							<Label text="Início das Férias"/>
+							<Input value="" dateFormat="dd-MM-YYYY" editable="true" maxLength="10" type="Date" required="true" id="third_ini" liveChange="somardatathird"/>
+							<Label text="Dias de Gozo"/>
+							<Input value="" maxLength="2" type="Number" required="true" dateFormat="" valueHelpOnly="true" id="third_diasgozo" liveChange="somardatathird"/>
+							<Label text="Fim das Férias"/>
+							<Input value="" dateFormat="dd-MM-YYYY" editable="false" maxLength="10" type="Date" required="true" id="third_fim"/>
+							<ObjectStatus text="Aguardando" title="Status" icon="sap-icon://order-status" textDirection="LTR" state="Success" id="third_status"/>
+						</sap.ui.layout.form:content>
+					</sap.ui.layout.form:SimpleForm>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>
