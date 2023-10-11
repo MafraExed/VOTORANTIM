@@ -5,7 +5,7 @@
     "conn_client" : "05",
     "conn_user": "T3FRANCISCOE",
     "conn_password": "$&y11X|9D:bs",
-    "abap_package": "",
+    "abap_package": "ZPGL_APPS_FIORI",
     "abap_bsp": "Y5GL_SI_APROVA",
     "abap_bsp_text": "Y5GL_SI_APROVA"
 }
